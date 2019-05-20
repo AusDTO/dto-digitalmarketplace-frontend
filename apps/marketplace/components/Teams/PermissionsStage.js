@@ -11,7 +11,7 @@ import styles from './PermissionsStage.scss'
 import commonStyles from './TeamStages.scss'
 
 const PermissionsStage = props => (
-  <Form model={props.model}>
+  <Form model={props.model} onSubmit={props.onSubmit} onSubmitFailed={props.onSubmitFailed}>
     <AUheading level="1" size="xl">
       Permissions
     </AUheading>
@@ -29,6 +29,11 @@ const PermissionsStage = props => (
     {props.formButtons}
   </Form>
 )
+
+PermissionsStage.defaultProps = {
+  onSubmit: () => {},
+  onSubmitFailed: () => {}
+}
 
 const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)

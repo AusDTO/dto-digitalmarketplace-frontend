@@ -9,7 +9,7 @@ import TeamTable from './TeamTable'
 import commonStyles from './TeamStages.scss'
 
 const ReviewStage = props => (
-  <Form model={props.model}>
+  <Form model={props.model} onSubmit={props.onSubmit} onSubmitFailed={props.onSubmitFailed}>
     <AUheading level="1" size="xl">
       Review
     </AUheading>
@@ -36,6 +36,11 @@ const ReviewStage = props => (
     {props.formButtons}
   </Form>
 )
+
+ReviewStage.defaultProps = {
+  onSubmit: () => {},
+  onSubmitFailed: () => {}
+}
 
 const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)

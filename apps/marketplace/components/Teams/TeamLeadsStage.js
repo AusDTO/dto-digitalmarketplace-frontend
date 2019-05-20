@@ -16,7 +16,7 @@ const teamLeadNameDescription = (
 )
 
 const TeamLeadsStage = props => (
-  <Form model={props.model}>
+  <Form model={props.model} onSubmit={props.onSubmit} onSubmitFailed={props.onSubmitFailed}>
     <AUheading level="1" size="xl">
       Team leads
     </AUheading>
@@ -43,6 +43,11 @@ const TeamLeadsStage = props => (
     {props.formButtons}
   </Form>
 )
+
+TeamLeadsStage.defaultProps = {
+  onSubmit: () => {},
+  onSubmitFailed: () => {}
+}
 
 const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)

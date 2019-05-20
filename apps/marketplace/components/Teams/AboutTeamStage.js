@@ -7,7 +7,7 @@ import formProps from 'shared/form/formPropsSelector'
 import Textfield from 'shared/form/Textfield'
 
 const AboutTeamStage = props => (
-  <Form model={props.model}>
+  <Form model={props.model} onSubmit={props.onSubmit} onSubmitFailed={props.onSubmitFailed}>
     <AUheading level="1" size="xl">
       Name and email
     </AUheading>
@@ -38,6 +38,11 @@ const AboutTeamStage = props => (
     {props.formButtons}
   </Form>
 )
+
+AboutTeamStage.defaultProps = {
+  onSubmit: () => {},
+  onSubmitFailed: () => {}
+}
 
 const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)
