@@ -22,6 +22,7 @@ export class CreateTeamPage extends Component {
         showReturnButton={false}
         showReviewButton={false}
         stages={TeamStages}
+        startText="Save and continue"
       />
     )
   }

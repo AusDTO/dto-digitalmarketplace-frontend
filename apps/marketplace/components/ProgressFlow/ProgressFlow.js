@@ -262,6 +262,7 @@ export class ProgressFlow extends Component {
                             showConfirmationCheckbox={this.props.showConfirmationCheckbox}
                             showReturnButton={this.props.showReturnButton}
                             showReviewButton={this.props.showReviewButton}
+                            startText={this.props.startText}
                           />
                         }
                         meta={this.props.meta}
