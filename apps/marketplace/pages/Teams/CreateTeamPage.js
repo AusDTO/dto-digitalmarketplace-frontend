@@ -13,15 +13,15 @@ export class CreateTeamPage extends Component {
   render() {
     return (
       <ProgressFlow
-        model={model}
         basename={`${rootPath}/teams/create`}
+        model={model}
+        previewPath=""
+        returnPath={`${rootPath}/teams`}
         saveModel={this.props.saveTeam}
         showConfirmationCheckbox={false}
         showReturnButton={false}
         showReviewButton={false}
         stages={TeamStages}
-        returnPath={`${rootPath}/teams`}
-        previewPath=""
       />
     )
   }
