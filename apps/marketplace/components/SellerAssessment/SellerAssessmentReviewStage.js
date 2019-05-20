@@ -46,14 +46,18 @@ const SellerAssessmentReviewStage = props => (
         <AUheading level="2" size="md">
           Client
         </AUheading>
-        <p>{props[props.model].evidence.client}</p>
+        <p className={styles.reviewText}>{props[props.model].evidence.client}</p>
+        <AUheading level="2" size="md">
+          Background
+        </AUheading>
+        <p className={styles.reviewText}>{props[props.model].evidence.background}</p>
         {props[props.model].criteria.map(criteriaId => (
           <div key={criteriaId}>
             <span />
             <AUheading level="2" size="md">
               {getCriteriaName(criteriaId, props.meta.criteria)}
             </AUheading>
-            <p>{props[props.model].evidence.criteriaResponses[criteriaId]}</p>
+            <p className={styles.reviewText}>{props[props.model].evidence.criteriaResponses[criteriaId]}</p>
           </div>
         ))}
         {props.formButtons}
