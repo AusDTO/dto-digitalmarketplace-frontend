@@ -1,6 +1,7 @@
 import { SAVE_TEAM_SUCCESS } from '../constants/constants'
+import { GENERAL_ERROR } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
-import { sendingRequest } from './appActions'
+import { sendingRequest, setErrorMessage } from './appActions'
 
 export const handleSaveTeamSuccess = response => ({
   type: SAVE_TEAM_SUCCESS,
@@ -18,8 +19,9 @@ export const saveTeam = data => (dispatch, getState) => {
     },
     data: JSON.stringify(data)
   }).then(response => {
-    if (response.error) {
-      // dispatch(handleErrorFailure(response))
+    if (!response || response.error) {
+      const errorMessage = response.data.message ? response.data.message : GENERAL_ERROR
+      dispatch(setErrorMessage(errorMessage))
     } else {
       dispatch(handleSaveTeamSuccess(response))
     }

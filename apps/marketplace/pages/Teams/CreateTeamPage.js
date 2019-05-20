@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { saveTeam } from 'marketplace/actions/teamActions'
+import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import formProps from 'shared/form/formPropsSelector'
 import TeamStages from '../../components/Teams/TeamStages'
 import ProgressFlow from '../../components/ProgressFlow/ProgressFlow'
@@ -11,6 +12,26 @@ const model = 'createTeamForm'
 
 export class CreateTeamPage extends Component {
   render() {
+    if (this.props.errorMessage) {
+      let hasFocused = false
+      const setFocus = e => {
+        if (!hasFocused) {
+          hasFocused = true
+          e.focus()
+        }
+      }
+
+      return (
+        <ErrorBoxComponent
+          title="A problem occurred loading team details"
+          errorMessage={this.props.errorMessage}
+          setFocus={setFocus}
+          form={{}}
+          invalidFields={[]}
+        />
+      )
+    }
+
     return (
       <ProgressFlow
         basename={`${rootPath}/teams/create`}
@@ -31,6 +52,7 @@ export class CreateTeamPage extends Component {
 
 const mapStateToProps = state => ({
   csrfToken: state.app.csrfToken,
+  errorMessage: state.app.errorMessage,
   ...formProps(state, model)
 })
 
