@@ -9,6 +9,10 @@
   padding-left: 1.5rem;
 }
 
+.reviewText {
+  white-space: pre-wrap;
+}
+
 .feedback {
   display: inline-block;
   width: 400px;

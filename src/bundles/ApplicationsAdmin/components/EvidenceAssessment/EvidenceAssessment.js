@@ -182,13 +182,13 @@ class EvidenceAssessment extends React.Component {
           <p>
             {evidence.evidence.from.month}-{evidence.evidence.from.year} to {evidence.evidence.to.month}-{evidence.evidence.to.year}
           </p>
-          <p>{evidence.evidence.background}</p>
+          <p styleName="reviewText">{evidence.evidence.background}</p>
           {Object.keys(evidence.evidence.criteriaResponses).map(criteriaId => (
             <React.Fragment key={criteriaId}>
               <p>
                 <strong>{this.getCriteriaName(criteriaId)}</strong>
               </p>
-              <p>{evidence.evidence.criteriaResponses[criteriaId]}</p>
+              <p styleName="reviewText">{evidence.evidence.criteriaResponses[criteriaId]}</p>
               <p>
                 <span styleName="criteriaReview">
                   <AUradio
