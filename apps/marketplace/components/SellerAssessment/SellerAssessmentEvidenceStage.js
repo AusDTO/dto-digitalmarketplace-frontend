@@ -94,7 +94,6 @@ const SellerAssessmentEvidenceStage = props => (
             requiredEvidence: `You must add evidence for all criteria selected and each response must be at least ${minimumWordRequirement} words in length`
           }}
         />
-        <p>The information you provide will only be visible to the assessment team.</p>
         <div className={styles.evidenceDates}>
           <strong>From</strong>
           <Control.select
@@ -196,8 +195,19 @@ const SellerAssessmentEvidenceStage = props => (
           }}
         />
         <AUheadings level="2" size="lg">
-          What did you do to demonstrate:
+          Criteria evidence
         </AUheadings>
+        <p>
+          <strong>For each criteria provide at least 200 words explaining:</strong>
+          <ul>
+            <li>What you were specifically response for</li>
+            <li>
+              What specific activities you did and why. Avoid ambiguity e.g. &quot;we have extensive experience
+              in...&quot;
+            </li>
+            <li>Describe the result or outcome of your activities</li>
+          </ul>
+        </p>
         {props[props.model].criteria.map(criteriaId => (
           <Textarea
             key={criteriaId}
