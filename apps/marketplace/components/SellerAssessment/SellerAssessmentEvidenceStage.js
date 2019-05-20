@@ -10,6 +10,8 @@ import { required } from 'marketplace/components/validators'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import format from 'date-fns/format'
+import isAfter from 'date-fns/is_after'
+import parse from 'date-fns/parse'
 import styles from './SellerAssessmentEvidenceStage.scss'
 
 export const getCriteriaName = (id, criteria) => {
@@ -45,7 +47,8 @@ export const validDates = formValues =>
   formValues.evidence.to.year &&
   ((parseInt(formValues.evidence.from.year, 10) === parseInt(formValues.evidence.to.year, 10) &&
     getMonths().indexOf(formValues.evidence.from.month) <= getMonths().indexOf(formValues.evidence.to.month)) ||
-    parseInt(formValues.evidence.from.year, 10) < parseInt(formValues.evidence.to.year, 10))
+    parseInt(formValues.evidence.from.year, 10) < parseInt(formValues.evidence.to.year, 10)) &&
+  !isAfter(parse(`01-${formValues.evidence.to.month}-${formValues.evidence.to.year}`), parse(new Date()))
 
 export const requiredEvidence = formValues =>
   formValues.evidence &&
@@ -88,7 +91,8 @@ const SellerAssessmentEvidenceStage = props => (
           title="An error occurred"
           model={props.model}
           messages={{
-            validDates: 'You must supply dates for the evidence and the from date must be before the to date',
+            validDates:
+              'You must supply dates for the evidence, the "from" date must be before the "to" date, and the "to" date has to be before now',
             requiredClient: 'You must add the name of the client',
             requiredBackground: 'You must add the background',
             requiredEvidence: `You must add evidence for all criteria selected and each response must be at least ${minimumWordRequirement} words in length`
@@ -199,15 +203,15 @@ const SellerAssessmentEvidenceStage = props => (
         </AUheadings>
         <p>
           <strong>For each criteria provide at least 200 words explaining:</strong>
-          <ul>
-            <li>What you were specifically response for</li>
-            <li>
-              What specific activities you did and why. Avoid ambiguity e.g. &quot;we have extensive experience
-              in...&quot;
-            </li>
-            <li>Describe the result or outcome of your activities</li>
-          </ul>
         </p>
+        <ul>
+          <li>What you were specifically response for</li>
+          <li>
+            What specific activities you did and why. Avoid ambiguity e.g. &quot;we have extensive experience
+            in...&quot;
+          </li>
+          <li>Describe the result or outcome of your activities</li>
+        </ul>
         {props[props.model].criteria.map(criteriaId => (
           <Textarea
             key={criteriaId}
