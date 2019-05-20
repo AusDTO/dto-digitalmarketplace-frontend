@@ -2,3 +2,30 @@
   opacity: 0.5;
   display: block;
 }
+
+.criteriaReview {
+  display: block;
+  border-left: solid 10px #5dbfe9;
+  padding-left: 1.5rem;
+}
+
+.feedback {
+  display: inline-block;
+  width: 400px;
+}
+
+.feedback select, .feedback textarea {
+  margin-top: 1.5rem;
+}
+
+.actionButton {
+  border: 0;
+}
+
+.rejectButton {
+  background-color: rgba(255, 0, 0, 1);
+}
+
+.approveButton {
+  background-color: rgba(0, 153, 0, 1)
+}
