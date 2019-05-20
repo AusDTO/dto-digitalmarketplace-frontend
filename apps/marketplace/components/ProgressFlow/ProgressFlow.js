@@ -247,32 +247,32 @@ export class ProgressFlow extends Component {
                   render={() => (
                     <div>
                       <ProgressContent
-                        stage={stage.slug}
-                        model={this.props.model}
-                        meta={this.props.meta}
-                        setCurrentStage={this.setCurrentStage}
-                        saveModel={this.props.saveModel}
                         component={stage.component}
-                        stagesTodo={this.getTodoStages()}
-                        onSubmit={this.handleFormSubmit}
-                        onSubmitFailed={handleFormSubmitFailed}
-                        onStageMount={this.props.onStageMount}
                         formButtons={
                           <ProgressButtons
-                            isLastStage={this.isLastStage(stage.slug)}
+                            confirmationText={this.props.confirmationText}
                             isFirstStage={this.isFirstStage(stage.slug)}
-                            publishEnabled={this.allStagesDone()}
-                            onPublish={this.handlePublish}
-                            onPreview={this.handlePreview}
-                            onReturn={this.handleReturn}
+                            isLastStage={this.isLastStage(stage.slug)}
                             onConfirmationClick={this.handleConfirmationClick}
-                            showReturnButton={this.props.showReturnButton}
-                            showReviewButton={this.props.showReviewButton}
+                            onPreview={this.handlePreview}
+                            onPublish={this.handlePublish}
+                            onReturn={this.handleReturn}
+                            publishEnabled={this.allStagesDone()}
                             publishText={this.props.publishText}
                             showConfirmationCheckbox={this.props.showConfirmationCheckbox}
-                            confirmationText={this.props.confirmationText}
+                            showReturnButton={this.props.showReturnButton}
+                            showReviewButton={this.props.showReviewButton}
                           />
                         }
+                        meta={this.props.meta}
+                        model={this.props.model}
+                        onStageMount={this.props.onStageMount}
+                        onSubmit={this.handleFormSubmit}
+                        onSubmitFailed={handleFormSubmitFailed}
+                        saveModel={this.props.saveModel}
+                        setCurrentStage={this.setCurrentStage}
+                        stage={stage.slug}
+                        stagesTodo={this.getTodoStages()}
                       />
                     </div>
                   )}
