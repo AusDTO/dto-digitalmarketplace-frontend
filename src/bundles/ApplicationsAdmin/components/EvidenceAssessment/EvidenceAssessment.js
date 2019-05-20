@@ -13,7 +13,8 @@ class EvidenceAssessment extends React.Component {
     this.state = {
       hasFailingCriteria: false,
       wasApproved: false,
-      wasRejected: false
+      wasRejected: false,
+      vfm: undefined
     }
 
     const criteria = {}
@@ -31,7 +32,7 @@ class EvidenceAssessment extends React.Component {
   }
 
   hasReviewedAllCriteria() {
-    return Object.keys(this.state.criteria).every(id => {
+    return this.state.vfm !== undefined && Object.keys(this.state.criteria).every(id => {
       return this.state.criteria[id].demonstrates === true || (this.state.criteria[id].demonstrates === false && this.state.criteria[id].reason)
     })
   }
@@ -75,6 +76,12 @@ class EvidenceAssessment extends React.Component {
     })
   }
 
+  handleVFMClick(vfm) {
+    this.setState({
+      vfm
+    })
+  }
+
   handleFeedbackChange(e, type, criteriaId) {
     e.persist()
     this.setState(curState => {
@@ -96,7 +103,8 @@ class EvidenceAssessment extends React.Component {
         }
       }
     })
-    this.props.rejectEvidence(evidenceId, failed_criteria).then(res => {
+    const vfm = this.state.vfm
+    this.props.rejectEvidence(evidenceId, failed_criteria, vfm).then(res => {
       this.setState({
         wasApproved: false,
         wasRejected: true
@@ -112,6 +120,17 @@ class EvidenceAssessment extends React.Component {
         wasRejected: false
       })
     })
+  }
+
+  priceIsOver() {
+    return parseInt(this.props.evidence.maxDailyRate, 10) > parseInt(this.props.evidence.domain.price_maximum, 10)
+  }
+
+  getOverPercentage() {
+    return Math.round(
+      parseInt(this.props.evidence.maxDailyRate, 10) / parseInt(this.props.evidence.domain.price_maximum, 10)
+      * 100
+    )
   }
 
   render() {
@@ -152,7 +171,7 @@ class EvidenceAssessment extends React.Component {
       )
     }
 
-    if (evidence && evidence.supplier) {
+    if (evidence && evidence.supplier && evidence.domain && evidence.evidence) {
       return (
         <div>
           <span styleName="supplierInfo">
@@ -214,12 +233,43 @@ class EvidenceAssessment extends React.Component {
             </React.Fragment>
           ))}
           <p>
-            {this.hasReviewedAllCriteria() && this.state.hasFailingCriteria && (
+            <strong>Does the submitted rate represent VFM?</strong>
+          </p>
+          <p>Limit: ${evidence.domain.price_maximum}</p>
+          <p>
+            Submitted: ${evidence.maxDailyRate}{this.priceIsOver() && (
+              <span styleName="priceOver">({this.getOverPercentage()}% over)</span>
+            )}
+          </p>
+          <p>
+            <span styleName="criteriaReview">
+              <AUradio
+                label="Yes"
+                name="vfm-review"
+                id="vfm-review-yes"
+                value={this.state.vfm}
+                checked={this.state.vfm === true}
+                onChange={e => this.handleVFMClick(true)}
+                block
+              />
+              <AUradio
+                label="No"
+                name="vfm-review"
+                id="vfm-review-no"
+                value={this.state.vfm}
+                checked={this.state.vfm === false}
+                onChange={e => this.handleVFMClick(false)}
+                block
+              />
+            </span>
+          </p>
+          <p>
+            {this.hasReviewedAllCriteria() && (this.state.hasFailingCriteria || this.state.vfm === false) && (
               <button name="reject" styleName="actionButton rejectButton" onClick={this.handleAssessmentReject}>
                 Reject assessment
               </button>
             )}
-            {this.hasReviewedAllCriteria() && !this.state.hasFailingCriteria && (
+            {this.hasReviewedAllCriteria() && !this.state.hasFailingCriteria && this.state.vfm === true && (
               <button name="reject" styleName="actionButton approveButton" onClick={this.handleAssessmentApprove}>
                 Approve assessment
               </button>
@@ -240,7 +290,7 @@ const mapStateToProps = ({ evidence, meta }) => {
 const mapDispatchToProps = dispatch => {
   return {
     approveEvidence: id => dispatch(approveEvidence(id)),
-    rejectEvidence: (id, feedback) => dispatch(rejectEvidence(id, feedback))
+    rejectEvidence: (id, feedback, vfm) => dispatch(rejectEvidence(id, feedback, vfm))
   }
 }
 
