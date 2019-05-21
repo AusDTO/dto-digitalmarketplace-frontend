@@ -11,7 +11,7 @@ export const handleSaveTeamSuccess = response => ({
 export const saveTeam = data => (dispatch, getState) => {
   dispatch(sendingRequest(true))
   return dmapi({
-    url: `/team/create`,
+    url: `/team/update`,
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
