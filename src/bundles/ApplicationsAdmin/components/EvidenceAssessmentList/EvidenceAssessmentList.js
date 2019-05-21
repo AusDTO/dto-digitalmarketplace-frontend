@@ -1,9 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import format from 'date-fns/format'
-
 import './EvidenceAssessmentList.css'
-import { convertApplicationToSeller } from '../../redux/modules/applications';
 
 class EvidenceAssessmentList extends React.Component {
   render() {
@@ -17,7 +15,7 @@ class EvidenceAssessmentList extends React.Component {
             <thead>
               <tr>
                 <th>submitted_at</th>
-                <th>name</th>
+                <th>supplier</th>
                 <th>domain</th>
                 <th>actions</th>
               </tr>
