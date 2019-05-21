@@ -1,39 +1,29 @@
-.buttons {
+.evidenceList table {
+  margin-left: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.evidenceList tr {
+  line-height: 2.5rem;
+}
+
+.evidenceList td, .evidenceList th {
+  padding: 0.1rem 0 0.1rem 0;
+  margin: 0;
   white-space: nowrap;
 }
 
-.buttons button {
-  display: inline-block;
-  font-size: 1.1rem;
+.evidenceList th {
+  text-align: left
+}
+
+.evidenceList table a.application {
   margin: 0 0.1rem;
-  padding: 0 0.1rem;
+  padding: 0.5rem 0.5rem;
   border: none;
-}
-
-.reject {
-  background: red;
-}
-
-.callout--info {
-margin: 1.6em 0;
-box-shadow: none;
-background-color: #e8f5fa;
-padding: 5px
-}
-
-.callout--info h4 {
-text-align: center;
-margin-top: 10px
-}
-
-.callout--warning {
-margin: 1.6em 0;
-box-shadow: none;
-background-color: rgba(255, 0, 0, 0.1);
-padding: 5px
-}
-
-.callout--warning h4 {
-text-align: center;
-margin-top: 10px
+  text-overflow: ellipsis;
+  width: 500px;
+  display: block;
+  overflow: hidden;
 }
