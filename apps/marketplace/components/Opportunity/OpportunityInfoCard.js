@@ -115,14 +115,6 @@ const OpportunityInfoCard = props => (
                     {' '}
                     You must edit your profile to indicate you are a consultancy (or both a consultancy and a recruiter)
                     to be able to apply for this brief.
-                    {props.isOpenToCategory &&
-                      !props.hasChosenBriefCategory && (
-                        <span>
-                          {' '}
-                          You must also add {props.category} as a category you provide services for to apply for this
-                          brief.
-                        </span>
-                      )}
                   </span>
                 )}
                 {}
@@ -160,12 +152,20 @@ const OpportunityInfoCard = props => (
                   <span> Your application for this category is currently being assessed.</span>
                 )}
                 {!props.isAwaitingDomainAssessment &&
-                  props.hasBeenAssessedForBrief && (
-                    <span> You have already submitted or started a request for assessment against this brief.</span>
+                  props.hasEvidenceInDraftForCategory &&
+                  props.draftEvidenceId && (
+                    <span>
+                      {' '}
+                      You currently have a{' '}
+                      <a href={`${rootPath}/seller-assessment/${props.draftEvidenceId}/introduction`}>
+                        draft submission
+                      </a>{' '}
+                      for assessment in this category.
+                    </span>
                   )}
               </p>
               {!props.isAwaitingDomainAssessment &&
-                !props.hasBeenAssessedForBrief && (
+                !props.hasEvidenceInDraftForCategory && (
                   <p>
                     <a
                       href={`${rootPath}/seller-assessment/create/${props.sellerCategory}/${props.briefId}`}
@@ -188,10 +188,6 @@ const OpportunityInfoCard = props => (
               <p className={styles.invitedStatus}>
                 Only sellers with an assessed category can apply.
                 {props.isAwaitingDomainAssessment && <span> Your application is currently being assessed.</span>}
-                {!props.isAwaitingDomainAssessment &&
-                  props.hasBeenAssessedForBrief && (
-                    <span> You have already submitted a request for assessment against this brief.</span>
-                  )}
               </p>
               {!props.isAwaitingDomainAssessment &&
                 !props.hasBeenAssessedForBrief && (
@@ -253,7 +249,8 @@ OpportunityInfoCard.defaultProps = {
   canRespond: false,
   isAssessedForCategory: false,
   isAssessedForAnyCategory: false,
-  hasChosenBriefCategory: false,
+  hasEvidenceInDraftForCategory: false,
+  draftEvidenceId: undefined,
   isOpenToCategory: false,
   isOpenToAll: false,
   loggedIn: false,
@@ -276,7 +273,8 @@ OpportunityInfoCard.propTypes = {
   canRespond: PropTypes.bool,
   isAssessedForCategory: PropTypes.bool,
   isAssessedForAnyCategory: PropTypes.bool,
-  hasChosenBriefCategory: PropTypes.bool,
+  hasEvidenceInDraftForCategory: PropTypes.bool,
+  draftEvidenceId: PropTypes.number,
   isOpenToCategory: PropTypes.bool,
   isOpenToAll: PropTypes.bool,
   loggedIn: PropTypes.bool,
