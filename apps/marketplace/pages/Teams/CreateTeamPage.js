@@ -11,6 +11,16 @@ import { rootPath } from '../../routes'
 const model = 'createTeamForm'
 
 export class CreateTeamPage extends Component {
+  constructor(props) {
+    super(props)
+    this.saveTeam = this.saveTeam.bind(this)
+  }
+
+  saveTeam() {
+    const data = { ...this.props[model] }
+    return this.props.saveTeam(data)
+  }
+
   render() {
     if (this.props.errorMessage) {
       let hasFocused = false
@@ -39,7 +49,7 @@ export class CreateTeamPage extends Component {
         previewPath=""
         publishText="Create team"
         returnPath={`${rootPath}/teams`}
-        saveModel={this.props.saveTeam}
+        saveModel={this.saveTeam}
         showConfirmationCheckbox={false}
         showReturnButton={false}
         showReviewButton={false}
