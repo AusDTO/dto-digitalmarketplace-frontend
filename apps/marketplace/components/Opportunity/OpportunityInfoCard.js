@@ -105,7 +105,7 @@ const OpportunityInfoCard = props => (
           )}
         {props.isOpen &&
           props.loggedIn &&
-          props.isRecruiterOnly && (
+          (props.briefLot === 'atm' && props.isRecruiterOnly) && (
             <span>
               <p className={styles.invitedStatus}>
                 Only approved sellers can apply.
@@ -139,7 +139,7 @@ const OpportunityInfoCard = props => (
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
-          !props.isRecruiterOnly &&
+          ((props.briefLot === 'atm' && !props.isRecruiterOnly) || props.briefLot === 'rfx') &&
           (!props.isOpenToAll && !props.isOpenToCategory) &&
           !props.canRespond && (
             <div className={styles.invitedStatus}>
@@ -149,7 +149,7 @@ const OpportunityInfoCard = props => (
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
-          !props.isRecruiterOnly &&
+          (props.briefLot === 'atm' && !props.isRecruiterOnly) &&
           props.isOpenToCategory &&
           props.category &&
           !props.isAssessedForCategory && (
@@ -202,6 +202,7 @@ const OpportunityInfoCard = props => (
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
+          props.briefLot === 'atm' &&
           !props.isRecruiterOnly &&
           props.isOpenToAll &&
           !props.isAssessedForAnyCategory && (
@@ -227,9 +228,24 @@ const OpportunityInfoCard = props => (
                 )}
             </span>
           )}
+
+        {props.isOpen &&
+          props.loggedIn &&
+          props.isApprovedSeller &&
+          props.briefLot === 'rfx' &&
+          props.canRespond &&
+          !props.isAssessedForCategory && (
+            <span>
+              <p className={styles.invitedStatus}>
+                Only sellers with an assessed category can apply.
+                {props.isAwaitingDomainAssessment && <span> Your application is currently being assessed.</span>}
+              </p>
+            </span>
+          )}
         {props.isOpen &&
           props.isApprovedSeller &&
-          !props.isRecruiterOnly &&
+          ((props.briefLot === 'atm' && !props.isRecruiterOnly) ||
+            (props.briefLot === 'rfx' && props.isAssessedForCategory)) &&
           props.canRespond && (
             <div>
               {props.hasResponded ? (
