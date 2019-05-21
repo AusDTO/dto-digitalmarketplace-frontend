@@ -128,8 +128,8 @@ class EvidenceAssessment extends React.Component {
 
   getOverPercentage() {
     return Math.round(
-      parseInt(this.props.evidence.maxDailyRate, 10) / parseInt(this.props.evidence.domain.price_maximum, 10)
-      * 100
+      (parseInt(this.props.evidence.maxDailyRate, 10) / parseInt(this.props.evidence.domain.price_maximum, 10)
+      * 100) - 100
     )
   }
 
@@ -178,6 +178,13 @@ class EvidenceAssessment extends React.Component {
             {evidence.supplier.name} and {evidence.supplier.code}
           </span>
           <h1 className="au-display-xl">{evidence.domain.name} assessment</h1>
+          {evidence.brief && (
+            <p>
+              For brief "<a href={`https://marketplace.service.gov.au/2/digital-marketplace/opportunities/${evidence.brief.id}`}>
+                {evidence.brief.title}
+              </a>" (ID: {evidence.brief.id}) closing on {format(evidence.brief.applicationsClosedAt, 'DD-MM-YYYY')}
+            </p>
+          )}
           <h2 className="au-display-md">{evidence.evidence.client}</h2>
           <p>
             {evidence.evidence.from.month}-{evidence.evidence.from.year} to {evidence.evidence.to.month}-{evidence.evidence.to.year}

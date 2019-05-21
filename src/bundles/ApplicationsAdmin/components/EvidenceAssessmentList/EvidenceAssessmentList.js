@@ -16,6 +16,7 @@ class EvidenceAssessmentList extends React.Component {
               <tr>
                 <th>submitted_at</th>
                 <th>supplier</th>
+                <th>brief</th>
                 <th>domain</th>
                 <th>actions</th>
               </tr>
@@ -25,6 +26,13 @@ class EvidenceAssessmentList extends React.Component {
                 <tr key={e.id}>
                   <td>{format(e.submitted_at, 'DD-MM-YYYY')}</td>
                   <td>{e.supplier.name}</td>
+                  <td>
+                    {e.brief && (
+                      <a href={`https://marketplace.service.gov.au/2/digital-marketplace/opportunities/${e.brief.id}`}>
+                        {e.brief.id}
+                      </a>
+                    )}
+                  </td>
                   <td>{e.domain.name}</td>
                   <td>
                     <a href={`/admin/evidence-assessments/${e.id}`}>Assess</a>
