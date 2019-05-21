@@ -170,7 +170,7 @@ const OpportunityInfoCard = props => (
                     !props.hasBeenAssessedForBrief && (
                       <p>
                         <a
-                          href={`/sellers/opportunities/${props.briefId}/assessment/${props.sellerCategory}`}
+                          href={`${rootPath}/seller-assessment/create/${props.sellerCategory}/${props.briefId}`}
                           className="au-btn au-btn--block"
                         >
                           Request assessment
@@ -218,7 +218,7 @@ const OpportunityInfoCard = props => (
                 !props.hasBeenAssessedForBrief && (
                   <p>
                     <a
-                      href={`/sellers/opportunities/${props.briefId}/assessment/choose`}
+                      href={`${rootPath}/seller-assessment/create/${props.sellerCategory}/${props.briefId}`}
                       className="au-btn au-btn--block"
                     >
                       Request assessment
