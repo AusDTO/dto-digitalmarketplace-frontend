@@ -11,7 +11,6 @@ class EvidenceAssessment extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      hasFailingCriteria: false,
       wasApproved: false,
       wasRejected: false,
       vfm: undefined
@@ -35,6 +34,13 @@ class EvidenceAssessment extends React.Component {
     return this.state.vfm !== undefined && Object.keys(this.state.criteria).every(id => {
       return this.state.criteria[id].demonstrates === true || (this.state.criteria[id].demonstrates === false && this.state.criteria[id].reason)
     })
+  }
+
+  hasMetEnoughCriteria() {
+    return (
+      this.props.evidence.criteriaNeeded > 0 &&
+      Object.keys(this.state.criteria).filter(id => this.state.criteria[id].demonstrates === true).length >= this.props.evidence.criteriaNeeded
+    )
   }
 
   getCriteriaName(criteriaId) {
@@ -66,12 +72,6 @@ class EvidenceAssessment extends React.Component {
       const value = e.target.value === "yes" ? true : false
       const newState = { ...curState }
       newState.criteria[criteriaId].demonstrates = value
-      const currentFailed = Object.keys(curState.criteria).filter(id => curState.criteria[id].demonstrates === false)
-      if (currentFailed && currentFailed.length > 0) {
-        newState.hasFailingCriteria = true
-      } else {
-        newState.hasFailingCriteria = false
-      }
       return newState
     })
   }
@@ -264,12 +264,12 @@ class EvidenceAssessment extends React.Component {
             </span>
           </p>
           <p>
-            {this.hasReviewedAllCriteria() && (this.state.hasFailingCriteria || this.state.vfm === false) && (
+            {this.hasReviewedAllCriteria() && (!this.hasMetEnoughCriteria() || this.state.vfm === false) && (
               <button name="reject" styleName="actionButton rejectButton" onClick={this.handleAssessmentReject}>
                 Reject assessment
               </button>
             )}
-            {this.hasReviewedAllCriteria() && !this.state.hasFailingCriteria && this.state.vfm === true && (
+            {this.hasReviewedAllCriteria() && this.hasMetEnoughCriteria() && this.state.vfm === true && (
               <button name="reject" styleName="actionButton approveButton" onClick={this.handleAssessmentApprove}>
                 Approve assessment
               </button>
