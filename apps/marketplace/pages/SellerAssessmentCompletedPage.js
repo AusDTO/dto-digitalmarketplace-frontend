@@ -67,7 +67,7 @@ class SellerAssessmentCompletedPage extends Component {
     }
 
     if (this.props.evidence && this.props.evidence.submittedAt) {
-      return <SellerAssessmentCompleted />
+      return <SellerAssessmentCompleted contactEmail={this.props.emailAddress} />
     }
 
     return null
@@ -75,7 +75,8 @@ class SellerAssessmentCompletedPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  evidence: state.evidence
+  evidence: state.evidence,
+  emailAddress: state.app.emailAddress
 })
 
 const mapDispatchToProps = dispatch => ({
