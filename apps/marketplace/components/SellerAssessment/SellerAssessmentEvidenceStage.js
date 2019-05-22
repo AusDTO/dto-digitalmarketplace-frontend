@@ -81,8 +81,7 @@ const SellerAssessmentEvidenceStage = props => (
     </AUheadings>
     {props[props.model].criteria.length < 1 ? (
       <p>
-        Before providing evidence, you must first select which{' '}
-        <Link to="criteria">criteria you wish to respond to</Link>
+        Before providing evidence, you must first select which <Link to="criteria">criteria you are responding to</Link>
         .
       </p>
     ) : (
