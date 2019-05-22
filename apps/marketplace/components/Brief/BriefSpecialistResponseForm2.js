@@ -375,7 +375,7 @@ const BriefSpecialistResponseForm2 = ({
                       validators={{}}
                       messages={{}}
                       uploading={uploading}
-                      accept='.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.odt'
+                      accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.odt"
                     />
                   ))}
                 {fileCount < 10 && (
