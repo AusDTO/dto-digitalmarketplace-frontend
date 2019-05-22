@@ -64,7 +64,7 @@ const BuyerSpecialistReviewStage = props => (
             Once you press publish
           </AUheading>
           <ul>
-            <li>A summary of this request be will visible on the Digital Marketplace.</li>
+            <li>A summary of this request will be visible on the Digital Marketplace.</li>
             <li>Only invited sellers and other buyers will be able to view attached documents.</li>
           </ul>
           {props.formButtons}
