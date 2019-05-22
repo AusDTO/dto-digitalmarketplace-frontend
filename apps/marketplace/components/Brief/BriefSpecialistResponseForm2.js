@@ -358,7 +358,7 @@ const BriefSpecialistResponseForm2 = ({
                 </AUheadings>
                 <p>
                   If requested by the buyer, you can upload additional documents for this candidate. Attachments must be
-                  in PDF or ODT format and a maximum size of 5MB.
+                  in DOC, DOCX, ODT, PDF, PPT, PPTX, XLS or XLSX format and a maximum size of 5MB.
                 </p>
                 {app.supplierCode &&
                   range(1, fileCount).map(i => (
@@ -375,6 +375,7 @@ const BriefSpecialistResponseForm2 = ({
                       validators={{}}
                       messages={{}}
                       uploading={uploading}
+                      accept='.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.odt'
                     />
                   ))}
                 {fileCount < 10 && (
