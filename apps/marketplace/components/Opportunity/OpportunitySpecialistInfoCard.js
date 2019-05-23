@@ -37,7 +37,7 @@ const OpportunitySpecialistInfoCard = props => (
     </div>
     <div className="row">
       <div className="col-xs-12">
-        {props.isApprovedSeller && props.canRespond && props.isAssessedForCategory ? (
+        {props.isApprovedSeller && props.isInvited && props.isAssessedForCategory && !props.hasResponded ? (
           <p>
             {props.sellerResponses === 0
               ? `You have not submitted any candidates. `
@@ -122,7 +122,7 @@ const OpportunitySpecialistInfoCard = props => (
           props.loggedIn &&
           props.isApprovedSeller &&
           !props.isOpenToAll &&
-          !props.canRespond && (
+          !props.isInvited && (
             <div className={styles.invitedStatus}>
               <p>Only invited sellers can apply.</p>
             </div>
@@ -130,7 +130,7 @@ const OpportunitySpecialistInfoCard = props => (
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
-          props.canRespond &&
+          props.isInvited &&
           !props.isAssessedForCategory && (
             <span>
               {props.hasChosenBriefCategory ? (
@@ -239,7 +239,8 @@ OpportunitySpecialistInfoCard.defaultProps = {
   hasBeenAssessedForBrief: false,
   isBriefOwner: false,
   numberOfSuppliers: '',
-  hasSupplierErrors: false
+  hasSupplierErrors: false,
+  isInvited: false
 }
 
 OpportunitySpecialistInfoCard.propTypes = {
@@ -268,7 +269,8 @@ OpportunitySpecialistInfoCard.propTypes = {
   category: PropTypes.string,
   sellerCategory: PropTypes.string.isRequired,
   numberOfSuppliers: PropTypes.string,
-  hasSupplierErrors: PropTypes.bool
+  hasSupplierErrors: PropTypes.bool,
+  isInvited: PropTypes.bool
 }
 
 export default OpportunitySpecialistInfoCard

@@ -110,6 +110,8 @@ test('able to apply with no responses', () => {
         isOpenToAll: true,
         isApprovedSeller: true,
         canRespond: true,
+        isInvited: true,
+        hasResponded: false,
         isAssessedForCategory: true,
         numberOfSuppliers: 6,
         sellerResponses: 0
@@ -135,6 +137,8 @@ test('able to apply with one response', () => {
         isOpenToAll: true,
         isApprovedSeller: true,
         canRespond: true,
+        isInvited: true,
+        hasResponded: false,
         isAssessedForCategory: true,
         numberOfSuppliers: 6,
         sellerResponses: 1
@@ -160,6 +164,8 @@ test('able to apply with multiple responses', () => {
         isOpenToAll: true,
         isApprovedSeller: true,
         canRespond: true,
+        isInvited: true,
+        hasResponded: false,
         isAssessedForCategory: true,
         numberOfSuppliers: 6,
         sellerResponses: 3
@@ -185,6 +191,7 @@ test('not able to apply because not logged in', () => {
         isOpenToAll: true,
         isApprovedSeller: false,
         canRespond: false,
+        isInvited: false,
         isAssessedForCategory: false,
         numberOfSuppliers: 6,
         sellerResponses: 0
@@ -209,7 +216,9 @@ test('not able to apply because max responses', () => {
         sellerCategory: 'software',
         isOpenToAll: true,
         isApprovedSeller: true,
-        canRespond: false,
+        canRespond: true,
+        isInvited: true,
+        hasResponded: true,
         isAssessedForCategory: true,
         numberOfSuppliers: 6,
         sellerResponses: 6
@@ -234,6 +243,8 @@ test('not able to apply because seller is applicant', () => {
         isOpenToAll: true,
         isApprovedSeller: false,
         canRespond: false,
+        isInvited: false,
+        hasResponded: false,
         isAssessedForCategory: false,
         numberOfSuppliers: 6,
         sellerResponses: 0
@@ -261,6 +272,8 @@ test('not able to apply because seller is applicant and waiting for assessment',
         isOpenToAll: true,
         isApprovedSeller: false,
         canRespond: false,
+        isInvited: false,
+        hasResponded: false,
         isAssessedForCategory: false,
         numberOfSuppliers: 6,
         sellerResponses: 0
@@ -309,6 +322,8 @@ test('not able to apply because seller is does not have approved domain', () => 
         sellerCategory: 'software',
         isApprovedSeller: true,
         canRespond: true,
+        isInvited: true,
+        hasResponded: false,
         isAssessedForCategory: false,
         hasChosenBriefCategory: true,
         isOpenToAll: true,
@@ -335,6 +350,8 @@ test('not able to apply because seller is does not have approved domain', () => 
         sellerCategory: 'software',
         isApprovedSeller: true,
         canRespond: true,
+        isInvited: true,
+        hasResponded: false,
         isAssessedForCategory: false,
         hasChosenBriefCategory: true,
         isOpenToAll: true,
@@ -361,6 +378,8 @@ test('not able to apply because seller is does not have approved domain and wait
         sellerCategory: 'software',
         isApprovedSeller: true,
         canRespond: true,
+        isInvited: true,
+        hasResponded: false,
         isAssessedForCategory: false,
         hasChosenBriefCategory: true,
         isAwaitingDomainAssessment: true,
@@ -374,7 +393,7 @@ test('not able to apply because seller is does not have approved domain and wait
   )
 })
 
-test('not able to apply because seller is does not have approved domain and already requested assessment', () => {
+test('not able to apply because seller does not have approved domain and already requested assessment', () => {
   expect(
     mount(
       OpportunitySpecialistInfoCard({
@@ -388,6 +407,8 @@ test('not able to apply because seller is does not have approved domain and alre
         sellerCategory: 'software',
         isApprovedSeller: true,
         canRespond: true,
+        isInvited: true,
+        hasResponded: false,
         isAssessedForCategory: false,
         hasChosenBriefCategory: true,
         isAwaitingDomainAssessment: false,
@@ -416,6 +437,8 @@ test('not able to apply because seller has errors in their profile', () => {
         sellerCategory: 'software',
         isApprovedSeller: true,
         canRespond: true,
+        isInvited: true,
+        hasResponded: false,
         isAssessedForCategory: true,
         hasChosenBriefCategory: true,
         hasSupplierErrors: true,

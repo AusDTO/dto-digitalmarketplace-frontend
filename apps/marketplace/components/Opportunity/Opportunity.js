@@ -101,7 +101,8 @@ const Opportunity = props => {
     isAwaitingDomainAssessment,
     hasBeenAssessedForBrief,
     domains,
-    hasSupplierErrors
+    hasSupplierErrors,
+    isInvited
   } = props
   const brief = { ...defaultBriefProps, ...props.brief }
   const category = getBriefCategory(domains, brief.sellerCategory)
@@ -337,7 +338,7 @@ const Opportunity = props => {
           )}
           {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && <p>{brief.workAlreadyDone}</p>}
           {loggedIn &&
-            (canRespond || isBuyer) &&
+            (canRespond || isInvited || isBuyer) &&
             (brief.lotSlug !== 'specialist' || brief.attachments.length > 0) && (
               <AUheading level="2" size="lg">
                 Additional information
@@ -364,7 +365,7 @@ const Opportunity = props => {
               </div>
             )}
           {loggedIn &&
-            (isOpenToAll || canRespond || isBuyer) && (
+            (isOpenToAll || canRespond || isInvited || isBuyer) && (
               <div className={isBriefOwner ? styles.additionalInfoOwner : styles.additionalInfo}>
                 {(brief.requirementsDocument.length > 0 || brief.attachments.length > 0) && (
                   <ul>
@@ -437,12 +438,12 @@ const Opportunity = props => {
                   </ul>
                 )}
                 {brief.industryBriefing &&
-                  (canRespond || isBriefOwner) && (
+                  (canRespond || isInvited || isBriefOwner) && (
                     <AUheading level="3" size="sm">
                       Industry briefing
                     </AUheading>
                   )}
-                {brief.industryBriefing && (canRespond || isBriefOwner) && <p>{brief.industryBriefing}</p>}
+                {brief.industryBriefing && (canRespond || isInvited || isBriefOwner) && <p>{brief.industryBriefing}</p>}
               </div>
             )}
           {brief.lotSlug !== 'specialist' && (
@@ -546,6 +547,7 @@ const Opportunity = props => {
               isOpen={brief.status === 'live'}
               closingDate={getClosingTime(brief)}
               canRespond={canRespond}
+              isInvited={isInvited}
               isOpenToAll={isOpenToAll}
               isAssessedForCategory={isAssessedForCategory}
               hasChosenBriefCategory={hasChosenBriefCategory}
@@ -612,6 +614,7 @@ Opportunity.defaultProps = {
   invitedSellerCount: 0,
   supplierBriefResponseCount: 0,
   canRespond: false,
+  isInvited: false,
   isAssessedForCategory: false,
   isAssessedForAnyCategory: false,
   hasChosenBriefCategory: false,
@@ -680,6 +683,7 @@ Opportunity.propTypes = {
   invitedSellerCount: PropTypes.number,
   supplierBriefResponseCount: PropTypes.number,
   canRespond: PropTypes.bool,
+  isInvited: PropTypes.bool,
   isAssessedForCategory: PropTypes.bool,
   isAssessedForAnyCategory: PropTypes.bool,
   hasChosenBriefCategory: PropTypes.bool,
