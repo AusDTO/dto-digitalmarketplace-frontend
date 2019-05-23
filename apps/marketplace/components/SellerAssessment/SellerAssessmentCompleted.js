@@ -23,8 +23,11 @@ const SellerAssessmentCompleted = props => (
     </AUheading>
     <ol>
       <li>We will email {props.contactEmail} to let you know you are approved.</li>
-      <li>You will be able to respond to any &quot;open to all&quot; opportunity in that category.</li>
-      <li>Select &apos;Apply for opportunity&apos; to submit your response.</li>
+      <li>You will be able to respond to &quot;open to all&quot; opportunities in the category.</li>
+      <li>
+        You will be able to respond to &quot;open to selected&quot; opportunities in the category, if the buyer has
+        invited you.
+      </li>
     </ol>
     <AUheading level="3" size="md">
       If the assessment is not successful:
