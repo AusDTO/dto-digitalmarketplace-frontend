@@ -25,15 +25,15 @@ class EvidenceAssessmentList extends React.Component {
               {evidence.map(e => (
                 <tr key={e.id}>
                   <td>{format(e.submitted_at, 'DD-MM-YYYY')}</td>
-                  <td>{e.supplier.name}</td>
+                  <td>{e.supplier_name}</td>
                   <td>
-                    {e.brief && (
-                      <a href={`https://marketplace.service.gov.au/2/digital-marketplace/opportunities/${e.brief.id}`}>
-                        ID: {e.brief.id} (closing on {format(e.brief.closed_at, 'DD-MM-YYYY')})
+                    {e.brief_id && (
+                      <a href={`https://marketplace.service.gov.au/2/digital-marketplace/opportunities/${e.brief_id}`}>
+                        ID: {e.brief_id} (closing on {format(e.brief_closed_at, 'DD-MM-YYYY')})
                       </a>
                     )}
                   </td>
-                  <td>{e.domain.name}</td>
+                  <td>{e.domain_name}</td>
                   <td>
                     <a href={`/admin/evidence-assessments/${e.id}`}>Assess</a>
                   </td>
