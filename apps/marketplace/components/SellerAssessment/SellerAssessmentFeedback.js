@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import AUdirectionLink from '@gov.au/direction-links/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
 import Tick from 'marketplace/components/Icons/Tick/Tick'
 import Cross from 'marketplace/components/Icons/Cross/Cross'
@@ -41,9 +42,7 @@ const renderCriteriaFeedback = (criteriaId, criteria) => {
 
 const SellerAssessmentFeedback = props => (
   <div>
-    <p>
-      <a href={`${rootPath}/seller-dashboard`}>← back to dashboard</a>
-    </p>
+    <AUdirectionLink link={`${rootPath}/seller-dashboard`} text="back to dashboard" direction="left" />
     <AUheading level="1" size="xl">
       Outcome
     </AUheading>

@@ -2,17 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import AUdirectionLink from '@gov.au/direction-links/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
-import styles from './SellerAssessmentCompleted.scss'
 
 const SellerAssessmentCompleted = props => (
   <div>
+    <AUdirectionLink link={`${rootPath}/seller-dashboard`} text="back to dashboard" direction="left" />
     <AUpageAlert as="success">
       <AUheading level="1" size="md">
         Your assessment has been submitted.
       </AUheading>
+      <p>We have sent a confirmation email to &apos;{props.contactEmail}&apos;.</p>
     </AUpageAlert>
-    <p>We have sent a confirmation email to &apos;{props.contactEmail}&apos;.</p>
     <AUheading level="2" size="lg">
       What happens next
     </AUheading>
@@ -32,11 +33,6 @@ const SellerAssessmentCompleted = props => (
       <li>We will email {props.contactEmail} with a link to view the assessment team&apos;s feedback.</li>
       <li>You can update your submission and resubmit for assessment.</li>
     </ol>
-    <p className={styles.buttons}>
-      <a href={`${rootPath}/seller-dashboard`} className="au-btn au-btn--secondary">
-        Return to dashboard
-      </a>
-    </p>
   </div>
 )
 
