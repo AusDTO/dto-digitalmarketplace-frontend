@@ -7,7 +7,7 @@ class EvidenceAssessmentList extends React.Component {
   render() {
     const { evidence } = this.props
 
-    if (evidence.length > 0) {
+    if (evidence && evidence.length > 0) {
       return (
         <div styleName="evidenceList">
           <h1 className="au-display-xl">Submitted evidence assessments</h1>

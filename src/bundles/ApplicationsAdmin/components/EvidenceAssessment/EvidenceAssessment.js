@@ -17,14 +17,16 @@ class EvidenceAssessment extends React.Component {
     }
 
     const criteria = {}
-    Object.keys(this.props.evidence.data.evidence.criteriaResponses).map(criteriaId => {
-      criteria[criteriaId] = {
-        demonstrates: undefined,
-        reason: '',
-        feedback: ''
-      }
-    })
-    this.state.criteria = criteria
+    if (this.props.evidence) {
+      Object.keys(this.props.evidence.data.evidence.criteriaResponses).map(criteriaId => {
+        criteria[criteriaId] = {
+          demonstrates: undefined,
+          reason: '',
+          feedback: ''
+        }
+      })
+      this.state.criteria = criteria
+    }
 
     this.handleAssessmentApprove = this.handleAssessmentApprove.bind(this)
     this.handleAssessmentReject = this.handleAssessmentReject.bind(this)
@@ -136,7 +138,16 @@ class EvidenceAssessment extends React.Component {
   render() {
     const { evidence } = this.props
 
-    if (this.state.wasApproved) {
+    if (!evidence) {
+      return (
+        <div>
+          <h1 className="au-display-xl">Evidence submission not found</h1>
+          <p>An evidence submission by this id either does not exist, or has already been reviewed.</p>
+        </div>
+      )
+    }
+
+    if (evidence && this.state.wasApproved) {
       return (
         <div>
           <h1 className="au-display-xl">Assessment approved</h1>
@@ -146,7 +157,7 @@ class EvidenceAssessment extends React.Component {
       )
     }
 
-    if (this.state.wasRejected) {
+    if (evidence && this.state.wasRejected) {
       return (
         <div>
           <h1 className="au-display-xl">Assessment rejected</h1>
