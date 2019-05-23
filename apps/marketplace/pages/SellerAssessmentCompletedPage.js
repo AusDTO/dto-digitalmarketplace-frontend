@@ -58,7 +58,7 @@ class SellerAssessmentCompletedPage extends Component {
       return (
         <ErrorBoxComponent
           title="A problem occurred when loading the assessment details"
-          errorMessage="This assessment is not yet submitted"
+          errorMessage="This assessment is not in a submitted state"
           setFocus={setFocus}
           form={{}}
           invalidFields={[]}
