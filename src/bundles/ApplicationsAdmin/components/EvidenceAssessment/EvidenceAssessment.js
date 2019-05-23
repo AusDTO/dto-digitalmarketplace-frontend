@@ -17,7 +17,7 @@ class EvidenceAssessment extends React.Component {
     }
 
     const criteria = {}
-    Object.keys(this.props.evidence.evidence.criteriaResponses).map(criteriaId => {
+    Object.keys(this.props.evidence.data.evidence.criteriaResponses).map(criteriaId => {
       criteria[criteriaId] = {
         demonstrates: undefined,
         reason: '',
@@ -44,7 +44,7 @@ class EvidenceAssessment extends React.Component {
   }
 
   getCriteriaName(criteriaId) {
-    const match = this.props.evidence.domain.criteria.find(x => parseInt(x.id, 10) === parseInt(criteriaId, 10))
+    const match = this.props.evidence.domain_criteria.find(x => parseInt(x.id, 10) === parseInt(criteriaId, 10))
     return match.name ? match.name : ''
   }
 
@@ -123,12 +123,12 @@ class EvidenceAssessment extends React.Component {
   }
 
   priceIsOver() {
-    return parseInt(this.props.evidence.maxDailyRate, 10) > parseInt(this.props.evidence.domain.price_maximum, 10)
+    return parseInt(this.props.evidence.maxDailyRate, 10) > parseInt(this.props.evidence.domain_price_maximum, 10)
   }
 
   getOverPercentage() {
     return Math.round(
-      (parseInt(this.props.evidence.maxDailyRate, 10) / parseInt(this.props.evidence.domain.price_maximum, 10)
+      (parseInt(this.props.evidence.maxDailyRate, 10) / parseInt(this.props.evidence.domain_price_maximum, 10)
       * 100) - 100
     )
   }
@@ -136,26 +136,11 @@ class EvidenceAssessment extends React.Component {
   render() {
     const { evidence } = this.props
 
-    if (evidence && evidence.status !== 'submitted') {
-      return (
-        <div>
-          <h1 className="au-display-xl">Error loading evidence assessment</h1>
-          <p>
-            This evidence submission ({evidence.domain.name} for {evidence.supplier.name}){' '}
-            {evidence.status === 'assessed' && <span>was already approved on {format(evidence.updated_at, 'DD/MM/YYYY')}.</span>}
-            {evidence.status === 'rejected' && <span>was already rejected on {format(evidence.updated_at, 'DD/MM/YYYY')}.</span>}
-            {evidence.status === 'draft' && <span>is not yet submitted.</span>}
-          </p>
-          <p><a href="/admin/evidence-assessments">Return to evidence assessment list</a></p>
-        </div>
-      )
-    }
-
     if (this.state.wasApproved) {
       return (
         <div>
           <h1 className="au-display-xl">Assessment approved</h1>
-          <p>{evidence.domain.name} for <strong>{evidence.supplier.name} ({evidence.supplier.code})</strong> was approved.</p>
+          <p>{evidence.domain_name} for <strong>{evidence.supplier_name} ({evidence.supplier_code})</strong> was approved.</p>
           <p><a href="/admin/evidence-assessments">Return to evidence assessment list</a></p>
         </div>
       )
@@ -165,37 +150,37 @@ class EvidenceAssessment extends React.Component {
       return (
         <div>
           <h1 className="au-display-xl">Assessment rejected</h1>
-          <p>{evidence.domain.name} for <strong>{evidence.supplier.name} ({evidence.supplier.code})</strong> was rejected.</p>
+          <p>{evidence.domain_name} for <strong>{evidence.supplier_name} ({evidence.supplier_code})</strong> was rejected.</p>
           <p><a href="/admin/evidence-assessments">Return to evidence assessment list</a></p>
         </div>
       )
     }
 
-    if (evidence && evidence.supplier && evidence.domain && evidence.evidence) {
+    if (evidence) {
       return (
         <div>
           <span styleName="supplierInfo">
-            {evidence.supplier.name} and {evidence.supplier.code}
+            {evidence.supplier_name} and {evidence.supplier_code}
           </span>
-          <h1 className="au-display-xl">{evidence.domain.name} assessment</h1>
-          {evidence.brief && (
+          <h1 className="au-display-xl">{evidence.domain_name} assessment</h1>
+          {evidence.brief_id && (
             <p>
-              For brief "<a href={`https://marketplace.service.gov.au/2/digital-marketplace/opportunities/${evidence.brief.id}`}>
-                {evidence.brief.title}
-              </a>" (ID: {evidence.brief.id}) closing on {format(evidence.brief.applicationsClosedAt, 'DD-MM-YYYY')}
+              For brief "<a href={`https://marketplace.service.gov.au/2/digital-marketplace/opportunities/${evidence.brief_id}`}>
+                {evidence.brief_title}
+              </a>" (ID: {evidence.brief_id}) closing on {format(evidence.brief_closed_at, 'DD-MM-YYYY')}
             </p>
           )}
-          <h2 className="au-display-md">{evidence.evidence.client}</h2>
+          <h2 className="au-display-md">{evidence.data.evidence.client}</h2>
           <p>
-            {evidence.evidence.from.month}-{evidence.evidence.from.year} to {evidence.evidence.to.month}-{evidence.evidence.to.year}
+            {evidence.data.evidence.from.month}-{evidence.data.evidence.from.year} to {evidence.data.evidence.to.month}-{evidence.data.evidence.to.year}
           </p>
-          <p styleName="reviewText">{evidence.evidence.background}</p>
-          {Object.keys(evidence.evidence.criteriaResponses).map(criteriaId => (
+          <p styleName="reviewText">{evidence.data.evidence.background}</p>
+          {Object.keys(evidence.data.evidence.criteriaResponses).map(criteriaId => (
             <React.Fragment key={criteriaId}>
               <p>
                 <strong>{this.getCriteriaName(criteriaId)}</strong>
               </p>
-              <p styleName="reviewText">{evidence.evidence.criteriaResponses[criteriaId]}</p>
+              <p styleName="reviewText">{evidence.data.evidence.criteriaResponses[criteriaId]}</p>
               <p>
                 <span styleName="criteriaReview">
                   <AUradio
@@ -242,7 +227,7 @@ class EvidenceAssessment extends React.Component {
           <p>
             <strong>Does the submitted rate represent VFM?</strong>
           </p>
-          <p>Limit: ${evidence.domain.price_maximum}</p>
+          <p>Limit: ${evidence.domain_price_maximum}</p>
           <p>
             Submitted: ${evidence.maxDailyRate}{this.priceIsOver() && (
               <span styleName="priceOver">({this.getOverPercentage()}% over)</span>
