@@ -78,4 +78,25 @@ describe('getBriefLastQuestionDate', () => {
     const lastQuestionDate = format(getBriefLastQuestionDate(closingDate, referenceDate), 'YYYY-MM-DD')
     expect(lastQuestionDate).toEqual(format(new Date('2019-07-04'), 'YYYY-MM-DD'))
   })
+
+  test('When closing date is on a leap day', () => {
+    const closingDate = new Date('2020-02-29')
+    const referenceDate = new Date('2019-05-23')
+    const lastQuestionDate = format(getBriefLastQuestionDate(closingDate, referenceDate), 'YYYY-MM-DD')
+    expect(lastQuestionDate).toEqual(format(new Date('2020-02-27'), 'YYYY-MM-DD'))
+  })
+
+  test('When closing date is on the last day of the year', () => {
+    const closingDate = new Date('2019-12-31')
+    const referenceDate = new Date('2019-05-23')
+    const lastQuestionDate = format(getBriefLastQuestionDate(closingDate, referenceDate), 'YYYY-MM-DD')
+    expect(lastQuestionDate).toEqual(format(new Date('2019-12-27'), 'YYYY-MM-DD'))
+  })
+
+  test('When closing date is on the first day of the year', () => {
+    const closingDate = new Date('2020-01-01')
+    const referenceDate = new Date('2019-05-23')
+    const lastQuestionDate = format(getBriefLastQuestionDate(closingDate, referenceDate), 'YYYY-MM-DD')
+    expect(lastQuestionDate).toEqual(format(new Date('2019-12-30'), 'YYYY-MM-DD'))
+  })
 })
