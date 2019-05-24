@@ -75,7 +75,7 @@ const BriefSpecialistResponseForm2 = ({
               <div className="au-display-lg">
                 <strong>Candidate {specialistNumber}</strong>
               </div>
-              <span>{"Enter the candidate's full legal name as it appears on their driver licence or passport."}</span>
+              <span>{"Enter the candidate's full legal name as it appears on their driver's licence or passport."}</span>
               <Form
                 model={model}
                 id="briefName"
