@@ -535,7 +535,7 @@ const Opportunity = props => {
             questions={brief.clarificationQuestions}
             clarificationQuestionsAreClosed={brief.clarificationQuestionsAreClosed}
             briefId={brief.id}
-            showAskQuestionInfo={canRespond}
+            showAskQuestionInfo={canRespond || isInvited}
           />
         </div>
         <div className="col-xs-12 col-md-4">
