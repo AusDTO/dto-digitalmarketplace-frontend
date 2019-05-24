@@ -23,7 +23,7 @@ describe('getBriefLastQuestionDate', () => {
     expect(lastQuestionDate).toEqual(format(new Date('2019-05-23'), 'YYYY-MM-DD'))
   })
 
-  test('When closing date is 1 days away', () => {
+  test('When closing date is 1 day away', () => {
     const closingDate = new Date('2019-05-24')
     const referenceDate = new Date('2019-05-23')
     const lastQuestionDate = format(getBriefLastQuestionDate(closingDate, referenceDate), 'YYYY-MM-DD')
