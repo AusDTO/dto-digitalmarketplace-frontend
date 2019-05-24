@@ -31,10 +31,10 @@ export const getResponsesFileSizeAndType = (bytes, lot) => {
   return result
 }
 
-export const nextWeekDay = date => {
+const getPreviousWeekDay = date => {
   let newDate = date
   while (isWeekend(newDate)) {
-    newDate = addDays(newDate, 1)
+    newDate = subDays(newDate, 1)
   }
   return newDate
 }
@@ -42,12 +42,13 @@ export const nextWeekDay = date => {
 export const getBriefLastQuestionDate = (closingDate, today = new Date()) => {
   let lastQuestionDate = new Date()
   if (closingDate <= addDays(today, 3)) {
-    lastQuestionDate = nextWeekDay(subDays(closingDate, 1))
+    lastQuestionDate = getPreviousWeekDay(subDays(closingDate, 1))
     if (today > lastQuestionDate) {
       lastQuestionDate = today
     }
   } else {
-    lastQuestionDate = nextWeekDay(subDays(closingDate, 2))
+    lastQuestionDate = getPreviousWeekDay(subDays(closingDate, 1))
+    lastQuestionDate = getPreviousWeekDay(subDays(lastQuestionDate, 1))
   }
   if (lastQuestionDate > closingDate) {
     lastQuestionDate = closingDate
