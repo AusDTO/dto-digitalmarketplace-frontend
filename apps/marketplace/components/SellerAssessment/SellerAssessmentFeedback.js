@@ -42,7 +42,7 @@ const renderCriteriaFeedback = (criteriaId, criteria) => {
 
 const SellerAssessmentFeedback = props => (
   <div>
-    <AUdirectionLink link={`${rootPath}/seller-dashboard`} text="back to dashboard" direction="left" />
+    <AUdirectionLink link={`${rootPath}/seller-dashboard/categories`} text="back to dashboard" direction="left" />
     <AUheading level="1" size="xl">
       Outcome
     </AUheading>
