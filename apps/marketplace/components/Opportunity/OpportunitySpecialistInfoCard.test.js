@@ -51,7 +51,7 @@ test('shows seller invited', () => {
   )
 })
 
-test('brief is open to all', () => {
+test('brief is not open to all', () => {
   expect(
     mount(
       OpportunitySpecialistInfoCard({
@@ -87,11 +87,12 @@ test('brief is open to all', () => {
         category: 'software',
         sellerCategory: 'software',
         isOpenToAll: true,
+        numberOfSuppliers: 5,
         sellersInvited: 10
       })
     ).text()
   ).toEqual(
-    'candidates appliedSellers can submit up to  candidates for this role.You must be signed in and approved in software to respondHow to respondLogin'
+    'candidates appliedSellers can submit up to 5 candidates for this role.You must be signed in and approved in software to respondHow to respondLogin'
   )
 })
 
@@ -305,34 +306,6 @@ test('not able to apply because seller is applicant and not waiting for assessme
     ).text()
   ).toEqual(
     'candidates appliedSellers can submit up to 6 candidates for this role.You must complete your profile and be approved in software to respond.Continue application'
-  )
-})
-
-test('not able to apply because seller is does not have approved domain', () => {
-  expect(
-    mount(
-      OpportunitySpecialistInfoCard({
-        closingDate: '',
-        briefId: '1',
-        briefLot: 'specialist',
-        briefStatus: 'not draft',
-        loggedIn: true,
-        isOpen: true,
-        category: 'software',
-        sellerCategory: 'software',
-        isApprovedSeller: true,
-        canRespond: true,
-        isInvited: true,
-        hasResponded: false,
-        isAssessedForCategory: false,
-        hasChosenBriefCategory: true,
-        isOpenToAll: true,
-        numberOfSuppliers: 6,
-        sellerResponses: 0
-      })
-    ).text()
-  ).toEqual(
-    'candidates appliedSellers can submit up to 6 candidates for this role.Only sellers approved in software can apply.Request assessment'
   )
 })
 
