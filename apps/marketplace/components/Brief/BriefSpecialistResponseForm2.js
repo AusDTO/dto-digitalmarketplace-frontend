@@ -66,7 +66,10 @@ const BriefSpecialistResponseForm2 = ({
                 <div>
                   <h1 className="au-display-xl">Apply for &lsquo;{brief.title}&rsquo;</h1>
                   <p>
-                    You can submit up to {brief.numberOfSuppliers} candidates for this role. This opportunity closes on{' '}
+                    You can submit up to {brief.numberOfSuppliers} candidate{parseInt(brief.numberOfSuppliers, 10) === 1
+                      ? ''
+                      : 's'}{' '}
+                    for this role. This opportunity closes on{' '}
                     {format(new Date(brief.applicationsClosedAt), 'DD-MM-YYYY')}.
                   </p>
                   <br />

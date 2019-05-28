@@ -37,6 +37,33 @@ describe('BriefSpecialistResponseForm2', () => {
     ).toEqual('Start application')
   })
 
+  test('has initial state when no responses', () => {
+    const tree = mount(
+      <Provider store={store}>
+        <BriefSpecialistResponseForm2
+          brief={{ title: 'test brief', applicationsClosedAt: '1/15/2018', numberOfSuppliers: '1' }}
+          specialistNumber={1}
+        />
+      </Provider>
+    )
+    expect(
+      tree
+        .find('h1')
+        .first()
+        .text()
+    ).toEqual('Apply for ‘test brief’')
+    expect(
+      tree.contains(<p>You can submit up to 1 candidate for this role. This opportunity closes on 15-01-2018.</p>)
+    ).toBeTruthy()
+    expect(tree.contains(<strong>Candidate 1</strong>)).toBeTruthy()
+    expect(
+      tree
+        .find('input.au-btn')
+        .first()
+        .props().value
+    ).toEqual('Start application')
+  })
+
   test('displays progress when responses added', () => {
     const tree = mount(
       <Provider store={store}>
