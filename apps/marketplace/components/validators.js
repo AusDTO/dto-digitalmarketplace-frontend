@@ -38,6 +38,9 @@ export const validDate = val => {
   if (!val || !isValid(parse_date(val))) {
     return false
   }
+  if (isNaN(new Date(val))) {
+    return false
+  }
   if (isFuture(val)) {
     return true
   }
