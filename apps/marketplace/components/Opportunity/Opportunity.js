@@ -286,7 +286,7 @@ const Opportunity = props => {
                     {brief.securityClearance === 'abilityToObtain' && (
                       <span>
                         {'Ability to obtain '}
-                        {brief.securityClearanceObtain === 'baselßine' && 'baseline'}
+                        {brief.securityClearanceObtain === 'baseline' && 'baseline'}
                         {brief.securityClearanceObtain === 'nv1' && 'negative vetting level 1'}
                         {brief.securityClearanceObtain === 'nv2' && 'negative vetting level 2'}
                         {brief.securityClearanceObtain === 'pv' && 'positive vetting'}

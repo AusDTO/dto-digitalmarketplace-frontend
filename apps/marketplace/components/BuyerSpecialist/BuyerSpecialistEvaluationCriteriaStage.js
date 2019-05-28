@@ -138,7 +138,7 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
           title="An error occurred"
           model={this.props.model}
           messages={{
-            noEmptyWeightingsEssential: 'You cannot have blank essential weighting.',
+            noEmptyWeightingsEssential: 'You cannot have blank essential weightings.',
             weightingsAddUpTo100Essential: 'Essential weightings must add up to 100%.',
             noZeroWeightingsEssential: 'Essential weightings must be greater than 0.',
             noEmptyCriteriaEssential: 'You cannot have blank essential criteria.',
