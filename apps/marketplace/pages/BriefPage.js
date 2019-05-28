@@ -246,9 +246,13 @@ class BriefPage extends Component {
                       setFocus={setFocus}
                       loadingText={this.state.loadingText}
                       uploading={uploading => this.setState({ loadingText: uploading ? 'Uploading' : null })}
-                      onRateChange={(field, value) =>
-                        this.props.changeModel(`${this.props.model}.${field}`, `${parseFloat(value * 1.1).toFixed(2)}`)
-                      }
+                      onRateChange={(field, value) => {
+                        let withGst = parseFloat(value * 1.1).toFixed(2)
+                        if (isNaN(withGst)) {
+                          withGst = ''
+                        }
+                        this.props.changeModel(`${this.props.model}.${field}`, `${withGst}`)
+                      }}
                       fileCount={this.state.otherDocumentFileCount}
                       addOtherDocument={() => {
                         this.setState(curState => {
