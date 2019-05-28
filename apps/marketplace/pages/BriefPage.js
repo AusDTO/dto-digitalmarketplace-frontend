@@ -117,7 +117,7 @@ class BriefPage extends Component {
   }
 
   handleBriefNameSplitSubmit = (givenNames, surname) => {
-    this.props.handleBriefNameSplitSubmit(giventNames, surname)
+    this.props.handleBriefNameSplitSubmit(givenNames, surname)
     this.props.setInitial(this.props.model)
     window.scrollTo(0, 0)
   }
