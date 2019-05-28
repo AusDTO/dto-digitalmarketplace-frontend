@@ -230,7 +230,7 @@ const BriefSpecialistResponseForm2 = ({
                   />
                 ) : (
                   <AUpageAlert as="warning" setFocus={setFocus}>
-                    <h4 className="au-display-sm">There was a problem loading your details</h4>
+                    <h3 className="au-display-sm">There was a problem loading your details</h3>
                     <p>Only logged in sellers can respond to briefs</p>
                   </AUpageAlert>
                 )}
