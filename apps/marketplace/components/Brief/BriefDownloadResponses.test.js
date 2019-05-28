@@ -50,7 +50,7 @@ test('Component mounts with singular "response" in heading when there is 1 respo
   expect(heading.at(0).text()).toEqual("You've had 1 response to your opportunity.Test Brief")
 })
 
-test('Component mounts with plural "responses" in heading where than is more than 1 response', () => {
+test('Component mounts with plural "responses" in heading when there is more than 1 response', () => {
   brief.responsesZipFilesize = 1024
   const component = mount(<BriefDownloadResponses brief={brief} briefResponses={responses} />)
   const heading = component.find('h1')
