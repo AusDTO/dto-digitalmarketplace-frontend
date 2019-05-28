@@ -114,27 +114,26 @@ export class BuyerSpecialistSelectStage extends Component {
               />
             </div>
             {this.props[this.props.model].openTo === 'selected' && (
-              <div>
-                <div>
-                  <SellerSelect
-                    label="Seller name"
-                    showSelected={false}
-                    showSearchButton={false}
-                    categories={categories}
-                    onSellerSelect={this.handleSellerSelect}
-                    onSellerCategorySelect={this.handleSellerCategorySelect}
-                    showCategorySelect={false}
-                    notFoundMessage="Seller is not on the Digital Marketplace"
-                    showSellerCatalogueLink
-                    allSuppliers
-                  />
-                </div>
+              <React.Fragment>
+                <SellerSelect
+                  label="Seller name"
+                  showSelected={false}
+                  showSearchButton={false}
+                  categories={categories}
+                  onSellerSelect={this.handleSellerSelect}
+                  onSellerCategorySelect={this.handleSellerCategorySelect}
+                  showCategorySelect={false}
+                  notFoundMessage="Seller is not on the Digital Marketplace"
+                  showSellerCatalogueLink
+                  allSuppliers
+                />
+                <br />
                 <SelectedSellersControl
                   id="selected-sellers"
                   model={`${this.props.model}.sellers`}
                   onRemoveClick={sellerCode => this.removeSeller(sellerCode)}
                 />
-              </div>
+              </React.Fragment>
             )}
           </div>
         )}
