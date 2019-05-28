@@ -16,6 +16,9 @@ export class Categories extends Component {
       case 'unassessed':
         return <div className={`${styles.unassessed}`}>Unassessed</div>
       case 'draft':
+        if (category.is_approved) {
+          return <div className={`${styles.badge} ${styles.approved}`}>Approved</div>
+        }
         return <div className={`${styles.badge} ${styles.submitted}`}>In draft</div>
       case 'submitted':
         return <div className={`${styles.badge} ${styles.submitted}`}>Submitted</div>
