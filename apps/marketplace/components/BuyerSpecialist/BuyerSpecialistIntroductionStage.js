@@ -19,7 +19,7 @@ const BuyerSpecialistIntroductionStage = props => (
         rel="noopener noreferrer"
         target="_blank"
       >
-        questions template (xlsx 68KB)
+        questions template (xlsx 113KB)
       </a>{' '}
       to prepare offline before publishing.
     </p>
