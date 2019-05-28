@@ -204,7 +204,7 @@ const SellerAssessmentEvidenceStage = props => (
           <strong>For each criteria provide at least 200 words explaining:</strong>
         </p>
         <ul>
-          <li>What you were specifically response for</li>
+          <li>What you were specifically responsible for</li>
           <li>
             What specific activities you did and why. Avoid ambiguity e.g. &quot;we have extensive experience
             in...&quot;
