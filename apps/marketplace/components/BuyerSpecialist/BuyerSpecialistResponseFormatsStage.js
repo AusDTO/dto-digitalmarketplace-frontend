@@ -313,7 +313,7 @@ const BuyerSpecialistResponseFormatsStage = props => (
         controlProps={{ limit: 50 }}
         validators={{}}
         messages={{
-          limitWords: 'Other security clearance do has exceeded the 50 word limit'
+          limitWords: 'Other security clearance has exceeded the 50 word limit'
         }}
       />
     )}
