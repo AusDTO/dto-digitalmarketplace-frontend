@@ -308,7 +308,7 @@ test('not able to apply because seller is applicant and not waiting for assessme
   )
 })
 
-test('not able to apply because seller is does not have approved domain', () => {
+test('not able to apply because seller does not have approved domain', () => {
   expect(
     mount(
       OpportunitySpecialistInfoCard({
