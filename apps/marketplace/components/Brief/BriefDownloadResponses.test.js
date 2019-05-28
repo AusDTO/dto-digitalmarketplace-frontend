@@ -57,12 +57,20 @@ test('Component mounts with plural "responses" in heading when there is more tha
   expect(heading.at(0).text()).toEqual("You've had 2 responses to your opportunity.Test Brief")
 })
 
-test('Component mounts with specialist "responses"', () => {
+test('Component mounts with plural "candidates" when there are at least 2 responses', () => {
   brief.responsesZipFilesize = 1024
   brief.lot = 'specialist'
   const component = mount(<BriefDownloadResponses brief={brief} briefResponses={responses} />)
   const heading = component.find('h1')
   expect(heading.at(0).text()).toEqual('2 candidates have responded to your opportunity.Test Brief')
+})
+
+test('Component mounts with singular "candidate" when there is 1 response', () => {
+  brief.responsesZipFilesize = 1024
+  brief.lot = 'specialist'
+  const component = mount(<BriefDownloadResponses brief={brief} briefResponses={[{}]} />)
+  const heading = component.find('h1')
+  expect(heading.at(0).text()).toEqual('1 candidate has responded to your opportunity.Test Brief')
 })
 
 test('Component mounts with a download button with csv file type for outcome briefs', () => {
