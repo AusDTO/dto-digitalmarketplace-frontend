@@ -111,7 +111,7 @@ const Opportunities = props => (
                     {item.id}
                   </div>
                   <div className={`col-md-4 col-sm-4 ${styles.cell}`} role="cell" aria-labelledby="header_name">
-                    {item.lot === 'rfx' || item.lot === 'atm' ? (
+                    {item.lot === 'rfx' || item.lot === 'atm' || item.lot === 'specialist' ? (
                       <a href={`${rootPath}/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
                     ) : (
                       <a href={`/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
