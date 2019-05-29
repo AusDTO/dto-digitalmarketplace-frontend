@@ -2,6 +2,7 @@
 /* eslint-disable camelcase */
 import isEmpty from 'lodash/isEmpty'
 import parse_date from 'date-fns/parse'
+import format from 'date-fns/format'
 import isValid from 'date-fns/is_valid'
 import isFuture from 'date-fns/is_future'
 import isAfter from 'date-fns/is_after'
@@ -35,10 +36,11 @@ export const requiredFile = val => {
 }
 
 export const validDate = val => {
-  if (!val || !isValid(parse_date(val))) {
+  let dateObj = parse_date(val)
+  if (!val || !isValid(dateObj)) {
     return false
   }
-  if (isNaN(new Date(val))) {
+  if (format(dateObj, 'YYYY-MM-DD') !== val) {
     return false
   }
   if (isFuture(val)) {
