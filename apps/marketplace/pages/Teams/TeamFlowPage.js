@@ -42,9 +42,11 @@ export class TeamFlowPage extends Component {
       )
     }
 
+    const teamId = this.props.match.params.teamId
+
     return (
       <ProgressFlow
-        basename={`${rootPath}/teams/create`}
+        basename={`${rootPath}/team/${teamId}`}
         model={model}
         previewPath=""
         publishText="Create team"
