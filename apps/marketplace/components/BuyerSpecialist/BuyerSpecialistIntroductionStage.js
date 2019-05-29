@@ -5,7 +5,7 @@ import AUheadings from '@gov.au/headings/lib/js/react.js'
 import styles from './BuyerSpecialistIntroductionStage.scss'
 
 const BuyerSpecialistIntroductionStage = props => (
-  <Form model={props.model} onSubmit={props.onSubmit}>
+  <Form model={props.model} onSubmit={props.onSubmit} className={styles.introductionContainer}>
     <AUheadings level="1" size="xl">
       Hire a digital specialist
     </AUheadings>
