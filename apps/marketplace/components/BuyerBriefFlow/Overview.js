@@ -111,12 +111,13 @@ class Overview extends Component {
           : 0
 
       const briefResponseCount = briefResponses && briefResponses.length > 0 ? briefResponses.length : 0
+      const flowName = flow !== 'specialist' ? flow.toUpperCase() : 'specialist'
 
       return (
         <div>
           <div className={styles.header}>
             <AUheading size="xl" level="1">
-              <small className={styles.briefTitle}>{brief.title || `New ${flow.toUpperCase()} request`}</small>
+              <small className={styles.briefTitle}>{brief.title || `New ${flowName} request`}</small>
               Overview
             </AUheading>
             <div className={styles.headerMenu}>
@@ -195,12 +196,14 @@ class Overview extends Component {
                 {downloadResponsesRender(brief, isPublished, isClosed)}
                 {briefResponseCount > 0 && (
                   <div className={styles.stageStatus}>
-                    {briefResponseCount} seller{briefResponseCount > 1 && `s`} responded
+                    {flow === 'specialist'
+                      ? `${briefResponseCount} candidate${briefResponseCount > 1 ? `s` : ''} responded`
+                      : `${briefResponseCount} seller${briefResponseCount > 1 ? `s` : ''} responded`}
                   </div>
                 )}
               </li>
             )}
-            {flow === 'rfx' &&
+            {(flow === 'rfx' || flow === 'specialist') &&
               (briefResponseCount > 0 || !isPublished || !isClosed) && (
                 <li>{createWorkOrderRender(brief, flow, isPublished, isClosed)}</li>
               )}

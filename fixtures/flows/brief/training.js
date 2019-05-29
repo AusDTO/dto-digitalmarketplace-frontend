@@ -1,7 +1,5 @@
 import * as util from '../../flows/utils'
 
-/* eslint-disable no-await-in-loop */
-
 const clickSaveContinue = async () => {
   await util.clickInputButton('Save and continue')
 }
@@ -54,7 +52,9 @@ const fillLds = async () => {
   await clickSaveContinue()
 
   for (let i = 0; i < 2; i += 1) {
+    // eslint-disable-next-line no-await-in-loop
     await util.selectRadio('sellerProposal')
+    // eslint-disable-next-line no-await-in-loop
     await clickSaveContinue()
   }
 }

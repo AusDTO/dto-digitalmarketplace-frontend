@@ -24,7 +24,7 @@ export class Header extends Component {
   }
 
   render() {
-    const { userType, location, loggedIn } = this.props
+    const { userType, location, loggedIn, notificationCount } = this.props
 
     return (
       <section className="au-marketplace-header">
@@ -50,7 +50,7 @@ export class Header extends Component {
                   <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
                     <li>
                       {loggedIn ? (
-                        <DashBoardLink userType={userType} />
+                        <DashBoardLink userType={userType} notificationCount={notificationCount} />
                       ) : (
                         <a href="/2/signup" className="au-btn au-btn--secondary au-btn--dark">
                           Sign up
@@ -114,7 +114,11 @@ export class Header extends Component {
                 >
                   <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
                     <div className="au-marketplace-header_mobile-link">
-                      {loggedIn ? <DashBoardLink userType={userType} /> : <a href="/2/signup">Sign up</a>}
+                      {loggedIn ? (
+                        <DashBoardLink userType={userType} notificationCount={notificationCount} />
+                      ) : (
+                        <a href="/2/signup">Sign up</a>
+                      )}
                     </div>
                     <div className="au-marketplace-header_mobile-link">
                       {loggedIn ? <a href="/logout">Sign out</a> : <a href="/login">Sign in</a>}
@@ -147,12 +151,14 @@ export class Header extends Component {
 
 Header.propTypes = {
   userType: PropTypes.string.isRequired,
-  loggedIn: PropTypes.bool.isRequired
+  loggedIn: PropTypes.bool.isRequired,
+  notificationCount: PropTypes.number
 }
 
 const mapStateToProps = ({ app }) => ({
   loggedIn: app.loggedIn,
-  userType: app.userType
+  userType: app.userType,
+  notificationCount: app.notificationCount
 })
 
 export default withRouter(connect(mapStateToProps)(Header))

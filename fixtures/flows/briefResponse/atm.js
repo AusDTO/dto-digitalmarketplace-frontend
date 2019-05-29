@@ -1,7 +1,5 @@
 import * as util from '../../flows/utils'
 
-/* eslint-disable no-await-in-loop */
-
 const clickSubmitApplication = async () => {
   await util.clickInputButton('Submit application')
 }
@@ -13,6 +11,7 @@ const respond = async params => {
   if (params.criterias) {
     for (let i = 0; i < params.criterias.length; i += 1) {
       console.log(params.criterias[i])
+      // eslint-disable-next-line no-await-in-loop
       await util.matchText('a', params.criterias[i].criteria)
     }
   }
@@ -21,6 +20,7 @@ const respond = async params => {
   await util.typeInReactInput('availability', { numberOfCharacters: 100 })
   if (params.criterias) {
     for (let i = 0; i < params.criterias.length; i += 1) {
+      // eslint-disable-next-line no-await-in-loop
       await util.typeInReactInput(`criteria.${i}`, { numberOfWords: 500 })
     }
   }

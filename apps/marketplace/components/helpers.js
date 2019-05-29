@@ -17,7 +17,7 @@ export const statusConvert = (status = '') => {
 
 export const getResponsesFileSizeAndType = (bytes, lot) => {
   let result = ''
-  if (lot === 'digital-professionals' || lot === 'training') {
+  if (lot === 'digital-professionals' || lot === 'training' || lot === 'specialist') {
     let size = ''
     if (bytes < 1048576) {
       size = `${parseFloat(bytes / 1024).toFixed(2)}KB`
@@ -31,25 +31,22 @@ export const getResponsesFileSizeAndType = (bytes, lot) => {
   return result
 }
 
-export const nextWeekDay = date => {
+const getPreviousWeekDay = date => {
   let newDate = date
   while (isWeekend(newDate)) {
-    newDate = addDays(newDate, 1)
+    newDate = subDays(newDate, 1)
   }
   return newDate
 }
 
 export const getBriefLastQuestionDate = (closingDate, today = new Date()) => {
-  let lastQuestionDate = new Date()
-  if (closingDate < addDays(today, 3)) {
-    lastQuestionDate = nextWeekDay(subDays(closingDate, 1))
+  let lastQuestionDate = getPreviousWeekDay(subDays(closingDate, 1))
+  if (closingDate <= addDays(today, 3)) {
     if (today > lastQuestionDate) {
       lastQuestionDate = today
     }
-  } else if (closingDate < addDays(today, 8)) {
-    lastQuestionDate = nextWeekDay(addDays(today, 2))
   } else {
-    lastQuestionDate = nextWeekDay(addDays(today, 5))
+    lastQuestionDate = getPreviousWeekDay(subDays(lastQuestionDate, 1))
   }
   if (lastQuestionDate > closingDate) {
     lastQuestionDate = closingDate

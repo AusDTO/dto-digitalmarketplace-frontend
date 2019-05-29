@@ -8,7 +8,7 @@ const QuestionAnswer = props => (
     <div className="row">
       <div className="col-xs-12">
         <AUheading level="2" size="lg">
-          Question and answer
+          Questions and answers
         </AUheading>
       </div>
     </div>

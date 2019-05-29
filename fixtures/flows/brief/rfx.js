@@ -1,9 +1,6 @@
 import * as util from '../../flows/utils'
 import { sleep } from '../../flows/utils'
 
-/* eslint-disable no-await-in-loop */
-/* eslint-disable no-unused-vars */
-
 const clickSaveContinue = async () => {
   await util.clickButton('Save and continue')
 }
@@ -31,9 +28,12 @@ const selectDropBox = async () => {
   const resultCount = searchResult.length
   for (let i = 1; i <= resultCount; i += 1) {
     if (i > 1) {
+      // eslint-disable-next-line no-await-in-loop
       await util.sleep(100)
+      // eslint-disable-next-line no-await-in-loop
       await util.typeInReactInput('seller-search', { value: '%%%' })
     }
+    // eslint-disable-next-line no-await-in-loop
     searchResult = await util.getElementHandles(`//input[@id="seller-search"]/../../ul/li[${i}]/a`)
     sr = searchResult[0]
     sr.click()
@@ -57,14 +57,6 @@ const fillAbout = async (role, locations) => {
   await util.typeInReactInput('title', { value: role })
   await util.typeInReactInput('organisation', { numberOfCharacters: 100 })
   await util.typeInReactInput('summary', { numberOfWords: 150 })
-
-  /*
-  for (let i; i < locations.length; i+=1) {
-    const location = locations[i]
-    await util.selectCheck(location)
-  }
-
-  */
 
   locations.forEach(async location => {
     await util.selectCheck(location)

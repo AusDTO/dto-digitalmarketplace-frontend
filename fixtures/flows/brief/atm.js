@@ -1,7 +1,5 @@
 import * as util from '../utils'
 
-/* eslint-disable no-await-in-loop */
-
 const clickSaveContinue = async () => {
   await util.clickButton('Save and continue')
 }
@@ -61,23 +59,6 @@ const fillObjectives = async () => {
   await util.typeInReactInput('endUsers', { numberOfWords: 500 })
   await util.typeInReactInput('workAlreadyDone', { numberOfWords: 500 })
   await util.typeInReactInput('industryBriefing', { numberOfWords: 500 })
-
-  /*
-  
-  const fields = [
-    { id: 'backgroundInformation', options: { numberOfWords: 500 } },
-    { id: 'outcome', options: { numberOfWords: 500 } },
-    { id: 'endUsers', options: { numberOfWords: 500 } },
-    { id: 'workAlreadyDone', options: { numberOfWords: 500 } },
-    { id: 'industryBriefing', options: { numberOfWords: 150 } }
-  ]
-  fields.forEach(async field => {
-    await util.typeInReactInput(field.id, field.options)
-  })
-
-
-  */
-
   await util.upload('file_0', 'document.pdf')
   await clickSaveContinue()
 }
@@ -88,18 +69,6 @@ const fillTimeframes = async () => {
 
   await util.typeInReactInput('start_date', { numberOfWords: 10 })
   await util.typeInReactInput('timeframeConstraints', { numberOfWords: 150 })
-
-  /* skips the first field 
-  const fields = [
-    { id: 'start_date', options: { numberOfWords: 10 } },
-    { id: 'timeframeConstraints', options: { numberOfWords: 150 } }
-  ]
-  fields.forEach(async field => {
-    await util.typeInReactInput(field.id, field.options)
-  })
-
-  */
-
   await clickSaveContinue()
 }
 
@@ -110,9 +79,12 @@ const fillResponseCriteria = async numberOfCriterias => {
   const criterias = []
   for (let i = 0; i < numberOfCriterias; i += 1) {
     if (i > 0) {
+      // eslint-disable-next-line no-await-in-loop
       await util.clickLink('Add another criteria')
     }
+    // eslint-disable-next-line no-await-in-loop
     const criteria = await util.typeInReactInput(`criteria_${i}`, { numberOfWords: 50 })
+    // eslint-disable-next-line no-await-in-loop
     const weighting = await util.typeInReactInput(`weighting_${i}`, { value: '50' })
     criterias.push({
       criteria,

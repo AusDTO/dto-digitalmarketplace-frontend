@@ -7,7 +7,6 @@ const clickSubmitApplication = async () => {
 const respond = async () => {
   console.log('respond to RFxs')
 
-  // apply for opporunity
   await clickSubmitApplication()
 
   await util.matchText('a', 'You must upload your written proposal')

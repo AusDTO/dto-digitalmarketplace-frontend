@@ -5,6 +5,7 @@ import appReducer from './appReducer'
 import brief from './briefReducers'
 import user from './memberInfoReducers'
 import dashboard from './dashboardReducers'
+import sellerDashboard from './sellerDashboardReducers'
 import opportunities from './opportunitiesReducers'
 import errorMessage from './errorMessage'
 import form_options from './form_options'
@@ -60,11 +61,43 @@ export const BuyerATMFormReducer = {
   contactNumber: ''
 }
 
+export const BuyerSpecialistFormReducer = {
+  id: 0,
+  title: '',
+  organisation: '',
+  summary: '',
+  location: [],
+  attachments: [],
+  contactNumber: '',
+  internalReference: '',
+  includeWeightingsEssential: false,
+  essentialRequirements: [{ criteria: '', weighting: '' }],
+  includeWeightingsNiceToHave: false,
+  niceToHaveRequirements: [{ criteria: '', weighting: '' }],
+  numberOfSuppliers: '3',
+  evaluationType: ['Responses to selection criteria', 'Résumés'],
+  preferredFormatForRates: 'dailyRate',
+  maxRate: '',
+  budgetRange: '',
+  securityClearance: '',
+  securityClearanceObtain: '',
+  securityClearanceCurrent: '',
+  securityClearanceOther: '',
+  sellerCategory: '',
+  openTo: '',
+  sellers: {},
+  startDate: '',
+  contractLength: '',
+  contractExtensions: '',
+  closedAt: ''
+}
+
 export default combineReducers({
   app: appReducer,
   user,
   brief,
   dashboard,
+  sellerDashboard,
   opportunities,
   messages,
   form_options,
@@ -128,6 +161,7 @@ export default combineReducers({
       }
     },
     BuyerRFXForm: BuyerRFXFormReducer,
-    BuyerATMForm: BuyerATMFormReducer
+    BuyerATMForm: BuyerATMFormReducer,
+    BuyerSpecialistForm: BuyerSpecialistFormReducer
   })
 })

@@ -65,7 +65,7 @@ const BuyerATMAboutStage = props => (
       id="organisation"
       htmlFor="organisation"
       defaultValue={props[props.model].organisation}
-      maxLength={100}
+      maxLength={150}
       showMaxLength
       validators={{
         required

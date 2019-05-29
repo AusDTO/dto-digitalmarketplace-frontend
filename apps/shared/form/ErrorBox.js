@@ -10,6 +10,8 @@ import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 
 import { getInvalidFields } from './errorMessageSelector'
 
+import styles from './ErrorBox.scss'
+
 export class ErrorBoxComponent extends React.Component {
   state = {
     lastFocus: null
@@ -53,7 +55,7 @@ export class ErrorBoxComponent extends React.Component {
             !errorMessage &&
             invalidFields.map(({ messages, id }, i) =>
               messages.map((message, j) => (
-                <li key={`${i}${j}`}>
+                <li key={`${i}${j}`} className={styles.newLines}>
                   <a href={`#${id}`}>{message}</a>
                 </li>
               ))
