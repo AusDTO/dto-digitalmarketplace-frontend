@@ -36,7 +36,7 @@ export const requiredFile = val => {
 }
 
 export const validDate = val => {
-  let dateObj = parse_date(val)
+  const dateObj = parse_date(val)
   if (!val || !isValid(dateObj)) {
     return false
   }
