@@ -1,10 +1,10 @@
 import * as util from '../../flows/utils'
+import { sleep } from '../../flows/utils'
 
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-unused-vars */
 
 const clickSaveContinue = async () => {
-  console.log('here')
   await util.clickButton('Save and continue')
 }
 
@@ -112,6 +112,8 @@ const fillTimeframesAndBudget = async () => {
 
 const fillEvaluationCriteria = async () => {
   await clickSaveContinue()
+  //NEED TO ADD THIS
+  //await util.selectRadio('include_weightings')
   await util.matchText('li', 'You must not have any empty criteria.')
   await util.matchText('li', 'Weightings must be greater than 0.')
   await util.matchText('li', 'You must not have any empty criteria.')

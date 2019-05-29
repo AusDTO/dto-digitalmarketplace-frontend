@@ -2,7 +2,7 @@ import { buyerLogin } from '../../flows/login/actions'
 import create from '../../flows/brief/specialist'
 import startBrief from '../../flows/dashboard/buyer'
 
-describe('should be able to create specialist brief', () => {
+describe.skip('should be able to create specialist brief', () => {
   const areaOfExpertises = [
     'Strategy and Policy',
     'User research and Design',

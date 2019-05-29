@@ -18,7 +18,6 @@ const fillWhoCanRespond = async () => {
   await util.matchText('li', 'You must select who can respond')
   await util.selectRadio('category')
   await clickSaveContinue()
-  await util.clickButton('Save and continue')
   await util.matchText('li', 'You must select a panel category')
   await util.selectRadio('all')
   await clickSaveContinue()

@@ -11,7 +11,8 @@ const clickReturnToOverview = async () => {
 }
 
 const createBrief = async () => {
-  await util.clickLink('Specialist')
+  //changed from specialist to specialist old 
+  await util.clickLink('Specialist old')
   await util.clickInputButton('Create opportunity')
 }
 

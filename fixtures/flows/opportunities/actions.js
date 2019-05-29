@@ -18,6 +18,17 @@ export const checkAppliedForAtm = async title => {
   await util.matchText('p', 'You have already applied for this opportunity.')
 }
 
+export const checkAppliedForNewSpecialist = async title => {
+  await util.navigate()
+  await util.selectBrief(title)
+  await util.matchText('p', 'You have already applied for this opportunity.')
+}
+
+export const applyForNewSpecialist = async () => {
+  await util.clickLink('Apply for opportunity')
+}
+
+
 export const checkAppliedForRfx = async title => {
   await util.navigate()
   await util.selectBrief(title)
