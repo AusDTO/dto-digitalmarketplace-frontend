@@ -25,16 +25,40 @@ export class Categories extends Component {
       case 'assessed':
         return <div className={`${styles.badge} ${styles.approved}`}>Approved</div>
       case 'rejected':
-        return <div className={`${styles.badge} ${styles.rejected}`}>Rejected</div>
+        return <div className={`${styles.badge} ${styles.rejected}`}>Unsuccessful</div>
       default:
         return ''
     }
   }
 
-  getActionLink = category => {
+  getCriteriaLinks = categoryId => (
+    <React.Fragment>
+      <a
+        target="_blank"
+        href={`https://marketplace1.zendesk.com/hc/en-gb/articles/333757011655-Assessment-criteria${this.categoryIdToHash(
+          categoryId
+        )}`}
+      >
+        View criteria
+      </a>
+      <a
+        target="_blank"
+        href={`https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476${this.categoryIdToHash(categoryId)}`}
+      >
+        View rates
+      </a>
+    </React.Fragment>
+  )
+
+  getActionsLinks = category => {
     switch (category.status) {
       case 'unassessed':
-        return <a href={`${rootPath}/seller-assessment/create/${category.id}`}>Request assessment</a>
+        return (
+          <React.Fragment>
+            {this.getCriteriaLinks(category.id)}
+            <a href={`${rootPath}/seller-assessment/create/${category.id}`}>Request assessment</a>
+          </React.Fragment>
+        )
       case 'draft':
         return <a href={`${rootPath}/seller-assessment/${category.evidence_id}/introduction`}>Continue editing</a>
       case 'assessed':
@@ -139,25 +163,7 @@ export class Categories extends Component {
                     <tr key={`service.${category.id}`}>
                       <td className={styles.colService}>{category.name}</td>
                       <td className={styles.colStatus}>{this.getStatusBadge(category)}</td>
-                      <td className={styles.colAssessmentAction}>
-                        <a
-                          target="_blank"
-                          href={`https://marketplace1.zendesk.com/hc/en-gb/articles/333757011655-Assessment-criteria${this.categoryIdToHash(
-                            category.id
-                          )}`}
-                        >
-                          View criteria
-                        </a>
-                        <a
-                          target="_blank"
-                          href={`https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476${this.categoryIdToHash(
-                            category.id
-                          )}`}
-                        >
-                          View rates
-                        </a>
-                        {this.getActionLink(category)}
-                      </td>
+                      <td className={styles.colAssessmentAction}>{this.getActionsLinks(category)}</td>
                     </tr>
                   ))}
                 </tbody>
