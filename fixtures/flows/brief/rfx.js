@@ -1,3 +1,4 @@
+import format from 'date-fns/format'
 import * as util from '../../flows/utils'
 
 const clickSaveContinue = async () => {
@@ -120,9 +121,9 @@ const fillClosingDate = async () => {
   await util.matchText('li', 'You must add a contact number')
   const now = new Date()
   const future = new Date(now.setDate(now.getDate() + 14))
-  await util.typeInReactInput('day', { value: `${future.getDate()}` })
-  await util.typeInReactInput('month', { value: `${future.getMonth() + 1}` })
-  await util.typeInReactInput('year', { value: `${future.getFullYear()}` })
+  await util.typeInReactInput('day', { value: `${format(future, 'DD')}` })
+  await util.typeInReactInput('month', { value: `${format(future, 'MM')}` })
+  await util.typeInReactInput('year', { value: `${format(future, 'YYYY')}` })
   await util.typeInReactInput('contact', { value: '0123456789' })
   await clickSaveContinue()
 }

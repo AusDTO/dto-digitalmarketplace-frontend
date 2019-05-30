@@ -104,6 +104,7 @@ jobs:
             export IGNORE_MULTIPLE_LINKS=true
             export SELLER_CATEGORY=3
             export SELLER_NAME=auto
+            export SLOW_MO=10
             npm test
 
   deploy_to_rc:
