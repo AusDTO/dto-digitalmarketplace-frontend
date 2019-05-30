@@ -4,7 +4,7 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUdirectionLink from '@gov.au/direction-links/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
 import Tick from 'marketplace/components/Icons/Tick/Tick'
-import Circle from 'marketplace/components/Icons/Circle/Circle'
+import Cross from 'marketplace/components/Icons/Cross/Cross'
 import styles from './SellerAssessmentFeedback.scss'
 
 const renderCriteriaFeedback = (criteriaId, criteria) => {
@@ -42,19 +42,29 @@ const SellerAssessmentFeedback = props => (
     {Object.keys(props.feedback.criteria).length > 0 && (
       <React.Fragment>
         <ul className={styles.feedbackList}>
+          {!props.feedback.vfm && (
+            <li>
+              <Cross colour="#FF0000" className={styles.icon} /> The submitted rate was not considered value for money.
+            </li>
+          )}
           {Object.keys(props.feedback.criteria).map(criteriaId => (
             <li key={criteriaId}>
-              {!props.feedback.criteria[criteriaId].has_feedback && <Tick colour="#36865f" className={styles.icon} />}
-              {props.feedback.criteria[criteriaId].has_feedback && <Circle colour="#626262" className={styles.icon} />}
-              {props.feedback.criteria[criteriaId].name}
+              {props.feedback.criteria[criteriaId].has_feedback && (
+                <span>
+                  <Cross colour="#FF0000" className={styles.icon} />
+                  {props.feedback.criteria[criteriaId].name}
+                </span>
+              )}
+              {!props.feedback.criteria[criteriaId].has_feedback && (
+                <span>
+                  <Tick colour="#36865f" className={styles.icon} />Evidence demonstrated for &quot;{
+                    props.feedback.criteria[criteriaId].name
+                  }&quot;
+                </span>
+              )}
               {renderCriteriaFeedback(criteriaId, props.feedback.criteria)}
             </li>
           ))}
-          {!props.feedback.vfm && (
-            <li>
-              <Circle colour="#626262" className={styles.icon} /> The submitted rate was not considered value for money.
-            </li>
-          )}
         </ul>
         <AUheading level="2" size="lg">
           Next steps
