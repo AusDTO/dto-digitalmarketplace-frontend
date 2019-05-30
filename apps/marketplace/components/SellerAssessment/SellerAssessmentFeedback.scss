@@ -13,14 +13,14 @@ ul.feedbackList {
 
   .icon {
     margin-right: 0.75rem;
+    vertical-align: middle;
   }
+}
 
-  .reason {
-    color: #F00000;
-    margin-top: 0.75rem;
-  }
-
-  .feedback {
-    display: block;
-  }
+.criteriaReview {
+  margin-top: 1.5rem;
+  margin-left: 3rem;
+  padding-left: 1.5rem;
+  display: block;
+  border-left: solid 10px #5dbfe9;
 }

@@ -4,19 +4,8 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUdirectionLink from '@gov.au/direction-links/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
 import Tick from 'marketplace/components/Icons/Tick/Tick'
-import Cross from 'marketplace/components/Icons/Cross/Cross'
+import Circle from 'marketplace/components/Icons/Circle/Circle'
 import styles from './SellerAssessmentFeedback.scss'
-
-const getGoodCriteriaCount = criteria => {
-  let count = 0
-  Object.keys(criteria).map(id => {
-    if (!criteria[id].has_feedback) {
-      count += 1
-    }
-    return true
-  })
-  return count
-}
 
 const renderCriteriaFeedback = (criteriaId, criteria) => {
   let output = <div />
@@ -27,14 +16,15 @@ const renderCriteriaFeedback = (criteriaId, criteria) => {
     criteria[criteriaId].assessment.reason
   ) {
     output = (
-      <ol>
-        <li className={styles.reason}>
+      <div className={styles.criteriaReview}>
+        <p>
+          <strong>Feedback from the assessment team:</strong>
+          <br />
           {criteria[criteriaId].assessment.reason}
-          {criteria[criteriaId].assessment.feedback && (
-            <span className={styles.feedback}>{criteria[criteriaId].assessment.feedback}</span>
-          )}
-        </li>
-      </ol>
+          <br />
+          {criteria[criteriaId].assessment.feedback && <span>{criteria[criteriaId].assessment.feedback}</span>}
+        </p>
+      </div>
     )
   }
   return output
@@ -44,34 +34,34 @@ const SellerAssessmentFeedback = props => (
   <div>
     <AUdirectionLink link={`${rootPath}/seller-dashboard/categories`} text="back to dashboard" direction="left" />
     <AUheading level="1" size="xl">
-      Outcome
+      The assessment was unsuccessful.
     </AUheading>
-    <p>Your assessment for {props.feedback.domainName} was rejected.</p>
+    <AUheading level="2" size="lg">
+      How the decision was reached
+    </AUheading>
     {Object.keys(props.feedback.criteria).length > 0 && (
       <React.Fragment>
-        <AUheading level="2" size="lg">
-          Feedback
-        </AUheading>
-        <p>
-          {props.feedback.criteriaNeeded} criteria are required to be successful.{' '}
-          {getGoodCriteriaCount(props.feedback.criteria)} criteria were demonstrated.
-        </p>
         <ul className={styles.feedbackList}>
           {Object.keys(props.feedback.criteria).map(criteriaId => (
             <li key={criteriaId}>
               {!props.feedback.criteria[criteriaId].has_feedback && <Tick colour="#36865f" className={styles.icon} />}
-              {props.feedback.criteria[criteriaId].has_feedback && <Cross colour="#FF0000" className={styles.icon} />}
+              {props.feedback.criteria[criteriaId].has_feedback && <Circle colour="#626262" className={styles.icon} />}
               {props.feedback.criteria[criteriaId].name}
               {renderCriteriaFeedback(criteriaId, props.feedback.criteria)}
             </li>
           ))}
+          {!props.feedback.vfm && (
+            <li>
+              <Circle colour="#626262" className={styles.icon} /> The submitted rate was not considered value for money.
+            </li>
+          )}
         </ul>
         <AUheading level="2" size="lg">
           Next steps
         </AUheading>
         <p>
-          You can incorporate the feedback and{' '}
-          <a href={`${rootPath}/seller-assessment/create/${props.feedback.domainId}`}>request assessment</a> again.
+          You can incorporate the assessment team&apos;s feedback and{' '}
+          <a href={`${rootPath}/seller-assessment/create/${props.feedback.domainId}`}>resubmit your request</a>.
         </p>
       </React.Fragment>
     )}
