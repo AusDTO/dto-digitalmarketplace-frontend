@@ -2,7 +2,7 @@ import { buyerLogin } from '../../flows/login/actions'
 import create from '../../flows/brief/rfx.js'
 import startBrief from '../../flows/dashboard/buyer'
 
-describe.skip('should be able to RFXs brief', () => {
+describe('should be able to RFXs brief', () => {
   it('should be able to RFXs brief', async () => {
     const now = Date.now()
     await buyerLogin()

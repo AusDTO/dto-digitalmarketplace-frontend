@@ -1,5 +1,4 @@
 import * as util from '../../flows/utils'
-import { sleep } from '../../flows/utils'
 
 const clickSaveContinue = async () => {
   await util.clickButton('Save and continue')
@@ -13,12 +12,12 @@ const createBrief = async () => {
 }
 
 const selectDropBox = async () => {
-  const rfxPanelCategory = process.env.RFX_PANEL_CATEGORY
-  await page.select(`#seller-search-category-select`, rfxPanelCategory)
+  const sellerCategory = process.env.SELLER_CATEGORY
+  await page.select(`#seller-search-category-select`, sellerCategory)
 
-  const rfxSellerName = process.env.RFX_SELLER_NAME
+  const sellerName = process.env.SELLER_NAME
   await util.sleep(100)
-  await util.typeInReactInput('seller-search', { value: rfxSellerName })
+  await util.typeInReactInput('seller-search', { value: sellerName })
   let searchResult = await util.getElementHandles(`//input[@id="seller-search"]/../../ul/li[1]/a`)
   let sr = searchResult[0]
   sr.click()
@@ -104,8 +103,6 @@ const fillTimeframesAndBudget = async () => {
 
 const fillEvaluationCriteria = async () => {
   await clickSaveContinue()
-  //NEED TO ADD THIS
-  //await util.selectRadio('include_weightings')
   await util.matchText('li', 'You must not have any empty criteria.')
   await util.matchText('li', 'Weightings must be greater than 0.')
   await util.matchText('li', 'You must not have any empty criteria.')
