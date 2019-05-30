@@ -44,7 +44,7 @@ const SellerAssessmentFeedback = props => (
         <ul className={styles.feedbackList}>
           {!props.feedback.vfm && (
             <li>
-              <Cross colour="#FF0000" className={styles.icon} /> The submitted rate was not considered value for money.
+              <Cross colour="#FF0000" className={styles.icon} />The submitted rate was not considered value for money.
             </li>
           )}
           {Object.keys(props.feedback.criteria).map(criteriaId => (
