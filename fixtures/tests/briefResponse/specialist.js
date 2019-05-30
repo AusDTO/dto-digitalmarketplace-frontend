@@ -1,10 +1,5 @@
 import { buyerLogin, sellerLogin } from '../../flows/login/actions'
-import {
-  checkAppliedForSpecialist,
-  navigate,
-  selectBrief,
-  applyForSpecialist
-} from '../../flows/opportunities/actions'
+import { checkAppliedForSpecialist, navigate, selectBrief, applyForSpecialist } from '../../flows/opportunities/actions'
 import respond from '../../flows/briefResponse/specialist'
 import create from '../../flows/brief/specialist'
 import startBrief from '../../flows/dashboard/buyer'
