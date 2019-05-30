@@ -53,9 +53,9 @@ class EvidenceAssessment extends React.Component {
   getReasonOptions() {
     const reasonsText = [
       'Not clear what the seller specifically did',
-      'Evidence does not contain enough detail to assess',
-      'Evidence does not relate to the criteria',
-      'Evidence only partially demonstrates the criteria',
+      'The evidence does not contain enough detail to assess',
+      'The evidence does not relate to the criteria',
+      'The evidence only partially demonstrates the criteria',
       'The situation cited does not reflect a common government need'
     ]
     const reasons = [
