@@ -20,7 +20,7 @@ const renderCriteriaFeedback = (criteriaId, criteria) => {
         <p>
           <strong>Feedback from the assessment team:</strong>
           <br />
-          {criteria[criteriaId].assessment.reason}
+          {criteria[criteriaId].assessment.reason}.
           <br />
           {criteria[criteriaId].assessment.feedback && <span>{criteria[criteriaId].assessment.feedback}</span>}
         </p>
@@ -57,7 +57,7 @@ const SellerAssessmentFeedback = props => (
               )}
               {!props.feedback.criteria[criteriaId].has_feedback && (
                 <span>
-                  <Tick colour="#36865f" className={styles.icon} />Evidence demonstrated for &quot;{
+                  <Tick colour="#36865f" className={styles.icon} />Evidence demonstrates &quot;{
                     props.feedback.criteria[criteriaId].name
                   }&quot;
                 </span>
