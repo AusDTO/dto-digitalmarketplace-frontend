@@ -49,12 +49,6 @@ const SellerAssessmentFeedback = props => (
           )}
           {Object.keys(props.feedback.criteria).map(criteriaId => (
             <li key={criteriaId}>
-              {props.feedback.criteria[criteriaId].has_feedback && (
-                <span>
-                  <Cross colour="#FF0000" className={styles.icon} />
-                  {props.feedback.criteria[criteriaId].name}
-                </span>
-              )}
               {!props.feedback.criteria[criteriaId].has_feedback && (
                 <span>
                   <Tick colour="#36865f" className={styles.icon} />Evidence demonstrates &quot;{
@@ -62,7 +56,19 @@ const SellerAssessmentFeedback = props => (
                   }&quot;
                 </span>
               )}
-              {renderCriteriaFeedback(criteriaId, props.feedback.criteria)}
+            </li>
+          ))}
+          {Object.keys(props.feedback.criteria).map(criteriaId => (
+            <li key={criteriaId}>
+              {props.feedback.criteria[criteriaId].has_feedback && (
+                <React.Fragment>
+                  <span>
+                    <Cross colour="#FF0000" className={styles.icon} />
+                    {props.feedback.criteria[criteriaId].name}
+                  </span>
+                  {renderCriteriaFeedback(criteriaId, props.feedback.criteria)}
+                </React.Fragment>
+              )}
             </li>
           ))}
         </ul>
