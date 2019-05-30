@@ -39,7 +39,7 @@ class SubmitConfirmation extends React.Component {
                         </p>
 
                         {!['rfx', 'atm'].includes(briefLot) && (
-                            <span>
+                            <React.Fragment>
                                 <p>While you wait, you can prepare your response by downloading the template.</p>
                                 <p styleName="footer-link">
                                     {briefLot == 'training' ? (
@@ -52,7 +52,7 @@ class SubmitConfirmation extends React.Component {
                                         </a>
                                     )}
                                 </p>
-                            </span>
+                            </React.Fragment>
                         )}
                     </span>
                 )}

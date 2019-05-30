@@ -20,6 +20,9 @@ import BuyerBriefOverviewPage from './pages/BuyerBriefOverviewPage'
 import BuyerATMCreatePage from './pages/BuyerATMCreatePage'
 import BuyerATMCompletedPage from './pages/BuyerATMCompletedPage'
 import BuyerATMFlowPage from './pages/BuyerATMFlowPage'
+import BuyerSpecialistCreatePage from './pages/BuyerSpecialistCreatePage'
+import BuyerSpecialistCompletedPage from './pages/BuyerSpecialistCompletedPage'
+import BuyerSpecialistFlowPage from './pages/BuyerSpecialistFlowPage'
 import BriefOutcomeChoicePage from './pages/BriefOutcomeChoicePage'
 import OpportunityPage from './pages/OpportunityPage'
 import SellerAssessmentFlowPage from './pages/SellerAssessmentFlowPage'
@@ -63,6 +66,21 @@ export const Routes = () => (
     />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/create`} component={BuyerATMCreatePage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/:briefId/:stage?`} component={BuyerATMFlowPage} />
+    <PrivateRoute
+      restrictedTo="buyer"
+      path={`${rootPath}/buyer-specialist/create`}
+      component={BuyerSpecialistCreatePage}
+    />
+    <PrivateRoute
+      restrictedTo="buyer"
+      path={`${rootPath}/buyer-specialist/:briefId/completed`}
+      component={BuyerSpecialistCompletedPage}
+    />
+    <PrivateRoute
+      restrictedTo="buyer"
+      path={`${rootPath}/buyer-specialist/:briefId/:stage?`}
+      component={BuyerSpecialistFlowPage}
+    />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/outcome-choice`} component={BriefOutcomeChoicePage} />
     <PrivateRoute
       restrictedTo="supplier"

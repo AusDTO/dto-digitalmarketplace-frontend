@@ -70,6 +70,6 @@ describe('tests that generate network requests', () => {
       .simulate('change', { target: { value: 'abc' } })
     await jest.runAllTimers()
     expect(server.requests.length).toBe(1)
-    expect(server.requests[0].url).toEqual('/api/2/suppliers/search?keyword=abc&category=')
+    expect(server.requests[0].url).toEqual('/api/2/suppliers/search?keyword=abc&category=&all=')
   })
 })
