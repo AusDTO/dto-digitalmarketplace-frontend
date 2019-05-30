@@ -60,7 +60,16 @@ export class Categories extends Component {
           </React.Fragment>
         )
       case 'draft':
-        return <a href={`${rootPath}/seller-assessment/${category.evidence_id}/introduction`}>Continue editing</a>
+        return (
+          <React.Fragment>
+            <a href={`${rootPath}/seller-assessment/${category.evidence_id}/introduction`}>Continue editing</a>
+            {category.previous_evidence_id && (
+              <a href={`${rootPath}/seller-assessment/${category.previous_evidence_id}/feedback`}>
+                View previous feedback
+              </a>
+            )}
+          </React.Fragment>
+        )
       case 'assessed':
         return <a href={`${rootPath}/seller-assessment/create/${category.id}`}>Adjust pricing</a>
       case 'rejected':
