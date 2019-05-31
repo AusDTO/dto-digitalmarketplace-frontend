@@ -92,6 +92,13 @@ export const BuyerSpecialistFormReducer = {
   closedAt: ''
 }
 
+export const SellerEditFormReducer = {
+  id: 0,
+  representative: '',
+  phone: '',
+  email: ''
+}
+
 export default combineReducers({
   app: appReducer,
   user,
@@ -162,6 +169,7 @@ export default combineReducers({
     },
     BuyerRFXForm: BuyerRFXFormReducer,
     BuyerATMForm: BuyerATMFormReducer,
-    BuyerSpecialistForm: BuyerSpecialistFormReducer
+    BuyerSpecialistForm: BuyerSpecialistFormReducer,
+    SellerEditFlowPage: SellerEditFormReducer
   })
 })

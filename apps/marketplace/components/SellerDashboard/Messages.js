@@ -79,6 +79,8 @@ export class Messages extends Component {
       case 'S011':
       case 'S012':
         return <a href={`/sellers/edit/?step=${item.step}`}>Manage your documents</a>
+      case 'S013':
+        return <a href={`/sellers/edit/?step=${item.step}`}>View agreement</a>
       default:
         return ''
     }
