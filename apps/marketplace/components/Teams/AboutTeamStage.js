@@ -12,14 +12,14 @@ const AboutTeamStage = props => (
       Name and email
     </AUheading>
     <Textfield
-      defaultValue={props[props.model].teamName}
+      defaultValue={props[props.model].name}
       description=""
-      htmlFor="teamName"
-      id="teamName"
+      htmlFor="name"
+      id="name"
       label="Team name"
       maxLength={100}
-      model={`${props.model}.teamName`}
-      name="teamName"
+      model={`${props.model}.name`}
+      name="name"
       placeholder=""
       validators={{}}
     />
