@@ -2,7 +2,7 @@ import { buyerLogin } from '../../flows/login/actions'
 import create from '../../flows/brief/specialist'
 import startBrief from '../../flows/dashboard/buyer'
 
-describe('should be able to create new specialist flow brief', () => {
+describe('should be able to create specialist opportunity', () => {
   const categories = {
     '1': 'Strategy and Policy',
     '3': 'User research and Design',
@@ -18,7 +18,7 @@ describe('should be able to create new specialist flow brief', () => {
     '13': 'Emerging technologies'
   }
   Object.keys(categories).forEach(id => {
-    it(`should be able to create ${categories[id]} specalist flow brief`, async () => {
+    it(`should be able to create ${categories[id]} specalist opportunity`, async () => {
       const now = Date.now()
       await buyerLogin()
       await startBrief()
