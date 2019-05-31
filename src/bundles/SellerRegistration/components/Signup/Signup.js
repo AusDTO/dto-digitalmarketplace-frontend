@@ -78,7 +78,7 @@ class Signup extends React.Component {
     { id: 'candidates', label: 'Candidates', component: CandidatesForm, pattern: '/candidates', formKey: 'candidatesForm' },
     { id: 'products', label: 'Products', component: ProductsForm, pattern: '/products', formKey: 'productForm' },
     { id: 'review', label: 'Preview profile', component: Review, pattern: '/review' },
-    { id: 'update', label: 'Preview and update', component: Review, pattern: '/update' },
+    { id: 'update', label: 'Preview and submit', component: Review, pattern: '/update' },
     { id: 'finish-profile', label: 'Finish', component: FinishProfile, pattern: '/profile-finish' },
   ]
 
@@ -235,6 +235,7 @@ class Signup extends React.Component {
                   applicationValid,
                   domains: this.props.application.domains,
                   type: this.props.application.type,
+                  confirmDiscard: this.props.application.confirmDiscard,
                   stepsRemaining,
                   services,
                   nextRoute: this.nextStep && this.nextStep.pattern,
@@ -275,7 +276,8 @@ Signup.propTypes = {
   applicant: PropTypes.object,
   applicationErrors: PropTypes.array,
   forms: PropTypes.object,
-  filterSteps: PropTypes.func
+  filterSteps: PropTypes.func,
+  confirmDiscard: PropTypes.bool
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -283,13 +285,15 @@ const mapStateToProps = (state, ownProps) => {
     application = {},
     application_errors = [],
     steps,
-    options
+    options,
+    confirmDiscard
   } = state;
 
   return {
     forms: getStateForms(state),
     application,
     applicationErrors: application_errors,
+    confirmDiscard,
     steps,
     options,
     ...ownProps

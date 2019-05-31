@@ -46,11 +46,7 @@ class StepNav extends React.Component {
               {type !== 'edit' ?
                 <div styleName="skip">
                   <button className="button-secondary" styleName="skip-link" onClick={this.onSkip.bind(this, to)}>Skip for now</button>
-                </div>
-              :
-                <div styleName="skip cancel-link">
-                  <a styleName="skip-link" href={`/sellers/application/${id}/discard`}>Discard all updates</a>
-                </div>
+                </div> : ''
               }
         </div>
     </div>
