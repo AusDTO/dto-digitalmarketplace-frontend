@@ -1,5 +1,4 @@
 import * as util from '../../flows/utils'
-import { unwatchFile } from 'fs';
 
 const clickSubmitResponse = async () => {
   await util.clickInputButton('Submit response')
