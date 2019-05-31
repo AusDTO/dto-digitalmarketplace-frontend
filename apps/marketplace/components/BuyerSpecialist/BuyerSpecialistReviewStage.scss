@@ -1,0 +1,13 @@
+
+.milestones {
+  margin: 1.5rem 0;
+}
+
+.milestones > div {
+  border-top: 1px solid gray;
+  padding: 0.75rem 0;
+}
+
+.milestones > div:last-child {
+  border-bottom: 1px solid gray;
+}

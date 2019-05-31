@@ -9,17 +9,24 @@ import BuyerDashboardHelp from './BuyerDashboardHelp'
 import styles from './BuyerDashboard.scss'
 
 const getLinkedBriefTitle = item => {
-  const name = item.name || 'Untitled outcome'
+  let name = ''
   let url = ''
   switch (item.lot) {
     case 'rfx':
       url = `${rootPath}/brief/${item.id}/overview/rfx`
+      name = 'Untitled seek proposals and quotes'
       break
     case 'atm':
       url = `${rootPath}/brief/${item.id}/overview/atm`
+      name = 'Untitled ask the market'
+      break
+    case 'specialist':
+      url = `${rootPath}/brief/${item.id}/overview/specialist`
+      name = 'Untitled specialist'
       break
     case 'digital-outcome':
       url = `/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}`
+      name = 'Untitled outcome'
       break
     case 'digital-professionals':
     case 'training':
@@ -28,7 +35,7 @@ const getLinkedBriefTitle = item => {
     default:
       url = ''
   }
-  return <a href={url}>{name}</a>
+  return <a href={url}>{item.name || name}</a>
 }
 
 export class BuyerDashboardMyBriefs extends Component {

@@ -6,8 +6,10 @@ import {
   BRIEF_SAVE_SUCCESS,
   BRIEF_RFX_CREATE_SUCCESS,
   BRIEF_ATM_CREATE_SUCCESS,
+  BRIEF_SPECIALIST_CREATE_SUCCESS,
   DELETE_BRIEF_SUCCESS,
   SPECIALIST_NAME,
+  SPECIALIST_NAME_SPLIT,
   SPECIALIST_NUMBER,
   ADD_ANOTHER_SPECIALIST
 } from '../constants/constants'
@@ -89,6 +91,7 @@ export const handlePublicBriefInfoSuccess = response => ({
   brief: response.data.brief,
   briefResponseCount: response.data.brief_response_count,
   invitedSellerCount: response.data.invited_seller_count,
+  supplierBriefResponseCount: response.data.supplier_brief_response_count,
   canRespond: response.data.can_respond,
   isAssessedForCategory: response.data.is_assessed_for_category,
   isAssessedForAnyCategory: response.data.is_assessed_in_any_category,
@@ -104,7 +107,9 @@ export const handlePublicBriefInfoSuccess = response => ({
   isAwaitingDomainAssessment: response.data.is_awaiting_domain_assessment,
   hasBeenAssessedForBrief: response.data.has_been_assessed_for_brief,
   hasResponded: response.data.has_responded,
-  domains: response.data.domains
+  domains: response.data.domains,
+  hasSupplierErrors: response.data.has_supplier_errors,
+  isInvited: response.data.is_invited
 })
 
 export const handleErrorFailure = response => dispatch => {
@@ -133,6 +138,11 @@ export const handleCreateRFXBriefSuccess = response => ({
 
 export const handleCreateATMBriefSuccess = response => ({
   type: BRIEF_ATM_CREATE_SUCCESS,
+  brief: response.data
+})
+
+export const handleCreateSpecialistBriefSuccess = response => ({
+  type: BRIEF_SPECIALIST_CREATE_SUCCESS,
   brief: response.data
 })
 
@@ -170,6 +180,26 @@ export const createATMBrief = () => (dispatch, getState) => {
       dispatch(handleErrorFailure(response))
     } else {
       dispatch(handleCreateATMBriefSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
+
+export const createSpecialistBrief = () => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: '/brief/specialist',
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleCreateSpecialistBriefSuccess(response))
     }
     dispatch(sendingRequest(false))
     return response
@@ -256,6 +286,14 @@ export const handleBriefResponseSubmit = (briefId, model) => (dispatch, getState
 
 export function handleBriefNameSubmit(specialistName) {
   return { type: SPECIALIST_NAME, specialistName }
+}
+
+export function handleBriefNameSplitSubmit(specialistGivenNames, specialistSurname) {
+  return {
+    type: SPECIALIST_NAME_SPLIT,
+    specialistGivenNames,
+    specialistSurname
+  }
 }
 
 export function handleSpecialistNumberSubmit(specialistNumber) {

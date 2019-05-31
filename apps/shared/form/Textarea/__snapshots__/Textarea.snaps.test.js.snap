@@ -10,6 +10,7 @@ exports[`Textarea with limit 5, 10 words 1`] = `
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
+    rows={undefined}
     value="1 2 3 4 5 6 7 8 9 10"
   />
   <span
@@ -31,6 +32,7 @@ exports[`Textarea with limit 100, 10 words 1`] = `
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
+    rows={undefined}
     value="1 2 3 4 5 6 7 8 9 10"
   />
   <span
@@ -52,6 +54,7 @@ exports[`Textarea with limit 100, no words 1`] = `
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
+    rows={undefined}
     value={undefined}
   />
   <span
@@ -73,6 +76,7 @@ exports[`Textarea with no words, no limit 1`] = `
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}
+    rows={undefined}
     value={undefined}
   />
   
