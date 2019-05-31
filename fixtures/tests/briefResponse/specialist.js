@@ -5,7 +5,7 @@ import create from '../../flows/brief/specialist'
 import startBrief from '../../flows/dashboard/buyer'
 
 describe('create and respond to new specialist brief', () => {
-  // in order to get the right brief we are going for the 'today's date'.
+  // in order to get the right brief we are going for 'today's date'.
   const today = Date.now()
   const title = `Specialist ${today.valueOf()}`
   let brief = null
