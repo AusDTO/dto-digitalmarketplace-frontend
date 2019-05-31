@@ -52,22 +52,22 @@ const fillSelectionCriteria = async () => {
   await clickSaveContinue()
   await util.matchText('li', 'Essential weightings must add up to 100%.')
   await util.typeInReactInput('essential_weighting_0', { value: '0' })
-  const essentialCriterias = {
+  const essentialCriteria = {
     criteria: essCriteria,
     weighting: essWeighting
   }
 
   const nthCriteria = await util.typeInReactInput('nice_to_have_criteria_0', { numberOfWords: 50 })
   const nthWeighting = await util.typeInReactInput('nice_to_have_weighting_0', { value: '100' })
-  const niceToHaveCriterias = {
+  const niceToHaveCriteria = {
     criteria: nthCriteria,
     weighting: nthWeighting
   }
   await clickSaveContinue()
 
   return {
-    essentialCriterias,
-    niceToHaveCriterias
+    essentialCriteria,
+    niceToHaveCriteria
   }
 }
 
@@ -131,13 +131,13 @@ const create = async params => {
   await createBrief()
   await fillAbout(params.title, params.locations)
   await fillWhoCanRespond(params.categoryId)
-  const criterias = await fillSelectionCriteria()
+  const criteria = await fillSelectionCriteria()
   const responses = await fillSellerResponses()
   await fillTimeframes()
   await fillAdditionalInformation()
   await publishBrief()
   return {
-    criterias,
+    criteria,
     numberOfSuppliers: responses.numberOfSuppliers
   }
 }

@@ -73,27 +73,27 @@ const fillTimeframes = async () => {
   await clickSaveContinue()
 }
 
-const fillResponseCriteria = async numberOfCriterias => {
+const fillResponseCriteria = async numberOfCriteria => {
   await clickSaveContinue()
   await util.matchText('li', 'You must not have any empty criteria.')
   await util.selectCheck('yes')
-  const criterias = []
-  for (let i = 0; i < numberOfCriterias; i += 1) {
+  const criteria = []
+  for (let i = 0; i < numberOfCriteria; i += 1) {
     if (i > 0) {
       // eslint-disable-next-line no-await-in-loop
       await util.clickLink('Add another criteria')
     }
     // eslint-disable-next-line no-await-in-loop
-    const criteria = await util.typeInReactInput(`criteria_${i}`, { numberOfWords: 50 })
+    const criterion = await util.typeInReactInput(`criteria_${i}`, { numberOfWords: 50 })
     // eslint-disable-next-line no-await-in-loop
     const weighting = await util.typeInReactInput(`weighting_${i}`, { value: '50' })
-    criterias.push({
-      criteria,
+    criteria.push({
+      criterion,
       weighting
     })
   }
   await clickSaveContinue()
-  return criterias
+  return criteria
 }
 
 const fillClosingDate = async () => {
@@ -110,6 +110,7 @@ const fillClosingDate = async () => {
 }
 
 const publishBrief = async () => {
+  await util.selectCheck('cb-declaration', 'id')
   await util.clickButton('Publish')
   await util.matchText('h1', 'Your opportunity is now live.')
 }
@@ -122,11 +123,11 @@ const create = async params => {
   await fillResponseFormats()
   await fillObjectives()
   await fillTimeframes()
-  const criterias = await fillResponseCriteria(params.numberOfCriterias ? params.numberOfCriterias : 2)
+  const criteria = await fillResponseCriteria(params.numberOfCriteria ? params.numberOfCriteria : 2)
   await fillClosingDate()
   await publishBrief()
   return {
-    criterias
+    criteria
   }
 }
 

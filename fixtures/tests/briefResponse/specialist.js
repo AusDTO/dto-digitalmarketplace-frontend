@@ -31,7 +31,7 @@ describe('create and respond to new specialist brief', () => {
       // eslint-disable-next-line no-await-in-loop
       await respond({
         specialistNumber: i,
-        criterias: brief.criterias
+        criteria: brief.criteria
       })
       // eslint-disable-next-line no-await-in-loop
       await checkAppliedForSpecialist(title, i, brief.numberOfSuppliers)
