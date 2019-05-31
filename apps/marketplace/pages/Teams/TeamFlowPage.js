@@ -1,19 +1,26 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { saveTeam } from 'marketplace/actions/teamActions'
+import { getTeam, saveTeam } from 'marketplace/actions/teamActions'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import formProps from 'shared/form/formPropsSelector'
 import TeamStages from '../../components/Teams/TeamStages'
 import ProgressFlow from '../../components/ProgressFlow/ProgressFlow'
 import { rootPath } from '../../routes'
 
-const model = 'createTeamForm'
+const model = 'team'
 
 export class TeamFlowPage extends Component {
   constructor(props) {
     super(props)
     this.saveTeam = this.saveTeam.bind(this)
+  }
+
+  componentDidMount() {
+    const teamId = this.props.match.params.teamId
+    if (teamId) {
+      this.props.getTeam(teamId)
+    }
   }
 
   saveTeam() {
@@ -69,6 +76,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+  getTeam: teamId => dispatch(getTeam(teamId)),
   saveTeam: data => dispatch(saveTeam(data))
 })
 

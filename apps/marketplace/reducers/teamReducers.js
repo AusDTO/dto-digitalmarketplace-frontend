@@ -1,7 +1,10 @@
-import { CREATE_TEAM_SUCCESS } from '../constants/constants'
+import { CREATE_TEAM_SUCCESS, GET_TEAM_SUCCESS } from '../constants/constants'
 
 const defaultState = {
-  team: {}
+  emailAddress: '',
+  id: 0,
+  name: '',
+  status: ''
 }
 
 const teamReducer = (state = defaultState, action) => {
@@ -10,6 +13,11 @@ const teamReducer = (state = defaultState, action) => {
       return {
         ...state,
         team: action.team
+      }
+    case GET_TEAM_SUCCESS:
+      return {
+        ...state,
+        ...action.team
       }
     default:
       return state
