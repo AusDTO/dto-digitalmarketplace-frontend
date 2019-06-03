@@ -75,7 +75,8 @@ class SellerAssessmentFeedbackPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  feedback: state.evidence.feedback
+  feedback: state.evidence.feedback,
+  errorMessage: state.app.errorMessage
 })
 
 const mapDispatchToProps = dispatch => ({
