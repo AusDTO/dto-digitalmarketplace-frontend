@@ -12,8 +12,8 @@ const parseValue = value => {
   }
   if (value && value.match(/\d{4}-\d{1,2}-\d{1,2}/)) {
     date = {
-      day: value.split('-')[2] ? value.split('-')[2] : '',
-      month: value.split('-')[1] ? value.split('-')[1] : '',
+      day: value.split('-')[2] ? value.split('-')[2].padStart(2, '0') : '',
+      month: value.split('-')[1] ? value.split('-')[1].padStart(2, '0') : '',
       year: value.split('-')[0] ? value.split('-')[0] : ''
     }
   }
