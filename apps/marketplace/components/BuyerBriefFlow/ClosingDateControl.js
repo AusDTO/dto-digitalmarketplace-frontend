@@ -49,7 +49,7 @@ export class ClosingDate extends Component {
   handleBlur(e) {
     const name = e.target.name
     let value = e.target.value
-    value = name === 'year' || value.length < 1 ? value : padStart(value, 2, '0')
+    value = name === 'year' ? value : padStart(value, 2, '0')
     this.setState(curState => {
       const newState = { ...curState }
       newState[name] = value

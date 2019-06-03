@@ -66,7 +66,7 @@ export const getEmailFromQueryString = location => {
 }
 
 export const padStart = (value, length, character) => {
-  if (value.length === length) {
+  if (!value || value.length === length) {
     return value
   }
   let pad = ''
