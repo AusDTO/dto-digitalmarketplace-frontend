@@ -9,9 +9,9 @@ import AUheadings from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import styles from './SellerEditRepresentativeStage.scss'
 
-const requiredName = v => required(v.representative)
-const requiredEmail = v => required(v.email)
-const requiredPhone = v => required(v.phone)
+const requiredName = v => required(v.data.representative)
+const requiredEmail = v => required(v.data.email)
+const requiredPhone = v => required(v.data.phone)
 
 export const done = v => requiredName(v) && requiredEmail(v) && requiredPhone(v)
 
@@ -42,13 +42,13 @@ const SellerEditRepresentativeStage = props => (
       }}
     />
     <Textfield
-      model={`${props.model}.representative`}
+      model={`${props.model}.data.representative`}
       label="Name"
       description="The contact listed on your seller profile page and the person who receives new opportunities by email."
       name="representative"
       id="representative"
       htmlFor="representative"
-      defaultValue={props[props.model].representative}
+      defaultValue={props[props.model].data.representative}
       maxLength={100}
       showMaxLength
       validators={{
@@ -56,24 +56,24 @@ const SellerEditRepresentativeStage = props => (
       }}
     />
     <Textfield
-      model={`${props.model}.email`}
+      model={`${props.model}.data.email`}
       label="Email"
       name="email"
       id="email"
       htmlFor="email"
-      defaultValue={props[props.model].email}
+      defaultValue={props[props.model].data.email}
       validators={{
         required
       }}
     />
     <Textfield
-      model={`${props.model}.phone`}
+      model={`${props.model}.data.phone`}
       label="Phone"
       description="Please include the area code for landlines."
       name="phone"
       id="phone"
       htmlFor="phone"
-      defaultValue={props[props.model].phone}
+      defaultValue={props[props.model].data.phone}
       maxLength={100}
       validators={{
         required

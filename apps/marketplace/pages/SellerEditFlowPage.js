@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { actions } from 'react-redux-form'
-import { Redirect } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import formProps from 'shared/form/formPropsSelector'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import ProgressFlow from 'marketplace/components/ProgressFlow/ProgressFlow'
 import SellerEditStages from 'marketplace/components/SellerEdit/SellerEditStages'
 import { rootPath } from 'marketplace/routes'
-import { loadPublicBrief, saveBrief } from 'marketplace/actions/briefActions'
+import { loadSellerEdit, saveSeller } from 'marketplace/actions/sellerEditActions'
 import { setErrorMessage } from 'marketplace/actions/appActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { BuyerSpecialistFormReducer } from 'marketplace/reducers'
+import { SellerEditFormReducer } from 'marketplace/reducers'
 
 const model = 'SellerEditFlowPage'
 
@@ -23,60 +24,59 @@ export class SellerEditFlowPage extends Component {
       flowIsDone: false
     }
 
-    this.saveBrief = this.saveBrief.bind(this)
+    // this.saveBrief = this.saveBrief.bind(this)
     this.handleStageMount = this.handleStageMount.bind(this)
+    this.save = this.save.bind(this)
   }
 
   componentDidMount() {
-    if (this.props.match.params.briefId) {
-      this.getBriefData()
+    if (this.props.match.params.supplierCode) {
+      this.getSellerData()
     }
   }
 
-  getBriefData() {
+  getSellerData() {
     this.setState({
       loading: true
     })
-    // this.props.loadInitialData(this.props.match.params.briefId).then(response => {
-    //   // only accept data defined in the form reducer
-    //   const data = { ...BuyerSpecialistFormReducer }
-    //   if (response.data.brief) {
-    //     Object.keys(response.data.brief).map(property => {
-    //       if (Object.keys(BuyerSpecialistFormReducer).includes(property)) {
-    //         data[property] = response.data.brief[property]
-    //       }
-    //       return true
-    //     })
+    //this.props.match.params.supplierCode
+    this.props.loadInitialData(this.props.match.params.supplierCode).then(response => {
+      // only accept data defined in the form reducer
+      let data = { ...SellerEditFormReducer }
+      if (response.data.supplier) {
+        Object.keys(response.data.supplier).map(property => {
+          if (Object.keys(SellerEditFormReducer).includes(property)) {
+            data[property] = response.data.supplier[property]
+          }
+          return true
+        })
+      }
 
-    //     if (response.data.brief.status && response.data.brief.status !== 'draft') {
-    //       this.props.setError('You cannot edit this opportunity as you have already published it.')
-    //     }
+    // //     if (response.data.brief.status && response.data.brief.status !== 'draft') {
+    // //       this.props.setError('You cannot edit this opportunity as you have already published it.')
+    // //     }
 
-    //     if (response.data.brief.lotSlug !== 'specialist') {
-    //       this.props.setError('You can only edit specialist briefs using this flow.')
-    //     }
+    // //     if (response.data.brief.lotSlug !== 'specialist') {
+    // //       this.props.setError('You can only edit specialist briefs using this flow.')
+    // //     }
 
-    //     this.props.changeFormModel(data)
+      this.props.changeFormModel(data)
     //   }
 
-    //   this.setState({
-    //     loading: false
-    //   })
-    // })
+      this.setState({
+        loading: false
+      })
+    })
   }
 
-  saveBrief(publish = false) {
-    if (publish) {
-      this.setState({
-        loading: true
-      })
-    }
+  save() {
+    this.setState({
+      loading: true
+    })
     const data = { ...this.props[model] }
-    data.publish = publish
-    return this.props.saveBrief(this.props.match.params.briefId, data).then(response => {
-      if (response.status === 200 && publish) {
+    return this.props.saveSeller(this.props.match.params.supplierCode, data).then(response => {
+      if (response.status === 200) {
         this.setState({
-          flowIsDone: true,
           loading: false
         })
       }
@@ -84,7 +84,7 @@ export class SellerEditFlowPage extends Component {
   }
 
   handleStageMount() {
-    // this.props.resetFormValidity()
+    this.props.resetFormValidity()
   }
 
   render() {
@@ -107,28 +107,32 @@ export class SellerEditFlowPage extends Component {
       )
     }
 
-    const briefId = this.props.match.params.briefId
+    const supplierCode = this.props.match.params.supplierCode
 
     if (this.state.loading) {
       return <LoadingIndicatorFullPage />
     }
 
     if (this.state.flowIsDone) {
-      return <Redirect to={`${rootPath}/seller-edit/${briefId}/completed`} push />
+      return <Redirect to={`${rootPath}/seller-edit/${supplierCode}/completed`} push />
     }
 
     return (
       <ProgressFlow
         model={model}
-        basename={`${rootPath}/seller-edit/${briefId}`}
+        basename={`${rootPath}/seller-edit/${supplierCode}`}
         stages={SellerEditStages}
         onStageMount={this.handleStageMount}
-        saveModel={this.saveBrief}
-        returnPath={`${rootPath}/brief/${briefId}/overview/specialist`}
-        previewPath={`${rootPath}/digital-marketplace/opportunities/${briefId}`}
+        saveModel={this.save}
+        returnPath={`${rootPath}/brief/${supplierCode}/overview/specialist`}
+        previewPath={`${rootPath}/digital-marketplace/opportunities/${supplierCode}`}
       />
     )
   }
+}
+
+SellerEditFlowPage.propTypes = {
+  match: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -140,10 +144,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   changeFormModel: data => dispatch(actions.merge(model, data)),
-  loadInitialData: briefId => dispatch(loadPublicBrief(briefId)),
-  saveBrief: (briefId, data) => dispatch(saveBrief(briefId, data)),
+  loadInitialData: (supplierCode) => dispatch(loadSellerEdit(supplierCode)),
+  saveSeller: (supplierCode, data) => dispatch(saveSeller(supplierCode, data)),
   resetFormValidity: () => dispatch(actions.resetValidity(model)),
   setError: message => dispatch(setErrorMessage(message))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SellerEditFlowPage)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SellerEditFlowPage))

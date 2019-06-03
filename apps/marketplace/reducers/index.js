@@ -6,6 +6,7 @@ import brief from './briefReducers'
 import user from './memberInfoReducers'
 import dashboard from './dashboardReducers'
 import sellerDashboard from './sellerDashboardReducers'
+import sellerEdit from './sellerEditReducers'
 import opportunities from './opportunitiesReducers'
 import errorMessage from './errorMessage'
 import form_options from './form_options'
@@ -93,10 +94,13 @@ export const BuyerSpecialistFormReducer = {
 }
 
 export const SellerEditFormReducer = {
-  id: 0,
-  representative: '',
-  phone: '',
-  email: ''
+  name: '',
+  code: '',
+  data: {
+    representative: '',
+    email: '',
+    phone: ''
+  }
 }
 
 export default combineReducers({
@@ -105,6 +109,7 @@ export default combineReducers({
   brief,
   dashboard,
   sellerDashboard,
+  sellerEdit,
   opportunities,
   messages,
   form_options,

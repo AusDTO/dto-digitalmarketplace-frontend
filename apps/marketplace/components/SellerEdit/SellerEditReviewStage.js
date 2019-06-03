@@ -12,7 +12,7 @@ const SellerEditReviewStage = props => (
         Accept the new Master Agreement from July 1st 2019
       </AUheading>
       <p>
-        Your authorised representative "name" will be able to accept or decline the Master Agreement from July 1st 2019.
+        Your authorised representative {props[props.model].representative} will be able to accept or decline the Master Agreement from July 1st 2019.
       </p>
       <p>
         We recommend you view and circulate the new Master Agreement with the relevant parties before this date.
