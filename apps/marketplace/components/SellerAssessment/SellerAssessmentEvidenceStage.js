@@ -220,7 +220,7 @@ const SellerAssessmentEvidenceStage = props => (
             id={`criteria_${criteriaId}`}
             htmlFor={`criteria_${criteriaId}`}
             defaultValue={props[props.model].evidence.criteriaResponses[criteriaId]}
-            controlProps={{ minimum: 200 }}
+            controlProps={{ minimum: 200, rows: '10' }}
             validators={{
               required
             }}
