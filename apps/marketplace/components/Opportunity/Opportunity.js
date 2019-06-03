@@ -87,7 +87,6 @@ const Opportunity = props => {
     canRespond,
     isAssessedForCategory,
     isAssessedForAnyCategory,
-    hasChosenBriefCategory,
     hasEvidenceInDraftForCategory,
     draftEvidenceId,
     isOpenToAll,
@@ -552,7 +551,8 @@ const Opportunity = props => {
               isInvited={isInvited}
               isOpenToAll={isOpenToAll}
               isAssessedForCategory={isAssessedForCategory}
-              hasChosenBriefCategory={hasChosenBriefCategory}
+              hasEvidenceInDraftForCategory={hasEvidenceInDraftForCategory}
+              draftEvidenceId={draftEvidenceId}
               isOpenToCategory={isOpenToCategory}
               hasResponded={hasResponded}
               briefId={brief.id}
@@ -620,7 +620,6 @@ Opportunity.defaultProps = {
   isInvited: false,
   isAssessedForCategory: false,
   isAssessedForAnyCategory: false,
-  hasChosenBriefCategory: false,
   hasEvidenceInDraftForCategory: false,
   draftEvidenceId: undefined,
   isOpenToCategory: false,
@@ -691,7 +690,6 @@ Opportunity.propTypes = {
   isInvited: PropTypes.bool,
   isAssessedForCategory: PropTypes.bool,
   isAssessedForAnyCategory: PropTypes.bool,
-  hasChosenBriefCategory: PropTypes.bool,
   hasEvidenceInDraftForCategory: PropTypes.bool,
   draftEvidenceId: PropTypes.number,
   isOpenToCategory: PropTypes.bool,

@@ -133,49 +133,35 @@ const OpportunitySpecialistInfoCard = props => (
           props.isInvited &&
           !props.isAssessedForCategory && (
             <span>
-              {props.hasChosenBriefCategory ? (
-                <span>
-                  <p className={styles.invitedStatus}>
-                    Only sellers approved in {props.category} can apply.
-                    {props.isAwaitingDomainAssessment && (
-                      <span> Your application for this category is currently being assessed.</span>
-                    )}
-                    {!props.isAwaitingDomainAssessment &&
-                      props.hasBeenAssessedForBrief && (
-                        <span> You have already submitted a request for assessment against this brief.</span>
-                      )}
-                  </p>
-                  {!props.isAwaitingDomainAssessment &&
-                    !props.hasBeenAssessedForBrief && (
-                      <p>
-                        <a
-                          href={`/sellers/opportunities/${props.briefId}/assessment/${props.sellerCategory}`}
-                          className="au-btn au-btn--block"
-                        >
-                          Request assessment
-                        </a>
-                      </p>
-                    )}
-                </span>
-              ) : (
-                <span>
-                  <p className={styles.invitedStatus}>
-                    Only sellers approved in {props.category} can apply.{' '}
-                    {props.isAwaitingApplicationAssessment ? (
-                      <span>Your seller profile is currently being assessed.</span>
-                    ) : (
-                      <span>You must edit your profile to add this category before you can request assessment.</span>
-                    )}
-                  </p>
+              <p className={styles.invitedStatus}>
+                Only sellers approved in {props.category} can apply.
+                {props.isAwaitingDomainAssessment && (
+                  <span> Your application for this category is currently being assessed.</span>
+                )}
+                {!props.isAwaitingDomainAssessment &&
+                  props.hasEvidenceInDraftForCategory &&
+                  props.draftEvidenceId && (
+                    <span>
+                      {' '}
+                      You currently have a{' '}
+                      <a href={`${rootPath}/seller-assessment/${props.draftEvidenceId}/introduction`}>
+                        draft submission
+                      </a>{' '}
+                      for assessment in this category.
+                    </span>
+                  )}
+              </p>
+              {!props.isAwaitingDomainAssessment &&
+                !props.hasEvidenceInDraftForCategory && (
                   <p>
-                    {!props.isAwaitingApplicationAssessment && (
-                      <a href="/sellers/edit" className="au-btn au-btn--block">
-                        Edit profile
-                      </a>
-                    )}
+                    <a
+                      href={`${rootPath}/seller-assessment/create/${props.sellerCategory}/${props.briefId}`}
+                      className="au-btn au-btn--block"
+                    >
+                      Request assessment
+                    </a>
                   </p>
-                </span>
-              )}
+                )}
             </span>
           )}
         {props.isOpen &&
@@ -226,7 +212,6 @@ OpportunitySpecialistInfoCard.defaultProps = {
   sellerResponses: 0,
   canRespond: false,
   isAssessedForCategory: false,
-  hasChosenBriefCategory: false,
   isOpenToAll: false,
   loggedIn: false,
   hasResponded: false,
@@ -236,7 +221,6 @@ OpportunitySpecialistInfoCard.defaultProps = {
   isApplicant: false,
   isAwaitingApplicationAssessment: false,
   isAwaitingDomainAssessment: false,
-  hasBeenAssessedForBrief: false,
   isBriefOwner: false,
   numberOfSuppliers: '',
   hasSupplierErrors: false,
@@ -250,7 +234,6 @@ OpportunitySpecialistInfoCard.propTypes = {
   sellerResponses: PropTypes.number,
   canRespond: PropTypes.bool,
   isAssessedForCategory: PropTypes.bool,
-  hasChosenBriefCategory: PropTypes.bool,
   isOpenToAll: PropTypes.bool,
   loggedIn: PropTypes.bool,
   hasResponded: PropTypes.bool,
@@ -260,7 +243,6 @@ OpportunitySpecialistInfoCard.propTypes = {
   isApplicant: PropTypes.bool,
   isAwaitingApplicationAssessment: PropTypes.bool,
   isAwaitingDomainAssessment: PropTypes.bool,
-  hasBeenAssessedForBrief: PropTypes.bool,
   isBriefOwner: PropTypes.bool,
   closingDate: PropTypes.string.isRequired,
   briefId: PropTypes.number.isRequired,

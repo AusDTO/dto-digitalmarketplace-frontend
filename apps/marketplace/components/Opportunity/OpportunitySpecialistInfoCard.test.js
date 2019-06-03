@@ -366,36 +366,6 @@ test('not able to apply because seller does not have approved domain and waiting
   )
 })
 
-test('not able to apply because seller does not have approved domain and already requested assessment', () => {
-  expect(
-    mount(
-      OpportunitySpecialistInfoCard({
-        closingDate: '',
-        briefId: '1',
-        briefLot: 'specialist',
-        briefStatus: 'not draft',
-        loggedIn: true,
-        isOpen: true,
-        category: 'software',
-        sellerCategory: 'software',
-        isApprovedSeller: true,
-        canRespond: true,
-        isInvited: true,
-        hasResponded: false,
-        isAssessedForCategory: false,
-        hasChosenBriefCategory: true,
-        isAwaitingDomainAssessment: false,
-        hasBeenAssessedForBrief: true,
-        isOpenToAll: true,
-        numberOfSuppliers: 6,
-        sellerResponses: 0
-      })
-    ).text()
-  ).toEqual(
-    'candidates appliedSellers can submit up to 6 candidates for this role.Only sellers approved in software can apply. You have already submitted a request for assessment against this brief.'
-  )
-})
-
 test('not able to apply because seller has errors in their profile', () => {
   expect(
     mount(
