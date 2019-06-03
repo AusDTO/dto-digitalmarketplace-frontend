@@ -64,3 +64,14 @@ export const getEmailFromQueryString = location => {
   }
   return emailAddress
 }
+
+export const padStart = (value, length, character) => {
+  if (value.length === length) {
+    return value
+  }
+  let pad = ''
+  for (let i = 0; i < length - value.length; i += 1) {
+    pad = `${character}${pad}`
+  }
+  return `${pad}${value}`
+}

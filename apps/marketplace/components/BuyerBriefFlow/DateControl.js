@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Control } from 'react-redux-form'
 import AUtextInput from '@gov.au/text-inputs/lib/js/react'
+import { padStart } from 'marketplace/components/helpers'
 import styles from './DateControl.scss'
 
 const parseValue = value => {
@@ -12,8 +13,8 @@ const parseValue = value => {
   }
   if (value && value.match(/\d{4}-\d{1,2}-\d{1,2}/)) {
     date = {
-      day: value.split('-')[2] ? value.split('-')[2].padStart(2, '0') : '',
-      month: value.split('-')[1] ? value.split('-')[1].padStart(2, '0') : '',
+      day: value.split('-')[2] ? padStart(value.split('-')[2], 2, '0') : '',
+      month: value.split('-')[1] ? padStart(value.split('-')[1], 2, '0') : '',
       year: value.split('-')[0] ? value.split('-')[0] : ''
     }
   }
