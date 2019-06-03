@@ -13,8 +13,8 @@ const parseValue = value => {
   }
   if (value && value.match(/\d{4}-\d{1,2}-\d{1,2}/)) {
     date = {
-      day: value.split('-')[2] ? padStart(value.split('-')[2], 2, '0') : '',
-      month: value.split('-')[1] ? padStart(value.split('-')[1], 2, '0') : '',
+      day: value.split('-')[2] ? value.split('-')[2] : '',
+      month: value.split('-')[1] ? value.split('-')[1] : '',
       year: value.split('-')[0] ? value.split('-')[0] : ''
     }
   }
@@ -33,11 +33,23 @@ export class DateComponent extends Component {
     }
 
     this.handleChange = this.handleChange.bind(this)
+    this.handleBlur = this.handleBlur.bind(this)
   }
 
   handleChange(e) {
     const name = e.target.name
     const value = e.target.value
+    this.setState(curState => {
+      const newState = { ...curState }
+      newState[name] = value
+      return newState
+    })
+  }
+
+  handleBlur(e) {
+    const name = e.target.name
+    let value = e.target.value
+    value = name === 'year' || value.length < 1 ? value : padStart(value, 2, '0')
     this.setState(curState => {
       const newState = { ...curState }
       newState[name] = value
@@ -65,6 +77,7 @@ export class DateComponent extends Component {
               name="day"
               value={this.state.day}
               onChange={this.handleChange}
+              onBlur={this.handleBlur}
               min="1"
               max="31"
               placeholder="DD"
@@ -79,6 +92,7 @@ export class DateComponent extends Component {
               name="month"
               value={this.state.month}
               onChange={this.handleChange}
+              onBlur={this.handleBlur}
               min="1"
               max="12"
               placeholder="MM"
@@ -93,6 +107,7 @@ export class DateComponent extends Component {
               name="year"
               value={this.state.year}
               onChange={this.handleChange}
+              onBlur={this.handleBlur}
               min="2019"
               max="2099"
               placeholder="YYYY"
