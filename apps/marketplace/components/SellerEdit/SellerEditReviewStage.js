@@ -8,6 +8,7 @@ import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import { AUcheckbox } from '@gov.au/control-input'
+import MasterAgreement from './MasterAgreement'
 
 export class SellerEditReviewStage extends Component {
   constructor(props) {
@@ -101,22 +102,19 @@ export class SellerEditReviewStage extends Component {
                     View Master Agreement in HTML [TODO]
                   </a>
                 </p>
+                <MasterAgreement />
                 <p>
-                  <span>
-                    <AUcheckbox
-                      id="cb-declaration"
-                      onClick={e => {
-                        this.setState({
-                          acceptEnabled: e.target.checked
-                        })
-                      }}
-                      label={`I am ${
-                        props[model].supplier.data.representative
-                      }, an authorised representativee of (ABN: ${
-                        props[model].supplier.abn
-                      }) and I agree to the terms set out in the Marketplace Master Agreement.`}
-                    />
-                  </span>
+                  <AUcheckbox
+                    id="cb-declaration"
+                    onClick={e => {
+                      this.setState({
+                        acceptEnabled: e.target.checked
+                      })
+                    }}
+                    label={`I am ${props[model].supplier.data.representative}, an authorised representativee of (ABN: ${
+                      props[model].supplier.abn
+                    }) and I agree to the terms set out in the Marketplace Master Agreement.`}
+                  />
                 </p>
                 <p>
                   <AUbutton
