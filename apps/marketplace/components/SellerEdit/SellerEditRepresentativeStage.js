@@ -4,13 +4,15 @@ import { connect } from 'react-redux'
 import { Form } from 'react-redux-form'
 import Textfield from 'shared/form/Textfield'
 import formProps from 'shared/form/formPropsSelector'
-import { required } from 'marketplace/components/validators'
+import { required, validPhoneNumber, validEmail } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 
 const requiredName = v => required(v.supplier.data.representative)
 const requiredEmail = v => required(v.supplier.data.email)
+const validEmailAddress = v => !requiredEmail(v) || validEmail(v.supplier.data.email)
 const requiredPhone = v => required(v.supplier.data.phone)
+const validPhone = v => !requiredPhone(v) || validPhoneNumber(v.supplier.data.phone)
 
 export const done = v => requiredName(v) && requiredEmail(v) && requiredPhone(v)
 
@@ -21,7 +23,9 @@ const SellerEditRepresentativeStage = props => (
       '': {
         requiredName,
         requiredEmail,
-        requiredPhone
+        validEmailAddress,
+        requiredPhone,
+        validPhone
       }
     }}
     onSubmit={props.onSubmit}
@@ -37,7 +41,9 @@ const SellerEditRepresentativeStage = props => (
       messages={{
         requiredName: 'Name is required',
         requiredEmail: 'Email is required',
-        requiredPhone: 'Phone is required'
+        validEmailAddress: 'Email is not valid',
+        requiredPhone: 'Phone is required',
+        validPhone: 'Phone is not valid'
       }}
     />
     <Textfield
