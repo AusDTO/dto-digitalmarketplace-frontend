@@ -43,6 +43,9 @@ test('Signup renders empty Your Info form', () => {
   let store = createStore({
     form_options: {
       action: void 0
+    },
+    application: {
+      type: 'new'
     }
   });
 

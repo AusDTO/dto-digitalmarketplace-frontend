@@ -58,7 +58,8 @@
     "insurance_claims": false,
     "insurance_claims_details": "",
     "conflicts_of_interest": false,
-    "conflicts_of_interest_details": ""
+    "conflicts_of_interest_details": "",
+    "type": "new"
   },
   "options": {
   }
