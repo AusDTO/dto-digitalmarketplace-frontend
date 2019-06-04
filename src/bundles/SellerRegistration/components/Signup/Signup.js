@@ -153,7 +153,7 @@ class Signup extends React.Component {
     const { forms, location, steps = {}, actions, application } = this.props;
 
     let { recruiter = 'no'} = forms.recruiterForm;
-    let filter = recruiter === 'yes' ? /\/pricing|\/case-study/ : (recruiter === 'no' ? /\/candidates/ : null )
+    let filter = recruiter === 'yes' || recruiter == 'both' ? /\/pricing|\/case-study/ : (recruiter === 'no' ? /\/candidates|\/pricing|\/case-study|\/domains/ : null )
     this.filteredSteps = this.steps.filter(s => !s.pattern.match(filter));
 
     let stepKeys = this.filteredSteps.map(s => s['id']);
