@@ -4,7 +4,7 @@ import { Form } from 'react-redux-form'
 
 import AUheading from '@gov.au/headings'
 import formProps from 'shared/form/formPropsSelector'
-import UserSelect from '../UserSelect/UserSelect'
+import ItemSelect from '../ItemSelect/ItemSelect'
 
 import commonStyles from './TeamStages.scss'
 
@@ -31,7 +31,7 @@ const TeamLeadsStage = props => {
           <li>Create other team leads</li>
         </ul>
       </div>
-      <UserSelect
+      <ItemSelect
         defaultValue={props[props.model].teamLeadName}
         description={teamLeadNameDescription}
         htmlFor="teamLeadName"

@@ -2,7 +2,7 @@ import React from 'react'
 
 import Textfield from 'shared/form/Textfield'
 
-const UserSelect = props => (
+const ItemSelect = props => (
   <Textfield
     defaultValue={props.defaultValue}
     description={props.description}
@@ -17,4 +17,4 @@ const UserSelect = props => (
   />
 )
 
-export default UserSelect
+export default ItemSelect
