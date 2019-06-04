@@ -46,7 +46,11 @@ export const Routes = () => (
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
     <Route path={`${rootPath}/login`} component={LoginPage} />
     <Route path={`${rootPath}/seller-dashboard`} component={SellerDashboardPage} />
-    <PrivateRoute restrictedTo="supplier" path={`${rootPath}/seller-edit/:supplierCode`} component={SellerEditFlowPage} />
+    <PrivateRoute
+      restrictedTo="supplier"
+      path={`${rootPath}/seller-edit/:supplierCode`}
+      component={SellerEditFlowPage}
+    />
     <Route path={`${rootPath}/:framework/opportunities/:briefId`} component={OpportunityPage} />
     <Route path={`${rootPath}/opportunities`} component={OpportunitiesPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-dashboard`} component={BuyerDashboardPage} />

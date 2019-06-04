@@ -61,7 +61,7 @@ export class Messages extends Component {
       errorType = id
     }
     switch (errorType) {
-      case 'S000':
+      case 'SB001':
         return <a href={`/sellers/edit/?step=${item.step}`}>Preview and submit</a>
       case 'S001':
         return <a href={`/sellers/edit/?step=${item.step}`}>Update business details</a>
@@ -80,7 +80,7 @@ export class Messages extends Component {
       case 'S011':
       case 'S012':
         return <a href={`/sellers/edit/?step=${item.step}`}>Manage your documents</a>
-      case 'S013':
+      case 'SB002':
         return <a href={`/2/seller-edit/${supplier.code}/?step=${item.step}`}>View agreement</a>
       default:
         return ''

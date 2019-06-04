@@ -94,12 +94,20 @@ export const BuyerSpecialistFormReducer = {
 }
 
 export const SellerEditFormReducer = {
-  name: '',
-  code: '',
-  data: {
-    representative: '',
-    email: '',
-    phone: ''
+  supplier: {
+    name: '',
+    code: '',
+    data: {
+      representative: '',
+      email: '',
+      phone: ''
+    }
+  },
+  agreementStatus: {
+    show: false,
+    canSign: false,
+    canUserSign: false,
+    signed: false
   }
 }
 

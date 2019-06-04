@@ -24,7 +24,6 @@ export class SellerEditFlowPage extends Component {
       flowIsDone: false
     }
 
-    // this.saveBrief = this.saveBrief.bind(this)
     this.handleStageMount = this.handleStageMount.bind(this)
     this.save = this.save.bind(this)
   }
@@ -39,29 +38,19 @@ export class SellerEditFlowPage extends Component {
     this.setState({
       loading: true
     })
-    //this.props.match.params.supplierCode
     this.props.loadInitialData(this.props.match.params.supplierCode).then(response => {
       // only accept data defined in the form reducer
-      let data = { ...SellerEditFormReducer }
-      if (response.data.supplier) {
-        Object.keys(response.data.supplier).map(property => {
+      const data = { ...SellerEditFormReducer }
+      if (response.data) {
+        Object.keys(response.data).map(property => {
           if (Object.keys(SellerEditFormReducer).includes(property)) {
-            data[property] = response.data.supplier[property]
+            data[property] = response.data[property]
           }
           return true
         })
       }
 
-    // //     if (response.data.brief.status && response.data.brief.status !== 'draft') {
-    // //       this.props.setError('You cannot edit this opportunity as you have already published it.')
-    // //     }
-
-    // //     if (response.data.brief.lotSlug !== 'specialist') {
-    // //       this.props.setError('You can only edit specialist briefs using this flow.')
-    // //     }
-
       this.props.changeFormModel(data)
-    //   }
 
       this.setState({
         loading: false
@@ -70,16 +59,18 @@ export class SellerEditFlowPage extends Component {
   }
 
   save() {
-    this.setState({
-      loading: true
-    })
+    // this.setState({
+    //   loading: true
+    // })
     const data = { ...this.props[model] }
-    return this.props.saveSeller(this.props.match.params.supplierCode, data).then(response => {
-      if (response.status === 200) {
-        this.setState({
-          loading: false
-        })
+    return this.props.saveSeller(this.props.match.params.supplierCode, data.supplier).then(response => {
+      if (response.status === 400) {
+        return Promise.reject(response.data.message)
       }
+      return Promise.resolve(response)
+      // this.setState({
+      //   loading: false
+      // })
     })
   }
 
@@ -106,7 +97,6 @@ export class SellerEditFlowPage extends Component {
         />
       )
     }
-
     const supplierCode = this.props.match.params.supplierCode
 
     if (this.state.loading) {
@@ -144,7 +134,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   changeFormModel: data => dispatch(actions.merge(model, data)),
-  loadInitialData: (supplierCode) => dispatch(loadSellerEdit(supplierCode)),
+  loadInitialData: supplierCode => dispatch(loadSellerEdit(supplierCode)),
   saveSeller: (supplierCode, data) => dispatch(saveSeller(supplierCode, data)),
   resetFormValidity: () => dispatch(actions.resetValidity(model)),
   setError: message => dispatch(setErrorMessage(message))

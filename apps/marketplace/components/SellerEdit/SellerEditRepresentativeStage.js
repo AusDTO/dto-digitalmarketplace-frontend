@@ -7,11 +7,10 @@ import formProps from 'shared/form/formPropsSelector'
 import { required } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
-import styles from './SellerEditRepresentativeStage.scss'
 
-const requiredName = v => required(v.data.representative)
-const requiredEmail = v => required(v.data.email)
-const requiredPhone = v => required(v.data.phone)
+const requiredName = v => required(v.supplier.data.representative)
+const requiredEmail = v => required(v.supplier.data.email)
+const requiredPhone = v => required(v.supplier.data.phone)
 
 export const done = v => requiredName(v) && requiredEmail(v) && requiredPhone(v)
 
@@ -42,13 +41,13 @@ const SellerEditRepresentativeStage = props => (
       }}
     />
     <Textfield
-      model={`${props.model}.data.representative`}
+      model={`${props.model}.supplier.data.representative`}
       label="Name"
       description="The contact listed on your seller profile page and the person who receives new opportunities by email."
       name="representative"
       id="representative"
       htmlFor="representative"
-      defaultValue={props[props.model].data.representative}
+      defaultValue={props[props.model].supplier.data.representative}
       maxLength={100}
       showMaxLength
       validators={{
@@ -56,24 +55,24 @@ const SellerEditRepresentativeStage = props => (
       }}
     />
     <Textfield
-      model={`${props.model}.data.email`}
+      model={`${props.model}.supplier.data.email`}
       label="Email"
       name="email"
       id="email"
       htmlFor="email"
-      defaultValue={props[props.model].data.email}
+      defaultValue={props[props.model].supplier.data.email}
       validators={{
         required
       }}
     />
     <Textfield
-      model={`${props.model}.data.phone`}
+      model={`${props.model}.supplier.data.phone`}
       label="Phone"
       description="Please include the area code for landlines."
       name="phone"
       id="phone"
       htmlFor="phone"
-      defaultValue={props[props.model].data.phone}
+      defaultValue={props[props.model].supplier.data.phone}
       maxLength={100}
       validators={{
         required
