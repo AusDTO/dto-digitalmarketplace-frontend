@@ -33,7 +33,7 @@ const getYears = () => {
   return [year - 4, year - 3, year - 2, year - 1, year]
 }
 
-const minimumWordRequirement = 200
+const minimumWordRequirement = 100
 
 const minimumEvidenceWords = val => (val.match(/\S+/g) || []).length >= minimumWordRequirement
 
@@ -220,12 +220,12 @@ const SellerAssessmentEvidenceStage = props => (
             id={`criteria_${criteriaId}`}
             htmlFor={`criteria_${criteriaId}`}
             defaultValue={props[props.model].evidence.criteriaResponses[criteriaId]}
-            controlProps={{ minimum: 200, rows: '10' }}
+            controlProps={{ minimum: minimumWordRequirement, rows: '10' }}
             validators={{
               required
             }}
             messages={{
-              minimumWords: 'Your criteria response has not yet reached the 200 word minimum requirement'
+              minimumWords: `Your criteria response has not yet reached the ${minimumWordRequirement} word minimum requirement`
             }}
           />
         ))}
