@@ -125,50 +125,6 @@ exports[`Signup renders 1`] = `
         <li>
           <a
             className=""
-            href="/domains"
-            onClick={[Function]}
-          >
-            <span>
-              Services
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/pricing"
-            onClick={[Function]}
-          >
-            <span>
-              Pricing
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/case-study"
-            onClick={[Function]}
-          >
-            <span>
-              Case studies
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/candidates"
-            onClick={[Function]}
-          >
-            <span>
-              Candidates
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
             href="/products"
             onClick={[Function]}
           >
@@ -429,50 +385,6 @@ exports[`Signup renders empty Your Info form 1`] = `
           >
             <span>
               Recruiter
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/domains"
-            onClick={[Function]}
-          >
-            <span>
-              Services
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/pricing"
-            onClick={[Function]}
-          >
-            <span>
-              Pricing
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/case-study"
-            onClick={[Function]}
-          >
-            <span>
-              Case studies
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/candidates"
-            onClick={[Function]}
-          >
-            <span>
-              Candidates
             </span>
           </a>
         </li>
@@ -920,50 +832,6 @@ exports[`Signup renders populated Your Info form 1`] = `
           >
             <span>
               Recruiter
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/domains"
-            onClick={[Function]}
-          >
-            <span>
-              Services
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/pricing"
-            onClick={[Function]}
-          >
-            <span>
-              Pricing
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/case-study"
-            onClick={[Function]}
-          >
-            <span>
-              Case studies
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/candidates"
-            onClick={[Function]}
-          >
-            <span>
-              Candidates
             </span>
           </a>
         </li>
