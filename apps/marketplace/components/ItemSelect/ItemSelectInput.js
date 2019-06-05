@@ -6,6 +6,7 @@ const ItemSelectInput = props => (
   <div>
     <label htmlFor={props.id}>{props.label}</label>
     <AUtextInput
+      block
       className={props.className}
       id={props.id}
       onChange={props.handleSearchChange}
