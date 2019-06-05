@@ -1,12 +1,21 @@
 import React from 'react'
 
+import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUtextInput from '@gov.au/text-inputs/lib/js/react.js'
 
-// eslint-disable-next-line no-unused-vars
 import styles from './ItemSelectInput.scss'
 
 const ItemSelectInput = props => {
-  const { className, description, handleSearchChange, id, inputValue, label, placeholder } = props
+  const {
+    description,
+    handleSearchChange,
+    handleSearchClick,
+    id,
+    inputValue,
+    label,
+    placeholder,
+    showSearchButton
+  } = props
 
   return (
     <div>
@@ -14,14 +23,20 @@ const ItemSelectInput = props => {
       <div>
         <span>{description}</span>
       </div>
-      <AUtextInput
-        block
-        className={className}
-        id={id}
-        onChange={handleSearchChange}
-        placeholder={placeholder}
-        value={inputValue}
-      />
+      <div className={styles.textInputContainer}>
+        <AUtextInput
+          className={`${styles.textInput} ${showSearchButton ? styles.textInputWithButton : ''}`}
+          id={id}
+          onChange={handleSearchChange}
+          placeholder={placeholder}
+          value={inputValue}
+        />
+        {showSearchButton && (
+          <AUbutton className={styles.searchButton} onClick={handleSearchClick}>
+            Search
+          </AUbutton>
+        )}
+      </div>
     </div>
   )
 }

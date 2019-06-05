@@ -41,6 +41,7 @@ const TeamLeadsStage = props => {
         model={`${props.model}.teamLeadName`}
         name="teamLeadName"
         placeholder=""
+        showSearchButton={false}
         validators={{}}
       />
       {props.formButtons}

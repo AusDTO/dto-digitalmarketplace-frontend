@@ -3,17 +3,27 @@ import React from 'react'
 import ItemSelectInput from './ItemSelectInput'
 
 const ItemSelect = props => {
-  const { className, description, handleSearchChange, id, inputValue, label, placeholder } = props
+  const {
+    description,
+    handleSearchChange,
+    handleSearchClick,
+    id,
+    inputValue,
+    label,
+    placeholder,
+    showSearchButton
+  } = props
 
   return (
     <ItemSelectInput
-      className={className}
       description={description}
       handleSearchChange={handleSearchChange}
+      handleSearchClick={handleSearchClick}
       id={id}
       inputValue={inputValue}
       label={label}
       placeholder={placeholder}
+      showSearchButton={showSearchButton}
     />
   )
 }
