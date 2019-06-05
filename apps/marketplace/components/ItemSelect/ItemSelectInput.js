@@ -2,6 +2,9 @@ import React from 'react'
 
 import AUtextInput from '@gov.au/text-inputs/lib/js/react.js'
 
+// eslint-disable-next-line no-unused-vars
+import styles from './ItemSelectInput.scss'
+
 const ItemSelectInput = props => (
   <div>
     <label htmlFor={props.id}>{props.label}</label>
