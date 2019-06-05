@@ -5,6 +5,9 @@ import AUtextInput from '@gov.au/text-inputs/lib/js/react.js'
 const ItemSelectInput = props => (
   <div>
     <label htmlFor={props.id}>{props.label}</label>
+    <div>
+      <span>{props.description}</span>
+    </div>
     <AUtextInput
       block
       className={props.className}
