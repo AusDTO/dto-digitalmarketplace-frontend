@@ -1,37 +1,40 @@
 import { buyerLogin, sellerLogin } from '../../flows/login/actions'
-import { applyForSpecialist, navigate, selectBrief, viewSpecialistApplication } from '../../flows/opportunities/actions'
+import { checkAppliedForSpecialist, navigate, selectBrief, applyForSpecialist } from '../../flows/opportunities/actions'
+import respond from '../../flows/briefResponse/specialist'
 import create from '../../flows/brief/specialist'
 import startBrief from '../../flows/dashboard/buyer'
-import respond from '../../flows/briefResponse/specialist'
 
-/* eslint-disable no-await-in-loop */
+describe('create and respond to specialist opportunity', () => {
+  // in order to get the right brief we are going for 'today's date'.
+  const today = Date.now()
+  const title = `Specialist ${today.valueOf()}`
+  let brief = null
 
-describe('should be able to create and respond to specialist brief', () => {
-  const now = Date.now()
-  const areaOfExpertise = 'Strategy and Policy'
-  const title = `${areaOfExpertise} Role ${now.valueOf()}`
-  it(`should create specialist brief of ${areaOfExpertise}`, async () => {
+  it('should be able to create specialist opportunity', async () => {
     await buyerLogin()
     await startBrief()
-    await create({
+    brief = await create({
       title,
-      areaOfExpertise,
       locations: ['Australian Capital Territory', 'Tasmania'],
-      evaluations: ['References', 'Interview', 'Scenario or test', 'Presentation']
+      categoryId: process.env.SELLER_CATEGORY
     })
   })
-  it(`should be able to respond to ${areaOfExpertise} brief`, async () => {
+  it('should be able to respond to specialist opportunity', async () => {
     await sellerLogin()
-    for (let i = 0; i < 3; i += 1) {
+    for (let i = 0; i < parseInt(brief.numberOfSuppliers, 10); i += 1) {
+      // eslint-disable-next-line no-await-in-loop
       await navigate()
+      // eslint-disable-next-line no-await-in-loop
       await selectBrief(title)
-      await applyForSpecialist(i)
+      // eslint-disable-next-line no-await-in-loop
+      await applyForSpecialist()
+      // eslint-disable-next-line no-await-in-loop
       await respond({
-        specialistNumber: i
+        specialistNumber: i,
+        criteria: brief.criteria
       })
+      // eslint-disable-next-line no-await-in-loop
+      await checkAppliedForSpecialist(title, i, brief.numberOfSuppliers)
     }
-    await navigate()
-    await selectBrief(title)
-    await viewSpecialistApplication(title)
   })
 })
