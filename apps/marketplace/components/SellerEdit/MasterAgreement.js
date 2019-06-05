@@ -5,7 +5,7 @@ import styles from './MasterAgreement.scss'
 /* eslint-disable react/no-unescaped-entities */
 const MasterAgreement = () => (
   <div className={styles.masterAgreementFrame}>
-    <h1>Master Agreement</h1>
+    <h1>Master Agreement TODO</h1>
     <h2>Introduction and scope</h2>
     <p>
       This agreement covers all your interactions in the Digital Marketplace, including selling to buyers. This
