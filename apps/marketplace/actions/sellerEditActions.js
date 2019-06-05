@@ -7,7 +7,6 @@ export const loadSeller = data => ({
   type: SELLER_EDIT_SUCCESS,
   data: {
     supplier: data.supplier,
-    signedCurrentAgreement: data.signedCurrentAgreement,
     agreementStatus: data.agreementStatus,
     errors: data.errors,
     loading: data.loading,
@@ -54,7 +53,6 @@ export const loadSellerEdit = supplierCode => dispatch => {
       dispatch(
         loadSeller({
           supplier: response.data.supplier,
-          signedCurrentAgreement: response.data.signed_current_agreement,
           agreementStatus: response.data.agreement_status
         })
       )
@@ -77,6 +75,81 @@ export const saveSeller = (supplierCode, data) => (dispatch, getState) => {
   }).then(response => {
     if (response.error) {
       dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(
+        loadSeller({
+          supplier: response.data.supplier,
+          agreementStatus: response.data.agreement_status
+        })
+      )
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
+
+export const declineAgreement = supplierCode => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: `/supplier/${supplierCode}/edit/decline-agreement`,
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
+
+export const acceptAgreement = supplierCode => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: `/supplier/${supplierCode}/edit/accept-agreement`,
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(
+        loadSeller({
+          supplier: response.data.supplier,
+          agreementStatus: response.data.agreement_status
+        })
+      )
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
+
+export const notifyAuthRep = supplierCode => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: `/supplier/${supplierCode}/edit/notify-auth-rep`,
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(
+        loadSeller({
+          supplier: response.data.supplier,
+          agreementStatus: response.data.agreement_status
+        })
+      )
     }
     dispatch(sendingRequest(false))
     return response

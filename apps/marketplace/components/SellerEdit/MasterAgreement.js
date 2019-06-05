@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import styles from './MasterAgreement.scss'
 
 /* eslint-disable react/no-unescaped-entities */
@@ -569,4 +568,4 @@ const MasterAgreement = () => (
   </div>
 )
 
-export default connect()(MasterAgreement)
+export default MasterAgreement

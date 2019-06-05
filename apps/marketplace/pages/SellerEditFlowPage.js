@@ -14,6 +14,19 @@ import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingInd
 import { SellerEditFormReducer } from 'marketplace/reducers'
 
 const model = 'SellerEditFlowPage'
+const processResponse = response => {
+  // only accept data defined in the form reducer
+  const data = { ...SellerEditFormReducer }
+  if (response.data) {
+    Object.keys(response.data).map(property => {
+      if (Object.keys(SellerEditFormReducer).includes(property)) {
+        data[property] = response.data[property]
+      }
+      return true
+    })
+  }
+  return data
+}
 
 export class SellerEditFlowPage extends Component {
   constructor(props) {
@@ -39,19 +52,8 @@ export class SellerEditFlowPage extends Component {
       loading: true
     })
     this.props.loadInitialData(this.props.match.params.supplierCode).then(response => {
-      // only accept data defined in the form reducer
-      const data = { ...SellerEditFormReducer }
-      if (response.data) {
-        Object.keys(response.data).map(property => {
-          if (Object.keys(SellerEditFormReducer).includes(property)) {
-            data[property] = response.data[property]
-          }
-          return true
-        })
-      }
-
+      const data = processResponse(response)
       this.props.changeFormModel(data)
-
       this.setState({
         loading: false
       })
@@ -59,18 +61,13 @@ export class SellerEditFlowPage extends Component {
   }
 
   save() {
-    // this.setState({
-    //   loading: true
-    // })
     const data = { ...this.props[model] }
     return this.props.saveSeller(this.props.match.params.supplierCode, data.supplier).then(response => {
-      if (response.status === 400) {
-        return Promise.reject(response.data.message)
+      if (response.status === 200) {
+        this.props.changeFormModel(processResponse(response))
+        return Promise.resolve(response)
       }
-      return Promise.resolve(response)
-      // this.setState({
-      //   loading: false
-      // })
+      return Promise.reject(response.data.message)
     })
   }
 
@@ -116,6 +113,10 @@ export class SellerEditFlowPage extends Component {
         saveModel={this.save}
         returnPath={`${rootPath}/brief/${supplierCode}/overview/specialist`}
         previewPath={`${rootPath}/digital-marketplace/opportunities/${supplierCode}`}
+        progressButtons={{
+          startText: 'Save & continue',
+          showReturnText: false
+        }}
       />
     )
   }
