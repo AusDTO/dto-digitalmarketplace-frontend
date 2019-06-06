@@ -6,7 +6,7 @@ const SignedMasterAgreement = () => (
     <AUheading level="1" size="xl">
       Master agreement accepted
     </AUheading>
-    <p>Your authorised representative has already accepted the Master Agreement on behalf of your business</p>
+    <p>Your authorised representative has accepted the Master Agreement on behalf of your business</p>
     <p>
       <a href="/static/media/documents/digital-marketplace-master-agreement-2019-07-01.pdf" rel="noopener noreferrer" target="_blank">
         Download Master Agreement
