@@ -132,15 +132,26 @@ export class YourDeclaration extends Component {
               profile will be removed and you will not be able to apply for work.
             </p>
             <p>
-              <a href="/static/media/documents/digital-marketplace-master-agreement-2019-07-01.pdf" rel="noopener noreferrer" target="_blank">
+              <a
+                href="/static/media/documents/digital-marketplace-master-agreement-2019-07-01.pdf"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 Download Master Agreement
               </a>
               <br />
-              <a href="/static/media/documents/digital-marketplace-master-agreement-2019-07-01.html" rel="noopener noreferrer" target="_blank">
+              <a
+                href="/static/media/documents/digital-marketplace-master-agreement-2019-07-01.html"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 View Master Agreement in HTML
               </a>
             </p>
-            <iframe className={styles.masterAgreementFrame} src="/static/media/documents/digital-marketplace-master-agreement-2019-07-01.html"/>
+            <iframe
+              className={styles.masterAgreementFrame}
+              src="/static/media/documents/digital-marketplace-master-agreement-2019-07-01.html"
+            />
             <p>
               <AUcheckbox
                 id="cb-agree"
