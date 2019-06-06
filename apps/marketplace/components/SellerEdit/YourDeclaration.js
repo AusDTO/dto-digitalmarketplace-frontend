@@ -95,15 +95,15 @@ export class YourDeclaration extends Component {
                   this.declineAlertRef = ref
                 }}
               >
-                <li>You will no longer be able to apply for work through the Digital Marketplace.</li>
+                <li>You will not be able to apply for opportunities on the Digital Marketplace.</li>
                 <li>Your account will be removed.</li>
-                <li>Your company will no longer be visible in the seller catalogue</li>
+                <li>Your business profile will be removed from the seller catalogue.</li>
               </ul>
             </AUpageAlert>
             <p>If you choose to return to the Digital Marketplace in future, you will need to:</p>
             <ul>
-              <li>Contact the Marketplace team to sign up again</li>
-              <li>Reapply for assessment in any categories you were approved in</li>
+              <li>Contact the Marketplace team to sign up again.</li>
+              <li>Submit new requests for assessment in any of your previously approved categories.</li>
             </ul>
             <p>
               <button className={`${styles.understandColour} au-btn`} onClick={this.yesToDeclineClick}>
