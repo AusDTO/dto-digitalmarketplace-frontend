@@ -11,6 +11,7 @@ const ItemSelect = props => {
     handleSearchClick,
     id,
     inputValue,
+    items,
     label,
     placeholder,
     resultIsEmpty,
@@ -32,6 +33,7 @@ const ItemSelect = props => {
       />
       <ItemSelectResultsList
         emptyResultsMessage={emptyResultsMessage}
+        items={items}
         resultIsEmpty={resultIsEmpty}
         resultListItems={resultListItems}
         keywords={inputValue}
