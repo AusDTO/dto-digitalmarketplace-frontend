@@ -109,7 +109,8 @@ export const handlePublicBriefInfoSuccess = response => ({
   hasResponded: response.data.has_responded,
   domains: response.data.domains,
   hasSupplierErrors: response.data.has_supplier_errors,
-  isInvited: response.data.is_invited
+  isInvited: response.data.is_invited,
+  hasSignedCurrentAgreement: response.data.has_signed_current_agreement
 })
 
 export const handleErrorFailure = response => dispatch => {

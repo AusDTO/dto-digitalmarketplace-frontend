@@ -81,7 +81,7 @@ export class Messages extends Component {
       case 'S012':
         return <a href={`/sellers/edit/?step=${item.step}`}>Manage your documents</a>
       case 'SB002':
-        return <a href={`/2/seller-edit/${supplier.code}/?step=${item.step}`}>View agreement</a>
+        return <a href={`/2/seller-edit/${supplier.code}/${item.step}`}>View new Master Agreement</a>
       default:
         return ''
     }
