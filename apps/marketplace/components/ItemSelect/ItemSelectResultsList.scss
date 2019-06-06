@@ -14,6 +14,17 @@ ul.itemSelectList {
   &.hasResults {
     max-height: 12.5rem;
 
+    & li {
+      padding: 0;
+
+      a {
+        color: #313131;
+        display: block;
+        padding: 1rem;
+        text-decoration: none;
+      }
+    }
+
     &.hasManyResults {
       overflow-y: scroll;
     }
