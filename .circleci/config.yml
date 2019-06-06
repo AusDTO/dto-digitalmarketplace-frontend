@@ -102,8 +102,9 @@ jobs:
             export USE_CLIPBOARD_FOR_TYPE_INPUT=false
             export HEADLESS=true
             export IGNORE_MULTIPLE_LINKS=true
-            export RFX_PANEL_CATEGORY=3
-            export RFX_SELLER_NAME=auto
+            export SELLER_CATEGORY=3
+            export SELLER_NAME=auto
+            export SLOW_MO=10
             npm test
 
   deploy_to_rc:

@@ -163,7 +163,7 @@ const mapStateToProps = (state, props) => ({
 const mapDispatchToProps = (dispatch, props) => ({
   resetSelectedSellers: () => dispatch(actions.change(`${props.model}.sellers`, {})),
   updateSelectedSellers: sellers => dispatch(actions.change(`${props.model}.sellers`, sellers)),
-  resetOpenTo: () => dispatch(actions.change(`${props.model}.openTo`, null)),
+  resetOpenTo: () => dispatch(actions.change(`${props.model}.openTo`, '')),
   updateSelectedSellerCategory: category => dispatch(actions.change(`${props.model}.sellerCategory`, category))
 })
 
