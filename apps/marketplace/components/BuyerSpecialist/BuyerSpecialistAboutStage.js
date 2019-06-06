@@ -80,15 +80,12 @@ const BuyerSpecialistAboutStage = props => (
       label="What will the specialist do?"
       description={
         <React.Fragment>
-          <p>This can include the responsibilities of the specialist and expected deliverables.</p>
           <p>
             NEW: An updated Master Agreement will take effect on 1 July 2019, but can be applied to opportunities that
-            are published from today. Contracts that use this must be signed after 1 July.{' '}
-          </p>
-          <p>
+            are published from today. Contracts that use this must be signed after 1 July.<br />
             To apply the new agreement to this opportunity, include ‘This opportunity will be subject to the terms and
-            conditions of the new Master Agreement that takes effect from 1 July 2019. More information can be found at{' '}
-            <a href="http://www.google.com">TODO</a>
+            conditions of the new Master Agreement that takes effect from 1 July 2019.<br />
+            More information can be found at <a href="http://www.google.com">TODO</a>
           </p>
         </React.Fragment>
       }
