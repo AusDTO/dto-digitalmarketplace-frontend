@@ -10,4 +10,8 @@ ul.itemSelectList {
   li {
     padding: 1rem;
   }
+
+  &.hasResults {
+    max-height: 12.5rem;
+  }
 }
