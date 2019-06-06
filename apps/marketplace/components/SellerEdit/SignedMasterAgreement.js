@@ -4,9 +4,9 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 const SignedMasterAgreement = () => (
   <React.Fragment>
     <AUheading level="1" size="xl">
-      You have accepted the Master Agreement
+      Master agreement accepted
     </AUheading>
-    <p>Your authorised representative has already accepted the Master Agreement on behalf of your company</p>
+    <p>Your authorised representative has already accepted the Master Agreement on behalf of your business</p>
     <p>
       <a href="http://www.google.com" rel="noopener noreferrer" target="_blank">
         Download Master Agreement [TODO]

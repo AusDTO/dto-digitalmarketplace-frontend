@@ -13,9 +13,9 @@ const NewMasterAgreement = props => (
     </AUheading>
     <p>
       Your authorised representative, {props[props.model].supplier.data.representative}, will be able to accept or
-      decline the Master Agreement from {format(parse(props[props.model].agreementStatus.startDate), 'D MMMM YYYY')}.
+      decline the new Master Agreement on {format(parse(props[props.model].agreementStatus.startDate), 'D MMMM YYYY')}.
     </p>
-    <p>We recommend you view and circulate the new Master Agreement with the relevant parties before this date.</p>
+    <p>We recommend you review the new Master Agreement and circulate to relevant parties before this date.</p>
     <p>
       <a href="http://www.google.com" rel="noopener noreferrer" target="_blank">
         Download Master Agreement [TODO]

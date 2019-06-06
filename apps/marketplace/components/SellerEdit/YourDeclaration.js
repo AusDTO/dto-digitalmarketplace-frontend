@@ -128,9 +128,9 @@ export class YourDeclaration extends Component {
             </AUheading>
             <p>
               A new Master Agreement takes effect from{' '}
-              {format(parse(props[model].agreementStatus.startDate), 'D MMMM YYYY')}. Your company must accept the new
-              agreement to apply for work through the Digital Marketplace. If you choose to decline, your profile will
-              be removed and you will not be able to apply for work.
+              <b>{format(parse(props[model].agreementStatus.startDate), 'D MMMM YYYY')}</b>. Your company must accept
+              the new agreement to apply for work through the Digital Marketplace. If you choose to decline, your
+              profile will be removed and you will not be able to apply for work.
             </p>
             <p>
               <a href="http://www.google.com" rel="noopener noreferrer" target="_blank">

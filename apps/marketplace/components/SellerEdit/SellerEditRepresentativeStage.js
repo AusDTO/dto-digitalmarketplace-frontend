@@ -46,10 +46,14 @@ const SellerEditRepresentativeStage = props => (
         validPhone: 'Phone is not valid'
       }}
     />
+    <p>
+      Please confirm or update the contact details of your authorised representative. This person must have the
+      authority to accept the new Master Agreement on behalf of your business.
+    </p>
     <Textfield
       model={`${props.model}.supplier.data.representative`}
       label="Name"
-      description="The contact listed on your seller profile page and the person who receives new opportunities by email."
+      description="This person is authorised to enter into contracts on behalf of the business."
       name="representative"
       id="representative"
       htmlFor="representative"
