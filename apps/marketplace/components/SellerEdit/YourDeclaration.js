@@ -12,7 +12,6 @@ import { AUcheckbox } from '@gov.au/control-input'
 import { acceptAgreement, declineAgreement } from 'marketplace/actions/sellerEditActions'
 import { logout } from 'marketplace/actions/appActions'
 import { SellerEditFormReducer } from 'marketplace/reducers'
-import MasterAgreement from './MasterAgreement'
 import styles from './YourDeclaration.scss'
 
 const processResponse = response => {
@@ -133,15 +132,15 @@ export class YourDeclaration extends Component {
               profile will be removed and you will not be able to apply for work.
             </p>
             <p>
-              <a href="http://www.google.com" rel="noopener noreferrer" target="_blank">
-                Download Master Agreement [TODO]
+              <a href="/static/media/documents/digital-marketplace-master-agreement-2019-07-01.pdf" rel="noopener noreferrer" target="_blank">
+                Download Master Agreement
               </a>
               <br />
-              <a href="http://www.google.com" rel="noopener noreferrer" target="_blank">
-                View Master Agreement in HTML [TODO]
+              <a href="/static/media/documents/digital-marketplace-master-agreement-2019-07-01.html" rel="noopener noreferrer" target="_blank">
+                View Master Agreement in HTML
               </a>
             </p>
-            <MasterAgreement />
+            <iframe className={styles.masterAgreementFrame} src="/static/media/documents/digital-marketplace-master-agreement-2019-07-01.html"/>
             <p>
               <AUcheckbox
                 id="cb-agree"
