@@ -562,6 +562,7 @@ const Opportunity = props => {
               isBuyer={isBuyer}
               isApprovedSeller={isApprovedSeller}
               isApplicant={isApplicant}
+              isRecruiterOnly={isRecruiterOnly}
               isAwaitingApplicationAssessment={isAwaitingApplicationAssessment}
               isAwaitingDomainAssessment={isAwaitingDomainAssessment}
               hasBeenAssessedForBrief={hasBeenAssessedForBrief}

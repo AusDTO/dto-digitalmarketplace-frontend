@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 import styles from './SellerDashboard.scss'
 
@@ -14,11 +15,13 @@ const Header = props => (
                   Team
                 </NavLink>
               </li>
-              <li>
-                <NavLink id="team-link" to="/categories" activeClassName={styles.active} exact>
-                  Categories
-                </NavLink>
-              </li>
+              {props.showCategoriesTab && (
+                <li>
+                  <NavLink id="team-link" to="/categories" activeClassName={styles.active} exact>
+                    Categories
+                  </NavLink>
+                </li>
+              )}
               <li>
                 <NavLink id="notifications-link" to="/notifications" activeClassName={styles.active} exact>
                   Notifications
@@ -36,5 +39,13 @@ const Header = props => (
     </div>
   </div>
 )
+
+Header.defaultProps = {
+  showCategoriesTab: true
+}
+
+Header.propTypes = {
+  showCategoriesTab: PropTypes.bool
+}
 
 export default Header

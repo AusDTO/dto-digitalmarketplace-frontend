@@ -135,6 +135,12 @@ const OpportunitySpecialistInfoCard = props => (
             <span>
               <p className={styles.invitedStatus}>
                 Only sellers approved in {props.category} can apply.
+                {props.isRecruiterOnly &&
+                  !props.isAwaitingDomainAssessment && (
+                    <span> You must edit your profile to add this category before you can apply.</span>
+                  )}
+                {props.isRecruiterOnly &&
+                  props.isAwaitingApplicationAssessment && <span> Your application is currently being assessed.</span>}
                 {props.isAwaitingDomainAssessment && (
                   <span> Your application for this category is currently being assessed.</span>
                 )}
@@ -152,7 +158,8 @@ const OpportunitySpecialistInfoCard = props => (
                   )}
               </p>
               {!props.isAwaitingDomainAssessment &&
-                !props.hasEvidenceInDraftForCategory && (
+                !props.hasEvidenceInDraftForCategory &&
+                !props.isRecruiterOnly && (
                   <p>
                     <a
                       href={`${rootPath}/seller-assessment/create/${props.sellerCategory}/${props.briefId}`}
@@ -219,6 +226,7 @@ OpportunitySpecialistInfoCard.defaultProps = {
   isBuyer: false,
   isApprovedSeller: false,
   isApplicant: false,
+  isRecruiterOnly: false,
   isAwaitingApplicationAssessment: false,
   isAwaitingDomainAssessment: false,
   isBriefOwner: false,
@@ -241,6 +249,7 @@ OpportunitySpecialistInfoCard.propTypes = {
   isBuyer: PropTypes.bool,
   isApprovedSeller: PropTypes.bool,
   isApplicant: PropTypes.bool,
+  isRecruiterOnly: PropTypes.bool,
   isAwaitingApplicationAssessment: PropTypes.bool,
   isAwaitingDomainAssessment: PropTypes.bool,
   isBriefOwner: PropTypes.bool,
