@@ -13,5 +13,9 @@ ul.itemSelectList {
 
   &.hasResults {
     max-height: 12.5rem;
+
+    &.hasManyResults {
+      overflow-y: scroll;
+    }
   }
 }

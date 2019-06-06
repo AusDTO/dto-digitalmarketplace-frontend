@@ -7,12 +7,14 @@ const ItemSelectResultsList = props => {
 
   const numberOfItems = items.length
   const resultIsEmpty = numberOfItems < 1
+  const hasManyResults = numberOfItems > 3
 
   return (
     <ul
       className={`
         ${styles.itemSelectList}
         ${!resultIsEmpty ? styles.hasResults : ''}
+        ${hasManyResults ? styles.hasManyResults : ''}
       `}
     >
       {resultIsEmpty && keywords && emptyResultsMessage}
