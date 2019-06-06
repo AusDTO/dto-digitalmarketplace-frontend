@@ -87,8 +87,8 @@ const BuyerSpecialistAboutStage = props => (
           </p>
           <p>
             To apply the new agreement to this opportunity, include ‘This opportunity will be subject to the terms and
-            conditions of the new Master Agreement that takes effect from 1 July 2019. More information can be found at
-            {' '}<a href="http://www.google.com">TODO</a>
+            conditions of the new Master Agreement that takes effect from 1 July 2019. More information can be found at{' '}
+            <a href="http://www.google.com">TODO</a>
           </p>
         </React.Fragment>
       }
