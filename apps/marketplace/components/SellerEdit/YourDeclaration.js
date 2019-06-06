@@ -149,6 +149,7 @@ export class YourDeclaration extends Component {
               </a>
             </p>
             <iframe
+              title="Master Agreement"
               className={styles.masterAgreementFrame}
               src="/static/media/documents/digital-marketplace-master-agreement-2019-07-01.html"
             />
