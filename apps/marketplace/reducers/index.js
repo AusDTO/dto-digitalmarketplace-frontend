@@ -34,7 +34,8 @@ export const BuyerRFXFormReducer = {
   contractExtensions: '',
   budgetRange: '',
   workingArrangements: '',
-  securityClearance: ''
+  securityClearance: '',
+  comprehensiveTerms: false
 }
 
 export const BuyerATMFormReducer = {
@@ -89,7 +90,8 @@ export const BuyerSpecialistFormReducer = {
   startDate: '',
   contractLength: '',
   contractExtensions: '',
-  closedAt: ''
+  closedAt: '',
+  comprehensiveTerms: false
 }
 
 export default combineReducers({

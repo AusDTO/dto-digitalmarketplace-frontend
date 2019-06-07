@@ -8,6 +8,7 @@ import Textfield from 'shared/form/Textfield'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import ClosingDateControl from 'marketplace/components/BuyerBriefFlow/ClosingDateControl'
+import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import styles from './BuyerRFXClosingStage.scss'
 
 class BuyerRFXClosingStage extends Component {
@@ -70,6 +71,26 @@ class BuyerRFXClosingStage extends Component {
             required
           }}
         />
+        <p>
+          <label className="question-heading au-text-input__label">Additional information</label>
+          <br />
+          We recommend that the <a href="http://www.google.com">comprehensive terms TODO</a> only be applied to
+          procurements that are complex or high value. The terms will apply to you work order, in addition to the Master
+          Agreement.
+        </p>
+        <p>
+          <CheckboxDetailsField
+            model={`${this.props.model}.comprehensiveTerms`}
+            id={`comprehensiveTerms`}
+            name={`comprehensiveTerms`}
+            // onClick={this.handleIncludeWeightingsEssentialChange}
+            label="Apply the comprehensive terms to this opportunity"
+            description={<React.Fragment />}
+            detailsModel={this.props.model}
+            validators={{}}
+            messages={{}}
+          />
+        </p>
         {this.props.formButtons}
       </Form>
     )

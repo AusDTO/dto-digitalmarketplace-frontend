@@ -20,6 +20,7 @@ import {
 } from 'marketplace/components/validators'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
+import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import styles from './BuyerSpecialistAdditionalInformationStage.scss'
 
 const requiredContactNumber = v => required(v.contactNumber)
@@ -152,6 +153,26 @@ export class BuyerSpecialistRequirementsStage extends Component {
             </a>
           </p>
         )}
+        <p>
+          <label className="question-heading au-text-input__label">Additional information</label>
+          <br />
+          We recommend that the <a href="http://www.google.com">comprehensive terms TODO</a> only be applied to
+          procurements that are complex or high value. The terms will apply to you work order, in addition to the Master
+          Agreement.
+        </p>
+        <p>
+          <CheckboxDetailsField
+            model={`${this.props.model}.comprehensiveTerms`}
+            id={`comprehensiveTerms`}
+            name={`comprehensiveTerms`}
+            // onClick={this.handleIncludeWeightingsEssentialChange}
+            label="Apply the comprehensive terms to this opportunity"
+            description={<React.Fragment />}
+            detailsModel={this.props.model}
+            validators={{}}
+            messages={{}}
+          />
+        </p>
         <Textfield
           model={`${this.props.model}.contactNumber`}
           label="Contact number for Marketplace support"
