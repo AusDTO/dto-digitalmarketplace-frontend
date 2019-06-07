@@ -42,34 +42,35 @@ export class TeamLeadsStage extends Component {
 
   handleSearchChange(e) {
     const keywords = e.target.value
-    let timeoutHandle = null
 
     this.setState({
       inputValue: keywords
     })
 
-    if (timeoutHandle) {
-      clearTimeout(timeoutHandle)
+    if (this.state.timeoutId) {
+      clearTimeout(this.state.timeoutId)
     }
 
-    timeoutHandle = setTimeout(() => {
-      if (keywords && keywords.length >= this.props.minimumSearchChars) {
-        this.props
-          .findTeamMember(keywords)
-          .then(data => {
-            const noResults = !data.users.length > 0
-            this.setState({
-              users: data.users,
-              noResults
+    this.setState({
+      timeoutId: setTimeout(() => {
+        if (keywords && keywords.length >= this.props.minimumSearchChars) {
+          this.props
+            .findTeamMember(keywords)
+            .then(data => {
+              const noResults = !data.users.length > 0
+              this.setState({
+                users: data.users,
+                noResults
+              })
             })
+            .catch(() => {})
+        } else {
+          this.setState({
+            users: []
           })
-          .catch(() => {})
-      } else {
-        this.setState({
-          users: []
-        })
-      }
-    }, 500)
+        }
+      }, 500)
+    })
   }
 
   render() {
