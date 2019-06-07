@@ -81,3 +81,27 @@ export const saveTeam = team => (dispatch, getState) => {
     return response
   })
 }
+
+export const findTeamMember = keywords => (dispatch, getState) => {
+  const params = { keywords }
+
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: '/team/members/search',
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': getState().app.csrfToken
+    },
+    params
+  }).then(response => {
+    if (!response || response.error) {
+      const errorMessage = response.data.message ? response.data.message : GENERAL_ERROR
+      dispatch(setErrorMessage(errorMessage))
+    } else {
+      return response.data
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
