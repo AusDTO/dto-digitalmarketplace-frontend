@@ -72,7 +72,6 @@ export default combineReducers({
   messages,
   form_options,
   errorMessage,
-  team,
   ...createForms({
     signupForm: {
       name: '',
@@ -132,6 +131,7 @@ export default combineReducers({
       }
     },
     BuyerRFXForm: BuyerRFXFormReducer,
-    BuyerATMForm: BuyerATMFormReducer
+    BuyerATMForm: BuyerATMFormReducer,
+    team
   })
 })
