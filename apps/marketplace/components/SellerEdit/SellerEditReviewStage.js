@@ -20,21 +20,19 @@ export class SellerEditReviewStage extends Component {
     const props = this.props
     const { model, onSubmit } = this.props
     return (
-      <Form model={model} onSubmit={onSubmit} validators={{}}>
-        <div>
-          {props[model].agreementStatus.signed ? (
-            <SignedMasterAgreement {...props} />
-          ) : (
-            <React.Fragment>
-              {!props[model].agreementStatus.canSign && <NewMasterAgreement {...props} />}
-              {props[model].agreementStatus.canSign &&
-                !props[model].agreementStatus.canUserSign && <ShareWithAuthRep {...props} />}
-              {props[model].agreementStatus.canSign &&
-                props[model].agreementStatus.canUserSign && <YourDeclaration {...props} />}
-            </React.Fragment>
-          )}
-        </div>
-      </Form>
+      <React.Fragment>
+        {props[model].agreementStatus.signed ? (
+          <SignedMasterAgreement {...props} />
+        ) : (
+          <React.Fragment>
+            {!props[model].agreementStatus.canSign && <NewMasterAgreement {...props} />}
+            {props[model].agreementStatus.canSign &&
+              !props[model].agreementStatus.canUserSign && <ShareWithAuthRep {...props} />}
+            {props[model].agreementStatus.canSign &&
+              props[model].agreementStatus.canUserSign && <YourDeclaration {...props} />}
+          </React.Fragment>
+        )}
+      </React.Fragment>
     )
   }
 }

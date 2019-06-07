@@ -12,6 +12,7 @@ import { AUcheckbox } from '@gov.au/control-input'
 import { acceptAgreement, declineAgreement } from 'marketplace/actions/sellerEditActions'
 import { logout } from 'marketplace/actions/appActions'
 import { SellerEditFormReducer } from 'marketplace/reducers'
+import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import styles from './YourDeclaration.scss'
 
 const processResponse = response => {
@@ -33,7 +34,8 @@ export class YourDeclaration extends Component {
     super(props)
     this.state = {
       acceptEnabled: false,
-      showDeclineConfirmation: false
+      showDeclineConfirmation: false,
+      loading: false
     }
 
     this.acceptAgreementClick = this.acceptAgreementClick.bind(this)
@@ -51,10 +53,16 @@ export class YourDeclaration extends Component {
 
   acceptAgreementClick() {
     const data = { ...this.props[this.props.model] }
+    this.setState({
+      loading: true
+    })
     return this.props.acceptAgreement(data.supplier.code).then(response => {
       if (response.status === 200) {
         this.props.changeFormModel(processResponse(response))
       }
+      this.setState({
+        loading: false
+      })
     })
   }
 
@@ -72,6 +80,10 @@ export class YourDeclaration extends Component {
 
   yesToDeclineClick() {
     const data = { ...this.props[this.props.model] }
+    this.setState({
+      loading: true,
+      showDeclineConfirmation: false
+    })
     return this.props.declineAgreement(data.supplier.code).then(response => {
       if (response.status === 200) {
         this.props.logout()
@@ -82,6 +94,10 @@ export class YourDeclaration extends Component {
   render() {
     const props = this.props
     const { model } = this.props
+
+    if (this.state.loading) {
+      return <LoadingIndicatorFullPage />
+    }
     return (
       <React.Fragment>
         {this.state.showDeclineConfirmation ? (

@@ -62,11 +62,20 @@ export class SellerEditFlowPage extends Component {
 
   save() {
     const data = { ...this.props[model] }
+    this.setState({
+      loading: true
+    })
     return this.props.saveSeller(this.props.match.params.supplierCode, data.supplier).then(response => {
       if (response.status === 200) {
         this.props.changeFormModel(processResponse(response))
+        this.setState({
+          loading: false
+        })
         return Promise.resolve(response)
       }
+      this.setState({
+        loading: false
+      })
       return Promise.reject(response.data.message)
     })
   }
