@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import YourDeclaration from './YourDeclaration'
 import ShareWithAuthRep from './ShareWithAuthRep'
@@ -18,7 +17,7 @@ export class SellerEditReviewStage extends Component {
 
   render() {
     const props = this.props
-    const { model, onSubmit } = this.props
+    const { model } = this.props
     return (
       <React.Fragment>
         {props[model].agreementStatus.signed ? (
@@ -38,13 +37,11 @@ export class SellerEditReviewStage extends Component {
 }
 
 SellerEditReviewStage.defaultProps = {
-  onSubmit: () => {},
   stagesTodo: []
 }
 
 SellerEditReviewStage.propTypes = {
-  model: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func
+  model: PropTypes.string.isRequired
 }
 
 const mapStateToProps = (state, props) => ({
