@@ -55,10 +55,8 @@ export class TeamLeadsStage extends Component {
           this.props
             .findTeamMember(this.state.inputValue)
             .then(data => {
-              const noResults = !data.users.length > 0
               this.setState({
-                users: data.users,
-                noResults
+                users: data.users
               })
             })
             .catch(() => {})
