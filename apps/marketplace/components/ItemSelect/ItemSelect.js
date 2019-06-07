@@ -13,6 +13,7 @@ const ItemSelect = props => {
     inputValue,
     items,
     label,
+    minimumSearchChars,
     placeholder,
     resultIsEmpty,
     resultListItems,
@@ -31,13 +32,15 @@ const ItemSelect = props => {
         placeholder={placeholder}
         showSearchButton={showSearchButton}
       />
-      <ItemSelectResultsList
-        emptyResultsMessage={emptyResultsMessage}
-        items={items}
-        resultIsEmpty={resultIsEmpty}
-        resultListItems={resultListItems}
-        keywords={inputValue}
-      />
+      {inputValue.length >= minimumSearchChars && (
+        <ItemSelectResultsList
+          emptyResultsMessage={emptyResultsMessage}
+          items={items}
+          resultIsEmpty={resultIsEmpty}
+          resultListItems={resultListItems}
+          keywords={inputValue}
+        />
+      )}
     </React.Fragment>
   )
 }
