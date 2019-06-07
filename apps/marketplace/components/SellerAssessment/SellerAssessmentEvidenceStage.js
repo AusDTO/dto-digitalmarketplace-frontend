@@ -201,7 +201,7 @@ const SellerAssessmentEvidenceStage = props => (
           Criteria evidence
         </AUheadings>
         <p>
-          <strong>For each criteria provide at least 200 words explaining:</strong>
+          <strong>For each criteria provide at least {minimumWordRequirement} words explaining:</strong>
         </p>
         <ul>
           <li>What you were specifically responsible for</li>
