@@ -21,7 +21,7 @@ const EmptyResultsMessage = () => <li>User cannot be found.</li>
 const TeamMemberListItems = props =>
   props.items.map(item => (
     <li key={item.id}>
-      <a href={`#${item}`}>
+      <a href={`#${item.id}`}>
         {item.name} ({item.email})
       </a>
     </li>
