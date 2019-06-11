@@ -81,11 +81,11 @@ const BuyerRFXAboutStage = props => (
             NEW: An updated Master Agreement will take effect on 1 July 2019, but can be applied to opportunities that
             are published from today. Contracts that use this must be signed after 1 July.<br />
             To apply the new agreement to this opportunity, include ‘This opportunity will be subject to the terms and
-            conditions of the{' '}
-            <a href="/static/media/documents/digital-marketplace-master-agreement-2019-07-01.pdf">
-              new Master Agreement
-            </a>{' '}
-            that takes effect from 1 July 2019.<br />
+            conditions of the new Master Agreement that takes effect from 1 July 2019.<br />
+            More information can be found at{' '}
+            <a href="/2/r/master-agreement-2019-07-01.pdf" rel="noopener noreferrer" target="_blank">
+              http://marketplace.service.gov.au/2/r/master-agreement-2019-07-01.pdf
+            </a>.
           </p>
         </React.Fragment>
       }
