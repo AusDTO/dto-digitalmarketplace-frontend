@@ -1,25 +1,23 @@
+import format from 'date-fns/format'
 import * as util from '../../flows/utils'
 
 const clickSaveContinue = async () => {
-  await util.clickInputButton('Save and continue')
-}
-
-const clickReturnToOverview = async () => {
-  await util.clickLink('Return to overview')
+  await util.clickButton('Save and continue')
 }
 
 const createBrief = async () => {
   await util.clickLink('Specialist')
-  await util.clickInputButton('Create opportunity')
+  await util.clickLink('Create and publish request')
+  await util.clickButton('Start now')
 }
 
-const fillRole = async role => {
-  await util.type('input-title', { value: role })
+const fillAbout = async (role, locations) => {
   await clickSaveContinue()
-}
-
-const selectLocation = async locations => {
-  await util.clickLink('Location')
+  await util.matchText('li', 'Enter the title for your opportunity.')
+  await util.matchText('li', 'what will the specialist do')
+  await util.matchText('li', 'You must select at least one location.')
+  await util.typeInReactInput('title', { value: role })
+  await util.typeInReactInput('summary', { numberOfWords: 1000 })
 
   locations.forEach(async location => {
     await util.selectCheck(location)
@@ -28,100 +26,120 @@ const selectLocation = async locations => {
   await clickSaveContinue()
 }
 
-const fillDescriptionOfWork = async () => {
-  await util.clickLink('Description of work')
-  await util.clickLink('Add organisation')
-
-  const fields = [
-    { id: 'input-organisation', options: { numberOfCharacters: 100 } },
-    { id: 'input-specialistWork', options: { numberOfWords: 100 } },
-    { id: 'input-existingTeam', options: { numberOfWords: 100 } },
-    { id: 'input-additionalRelevantInformation', options: { numberOfWords: 500 } },
-    { id: 'input-workplaceAddress', options: { numberOfWords: 100 } },
-    { id: 'input-workingArrangements', options: { numberOfWords: 500 } },
-    { id: 'input-securityClearance', options: { numberOfWords: 50 } },
-    { id: 'input-startDate', options: { numberOfCharacters: 100 } },
-    { id: 'input-contractLength', options: { numberOfWords: 100 } },
-    { id: 'input-additionalTerms', options: { numberOfWords: 500 } },
-    { id: 'input-budgetRange', options: { numberOfWords: 100 } },
-    { id: 'input-summary', options: { numberOfWords: 50 } }
-  ]
-
-  fields.forEach(async field => {
-    await util.type(field.id, field.options)
-    await clickSaveContinue()
-  })
-
-  await clickReturnToOverview()
-}
-
-const fillEvaluationProcess = async (areaOfExpertise, evaluations) => {
-  await util.clickLink('Shortlist and evaluation process')
-  await util.clickLink('Please choose an area of expertise')
-
-  await util.selectRadio(areaOfExpertise)
+const fillWhoCanRespond = async categoryId => {
   await clickSaveContinue()
+  await util.matchText('li', 'You must select a category')
+  await page.select(`#select-seller-category-select`, categoryId)
 
-  await util.type('input-numberOfSuppliers', { value: '3' })
+  await util.selectRadio('selected')
   await clickSaveContinue()
+  await util.matchText('li', 'You must add at least one seller')
 
-  await util.type('input-technicalWeighting', { value: '25' })
-  await util.type('input-culturalWeighting', { value: '25' })
-  await util.type('input-priceWeighting', { value: '50' })
-  await clickSaveContinue()
-
-  await util.type('input-essentialRequirements-1', { numberOfCharacters: 300 })
-  await util.type('input-niceToHaveRequirements-1', { numberOfCharacters: 300 })
-  await clickSaveContinue()
-
-  await util.type('input-culturalFitCriteria-1', { numberOfCharacters: 300 })
-  await clickSaveContinue()
-
-  evaluations.forEach(async evaluation => {
-    await util.selectCheck(evaluation)
-  })
-
-  await clickSaveContinue()
-  await clickReturnToOverview()
-}
-
-const fillHowLong = async () => {
-  await util.clickLink('How long your brief will be open')
-  await util.selectRadio('1 week')
+  await util.selectRadio('all')
   await clickSaveContinue()
 }
 
-const fillQuestionAnswer = async () => {
-  await util.clickLink('Question and answer session details')
-  await util.clickLink('Add details')
-  await util.type('input-questionAndAnswerSessionDetails', { numberOfWords: 100 })
+const fillSelectionCriteria = async () => {
+  await util.selectCheck('includeWeightingsEssential', 'id')
+  await util.selectCheck('includeWeightingsNiceToHave', 'id')
   await clickSaveContinue()
-  await clickReturnToOverview()
+  await util.matchText('li', 'You cannot have blank essential criteria.')
+  await util.matchText('li', 'You cannot have blank essential weightings.')
+  await util.matchText('li', 'Desirable weightings must add up to 100%.')
+
+  const essCriteria = await util.typeInReactInput('essential_criteria_0', { numberOfWords: 50 })
+  const essWeighting = await util.typeInReactInput('essential_weighting_0', { value: '10' })
+  await clickSaveContinue()
+  await util.matchText('li', 'Essential weightings must add up to 100%.')
+  await util.typeInReactInput('essential_weighting_0', { value: '0' })
+  const essentialCriteria = {
+    criteria: essCriteria,
+    weighting: essWeighting
+  }
+
+  const nthCriteria = await util.typeInReactInput('nice_to_have_criteria_0', { numberOfWords: 50 })
+  const nthWeighting = await util.typeInReactInput('nice_to_have_weighting_0', { value: '100' })
+  const niceToHaveCriteria = {
+    criteria: nthCriteria,
+    weighting: nthWeighting
+  }
+  await clickSaveContinue()
+
+  return {
+    essentialCriteria,
+    niceToHaveCriteria
+  }
 }
 
-const fillWhoCanRespond = async () => {
-  await util.clickLink('Who can respond')
-  await util.selectRadio('allSellers')
+const fillSellerResponses = async () => {
+  await clickSaveContinue()
+  await util.matchText('li', 'You must define the security clearance requirements')
+
+  const input = await util.getElementHandle(`//input[@id="numberOfSuppliers"]`)
+  await input.press('Backspace')
+  const numberOfSuppliers = await util.typeInReactInput('numberOfSuppliers', { value: '6' })
+
+  await util.selectCheck('References')
+  await util.selectCheck('Interviews')
+  await util.selectCheck('Scenarios or tests')
+  await util.selectCheck('Presentations')
+
+  await util.selectRadio('hourlyRate')
+  await util.typeInReactInput('maxRate', { value: '123' })
+  await util.typeInReactInput('budgetRange', { numberOfCharacters: '100' })
+
+  await util.selectRadio('mustHave')
+  await clickSaveContinue()
+  await util.matchText('li', 'You must select a type of security clearance.')
+  await page.select(`#securityClearanceCurrent`, 'pv')
+  await clickSaveContinue()
+  return {
+    numberOfSuppliers
+  }
+}
+
+const fillTimeframes = async () => {
+  await clickSaveContinue()
+  await util.matchText('li', 'Enter an estimated start date for the opportunity')
+  await util.matchText('li', 'You must enter a valid start date')
+  await util.matchText('li', 'Enter a contract length for the opportunity')
+  const now = new Date()
+  const future = new Date(now.setDate(now.getDate() + 14))
+  await util.typeInReactInput('day', { value: `${format(future, 'DD')}` })
+  await util.typeInReactInput('month', { value: `${format(future, 'MM')}` })
+  await util.typeInReactInput('year', { value: `${format(future, 'YYYY')}` })
+  await util.typeInReactInput('contractLength', { numberOfCharacters: 100 })
+  await util.typeInReactInput('contractExtensions', { numberOfCharacters: 100 })
+  await clickSaveContinue()
+}
+
+const fillAdditionalInformation = async () => {
+  await clickSaveContinue()
+  await util.matchText('li', 'Contact number is required')
+  await util.upload('file_0', 'document.pdf', 'Additional documents (optional)')
+  await util.typeInReactInput('contactNumber', { value: '01234455667733' })
   await clickSaveContinue()
 }
 
 const publishBrief = async () => {
-  await util.clickLink('Review and publish your requirements')
-  await util.clickInputButton('Publish brief')
-  await util.matchText('h4', 'Your opportunity has been published')
+  await util.selectCheck('cb-declaration', 'id')
+  await util.clickButton('Publish')
 }
 
 const create = async params => {
   console.log(`Starting to create ${params.areaOfExpertise} brief`)
   await createBrief()
-  await fillRole(params.title)
-  await selectLocation(params.locations)
-  await fillDescriptionOfWork()
-  await fillEvaluationProcess(params.areaOfExpertise, params.evaluations)
-  await fillHowLong()
-  await fillQuestionAnswer()
-  await fillWhoCanRespond()
+  await fillAbout(params.title, params.locations)
+  await fillWhoCanRespond(params.categoryId)
+  const criteria = await fillSelectionCriteria()
+  const responses = await fillSellerResponses()
+  await fillTimeframes()
+  await fillAdditionalInformation()
   await publishBrief()
+  return {
+    criteria,
+    numberOfSuppliers: responses.numberOfSuppliers
+  }
 }
 
 export default create
