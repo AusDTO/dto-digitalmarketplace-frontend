@@ -3,5 +3,13 @@
 
     ul {
         list-style-type: none;
+
+        li {
+            border-top: 1px solid gray;
+
+            &:last-child {
+                border-bottom: 1px solid gray;
+            }
+        }
     }
 }
