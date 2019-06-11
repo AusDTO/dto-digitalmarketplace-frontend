@@ -8,6 +8,7 @@ const ItemSelect = props => {
   const {
     description,
     emptyResultsMessage,
+    handleRemoveItem,
     handleSearchChange,
     handleSearchClick,
     id,
@@ -45,7 +46,11 @@ const ItemSelect = props => {
         />
       )}
       {Object.keys(selectedItems).length > 0 && (
-        <ItemSelectSummary selectedItems={selectedItems} summaryHeading={summaryHeading} />
+        <ItemSelectSummary
+          handleRemoveItem={handleRemoveItem}
+          selectedItems={selectedItems}
+          summaryHeading={summaryHeading}
+        />
       )}
     </React.Fragment>
   )

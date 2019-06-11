@@ -39,6 +39,7 @@ export class TeamLeadsStage extends Component {
     }
 
     this.handleItemClick = this.handleItemClick.bind(this)
+    this.handleRemoveItem = this.handleRemoveItem.bind(this)
     this.handleSearchChange = this.handleSearchChange.bind(this)
   }
 
@@ -53,6 +54,17 @@ export class TeamLeadsStage extends Component {
       },
       users: []
     }))
+  }
+
+  handleRemoveItem(e, userId) {
+    e.preventDefault()
+
+    const updatedTeamLeads = this.state.teamLeads
+    delete updatedTeamLeads[userId]
+
+    this.setState({
+      teamLeads: updatedTeamLeads
+    })
   }
 
   handleSearchChange(e) {
@@ -107,6 +119,7 @@ export class TeamLeadsStage extends Component {
           defaultValue={this.props[model].teamLeadName}
           description={teamLeadNameDescription}
           emptyResultsMessage={emptyResultsMessage}
+          handleRemoveItem={this.handleRemoveItem}
           handleSearchChange={this.handleSearchChange}
           htmlFor="teamLeadName"
           id="teamLeadName"

@@ -5,7 +5,7 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import styles from './ItemSelectSummary.scss'
 
 const ItemSelectSummary = props => {
-  const { selectedItems, summaryHeading } = props
+  const { handleRemoveItem, selectedItems, summaryHeading } = props
   const sortedKeys = Object.keys(selectedItems).sort((a, b) => (selectedItems[a] > selectedItems[b] ? 1 : -1))
 
   return (
@@ -17,6 +17,9 @@ const ItemSelectSummary = props => {
         {sortedKeys.map(key => (
           <li key={key}>
             <span>{selectedItems[key]}</span>
+            <a href="#remove" onClick={e => handleRemoveItem(e, key)}>
+              Remove
+            </a>
           </li>
         ))}
       </ul>
