@@ -2,6 +2,7 @@ import React from 'react'
 
 import ItemSelectInput from './ItemSelectInput'
 import ItemSelectResultsList from './ItemSelectResultsList'
+import ItemSelectSummary from './ItemSelectSummary'
 
 const ItemSelect = props => {
   const {
@@ -17,7 +18,9 @@ const ItemSelect = props => {
     placeholder,
     resultIsEmpty,
     resultListItems,
-    showSearchButton
+    selectedItems,
+    showSearchButton,
+    summaryHeading
   } = props
 
   return (
@@ -41,6 +44,7 @@ const ItemSelect = props => {
           keywords={inputValue}
         />
       )}
+      <ItemSelectSummary selectedItems={selectedItems} summaryHeading={summaryHeading} />
     </React.Fragment>
   )
 }

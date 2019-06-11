@@ -21,7 +21,7 @@ const EmptyResultsMessage = () => <li>User cannot be found.</li>
 const TeamMemberListItems = props =>
   props.items.map(item => (
     <li key={item.id}>
-      <a href={`#${item.id}`}>
+      <a href={`#${item.id}`} onClick={e => props.handleItemClick(e, item)}>
         {item.name} ({item.email})
       </a>
     </li>
@@ -33,11 +33,26 @@ export class TeamLeadsStage extends Component {
 
     this.state = {
       inputValue: '',
+      teamLeads: {},
       timeoutId: null,
       users: []
     }
 
+    this.handleItemClick = this.handleItemClick.bind(this)
     this.handleSearchChange = this.handleSearchChange.bind(this)
+  }
+
+  handleItemClick(e, user) {
+    e.preventDefault()
+
+    this.setState(prevState => ({
+      inputValue: '',
+      teamLeads: {
+        ...prevState.teamLeads,
+        [user.id]: user.name
+      },
+      users: []
+    }))
   }
 
   handleSearchChange(e) {
@@ -73,7 +88,7 @@ export class TeamLeadsStage extends Component {
     const { formButtons, minimumSearchChars, model, onSubmit, onSubmitFailed } = this.props
     const teamLeadNameDescription = <TeamLeadNameDescription domain={this.props[model].domain} />
     const emptyResultsMessage = <EmptyResultsMessage />
-    const teamMemberListItems = <TeamMemberListItems items={this.state.users} />
+    const teamMemberListItems = <TeamMemberListItems handleItemClick={this.handleItemClick} items={this.state.users} />
 
     return (
       <Form model={model} onSubmit={onSubmit} onSubmitFailed={onSubmitFailed}>
@@ -105,7 +120,9 @@ export class TeamLeadsStage extends Component {
           placeholder=""
           resultIsEmpty={this.state.users.length < 1}
           resultListItems={teamMemberListItems}
+          selectedItems={this.state.teamLeads}
           showSearchButton={false}
+          summaryHeading="Current team leads"
           validators={{}}
         />
         {formButtons}
