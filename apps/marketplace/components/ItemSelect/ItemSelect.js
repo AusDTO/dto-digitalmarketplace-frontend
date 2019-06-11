@@ -44,7 +44,9 @@ const ItemSelect = props => {
           keywords={inputValue}
         />
       )}
-      <ItemSelectSummary selectedItems={selectedItems} summaryHeading={summaryHeading} />
+      {Object.keys(selectedItems).length > 0 && (
+        <ItemSelectSummary selectedItems={selectedItems} summaryHeading={summaryHeading} />
+      )}
     </React.Fragment>
   )
 }
