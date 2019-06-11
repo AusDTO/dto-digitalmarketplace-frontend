@@ -1,0 +1,15 @@
+applications:
+- name: dm-alpha-frontend
+  command:  ./scripts/cf_run_app.sh
+  buildpack: nodejs_buildpack
+  memory: 256M
+  disk_quota: 512M
+  instances: 1
+  services:
+  - ups-secret-service
+  - ups-dm-alpha-common
+  - ups-dm-alpha-frontend
+  routes:
+  - route: dm-alpha-frontend.apps.y.cld.gov.au
+  - route: dm-alpha.apps.y.cld.gov.au/bundle
+  - route: dm-alpha.apps.y.cld.gov.au/2
