@@ -13,7 +13,13 @@ const ItemSelectSummary = props => {
       <AUheading level="2" size="sm">
         {summaryHeading}
       </AUheading>
-      <ul>{sortedKeys.map(key => <li key={key}>{selectedItems[key]}</li>)}</ul>
+      <ul>
+        {sortedKeys.map(key => (
+          <li key={key}>
+            <span>{selectedItems[key]}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
