@@ -81,14 +81,17 @@ const BuyerSpecialistAboutStage = props => (
       description={
         <React.Fragment>
           <p>
-            NEW: An updated Master Agreement will take effect on 1 July 2019, but can be applied to opportunities that
-            are published from today. Contracts that use this must be signed after 1 July.<br />
-            To apply the new agreement to this opportunity, include ‘This opportunity will be subject to the terms and
-            conditions of the new Master Agreement that takes effect from 1 July 2019.<br />
-            More information can be found at{' '}
+            From 1 July 2019 the Digital Marketplace will operate on an updated Master Agreement. You may choose to
+            apply this new agreement to opportunities you publish from today, but the contract must be signed after 1
+            July 2019. <br />
+            <br />
+            To apply the new Master Agreement for this opportunity, you must include this sentence: {"'"}This
+            opportunity will be subject to the terms and conditions of the new Master Agreement that takes effect from 1
+            July 2019. More information can be found at{' '}
             <a href="/2/r/master-agreement-2019-07-01.pdf" rel="noopener noreferrer" target="_blank">
               http://marketplace.service.gov.au/2/r/master-agreement-2019-07-01.pdf
-            </a>.
+            </a>
+            {"'"}.
           </p>
         </React.Fragment>
       }
