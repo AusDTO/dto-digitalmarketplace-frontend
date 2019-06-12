@@ -112,8 +112,7 @@ class DomainSelector extends BaseForm {
                                     .length;
                             }
                         }}
-                        onCustomSubmit={onSubmit}
-                    >
+                        onSubmit={onSubmit}>
 
                         {csrf_token && (
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>

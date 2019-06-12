@@ -40,7 +40,6 @@ exports[`DomainSelector renders 1`] = `
       id="DomainSelector__create"
       method="post"
       noValidate={undefined}
-      onCustomSubmit={undefined}
       onReset={[Function]}
       onSubmit={[Function]}
     >
@@ -459,7 +458,6 @@ exports[`DomainSelector renders with populated fields 1`] = `
       id="DomainSelector__create"
       method="post"
       noValidate={undefined}
-      onCustomSubmit={undefined}
       onReset={[Function]}
       onSubmit={[Function]}
     >
