@@ -60,7 +60,7 @@ const getClosingTime = brief => {
 
 const getTrimmedFilename = fileName => {
   let newFileName = fileName
-  if (fileName.length > 32) {
+  if (fileName && fileName.length > 32) {
     // build a limited version of the file name, taking out chars from the middle
     newFileName = `${fileName.substring(0, 14)}...${fileName.substring(fileName.length - 15)}`
   }
