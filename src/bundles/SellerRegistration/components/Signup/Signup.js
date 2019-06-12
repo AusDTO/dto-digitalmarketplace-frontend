@@ -92,7 +92,6 @@ class Signup extends React.Component {
       actions.stepNextPersist(this.nextStep.pattern, this.step);
     },
     onSubmit: (e) => {
-      console.log(e)
       if (e && 'preventDefault' in e) {
         e.preventDefault();
       }
