@@ -20,7 +20,7 @@ export class Team extends Component {
   }
 
   render() {
-    const { items, loading, errors, errorMessage } = this.props
+    const { supplier, items, loading, errors, errorMessage } = this.props
 
     if (loading) {
       return <LoadingIndicatorFullPage />
@@ -72,7 +72,7 @@ export class Team extends Component {
                       </td>
                       <td className={styles.colAction}>
                         {item.type === 'ar' ? (
-                          <a href="/sellers/edit/?step=your-info">Change representative</a>
+                          <a href={`/2/seller-edit/${supplier.code}/representative`}>Change representative</a>
                         ) : (
                           <a href="#remove" onClick={() => this.props.removeClicked(item)}>
                             Remove
@@ -105,6 +105,7 @@ Team.propTypes = {
 }
 
 const mapStateToProps = state => ({
+  supplier: state.sellerDashboard.supplier.supplier,
   items: state.sellerDashboard.team.items,
   loading: state.sellerDashboard.team.loading,
   loadedAt: state.sellerDashboard.team.loadedAt,
