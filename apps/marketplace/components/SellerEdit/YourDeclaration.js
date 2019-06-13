@@ -14,6 +14,7 @@ import { logout } from 'marketplace/actions/appActions'
 import { SellerEditFormReducer } from 'marketplace/reducers'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import styles from './YourDeclaration.scss'
+import AgreementLinks from './AgreementLinks'
 
 const processResponse = response => {
   // only accept data defined in the form reducer
@@ -148,21 +149,7 @@ export class YourDeclaration extends Component {
               profile will be removed and you will not be able to apply for work.
             </p>
             <p>
-              <a
-                href="/static/media/documents/digital-marketplace-master-agreement-2019-07-01.pdf"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                Download Master Agreement
-              </a>
-              <br />
-              <a
-                href="/static/media/documents/digital-marketplace-master-agreement-2019-07-01.html"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                View Master Agreement in HTML
-              </a>
+              <AgreementLinks />
             </p>
             <iframe
               title="Master Agreement"

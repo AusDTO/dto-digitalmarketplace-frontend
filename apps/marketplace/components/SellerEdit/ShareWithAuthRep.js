@@ -6,6 +6,7 @@ import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import { notifyAuthRep } from 'marketplace/actions/sellerEditActions'
+import AgreementLinks from './AgreementLinks'
 
 export class ShareWithAuthRep extends Component {
   constructor(props) {
@@ -88,21 +89,7 @@ export class ShareWithAuthRep extends Component {
           </AUbutton>
         </p>
         <p>
-          <a
-            href="/static/media/documents/digital-marketplace-master-agreement-2019-07-01.pdf"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Download Master Agreement
-          </a>
-          <br />
-          <a
-            href="/static/media/documents/digital-marketplace-master-agreement-2019-07-01.html"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            View Master Agreement in HTML
-          </a>
+          <AgreementLinks />
         </p>
       </React.Fragment>
     )
