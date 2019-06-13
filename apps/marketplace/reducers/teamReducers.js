@@ -4,7 +4,8 @@ const defaultState = {
   emailAddress: '',
   id: 0,
   name: '',
-  status: ''
+  status: '',
+  teamLeads: {}
 }
 
 const teamReducer = (state = defaultState, action) => {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Form } from 'react-redux-form'
+import { actions, Form } from 'react-redux-form'
 
 import AUheading from '@gov.au/headings'
 import { findTeamMember } from 'marketplace/actions/teamActions'
@@ -49,6 +49,12 @@ export class TeamLeadsStage extends Component {
     this.handleSearchChange = this.handleSearchChange.bind(this)
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.teamLeads !== this.state.teamLeads) {
+      this.props.updateTeamLeads(this.state.teamLeads)
+    }
+  }
+
   handleItemClick(user) {
     this.setState(prevState => ({
       inputValue: '',
@@ -61,7 +67,7 @@ export class TeamLeadsStage extends Component {
   }
 
   handleRemoveItem(userId) {
-    const updatedTeamLeads = this.state.teamLeads
+    const updatedTeamLeads = { ...this.state.teamLeads }
     delete updatedTeamLeads[userId]
 
     this.setState({
@@ -156,8 +162,9 @@ const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)
 })
 
-const mapDispatchToProps = dispatch => ({
-  findTeamMember: keyword => dispatch(findTeamMember(keyword))
+const mapDispatchToProps = (dispatch, props) => ({
+  findTeamMember: keyword => dispatch(findTeamMember(keyword)),
+  updateTeamLeads: teamLeads => dispatch(actions.change(`${props.model}.teamLeads`, teamLeads))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TeamLeadsStage)
