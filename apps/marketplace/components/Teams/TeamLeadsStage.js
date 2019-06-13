@@ -21,7 +21,13 @@ const EmptyResultsMessage = () => <li>User cannot be found.</li>
 const TeamMemberListItems = props =>
   props.items.map(item => (
     <li key={item.id}>
-      <a href={`#${item.id}`} onClick={e => props.handleItemClick(e, item)}>
+      <a
+        href={`#${item.id}`}
+        onClick={e => {
+          e.preventDefault()
+          props.handleItemClick(item)
+        }}
+      >
         {item.name} ({item.email})
       </a>
     </li>
@@ -43,9 +49,7 @@ export class TeamLeadsStage extends Component {
     this.handleSearchChange = this.handleSearchChange.bind(this)
   }
 
-  handleItemClick(e, user) {
-    e.preventDefault()
-
+  handleItemClick(user) {
     this.setState(prevState => ({
       inputValue: '',
       teamLeads: {
@@ -56,9 +60,7 @@ export class TeamLeadsStage extends Component {
     }))
   }
 
-  handleRemoveItem(e, userId) {
-    e.preventDefault()
-
+  handleRemoveItem(userId) {
     const updatedTeamLeads = this.state.teamLeads
     delete updatedTeamLeads[userId]
 

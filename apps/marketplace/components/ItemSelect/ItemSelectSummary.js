@@ -17,7 +17,13 @@ const ItemSelectSummary = props => {
         {sortedKeys.map(key => (
           <li key={key}>
             <span>{selectedItems[key]}</span>
-            <a href="#remove" onClick={e => handleRemoveItem(e, key)}>
+            <a
+              href="#remove"
+              onClick={e => {
+                e.preventDefault()
+                handleRemoveItem(key)
+              }}
+            >
               Remove
             </a>
           </li>
