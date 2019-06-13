@@ -30,6 +30,8 @@ const renderCriteriaFeedback = (criteriaId, criteria) => {
   return output
 }
 
+const allCriteriaPassed = criteria => Object.keys(criteria).every(id => !criteria[id].has_feedback)
+
 const SellerAssessmentFeedback = props => (
   <div>
     <AUdirectionLink link={`${rootPath}/seller-dashboard/categories`} text="back to dashboard" direction="left" />
@@ -42,11 +44,12 @@ const SellerAssessmentFeedback = props => (
     {Object.keys(props.feedback.criteria).length > 0 && (
       <React.Fragment>
         <ul className={styles.feedbackList}>
-          {!props.feedback.vfm && (
-            <li>
-              <Cross colour="#FF0000" className={styles.icon} />The submitted rate was not considered value for money.
-            </li>
-          )}
+          {allCriteriaPassed(props.feedback.criteria) &&
+            !props.feedback.vfm && (
+              <li>
+                <Cross colour="#FF0000" className={styles.icon} />The submitted rate was not considered value for money.
+              </li>
+            )}
           {Object.keys(props.feedback.criteria).map(criteriaId => (
             <li key={criteriaId}>
               {!props.feedback.criteria[criteriaId].has_feedback && (
@@ -75,10 +78,20 @@ const SellerAssessmentFeedback = props => (
         <AUheading level="2" size="lg">
           Next steps
         </AUheading>
-        <p>
-          You can incorporate the assessment team&apos;s feedback and{' '}
-          <a href={`${rootPath}/seller-assessment/create/${props.feedback.domainId}`}>resubmit your request</a>.
-        </p>
+        {allCriteriaPassed(props.feedback.criteria) &&
+          !props.feedback.vfm && (
+            <p>
+              You will need to{' '}
+              <a href={`${rootPath}/seller-assessment/create/${props.feedback.domainId}`}>reduce your daily rate</a> so
+              it is no higher than $XXX.
+            </p>
+          )}
+        {!allCriteriaPassed(props.feedback.criteria) && (
+          <p>
+            You can incorporate the assessment team&apos;s feedback and{' '}
+            <a href={`${rootPath}/seller-assessment/create/${props.feedback.domainId}`}>resubmit your request</a>.
+          </p>
+        )}
       </React.Fragment>
     )}
   </div>
