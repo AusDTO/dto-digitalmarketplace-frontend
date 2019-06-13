@@ -5,7 +5,6 @@ import { actions } from 'react-redux-form'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
-import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import { AUcheckbox } from '@gov.au/control-input'
@@ -53,11 +52,10 @@ export class YourDeclaration extends Component {
   }
 
   acceptAgreementClick() {
-    const data = { ...this.props[this.props.model] }
     this.setState({
       loading: true
     })
-    return this.props.acceptAgreement(data.supplier.code).then(response => {
+    return this.props.acceptAgreement(this.props.supplierCode).then(response => {
       if (response.status === 200) {
         this.props.changeFormModel(processResponse(response))
       }
@@ -80,12 +78,11 @@ export class YourDeclaration extends Component {
   }
 
   yesToDeclineClick() {
-    const data = { ...this.props[this.props.model] }
     this.setState({
       loading: true,
       showDeclineConfirmation: false
     })
-    return this.props.declineAgreement(data.supplier.code).then(response => {
+    return this.props.declineAgreement(this.props.supplierCode).then(response => {
       if (response.status === 200) {
         this.props.logout()
       }
@@ -93,8 +90,7 @@ export class YourDeclaration extends Component {
   }
 
   render() {
-    const props = this.props
-    const { model } = this.props
+    const { abn, startDate, representative } = this.props
 
     if (this.state.loading) {
       return <LoadingIndicatorFullPage />
@@ -143,10 +139,9 @@ export class YourDeclaration extends Component {
               Your declaration
             </AUheading>
             <p>
-              A new Master Agreement takes effect from{' '}
-              <b>{format(parse(props[model].agreementStatus.startDate), 'D MMMM YYYY')}</b>. Your company must accept
-              the new agreement to apply for work through the Digital Marketplace. If you choose to decline, your
-              profile will be removed and you will not be able to apply for work.
+              A new Master Agreement takes effect from <b>{format(parse(startDate), 'D MMMM YYYY')}</b>. Your company
+              must accept the new agreement to apply for work through the Digital Marketplace. If you choose to decline,
+              your profile will be removed and you will not be able to apply for work.
             </p>
             <p>
               <AgreementLinks />
@@ -164,9 +159,7 @@ export class YourDeclaration extends Component {
                     acceptEnabled: e.target.checked
                   })
                 }}
-                label={`I am ${props[model].supplier.data.representative}, an authorised representativee of (ABN: ${
-                  props[model].supplier.abn
-                }) and I agree to the terms set out in the Marketplace Master Agreement.`}
+                label={`I am ${representative}, an authorised representativee of (ABN: ${abn}) and I agree to the terms set out in the Marketplace Master Agreement.`}
               />
             </p>
             <p>
@@ -197,15 +190,17 @@ export class YourDeclaration extends Component {
   }
 }
 
-YourDeclaration.defaultProps = {}
-
-YourDeclaration.propTypes = {
-  model: PropTypes.string.isRequired
+YourDeclaration.defaultProps = {
+  abn: '',
+  representative: '',
+  supplierCode: null
 }
 
-const mapStateToProps = (state, props) => ({
-  ...formProps(state, props.model)
-})
+YourDeclaration.propTypes = {
+  abn: PropTypes.string,
+  representative: PropTypes.string,
+  supplierCode: PropTypes.number
+}
 
 const mapDispatchToProps = dispatch => ({
   changeFormModel: data => dispatch(actions.merge('SellerEditFlowPage', data)),
@@ -214,4 +209,4 @@ const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(YourDeclaration)
+export default connect(null, mapDispatchToProps)(YourDeclaration)

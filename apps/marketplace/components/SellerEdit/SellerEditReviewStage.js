@@ -20,17 +20,25 @@ export class SellerEditReviewStage extends Component {
   render() {
     const props = this.props
     const { model } = this.props
+    const { canSign, canUserSign, signed, startDate } = props[model].agreementStatus
+    const { representative, email } = props[model].supplier.data
+    const { abn, code, name } = props[model].supplier
+
     return (
       <React.Fragment>
-        {props[model].agreementStatus.signed ? (
-          <SignedMasterAgreement {...props} />
+        {signed ? (
+          <SignedMasterAgreement />
         ) : (
           <React.Fragment>
-            {!props[model].agreementStatus.canSign && <NewMasterAgreement {...props} />}
-            {props[model].agreementStatus.canSign &&
-              !props[model].agreementStatus.canUserSign && <ShareWithAuthRep {...props} />}
-            {props[model].agreementStatus.canSign &&
-              props[model].agreementStatus.canUserSign && <YourDeclaration {...props} />}
+            {!canSign && <NewMasterAgreement startDate={startDate} representative={representative} />}
+            {canSign &&
+              !canUserSign && (
+                <ShareWithAuthRep representative={representative} name={name} email={email} supplierCode={code} />
+              )}
+            {canSign &&
+              canUserSign && (
+                <YourDeclaration representative={representative} abn={abn} startDate={startDate} supplierCode={code} />
+              )}
           </React.Fragment>
         )}
       </React.Fragment>

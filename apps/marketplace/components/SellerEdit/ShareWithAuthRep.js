@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
-import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import { notifyAuthRep } from 'marketplace/actions/sellerEditActions'
@@ -20,12 +19,12 @@ export class ShareWithAuthRep extends Component {
   }
 
   notifyAuthRep() {
-    const data = { ...this.props[this.props.model] }
+    const supplierCode = this.props.supplierCode
     this.setState({
       buttonDisabled: true,
       emailSendError: false
     })
-    return this.props.notifyAuthRep(data.supplier.code).then(response => {
+    return this.props.notifyAuthRep(supplierCode).then(response => {
       if (response.status === 200) {
         this.setState({
           showEmailSent: true
@@ -42,8 +41,8 @@ export class ShareWithAuthRep extends Component {
   }
 
   render() {
-    const props = this.props
-    const { model } = this.props
+    const { email, name, representative } = this.props
+
     return (
       <React.Fragment>
         {this.state.showEmailSent && (
@@ -56,7 +55,7 @@ export class ShareWithAuthRep extends Component {
                 this.declineAlertRef = ref
               }}
             >
-              {`An email has been sent to ${props[model].supplier.data.email}`}
+              {`An email has been sent to ${email}`}
             </p>
             <br />
           </AUpageAlert>
@@ -66,17 +65,17 @@ export class ShareWithAuthRep extends Component {
             <AUheading level="1" size="md">
               Email not sent
             </AUheading>
-            <p>{`An error has occured while sending an email to ${props[model].supplier.data.email}`}</p>
+            <p>{`An error has occured while sending an email to ${email}`}</p>
           </AUpageAlert>
         )}
         <AUheading level="1" size="xl">
           Share with authorised representative
         </AUheading>
         <p>
-          Only the authorised representative, {props[model].supplier.data.representative}, can accept the Master
-          Agreement terms on behalf of {props[model].supplier.name}.
+          Only the authorised representative, {representative}, can accept the Master Agreement terms on behalf of{' '}
+          {name}.
         </p>
-        <p>Would you like to send an email to {props[model].supplier.data.email} so they can proceed?</p>
+        <p>Would you like to send an email to {email} so they can proceed?</p>
         <p>
           <AUbutton
             disabled={this.state.buttonDisabled}
@@ -96,18 +95,22 @@ export class ShareWithAuthRep extends Component {
   }
 }
 
-ShareWithAuthRep.defaultProps = {}
-
-ShareWithAuthRep.propTypes = {
-  model: PropTypes.string.isRequired
+ShareWithAuthRep.defaultProps = {
+  email: '',
+  representative: '',
+  name: '',
+  supplierCode: null
 }
 
-const mapStateToProps = (state, props) => ({
-  ...formProps(state, props.model)
-})
+ShareWithAuthRep.propTypes = {
+  email: PropTypes.string,
+  representative: PropTypes.string,
+  name: PropTypes.string,
+  supplierCode: PropTypes.number
+}
 
 const mapDispatchToProps = dispatch => ({
   notifyAuthRep: supplierCode => dispatch(notifyAuthRep(supplierCode))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ShareWithAuthRep)
+export default connect(null, mapDispatchToProps)(ShareWithAuthRep)
