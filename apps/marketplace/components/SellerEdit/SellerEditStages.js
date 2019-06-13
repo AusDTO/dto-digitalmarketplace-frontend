@@ -1,5 +1,5 @@
 import SellerEditRepresentativeStage from './SellerEditRepresentativeStage'
-import SellerEditReviewStage from './SellerEditReviewStage'
+import SellerEditReviewStage, { done as reviewDone } from './SellerEditReviewStage'
 
 const SellerEditStages = [
   {
@@ -12,7 +12,7 @@ const SellerEditStages = [
     slug: 'declaration',
     title: 'Declaration',
     component: SellerEditReviewStage,
-    isDone: () => true
+    isDone: reviewDone
   }
 ]
 
