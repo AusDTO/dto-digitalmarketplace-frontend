@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AgreementLinks = props => (
+const AgreementLinks = () => (
   <React.Fragment>
     <a
       href="/static/media/documents/digital-marketplace-master-agreement-2019-07-01.pdf"
