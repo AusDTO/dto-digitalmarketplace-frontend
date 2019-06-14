@@ -14,7 +14,6 @@ import './SellerProfile.css';
 const Body = (props) => {
   const {
     assessed = [],
-    unassessed = [],
     case_studies = {},
     representative,
     email,
@@ -47,7 +46,13 @@ const Body = (props) => {
   return (
     <article className="seller-profile" styleName={public_profile ? 'full-profile' : ''}>
       <div styleName="seller-profile-content">
-        <Row title="Areas of expertise" show={!isEmpty(assessed) || !isEmpty(unassessed)}>
+        <Row title="Categories" show>
+
+          {isEmpty(assessed) && (
+            <p>
+              This seller has not yet been approved in any categories.
+            </p>
+          )}
 
           {!isEmpty(assessed) && (
             <span><div className="seller-profile__evaluated-badges" styleName="badges evaluated-badges">
@@ -72,17 +77,6 @@ const Body = (props) => {
 
                       </span>
 
-          )}
-
-          {!isEmpty(unassessed) && (
-            <div className="seller-profile__provides-badges" styleName="badges provides-badges">
-              <p><b>Experience in</b><br/>
-                These areas of expertise have not yet been formally assessed by the DTA. They will be assessed once the
-                seller expresses interest in a matching opportunity.</p>
-              {unassessed.map((service, i) => (
-                <span key={i}>{service}</span>
-              ))}
-            </div>
           )}
 
         </Row>
