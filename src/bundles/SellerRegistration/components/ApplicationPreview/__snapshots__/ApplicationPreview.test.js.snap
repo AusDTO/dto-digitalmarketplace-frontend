@@ -97,27 +97,15 @@ exports[`ApplicationPreview renders with props 1`] = `
                 <h2
                   className="seller-profile__section-title au-display-lg"
                 >
-                  Areas of expertise
+                  Categories
                 </h2>
               </div>
               <div
                 className="col-sm-8 col-sm-push-1 col-xs-12"
               >
-                <div
-                  className="seller-profile__provides-badges"
-                  styleName="badges provides-badges"
-                >
-                  <p>
-                    <b>
-                      Experience in
-                    </b>
-                    <br />
-                    These areas of expertise have not yet been formally assessed by the DTA. They will be assessed once the seller expresses interest in a matching opportunity.
-                  </p>
-                  <span>
-                    0
-                  </span>
-                </div>
+                <p>
+                  This seller has not yet been approved in any categories.
+                </p>
               </div>
             </div>
             <div
