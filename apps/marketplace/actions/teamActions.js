@@ -60,7 +60,7 @@ export const handleSaveTeamSuccess = response => ({
   team: response.data.team
 })
 
-export const saveTeam = team => (dispatch, getState) => {
+export const saveTeam = (stage, team) => (dispatch, getState) => {
   dispatch(sendingRequest(true))
   return dmapi({
     url: `/team/${team.id}/update`,
@@ -69,7 +69,7 @@ export const saveTeam = team => (dispatch, getState) => {
       'Content-Type': 'application/json',
       'X-CSRFToken': getState().app.csrfToken
     },
-    data: JSON.stringify(team)
+    data: JSON.stringify({ stage, team })
   }).then(response => {
     if (!response || response.error) {
       const errorMessage = response.data.message ? response.data.message : GENERAL_ERROR
