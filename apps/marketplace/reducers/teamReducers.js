@@ -5,7 +5,8 @@ const defaultState = {
   id: 0,
   name: '',
   status: '',
-  teamLeads: {}
+  teamLeads: {},
+  teamLeadsToRemove: []
 }
 
 const teamReducer = (state = defaultState, action) => {

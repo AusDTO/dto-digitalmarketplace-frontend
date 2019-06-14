@@ -40,6 +40,7 @@ export class TeamLeadsStage extends Component {
     this.state = {
       inputValue: '',
       teamLeads: {},
+      teamLeadsToRemove: [],
       timeoutId: null,
       users: []
     }
@@ -70,8 +71,12 @@ export class TeamLeadsStage extends Component {
     const updatedTeamLeads = { ...this.state.teamLeads }
     delete updatedTeamLeads[userId]
 
+    const usersToRemove = [...this.state.teamLeadsToRemove]
+    usersToRemove.push(userId)
+
     this.setState({
-      teamLeads: updatedTeamLeads
+      teamLeads: updatedTeamLeads,
+      teamLeadsToRemove: usersToRemove
     })
   }
 
