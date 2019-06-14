@@ -64,7 +64,7 @@ class SubmitStepForm extends BaseForm {
         if (agreement && agreement.htmlUrl) {
           agreementHtmlUrl = agreement.htmlUrl
         }
-        let agreementPdfUrl = '/static/media/documents/digital-marketplace-master-agreement.html'
+        let agreementPdfUrl = '/static/media/documents/digital-marketplace-master-agreement.pdf'
         if (agreement && agreement.pdfUrl) {
           agreementPdfUrl = agreement.pdfUrl
         }
