@@ -14,7 +14,7 @@ const teamReducer = (state = defaultState, action) => {
     case CREATE_TEAM_SUCCESS:
       return {
         ...state,
-        team: action.team
+        ...action.team
       }
     case GET_TEAM_SUCCESS:
       return {
