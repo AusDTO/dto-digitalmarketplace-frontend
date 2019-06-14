@@ -56,9 +56,8 @@ const Body = (props) => {
 
           {!isEmpty(assessed) && (
             <span><div className="seller-profile__evaluated-badges" styleName="badges evaluated-badges">
-                          <p styleName="bold">Assessed for</p>
               {assessed.map((service, i) => (
-                <span key={i}>{service} <Icon value="assessed-tick-nostroke" size={14}/></span>
+                <span key={i}>{service}</span>
               ))}
 
                       </div>
