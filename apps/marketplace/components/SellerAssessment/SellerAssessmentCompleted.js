@@ -7,7 +7,7 @@ import { rootPath } from 'marketplace/routes'
 
 const SellerAssessmentCompleted = props => (
   <div>
-    <AUdirectionLink link={`${rootPath}/seller-dashboard/categories`} text="back to dashboard" direction="left" />
+    <AUdirectionLink link={`${rootPath}/seller-dashboard`} text="back to dashboard" direction="left" />
     <AUpageAlert as="success">
       <AUheading level="1" size="md">
         Your assessment has been submitted.
