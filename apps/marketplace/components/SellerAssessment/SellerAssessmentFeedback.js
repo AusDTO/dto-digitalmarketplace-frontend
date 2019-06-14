@@ -54,7 +54,7 @@ const SellerAssessmentFeedback = props => (
             <li key={criteriaId}>
               {!props.feedback.criteria[criteriaId].has_feedback && (
                 <span>
-                  <Tick colour="#36865f" className={styles.icon} />Evidence demonstrates &quot;{
+                  <Tick colour="#17788D" className={styles.icon} />Evidence demonstrates &quot;{
                     props.feedback.criteria[criteriaId].name
                   }&quot;
                 </span>
