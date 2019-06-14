@@ -24,8 +24,8 @@ export class TeamFlowPage extends Component {
   }
 
   saveTeam() {
-    const data = { ...this.props[model] }
-    return this.props.saveTeam(this.props.match.params.stage, data)
+    const team = { ...this.props[model] }
+    return this.props.saveTeam(this.props.match.params.stage, team)
   }
 
   render() {
@@ -77,7 +77,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getTeam: teamId => dispatch(getTeam(teamId)),
-  saveTeam: (stage, data) => dispatch(saveTeam(stage, data))
+  saveTeam: (stage, team) => dispatch(saveTeam(stage, team))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TeamFlowPage)
