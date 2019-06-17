@@ -49,6 +49,7 @@ export class Messages extends Component {
 
   messageIdToAction = item => {
     const { id } = item
+    const { supplier } = this.props
     if (!id) {
       return ''
     }
@@ -60,7 +61,7 @@ export class Messages extends Component {
       errorType = id
     }
     switch (errorType) {
-      case 'S000':
+      case 'SB001':
         return <a href={`/sellers/edit/?step=${item.step}`}>Preview and submit</a>
       case 'S001':
         return <a href={`/sellers/edit/?step=${item.step}`}>Update business details</a>
@@ -79,6 +80,8 @@ export class Messages extends Component {
       case 'S011':
       case 'S012':
         return <a href={`/sellers/edit/?step=${item.step}`}>Manage your documents</a>
+      case 'SB002':
+        return <a href={`/2/seller-edit/${supplier.code}/${item.step}`}>View new Master Agreement</a>
       default:
         return ''
     }
@@ -137,6 +140,7 @@ export class Messages extends Component {
 }
 
 const mapStateToProps = state => ({
+  supplier: state.sellerDashboard.supplier.supplier,
   items: state.sellerDashboard.messages.items,
   loading: state.sellerDashboard.messages.loading,
   loadedAt: state.sellerDashboard.messages.loadedAt,

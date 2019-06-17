@@ -50,7 +50,8 @@ const defaultBriefState = {
   hasResponded: false,
   domains: [],
   hasSupplierErrors: false,
-  isInvited: false
+  isInvited: false,
+  hasSignedCurrentAgreement: false
 }
 
 const briefReducer = (state = defaultBriefState, action) => {
@@ -98,7 +99,8 @@ const briefReducer = (state = defaultBriefState, action) => {
         loadBriefSuccess: true,
         loadedAt: new Date().valueOf(),
         hasSupplierErrors: action.hasSupplierErrors,
-        isInvited: action.isInvited
+        isInvited: action.isInvited,
+        hasSignedCurrentAgreement: action.hasSignedCurrentAgreement
       }
 
     case BRIEF_SAVE_SUCCESS:

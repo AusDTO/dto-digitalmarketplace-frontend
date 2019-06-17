@@ -102,7 +102,9 @@ const Opportunity = props => {
     hasBeenAssessedForBrief,
     domains,
     hasSupplierErrors,
-    isInvited
+    isInvited,
+    hasSignedCurrentAgreement,
+    supplierCode
   } = props
   const brief = { ...defaultBriefProps, ...props.brief }
   const category = getBriefCategory(domains, brief.sellerCategory)
@@ -570,6 +572,8 @@ const Opportunity = props => {
               evaluationType={brief.evaluationType}
               numberOfSuppliers={brief.numberOfSuppliers}
               hasSupplierErrors={hasSupplierErrors}
+              hasSignedCurrentAgreement={hasSignedCurrentAgreement}
+              supplierCode={supplierCode}
             />
           ) : (
             <OpportunityInfoCard
@@ -599,6 +603,8 @@ const Opportunity = props => {
               buyerEmail={brief.contactEmail}
               category={category}
               sellerCategory={brief.sellerCategory}
+              hasSignedCurrentAgreement={hasSignedCurrentAgreement}
+              supplierCode={supplierCode}
             />
           )}
         </div>
@@ -630,7 +636,9 @@ Opportunity.defaultProps = {
   hasBeenAssessedForBrief: false,
   hasResponded: false,
   loggedIn: false,
-  hasSupplierErrors: false
+  hasSupplierErrors: false,
+  hasSignedCurrentAgreement: false,
+  supplierCode: null
 }
 
 Opportunity.propTypes = {
@@ -699,7 +707,9 @@ Opportunity.propTypes = {
   hasBeenAssessedForBrief: PropTypes.bool,
   hasResponded: PropTypes.bool,
   loggedIn: PropTypes.bool,
-  hasSupplierErrors: PropTypes.bool
+  hasSupplierErrors: PropTypes.bool,
+  hasSignedCurrentAgreement: PropTypes.bool,
+  supplierCode: PropTypes.number
 }
 
 export default Opportunity

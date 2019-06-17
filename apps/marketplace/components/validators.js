@@ -73,7 +73,7 @@ export const validEmail = val => {
   if (!val) {
     return true
   }
-  if (val.includes('@') && val.includes('.') && !val.includes(' ')) {
+  if (val.includes('@') && val.includes('.') && !val.includes(' ') && val.split('@').length <= 2) {
     return true
   }
   return false
