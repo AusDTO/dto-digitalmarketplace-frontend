@@ -85,7 +85,7 @@ const BuyerATMAboutStage = props => (
             opportunity will be subject to the terms and conditions of the new Master Agreement that takes effect from 1
             July 2019. More information can be found at{' '}
             <a href="/2/r/master-agreement-2019-07-01.pdf" rel="noopener noreferrer" target="_blank">
-              http://marketplace.service.gov.au/2/r/master-agreement-2019-07-01.pdf
+              https://marketplace.service.gov.au/2/r/master-agreement-2019-07-01.pdf
             </a>&apos;.
           </p>
         </React.Fragment>
