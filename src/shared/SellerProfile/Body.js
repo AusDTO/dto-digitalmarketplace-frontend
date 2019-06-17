@@ -49,7 +49,7 @@ const Body = (props) => {
         <Row title="Categories" show>
 
           {isEmpty(assessed) && (
-            <p>
+            <p styleName="nocategories">
               This seller has not yet been approved in any categories.
             </p>
           )}
