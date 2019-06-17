@@ -64,6 +64,8 @@ export class SellerAssessmentFlowPage extends Component {
         })
 
         this.props.changeFormModel(data)
+      } else {
+        this.props.setError('Failed to load the evidence - invalid id')
       }
 
       this.setState({
