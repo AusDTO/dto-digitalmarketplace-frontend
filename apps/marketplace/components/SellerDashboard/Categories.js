@@ -124,6 +124,15 @@ export class Categories extends Component {
       case 15:
         result = 'tld'
         break
+      case 17:
+        result = 'ictaudit'
+        break
+      case 18:
+        result = 'ictservices'
+        break
+      case 19:
+        result = 'ictprocurement'
+        break
       default:
         break
     }
