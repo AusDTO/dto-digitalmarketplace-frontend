@@ -54,6 +54,10 @@ export class TeamLeadsStage extends Component {
     if (prevState.teamLeads !== this.state.teamLeads) {
       this.props.updateTeamLeads(this.state.teamLeads)
     }
+
+    if (prevState.teamLeadsToRemove !== this.state.teamLeadsToRemove) {
+      this.props.updateTeamLeadsToRemove(this.state.teamLeadsToRemove)
+    }
   }
 
   handleItemClick(user) {
@@ -169,7 +173,9 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = (dispatch, props) => ({
   findTeamMember: keyword => dispatch(findTeamMember(keyword)),
-  updateTeamLeads: teamLeads => dispatch(actions.change(`${props.model}.teamLeads`, teamLeads))
+  updateTeamLeads: teamLeads => dispatch(actions.change(`${props.model}.teamLeads`, teamLeads)),
+  updateTeamLeadsToRemove: teamLeadsToRemove =>
+    dispatch(actions.change(`${props.model}.teamLeadsToRemove`, teamLeadsToRemove))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TeamLeadsStage)
