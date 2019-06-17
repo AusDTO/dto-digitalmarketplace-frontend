@@ -102,6 +102,7 @@ export const handleLoadEvidenceFeedbackSuccess = response => ({
     domainName: response.data.domain_name,
     criteriaNeeded: response.data.criteria_needed,
     criteria: response.data.criteria,
+    currentEvidenceId: response.data.current_evidence_id,
     vfm: response.data.vfm
   }
 })

@@ -86,12 +86,22 @@ const SellerAssessmentFeedback = props => (
               it is no higher than $XXX.
             </p>
           )}
-        {!allCriteriaPassed(props.feedback.criteria) && (
-          <p>
-            You can incorporate the assessment team&apos;s feedback and{' '}
-            <a href={`${rootPath}/seller-assessment/create/${props.feedback.domainId}`}>resubmit your request</a>.
-          </p>
-        )}
+        {!allCriteriaPassed(props.feedback.criteria) &&
+          !props.feedback.currentEvidenceId && (
+            <p>
+              You can incorporate the assessment team&apos;s feedback and{' '}
+              <a href={`${rootPath}/seller-assessment/create/${props.feedback.domainId}`}>resubmit your request</a>.
+            </p>
+          )}
+        {!allCriteriaPassed(props.feedback.criteria) &&
+          props.feedback.currentEvidenceId && (
+            <p>
+              You can incorporate the assessment team&apos;s feedback and{' '}
+              <a href={`${rootPath}/seller-assessment/${props.feedback.currentEvidenceId}/introduction`}>
+                continue editing your request
+              </a>.
+            </p>
+          )}
       </React.Fragment>
     )}
   </div>
