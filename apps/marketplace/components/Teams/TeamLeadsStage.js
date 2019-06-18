@@ -52,7 +52,7 @@ export class TeamLeadsStage extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.teamLeads !== this.state.teamLeads) {
-      this.props.updateTeamLeads(this.state.teamLeads)
+      this.props.updateTeamLeads(Object.keys(this.state.teamLeads))
     }
 
     if (prevState.teamLeadsToRemove !== this.state.teamLeadsToRemove) {
