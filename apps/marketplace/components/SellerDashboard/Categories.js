@@ -14,7 +14,7 @@ export class Categories extends Component {
   getStatusBadge = category => {
     switch (category.status) {
       case 'unassessed':
-        return <div className={`${styles.unassessed}`}>Unassessed</div>
+        return <div className={`${styles.unassessed}`}>-</div>
       case 'draft':
         if (category.is_approved) {
           return <div className={`${styles.badge} ${styles.approved}`}>Approved</div>
