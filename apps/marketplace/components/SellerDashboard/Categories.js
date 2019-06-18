@@ -64,16 +64,34 @@ export class Categories extends Component {
       case 'draft':
         return (
           <React.Fragment>
-            <a href={`${rootPath}/seller-assessment/${category.evidence_id}/introduction`}>Continue editing</a>
+            {category.is_approved &&
+              category.rate && (
+                <span>
+                  Your maximum daily rate: ${category.rate}
+                  <br />
+                </span>
+              )}
+            <a href={`${rootPath}/seller-assessment/${category.evidence_id}/introduction`}>
+              {category.is_approved ? 'Continue editing rate' : 'Continue editing'}
+            </a>
             {category.previous_evidence_id && (
-              <a href={`${rootPath}/seller-assessment/${category.previous_evidence_id}/feedback`}>
-                View previous feedback
-              </a>
+              <a href={`${rootPath}/seller-assessment/${category.previous_evidence_id}/feedback`}>View feedback</a>
             )}
           </React.Fragment>
         )
       case 'assessed':
-        return <a href={`${rootPath}/seller-assessment/create/${category.id}`}>Adjust pricing</a>
+        return (
+          <React.Fragment>
+            {category.is_approved &&
+              category.rate && (
+                <span>
+                  Your maximum daily rate: ${category.rate}
+                  <br />
+                </span>
+              )}
+            <a href={`${rootPath}/seller-assessment/create/${category.id}`}>Adjust rate</a>
+          </React.Fragment>
+        )
       case 'rejected':
         return (
           <React.Fragment>
