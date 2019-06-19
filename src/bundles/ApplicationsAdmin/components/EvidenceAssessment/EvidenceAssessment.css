@@ -26,6 +26,11 @@
   color: rgba(255, 0, 0, 1);
 }
 
+.largerText {
+  font-size: 1.25rem;
+  margin-top: 1.5rem;
+}
+
 .priceOver {
   color: rgba(255, 0, 0, 1);
   margin-left: 0.75rem;

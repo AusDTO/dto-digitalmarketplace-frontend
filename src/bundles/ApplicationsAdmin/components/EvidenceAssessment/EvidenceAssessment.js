@@ -174,8 +174,8 @@ class EvidenceAssessment extends React.Component {
             {evidence.supplier_name} (code: {evidence.supplier_code})
           </span>
           <h1 className="au-display-xl">{evidence.domain_name} assessment</h1>
-          <p styleName="redText">
-            The seller <strong>MUST</strong> demonstrate at least {this.props.evidence.criteriaNeeded} criteria to pass VFM.
+          <p styleName="redText largerText">
+            The seller must demonstrate at least <strong>{this.props.evidence.criteriaNeeded} criteria</strong> to pass VFM.
           </p>
           {evidence.brief_id && (
             <p>
@@ -186,10 +186,22 @@ class EvidenceAssessment extends React.Component {
           )}
           {Object.keys(evidence.data.evidence).map(criteriaId => (
             <React.Fragment key={criteriaId}>
-              <h2 className="au-display-lg">{evidence.data.evidence[criteriaId].client}</h2>
-              <p>{evidence.data.evidence[criteriaId].endDate}</p>
+              <p>
+                <strong>Client:</strong> {evidence.data.evidence[criteriaId].client}
+              </p>
+              <p>
+                <strong>Date:</strong> {evidence.data.evidence[criteriaId].startDate} - {evidence.data.evidence[criteriaId].endDate}
+              </p>
+              <p>
+                <strong>Referee:</strong> {evidence.data.evidence[criteriaId].refereeName}: {evidence.data.evidence[criteriaId].refereeNumber}
+              </p>
+              <p>
+                <strong>Background:</strong>
+              </p>
               <p styleName="reviewText">{evidence.data.evidence[criteriaId].background}</p>
-              <h3 className="au-display-md">{this.getCriteriaName(criteriaId)}</h3>
+              <p>
+                <strong>{this.getCriteriaName(criteriaId)}</strong>
+              </p>
               <p styleName="reviewText">{evidence.data.evidence[criteriaId].response}</p>
               <p>
                 <span styleName="criteriaReview">
