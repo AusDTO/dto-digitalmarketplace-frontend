@@ -271,6 +271,7 @@ export class ProgressFlow extends Component {
                             publishText={this.props.publishText}
                             showConfirmationCheckbox={this.props.showConfirmationCheckbox}
                             confirmationText={this.props.confirmationText}
+                            startText={this.props.startText}
                           />
                         }
                       />
@@ -292,6 +293,7 @@ ProgressFlow.defaultProps = {
   returnPath: '',
   previewPath: '',
   publishText: 'Publish',
+  startText: 'Start now',
   confirmationText: 'I understand that this opportunity will be published on the Digital Marketplace',
   showReturnButton: true,
   showReviewButton: true,

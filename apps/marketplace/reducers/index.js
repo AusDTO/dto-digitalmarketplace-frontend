@@ -8,6 +8,7 @@ import domain from './domainReducers'
 import evidence from './evidenceReducers'
 import dashboard from './dashboardReducers'
 import sellerDashboard from './sellerDashboardReducers'
+import sellerEdit from './sellerEditReducers'
 import opportunities from './opportunitiesReducers'
 import errorMessage from './errorMessage'
 import form_options from './form_options'
@@ -112,6 +113,24 @@ export const BuyerSpecialistFormReducer = {
   closedAt: ''
 }
 
+export const SellerEditFormReducer = {
+  supplier: {
+    name: '',
+    code: '',
+    data: {
+      representative: '',
+      email: '',
+      phone: ''
+    }
+  },
+  agreementStatus: {
+    show: false,
+    canSign: false,
+    canUserSign: false,
+    signed: false
+  }
+}
+
 export default combineReducers({
   app: appReducer,
   user,
@@ -120,6 +139,7 @@ export default combineReducers({
   domain,
   evidence,
   sellerDashboard,
+  sellerEdit,
   opportunities,
   messages,
   form_options,
@@ -185,6 +205,7 @@ export default combineReducers({
     BuyerRFXForm: BuyerRFXFormReducer,
     BuyerATMForm: BuyerATMFormReducer,
     SellerAssessmentForm: SellerAssessmentFormReducer,
-    BuyerSpecialistForm: BuyerSpecialistFormReducer
+    BuyerSpecialistForm: BuyerSpecialistFormReducer,
+    SellerEditFlowPage: SellerEditFormReducer
   })
 })

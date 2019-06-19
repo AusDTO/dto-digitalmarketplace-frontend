@@ -121,6 +121,23 @@ const OpportunitySpecialistInfoCard = props => (
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
+          !props.hasSignedCurrentAgreement &&
+          !props.hasResponded && (
+            <span>
+              <p className={styles.invitedStatus}>
+                You must accept the new Master agreement before you can apply for an opportunity.
+              </p>
+              <p>
+                <a href={`/2/seller-edit/${props.supplierCode}/representative`} className="au-btn au-btn--block">
+                  View Master Agreement
+                </a>
+              </p>
+            </span>
+          )}
+        {props.isOpen &&
+          props.loggedIn &&
+          props.isApprovedSeller &&
+          props.hasSignedCurrentAgreement &&
           !props.isOpenToAll &&
           !props.isInvited && (
             <div className={styles.invitedStatus}>
@@ -130,6 +147,7 @@ const OpportunitySpecialistInfoCard = props => (
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
+          props.hasSignedCurrentAgreement &&
           props.isInvited &&
           !props.isAssessedForCategory && (
             <span>
@@ -178,6 +196,7 @@ const OpportunitySpecialistInfoCard = props => (
         {props.isOpen &&
           props.isApprovedSeller &&
           props.isAssessedForCategory &&
+          (props.hasSignedCurrentAgreement || (!props.hasSignedCurrentAgreement && props.hasResponded)) &&
           props.canRespond && (
             <div>
               {props.hasSupplierErrors ? (
@@ -236,7 +255,9 @@ OpportunitySpecialistInfoCard.defaultProps = {
   isBriefOwner: false,
   numberOfSuppliers: '',
   hasSupplierErrors: false,
-  isInvited: false
+  isInvited: false,
+  hasSignedCurrentAgreement: false,
+  supplierCode: null
 }
 
 OpportunitySpecialistInfoCard.propTypes = {
@@ -265,7 +286,9 @@ OpportunitySpecialistInfoCard.propTypes = {
   sellerCategory: PropTypes.string.isRequired,
   numberOfSuppliers: PropTypes.string,
   hasSupplierErrors: PropTypes.bool,
-  isInvited: PropTypes.bool
+  isInvited: PropTypes.bool,
+  hasSignedCurrentAgreement: PropTypes.bool,
+  supplierCode: PropTypes.number
 }
 
 export default OpportunitySpecialistInfoCard

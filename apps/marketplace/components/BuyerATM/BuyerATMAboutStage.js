@@ -74,11 +74,27 @@ const BuyerATMAboutStage = props => (
     <Textarea
       model={`${props.model}.summary`}
       label="Summary of work to be done"
+      description={
+        <React.Fragment>
+          <p>
+            From 1 July 2019 the Digital Marketplace will operate on an updated Master Agreement. You may choose to
+            apply this new agreement to opportunities you publish from today, but the contract must be signed after 1
+            July 2019. <br />
+            <br />
+            To apply the new Master Agreement for this opportunity, you must include this sentence: &apos;This
+            opportunity will be subject to the terms and conditions of the new Master Agreement that takes effect from 1
+            July 2019. More information can be found at{' '}
+            <a href="/2/r/master-agreement-2019-07-01.pdf" rel="noopener noreferrer" target="_blank">
+              https://marketplace.service.gov.au/2/r/master-agreement-2019-07-01.pdf
+            </a>&apos;.
+          </p>
+        </React.Fragment>
+      }
       name="summary"
       id="summary"
       htmlFor="summary"
       defaultValue={props[props.model].summary}
-      controlProps={{ limit: 150 }}
+      controlProps={{ limit: 200 }}
       validators={{
         required
       }}
