@@ -51,6 +51,13 @@ export class TeamLeadsStage extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    if (Object.keys(prevProps.team.teamLeads).length > 0 && Object.keys(prevState.teamLeads).length === 0) {
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({
+        teamLeads: prevProps.team.teamLeads
+      })
+    }
+
     if (prevState.teamLeads !== this.state.teamLeads) {
       this.props.updateTeamLeads(Object.keys(this.state.teamLeads))
     }
