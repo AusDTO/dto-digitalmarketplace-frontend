@@ -37,6 +37,7 @@ const SellerAssessmentReviewStage = props => (
           </Link>
         </AUheading>
         <p>${props[props.model].maxDailyRate} (including GST)</p>
+        <div className={styles.spacer} />
         <AUheading level="2" size="lg">
           Evidence
           <Link to="evidence" className={styles.change}>
@@ -46,21 +47,37 @@ const SellerAssessmentReviewStage = props => (
         {props[props.model].criteria.map(criteriaId => (
           <React.Fragment key={criteriaId}>
             <AUheading level="2" size="md">
+              Criteria
+            </AUheading>
+            <p className={styles.reviewText}>{getCriteriaName(criteriaId, props.meta.criteria)}</p>
+            <AUheading level="2" size="md">
               Client
             </AUheading>
             <p className={styles.reviewText}>{props[props.model].evidence[criteriaId].client}</p>
+            <AUheading level="2" size="md">
+              Referee&apos;s name and number
+            </AUheading>
+            <p className={styles.reviewText}>
+              {props[props.model].evidence[criteriaId].refereeName}:{' '}
+              {props[props.model].evidence[criteriaId].refereeNumber}
+            </p>
+            <AUheading level="2" size="md">
+              Project date
+            </AUheading>
+            <p className={styles.reviewText}>
+              {props[props.model].evidence[criteriaId].startDate} - {props[props.model].evidence[criteriaId].endDate}
+            </p>
             <AUheading level="2" size="md">
               Background
             </AUheading>
             <p className={styles.reviewText}>{props[props.model].evidence[criteriaId].background}</p>
             <AUheading level="2" size="md">
-              End date
-            </AUheading>
-            <p className={styles.reviewText}>{props[props.model].evidence[criteriaId].endDate}</p>
-            <AUheading level="2" size="md">
-              {getCriteriaName(criteriaId, props.meta.criteria)}
+              Evidence of meeting the criteria
             </AUheading>
             <p className={styles.reviewText}>{props[props.model].evidence[criteriaId].response}</p>
+            {props[props.model].criteria.indexOf(criteriaId) !== props[props.model].criteria.length - 1 && (
+              <div className={styles.spacer} />
+            )}
           </React.Fragment>
         ))}
         {props.formButtons}
