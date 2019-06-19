@@ -20,25 +20,38 @@ export class SellerEditReviewStage extends Component {
   render() {
     const props = this.props
     const { model } = this.props
-    const { canSign, canUserSign, signed, startDate } = props[model].agreementStatus
+    const { canUserSign, signed, newAgreement, currentAgreement } = props[model].agreementStatus
     const { representative, email } = props[model].supplier.data
     const { abn, code, name } = props[model].supplier
 
     return (
       <React.Fragment>
-        {signed ? (
-          <SignedMasterAgreement />
+        {newAgreement ? (
+          <React.Fragment>
+            {canUserSign ? (
+              <NewMasterAgreement startDate={newAgreement.startDate} representative={representative} />
+            ) : (
+              <ShareWithAuthRep representative={representative} name={name} email={email} supplierCode={code} />
+            )}
+          </React.Fragment>
         ) : (
           <React.Fragment>
-            {!canSign && <NewMasterAgreement startDate={startDate} representative={representative} />}
-            {canSign &&
-              !canUserSign && (
-                <ShareWithAuthRep representative={representative} name={name} email={email} supplierCode={code} />
-              )}
-            {canSign &&
-              canUserSign && (
-                <YourDeclaration representative={representative} abn={abn} startDate={startDate} supplierCode={code} />
-              )}
+            {signed ? (
+              <SignedMasterAgreement />
+            ) : (
+              <React.Fragment>
+                {canUserSign ? (
+                  <YourDeclaration
+                    representative={representative}
+                    abn={abn}
+                    startDate={currentAgreement.startDate}
+                    supplierCode={code}
+                  />
+                ) : (
+                  <ShareWithAuthRep representative={representative} name={name} email={email} supplierCode={code} />
+                )}
+              </React.Fragment>
+            )}
           </React.Fragment>
         )}
       </React.Fragment>
