@@ -137,7 +137,10 @@ const OpportunitySpecialistInfoCard = props => (
                 Only sellers approved in {props.category} can apply.
                 {props.isRecruiterOnly &&
                   !props.isAwaitingDomainAssessment && (
-                    <span> You must edit your profile to add this category before you can apply.</span>
+                    <span>
+                      {' '}
+                      You must <a href="/sellers/edit">edit your profile</a> to add this category before you can apply.
+                    </span>
                   )}
                 {props.isRecruiterOnly &&
                   props.isAwaitingApplicationAssessment && <span> Your application is currently being assessed.</span>}
@@ -146,6 +149,7 @@ const OpportunitySpecialistInfoCard = props => (
                 )}
                 {!props.isAwaitingDomainAssessment &&
                   props.hasEvidenceInDraftForCategory &&
+                  !props.isRecruiterOnly &&
                   props.draftEvidenceId && (
                     <span>
                       {' '}
@@ -163,7 +167,7 @@ const OpportunitySpecialistInfoCard = props => (
                   <p>
                     <a
                       href={`${rootPath}/seller-assessment/create/${props.sellerCategory}/${props.briefId}`}
-                      className="au-btn au-btn--block"
+                      className={`au-btn au-btn--block ${styles.redBtn}`}
                     >
                       Request assessment
                     </a>

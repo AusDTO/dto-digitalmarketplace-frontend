@@ -169,7 +169,7 @@ const OpportunityInfoCard = props => (
                   <p>
                     <a
                       href={`${rootPath}/seller-assessment/create/${props.sellerCategory}/${props.briefId}`}
-                      className="au-btn au-btn--block"
+                      className={`au-btn au-btn--block ${styles.redBtn}`}
                     >
                       Request assessment
                     </a>
@@ -188,18 +188,14 @@ const OpportunityInfoCard = props => (
               <p className={styles.invitedStatus}>
                 Only sellers with an assessed category can apply.
                 {props.isAwaitingDomainAssessment && <span> Your application is currently being assessed.</span>}
-              </p>
-              {!props.isAwaitingDomainAssessment &&
-                !props.hasBeenAssessedForBrief && (
-                  <p>
-                    <a
-                      href={`${rootPath}/seller-assessment/create/${props.sellerCategory}/${props.briefId}`}
-                      className="au-btn au-btn--block"
-                    >
-                      Request assessment
-                    </a>
-                  </p>
+                {!props.isAwaitingDomainAssessment && (
+                  <span>
+                    {' '}
+                    You can request assessment for a category of your choosing{' '}
+                    <a href={`${rootPath}/seller-dashboard`}>from your dashboard</a>.
+                  </span>
                 )}
+              </p>
             </span>
           )}
 
@@ -262,7 +258,6 @@ OpportunityInfoCard.defaultProps = {
   isRecruiterOnly: false,
   isAwaitingApplicationAssessment: false,
   isAwaitingDomainAssessment: false,
-  hasBeenAssessedForBrief: false,
   isBriefOwner: false
 }
 
@@ -286,7 +281,6 @@ OpportunityInfoCard.propTypes = {
   isRecruiterOnly: PropTypes.bool,
   isAwaitingApplicationAssessment: PropTypes.bool,
   isAwaitingDomainAssessment: PropTypes.bool,
-  hasBeenAssessedForBrief: PropTypes.bool,
   isBriefOwner: PropTypes.bool,
   closingDate: PropTypes.string.isRequired,
   briefId: PropTypes.number.isRequired,
