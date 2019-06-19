@@ -1,4 +1,3 @@
-import { required } from 'marketplace/components/validators'
 import SellerAssessmentIntroductionStage from './SellerAssessmentIntroductionStage'
 import SellerAssessmentRateStage, {
   greaterThanZero,
@@ -7,7 +6,16 @@ import SellerAssessmentRateStage, {
 } from './SellerAssessmentRateStage'
 import SellerAssessmentReviewStage from './SellerAssessmentReviewStage'
 import SellerAssessmentCriteriaStage, { getCriteriaNeeded } from './SellerAssessmentCriteriaStage'
-import SellerAssessmentEvidenceStage, { validDates, requiredEvidence } from './SellerAssessmentEvidenceStage'
+import SellerAssessmentEvidenceStage, {
+  requiredClient,
+  requiredRefereeName,
+  requiredRefereeNumber,
+  requiredBackground,
+  requiredStartDate,
+  requiredEndDate,
+  validDates,
+  requiredEvidence
+} from './SellerAssessmentEvidenceStage'
 
 const SellerAssessmentStages = [
   {
@@ -40,9 +48,13 @@ const SellerAssessmentStages = [
     title: 'Evidence',
     component: SellerAssessmentEvidenceStage,
     isDone: formValues =>
+      requiredClient(formValues) &&
+      requiredRefereeName(formValues) &&
+      requiredRefereeNumber(formValues) &&
+      requiredBackground(formValues) &&
+      requiredStartDate(formValues) &&
+      requiredEndDate(formValues) &&
       validDates(formValues) &&
-      required(formValues.evidence.client) &&
-      required(formValues.evidence.background) &&
       requiredEvidence(formValues)
   },
   {

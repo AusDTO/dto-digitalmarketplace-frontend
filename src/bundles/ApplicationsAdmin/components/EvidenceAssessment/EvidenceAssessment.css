@@ -22,6 +22,10 @@
   margin-top: 1.5rem;
 }
 
+.redText {
+  color: rgba(255, 0, 0, 1);
+}
+
 .priceOver {
   color: rgba(255, 0, 0, 1);
   margin-left: 0.75rem;

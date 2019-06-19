@@ -5,6 +5,7 @@ import { Form, actions } from 'react-redux-form'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import formProps from 'shared/form/formPropsSelector'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
+import { SellerAssessmentEvidenceReducer } from 'marketplace/reducers'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import styles from './SellerAssessmentCriteriaStage.scss'
 
@@ -23,15 +24,29 @@ class SellerAssessmentCriteriaStage extends Component {
   }
 
   handleClick(e) {
-    if (!e.target.checked) {
-      // remove the deselected criteria from the responses model
+    // add the selected criteria to the responses model if it doesn't yet exist
+    if (e.target.checked) {
       const criteriaId = e.target.value
       if (
         this.props[this.props.model] &&
         this.props[this.props.model].evidence &&
-        this.props[this.props.model].evidence.criteriaResponses[criteriaId]
+        !this.props[this.props.model].evidence[criteriaId]
       ) {
-        const criteriaResponses = { ...this.props[this.props.model].evidence.criteriaResponses }
+        const criteriaResponses = { ...this.props[this.props.model].evidence }
+        criteriaResponses[criteriaId] = { ...SellerAssessmentEvidenceReducer }
+        this.props.updateCriteriaResponses(criteriaResponses)
+      }
+    }
+
+    // remove the deselected criteria from the responses model
+    if (!e.target.checked) {
+      const criteriaId = e.target.value
+      if (
+        this.props[this.props.model] &&
+        this.props[this.props.model].evidence &&
+        this.props[this.props.model].evidence[criteriaId]
+      ) {
+        const criteriaResponses = { ...this.props[this.props.model].evidence }
         delete criteriaResponses[criteriaId]
         this.props.updateCriteriaResponses(criteriaResponses)
       }
@@ -122,7 +137,7 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
-  updateCriteriaResponses: data => dispatch(actions.change(`${props.model}.evidence.criteriaResponses`, data))
+  updateCriteriaResponses: data => dispatch(actions.change(`${props.model}.evidence`, data))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SellerAssessmentCriteriaStage)

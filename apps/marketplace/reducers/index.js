@@ -18,19 +18,17 @@ export const SellerAssessmentFormReducer = {
   domainId: 0,
   maxDailyRate: 0,
   criteria: [],
-  evidence: {
-    from: {
-      month: '',
-      year: ''
-    },
-    to: {
-      month: '',
-      year: ''
-    },
-    client: '',
-    background: '',
-    criteriaResponses: {}
-  }
+  evidence: {}
+}
+
+export const SellerAssessmentEvidenceReducer = {
+  client: '',
+  refereeName: '',
+  refereeNumber: '',
+  startDate: '',
+  endDate: '',
+  background: '',
+  response: ''
 }
 
 export const BuyerRFXFormReducer = {

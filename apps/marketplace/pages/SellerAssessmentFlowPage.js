@@ -10,7 +10,7 @@ import { rootPath } from 'marketplace/routes'
 import { loadDomainData, loadEvidenceData, saveEvidence } from 'marketplace/actions/supplierActions'
 import { setErrorMessage } from 'marketplace/actions/appActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { SellerAssessmentFormReducer } from 'marketplace/reducers'
+import { SellerAssessmentFormReducer, SellerAssessmentEvidenceReducer } from 'marketplace/reducers'
 
 const model = 'SellerAssessmentForm'
 
@@ -58,10 +58,19 @@ export class SellerAssessmentFlowPage extends Component {
         Object.keys(response.data).map(property => {
           if (Object.keys(SellerAssessmentFormReducer).includes(property)) {
             data[property] = response.data[property]
-            return true
           }
           return true
         })
+
+        // pre-populate the evidence model with the selected criteria if it doesn't yet exist
+        if (data.criteria && data.criteria.length > 0 && data.evidence) {
+          data.criteria.map(criteriaId => {
+            if (!(criteriaId in data.evidence)) {
+              data.evidence[criteriaId] = { ...SellerAssessmentEvidenceReducer }
+            }
+            return true
+          })
+        }
 
         this.props.changeFormModel(data)
       } else {

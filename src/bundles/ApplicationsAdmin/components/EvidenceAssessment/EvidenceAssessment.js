@@ -18,7 +18,7 @@ class EvidenceAssessment extends React.Component {
 
     const criteria = {}
     if (this.props.evidence) {
-      Object.keys(this.props.evidence.data.evidence.criteriaResponses).map(criteriaId => {
+      Object.keys(this.props.evidence.data.evidence).map(criteriaId => {
         criteria[criteriaId] = {
           demonstrates: undefined,
           reason: '',
@@ -171,9 +171,12 @@ class EvidenceAssessment extends React.Component {
       return (
         <div>
           <span styleName="supplierInfo">
-            {evidence.supplier_name} and {evidence.supplier_code}
+            {evidence.supplier_name} (code: {evidence.supplier_code})
           </span>
           <h1 className="au-display-xl">{evidence.domain_name} assessment</h1>
+          <p styleName="redText">
+            The seller <strong>MUST</strong> demonstrate at least {this.props.evidence.criteriaNeeded} criteria to pass VFM.
+          </p>
           {evidence.brief_id && (
             <p>
               For brief "<a href={`https://marketplace.service.gov.au/2/digital-marketplace/opportunities/${evidence.brief_id}`}>
@@ -181,17 +184,13 @@ class EvidenceAssessment extends React.Component {
               </a>" (ID: {evidence.brief_id}) closing on {format(evidence.brief_closed_at, 'DD-MM-YYYY')}
             </p>
           )}
-          <h2 className="au-display-md">{evidence.data.evidence.client}</h2>
-          <p>
-            {evidence.data.evidence.from.month}-{evidence.data.evidence.from.year} to {evidence.data.evidence.to.month}-{evidence.data.evidence.to.year}
-          </p>
-          <p styleName="reviewText">{evidence.data.evidence.background}</p>
-          {Object.keys(evidence.data.evidence.criteriaResponses).map(criteriaId => (
+          {Object.keys(evidence.data.evidence).map(criteriaId => (
             <React.Fragment key={criteriaId}>
-              <p>
-                <strong>{this.getCriteriaName(criteriaId)}</strong>
-              </p>
-              <p styleName="reviewText">{evidence.data.evidence.criteriaResponses[criteriaId]}</p>
+              <h2 className="au-display-lg">{evidence.data.evidence[criteriaId].client}</h2>
+              <p>{evidence.data.evidence[criteriaId].endDate}</p>
+              <p styleName="reviewText">{evidence.data.evidence[criteriaId].background}</p>
+              <h3 className="au-display-md">{this.getCriteriaName(criteriaId)}</h3>
+              <p styleName="reviewText">{evidence.data.evidence[criteriaId].response}</p>
               <p>
                 <span styleName="criteriaReview">
                   <AUradio

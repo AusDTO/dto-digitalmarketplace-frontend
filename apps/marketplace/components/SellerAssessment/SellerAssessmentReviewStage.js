@@ -31,34 +31,37 @@ const SellerAssessmentReviewStage = props => (
           {props.meta.name} assessment
         </AUheading>
         <AUheading level="2" size="md">
-          Maximum daily rate (including GST)
+          Maximum daily rate
           <Link to="rate" className={styles.change}>
             Change
           </Link>
         </AUheading>
-        <p>${props[props.model].maxDailyRate}</p>
+        <p>${props[props.model].maxDailyRate} (including GST)</p>
         <AUheading level="2" size="lg">
           Evidence
           <Link to="evidence" className={styles.change}>
             Change
           </Link>
         </AUheading>
-        <AUheading level="2" size="md">
-          Client
-        </AUheading>
-        <p className={styles.reviewText}>{props[props.model].evidence.client}</p>
-        <AUheading level="2" size="md">
-          Background
-        </AUheading>
-        <p className={styles.reviewText}>{props[props.model].evidence.background}</p>
         {props[props.model].criteria.map(criteriaId => (
-          <div key={criteriaId}>
-            <span />
+          <React.Fragment key={criteriaId}>
+            <AUheading level="2" size="md">
+              Client
+            </AUheading>
+            <p className={styles.reviewText}>{props[props.model].evidence[criteriaId].client}</p>
+            <AUheading level="2" size="md">
+              Background
+            </AUheading>
+            <p className={styles.reviewText}>{props[props.model].evidence[criteriaId].background}</p>
+            <AUheading level="2" size="md">
+              End date
+            </AUheading>
+            <p className={styles.reviewText}>{props[props.model].evidence[criteriaId].endDate}</p>
             <AUheading level="2" size="md">
               {getCriteriaName(criteriaId, props.meta.criteria)}
             </AUheading>
-            <p className={styles.reviewText}>{props[props.model].evidence.criteriaResponses[criteriaId]}</p>
-          </div>
+            <p className={styles.reviewText}>{props[props.model].evidence[criteriaId].response}</p>
+          </React.Fragment>
         ))}
         {props.formButtons}
       </div>

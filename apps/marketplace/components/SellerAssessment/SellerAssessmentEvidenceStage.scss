@@ -1,5 +1,13 @@
+p.criteriaText {
+  font-size: 1.25rem;
+}
+
 div.evidenceDates {
   margin-top: 1.5rem;
+
+  div {
+    display: inline-block;
+  }
 
   strong {
     display: block;

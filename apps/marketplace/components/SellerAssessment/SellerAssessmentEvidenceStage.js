@@ -6,12 +6,10 @@ import { Link } from 'react-router-dom'
 import Textfield from 'shared/form/Textfield'
 import Textarea from 'shared/form/Textarea'
 import formProps from 'shared/form/formPropsSelector'
-import { required } from 'marketplace/components/validators'
+import { required, validPhoneNumber } from 'marketplace/components/validators'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import format from 'date-fns/format'
-import isAfter from 'date-fns/is_after'
-import parse from 'date-fns/parse'
 import styles from './SellerAssessmentEvidenceStage.scss'
 
 export const getCriteriaName = (id, criteria) => {
@@ -23,42 +21,92 @@ export const getCriteriaName = (id, criteria) => {
   return name
 }
 
-const getMonths = () => {
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-  return months
-}
-
 const getYears = () => {
   const year = parseInt(format(new Date(), 'YYYY'), 10)
-  return [year - 4, year - 3, year - 2, year - 1, year]
+  return [year - 6, year - 5, year - 4, year - 3, year - 2, year - 1, year]
 }
 
 const minimumWordRequirement = 100
 
 const minimumEvidenceWords = val => (val.match(/\S+/g) || []).length >= minimumWordRequirement
 
-export const validDates = formValues =>
+export const requiredClient = formValues =>
   formValues.evidence &&
-  formValues.evidence.from &&
-  formValues.evidence.to &&
-  formValues.evidence.from.month &&
-  formValues.evidence.from.year &&
-  formValues.evidence.to.month &&
-  formValues.evidence.to.year &&
-  ((parseInt(formValues.evidence.from.year, 10) === parseInt(formValues.evidence.to.year, 10) &&
-    getMonths().indexOf(formValues.evidence.from.month) <= getMonths().indexOf(formValues.evidence.to.month)) ||
-    parseInt(formValues.evidence.from.year, 10) < parseInt(formValues.evidence.to.year, 10)) &&
-  !isAfter(parse(`01-${formValues.evidence.to.month}-${formValues.evidence.to.year}`), parse(new Date()))
+  Object.keys(formValues.evidence).length > 0 &&
+  (formValues.criteria.length === 0 ||
+    formValues.criteria.every(
+      criteriaId => formValues.evidence[criteriaId] && required(formValues.evidence[criteriaId].client)
+    ))
 
-export const requiredEvidence = formValues =>
+export const requiredRefereeName = formValues =>
   formValues.evidence &&
-  formValues.evidence.criteriaResponses &&
+  Object.keys(formValues.evidence).length > 0 &&
+  (formValues.criteria.length === 0 ||
+    formValues.criteria.every(
+      criteriaId => formValues.evidence[criteriaId] && required(formValues.evidence[criteriaId].refereeName)
+    ))
+
+export const requiredRefereeNumber = formValues =>
+  formValues.evidence &&
+  Object.keys(formValues.evidence).length > 0 &&
   (formValues.criteria.length === 0 ||
     formValues.criteria.every(
       criteriaId =>
-        formValues.evidence.criteriaResponses[criteriaId] &&
-        required(formValues.evidence.criteriaResponses[criteriaId]) &&
-        minimumEvidenceWords(formValues.evidence.criteriaResponses[criteriaId])
+        formValues.evidence[criteriaId] &&
+        required(formValues.evidence[criteriaId].refereeNumber) &&
+        validPhoneNumber(formValues.evidence[criteriaId].refereeNumber)
+    ))
+
+export const requiredBackground = formValues =>
+  formValues.evidence &&
+  Object.keys(formValues.evidence).length > 0 &&
+  (formValues.criteria.length === 0 ||
+    formValues.criteria.every(
+      criteriaId => formValues.evidence[criteriaId] && required(formValues.evidence[criteriaId].background)
+    ))
+
+export const requiredStartDate = formValues =>
+  formValues.evidence &&
+  Object.keys(formValues.evidence).length > 0 &&
+  (formValues.criteria.length === 0 ||
+    formValues.criteria.every(
+      criteriaId => formValues.evidence[criteriaId] && required(formValues.evidence[criteriaId].startDate)
+    ))
+
+export const requiredEndDate = formValues =>
+  formValues.evidence &&
+  Object.keys(formValues.evidence).length > 0 &&
+  (formValues.criteria.length === 0 ||
+    formValues.criteria.every(
+      criteriaId => formValues.evidence[criteriaId] && required(formValues.evidence[criteriaId].endDate)
+    ))
+
+export const validDates = formValues =>
+  formValues.evidence &&
+  Object.keys(formValues.evidence).length > 0 &&
+  (formValues.criteria.length === 0 ||
+    formValues.criteria.some(
+      criteriaId =>
+        formValues.evidence[criteriaId] &&
+        (!formValues.evidence[criteriaId].startDate || !formValues.evidence[criteriaId].endDate)
+    ) ||
+    formValues.criteria.every(
+      criteriaId =>
+        formValues.evidence[criteriaId] &&
+        (formValues.evidence[criteriaId].endDate === 'ongoing' ||
+          parseInt(formValues.evidence[criteriaId].startDate, 10) <=
+            parseInt(formValues.evidence[criteriaId].endDate, 10))
+    ))
+
+export const requiredEvidence = formValues =>
+  formValues.evidence &&
+  Object.keys(formValues.evidence).length > 0 &&
+  (formValues.criteria.length === 0 ||
+    formValues.criteria.every(
+      criteriaId =>
+        formValues.evidence[criteriaId] &&
+        required(formValues.evidence[criteriaId].response) &&
+        minimumEvidenceWords(formValues.evidence[criteriaId].response)
     ))
 
 const SellerAssessmentEvidenceStage = props => (
@@ -66,9 +114,13 @@ const SellerAssessmentEvidenceStage = props => (
     model={props.model}
     validators={{
       '': {
+        requiredClient: formValues => requiredClient(formValues),
+        requiredRefereeName: formValues => requiredRefereeName(formValues),
+        requiredRefereeNumber: formValues => requiredRefereeNumber(formValues),
+        requiredBackground: formValues => requiredBackground(formValues),
+        requiredStartDate: formValues => requiredStartDate(formValues),
+        requiredEndDate: formValues => requiredEndDate(formValues),
         validDates: formValues => validDates(formValues),
-        requiredClient: formValues => formValues.evidence && required(formValues.evidence.client),
-        requiredBackground: formValues => formValues.evidence && required(formValues.evidence.background),
         requiredEvidence: formValues => requiredEvidence(formValues)
       }
     }}
@@ -85,152 +137,145 @@ const SellerAssessmentEvidenceStage = props => (
         .
       </p>
     ) : (
-      <div>
+      <React.Fragment>
         <ErrorAlert
           title="An error occurred"
           model={props.model}
           messages={{
-            validDates:
-              'You must supply dates for the evidence, the "from" date must be before the "to" date, and the "to" date has to be before now',
-            requiredClient: 'You must add the name of the client',
-            requiredBackground: 'You must add the background',
+            requiredClient: 'You must provide a client for each criteria response',
+            requiredRefereeName: 'You must provide a referee name for each criteria response',
+            requiredRefereeNumber: 'You must provide a valid referee phone number for each criteria response',
+            requiredBackground: 'You must provide background for each criteria response',
+            requiredStartDate: 'You must select a start date for each criteria response',
+            requiredEndDate: 'You must select an end date for each criteria response',
+            validDates: 'The start date must be before the end date for each criteria response',
             requiredEvidence: `You must add evidence for all criteria selected and each response must be at least ${minimumWordRequirement} words in length`
           }}
         />
-        <div className={styles.evidenceDates}>
-          <strong>From</strong>
-          <Control.select
-            model={`${props.model}.evidence.from.month`}
-            id="from-month"
-            name="from-month"
-            mapProps={{
-              className: 'au-select'
-            }}
-            defaultValue={props[props.model].evidence.from.month}
-          >
-            <option value="" key="0">
-              Select a month...
-            </option>
-            {getMonths().map(month => (
-              <option value={month} key={month}>
-                {month}
-              </option>
-            ))}
-          </Control.select>
-          <Control.select
-            model={`${props.model}.evidence.from.year`}
-            id="from-year"
-            name="from-year"
-            mapProps={{
-              className: 'au-select'
-            }}
-            defaultValue={props[props.model].evidence.from.year}
-          >
-            <option value="" key="0">
-              Select a year...
-            </option>
-            {getYears().map(year => (
-              <option value={year} key={year}>
-                {year}
-              </option>
-            ))}
-          </Control.select>
-          <strong>To</strong>
-          <Control.select
-            model={`${props.model}.evidence.to.month`}
-            id="to-month"
-            name="to-month"
-            mapProps={{
-              className: 'au-select'
-            }}
-            defaultValue={props[props.model].evidence.to.month}
-          >
-            <option value="" key="0">
-              Select a month...
-            </option>
-            {getMonths().map(month => (
-              <option value={month} key={month}>
-                {month}
-              </option>
-            ))}
-          </Control.select>
-          <Control.select
-            model={`${props.model}.evidence.to.year`}
-            id="to-year"
-            name="to-year"
-            mapProps={{
-              className: 'au-select'
-            }}
-            defaultValue={props[props.model].evidence.to.year}
-          >
-            <option value="" key="0">
-              Select a year...
-            </option>
-            {getYears().map(year => (
-              <option value={year} key={year}>
-                {year}
-              </option>
-            ))}
-          </Control.select>
-        </div>
-        <Textfield
-          model={`${props.model}.evidence.client`}
-          label="Client"
-          name="client"
-          id="client"
-          htmlFor="client"
-          defaultValue={props[props.model].evidence.client}
-          maxLength={100}
-          showMaxLength
-          validators={{
-            required
-          }}
-        />
-        <Textarea
-          model={`${props.model}.evidence.background`}
-          label="Background"
-          name="background"
-          id="background"
-          htmlFor="background"
-          defaultValue={props[props.model].evidence.background}
-          validators={{
-            required
-          }}
-        />
-        <AUheadings level="2" size="lg">
-          Criteria evidence
-        </AUheadings>
-        <p>
-          <strong>For each criteria provide at least {minimumWordRequirement} words explaining:</strong>
-        </p>
-        <ul>
-          <li>What you were specifically responsible for</li>
-          <li>
-            What specific activities you did and why. Avoid ambiguity e.g. &quot;we have extensive experience
-            in...&quot;
-          </li>
-          <li>Describe the result or outcome of your activities</li>
-        </ul>
         {props[props.model].criteria.map(criteriaId => (
-          <Textarea
-            key={criteriaId}
-            model={`${props.model}.evidence.criteriaResponses.${criteriaId}`}
-            label={getCriteriaName(criteriaId, props.meta.criteria)}
-            name={`criteria_${criteriaId}`}
-            id={`criteria_${criteriaId}`}
-            htmlFor={`criteria_${criteriaId}`}
-            defaultValue={props[props.model].evidence.criteriaResponses[criteriaId]}
-            controlProps={{ minimum: minimumWordRequirement, rows: '10' }}
-            validators={{
-              required
-            }}
-            messages={{
-              minimumWords: `Your criteria response has not yet reached the ${minimumWordRequirement} word minimum requirement`
-            }}
-          />
+          <React.Fragment key={criteriaId}>
+            <AUheadings level="2" size="lg">
+              Criteria:
+            </AUheadings>
+            <p className={styles.criteriaText}>{getCriteriaName(criteriaId, props.meta.criteria)}</p>
+            <Textfield
+              model={`${props.model}.evidence[${criteriaId}].client`}
+              defaultValue={props[props.model].evidence[criteriaId].client}
+              label="Client"
+              name={`client_${criteriaId}`}
+              id={`client_${criteriaId}`}
+              htmlFor={`client_${criteriaId}`}
+              maxLength={100}
+              showMaxLength
+              validators={{
+                required
+              }}
+            />
+            <Textfield
+              model={`${props.model}.evidence[${criteriaId}].refereeName`}
+              defaultValue={props[props.model].evidence[criteriaId].refereeName}
+              label="Referee's full name"
+              description="We may contact your referee to confirm your involvement in the project."
+              name={`referee_name_${criteriaId}`}
+              id={`referee_name_${criteriaId}`}
+              htmlFor={`referee_name_${criteriaId}`}
+              maxLength={100}
+              showMaxLength
+              validators={{
+                required
+              }}
+            />
+            <Textfield
+              model={`${props.model}.evidence[${criteriaId}].refereeNumber`}
+              defaultValue={props[props.model].evidence[criteriaId].refereeNumber}
+              label="Referee's phone number"
+              description="Please include the area code for landlines."
+              name={`referee_number_${criteriaId}`}
+              id={`referee_number_${criteriaId}`}
+              htmlFor={`referee_number_${criteriaId}`}
+              maxLength={100}
+              showMaxLength
+              validators={{
+                required,
+                validPhoneNumber
+              }}
+            />
+            <div className={styles.evidenceDates}>
+              <div>
+                <strong>Start of project</strong>
+                <Control.select
+                  model={`${props.model}.evidence[${criteriaId}].startDate`}
+                  id={`startDate_${criteriaId}`}
+                  name={`startDate_${criteriaId}`}
+                  mapProps={{
+                    className: 'au-select'
+                  }}
+                >
+                  <option value="" key="0">
+                    Select start date
+                  </option>
+                  {getYears().map(year => (
+                    <option value={year} key={year}>
+                      {year}
+                    </option>
+                  ))}
+                </Control.select>
+              </div>
+              <div>
+                <strong>End of project</strong>
+                <Control.select
+                  model={`${props.model}.evidence[${criteriaId}].endDate`}
+                  id={`endDate_${criteriaId}`}
+                  name={`endDate_${criteriaId}`}
+                  mapProps={{
+                    className: 'au-select'
+                  }}
+                >
+                  <option value="" key="0">
+                    Select end date
+                  </option>
+                  {getYears().map(year => (
+                    <option value={year} key={year}>
+                      {year}
+                    </option>
+                  ))}
+                  <option value="ongoing" key={getYears().length + 1}>
+                    ongoing
+                  </option>
+                </Control.select>
+              </div>
+            </div>
+            <Textarea
+              model={`${props.model}.evidence[${criteriaId}].background`}
+              label="Background"
+              description="Describe the background of the project you worked on."
+              name={`background_${criteriaId}`}
+              id={`background_${criteriaId}`}
+              htmlFor={`background_${criteriaId}`}
+              validators={{
+                required
+              }}
+            />
+            <Textarea
+              key={criteriaId}
+              model={`${props.model}.evidence[${criteriaId}].response`}
+              label="Evidence of meeting the criteria"
+              description="To meet the criteria, explain the activities you were specifically response for, what you did, and why. Avoid ambiguity e.g. 'we have extensive experience in ...'. Describe the result or outcome of your activities."
+              name={`criteria_${criteriaId}`}
+              id={`criteria_${criteriaId}`}
+              htmlFor={`criteria_${criteriaId}`}
+              controlProps={{ minimum: minimumWordRequirement, rows: '10' }}
+              validators={{
+                required
+              }}
+              messages={{
+                minimumWords: `Your criteria response has not yet reached the ${minimumWordRequirement} word minimum requirement`
+              }}
+            />
+          </React.Fragment>
         ))}
         {props.formButtons}
-      </div>
+      </React.Fragment>
     )}
   </Form>
 )
