@@ -2,7 +2,7 @@ import React from 'react'
 
 import ItemSelectInput from './ItemSelectInput'
 import ItemSelectResultsList from './ItemSelectResultsList'
-import SelectedItems from './ItemSelectSummary'
+import SelectedItems from './SelectedItems'
 
 const ItemSelect = props => {
   const {

@@ -3,18 +3,18 @@ import { Control } from 'react-redux-form'
 
 import AUheading from '@gov.au/headings/lib/js/react.js'
 
-import styles from './ItemSelectSummary.scss'
+import styles from './SelectedItems.scss'
 
-const ItemSelectSummary = props => {
+const SelectedItemsList = props => {
   const { handleRemoveItem, selectedItems, summaryHeading } = props
   const sortedKeys = Object.keys(selectedItems).sort((a, b) => (selectedItems[a] > selectedItems[b] ? 1 : -1))
 
   return (
-    <div className={styles.itemSelectSummary}>
+    <div className={styles.selectedItemsContainer}>
       <AUheading level="2" size="sm">
         {summaryHeading}
       </AUheading>
-      <ul className={styles.itemSelectSummaryList}>
+      <ul className={styles.selectedItemsList}>
         {sortedKeys.map(key => (
           <li key={key}>
             <span>{selectedItems[key]}</span>
@@ -39,7 +39,7 @@ const SelectedItems = props => {
 
   return (
     <Control.custom
-      component={ItemSelectSummary}
+      component={SelectedItemsList}
       handleRemoveItem={handleRemoveItem}
       mapProps={{
         formModel: ownProps => ownProps.model,
