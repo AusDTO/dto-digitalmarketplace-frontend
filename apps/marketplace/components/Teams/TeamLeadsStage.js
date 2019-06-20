@@ -39,8 +39,6 @@ export class TeamLeadsStage extends Component {
 
     this.state = {
       inputValue: '',
-      teamLeads: {},
-      teamLeadsToRemove: [],
       timeoutId: null,
       users: []
     }
@@ -50,45 +48,21 @@ export class TeamLeadsStage extends Component {
     this.handleSearchChange = this.handleSearchChange.bind(this)
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (Object.keys(prevProps.team.teamLeads).length > 0 && Object.keys(prevState.teamLeads).length === 0) {
-      // eslint-disable-next-line react/no-did-update-set-state
-      this.setState({
-        teamLeads: prevProps.team.teamLeads
-      })
-    }
-
-    if (prevState.teamLeads !== this.state.teamLeads) {
-      this.props.updateTeamLeads(Object.keys(this.state.teamLeads))
-    }
-
-    if (prevState.teamLeadsToRemove !== this.state.teamLeadsToRemove) {
-      this.props.updateTeamLeadsToRemove(this.state.teamLeadsToRemove)
-    }
-  }
-
   handleItemClick(user) {
-    this.setState(prevState => ({
+    this.setState({
       inputValue: '',
-      teamLeads: {
-        ...prevState.teamLeads,
-        [user.id]: user.name
-      },
       users: []
-    }))
+    })
+
+    const newTeamLeads = { ...this.props[this.props.model].teamLeads }
+    newTeamLeads[user.id] = user.name
+    this.props.updateTeamLeads(newTeamLeads)
   }
 
   handleRemoveItem(userId) {
-    const updatedTeamLeads = { ...this.state.teamLeads }
-    delete updatedTeamLeads[userId]
-
-    const usersToRemove = [...this.state.teamLeadsToRemove]
-    usersToRemove.push(userId)
-
-    this.setState({
-      teamLeads: updatedTeamLeads,
-      teamLeadsToRemove: usersToRemove
-    })
+    const newTeamLeads = { ...this.props[this.props.model].teamLeads }
+    delete newTeamLeads[userId]
+    this.props.updateTeamLeads(newTeamLeads)
   }
 
   handleSearchChange(e) {
@@ -152,12 +126,11 @@ export class TeamLeadsStage extends Component {
           label="Team lead name"
           maxLength={100}
           minimumSearchChars={minimumSearchChars}
-          model={`${model}.teamLeadName`}
+          model={`${model}.teamLeads`}
           name="teamLeadName"
           placeholder=""
           resultIsEmpty={this.state.users.length < 1}
           resultListItems={teamMemberListItems}
-          selectedItems={this.state.teamLeads}
           showSearchButton={false}
           summaryHeading="Current team leads"
           validators={{}}
@@ -180,9 +153,7 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = (dispatch, props) => ({
   findTeamMember: keyword => dispatch(findTeamMember(keyword)),
-  updateTeamLeads: teamLeads => dispatch(actions.change(`${props.model}.teamLeads`, teamLeads)),
-  updateTeamLeadsToRemove: teamLeadsToRemove =>
-    dispatch(actions.change(`${props.model}.teamLeadsToRemove`, teamLeadsToRemove))
+  updateTeamLeads: teamLeads => dispatch(actions.change(`${props.model}.teamLeads`, teamLeads))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TeamLeadsStage)
