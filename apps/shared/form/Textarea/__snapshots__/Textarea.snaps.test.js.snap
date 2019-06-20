@@ -5,6 +5,7 @@ exports[`Textarea with limit 5, 10 words 1`] = `
   <textarea
     aria-describedby={undefined}
     className="under-50"
+    disabled={undefined}
     id={undefined}
     name="test"
     onBlur={[Function]}
@@ -27,6 +28,7 @@ exports[`Textarea with limit 100, 10 words 1`] = `
   <textarea
     aria-describedby={undefined}
     className="under-100"
+    disabled={undefined}
     id={undefined}
     name="test"
     onBlur={[Function]}
@@ -49,6 +51,7 @@ exports[`Textarea with limit 100, no words 1`] = `
   <textarea
     aria-describedby={undefined}
     className="under-100"
+    disabled={undefined}
     id={undefined}
     name="test"
     onBlur={[Function]}
@@ -71,6 +74,7 @@ exports[`Textarea with no words, no limit 1`] = `
   <textarea
     aria-describedby={undefined}
     className=""
+    disabled={undefined}
     id={undefined}
     name="test"
     onBlur={[Function]}

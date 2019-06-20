@@ -29,7 +29,8 @@ export const SellerAssessmentEvidenceReducer = {
   startDate: '',
   endDate: '',
   background: '',
-  response: ''
+  response: '',
+  sameAsFirst: true
 }
 
 export const BuyerRFXFormReducer = {

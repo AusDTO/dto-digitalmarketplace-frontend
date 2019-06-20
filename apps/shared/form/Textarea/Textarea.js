@@ -8,7 +8,8 @@ class Textarea extends Component {
   static defaultProps = {
     onChange: () => {},
     onBlur: () => {},
-    onFocus: () => {}
+    onFocus: () => {},
+    onCustomChange: () => {}
   }
 
   constructor(props) {
@@ -30,12 +31,13 @@ class Textarea extends Component {
   onChange(e) {
     const content = e.target.value
     const words = this.countWords(content)
-    const { limit, minimum, onChange } = this.props
+    const { limit, minimum, onChange, onCustomChange } = this.props
     this.setState({
       wordsLeft: limit - words,
       wordsToGo: minimum - words
     })
     onChange(content)
+    onCustomChange(content)
   }
 
   limitText(counter: number, wordsLeft: number) {
@@ -74,7 +76,20 @@ class Textarea extends Component {
   }
 
   render() {
-    let { value, limit, minimum, name, id, onBlur, onFocus, className = '', describedby, hint, rows } = this.props
+    let {
+      value,
+      limit,
+      minimum,
+      name,
+      id,
+      onBlur,
+      onFocus,
+      className = '',
+      describedby,
+      hint,
+      rows,
+      disabled
+    } = this.props
     let { wordsLeft, wordsToGo } = this.state
 
     let counter = wordsLeft
@@ -108,6 +123,7 @@ class Textarea extends Component {
           aria-describedby={describedby}
           onChange={this.onChange.bind(this)}
           rows={rows}
+          disabled={disabled}
         />
         {limit && (
           <span className={`word-count-counter ${styles.wordCount}`} aria-live="polite">

@@ -7,7 +7,18 @@ import StatefulError from './StatefulError'
 import TextareaComponent from './Textarea/Textarea'
 
 const Textarea = props => {
-  const { name, id, label, model, description, showMessagesDuringFocus = true, controlProps = {}, mapProps } = props
+  const {
+    name,
+    id,
+    label,
+    model,
+    description,
+    showMessagesDuringFocus = true,
+    controlProps = {},
+    mapProps,
+    disabled,
+    onCustomChange
+  } = props
 
   let { validators, messages } = props
 
@@ -50,7 +61,8 @@ const Textarea = props => {
           id,
           describedby: description ? `${id}-hint` : `${id}-label`,
           hint: description,
-          ...controlProps
+          ...controlProps,
+          disabled
         }}
         validators={validators}
         component={TextareaComponent}
@@ -63,6 +75,7 @@ const Textarea = props => {
           ...mapProps,
           ...controls.default
         }}
+        onCustomChange={onCustomChange}
       />
     </div>
   )
@@ -73,7 +86,9 @@ Textarea.defaultProps = {
   validators: null,
   messages: null,
   description: '',
-  controlProps: null
+  controlProps: null,
+  disabled: false,
+  onCustomChange: () => {}
 }
 
 Textarea.propTypes = {
@@ -81,12 +96,13 @@ Textarea.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   model: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
-
+  disabled: PropTypes.bool,
   validators: PropTypes.object,
   messages: PropTypes.object,
   description: PropTypes.string,
   controlProps: PropTypes.object,
-  mapProps: PropTypes.oneOfType([PropTypes.func, PropTypes.object])
+  mapProps: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+  onCustomChange: PropTypes.func
 }
 
 export default Textarea
