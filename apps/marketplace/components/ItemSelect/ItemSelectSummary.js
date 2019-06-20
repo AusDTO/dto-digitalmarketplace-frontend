@@ -1,4 +1,5 @@
 import React from 'react'
+import { Control } from 'react-redux-form'
 
 import AUheading from '@gov.au/headings/lib/js/react.js'
 
@@ -33,4 +34,21 @@ const ItemSelectSummary = props => {
   )
 }
 
-export default ItemSelectSummary
+const SelectedItems = props => {
+  const { handleRemoveItem, model, summaryHeading } = props
+
+  return (
+    <Control.custom
+      component={ItemSelectSummary}
+      handleRemoveItem={handleRemoveItem}
+      mapProps={{
+        formModel: ownProps => ownProps.model,
+        selectedItems: ownProps => ownProps.modelValue
+      }}
+      model={model}
+      summaryHeading={summaryHeading}
+    />
+  )
+}
+
+export default SelectedItems
