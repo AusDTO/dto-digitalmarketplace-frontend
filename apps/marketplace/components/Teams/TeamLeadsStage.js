@@ -131,8 +131,8 @@ export class TeamLeadsStage extends Component {
           placeholder=""
           resultIsEmpty={this.state.users.length < 1}
           resultListItems={teamMemberListItems}
+          selectedItemsHeading="Current team leads"
           showSearchButton={false}
-          summaryHeading="Current team leads"
           validators={{}}
         />
         {formButtons}

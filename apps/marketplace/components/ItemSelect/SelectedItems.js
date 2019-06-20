@@ -6,13 +6,13 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import styles from './SelectedItems.scss'
 
 const SelectedItemsList = props => {
-  const { handleRemoveItem, selectedItems, summaryHeading } = props
+  const { handleRemoveItem, selectedItems, selectedItemsHeading } = props
   const sortedKeys = Object.keys(selectedItems).sort((a, b) => (selectedItems[a] > selectedItems[b] ? 1 : -1))
 
   return (
     <div className={styles.selectedItemsContainer}>
       <AUheading level="2" size="sm">
-        {summaryHeading}
+        {selectedItemsHeading}
       </AUheading>
       <ul className={styles.selectedItemsList}>
         {sortedKeys.map(key => (
@@ -35,7 +35,7 @@ const SelectedItemsList = props => {
 }
 
 const SelectedItems = props => {
-  const { handleRemoveItem, model, summaryHeading } = props
+  const { handleRemoveItem, model, selectedItemsHeading } = props
 
   return (
     <Control.custom
@@ -46,7 +46,7 @@ const SelectedItems = props => {
         selectedItems: ownProps => ownProps.modelValue
       }}
       model={model}
-      summaryHeading={summaryHeading}
+      selectedItemsHeading={selectedItemsHeading}
     />
   )
 }

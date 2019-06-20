@@ -20,8 +20,8 @@ const ItemSelect = props => {
     placeholder,
     resultIsEmpty,
     resultListItems,
-    showSearchButton,
-    summaryHeading
+    selectedItemsHeading,
+    showSearchButton
   } = props
 
   return (
@@ -45,7 +45,7 @@ const ItemSelect = props => {
           keywords={inputValue}
         />
       )}
-      <SelectedItems handleRemoveItem={handleRemoveItem} model={model} summaryHeading={summaryHeading} />
+      <SelectedItems handleRemoveItem={handleRemoveItem} model={model} selectedItemsHeading={selectedItemsHeading} />
     </React.Fragment>
   )
 }
