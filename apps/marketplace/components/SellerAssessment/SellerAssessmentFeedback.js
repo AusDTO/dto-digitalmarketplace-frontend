@@ -44,42 +44,43 @@ const SellerAssessmentFeedback = props => (
     {Object.keys(props.feedback.criteria).length > 0 && (
       <React.Fragment>
         <ul className={styles.feedbackList}>
-          {allCriteriaPassed(props.feedback.criteria) &&
-            !props.feedback.vfm && (
-              <li>
-                <Cross colour="#FF0000" className={styles.icon} />The submitted rate was not considered value for money.
-              </li>
-            )}
-          {Object.keys(props.feedback.criteria).map(criteriaId => (
-            <li key={criteriaId}>
-              {!props.feedback.criteria[criteriaId].has_feedback && (
-                <span>
-                  <Tick colour="#17788D" className={styles.icon} />Evidence demonstrates &quot;{
-                    props.feedback.criteria[criteriaId].name
-                  }&quot;
-                </span>
-              )}
+          {props.feedback.vfm === false ? (
+            <li>
+              <Cross colour="#FF0000" className={styles.icon} />The submitted rate was not considered value for money.
             </li>
-          ))}
-          {Object.keys(props.feedback.criteria).map(criteriaId => (
-            <li key={criteriaId}>
-              {props.feedback.criteria[criteriaId].has_feedback && (
-                <React.Fragment>
-                  <span>
-                    <Cross colour="#FF0000" className={styles.icon} />
-                    {props.feedback.criteria[criteriaId].name}
-                  </span>
-                  {renderCriteriaFeedback(criteriaId, props.feedback.criteria)}
-                </React.Fragment>
-              )}
-            </li>
-          ))}
+          ) : (
+            <React.Fragment>
+              {Object.keys(props.feedback.criteria).map(criteriaId => (
+                <li key={criteriaId}>
+                  {!props.feedback.criteria[criteriaId].has_feedback && (
+                    <span>
+                      <Tick colour="#17788D" className={styles.icon} />Evidence demonstrates &quot;{
+                        props.feedback.criteria[criteriaId].name
+                      }&quot;
+                    </span>
+                  )}
+                </li>
+              ))}
+              {Object.keys(props.feedback.criteria).map(criteriaId => (
+                <li key={criteriaId}>
+                  {props.feedback.criteria[criteriaId].has_feedback && (
+                    <React.Fragment>
+                      <span>
+                        <Cross colour="#FF0000" className={styles.icon} />
+                        {props.feedback.criteria[criteriaId].name}
+                      </span>
+                      {renderCriteriaFeedback(criteriaId, props.feedback.criteria)}
+                    </React.Fragment>
+                  )}
+                </li>
+              ))}
+            </React.Fragment>
+          )}
         </ul>
         <AUheading level="2" size="lg">
           Next steps
         </AUheading>
-        {allCriteriaPassed(props.feedback.criteria) &&
-          !props.feedback.vfm &&
+        {props.feedback.vfm === false &&
           !props.feedback.currentEvidenceId && (
             <p>
               You will need to{' '}
@@ -87,8 +88,7 @@ const SellerAssessmentFeedback = props => (
               it is no higher than $XXX.
             </p>
           )}
-        {allCriteriaPassed(props.feedback.criteria) &&
-          !props.feedback.vfm &&
+        {props.feedback.vfm === false &&
           props.feedback.currentEvidenceId && (
             <p>
               You will need to{' '}
@@ -99,6 +99,7 @@ const SellerAssessmentFeedback = props => (
             </p>
           )}
         {!allCriteriaPassed(props.feedback.criteria) &&
+          props.feedback.vfm !== false &&
           !props.feedback.currentEvidenceId && (
             <p>
               You can incorporate the assessment team&apos;s feedback and{' '}
@@ -106,6 +107,7 @@ const SellerAssessmentFeedback = props => (
             </p>
           )}
         {!allCriteriaPassed(props.feedback.criteria) &&
+          props.feedback.vfm !== false &&
           props.feedback.currentEvidenceId && (
             <p>
               You can incorporate the assessment team&apos;s feedback and{' '}
