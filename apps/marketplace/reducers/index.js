@@ -11,6 +11,7 @@ import opportunities from './opportunitiesReducers'
 import errorMessage from './errorMessage'
 import form_options from './form_options'
 import messages from './messagesReducers'
+import buyerAwardSeller from './buyerAwardSellerReducers'
 
 export const BuyerRFXFormReducer = {
   id: 0,
@@ -120,6 +121,7 @@ export default combineReducers({
   dashboard,
   sellerDashboard,
   sellerEdit,
+  buyerAwardSeller,
   opportunities,
   messages,
   form_options,

@@ -11,7 +11,8 @@ import {
   SPECIALIST_NAME,
   SPECIALIST_NAME_SPLIT,
   SPECIALIST_NUMBER,
-  ADD_ANOTHER_SPECIALIST
+  ADD_ANOTHER_SPECIALIST,
+  BUYER_AWARD_SELLER_SUPPLIERS_RESPONDED_LOAD_SUCCESS
 } from '../constants/constants'
 
 import {
@@ -83,7 +84,8 @@ export const deleteBrief = briefId => (dispatch, getState) => {
 export const handleBriefInfoSuccess = response => ({
   type: BRIEF_INFO_FETCH_DATA_SUCCESS,
   brief: response.data.brief,
-  briefResponses: response.data.briefResponses
+  briefResponses: response.data.briefResponses,
+  oldWorkOrderCreator: response.data.oldWorkOrderCreator
 })
 
 export const handlePublicBriefInfoSuccess = response => ({
@@ -303,4 +305,25 @@ export function handleSpecialistNumberSubmit(specialistNumber) {
 
 export function addAnotherSpecialistSubmit(addAnotherSpecialist) {
   return { type: ADD_ANOTHER_SPECIALIST, addAnotherSpecialist }
+}
+
+
+
+export const handleSuppliersRespondedSuccess = response => ({
+  type: BUYER_AWARD_SELLER_SUPPLIERS_RESPONDED_LOAD_SUCCESS,
+  suppliers: response.data
+})
+
+export const loadSuppliersResponded = briefId => dispatch => {
+  dispatch(sendingRequest(true))
+  return dmapi({ url: `/brief-response/${briefId}/suppliers` }).then(response => {
+    if (!response || response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      response.data.loadedAt = new Date().valueOf()
+      dispatch(handleSuppliersRespondedSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
 }

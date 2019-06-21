@@ -74,7 +74,7 @@ class BuyerRFXClosingStage extends Component {
         <p>
           <label className="question-heading au-text-input__label">Additional information</label>
           <br />
-          We recommend that the <a href="http://www.google.com">comprehensive terms TODO</a> only be applied to
+          We recommend that the <a href="/2/r/comprehensive-terms-2019-07-01.pdf">comprehensive terms</a> only be applied to
           procurements that are complex or high value. The terms will apply to you work order, in addition to the Master
           Agreement.
         </p>

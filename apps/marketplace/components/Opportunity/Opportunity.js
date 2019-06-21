@@ -183,7 +183,7 @@ const Opportunity = props => {
                 <div className="col-xs-12 col-sm-4">
                   <strong>Additional terms</strong>
                 </div>
-                <div className="col-xs-12 col-sm-8"><a href="http://www.google.com">Comprehensive terms TODO</a> apply</div>
+                <div className="col-xs-12 col-sm-8"><a href="/2/r/comprehensive-terms-2019-07-01.pdf">Comprehensive terms</a> apply</div>
               </div>
             )}
             <AUheading level="2" size="lg">
