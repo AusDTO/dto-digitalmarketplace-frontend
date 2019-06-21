@@ -6,11 +6,13 @@ import application from './application';
 import errorMessage from '../../../../shared/reduxModules/errorMessage';
 import form_options from '../../../../shared/reduxModules/form_options';
 import application_errors from './application_errors';
+import agreement from './agreement'
 
 export default combineReducers({
   form_options,
   errorMessage,
   steps,
+  agreement,
   application,
   application_errors,
   confirmDiscard: false,

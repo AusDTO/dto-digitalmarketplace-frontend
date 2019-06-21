@@ -6,6 +6,7 @@ import brief from './briefReducers'
 import user from './memberInfoReducers'
 import dashboard from './dashboardReducers'
 import sellerDashboard from './sellerDashboardReducers'
+import sellerEdit from './sellerEditReducers'
 import opportunities from './opportunitiesReducers'
 import errorMessage from './errorMessage'
 import form_options from './form_options'
@@ -94,12 +95,31 @@ export const BuyerSpecialistFormReducer = {
   comprehensiveTerms: false
 }
 
+export const SellerEditFormReducer = {
+  supplier: {
+    name: '',
+    code: '',
+    data: {
+      representative: '',
+      email: '',
+      phone: ''
+    }
+  },
+  agreementStatus: {
+    show: false,
+    canSign: false,
+    canUserSign: false,
+    signed: false
+  }
+}
+
 export default combineReducers({
   app: appReducer,
   user,
   brief,
   dashboard,
   sellerDashboard,
+  sellerEdit,
   opportunities,
   messages,
   form_options,
@@ -164,6 +184,7 @@ export default combineReducers({
     },
     BuyerRFXForm: BuyerRFXFormReducer,
     BuyerATMForm: BuyerATMFormReducer,
-    BuyerSpecialistForm: BuyerSpecialistFormReducer
+    BuyerSpecialistForm: BuyerSpecialistFormReducer,
+    SellerEditFlowPage: SellerEditFormReducer
   })
 })

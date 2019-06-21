@@ -262,6 +262,8 @@ export class ProgressFlow extends Component {
                             onPreview={this.handlePreview}
                             onReturn={this.handleReturn}
                             onConfirmationClick={this.handleConfirmationClick}
+                            startText={this.props.progressButtons.startText}
+                            showReturnText={this.props.progressButtons.showReturnText}
                           />
                         }
                       />
@@ -279,7 +281,8 @@ export class ProgressFlow extends Component {
 ProgressFlow.defaultProps = {
   basename: '',
   saveModel: () => {},
-  onStageMount: () => {}
+  onStageMount: () => {},
+  progressButtons: {}
 }
 
 ProgressFlow.propTypes = {
@@ -289,7 +292,8 @@ ProgressFlow.propTypes = {
   returnPath: PropTypes.string.isRequired,
   previewPath: PropTypes.string.isRequired,
   saveModel: PropTypes.func,
-  onStageMount: PropTypes.func
+  onStageMount: PropTypes.func,
+  progressButtons: PropTypes.object
 }
 
 const mapStateToProps = (state, props) => ({
