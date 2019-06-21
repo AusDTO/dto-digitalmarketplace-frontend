@@ -79,11 +79,23 @@ const SellerAssessmentFeedback = props => (
           Next steps
         </AUheading>
         {allCriteriaPassed(props.feedback.criteria) &&
-          !props.feedback.vfm && (
+          !props.feedback.vfm &&
+          !props.feedback.currentEvidenceId && (
             <p>
               You will need to{' '}
               <a href={`${rootPath}/seller-assessment/create/${props.feedback.domainId}`}>reduce your daily rate</a> so
               it is no higher than $XXX.
+            </p>
+          )}
+        {allCriteriaPassed(props.feedback.criteria) &&
+          !props.feedback.vfm &&
+          props.feedback.currentEvidenceId && (
+            <p>
+              You will need to{' '}
+              <a href={`${rootPath}/seller-assessment/${props.feedback.currentEvidenceId}/introduction`}>
+                reduce your daily rate
+              </a>{' '}
+              so it is no higher than $XXX.
             </p>
           )}
         {!allCriteriaPassed(props.feedback.criteria) &&
