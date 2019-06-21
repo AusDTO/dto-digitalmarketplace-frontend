@@ -16,9 +16,7 @@ export class Categories extends Component {
       case 'unassessed':
         return <div className={`${styles.unassessed}`}>-</div>
       case 'draft':
-        if (category.is_approved) {
-          return <div className={`${styles.badge} ${styles.approved}`}>Approved</div>
-        } else if (category.previous_evidence_id) {
+        if (category.previous_evidence_id) {
           return <div className={`${styles.badge} ${styles.rejected}`}>Unsuccessful</div>
         }
         return <div className={`${styles.badge} ${styles.submitted}`}>In draft</div>
@@ -64,16 +62,7 @@ export class Categories extends Component {
       case 'draft':
         return (
           <React.Fragment>
-            {category.is_approved &&
-              category.rate && (
-                <span>
-                  Your maximum daily rate: ${category.rate}
-                  <br />
-                </span>
-              )}
-            <a href={`${rootPath}/seller-assessment/${category.evidence_id}/introduction`}>
-              {category.is_approved ? 'Continue editing rate' : 'Continue editing'}
-            </a>
+            <a href={`${rootPath}/seller-assessment/${category.evidence_id}/introduction`}>Continue editing</a>
             {category.previous_evidence_id && (
               <a href={`${rootPath}/seller-assessment/${category.previous_evidence_id}/feedback`}>View feedback</a>
             )}
@@ -89,7 +78,7 @@ export class Categories extends Component {
                   <br />
                 </span>
               )}
-            <a href={`${rootPath}/seller-assessment/create/${category.id}`}>Adjust rate</a>
+            <a href="/contact-us">Contact us to adjust your rate</a>
           </React.Fragment>
         )
       case 'rejected':
