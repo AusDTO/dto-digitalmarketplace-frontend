@@ -54,6 +54,7 @@ class SellerAssessmentCriteriaStage extends Component {
   }
 
   render() {
+    const domain = this.props.meta.domain
     return (
       <Form
         model={this.props.model}
@@ -62,11 +63,7 @@ class SellerAssessmentCriteriaStage extends Component {
             requiredMinimal: formValues =>
               formValues.criteria &&
               formValues.criteria.length >=
-                getCriteriaNeeded(
-                  this.props.meta.criteriaNeeded,
-                  this.props.meta.priceMaximum,
-                  this.props[this.props.model].maxDailyRate
-                )
+                getCriteriaNeeded(domain.criteriaNeeded, domain.priceMaximum, this.props[this.props.model].maxDailyRate)
           }
         }}
         onSubmit={this.props.onSubmit}
@@ -81,8 +78,8 @@ class SellerAssessmentCriteriaStage extends Component {
           model={this.props.model}
           messages={{
             requiredMinimal: `You must select at least ${getCriteriaNeeded(
-              this.props.meta.criteriaNeeded,
-              this.props.meta.priceMaximum,
+              domain.criteriaNeeded,
+              domain.priceMaximum,
               this.props[this.props.model].maxDailyRate
             )} criteria`
           }}
@@ -90,15 +87,15 @@ class SellerAssessmentCriteriaStage extends Component {
         <p>
           <strong>
             Select the criteria you will provide evidence for ({getCriteriaNeeded(
-              this.props.meta.criteriaNeeded,
-              this.props.meta.priceMaximum,
+              domain.criteriaNeeded,
+              domain.priceMaximum,
               this.props[this.props.model].maxDailyRate
             )}{' '}
             minimum required)
           </strong>
         </p>
         <div className={styles.criteria}>
-          {this.props.meta.criteria.map(criteria => (
+          {domain.criteria.map(criteria => (
             <CheckboxDetailsField
               key={criteria.id}
               model={`${this.props.model}.criteria[]`}

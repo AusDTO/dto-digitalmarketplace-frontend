@@ -40,8 +40,9 @@ const SellerAssessmentStages = [
     component: SellerAssessmentCriteriaStage,
     isDone: (formValues, meta) =>
       formValues.criteria &&
-      meta.criteriaNeeded &&
-      formValues.criteria.length >= getCriteriaNeeded(meta.criteriaNeeded, meta.priceMaximum, formValues.maxDailyRate)
+      meta.domain.criteriaNeeded &&
+      formValues.criteria.length >=
+        getCriteriaNeeded(meta.domain.criteriaNeeded, meta.domain.priceMaximum, formValues.maxDailyRate)
   },
   {
     slug: 'evidence',

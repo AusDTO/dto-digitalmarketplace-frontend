@@ -28,7 +28,7 @@ const SellerAssessmentReviewStage = props => (
     ) : (
       <div>
         <AUheading level="1" size="xl">
-          {props.meta.name} assessment
+          {props.meta.domain.name} assessment
         </AUheading>
         <AUheading level="2" size="md">
           Maximum daily rate
@@ -49,7 +49,7 @@ const SellerAssessmentReviewStage = props => (
             <AUheading level="2" size="md">
               Criteria
             </AUheading>
-            <p className={styles.reviewText}>{getCriteriaName(criteriaId, props.meta.criteria)}</p>
+            <p className={styles.reviewText}>{getCriteriaName(criteriaId, props.meta.domain.criteria)}</p>
             <AUheading level="2" size="md">
               Client
             </AUheading>

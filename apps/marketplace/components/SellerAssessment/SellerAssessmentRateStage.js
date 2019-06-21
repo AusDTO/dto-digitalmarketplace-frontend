@@ -45,17 +45,17 @@ const SellerAssessmentRateStage = props => (
     <Textfield
       model={`${props.model}.maxDailyRate`}
       label="What is your maximum daily rate (including GST)"
-      description={`The upper limit for ${props.meta.name} is $${props.meta.priceMaximum}`}
+      description={`The upper limit for ${props.meta.domain.name} is $${props.meta.domain.priceMaximum}`}
       name="maxDailyRate"
       id="maxDailyRate"
       htmlFor="maxDailyRate"
       defaultValue={props[props.model].maxDailyRate}
     />
-    {parseInt(props[props.model].maxDailyRate, 10) > parseInt(props.meta.priceMaximum, 10) && (
+    {parseInt(props[props.model].maxDailyRate, 10) > parseInt(props.meta.domain.priceMaximum, 10) && (
       <AUpageAlert as="info">
         <p>
-          This price is above the upper limit for {props.meta.name} assessments. If you nominate a price above the upper
-          limit, you will need to match more criteria in this assessment.
+          This price is above the upper limit for {props.meta.domain.name} assessments. If you nominate a price above
+          the upper limit, you will need to match more criteria in this assessment.
         </p>
       </AUpageAlert>
     )}

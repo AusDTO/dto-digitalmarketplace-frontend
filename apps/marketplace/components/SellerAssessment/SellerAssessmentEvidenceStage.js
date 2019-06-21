@@ -9,7 +9,9 @@ import formProps from 'shared/form/formPropsSelector'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import { required, validPhoneNumber } from 'marketplace/components/validators'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
+import { rootPath } from 'marketplace/routes'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import format from 'date-fns/format'
 import styles from './SellerAssessmentEvidenceStage.scss'
 
@@ -144,6 +146,14 @@ class SellerAssessmentEvidenceStage extends Component {
     }
   }
 
+  getPreviousFailedCriteria() {
+    const failed = []
+    if ('evidence' in this.props.meta && this.props.meta.evidence.failedCriteria) {
+      Object.keys(this.props.meta.evidence.failedCriteria).map(id => failed.push(parseInt(id, 10)))
+    }
+    return failed
+  }
+
   isCriteriaDetailsDisabled(criteriaId) {
     return this.props[this.props.model].evidence[criteriaId].sameAsFirst
   }
@@ -200,6 +210,8 @@ class SellerAssessmentEvidenceStage extends Component {
   }
 
   render() {
+    const previouslyFailedCriteria = this.getPreviousFailedCriteria()
+
     return (
       <Form
         model={this.props.model}
@@ -245,11 +257,30 @@ class SellerAssessmentEvidenceStage extends Component {
               }}
             />
             {this.props[this.props.model].criteria.map((criteriaId, index) => (
-              <React.Fragment key={criteriaId}>
+              <div
+                key={criteriaId}
+                className={`${styles.criteria} ${
+                  previouslyFailedCriteria.includes(criteriaId) ? styles.previouslyFailed : ''
+                }`}
+              >
+                {previouslyFailedCriteria.includes(criteriaId) && (
+                  <AUpageAlert as="warning">
+                    <AUheadings level="2" size="lg">
+                      Update your evidence
+                    </AUheadings>
+                    <p>
+                      Please update the evidence of this criteria based on the{' '}
+                      <a href={`${rootPath}/seller-assessment/${this.props.meta.evidence.previousEvidenceId}/feedback`}>
+                        assessor&apos;s feedback
+                      </a>{' '}
+                      and resubmit for assessment.
+                    </p>
+                  </AUpageAlert>
+                )}
                 <AUheadings level="2" size="lg">
                   Criteria:
                 </AUheadings>
-                <p className={styles.criteriaText}>{getCriteriaName(criteriaId, this.props.meta.criteria)}</p>
+                <p className={styles.criteriaText}>{getCriteriaName(criteriaId, this.props.meta.domain.criteria)}</p>
                 {index !== 0 && (
                   <p>
                     <CheckboxDetailsField
@@ -421,7 +452,7 @@ class SellerAssessmentEvidenceStage extends Component {
                     minimumWords: `Your criteria response has not yet reached the ${minimumWordRequirement} word minimum requirement`
                   }}
                 />
-              </React.Fragment>
+              </div>
             ))}
             {this.props.formButtons}
           </React.Fragment>

@@ -2,6 +2,15 @@ p.criteriaText {
   font-size: 1.25rem;
 }
 
+div.criteria {
+  margin-top: 1.5rem;
+}
+
+div.previouslyFailed {
+  border-left: 5px solid #f69900;
+  padding-left: 1.5rem;
+}
+
 div.evidenceDates {
   margin-top: 1.5rem;
 

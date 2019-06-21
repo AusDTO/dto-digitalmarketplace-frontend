@@ -140,7 +140,7 @@ export class SellerAssessmentFlowPage extends Component {
     return (
       <ProgressFlow
         model={model}
-        meta={this.props.domain}
+        meta={{ domain: this.props.domain, evidence: this.props.evidence }}
         onStageMount={this.handleStageMount}
         basename={`${rootPath}/seller-assessment/${evidenceId}`}
         stages={SellerAssessmentStages}
@@ -157,6 +157,7 @@ export class SellerAssessmentFlowPage extends Component {
 const mapStateToProps = state => ({
   ...formProps(state, model),
   domain: state.domain.domain,
+  evidence: state.evidence,
   errorMessage: state.app.errorMessage
 })
 

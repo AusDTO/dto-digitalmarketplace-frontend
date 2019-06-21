@@ -77,6 +77,8 @@ export const handleLoadEvidenceSuccess = response => ({
     maxDailyRate: response.data.maxDailyRate,
     submittedAt: response.data.submitted_at,
     criteria: response.data.criteria,
+    failedCriteria: response.data.failed_criteria,
+    previousEvidenceId: response.data.previous_evidence_id,
     evidence: response.data.evidence,
     status: response.data.status
   }

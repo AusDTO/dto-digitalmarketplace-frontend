@@ -6,7 +6,7 @@ import AUheadings from '@gov.au/headings/lib/js/react.js'
 const SellerAssessmentIntroductionStage = props => (
   <Form model={props.model} onSubmit={props.onSubmit}>
     <AUheadings level="1" size="xl">
-      {props.meta.name} assessment
+      {props.meta.domain.name} assessment
     </AUheadings>
     <p>
       Every seller must be assessed as offering value for money before they can respond to opportunities published on
@@ -17,7 +17,7 @@ const SellerAssessmentIntroductionStage = props => (
     </AUheadings>
     <ol>
       <li>
-        A maximum daily rate for your services in {props.meta.name}. Use{' '}
+        A maximum daily rate for your services in {props.meta.domain.name}. Use{' '}
         <a href="https://www.sfia-online.org/en/framework/sfia-7/busskills/level-5" rel="external noopener">
           SFIA level 5
         </a>{' '}
