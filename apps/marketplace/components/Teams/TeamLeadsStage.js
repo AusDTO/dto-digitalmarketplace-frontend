@@ -20,6 +20,7 @@ const TeamLeadActions = props => {
       inline
       items={[
         {
+          className: commonStyles.removeLink,
           link: '#remove',
           onClick: e => {
             e.preventDefault()
