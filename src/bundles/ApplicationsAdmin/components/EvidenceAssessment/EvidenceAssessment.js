@@ -33,9 +33,13 @@ class EvidenceAssessment extends React.Component {
   }
 
   hasReviewedAllCriteria() {
-    return this.state.vfm !== undefined && Object.keys(this.state.criteria).every(id => {
+    return Object.keys(this.state.criteria).every(id => {
       return this.state.criteria[id].demonstrates === true || (this.state.criteria[id].demonstrates === false && this.state.criteria[id].reason)
     })
+  }
+
+  hasReviewiedVFM() {
+    return this.state.vfm !== undefined
   }
 
   hasMetEnoughCriteria() {
@@ -246,44 +250,49 @@ class EvidenceAssessment extends React.Component {
               </p>
             </React.Fragment>
           ))}
+          {this.hasMetEnoughCriteria() && this.hasReviewedAllCriteria() && (
+            <React.Fragment>
+              <p>
+                <strong>Does the submitted rate represent VFM?</strong>
+              </p>
+              <p>Limit: ${evidence.domain_price_maximum}</p>
+              <p>
+                Submitted: ${evidence.maxDailyRate}{this.priceIsOver() && (
+                  <span styleName="priceOver">({this.getOverPercentage()}% over)</span>
+                )}
+              </p>
+              <p>
+                <span styleName="criteriaReview">
+                  <AUradio
+                    label="Yes"
+                    name="vfm-review"
+                    id="vfm-review-yes"
+                    value={this.state.vfm}
+                    checked={this.state.vfm === true}
+                    onChange={e => this.handleVFMClick(true)}
+                    block
+                  />
+                  <AUradio
+                    label="No"
+                    name="vfm-review"
+                    id="vfm-review-no"
+                    value={this.state.vfm}
+                    checked={this.state.vfm === false}
+                    onChange={e => this.handleVFMClick(false)}
+                    block
+                  />
+                </span>
+              </p>
+            </React.Fragment>
+          )}
           <p>
-            <strong>Does the submitted rate represent VFM?</strong>
-          </p>
-          <p>Limit: ${evidence.domain_price_maximum}</p>
-          <p>
-            Submitted: ${evidence.maxDailyRate}{this.priceIsOver() && (
-              <span styleName="priceOver">({this.getOverPercentage()}% over)</span>
-            )}
-          </p>
-          <p>
-            <span styleName="criteriaReview">
-              <AUradio
-                label="Yes"
-                name="vfm-review"
-                id="vfm-review-yes"
-                value={this.state.vfm}
-                checked={this.state.vfm === true}
-                onChange={e => this.handleVFMClick(true)}
-                block
-              />
-              <AUradio
-                label="No"
-                name="vfm-review"
-                id="vfm-review-no"
-                value={this.state.vfm}
-                checked={this.state.vfm === false}
-                onChange={e => this.handleVFMClick(false)}
-                block
-              />
-            </span>
-          </p>
-          <p>
-            {this.hasReviewedAllCriteria() && (!this.hasMetEnoughCriteria() || this.state.vfm === false) && (
-              <button name="reject" styleName="actionButton rejectButton" onClick={this.handleAssessmentReject}>
-                Reject assessment
-              </button>
-            )}
-            {this.hasReviewedAllCriteria() && this.hasMetEnoughCriteria() && this.state.vfm === true && (
+            {this.hasReviewedAllCriteria() &&
+              (!this.hasMetEnoughCriteria() || this.state.vfm === false) && (
+                <button name="reject" styleName="actionButton rejectButton" onClick={this.handleAssessmentReject}>
+                  Reject assessment
+                </button>
+              )}
+            {this.hasReviewedAllCriteria() && this.hasMetEnoughCriteria() && this.hasReviewiedVFM() && this.state.vfm === true && (
               <button name="reject" styleName="actionButton approveButton" onClick={this.handleAssessmentApprove}>
                 Approve assessment
               </button>
