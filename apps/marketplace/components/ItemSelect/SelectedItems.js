@@ -6,7 +6,7 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import styles from './SelectedItems.scss'
 
 const SelectedItemsList = props => {
-  const { handleRemoveItem, selectedItems, selectedItemsHeading } = props
+  const { actions, selectedItems, selectedItemsHeading } = props
   const sortedKeys = Object.keys(selectedItems).sort((a, b) => (selectedItems[a] > selectedItems[b] ? 1 : -1))
 
   return (
@@ -18,15 +18,7 @@ const SelectedItemsList = props => {
         {sortedKeys.map(key => (
           <li key={key}>
             <span>{selectedItems[key]}</span>
-            <a
-              href="#remove"
-              onClick={e => {
-                e.preventDefault()
-                handleRemoveItem(key)
-              }}
-            >
-              Remove
-            </a>
+            {React.cloneElement(actions, { id: key })}
           </li>
         ))}
       </ul>
@@ -35,12 +27,12 @@ const SelectedItemsList = props => {
 }
 
 const SelectedItems = props => {
-  const { handleRemoveItem, model, selectedItemsHeading } = props
+  const { actions, model, selectedItemsHeading } = props
 
   return (
     <Control.custom
+      actions={actions}
       component={SelectedItemsList}
-      handleRemoveItem={handleRemoveItem}
       mapProps={{
         formModel: ownProps => ownProps.model,
         selectedItems: ownProps => ownProps.modelValue

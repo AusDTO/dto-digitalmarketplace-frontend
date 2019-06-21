@@ -3,11 +3,34 @@ import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 
 import AUheading from '@gov.au/headings'
+import AUlinklist from '@gov.au/link-list/lib/js/react.js'
 import { findTeamMember } from 'marketplace/actions/teamActions'
 import formProps from 'shared/form/formPropsSelector'
 import ItemSelect from '../ItemSelect/ItemSelect'
 
 import commonStyles from './TeamStages.scss'
+import actionStyles from '../ItemSelect/SelectedItems.scss'
+
+const TeamLeadActions = props => {
+  const { handleRemoveTeamLead, id } = props
+
+  return (
+    <AUlinklist
+      className={actionStyles.selectedItemActions}
+      inline
+      items={[
+        {
+          link: '#remove',
+          onClick: e => {
+            e.preventDefault()
+            handleRemoveTeamLead(id)
+          },
+          text: 'Remove'
+        }
+      ]}
+    />
+  )
+}
 
 const TeamLeadNameDescription = props => (
   <span>
@@ -99,6 +122,7 @@ export class TeamLeadsStage extends Component {
     const teamLeadNameDescription = <TeamLeadNameDescription domain={this.props[model].domain} />
     const emptyResultsMessage = <EmptyResultsMessage />
     const teamMemberListItems = <TeamMemberListItems handleItemClick={this.handleItemClick} items={this.state.users} />
+    const teamLeadActions = <TeamLeadActions handleRemoveTeamLead={this.handleRemoveItem} />
 
     return (
       <Form model={model} onSubmit={onSubmit} onSubmitFailed={onSubmitFailed}>
@@ -117,7 +141,6 @@ export class TeamLeadsStage extends Component {
           defaultValue={this.props[model].teamLeadName}
           description={teamLeadNameDescription}
           emptyResultsMessage={emptyResultsMessage}
-          handleRemoveItem={this.handleRemoveItem}
           handleSearchChange={this.handleSearchChange}
           htmlFor="teamLeadName"
           id="teamLeadName"
@@ -131,6 +154,7 @@ export class TeamLeadsStage extends Component {
           placeholder=""
           resultIsEmpty={this.state.users.length < 1}
           resultListItems={teamMemberListItems}
+          selectedItemActions={teamLeadActions}
           selectedItemsHeading="Current team leads"
           showSearchButton={false}
           validators={{}}
