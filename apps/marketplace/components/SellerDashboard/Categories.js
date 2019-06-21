@@ -74,7 +74,7 @@ export class Categories extends Component {
             {category.is_approved &&
               category.rate && (
                 <span>
-                  Your maximum daily rate: ${category.rate}
+                  Your maximum daily rate (including GST): ${category.rate}
                   <br />
                 </span>
               )}
