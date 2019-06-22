@@ -12,7 +12,8 @@ import {
   SPECIALIST_NAME_SPLIT,
   SPECIALIST_NUMBER,
   ADD_ANOTHER_SPECIALIST,
-  BUYER_AWARD_SELLER_SUPPLIERS_RESPONDED_LOAD_SUCCESS
+  SUPPLIERS_RESPONDED_LOAD_SUCCESS,
+  BRIEF_AWARDED_SUCCESS
 } from '../constants/constants'
 
 import {
@@ -307,11 +308,10 @@ export function addAnotherSpecialistSubmit(addAnotherSpecialist) {
   return { type: ADD_ANOTHER_SPECIALIST, addAnotherSpecialist }
 }
 
-
-
 export const handleSuppliersRespondedSuccess = response => ({
-  type: BUYER_AWARD_SELLER_SUPPLIERS_RESPONDED_LOAD_SUCCESS,
-  suppliers: response.data
+  type: SUPPLIERS_RESPONDED_LOAD_SUCCESS,
+  suppliers: response.data.suppliers,
+  workOrderCreated: response.data.workOrderCreated
 })
 
 export const loadSuppliersResponded = briefId => dispatch => {
@@ -325,5 +325,30 @@ export const loadSuppliersResponded = briefId => dispatch => {
     }
     dispatch(sendingRequest(false))
     return response
+  })
+}
+
+export const handleBriefAwardedSuccess = response => ({
+  type: BRIEF_AWARDED_SUCCESS,
+  briefResponse: response.data.briefResponses
+})
+
+export const handleBriefAwardedSubmit = (briefId, model) => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  dmapi({
+    url: `/brief/${briefId}/award-seller`,
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify(model)
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleBriefAwardedSuccess(response))
+    }
+    dispatch(sendingRequest(false))
   })
 }

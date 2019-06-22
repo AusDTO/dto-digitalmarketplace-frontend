@@ -1,65 +1,52 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
-
-import { loadSuppliersResponded } from 'marketplace/actions/briefActions'
-import ErrorBox from 'shared/form/ErrorBox'
+import { withRouter, Redirect } from 'react-router-dom'
+import { loadSuppliersResponded, handleBriefAwardedSubmit } from 'marketplace/actions/briefActions'
+// import ErrorBox from 'shared/form/ErrorBox'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import BriefOverview from 'marketplace/components/Brief/Overview/BriefOverview'
+import BuyerAwardSeller from 'marketplace/components/Brief/BuyerAwardSeller'
+import { rootPath } from 'marketplace/routes'
 
 export class BuyerAwardSellerPage extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
-
   componentDidMount() {
     this.props.loadData(this.props.match.params.briefId)
   }
 
+  handleBriefAwardedSubmit(values) {
+    this.props.handleBriefAwardedSubmit(this.props.match.params.briefId, values)
+    window.scrollTo(0, 0)
+  }
+
   render() {
-    // const { currentlySending, loadBriefOverviewSuccess, match } = this.props
-    const { suppliers } = this.props
+    const { currentlySending, suppliers, workOrderCreated } = this.props
 
-
-    // let hasFocused = false
-    // const setFocus = e => {
-    //   if (!hasFocused) {
-    //     hasFocused = true
-    //     e.focus()
-    //   }
-    // }
+    if (workOrderCreated) {
+      return <Redirect to={`${rootPath}/brief/${this.props.match.params.briefId}/download-work-order`} />
+    }
+    if (currentlySending) {
+      return <LoadingIndicatorFullPage />
+    }
 
     return (
-      <div>
-        { JSON.stringify(suppliers) }
-        asdf
-        {/* {currentlySending && <LoadingIndicatorFullPage />}
-        {!currentlySending && loadBriefOverviewSuccess ? (
-          <BriefOverview setFocus={setFocus} briefId={match.params.briefId} {...this.props} />
-        ) : (
-          <ErrorBox title="There was a problem loading the brief" setFocus={setFocus} />
-        )} */}
-      </div>
+      <BuyerAwardSeller
+        suppliersResponded={suppliers}
+        model="briefAwardSeller"
+        handleSubmit={data => this.handleBriefAwardedSubmit(data)}
+        workOrderCreated={workOrderCreated}
+      />
     )
   }
 }
 
 const mapStateToProps = state => ({
-  suppliers: state.buyerAwardSeller.suppliers
-  // currentlySending: state.app.currentlySending,
-  // deleteBriefSuccess: state.brief.deleteBriefSuccess,
-  // loadBriefOverviewSuccess: state.brief.loadBriefOverviewSuccess,
-  // sections: state.brief.overview.sections,
-  // status: state.brief.overview.status,
-  // title: state.brief.overview.title,
-  // lotSlug: state.brief.overview.lot_slug
+  suppliers: state.buyerAwardSeller.suppliers,
+  workOrderCreated: state.buyerAwardSeller.workOrderCreated,
+  currentlySending: state.app.currentlySending
 })
 
 const mapDispatchToProps = dispatch => ({
   loadData: briefId => dispatch(loadSuppliersResponded(briefId)),
-  // deleteBrief: briefId => dispatch(deleteBrief(briefId))
+  handleBriefAwardedSubmit: (briefId, model) => dispatch(handleBriefAwardedSubmit(briefId, model))
 })
-
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BuyerAwardSellerPage))

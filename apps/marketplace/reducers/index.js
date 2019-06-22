@@ -135,6 +135,9 @@ export default combineReducers({
       name: '',
       password: ''
     },
+    briefAwardSeller: {
+      awardedSupplierCode: ''
+    },
     briefResponseForm: {
       availability: '',
       dayRate: '',

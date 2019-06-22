@@ -61,11 +61,7 @@ export const Routes = () => (
       path={`${rootPath}/buyer-rfx/:briefId/completed`}
       component={BuyerRFXCompletedPage}
     />
-    <PrivateRoute
-      restrictedTo="buyer"
-      path={`${rootPath}/buyer-award/:briefId`}
-      component={BuyerAwardSellerPage}
-    />
+    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-award/:briefId`} component={BuyerAwardSellerPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/:briefId/:stage?`} component={BuyerRFXFlowPage} />
     <PrivateRoute
       restrictedTo="buyer"

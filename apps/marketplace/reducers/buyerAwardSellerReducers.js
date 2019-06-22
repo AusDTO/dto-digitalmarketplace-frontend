@@ -1,4 +1,4 @@
-import { BUYER_AWARD_SELLER_SUPPLIERS_RESPONDED_LOAD_SUCCESS } from '../constants/constants'
+import { SUPPLIERS_RESPONDED_LOAD_SUCCESS, BRIEF_AWARDED_SUCCESS } from '../constants/constants'
 
 const defaultUserState = {
   buyerAwardSellerReducers: []
@@ -6,12 +6,18 @@ const defaultUserState = {
 
 const buyerAwardSellerReducers = (state = defaultUserState, action) => {
   switch (action.type) {
-    case BUYER_AWARD_SELLER_SUPPLIERS_RESPONDED_LOAD_SUCCESS:
+    case SUPPLIERS_RESPONDED_LOAD_SUCCESS:
       return {
         ...state,
-        suppliers: action.suppliers
+        suppliers: action.suppliers,
+        workOrderCreated: action.workOrderCreated
       }
-
+    case BRIEF_AWARDED_SUCCESS:
+      return {
+        ...state,
+        suppliers: [],
+        workOrderCreated: true
+      }
     default:
       return state
   }
