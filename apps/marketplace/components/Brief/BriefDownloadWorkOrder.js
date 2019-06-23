@@ -71,7 +71,12 @@ export class BriefDownloadWorkOrder extends Component {
           </React.Fragment>
         )}
         {brief.lotSlug === 'training' && simpleWorkOrder}
-        <p>Other work orders are available on the templates page.</p>
+        <p>
+          Other work orders are available on the{' '}
+          <a href="#" rel="noopener noreferrer" target="_blank">
+            templates page [TODO]
+          </a>.
+        </p>
         <p>
           <a href={`${rootPath}/buyer-dashboard`}>Return to dashboard</a>
         </p>
