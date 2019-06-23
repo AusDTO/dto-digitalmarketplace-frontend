@@ -63,6 +63,15 @@ app.get('/2/collaborate*', function(req, res) {
   res.redirect('https://infrastructure.gov.au/cities/smart-cities/collaboration-platform/');
 })
 
+app.get('/2/r/master-agreement-2019-07-01.pdf', function(req, res) {
+  res.redirect('/static/media/documents/digital-marketplace-master-agreement-2019-07-01.pdf');
+})
+
+app.get('/2/r/comprehensive-terms-2019-07-01.pdf', function(req, res) {
+  res.redirect('/static/media/documents/digital-marketplace-comprehensive-terms-2019-07-01.pdf');
+})
+
+
 app.get('/*', function(req, res) {
   res.render('index');
 })
