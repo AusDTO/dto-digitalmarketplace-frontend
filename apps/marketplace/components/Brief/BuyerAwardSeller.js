@@ -2,15 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
 import DocumentTitle from 'react-document-title'
-// import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
-// import AUheadings from '@gov.au/headings/lib/js/react.js'
 import { required } from 'marketplace/components/validators'
-// import ErrorBox from 'shared/form/ErrorBox'
 import RadioList from 'shared/form/RadioList'
 
-// import styles from './BriefSpecialistResponseForm2.scss'
-
-const BuyerAwardSeller = ({ model, submitClicked, suppliersResponded, handleSubmit, workOrderCreated }) => (
+const BuyerAwardSeller = ({ model, suppliersResponded, handleSubmit, workOrderCreated }) => (
   <div className="row">
     <DocumentTitle title="Award which seller? - Digital Marketplace">
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
@@ -37,9 +32,6 @@ const BuyerAwardSeller = ({ model, submitClicked, suppliersResponded, handleSubm
                   type="submit"
                   disabled={workOrderCreated || suppliersResponded.length === 0}
                   value="Save and continue"
-                  onClick={e => {
-                    submitClicked(e)
-                  }}
                 />
               </span>
             </Form>
@@ -53,7 +45,6 @@ const BuyerAwardSeller = ({ model, submitClicked, suppliersResponded, handleSubm
 BuyerAwardSeller.defaultProps = {
   model: '',
   suppliersResponded: [],
-  submitClicked: null,
   handleSubmit: null,
   workOrderCreated: true
 }
@@ -61,7 +52,6 @@ BuyerAwardSeller.defaultProps = {
 BuyerAwardSeller.propTypes = {
   model: PropTypes.string.isRequired,
   suppliersResponded: PropTypes.array.isRequired,
-  submitClicked: PropTypes.func,
   handleSubmit: PropTypes.func,
   workOrderCreated: PropTypes.bool
 }

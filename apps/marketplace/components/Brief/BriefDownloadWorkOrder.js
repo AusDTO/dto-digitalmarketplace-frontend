@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
-// import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
-// import styles from './BriefDownloadResponses.scss'
 
 export class BriefDownloadWorkOrder extends Component {
   constructor(props) {
@@ -28,7 +26,9 @@ export class BriefDownloadWorkOrder extends Component {
           or low value procurements.
         </p>
         <p>
-          <AUbutton onClick={this.handleButtonClick}>Download simple work order</AUbutton>
+          <AUbutton href="/2/r/simple-work-order.pdf" rel="noopener noreferrer" target="_blank">
+            Download simple work order [TODO]
+          </AUbutton>
         </p>
       </React.Fragment>
     )
@@ -45,7 +45,9 @@ export class BriefDownloadWorkOrder extends Component {
               for hiring specialists.
             </p>
             <p>
-              <AUbutton onClick={this.handleButtonClick}>Download specialist work order</AUbutton>
+              <AUbutton href="/2/r/specialist-work-order.pdf" rel="noopener noreferrer" target="_blank">
+                Download specialist work order [TODO]
+              </AUbutton>
             </p>
           </React.Fragment>
         )}
@@ -58,7 +60,9 @@ export class BriefDownloadWorkOrder extends Component {
                   suitable for complex or high value procurements.
                 </p>
                 <p>
-                  <AUbutton onClick={this.handleButtonClick}>Download comprehensive work order</AUbutton>
+                  <AUbutton href="/2/r/comprehensive-work-order.pdf" rel="noopener noreferrer" target="_blank">
+                    Download comprehensive work order [TODO]
+                  </AUbutton>
                 </p>
               </React.Fragment>
             ) : (

@@ -11,9 +11,7 @@ import {
   SPECIALIST_NAME,
   SPECIALIST_NAME_SPLIT,
   SPECIALIST_NUMBER,
-  ADD_ANOTHER_SPECIALIST,
-  SUPPLIERS_RESPONDED_LOAD_SUCCESS,
-  BRIEF_AWARDED_SUCCESS
+  ADD_ANOTHER_SPECIALIST
 } from '../constants/constants'
 
 import {
@@ -308,33 +306,13 @@ export function addAnotherSpecialistSubmit(addAnotherSpecialist) {
   return { type: ADD_ANOTHER_SPECIALIST, addAnotherSpecialist }
 }
 
-export const handleSuppliersRespondedSuccess = response => ({
-  type: SUPPLIERS_RESPONDED_LOAD_SUCCESS,
-  suppliers: response.data.suppliers,
-  workOrderCreated: response.data.workOrderCreated
-})
-
-export const loadSuppliersResponded = briefId => dispatch => {
-  dispatch(sendingRequest(true))
-  return dmapi({ url: `/brief-response/${briefId}/suppliers` }).then(response => {
-    if (!response || response.error) {
-      dispatch(handleErrorFailure(response))
-    } else {
-      response.data.loadedAt = new Date().valueOf()
-      dispatch(handleSuppliersRespondedSuccess(response))
-    }
-    dispatch(sendingRequest(false))
+export const loadSuppliersResponded = briefId => () =>
+  dmapi({ url: `/brief-response/${briefId}/suppliers` }).then(response => {
+    response.data.loadedAt = new Date().valueOf()
     return response
   })
-}
 
-export const handleBriefAwardedSuccess = response => ({
-  type: BRIEF_AWARDED_SUCCESS,
-  briefResponse: response.data.briefResponses
-})
-
-export const handleBriefAwardedSubmit = (briefId, model) => (dispatch, getState) => {
-  dispatch(sendingRequest(true))
+export const handleBriefAwardedSubmit = (briefId, model) => (dispatch, getState) =>
   dmapi({
     url: `/brief/${briefId}/award-seller`,
     method: 'POST',
@@ -343,12 +321,4 @@ export const handleBriefAwardedSubmit = (briefId, model) => (dispatch, getState)
       'Content-Type': 'application/json'
     },
     data: JSON.stringify(model)
-  }).then(response => {
-    if (response.error) {
-      dispatch(handleErrorFailure(response))
-    } else {
-      dispatch(handleBriefAwardedSuccess(response))
-    }
-    dispatch(sendingRequest(false))
-  })
-}
+  }).then(response => response)
