@@ -152,7 +152,8 @@ const OpportunitySpecialistInfoCard = props => (
           !props.isAssessedForCategory && (
             <span>
               <p className={styles.invitedStatus}>
-                Only sellers approved in {props.category} can apply.
+                Only sellers approved in {props.category} can apply. To be approved in this category, you will need to
+                be assessed and approved by the Marketplace.
                 {props.isRecruiterOnly &&
                   !props.isAwaitingDomainAssessment && (
                     <span>
