@@ -73,7 +73,7 @@ export class BriefDownloadWorkOrder extends Component {
         {brief.lotSlug === 'training' && simpleWorkOrder}
         <p>
           Other work orders are available on the{' '}
-          <a href="#" rel="noopener noreferrer" target="_blank">
+          <a href="http://www.google.com" rel="noopener noreferrer" target="_blank">
             templates page [TODO]
           </a>.
         </p>
