@@ -157,18 +157,19 @@ export class BuyerSpecialistRequirementsStage extends Component {
           Additional information
         </AUheadings>
         <p>
-          We recommend that the <a href="/2/r/comprehensive-terms-2019-07-01.pdf">comprehensive terms</a> only be
-          applied to procurements that are complex or high value. The terms will apply to you work order, in addition to
-          the Master Agreement.
+          We recommend that the{' '}
+          <a href="/2/r/comprehensive-terms-2019-07-01.pdf" rel="noopener noreferrer" target="_blank">
+            comprehensive terms
+          </a>{' '}
+          only be applied to procurements that are complex or high value. The terms will apply to you work order, in
+          addition to the Master Agreement.
         </p>
         <p>
           <CheckboxDetailsField
             model={`${this.props.model}.comprehensiveTerms`}
             id={`comprehensiveTerms`}
             name={`comprehensiveTerms`}
-            // onClick={this.handleIncludeWeightingsEssentialChange}
             label="Apply the comprehensive terms to this opportunity"
-            description={<React.Fragment />}
             detailsModel={this.props.model}
             validators={{}}
             messages={{}}
