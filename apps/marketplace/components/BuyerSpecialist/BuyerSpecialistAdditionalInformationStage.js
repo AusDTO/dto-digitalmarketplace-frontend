@@ -158,7 +158,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
         </AUheadings>
         <p>
           We recommend that the{' '}
-          <a href="/2/r/comprehensive-terms-2019-07-01.pdf" rel="noopener noreferrer" target="_blank">
+          <a href="/api/2/r/comprehensive-terms-2019-07-01.pdf" rel="noopener noreferrer" target="_blank">
             comprehensive terms
           </a>{' '}
           only be applied to procurements that are complex or high value. The terms will apply to you work order, in

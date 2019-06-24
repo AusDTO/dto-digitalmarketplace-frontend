@@ -64,11 +64,11 @@ app.get('/2/collaborate*', function(req, res) {
 })
 
 app.get('/2/r/master-agreement-2019-07-01.pdf', function(req, res) {
-  res.redirect('/static/media/documents/digital-marketplace-master-agreement-2019-07-01.pdf');
+  res.redirect('/api/2/r/master-agreement-2019-07-01.pdf');
 })
 
 app.get('/2/r/comprehensive-terms-2019-07-01.pdf', function(req, res) {
-  res.redirect('/static/media/documents/digital-marketplace-comprehensive-terms-2019-07-01.pdf');
+  res.redirect('/api/2/r/comprehensive-terms-2019-07-01.pdf');
 })
 
 

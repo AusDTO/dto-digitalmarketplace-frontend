@@ -149,7 +149,7 @@ export class YourDeclaration extends Component {
             <iframe
               title="Master Agreement"
               className={styles.masterAgreementFrame}
-              src="/static/media/documents/digital-marketplace-master-agreement-2019-07-01.html"
+              src="/api/2/r/master-agreement-2019-07-01.html"
             />
             <p>
               <AUcheckbox

@@ -26,8 +26,8 @@ export class BriefDownloadWorkOrder extends Component {
           or low value procurements.
         </p>
         <p>
-          <AUbutton href="/2/r/simple-work-order.pdf" rel="noopener noreferrer" target="_blank">
-            Download simple work order [TODO]
+          <AUbutton href="/api/2/r/simple-work-order.pdf" rel="noopener noreferrer" target="_blank">
+            Download simple work order
           </AUbutton>
         </p>
       </React.Fragment>
@@ -45,8 +45,8 @@ export class BriefDownloadWorkOrder extends Component {
               for hiring specialists.
             </p>
             <p>
-              <AUbutton href="/2/r/specialist-work-order.pdf" rel="noopener noreferrer" target="_blank">
-                Download specialist work order [TODO]
+              <AUbutton href="/api/2/r/specialist-work-order.pdf" rel="noopener noreferrer" target="_blank">
+                Download specialist work order
               </AUbutton>
             </p>
           </React.Fragment>
@@ -60,8 +60,8 @@ export class BriefDownloadWorkOrder extends Component {
                   suitable for complex or high value procurements.
                 </p>
                 <p>
-                  <AUbutton href="/2/r/comprehensive-work-order.pdf" rel="noopener noreferrer" target="_blank">
-                    Download comprehensive work order [TODO]
+                  <AUbutton href="/api/2/r/comprehensive-work-order.pdf" rel="noopener noreferrer" target="_blank">
+                    Download comprehensive work order
                   </AUbutton>
                 </p>
               </React.Fragment>
@@ -73,8 +73,8 @@ export class BriefDownloadWorkOrder extends Component {
         {brief.lotSlug === 'training' && simpleWorkOrder}
         <p>
           Other work orders are available on the{' '}
-          <a href="http://www.google.com" rel="noopener noreferrer" target="_blank">
-            templates page [TODO]
+          <a href="/api/2/r/templates-page" rel="noopener noreferrer" target="_blank">
+            templates page
           </a>.
         </p>
         <p>

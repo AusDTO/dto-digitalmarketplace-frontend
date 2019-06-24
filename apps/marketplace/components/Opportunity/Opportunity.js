@@ -184,7 +184,7 @@ const Opportunity = props => {
                   <strong>Additional terms</strong>
                 </div>
                 <div className="col-xs-12 col-sm-8">
-                  <a href="/2/r/comprehensive-terms-2019-07-01.pdf">Comprehensive terms</a> apply
+                  <a href="/api/2/r/comprehensive-terms-2019-07-01.pdf">Comprehensive terms</a> apply
                 </div>
               </div>
             )}
