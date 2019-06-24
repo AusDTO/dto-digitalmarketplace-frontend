@@ -9,7 +9,7 @@ const SellerAssessmentCompleted = props => (
   <div>
     <AUdirectionLink link={`${rootPath}/seller-dashboard`} text="back to dashboard" direction="left" />
     <AUpageAlert as="success">
-      <AUheading level="1" size="md">
+      <AUheading level="1" size="lg">
         Your assessment has been submitted.
       </AUheading>
       <p>We have sent a confirmation email to &apos;{props.contactEmail}&apos;.</p>
