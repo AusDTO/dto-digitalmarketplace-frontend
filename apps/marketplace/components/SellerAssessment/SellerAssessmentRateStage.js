@@ -44,6 +44,7 @@ const SellerAssessmentRateStage = props => (
     />
     <Textfield
       model={`${props.model}.maxDailyRate`}
+      prefix={'$'}
       label="What is your maximum daily rate (including GST)"
       description={`The upper limit for ${props.meta.domain.name} is $${props.meta.domain.priceMaximum}`}
       name="maxDailyRate"
