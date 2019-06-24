@@ -253,7 +253,7 @@ class SellerAssessmentEvidenceStage extends Component {
                 requiredStartDate: 'You must select a start date for each criteria response',
                 requiredEndDate: 'You must select an end date for each criteria response',
                 validDates: 'The start date must be before the end date for each criteria response',
-                requiredEvidence: `You must add evidence for all criteria selected and each response must be at least ${minimumWordRequirement} words in length`
+                requiredEvidence: `The evidence for each criteria must be at least ${minimumWordRequirement} words in length`
               }}
             />
             {this.props[this.props.model].criteria.map((criteriaId, index) => (
