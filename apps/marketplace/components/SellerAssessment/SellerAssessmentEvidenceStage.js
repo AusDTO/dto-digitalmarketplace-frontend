@@ -270,7 +270,11 @@ class SellerAssessmentEvidenceStage extends Component {
                     </AUheadings>
                     <p>
                       Please update the evidence of this criteria based on the{' '}
-                      <a href={`${rootPath}/seller-assessment/${this.props.meta.evidence.previousEvidenceId}/feedback`}>
+                      <a
+                        href={`${rootPath}/seller-assessment/${this.props.meta.evidence.previousEvidenceId}/feedback`}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
                         assessor&apos;s feedback
                       </a>{' '}
                       and resubmit for assessment.

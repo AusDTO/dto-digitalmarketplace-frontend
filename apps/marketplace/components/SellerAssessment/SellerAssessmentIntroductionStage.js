@@ -18,11 +18,19 @@ const SellerAssessmentIntroductionStage = props => (
     <ol>
       <li>
         A maximum daily rate for your services in {props.meta.domain.name}. Use{' '}
-        <a href="https://www.sfia-online.org/en/framework/sfia-7/busskills/level-5" rel="external noopener">
+        <a
+          href="https://www.sfia-online.org/en/framework/sfia-7/busskills/level-5"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
           SFIA level 5
         </a>{' '}
         and the{' '}
-        <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476" rel="external noopener">
+        <a
+          href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
           panel categories and rates
         </a>{' '}
         as a guide
