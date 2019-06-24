@@ -30,7 +30,7 @@ const SellerAssessmentReviewStage = props => (
         <AUheading level="1" size="xl">
           {props.meta.domain.name} assessment
         </AUheading>
-        <AUheading level="2" size="md">
+        <AUheading level="2" size="lg">
           Maximum daily rate
           <Link to="rate" className={styles.change}>
             Change
