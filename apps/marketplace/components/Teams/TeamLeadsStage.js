@@ -76,9 +76,9 @@ export class TeamLeadsStage extends Component {
     }
 
     this.handleConvertToTeamMember = this.handleConvertToTeamMember.bind(this)
-    this.handleItemClick = this.handleItemClick.bind(this)
-    this.handleRemoveItem = this.handleRemoveItem.bind(this)
+    this.handleRemoveTeamLead = this.handleRemoveTeamLead.bind(this)
     this.handleSearchChange = this.handleSearchChange.bind(this)
+    this.handleUserClick = this.handleUserClick.bind(this)
     this.removeTeamLead = this.removeTeamLead.bind(this)
   }
 
@@ -99,7 +99,7 @@ export class TeamLeadsStage extends Component {
     this.props.updateTeamMembers(newTeamMembers)
   }
 
-  handleItemClick(user) {
+  handleUserClick(user) {
     this.setState({
       inputValue: '',
       users: []
@@ -110,7 +110,7 @@ export class TeamLeadsStage extends Component {
     this.props.updateTeamLeads(newTeamLeads)
   }
 
-  handleRemoveItem(userId) {
+  handleRemoveTeamLead(userId) {
     const newTeamLeads = this.removeTeamLead(userId)
     this.props.updateTeamLeads(newTeamLeads)
   }
@@ -148,11 +148,11 @@ export class TeamLeadsStage extends Component {
     const { formButtons, minimumSearchChars, model, onSubmit, onSubmitFailed } = this.props
     const teamLeadNameDescription = <TeamLeadNameDescription domain={this.props[model].domain} />
     const emptyResultsMessage = <EmptyResultsMessage />
-    const teamMemberListItems = <TeamMemberListItems handleItemClick={this.handleItemClick} items={this.state.users} />
+    const teamMemberListItems = <TeamMemberListItems handleItemClick={this.handleUserClick} items={this.state.users} />
     const teamLeadActions = (
       <TeamLeadActions
         handleConvertToTeamMember={this.handleConvertToTeamMember}
-        handleRemoveTeamLead={this.handleRemoveItem}
+        handleRemoveTeamLead={this.handleRemoveTeamLead}
       />
     )
 
