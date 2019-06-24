@@ -66,8 +66,8 @@ const SellerAssessmentFeedback = props => (
                   {props.feedback.criteria[criteriaId].has_feedback && (
                     <React.Fragment>
                       <span>
-                        <Cross colour="#FF0000" className={styles.icon} />
-                        {props.feedback.criteria[criteriaId].name}
+                        <Cross colour="#FF0000" className={styles.icon} />Evidence does not demonstrate &quot;
+                        {props.feedback.criteria[criteriaId].name}&quot;
                       </span>
                       {renderCriteriaFeedback(criteriaId, props.feedback.criteria)}
                     </React.Fragment>
