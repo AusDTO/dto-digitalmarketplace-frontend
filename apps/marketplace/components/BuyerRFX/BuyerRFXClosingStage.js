@@ -79,7 +79,7 @@ class BuyerRFXClosingStage extends Component {
           <a href="/api/2/r/comprehensive-terms-current.pdf" rel="noopener noreferrer" target="_blank">
             comprehensive terms
           </a>{' '}
-          only be applied to procurements that are complex or high value. The terms will apply to you work order, in
+          only be applied to procurements that are complex or high value. The terms will apply to your work order, in
           addition to the Master Agreement.
         </p>
         <p>

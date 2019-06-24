@@ -86,6 +86,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
     const { model } = this.props
     return (
       <Form
+        className={styles.additionalInformationContainer}
         model={model}
         validators={{
           '': {
@@ -141,7 +142,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
           />
         ))}
         {this.state.fileCount < 10 && (
-          <p>
+          <p className={styles.verticalMargin}>
             <a
               href="#add"
               onClick={e => {
@@ -156,15 +157,15 @@ export class BuyerSpecialistRequirementsStage extends Component {
         <AUheadings level="2" size="sm">
           Additional information
         </AUheadings>
-        <p>
+        <p className={styles.fullWidth}>
           We recommend that the{' '}
           <a href="/api/2/r/comprehensive-terms-current.pdf" rel="noopener noreferrer" target="_blank">
             comprehensive terms
           </a>{' '}
-          only be applied to procurements that are complex or high value. The terms will apply to you work order, in
+          only be applied to procurements that are complex or high value. The terms will apply to your work order, in
           addition to the Master Agreement.
         </p>
-        <p>
+        <p className={styles.verticalMargin}>
           <CheckboxDetailsField
             model={`${this.props.model}.comprehensiveTerms`}
             id={`comprehensiveTerms`}
