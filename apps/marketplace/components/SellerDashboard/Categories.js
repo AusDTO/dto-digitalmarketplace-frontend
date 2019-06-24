@@ -78,7 +78,9 @@ export class Categories extends Component {
                   <br />
                 </span>
               )}
-            <a href="/contact-us">Contact us to adjust your rate</a>
+            <a href="https://marketplace1.zendesk.com/hc/en-gb/requests/new" rel="noopener noreferrer" target="_blank">
+              Contact us to adjust your rate
+            </a>
           </React.Fragment>
         )
       case 'rejected':
