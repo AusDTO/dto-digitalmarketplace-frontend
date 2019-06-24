@@ -12,13 +12,21 @@ import commonStyles from './TeamStages.scss'
 import actionStyles from '../ItemSelect/SelectedItems.scss'
 
 const TeamLeadActions = props => {
-  const { handleRemoveTeamLead, id } = props
+  const { handleConvertToTeamMember, handleRemoveTeamLead, id } = props
 
   return (
     <AUlinklist
       className={actionStyles.selectedItemActions}
       inline
       items={[
+        {
+          link: '#change-to-member',
+          onClick: e => {
+            e.preventDefault()
+            handleConvertToTeamMember(id)
+          },
+          text: 'Change to member'
+        },
         {
           className: commonStyles.removeLink,
           link: '#remove',
@@ -67,9 +75,28 @@ export class TeamLeadsStage extends Component {
       users: []
     }
 
+    this.handleConvertToTeamMember = this.handleConvertToTeamMember.bind(this)
     this.handleItemClick = this.handleItemClick.bind(this)
     this.handleRemoveItem = this.handleRemoveItem.bind(this)
     this.handleSearchChange = this.handleSearchChange.bind(this)
+    this.removeTeamLead = this.removeTeamLead.bind(this)
+  }
+
+  removeTeamLead(userId) {
+    const newTeamLeads = { ...this.props[this.props.model].teamLeads }
+    delete newTeamLeads[userId]
+    return newTeamLeads
+  }
+
+  handleConvertToTeamMember(userId) {
+    const user = { id: userId, name: this.props[this.props.model].teamLeads[userId] }
+
+    const newTeamLeads = this.removeTeamLead(userId)
+    this.props.updateTeamLeads(newTeamLeads)
+
+    const newTeamMembers = { ...this.props[this.props.model].teamMembers }
+    newTeamMembers[user.id] = user.name
+    this.props.updateTeamMembers(newTeamMembers)
   }
 
   handleItemClick(user) {
@@ -84,8 +111,7 @@ export class TeamLeadsStage extends Component {
   }
 
   handleRemoveItem(userId) {
-    const newTeamLeads = { ...this.props[this.props.model].teamLeads }
-    delete newTeamLeads[userId]
+    const newTeamLeads = this.removeTeamLead(userId)
     this.props.updateTeamLeads(newTeamLeads)
   }
 
@@ -123,7 +149,12 @@ export class TeamLeadsStage extends Component {
     const teamLeadNameDescription = <TeamLeadNameDescription domain={this.props[model].domain} />
     const emptyResultsMessage = <EmptyResultsMessage />
     const teamMemberListItems = <TeamMemberListItems handleItemClick={this.handleItemClick} items={this.state.users} />
-    const teamLeadActions = <TeamLeadActions handleRemoveTeamLead={this.handleRemoveItem} />
+    const teamLeadActions = (
+      <TeamLeadActions
+        handleConvertToTeamMember={this.handleConvertToTeamMember}
+        handleRemoveTeamLead={this.handleRemoveItem}
+      />
+    )
 
     return (
       <Form model={model} onSubmit={onSubmit} onSubmitFailed={onSubmitFailed}>
@@ -178,7 +209,8 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = (dispatch, props) => ({
   findTeamMember: keyword => dispatch(findTeamMember(keyword)),
-  updateTeamLeads: teamLeads => dispatch(actions.change(`${props.model}.teamLeads`, teamLeads))
+  updateTeamLeads: teamLeads => dispatch(actions.change(`${props.model}.teamLeads`, teamLeads)),
+  updateTeamMembers: teamMembers => dispatch(actions.change(`${props.model}.teamMembers`, teamMembers))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TeamLeadsStage)
