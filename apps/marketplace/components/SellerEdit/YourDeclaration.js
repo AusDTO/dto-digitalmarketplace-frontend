@@ -146,11 +146,7 @@ export class YourDeclaration extends Component {
             <p>
               <AgreementLinks htmlUrl={agreementHtmlUrl} pdfUrl={agreementPdfUrl} />
             </p>
-            <iframe
-              title="Master Agreement"
-              className={styles.masterAgreementFrame}
-              src={agreementHtmlUrl}
-            />
+            <iframe title="Master Agreement" className={styles.masterAgreementFrame} src={agreementHtmlUrl} />
             <p>
               <AUcheckbox
                 id="cb-agree"
