@@ -41,7 +41,7 @@ export class ShareWithAuthRep extends Component {
   }
 
   render() {
-    const { email, name, representative } = this.props
+    const { email, name, representative, agreementHtmlUrl, agreementPdfUrl } = this.props
 
     return (
       <React.Fragment>
@@ -88,7 +88,7 @@ export class ShareWithAuthRep extends Component {
           </AUbutton>
         </p>
         <p>
-          <AgreementLinks />
+          <AgreementLinks htmlUrl={agreementHtmlUrl} pdfUrl={agreementPdfUrl} />
         </p>
       </React.Fragment>
     )
@@ -99,14 +99,18 @@ ShareWithAuthRep.defaultProps = {
   email: '',
   representative: '',
   name: '',
-  supplierCode: null
+  supplierCode: null,
+  agreementHtmlUrl: null,
+  agreementPdfUrl: null
 }
 
 ShareWithAuthRep.propTypes = {
   email: PropTypes.string,
   representative: PropTypes.string,
   name: PropTypes.string,
-  supplierCode: PropTypes.number
+  supplierCode: PropTypes.number,
+  agreementHtmlUrl: PropTypes.string,
+  agreementPdfUrl: PropTypes.string
 }
 
 const mapDispatchToProps = dispatch => ({

@@ -29,9 +29,21 @@ export class SellerEditReviewStage extends Component {
         {newAgreement ? (
           <React.Fragment>
             {canUserSign ? (
-              <NewMasterAgreement startDate={newAgreement.startDate} representative={representative} />
+              <NewMasterAgreement
+                startDate={newAgreement.startDate}
+                representative={representative}
+                agreementHtmlUrl={newAgreement.htmlUrl}
+                agreementPdfUrl={newAgreement.pdfUrl}
+              />
             ) : (
-              <ShareWithAuthRep representative={representative} name={name} email={email} supplierCode={code} />
+              <ShareWithAuthRep
+                representative={representative}
+                name={name}
+                email={email}
+                supplierCode={code}
+                agreementHtmlUrl={newAgreement.htmlUrl}
+                agreementPdfUrl={newAgreement.pdfUrl}
+              />
             )}
           </React.Fragment>
         ) : (

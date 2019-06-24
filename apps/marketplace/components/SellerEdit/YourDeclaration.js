@@ -90,7 +90,7 @@ export class YourDeclaration extends Component {
   }
 
   render() {
-    const { abn, startDate, representative } = this.props
+    const { abn, startDate, representative, agreementHtmlUrl, agreementPdfUrl } = this.props
 
     if (this.state.loading) {
       return <LoadingIndicatorFullPage />
@@ -144,7 +144,7 @@ export class YourDeclaration extends Component {
               your profile will be removed and you will not be able to apply for work.
             </p>
             <p>
-              <AgreementLinks />
+              <AgreementLinks htmlUrl={agreementHtmlUrl} pdfUrl={agreementPdfUrl} />
             </p>
             <iframe
               title="Master Agreement"
@@ -193,13 +193,17 @@ export class YourDeclaration extends Component {
 YourDeclaration.defaultProps = {
   abn: '',
   representative: '',
-  supplierCode: null
+  supplierCode: null,
+  agreementHtmlUrl: null,
+  agreementPdfUrl: null
 }
 
 YourDeclaration.propTypes = {
   abn: PropTypes.string,
   representative: PropTypes.string,
-  supplierCode: PropTypes.number
+  supplierCode: PropTypes.number,
+  agreementHtmlUrl: PropTypes.string,
+  agreementPdfUrl: PropTypes.string
 }
 
 const mapDispatchToProps = dispatch => ({
