@@ -149,7 +149,7 @@ export class YourDeclaration extends Component {
             <iframe
               title="Master Agreement"
               className={styles.masterAgreementFrame}
-              src="/api/2/r/master-agreement-2019-07-01.html"
+              src={agreementHtmlUrl}
             />
             <p>
               <AUcheckbox
@@ -193,7 +193,7 @@ export class YourDeclaration extends Component {
 YourDeclaration.defaultProps = {
   abn: '',
   representative: '',
-  supplierCode: null,
+  supplierCode: '',
   agreementHtmlUrl: null,
   agreementPdfUrl: null
 }
@@ -201,7 +201,7 @@ YourDeclaration.defaultProps = {
 YourDeclaration.propTypes = {
   abn: PropTypes.string,
   representative: PropTypes.string,
-  supplierCode: PropTypes.number,
+  supplierCode: PropTypes.string,
   agreementHtmlUrl: PropTypes.string,
   agreementPdfUrl: PropTypes.string
 }

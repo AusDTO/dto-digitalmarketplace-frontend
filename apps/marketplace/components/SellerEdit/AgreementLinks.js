@@ -21,9 +21,14 @@ const AgreementLinks = props => (
   </React.Fragment>
 )
 
+AgreementLinks.defaultProps = {
+  htmlUrl: null,
+  pdfUrl: null
+}
+
 AgreementLinks.propTypes = {
-  htmlUrl: PropTypes.string.isRequired,
-  pdfUrl: PropTypes.string.isRequired
+  htmlUrl: PropTypes.string,
+  pdfUrl: PropTypes.string
 }
 
 export default AgreementLinks

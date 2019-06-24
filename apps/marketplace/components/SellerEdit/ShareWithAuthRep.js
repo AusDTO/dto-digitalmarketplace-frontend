@@ -99,7 +99,7 @@ ShareWithAuthRep.defaultProps = {
   email: '',
   representative: '',
   name: '',
-  supplierCode: null,
+  supplierCode: '',
   agreementHtmlUrl: null,
   agreementPdfUrl: null
 }
@@ -108,7 +108,7 @@ ShareWithAuthRep.propTypes = {
   email: PropTypes.string,
   representative: PropTypes.string,
   name: PropTypes.string,
-  supplierCode: PropTypes.number,
+  supplierCode: PropTypes.string,
   agreementHtmlUrl: PropTypes.string,
   agreementPdfUrl: PropTypes.string
 }

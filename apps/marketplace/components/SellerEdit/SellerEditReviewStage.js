@@ -40,7 +40,7 @@ export class SellerEditReviewStage extends Component {
                 representative={representative}
                 name={name}
                 email={email}
-                supplierCode={code}
+                supplierCode={`${code}`}
                 agreementHtmlUrl={newAgreement.htmlUrl}
                 agreementPdfUrl={newAgreement.pdfUrl}
               />
@@ -57,10 +57,10 @@ export class SellerEditReviewStage extends Component {
                     representative={representative}
                     abn={abn}
                     startDate={currentAgreement.startDate}
-                    supplierCode={code}
+                    supplierCode={`${code}`}
                   />
                 ) : (
-                  <ShareWithAuthRep representative={representative} name={name} email={email} supplierCode={code} />
+                  <ShareWithAuthRep representative={representative} name={name} email={email} supplierCode={`${code}`} />
                 )}
               </React.Fragment>
             )}
