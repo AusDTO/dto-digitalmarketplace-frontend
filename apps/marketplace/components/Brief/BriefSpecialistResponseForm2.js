@@ -17,6 +17,7 @@ import Textarea from 'shared/form/Textarea'
 import RadioList from 'shared/form/RadioList'
 import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import dmapi from 'marketplace/services/apiClient'
+import { escapeQuote } from '../helpers'
 
 import styles from './BriefSpecialistResponseForm2.scss'
 
@@ -41,8 +42,7 @@ const BriefSpecialistResponseForm2 = ({
   loadingText,
   onRateChange,
   fileCount,
-  addOtherDocument,
-  escapeQuote
+  addOtherDocument
 }) => (
   <div className="row">
     <DocumentTitle title="Brief Response - Digital Marketplace">
@@ -467,10 +467,7 @@ BriefSpecialistResponseForm2.defaultProps = {
   loadingText: null,
   onRateChange: () => null,
   fileCount: 2,
-  addOtherDocument: () => null,
-  escapeQuote: (value) => {
-    return value.replace("'", "\\'")
-  }
+  addOtherDocument: () => null
 }
 
 BriefSpecialistResponseForm2.propTypes = {
@@ -493,8 +490,7 @@ BriefSpecialistResponseForm2.propTypes = {
   loadingText: PropTypes.string,
   onRateChange: PropTypes.func,
   fileCount: PropTypes.number,
-  addOtherDocument: PropTypes.func,
-  escapeQuote: PropTypes.func
+  addOtherDocument: PropTypes.func
 }
 
 export default BriefSpecialistResponseForm2
