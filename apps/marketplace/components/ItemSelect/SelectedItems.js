@@ -7,7 +7,9 @@ import styles from './SelectedItems.scss'
 
 const SelectedItemsList = props => {
   const { actions, selectedItems, selectedItemsHeading } = props
-  const sortedKeys = Object.keys(selectedItems).sort((a, b) => (selectedItems[a] > selectedItems[b] ? 1 : -1))
+  const sortedKeys = selectedItems
+    ? Object.keys(selectedItems).sort((a, b) => (selectedItems[a] > selectedItems[b] ? 1 : -1))
+    : []
 
   return (
     <div className={styles.selectedItemsContainer}>
