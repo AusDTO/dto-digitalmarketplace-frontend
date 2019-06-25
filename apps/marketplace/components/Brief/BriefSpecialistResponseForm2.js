@@ -41,7 +41,8 @@ const BriefSpecialistResponseForm2 = ({
   loadingText,
   onRateChange,
   fileCount,
-  addOtherDocument
+  addOtherDocument,
+  escapeQuote
 }) => (
   <div className="row">
     <DocumentTitle title="Brief Response - Digital Marketplace">
@@ -322,7 +323,7 @@ const BriefSpecialistResponseForm2 = ({
                   brief.essentialRequirements.map((requirement, i) => (
                     <Textarea
                       key={requirement.criteria}
-                      model={`${model}.essentialRequirements['${requirement.criteria}']`}
+                      model={`${model}.essentialRequirements['${escapeQuote(requirement.criteria)}']`}
                       name={`essentialRequirement.${requirement.criteria}`}
                       id={`essentialRequirement.${i}`}
                       controlProps={{
@@ -345,7 +346,7 @@ const BriefSpecialistResponseForm2 = ({
                       {brief.niceToHaveRequirements.map((requirement, i) => (
                         <Textarea
                           key={requirement.criteria}
-                          model={`${model}.niceToHaveRequirements['${requirement.criteria}']`}
+                          model={`${model}.niceToHaveRequirements['${escapeQuote(requirement.criteria)}']`}
                           name={`niceToHaveRequirement.${requirement.criteria}`}
                           id={`niceToHaveRequirement.${i}`}
                           controlProps={{
@@ -466,7 +467,10 @@ BriefSpecialistResponseForm2.defaultProps = {
   loadingText: null,
   onRateChange: () => null,
   fileCount: 2,
-  addOtherDocument: () => null
+  addOtherDocument: () => null,
+  escapeQuote: (value) => {
+    return value.replace("'", "\\'")
+  }
 }
 
 BriefSpecialistResponseForm2.propTypes = {
@@ -489,7 +493,8 @@ BriefSpecialistResponseForm2.propTypes = {
   loadingText: PropTypes.string,
   onRateChange: PropTypes.func,
   fileCount: PropTypes.number,
-  addOtherDocument: PropTypes.func
+  addOtherDocument: PropTypes.func,
+  escapeQuote: PropTypes.func
 }
 
 export default BriefSpecialistResponseForm2
