@@ -155,7 +155,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
           </p>
         )}
         <AUheadings level="2" size="sm">
-          Additional information
+          Comprehensive terms
         </AUheadings>
         <p className={styles.fullWidth}>
           We recommend that the{' '}

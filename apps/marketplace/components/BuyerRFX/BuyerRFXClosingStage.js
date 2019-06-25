@@ -72,7 +72,7 @@ class BuyerRFXClosingStage extends Component {
           }}
         />
         <AUheading level="2" size="sm">
-          Additional information
+          Comprehensive terms
         </AUheading>
         <p>
           We recommend that the{' '}
