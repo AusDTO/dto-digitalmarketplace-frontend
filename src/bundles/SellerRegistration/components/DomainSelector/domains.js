@@ -5,6 +5,11 @@ export default [
         description: 'Agile delivery and governance covers all services relating to the delivery and management of a digital service or product. Examples include business analysis, delivery management, performance and web analysis, and product management.'
     },
     {
+        key: 'changetransformation',
+        label: 'Change and Transformation',
+        description: 'Change and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice, change management and transitioning to new ways of working.'
+    },
+    {
         key: 'contentpub',
         label: 'Content and Publishing',
         description: 'Content and publishing covers all services that provide or manage of any type of online or offline content. Examples include content design, writing, translation, photography, video, interactive, illustration and animation.',
@@ -68,10 +73,5 @@ export default [
         key: 'userresearch',
         label: 'User research and Design',
         description: 'User research and design covers all activities relating to the research and design of a service. Examples include user research, interaction, inclusive, and service design, participant recruitment and facilities for usability testing.'
-    },
-    {
-        key: 'changetransformation',
-        label: 'Change and Transformation',
-        description: 'Change and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice, change management and transitioning to new ways of working.'
-    },
+    }
 ];
