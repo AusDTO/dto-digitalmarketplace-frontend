@@ -19,9 +19,9 @@ const PermissionsTable = props => (
       </tr>
     </thead>
     <tbody>
-      {Object.values(props.teamMembers).map(teamMember => (
-        <tr key={`item.${teamMember}`}>
-          <td>{teamMember}</td>
+      {Object.keys(props.teamMembers).map(userId => (
+        <tr key={`item.${userId}`}>
+          <td>{props.teamMembers[userId]}</td>
           <td>
             <AUcheckbox
               className={styles.permissionsTableCheckbox}
