@@ -82,6 +82,33 @@ exports[`DomainSelector renders 1`] = `
           <input
             checked={false}
             disabled={false}
+            id="change-and-transformation"
+            name="change-and-transformation"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Change and Transformation"
+          />
+          <label
+            htmlFor="change-and-transformation"
+          >
+            Change and Transformation
+             
+            <p
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Change and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice, change management and transitioning to new ways of working.",
+                }
+              }
+            />
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
             id="content-and-publishing"
             name="content-and-publishing"
             onBlur={[Function]}
@@ -424,33 +451,6 @@ exports[`DomainSelector renders 1`] = `
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "User research and design covers all activities relating to the research and design of a service. Examples include user research, interaction, inclusive, and service design, participant recruitment and facilities for usability testing.",
-                }
-              }
-            />
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
-            id="change-and-transformation"
-            name="change-and-transformation"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Change and Transformation"
-          />
-          <label
-            htmlFor="change-and-transformation"
-          >
-            Change and Transformation
-             
-            <p
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Change and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice, change management and transitioning to new ways of working.",
                 }
               }
             />
@@ -580,6 +580,33 @@ exports[`DomainSelector renders with populated fields 1`] = `
           <input
             checked={false}
             disabled={false}
+            id="change-and-transformation"
+            name="change-and-transformation"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Change and Transformation"
+          />
+          <label
+            htmlFor="change-and-transformation"
+          >
+            Change and Transformation
+             
+            <p
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Change and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice, change management and transitioning to new ways of working.",
+                }
+              }
+            />
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
             id="content-and-publishing"
             name="content-and-publishing"
             onBlur={[Function]}
@@ -922,33 +949,6 @@ exports[`DomainSelector renders with populated fields 1`] = `
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "User research and design covers all activities relating to the research and design of a service. Examples include user research, interaction, inclusive, and service design, participant recruitment and facilities for usability testing.",
-                }
-              }
-            />
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
-            id="change-and-transformation"
-            name="change-and-transformation"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Change and Transformation"
-          />
-          <label
-            htmlFor="change-and-transformation"
-          >
-            Change and Transformation
-             
-            <p
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Change and transformation is about embedding more efficient work culture and practices in government. Examples include digital transformation advice, change management and transitioning to new ways of working.",
                 }
               }
             />
