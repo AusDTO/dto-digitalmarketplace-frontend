@@ -12,7 +12,7 @@ const SelectedItemsList = props => {
     : []
 
   return (
-    <div className={styles.selectedItemsContainer}>
+    <div className={`${styles.selectedItemsContainer} ${sortedKeys.length === 0 ? styles.hide : ''}`}>
       <AUheading level="2" size="sm">
         {selectedItemsHeading}
       </AUheading>
