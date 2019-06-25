@@ -26,6 +26,7 @@ class BuyerRFXClosingStage extends Component {
     const { model } = this.props
     return (
       <Form
+        className={styles.closingStageContainer}
         model={model}
         validators={{
           '': {
@@ -74,7 +75,7 @@ class BuyerRFXClosingStage extends Component {
         <AUheading level="2" size="sm">
           Comprehensive terms
         </AUheading>
-        <p>
+        <p className={styles.reduceVerticalSpacing}>
           We recommend that the{' '}
           <a href="/api/2/r/comprehensive-terms-current.pdf" rel="noopener noreferrer" target="_blank">
             comprehensive terms
