@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
+import styles from './BriefDownloadWorkOrder.scss'
 
 export class BriefDownloadWorkOrder extends Component {
   constructor(props) {
@@ -34,7 +35,7 @@ export class BriefDownloadWorkOrder extends Component {
     )
 
     return (
-      <span>
+      <span className={styles.downloadWorkOrderContainer}>
         <AUheading size="xl" level="1">
           Download work order
         </AUheading>
