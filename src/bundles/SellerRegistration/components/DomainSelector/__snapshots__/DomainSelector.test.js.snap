@@ -13,15 +13,6 @@ exports[`DomainSelector renders 1`] = `
       What services will you offer?
     </h1>
     <p>
-       If you only have software products to offer, 
-      <a
-        href="/products"
-        onClick={[Function]}
-      >
-        skip to the product section.
-      </a>
-    </p>
-    <p>
       Select the services you have the expertise to provide.  For each you choose you will need to provide a case study and referee to ensure you meet our 
       <a
         href="/assessment-criteria"
@@ -510,15 +501,6 @@ exports[`DomainSelector renders with populated fields 1`] = `
     >
       What services will you offer?
     </h1>
-    <p>
-       If you only have software products to offer, 
-      <a
-        href="/products"
-        onClick={[Function]}
-      >
-        skip to the product section.
-      </a>
-    </p>
     <p>
       Select the services you have the expertise to provide.  For each you choose you will need to provide a case study and referee to ensure you meet our 
       <a
