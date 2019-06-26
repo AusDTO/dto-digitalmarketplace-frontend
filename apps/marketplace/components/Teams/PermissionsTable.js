@@ -1,79 +1,140 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { actions } from 'react-redux-form'
 
 import { AUcheckbox } from '@gov.au/control-input'
+import formProps from 'shared/form/formPropsSelector'
 
 import commonStyles from './TeamStages.scss'
 import styles from './PermissionsStage.scss'
 
-const PermissionsTable = props => (
-  <table className={`${styles.permissionsTable} ${commonStyles.stageTable}`}>
-    <thead>
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Create drafts</th>
-        <th scope="col">Publish opportunities</th>
-        <th scope="col">Answer seller questions</th>
-        <th scope="col">Download responses</th>
-        <th scope="col">Create work orders</th>
-        <th scope="col">Download reporting data</th>
-      </tr>
-    </thead>
-    <tbody>
-      {Object.keys(props.teamMembers).map(userId => (
-        <tr key={`item.${userId}`}>
-          <td>{props.teamMembers[userId]}</td>
-          <td>
-            <AUcheckbox
-              className={styles.permissionsTableCheckbox}
-              id="create-drafts-checkbox"
-              label=""
-              name="permissions"
-            />
-          </td>
-          <td>
-            <AUcheckbox
-              className={styles.permissionsTableCheckbox}
-              id="publish-opportunities-checkbox"
-              label=""
-              name="permissions"
-            />
-          </td>
-          <td>
-            <AUcheckbox
-              className={styles.permissionsTableCheckbox}
-              id="answer-seller-questions-checkbox"
-              label=""
-              name="permissions"
-            />
-          </td>
-          <td>
-            <AUcheckbox
-              className={styles.permissionsTableCheckbox}
-              id="download-responses-checkbox"
-              label=""
-              name="permissions"
-            />
-          </td>
-          <td>
-            <AUcheckbox
-              className={styles.permissionsTableCheckbox}
-              id="create-work-orders-checkbox"
-              label=""
-              name="permissions"
-            />
-          </td>
-          <td>
-            <AUcheckbox
-              className={styles.permissionsTableCheckbox}
-              id="download-reporting-data-checkbox"
-              label=""
-              name="permissions"
-            />
-          </td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-)
+export class PermissionsTable extends Component {
+  constructor(props) {
+    super(props)
 
-export default PermissionsTable
+    this.handlePermissionClick = this.handlePermissionClick.bind(this)
+  }
+
+  handlePermissionClick(applyPermission, userId, permissionType) {
+    const permissions = { ...this.props[this.props.model].permissions }
+    const userPermissions = {
+      answerSellerQuestions: false,
+      createDrafts: false,
+      createWorkOrders: false,
+      downloadReportingData: false,
+      downloadResponses: false,
+      publishOpportunities: false
+    }
+
+    if (!Object.prototype.hasOwnProperty.call(permissions, userId)) {
+      permissions[userId] = userPermissions
+    }
+
+    permissions[userId] = { ...permissions[userId], [permissionType]: applyPermission }
+
+    this.props.updatePermissions(permissions)
+  }
+
+  render() {
+    const { teamMembers } = this.props
+
+    return (
+      <table className={`${styles.permissionsTable} ${commonStyles.stageTable}`}>
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Create drafts</th>
+            <th scope="col">Publish opportunities</th>
+            <th scope="col">Answer seller questions</th>
+            <th scope="col">Download responses</th>
+            <th scope="col">Create work orders</th>
+            <th scope="col">Download reporting data</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Object.keys(teamMembers).map(userId => (
+            <tr key={`item.${userId}`}>
+              <td>{teamMembers[userId]}</td>
+              <td>
+                <AUcheckbox
+                  className={styles.permissionsTableCheckbox}
+                  id="create-drafts-checkbox"
+                  label=""
+                  name="permissions"
+                  onClick={e => {
+                    this.handlePermissionClick(e.target.checked, userId, 'createDrafts')
+                  }}
+                />
+              </td>
+              <td>
+                <AUcheckbox
+                  className={styles.permissionsTableCheckbox}
+                  id="publish-opportunities-checkbox"
+                  label=""
+                  name="permissions"
+                  onClick={e => {
+                    this.handlePermissionClick(e.target.checked, userId, 'publishOpportunities')
+                  }}
+                />
+              </td>
+              <td>
+                <AUcheckbox
+                  className={styles.permissionsTableCheckbox}
+                  id="answer-seller-questions-checkbox"
+                  label=""
+                  name="permissions"
+                  onClick={e => {
+                    this.handlePermissionClick(e.target.checked, userId, 'answerSellerQuestions')
+                  }}
+                />
+              </td>
+              <td>
+                <AUcheckbox
+                  className={styles.permissionsTableCheckbox}
+                  id="download-responses-checkbox"
+                  label=""
+                  name="permissions"
+                  onClick={e => {
+                    this.handlePermissionClick(e.target.checked, userId, 'downloadResponses')
+                  }}
+                />
+              </td>
+              <td>
+                <AUcheckbox
+                  className={styles.permissionsTableCheckbox}
+                  id="create-work-orders-checkbox"
+                  label=""
+                  name="permissions"
+                  onClick={e => {
+                    this.handlePermissionClick(e.target.checked, userId, 'createWorkOrders')
+                  }}
+                />
+              </td>
+              <td>
+                <AUcheckbox
+                  className={styles.permissionsTableCheckbox}
+                  id="download-reporting-data-checkbox"
+                  label=""
+                  name="permissions"
+                  onClick={e => {
+                    this.handlePermissionClick(e.target.checked, userId, 'downloadReportingData')
+                  }}
+                />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    )
+  }
+}
+
+const mapStateToProps = (state, props) => ({
+  ...formProps(state, props.model)
+})
+
+const mapDispatchToProps = (dispatch, props) => ({
+  updatePermissions: permissions => dispatch(actions.change(`${props.model}.permissions`, permissions))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(PermissionsTable)

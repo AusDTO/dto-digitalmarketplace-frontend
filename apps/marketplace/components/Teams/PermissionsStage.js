@@ -66,7 +66,7 @@ export class PermissionsStage extends Component {
             }}
           />
         </div>
-        <PermissionsTable teamMembers={this.props[model].teamMembers} />
+        <PermissionsTable model={this.props.model} teamMembers={this.props[model].teamMembers} />
         {formButtons}
       </Form>
     )
