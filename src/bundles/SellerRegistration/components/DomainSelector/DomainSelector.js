@@ -40,15 +40,6 @@ class DomainSelector extends BaseForm {
         let header = (
             <header>
                 <h1 className="au-display-xl" tabIndex="-1">What services will you offer?</h1>
-                <p> If you only have software products to offer, <Link
-                    to="/products"
-                    onClick={() => {
-                        // Hardcoded is ugly.
-                        actions.stepComplete('casestudy');
-                        actions.stepComplete('digital');
-                        actions.navigateToStep('/products');
-                    }}>skip to the product section.
-                </Link></p>
                 <p>Select the services you have the expertise to provide.  For each you choose you will need to provide
                     a case study and referee to ensure you meet our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a></p>
 
