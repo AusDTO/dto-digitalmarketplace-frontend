@@ -181,6 +181,11 @@ class EvidenceAssessment extends React.Component {
           <p styleName="redText largerText">
             The seller must demonstrate at least <strong>{this.props.evidence.criteriaNeeded} criteria</strong> to pass VFM.
           </p>
+          {evidence.previous_rejected && (
+            <p>
+              <a href={`/admin/evidence-assessments/${evidence.id}/previous`}>View previous assessment</a>
+            </p>
+          )}
           {evidence.brief_id && (
             <p>
               For brief "<a href={`https://marketplace.service.gov.au/2/digital-marketplace/opportunities/${evidence.brief_id}`}>

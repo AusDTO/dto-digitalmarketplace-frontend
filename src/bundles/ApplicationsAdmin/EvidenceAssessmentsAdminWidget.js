@@ -7,6 +7,7 @@ import createStore from './redux/create'
 
 import EvidenceAssessmentList from './components/EvidenceAssessmentList'
 import EvidenceAssessment from './components/EvidenceAssessment'
+import EvidenceAssessmentHistory from './components/EvidenceAssessmentHistory'
 
 
 const EvidenceAssessmentsAdminWidget = (props) => {
@@ -15,6 +16,7 @@ const EvidenceAssessmentsAdminWidget = (props) => {
   return (
     <Provider store={store} >
       <Switch>
+        <Route exact path="/admin/evidence-assessments/:id/previous" component={EvidenceAssessmentHistory} />
         <Route exact path="/admin/evidence-assessments/:id" component={EvidenceAssessment} />
         <Route path="/admin/evidence-assessments" component={EvidenceAssessmentList} />
       </Switch>
