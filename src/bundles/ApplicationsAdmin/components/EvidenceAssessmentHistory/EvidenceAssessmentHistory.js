@@ -37,7 +37,6 @@ class EvidenceAssessmentHistory extends React.Component {
 
   render() {
     const { evidence } = this.props
-    console.log(this.props)
 
     if (!evidence) {
       return (
