@@ -157,7 +157,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
         <AUheadings level="2" size="sm">
           Comprehensive terms
         </AUheadings>
-        <p className={styles.fullWidth}>
+        <p className={`${styles.fullWidth} ${styles.removeTopMargin}`}>
           We recommend that the{' '}
           <a href="/api/2/r/comprehensive-terms-current.pdf" rel="noopener noreferrer" target="_blank">
             comprehensive terms
