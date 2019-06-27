@@ -10,7 +10,7 @@ const Cross = props => (
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <g id="Seller-assessment-feedback" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+    <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g id="Group-Copy" fill={props.colour}>
         <path
           d="M14.1515931,17.5439516 L0.725882097,4.11824059 C0.140095659,3.53245415 0.140095659,2.58270668 0.725882097,1.99692024 L2.26675395,0.45604839 C2.85254039,-0.129738048 3.80228786,-0.129738048 4.38807429,0.45604839 L17.8137853,13.8817594 C18.3995718,14.4675459 18.3995718,15.4172933 17.8137853,16.0030798 L16.2729135,17.5439516 C15.687127,18.129738 14.7373796,18.129738 14.1515931,17.5439516 Z"
