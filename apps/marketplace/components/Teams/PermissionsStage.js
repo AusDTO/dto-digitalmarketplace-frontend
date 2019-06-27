@@ -14,7 +14,24 @@ export class PermissionsStage extends Component {
   constructor(props) {
     super(props)
 
+    this.allPermissionsChecked = this.allPermissionsChecked.bind(this)
     this.handleSelectAllPermissionsClick = this.handleSelectAllPermissionsClick.bind(this)
+  }
+
+  allPermissionsChecked() {
+    const teamMembers = { ...this.props[this.props.model].teamMembers }
+    let allPermissionsChecked = false
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const teamMember of Object.values(teamMembers)) {
+      allPermissionsChecked = teamMember.permissions
+        ? Object.values(teamMember.permissions).every(permission => permission === true)
+        : false
+
+      if (!allPermissionsChecked) break
+    }
+
+    return allPermissionsChecked
   }
 
   handleSelectAllPermissionsClick(applyAllPermissions) {
@@ -56,6 +73,7 @@ export class PermissionsStage extends Component {
         <p className={commonStyles.bold}>What can each team member do?</p>
         <div className={styles.allPermissionsContainer}>
           <AUcheckbox
+            checked={this.allPermissionsChecked()}
             className={styles.allPermissionsCheckbox}
             id="all-permissions-checkbox"
             label="Every member can create drafts, publish opportunities, answer seller questions, download responses, create work orders, download reporting data"
