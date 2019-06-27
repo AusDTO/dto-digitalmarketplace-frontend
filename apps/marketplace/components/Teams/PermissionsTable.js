@@ -59,6 +59,7 @@ export class PermissionsTable extends Component {
               <td>{teamMembers[userId].name}</td>
               <td>
                 <AUcheckbox
+                  checked={teamMembers[userId].permissions ? teamMembers[userId].permissions.createDrafts : false}
                   className={styles.permissionsTableCheckbox}
                   id="create-drafts-checkbox"
                   label=""
@@ -70,6 +71,9 @@ export class PermissionsTable extends Component {
               </td>
               <td>
                 <AUcheckbox
+                  checked={
+                    teamMembers[userId].permissions ? teamMembers[userId].permissions.publishOpportunities : false
+                  }
                   className={styles.permissionsTableCheckbox}
                   id="publish-opportunities-checkbox"
                   label=""
@@ -81,6 +85,9 @@ export class PermissionsTable extends Component {
               </td>
               <td>
                 <AUcheckbox
+                  checked={
+                    teamMembers[userId].permissions ? teamMembers[userId].permissions.answerSellerQuestions : false
+                  }
                   className={styles.permissionsTableCheckbox}
                   id="answer-seller-questions-checkbox"
                   label=""
@@ -92,6 +99,7 @@ export class PermissionsTable extends Component {
               </td>
               <td>
                 <AUcheckbox
+                  checked={teamMembers[userId].permissions ? teamMembers[userId].permissions.downloadResponses : false}
                   className={styles.permissionsTableCheckbox}
                   id="download-responses-checkbox"
                   label=""
@@ -103,6 +111,7 @@ export class PermissionsTable extends Component {
               </td>
               <td>
                 <AUcheckbox
+                  checked={teamMembers[userId].permissions ? teamMembers[userId].permissions.createWorkOrders : false}
                   className={styles.permissionsTableCheckbox}
                   id="create-work-orders-checkbox"
                   label=""
@@ -114,6 +123,9 @@ export class PermissionsTable extends Component {
               </td>
               <td>
                 <AUcheckbox
+                  checked={
+                    teamMembers[userId].permissions ? teamMembers[userId].permissions.downloadReportingData : false
+                  }
                   className={styles.permissionsTableCheckbox}
                   id="download-reporting-data-checkbox"
                   label=""
