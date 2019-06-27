@@ -17,6 +17,12 @@ export const getCriteriaNeeded = (criteriaNeeded, priceMaximum, maxDailyRate) =>
   return adjustedCriteriaNeeded
 }
 
+export const done = (formValues, meta) =>
+  formValues.criteria &&
+  meta.domain.criteriaNeeded &&
+  formValues.criteria.length >=
+    getCriteriaNeeded(meta.domain.criteriaNeeded, meta.domain.priceMaximum, formValues.maxDailyRate)
+
 class SellerAssessmentCriteriaStage extends Component {
   constructor(props) {
     super(props)

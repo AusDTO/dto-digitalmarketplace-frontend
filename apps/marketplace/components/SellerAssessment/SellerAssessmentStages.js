@@ -1,21 +1,8 @@
 import SellerAssessmentIntroductionStage from './SellerAssessmentIntroductionStage'
-import SellerAssessmentRateStage, {
-  greaterThanZero,
-  lessThanLimit,
-  validWholeNumber
-} from './SellerAssessmentRateStage'
+import SellerAssessmentRateStage, { done as ratesDone } from './SellerAssessmentRateStage'
 import SellerAssessmentReviewStage from './SellerAssessmentReviewStage'
-import SellerAssessmentCriteriaStage, { getCriteriaNeeded } from './SellerAssessmentCriteriaStage'
-import SellerAssessmentEvidenceStage, {
-  requiredClient,
-  requiredRefereeName,
-  requiredRefereeNumber,
-  requiredBackground,
-  requiredStartDate,
-  requiredEndDate,
-  validDates,
-  requiredEvidence
-} from './SellerAssessmentEvidenceStage'
+import SellerAssessmentCriteriaStage, { done as criteriaDone } from './SellerAssessmentCriteriaStage'
+import SellerAssessmentEvidenceStage, { done as evidenceDone } from './SellerAssessmentEvidenceStage'
 
 const SellerAssessmentStages = [
   {
@@ -28,35 +15,19 @@ const SellerAssessmentStages = [
     slug: 'rate',
     title: 'Rate',
     component: SellerAssessmentRateStage,
-    isDone: formValues =>
-      formValues.maxDailyRate &&
-      greaterThanZero(formValues) &&
-      lessThanLimit(formValues) &&
-      validWholeNumber(formValues)
+    isDone: ratesDone
   },
   {
     slug: 'criteria',
     title: 'Criteria',
     component: SellerAssessmentCriteriaStage,
-    isDone: (formValues, meta) =>
-      formValues.criteria &&
-      meta.domain.criteriaNeeded &&
-      formValues.criteria.length >=
-        getCriteriaNeeded(meta.domain.criteriaNeeded, meta.domain.priceMaximum, formValues.maxDailyRate)
+    isDone: criteriaDone
   },
   {
     slug: 'evidence',
     title: 'Evidence',
     component: SellerAssessmentEvidenceStage,
-    isDone: formValues =>
-      requiredClient(formValues) &&
-      requiredRefereeName(formValues) &&
-      requiredRefereeNumber(formValues) &&
-      requiredBackground(formValues) &&
-      requiredStartDate(formValues) &&
-      requiredEndDate(formValues) &&
-      validDates(formValues) &&
-      requiredEvidence(formValues)
+    isDone: evidenceDone
   },
   {
     slug: 'review',

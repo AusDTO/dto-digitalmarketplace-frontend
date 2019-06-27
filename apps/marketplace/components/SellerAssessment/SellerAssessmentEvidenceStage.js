@@ -112,6 +112,16 @@ export const requiredEvidence = formValues =>
         minimumEvidenceWords(formValues.evidence[criteriaId].response)
     ))
 
+export const done = formValues =>
+  requiredClient(formValues) &&
+  requiredRefereeName(formValues) &&
+  requiredRefereeNumber(formValues) &&
+  requiredBackground(formValues) &&
+  requiredStartDate(formValues) &&
+  requiredEndDate(formValues) &&
+  validDates(formValues) &&
+  requiredEvidence(formValues)
+
 class SellerAssessmentEvidenceStage extends Component {
   constructor(props) {
     super(props)
