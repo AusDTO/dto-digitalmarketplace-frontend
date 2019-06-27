@@ -4,7 +4,6 @@ const defaultState = {
   emailAddress: '',
   id: 0,
   name: '',
-  permissions: {},
   status: '',
   teamLeads: {},
   teamMembers: {}

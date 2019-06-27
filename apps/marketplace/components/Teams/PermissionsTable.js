@@ -16,8 +16,8 @@ export class PermissionsTable extends Component {
   }
 
   handlePermissionClick(applyPermission, userId, permissionType) {
-    const permissions = { ...this.props[this.props.model].permissions }
-    const userPermissions = {
+    const teamMembers = { ...this.props[this.props.model].teamMembers }
+    let permissionsToApply = {
       answerSellerQuestions: false,
       createDrafts: false,
       createWorkOrders: false,
@@ -26,13 +26,15 @@ export class PermissionsTable extends Component {
       publishOpportunities: false
     }
 
-    if (!Object.prototype.hasOwnProperty.call(permissions, userId)) {
-      permissions[userId] = userPermissions
+    if (!Object.prototype.hasOwnProperty.call(teamMembers[userId], 'permissions')) {
+      permissionsToApply = { ...permissionsToApply, [permissionType]: applyPermission }
+    } else {
+      permissionsToApply = { ...teamMembers[userId].permissions, [permissionType]: applyPermission }
     }
 
-    permissions[userId] = { ...permissions[userId], [permissionType]: applyPermission }
+    teamMembers[userId] = { ...teamMembers[userId], permissions: permissionsToApply }
 
-    this.props.updatePermissions(permissions)
+    this.props.updateTeamMembers(teamMembers)
   }
 
   render() {
@@ -134,7 +136,8 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
-  updatePermissions: permissions => dispatch(actions.change(`${props.model}.permissions`, permissions))
+  updateTeamMembers: teamMembers => dispatch(actions.change(`${props.model}.teamMembers`, teamMembers))
+  // updatePermissions: permissions => dispatch(actions.change(`${props.model}.permissions`, permissions))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PermissionsTable)

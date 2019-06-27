@@ -18,8 +18,7 @@ export class PermissionsStage extends Component {
   }
 
   handleSelectAllPermissionsClick(applyAllPermissions) {
-    const userIds = Object.keys(this.props[this.props.model].teamMembers)
-    const permissions = {}
+    const teamMembers = { ...this.props[this.props.model].teamMembers }
     const permissionsToApply = applyAllPermissions
       ? {
           answerSellerQuestions: true,
@@ -38,11 +37,11 @@ export class PermissionsStage extends Component {
           publishOpportunities: false
         }
 
-    userIds.forEach(userId => {
-      permissions[userId] = permissionsToApply
+    Object.keys(teamMembers).forEach(userId => {
+      teamMembers[userId] = { ...teamMembers[userId], permissions: permissionsToApply }
     })
 
-    this.props.updateAllPermissions(permissions)
+    this.props.updateTeamMembers(teamMembers)
   }
 
   render() {
@@ -66,7 +65,7 @@ export class PermissionsStage extends Component {
             }}
           />
         </div>
-        <PermissionsTable model={this.props.model} teamMembers={this.props[model].teamMembers} />
+        <PermissionsTable model={this.props.model} />
         {formButtons}
       </Form>
     )
@@ -83,7 +82,7 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
-  updateAllPermissions: permissions => dispatch(actions.change(`${props.model}.permissions`, permissions))
+  updateTeamMembers: teamMembers => dispatch(actions.change(`${props.model}.teamMembers`, teamMembers))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PermissionsStage)
