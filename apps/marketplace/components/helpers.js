@@ -15,6 +15,60 @@ export const statusConvert = (status = '') => {
   return `${newStatus.charAt(0).toUpperCase()}${newStatus.slice(1)}`
 }
 
+export const categoryIdToHash = domainId => {
+  let result = ''
+  switch (domainId) {
+    case 1:
+      result = 'strategy'
+      break
+    case 3:
+      result = 'userresearch'
+      break
+    case 4:
+      result = 'deliverygov'
+      break
+    case 6:
+      result = 'engineering'
+      break
+    case 7:
+      result = 'contentpub'
+      break
+    case 8:
+      result = 'cyber'
+      break
+    case 9:
+      result = 'marketingcomms'
+      break
+    case 10:
+      result = 'ops'
+      break
+    case 11:
+      result = 'datasci'
+      break
+    case 13:
+      result = 'emergtech'
+      break
+    case 14:
+      result = 'changeTrans'
+      break
+    case 15:
+      result = 'tld'
+      break
+    case 17:
+      result = 'ictaudit'
+      break
+    case 18:
+      result = 'ictservices'
+      break
+    case 19:
+      result = 'ictprocurement'
+      break
+    default:
+      break
+  }
+  return `#${result}`
+}
+
 export const getResponsesFileSizeAndType = (bytes, lot) => {
   let result = ''
   if (lot === 'digital-professionals' || lot === 'training' || lot === 'specialist') {

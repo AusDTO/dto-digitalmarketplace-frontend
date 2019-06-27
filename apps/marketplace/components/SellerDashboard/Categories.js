@@ -4,6 +4,7 @@ import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingInd
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import { loadCategories } from 'marketplace/actions/sellerDashboardActions'
 import { rootPath } from 'marketplace/routes'
+import { categoryIdToHash } from 'marketplace/components/helpers'
 import styles from './SellerDashboard.scss'
 
 export class Categories extends Component {
@@ -35,7 +36,7 @@ export class Categories extends Component {
     <React.Fragment>
       <a
         target="_blank"
-        href={`https://marketplace1.zendesk.com/hc/en-gb/articles/333757011655-Assessment-criteria${this.categoryIdToHash(
+        href={`https://marketplace1.zendesk.com/hc/en-gb/articles/333757011655-Assessment-criteria${categoryIdToHash(
           categoryId
         )}`}
       >
@@ -43,7 +44,7 @@ export class Categories extends Component {
       </a>
       <a
         target="_blank"
-        href={`https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476${this.categoryIdToHash(categoryId)}`}
+        href={`https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476${categoryIdToHash(categoryId)}`}
       >
         View rates
       </a>
@@ -94,60 +95,6 @@ export class Categories extends Component {
       default:
         return ''
     }
-  }
-
-  categoryIdToHash = domainId => {
-    let result = ''
-    switch (domainId) {
-      case 1:
-        result = 'strategy'
-        break
-      case 3:
-        result = 'userresearch'
-        break
-      case 4:
-        result = 'deliverygov'
-        break
-      case 6:
-        result = 'engineering'
-        break
-      case 7:
-        result = 'contentpub'
-        break
-      case 8:
-        result = 'cyber'
-        break
-      case 9:
-        result = 'marketingcomms'
-        break
-      case 10:
-        result = 'ops'
-        break
-      case 11:
-        result = 'datasci'
-        break
-      case 13:
-        result = 'emergtech'
-        break
-      case 14:
-        result = 'changeTrans'
-        break
-      case 15:
-        result = 'tld'
-        break
-      case 17:
-        result = 'ictaudit'
-        break
-      case 18:
-        result = 'ictservices'
-        break
-      case 19:
-        result = 'ictprocurement'
-        break
-      default:
-        break
-    }
-    return `#${result}`
   }
 
   render() {
