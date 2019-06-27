@@ -106,7 +106,7 @@ export class TeamMembersStage extends Component {
     })
 
     const newTeamMembers = { ...this.props[this.props.model].teamMembers }
-    newTeamMembers[user.id] = user.name
+    newTeamMembers[user.id] = { name: user.name }
     this.props.updateTeamMembers(newTeamMembers)
   }
 

@@ -8,7 +8,7 @@ import styles from './SelectedItems.scss'
 const SelectedItemsList = props => {
   const { actions, selectedItems, selectedItemsHeading } = props
   const sortedKeys = selectedItems
-    ? Object.keys(selectedItems).sort((a, b) => (selectedItems[a] > selectedItems[b] ? 1 : -1))
+    ? Object.keys(selectedItems).sort((a, b) => (selectedItems[a].name > selectedItems[b].name ? 1 : -1))
     : []
 
   return (
@@ -19,7 +19,7 @@ const SelectedItemsList = props => {
       <ul className={styles.selectedItemsList}>
         {sortedKeys.map(key => (
           <li key={key}>
-            <span>{selectedItems[key]}</span>
+            <span>{selectedItems[key].name}</span>
             {React.cloneElement(actions, { id: key })}
           </li>
         ))}

@@ -36,7 +36,7 @@ export class PermissionsTable extends Component {
   }
 
   render() {
-    const { teamMembers } = this.props
+    const { teamMembers } = this.props[this.props.model]
 
     return (
       <table className={`${styles.permissionsTable} ${commonStyles.stageTable}`}>
@@ -54,7 +54,7 @@ export class PermissionsTable extends Component {
         <tbody>
           {Object.keys(teamMembers).map(userId => (
             <tr key={`item.${userId}`}>
-              <td>{teamMembers[userId]}</td>
+              <td>{teamMembers[userId].name}</td>
               <td>
                 <AUcheckbox
                   className={styles.permissionsTableCheckbox}
