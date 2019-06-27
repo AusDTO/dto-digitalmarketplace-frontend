@@ -342,7 +342,7 @@ test('not able to apply because seller does not have approved domain', () => {
       })
     ).text()
   ).toEqual(
-    'candidates appliedSellers can submit up to 6 candidates for this role.Only sellers approved in software can apply. To be approved in this category, you will need to be assessed and approved by the Marketplace.Request assessment'
+    'candidates appliedSellers can submit up to 6 candidates for this role.Only sellers assessed and approved by the Marketplace in \"software\" can apply.Request assessment'
   )
 })
 
@@ -372,7 +372,7 @@ test('not able to apply because seller does not have approved domain and waiting
       })
     ).text()
   ).toEqual(
-    'candidates appliedSellers can submit up to 6 candidates for this role.Only sellers approved in software can apply. To be approved in this category, you will need to be assessed and approved by the Marketplace. Your application for this category is currently being assessed.'
+    'candidates appliedSellers can submit up to 6 candidates for this role.Only sellers assessed and approved by the Marketplace in \"software\" can apply. Your application for this category is currently being assessed.'
   )
 })
 
