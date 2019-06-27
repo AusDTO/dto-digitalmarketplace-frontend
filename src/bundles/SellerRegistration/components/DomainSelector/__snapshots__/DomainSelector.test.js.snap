@@ -198,7 +198,7 @@ exports[`DomainSelector renders 1`] = `
             <p
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "Digital sourcing includes the identification and application of activities surrounding ICT procurement. Examples include providing subject matter expertise and recommendations, managing complex or high risk procurements and managing internal documentation.",
+                  "__html": "Digital sourcing includes the identification and application of activities surrounding ICT procurement. Examples include providing subject matter expertise and recommendations, managing complex or high risk procurements, probity, and managing internal documentation.",
                 }
               }
             />
@@ -687,7 +687,7 @@ exports[`DomainSelector renders with populated fields 1`] = `
             <p
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "Digital sourcing includes the identification and application of activities surrounding ICT procurement. Examples include providing subject matter expertise and recommendations, managing complex or high risk procurements and managing internal documentation.",
+                  "__html": "Digital sourcing includes the identification and application of activities surrounding ICT procurement. Examples include providing subject matter expertise and recommendations, managing complex or high risk procurements, probity, and managing internal documentation.",
                 }
               }
             />

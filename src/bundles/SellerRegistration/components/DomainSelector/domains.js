@@ -27,7 +27,7 @@ export default [
     {
         key: 'ictprocurement',
         label: 'Digital sourcing and ICT procurement',
-        description: 'Digital sourcing includes the identification and application of activities surrounding ICT procurement. Examples include providing subject matter expertise and recommendations, managing complex or high risk procurements and managing internal documentation.'
+        description: 'Digital sourcing includes the identification and application of activities surrounding ICT procurement. Examples include providing subject matter expertise and recommendations, managing complex or high risk procurements, probity, and managing internal documentation.'
     },
     {
         key: 'emergtech',
