@@ -28,7 +28,7 @@ class EvidenceAssessmentList extends React.Component {
                   <td>{e.supplier_name}</td>
                   <td>
                     {e.brief_id && (
-                      <a href={`https://marketplace.service.gov.au/2/digital-marketplace/opportunities/${e.brief_id}`}>
+                      <a href={`//${this.props.meta.server_name}/2/digital-marketplace/opportunities/${e.brief_id}`}>
                         ID: {e.brief_id} (closing on {format(e.brief_closed_at, 'DD-MM-YYYY')})
                       </a>
                     )}
