@@ -22,7 +22,7 @@ const BuyerATMIntroductionStage = props => (
     <p>
       Download the{' '}
       <a
-        href="/static/media/documents/Ask_the_Marketplace_draft_questions.docx"
+        href="/api/2/r/ask-market-questions-template.docx"
         rel="noopener noreferrer"
         target="_blank"
       >

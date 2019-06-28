@@ -15,7 +15,7 @@ const BuyerRFXIntroductionStage = props => (
       <li>
         You can{' '}
         <a
-          href="/static/media/documents/Seek-proposals-list-of-questions.xlsx"
+          href="/api/2/r/seek-proposals-and-quotes-questions-template.docx"
           rel="noopener noreferrer"
           target="_blank"
         >

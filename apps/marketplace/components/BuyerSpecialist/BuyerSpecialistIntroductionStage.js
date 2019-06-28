@@ -15,7 +15,7 @@ const BuyerSpecialistIntroductionStage = props => (
     <p className={styles.textSpacing}>
       Download the{' '}
       <a
-        href="https://marketplace1.zendesk.com/hc/article_attachments/360002142535/Hire-a-digital-specialist-draft-questions_.docx"
+        href="/api/2/r/specialist-questions-template.docx"
         rel="noopener noreferrer"
         target="_blank"
       >
