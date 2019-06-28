@@ -23,11 +23,11 @@ export class BriefDownloadWorkOrder extends Component {
     const simpleWorkOrder = (
       <React.Fragment>
         <p>
-          We recommend you use the <b>simple work order</b> for this opportunity. This work order is suitable for simple
-          or low value procurements.
+          We recommend you use the <b>simple work order template</b> for this opportunity. This work order is suitable
+          for simple or low value procurements.
         </p>
         <p>
-          <AUbutton href="/api/2/r/simple-work-order.pdf" rel="noopener noreferrer" target="_blank">
+          <AUbutton href="/api/2/r/simple-work-order.docx" rel="noopener noreferrer" target="_blank">
             Download simple work order
           </AUbutton>
         </p>
@@ -42,11 +42,11 @@ export class BriefDownloadWorkOrder extends Component {
         {brief.lotSlug === 'specialist' && (
           <React.Fragment>
             <p>
-              We recommend you use the <b>specialist work order</b> for this opportunity. This work order is suitable
-              for hiring specialists.
+              We recommend you use the <b>specialist work order template</b> for this opportunity. This work order is
+              suitable for hiring specialists.
             </p>
             <p>
-              <AUbutton href="/api/2/r/specialist-work-order.pdf" rel="noopener noreferrer" target="_blank">
+              <AUbutton href="/api/2/r/specialist-work-order.docx" rel="noopener noreferrer" target="_blank">
                 Download specialist work order
               </AUbutton>
             </p>
@@ -57,12 +57,12 @@ export class BriefDownloadWorkOrder extends Component {
             {brief.comprehensiveTerms ? (
               <React.Fragment>
                 <p>
-                  We recommend you use the <b>comprehensive work order</b> for this opportunity. This work order is
-                  suitable for complex or high value procurements.
+                  We recommend you use the <b>complex work order template</b> for this opportunity. This work order is
+                  suitable for high-value or high-risk procurements.
                 </p>
                 <p>
-                  <AUbutton href="/api/2/r/comprehensive-work-order.pdf" rel="noopener noreferrer" target="_blank">
-                    Download comprehensive work order
+                  <AUbutton href="/api/2/r/complex-work-order.docx" rel="noopener noreferrer" target="_blank">
+                    Download complex work order
                   </AUbutton>
                 </p>
               </React.Fragment>
