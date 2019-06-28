@@ -7,7 +7,7 @@ import ShareWithAuthRep from './ShareWithAuthRep'
 import NewMasterAgreement from './NewMasterAgreement'
 import SignedMasterAgreement from './SignedMasterAgreement'
 
-export const done = v => v.agreementStatus.signed
+export const done = v => (v.agreementStatus.newAgreement ? false : v.agreementStatus.signed)
 
 export class SellerEditReviewStage extends Component {
   constructor(props) {
