@@ -159,7 +159,7 @@ export class YourDeclaration extends Component {
                     acceptEnabled: e.target.checked
                   })
                 }}
-                label={`I am ${representative}, an authorised representativee of (ABN: ${abn}) and I agree to the terms set out in the Marketplace Master Agreement.`}
+                label={`I am ${representative}, an authorised representative of (ABN: ${abn}) and I agree to the terms set out in the Marketplace Master Agreement.`}
               />
             </p>
             <p>
