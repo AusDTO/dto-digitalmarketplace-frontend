@@ -29,9 +29,21 @@ export class SellerEditReviewStage extends Component {
         {newAgreement ? (
           <React.Fragment>
             {canUserSign ? (
-              <NewMasterAgreement startDate={newAgreement.startDate} representative={representative} />
+              <NewMasterAgreement
+                startDate={newAgreement.startDate}
+                representative={representative}
+                agreementHtmlUrl={newAgreement.htmlUrl}
+                agreementPdfUrl={newAgreement.pdfUrl}
+              />
             ) : (
-              <ShareWithAuthRep representative={representative} name={name} email={email} supplierCode={code} />
+              <ShareWithAuthRep
+                representative={representative}
+                name={name}
+                email={email}
+                supplierCode={`${code}`}
+                agreementHtmlUrl={newAgreement.htmlUrl}
+                agreementPdfUrl={newAgreement.pdfUrl}
+              />
             )}
           </React.Fragment>
         ) : (
@@ -44,11 +56,20 @@ export class SellerEditReviewStage extends Component {
                   <YourDeclaration
                     representative={representative}
                     abn={abn}
-                    startDate={currentAgreement.startDate}
-                    supplierCode={code}
+                    startDate={currentAgreement && currentAgreement.startDate}
+                    supplierCode={`${code}`}
+                    agreementHtmlUrl={currentAgreement && currentAgreement.htmlUrl}
+                    agreementPdfUrl={currentAgreement && currentAgreement.pdfUrl}
                   />
                 ) : (
-                  <ShareWithAuthRep representative={representative} name={name} email={email} supplierCode={code} />
+                  <ShareWithAuthRep
+                    representative={representative}
+                    name={name}
+                    email={email}
+                    supplierCode={`${code}`}
+                    agreementHtmlUrl={currentAgreement && currentAgreement.htmlUrl}
+                    agreementPdfUrl={currentAgreement && currentAgreement.pdfUrl}
+                  />
                 )}
               </React.Fragment>
             )}

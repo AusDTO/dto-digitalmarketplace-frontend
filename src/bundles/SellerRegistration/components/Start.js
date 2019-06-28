@@ -46,7 +46,7 @@ const Start = ({supplierCode, signup, onClick, saved, type, applicationErrors })
                         <li>Accept the Digital Marketplace Master Agreement</li>
                     </ul>
                     <p>
-                        <a href="/static/media/documents/digital-marketplace-master-agreement.pdf" target="_blank" rel="external">Download Digital Marketplace Master Agreement (PDF 229kb)</a><br/><br/>
+                        <a href="/api/2/r/master-agreement-current.pdf" target="_blank" rel="external">Download Digital Marketplace Master Agreement (PDF 229kb)</a><br/><br/>
                     </p>
                     <SaveError/>
                     <p>
@@ -96,7 +96,7 @@ const Start = ({supplierCode, signup, onClick, saved, type, applicationErrors })
                             <li> Provide case studies and referees to support your application</li>
                             <li>Accept the Digital Marketplace Master Agreement</li>
                         </ul>
-                        <a href="/static/media/documents/digital-marketplace-master-agreement.pdf" target="_blank" rel="external">Download Digital Marketplace Master Agreement PDF</a><br/><br/>
+                        <a href="/api/2/r/master-agreement-current.pdf" target="_blank" rel="external">Download Digital Marketplace Master Agreement PDF</a><br/><br/>
                         <SaveError/>
                         <p>
                             <a className="button" href={signup} onClick={onClick}>Start Now </a>

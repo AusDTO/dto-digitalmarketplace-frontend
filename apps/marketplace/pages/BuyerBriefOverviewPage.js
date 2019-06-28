@@ -65,6 +65,7 @@ class BuyerBriefOverviewPage extends Component {
         <Overview
           brief={this.props.brief}
           briefResponses={this.props.briefResponses}
+          oldWorkOrderCreator={this.props.oldWorkOrderCreator}
           flow={this.props.match.params.flow}
         />
       )
@@ -77,6 +78,7 @@ class BuyerBriefOverviewPage extends Component {
 const mapStateToProps = state => ({
   brief: state.brief.brief,
   briefResponses: state.brief.briefResponses,
+  oldWorkOrderCreator: state.brief.oldWorkOrderCreator,
   errorMessage: state.app.errorMessage
 })
 
