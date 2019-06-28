@@ -75,3 +75,5 @@ export const padStart = (value, length, character) => {
   }
   return `${pad}${value}`
 }
+
+export const escapeQuote = value => value.replace(/'/g, "\\'")
