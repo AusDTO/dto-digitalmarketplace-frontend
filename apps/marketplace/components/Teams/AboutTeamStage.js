@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
 import { Form } from 'react-redux-form'
@@ -46,6 +47,13 @@ const AboutTeamStage = props => {
 AboutTeamStage.defaultProps = {
   onSubmit: () => {},
   onSubmitFailed: () => {}
+}
+
+AboutTeamStage.propTypes = {
+  formButtons: PropTypes.node.isRequired,
+  model: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func,
+  onSubmitFailed: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => ({
