@@ -23,7 +23,10 @@ const TeamTable = props => {
       <tbody>
         {sortedTeamLeadKeys.map(userId => (
           <tr key={userId}>
-            <td>{teamLeads[userId].name}</td>
+            <td>
+              {teamLeads[userId].name}
+              <span className={commonStyles.bold}> (team lead)</span>
+            </td>
             <td>{teamLeads[userId].emailAddress}</td>
           </tr>
         ))}
