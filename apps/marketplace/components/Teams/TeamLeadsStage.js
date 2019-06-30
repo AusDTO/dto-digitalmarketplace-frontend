@@ -166,7 +166,7 @@ export class TeamLeadsStage extends Component {
           <ul className={commonStyles.stageList}>
             <li>Add and remove members</li>
             <li>Specify what each member can do</li>
-            <li>Create other team leads</li>
+            <li>Assign other team leads</li>
           </ul>
         </div>
         <ItemSelect
