@@ -14,14 +14,14 @@ const aboutStage = {
 
 const teamLeadsStage = {
   component: TeamLeadsStage,
-  isDone: true,
+  isDone: formValues => Object.keys(formValues.teamLeads).length > 0,
   slug: 'leads',
   title: 'Team leads'
 }
 
 const teamMembersStage = {
   component: TeamMembersStage,
-  isDone: true,
+  isDone: formValues => Object.keys(formValues.teamMembers).length > 0,
   slug: 'members',
   title: 'Team members'
 }
