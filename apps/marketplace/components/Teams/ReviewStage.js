@@ -16,13 +16,7 @@ const ReviewStage = props => (
     <AUheading level="2" size="lg">
       Golden State Warriors
     </AUheading>
-    <TeamTable
-      teamMembers={[
-        { name: 'Steph Curry', email: 'steph@warriors.com' },
-        { name: 'Klay Thompson', email: 'klay@warriors.com' },
-        { name: 'Kevin Durant', email: 'kd@warriors.com' }
-      ]}
-    />
+    <TeamTable teamLeads={props[props.model].teamLeads} teamMembers={props[props.model].teamMembers} />
     <AUheading level="2" size="lg">
       What happens next
     </AUheading>
