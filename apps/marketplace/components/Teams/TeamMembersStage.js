@@ -8,6 +8,7 @@ import AUlinklist from '@gov.au/link-list/lib/js/react.js'
 import { findTeamMember } from 'marketplace/actions/teamActions'
 import formProps from 'shared/form/formPropsSelector'
 import ItemSelect from '../ItemSelect/ItemSelect'
+import TeamMemberListItems from './TeamMemberListItems'
 
 import commonStyles from './TeamStages.scss'
 import actionStyles from '../ItemSelect/SelectedItems.scss'
@@ -54,24 +55,6 @@ const TeamMemberNameDescription = props => {
 }
 
 const EmptyResultsMessage = () => <li>User cannot be found.</li>
-
-const TeamMemberListItems = props => {
-  const { items } = props
-
-  return items.map(item => (
-    <li key={item.id}>
-      <a
-        href={`#${item.id}`}
-        onClick={e => {
-          e.preventDefault()
-          props.handleItemClick(item)
-        }}
-      >
-        {item.name} ({item.email})
-      </a>
-    </li>
-  ))
-}
 
 export class TeamMembersStage extends Component {
   constructor(props) {
