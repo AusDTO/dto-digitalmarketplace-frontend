@@ -90,7 +90,7 @@ export class YourDeclaration extends Component {
   }
 
   render() {
-    const { abn, startDate, representative } = this.props
+    const { abn, startDate, representative, agreementHtmlUrl, agreementPdfUrl } = this.props
 
     if (this.state.loading) {
       return <LoadingIndicatorFullPage />
@@ -144,13 +144,9 @@ export class YourDeclaration extends Component {
               your profile will be removed and you will not be able to apply for work.
             </p>
             <p>
-              <AgreementLinks />
+              <AgreementLinks htmlUrl={agreementHtmlUrl} pdfUrl={agreementPdfUrl} />
             </p>
-            <iframe
-              title="Master Agreement"
-              className={styles.masterAgreementFrame}
-              src="/static/media/documents/digital-marketplace-master-agreement-2019-07-01.html"
-            />
+            <iframe title="Master Agreement" className={styles.masterAgreementFrame} src={agreementHtmlUrl} />
             <p>
               <AUcheckbox
                 id="cb-agree"
@@ -159,7 +155,7 @@ export class YourDeclaration extends Component {
                     acceptEnabled: e.target.checked
                   })
                 }}
-                label={`I am ${representative}, an authorised representativee of (ABN: ${abn}) and I agree to the terms set out in the Marketplace Master Agreement.`}
+                label={`I am ${representative}, an authorised representative of (ABN: ${abn}) and I agree to the terms set out in the Marketplace Master Agreement.`}
               />
             </p>
             <p>
@@ -193,13 +189,17 @@ export class YourDeclaration extends Component {
 YourDeclaration.defaultProps = {
   abn: '',
   representative: '',
-  supplierCode: null
+  supplierCode: '',
+  agreementHtmlUrl: null,
+  agreementPdfUrl: null
 }
 
 YourDeclaration.propTypes = {
   abn: PropTypes.string,
   representative: PropTypes.string,
-  supplierCode: PropTypes.number
+  supplierCode: PropTypes.string,
+  agreementHtmlUrl: PropTypes.string,
+  agreementPdfUrl: PropTypes.string
 }
 
 const mapDispatchToProps = dispatch => ({

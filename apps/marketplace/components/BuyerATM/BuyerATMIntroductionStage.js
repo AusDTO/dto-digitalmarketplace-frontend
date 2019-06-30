@@ -21,11 +21,7 @@ const BuyerATMIntroductionStage = props => (
     </AUheadings>
     <p>
       Download the{' '}
-      <a
-        href="/static/media/documents/Ask_the_Marketplace_draft_questions.docx"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
+      <a href="/api/2/r/ask-market-questions-template.docx" rel="noopener noreferrer" target="_blank">
         questions template (DOC 52KB)
       </a>{' '}
       to prepare offline before publishing.

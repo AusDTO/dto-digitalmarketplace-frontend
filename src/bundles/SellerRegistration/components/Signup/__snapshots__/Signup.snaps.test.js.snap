@@ -263,7 +263,7 @@ exports[`Signup renders 1`] = `
         </ul>
         <p>
           <a
-            href="/static/media/documents/digital-marketplace-master-agreement.pdf"
+            href="/api/2/r/master-agreement-current.pdf"
             rel="external"
             target="_blank"
           >

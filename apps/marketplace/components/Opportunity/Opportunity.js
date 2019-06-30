@@ -179,6 +179,16 @@ const Opportunity = props => {
                 <div className="col-xs-12 col-sm-8">{category}</div>
               </div>
             )}
+            {brief.comprehensiveTerms && (
+              <div className="row">
+                <div className="col-xs-12 col-sm-4">
+                  <strong>Additional terms</strong>
+                </div>
+                <div className="col-xs-12 col-sm-8">
+                  <a href="/api/2/r/comprehensive-terms-current.pdf">Comprehensive terms</a> apply
+                </div>
+              </div>
+            )}
             <AUheading level="2" size="lg">
               Overview
             </AUheading>

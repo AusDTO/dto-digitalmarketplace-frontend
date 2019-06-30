@@ -30,6 +30,7 @@ import SellerAssessmentCreatePage from './pages/SellerAssessmentCreatePage'
 import SellerAssessmentCompletedPage from './pages/SellerAssessmentCompletedPage'
 import SellerAssessmentFeedbackPage from './pages/SellerAssessmentFeedbackPage'
 import SellerEditFlowPage from './pages/SellerEditFlowPage'
+import BuyerAwardSellerPage from './pages/BuyerAwardSellerPage'
 
 export const rootPath = '/2'
 
@@ -64,6 +65,7 @@ export const Routes = () => (
       path={`${rootPath}/buyer-rfx/:briefId/completed`}
       component={BuyerRFXCompletedPage}
     />
+    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-award/:briefId`} component={BuyerAwardSellerPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/:briefId/:stage?`} component={BuyerRFXFlowPage} />
     <PrivateRoute
       restrictedTo="buyer"

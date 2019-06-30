@@ -60,11 +60,11 @@ class SubmitStepForm extends BaseForm {
             e.focus()
           }
         }
-        let agreementHtmlUrl = '/static/media/documents/digital-marketplace-master-agreement.html'
+        let agreementHtmlUrl = '/api/2/r/master-agreement-current.html'
         if (agreement && agreement.htmlUrl) {
           agreementHtmlUrl = agreement.htmlUrl
         }
-        let agreementPdfUrl = '/static/media/documents/digital-marketplace-master-agreement.pdf'
+        let agreementPdfUrl = '/api/2/r/master-agreement-current.pdf'
         if (agreement && agreement.pdfUrl) {
           agreementPdfUrl = agreement.pdfUrl
         }

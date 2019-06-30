@@ -56,7 +56,8 @@ export const BuyerRFXFormReducer = {
   contractExtensions: '',
   budgetRange: '',
   workingArrangements: '',
-  securityClearance: ''
+  securityClearance: '',
+  comprehensiveTerms: false
 }
 
 export const BuyerATMFormReducer = {
@@ -111,7 +112,8 @@ export const BuyerSpecialistFormReducer = {
   startDate: '',
   contractLength: '',
   contractExtensions: '',
-  closedAt: ''
+  closedAt: '',
+  comprehensiveTerms: false
 }
 
 export const SellerEditFormReducer = {
@@ -153,6 +155,9 @@ export default combineReducers({
     createUserForm: {
       name: '',
       password: ''
+    },
+    briefAwardSeller: {
+      awardedSupplierCode: ''
     },
     briefResponseForm: {
       availability: '',

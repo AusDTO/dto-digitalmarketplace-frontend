@@ -14,11 +14,7 @@ const BuyerSpecialistIntroductionStage = props => (
     </AUheadings>
     <p className={styles.textSpacing}>
       Download the{' '}
-      <a
-        href="https://marketplace1.zendesk.com/hc/article_attachments/360002142535/Hire-a-digital-specialist-draft-questions_.docx"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
+      <a href="/api/2/r/specialist-questions-template.docx" rel="noopener noreferrer" target="_blank">
         questions template (xlsx 113KB)
       </a>{' '}
       to prepare offline before publishing.
