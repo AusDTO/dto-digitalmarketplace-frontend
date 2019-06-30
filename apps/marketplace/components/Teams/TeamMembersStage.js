@@ -139,7 +139,10 @@ export class TeamMembersStage extends Component {
     const { formButtons, minimumSearchChars, model, onSubmit, onSubmitFailed } = this.props
     const teamMemberNameDescription = <TeamMemberNameDescription domain={this.props[model].domain} />
     const emptyResultsMessage = <EmptyResultsMessage />
-    const teamMemberListItems = <TeamMemberListItems handleItemClick={this.handleUserClick} items={this.state.users} />
+    const teamMemberListItems = (
+      <TeamMemberListItems handleTeamMemberClick={this.handleUserClick} items={this.state.users} />
+    )
+
     const teamMemberActions = (
       <TeamMemberActions
         handleConvertToTeamLead={this.handleConvertToTeamLead}

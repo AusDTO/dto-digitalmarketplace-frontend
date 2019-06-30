@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 const TeamMemberListItems = props => {
-  const { handleItemClick, items } = props
+  const { handleTeamMemberClick, items } = props
 
   return items.map(teamMember => (
     <li key={teamMember.id}>
@@ -10,7 +10,7 @@ const TeamMemberListItems = props => {
         href={`#${teamMember.id}`}
         onClick={e => {
           e.preventDefault()
-          handleItemClick(teamMember)
+          handleTeamMemberClick(teamMember)
         }}
       >
         {teamMember.name} ({teamMember.email})
@@ -20,12 +20,12 @@ const TeamMemberListItems = props => {
 }
 
 TeamMemberListItems.defaultProps = {
-  handleItemClick: () => {},
+  handleTeamMemberClick: () => {},
   items: []
 }
 
 TeamMemberListItems.propTypes = {
-  handleItemClick: PropTypes.func,
+  handleTeamMemberClick: PropTypes.func,
   items: PropTypes.array
 }
 
