@@ -6,6 +6,8 @@ import styles from './ReviewStage.scss'
 const TeamTable = props => {
   const { teamLeads, teamMembers } = props
 
+  const sortedTeamLeadKeys = Object.keys(teamLeads).sort((a, b) => (teamLeads[a].name > teamLeads[b].name ? 1 : -1))
+
   const sortedTeamMemberKeys = Object.keys(teamMembers).sort(
     (a, b) => (teamMembers[a].name > teamMembers[b].name ? 1 : -1)
   )
@@ -19,6 +21,12 @@ const TeamTable = props => {
         </tr>
       </thead>
       <tbody>
+        {sortedTeamLeadKeys.map(userId => (
+          <tr key={userId}>
+            <td>{teamLeads[userId].name}</td>
+            <td>{teamLeads[userId].emailAddress}</td>
+          </tr>
+        ))}
         {sortedTeamMemberKeys.map(userId => (
           <tr key={userId}>
             <td>{teamMembers[userId].name}</td>
