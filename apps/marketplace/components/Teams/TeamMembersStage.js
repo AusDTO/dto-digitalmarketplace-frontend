@@ -41,17 +41,23 @@ const TeamMemberActions = props => {
   )
 }
 
-const TeamMemberNameDescription = props => (
-  <span>
-    Members must already have a Digital Marketplace account in their name that ends in{' '}
-    <span className={commonStyles.bold}>@{props.domain}</span>
-  </span>
-)
+const TeamMemberNameDescription = props => {
+  const { domain } = props
+
+  return (
+    <span>
+      Members must already have a Digital Marketplace account in their name that ends in{' '}
+      <span className={commonStyles.bold}>@{domain}</span>
+    </span>
+  )
+}
 
 const EmptyResultsMessage = () => <li>User cannot be found.</li>
 
-const TeamMemberListItems = props =>
-  props.items.map(item => (
+const TeamMemberListItems = props => {
+  const { items } = props
+
+  return items.map(item => (
     <li key={item.id}>
       <a
         href={`#${item.id}`}
@@ -64,6 +70,7 @@ const TeamMemberListItems = props =>
       </a>
     </li>
   ))
+}
 
 export class TeamMembersStage extends Component {
   constructor(props) {
