@@ -1,3 +1,4 @@
+import { validEmail } from 'marketplace/components/validators'
 import AboutTeamStage from './AboutTeamStage'
 import PermissionsStage from './PermissionsStage'
 import ReviewStage from './ReviewStage'
@@ -6,7 +7,7 @@ import TeamMembersStage from './TeamMembersStage'
 
 const aboutStage = {
   component: AboutTeamStage,
-  isDone: true,
+  isDone: formValues => formValues.name.length > 0 && validEmail(formValues.emailAddress),
   slug: 'about',
   title: 'About'
 }
