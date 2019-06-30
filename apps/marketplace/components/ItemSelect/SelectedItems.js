@@ -1,15 +1,14 @@
 import React from 'react'
 import { Control } from 'react-redux-form'
 
+import { sortObjectByName } from 'marketplace/components/helpers'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 
 import styles from './SelectedItems.scss'
 
 const SelectedItemsList = props => {
   const { actions, selectedItems, selectedItemsHeading } = props
-  const sortedKeys = selectedItems
-    ? Object.keys(selectedItems).sort((a, b) => (selectedItems[a].name > selectedItems[b].name ? 1 : -1))
-    : []
+  const sortedKeys = selectedItems ? sortObjectByName(selectedItems) : []
 
   return (
     <div className={`${styles.selectedItemsContainer} ${sortedKeys.length === 0 ? styles.hide : ''}`}>

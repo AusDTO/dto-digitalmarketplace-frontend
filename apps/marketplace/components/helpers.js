@@ -65,3 +65,6 @@ export const getEmailFromQueryString = location => {
   }
   return emailAddress
 }
+
+export const sortObjectByName = objectToSort =>
+  Object.keys(objectToSort).sort((a, b) => (objectToSort[a].name > objectToSort[b].name ? 1 : -1))
