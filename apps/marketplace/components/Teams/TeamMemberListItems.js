@@ -2,9 +2,9 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 const TeamMemberListItems = props => {
-  const { handleTeamMemberClick, items } = props
+  const { handleTeamMemberClick, teamMembers } = props
 
-  return items.map(teamMember => (
+  return teamMembers.map(teamMember => (
     <li key={teamMember.id}>
       <a
         href={`#${teamMember.id}`}
@@ -21,12 +21,12 @@ const TeamMemberListItems = props => {
 
 TeamMemberListItems.defaultProps = {
   handleTeamMemberClick: () => {},
-  items: []
+  teamMembers: []
 }
 
 TeamMemberListItems.propTypes = {
   handleTeamMemberClick: PropTypes.func,
-  items: PropTypes.array
+  teamMembers: PropTypes.array
 }
 
 export default TeamMemberListItems

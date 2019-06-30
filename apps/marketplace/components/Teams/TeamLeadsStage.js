@@ -140,7 +140,7 @@ export class TeamLeadsStage extends Component {
     const teamLeadNameDescription = <TeamLeadNameDescription domain={this.props[model].domain} />
     const emptyResultsMessage = <EmptyResultsMessage />
     const teamMemberListItems = (
-      <TeamMemberListItems handleTeamMemberClick={this.handleUserClick} items={this.state.users} />
+      <TeamMemberListItems handleTeamMemberClick={this.handleUserClick} teamMembers={this.state.users} />
     )
 
     const teamLeadActions = (
