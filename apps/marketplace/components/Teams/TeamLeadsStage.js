@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
@@ -201,6 +202,14 @@ TeamLeadsStage.defaultProps = {
   minimumSearchChars: 2,
   onSubmit: () => {},
   onSubmitFailed: () => {}
+}
+
+TeamLeadsStage.propTypes = {
+  formButtons: PropTypes.node.isRequired,
+  minimumSearchChars: PropTypes.number,
+  model: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func,
+  onSubmitFailed: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => ({
