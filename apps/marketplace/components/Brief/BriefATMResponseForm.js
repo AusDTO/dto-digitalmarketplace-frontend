@@ -13,6 +13,7 @@ import Textfield from 'shared/form/Textfield'
 import Textarea from 'shared/form/Textarea'
 import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import dmapi from 'marketplace/services/apiClient'
+import { escapeQuote } from '../helpers'
 
 const briefRequiresDocumentUpload = brief => {
   let mustUpload = false
@@ -83,7 +84,7 @@ const BriefATMResponseForm = ({
               {brief.evaluationCriteria.map((evaluationCriteria, i) => (
                 <Textarea
                   key={evaluationCriteria.criteria}
-                  model={`${model}.criteria['${evaluationCriteria.criteria}']`}
+                  model={`${model}.criteria['${escapeQuote(evaluationCriteria.criteria)}']`}
                   name={`criteria.${evaluationCriteria.criteria}`}
                   id={`criteria.${i}`}
                   controlProps={{ limit: 500 }}

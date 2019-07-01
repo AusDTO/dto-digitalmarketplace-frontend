@@ -84,49 +84,51 @@ class YourInfoForm extends BaseForm {
             {csrf_token && (
               <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
             )}
+              {type === 'new' && (
+                <React.Fragment>
+                  <h2>Authorised representative</h2>
 
-              <h2>Authorised representative</h2>
+                  <Textfield
+                      model={`${model}.representative`}
+                      name="representative"
+                      id="representative"
+                      htmlFor="representative"
+                      label="Name"
+                      description="This is the person authorised to enter into contracts on behalf of the business."
+                      validators={{ required }}
+                      messages={{
+                          required: 'Authorised representative is required',
+                      }}
+                  />
 
-              <Textfield
-                  model={`${model}.representative`}
-                  name="representative"
-                  id="representative"
-                  htmlFor="representative"
-                  label="Name"
-                  description="This is the person authorised to enter into contracts on behalf of the business."
-                  validators={{ required }}
-                  messages={{
-                      required: 'Authorised representative is required',
-                  }}
-              />
+                  <Textfield
+                      model={`${model}.email`}
+                      name="email"
+                      id="email"
+                      htmlFor="email"
+                      label="Email"
+                      validators={{ required, validEmail }}
+                      messages={{
+                          required: 'Authorised representative\'s email is required',
+                          validEmail: 'Authorised representative\'s email must be a valid email address',
+                      }}
+                  />
 
-              <Textfield
-                  model={`${model}.email`}
-                  name="email"
-                  id="email"
-                  htmlFor="email"
-                  label="Email"
-                  validators={{ required, validEmail }}
-                  messages={{
-                      required: 'Authorised representative\'s email is required',
-                      validEmail: 'Authorised representative\'s email must be a valid email address',
-                  }}
-              />
-
-              <Textfield
-                  model={`${model}.phone`}
-                  name="phone"
-                  id="phone"
-                  htmlFor="phone"
-                  label="Phone"
-                  description="Please include the area code for landlines."
-                  validators={{ required, validPhoneNumber }}
-                  messages={{
-                      required: 'Authorised representative\'s phone number is required',
-                      validPhoneNumber: 'Authorised representative\'s phone number must be a valid phone number',
-                  }}
-              />
-
+                  <Textfield
+                      model={`${model}.phone`}
+                      name="phone"
+                      id="phone"
+                      htmlFor="phone"
+                      label="Phone"
+                      description="Please include the area code for landlines."
+                      validators={{ required, validPhoneNumber }}
+                      messages={{
+                          required: 'Authorised representative\'s phone number is required',
+                          validPhoneNumber: 'Authorised representative\'s phone number must be a valid phone number',
+                      }}
+                  />
+                </React.Fragment>
+              )}
               <h2>Business contact</h2>
 
               <Textfield

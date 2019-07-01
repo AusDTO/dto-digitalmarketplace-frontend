@@ -86,6 +86,23 @@ const OpportunityInfoCard = props => (
               Contact the buyer
             </a>
           )}
+
+        {props.isOpen &&
+          props.loggedIn &&
+          props.isApprovedSeller &&
+          !props.hasSignedCurrentAgreement &&
+          !props.hasResponded && (
+            <span>
+              <p className={styles.invitedStatus}>
+                You must accept the new Master agreement before you can apply for an opportunity.
+              </p>
+              <p>
+                <a href={`/2/seller-edit/${props.supplierCode}/representative`} className="au-btn au-btn--block">
+                  View Master Agreement
+                </a>
+              </p>
+            </span>
+          )}
         {props.isOpen &&
           props.loggedIn &&
           props.isApplicant && (
@@ -105,7 +122,8 @@ const OpportunityInfoCard = props => (
           )}
         {props.isOpen &&
           props.loggedIn &&
-          props.isRecruiterOnly && (
+          (props.briefLot === 'atm' && props.isRecruiterOnly) &&
+          props.hasSignedCurrentAgreement && (
             <span>
               <p className={styles.invitedStatus}>
                 Only approved sellers can apply.
@@ -130,7 +148,7 @@ const OpportunityInfoCard = props => (
               {!props.isAwaitingApplicationAssessment && (
                 <p>
                   <a href="/sellers/edit" className="au-btn au-btn--block">
-                    Edit application
+                    Edit profile
                   </a>
                 </p>
               )}
@@ -139,7 +157,8 @@ const OpportunityInfoCard = props => (
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
-          !props.isRecruiterOnly &&
+          props.hasSignedCurrentAgreement &&
+          ((props.briefLot === 'atm' && !props.isRecruiterOnly) || props.briefLot === 'rfx') &&
           (!props.isOpenToAll && !props.isOpenToCategory) &&
           !props.canRespond && (
             <div className={styles.invitedStatus}>
@@ -149,7 +168,8 @@ const OpportunityInfoCard = props => (
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
-          !props.isRecruiterOnly &&
+          props.hasSignedCurrentAgreement &&
+          (props.briefLot === 'atm' && !props.isRecruiterOnly) &&
           props.isOpenToCategory &&
           props.category &&
           !props.isAssessedForCategory && (
@@ -191,7 +211,7 @@ const OpportunityInfoCard = props => (
                   <p>
                     {!props.isAwaitingApplicationAssessment && (
                       <a href="/sellers/edit" className="au-btn au-btn--block">
-                        Edit application
+                        Edit profile
                       </a>
                     )}
                   </p>
@@ -202,6 +222,8 @@ const OpportunityInfoCard = props => (
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
+          props.hasSignedCurrentAgreement &&
+          props.briefLot === 'atm' &&
           !props.isRecruiterOnly &&
           props.isOpenToAll &&
           !props.isAssessedForAnyCategory && (
@@ -227,9 +249,26 @@ const OpportunityInfoCard = props => (
                 )}
             </span>
           )}
+
+        {props.isOpen &&
+          props.loggedIn &&
+          props.isApprovedSeller &&
+          props.hasSignedCurrentAgreement &&
+          props.briefLot === 'rfx' &&
+          props.canRespond &&
+          !props.isAssessedForCategory && (
+            <span>
+              <p className={styles.invitedStatus}>
+                Only sellers with an assessed category can apply.
+                {props.isAwaitingDomainAssessment && <span> Your application is currently being assessed.</span>}
+              </p>
+            </span>
+          )}
         {props.isOpen &&
           props.isApprovedSeller &&
-          !props.isRecruiterOnly &&
+          (props.hasSignedCurrentAgreement || (!props.hasSignedCurrentAgreement && props.hasResponded)) &&
+          ((props.briefLot === 'atm' && !props.isRecruiterOnly) ||
+            (props.briefLot === 'rfx' && props.isAssessedForCategory)) &&
           props.canRespond && (
             <div>
               {props.hasResponded ? (
@@ -272,7 +311,9 @@ OpportunityInfoCard.defaultProps = {
   isAwaitingApplicationAssessment: false,
   isAwaitingDomainAssessment: false,
   hasBeenAssessedForBrief: false,
-  isBriefOwner: false
+  isBriefOwner: false,
+  hasSignedCurrentAgreement: false,
+  supplierCode: null
 }
 
 OpportunityInfoCard.propTypes = {
@@ -301,7 +342,9 @@ OpportunityInfoCard.propTypes = {
   briefLot: PropTypes.string.isRequired,
   briefStatus: PropTypes.string.isRequired,
   category: PropTypes.string,
-  sellerCategory: PropTypes.string.isRequired
+  sellerCategory: PropTypes.string.isRequired,
+  hasSignedCurrentAgreement: PropTypes.bool,
+  supplierCode: PropTypes.number
 }
 
 export default OpportunityInfoCard

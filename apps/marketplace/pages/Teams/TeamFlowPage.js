@@ -56,14 +56,16 @@ export class TeamFlowPage extends Component {
         basename={`${rootPath}/team/${teamId}`}
         model={model}
         previewPath=""
-        publishText="Create team"
+        progressButtons={{
+          publishText: 'Create team',
+          showConfirmationCheckbox: false,
+          showReturnText: false,
+          showReviewButton: false,
+          startText: 'Save and continue'
+        }}
         returnPath={`${rootPath}/teams`}
         saveModel={this.saveTeam}
-        showConfirmationCheckbox={false}
-        showReturnButton={false}
-        showReviewButton={false}
         stages={TeamStages}
-        startText="Save and continue"
       />
     )
   }

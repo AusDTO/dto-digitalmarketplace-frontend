@@ -47,7 +47,8 @@ const mapStateToProps = state => ({
   loadBriefOverviewSuccess: state.brief.loadBriefOverviewSuccess,
   sections: state.brief.overview.sections,
   status: state.brief.overview.status,
-  title: state.brief.overview.title
+  title: state.brief.overview.title,
+  lotSlug: state.brief.overview.lot_slug
 })
 
 const mapDispatchToProps = dispatch => ({

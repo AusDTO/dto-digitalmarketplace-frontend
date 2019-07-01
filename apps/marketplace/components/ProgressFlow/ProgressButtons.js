@@ -51,7 +51,7 @@ const ProgressButtons = props => (
           </span>
         )}
       {!props.isFirstStage && !props.isLastStage && <AUbutton type="submit">{props.continueText}</AUbutton>}
-      {props.showReturnButton && (
+      {props.showReturnText && (
         <AUbutton
           as="tertiary"
           onClick={e => {
@@ -67,36 +67,37 @@ const ProgressButtons = props => (
 )
 
 ProgressButtons.defaultProps = {
-  startText: 'Start now',
+  confirmationText: 'I understand that this opportunity will be published on the Digital Marketplace',
   continueText: 'Save and continue',
-  previewText: 'Review',
-  publishText: 'Publish',
-  returnText: 'Return to overview',
-  publishEnabled: false,
   onPublish: () => {},
   onPreview: () => {},
   onReturn: () => {},
   onConfirmationClick: () => {},
-  showReturnButton: true,
+  previewText: 'Review',
+  publishEnabled: false,
+  publishText: 'Publish',
+  returnText: 'Return to overview',
+  showReturnText: true,
   showReviewButton: true,
-  showConfirmationCheckbox: true
+  showConfirmationCheckbox: true,
+  startText: 'Start now'
 }
 
 ProgressButtons.propTypes = {
-  startText: PropTypes.string,
+  confirmationText: PropTypes.string,
   continueText: PropTypes.string,
-  publishText: PropTypes.string,
-  returnText: PropTypes.string,
-  confirmationText: PropTypes.string.isRequired,
-  isLastStage: PropTypes.bool.isRequired,
   isFirstStage: PropTypes.bool.isRequired,
-  publishEnabled: PropTypes.bool,
+  isLastStage: PropTypes.bool.isRequired,
+  onConfirmationClick: PropTypes.func,
   onPublish: PropTypes.func,
   onReturn: PropTypes.func,
-  onConfirmationClick: PropTypes.func,
-  showReturnButton: PropTypes.bool,
+  publishEnabled: PropTypes.bool,
+  publishText: PropTypes.string,
+  returnText: PropTypes.string,
+  showConfirmationCheckbox: PropTypes.bool,
+  showReturnText: PropTypes.bool,
   showReviewButton: PropTypes.bool,
-  showConfirmationCheckbox: PropTypes.bool
+  startText: PropTypes.string
 }
 
 export default ProgressButtons

@@ -119,7 +119,7 @@ export class ProgressFlow extends Component {
     const stages = { ...this.state.stages }
     this.props.stages.map(stage => {
       if (typeof stage.isDone === 'function') {
-        stagesDone[stage.slug] = stage.isDone(this.props[this.props.model], this.props.meta)
+        stagesDone[stage.slug] = stage.isDone(this.props[this.props.model])
         if (stagesDone[stage.slug] && stages[stage.slug] !== 'doing') {
           stages[stage.slug] = 'done'
         }
@@ -183,7 +183,7 @@ export class ProgressFlow extends Component {
     }
     return (
       !Object.values(stages).some(val => val === false) &&
-      (!this.props.showConfirmationCheckbox || (this.props.showConfirmationCheckbox && this.state.confirmationChecked))
+      (!this.props.progressButtons.showConfirmationCheckbox || (this.props.progressButtons.showConfirmationCheckbox && this.state.confirmationChecked))
     )
   }
 
@@ -260,14 +260,13 @@ export class ProgressFlow extends Component {
                             onPublish={this.handlePublish}
                             onReturn={this.handleReturn}
                             publishEnabled={this.allStagesDone()}
-                            publishText={this.props.publishText}
-                            showConfirmationCheckbox={this.props.showConfirmationCheckbox}
-                            showReturnButton={this.props.showReturnButton}
-                            showReviewButton={this.props.showReviewButton}
-                            startText={this.props.startText}
+                            publishText={this.props.progressButtons.publishText}
+                            showConfirmationCheckbox={this.props.progressButtons.showConfirmationCheckbox}
+                            showReturnText={this.props.progressButtons.showReturnText}
+                            showReviewButton={this.props.progressButtons.showReviewButton}
+                            startText={this.props.progressButtons.startText}
                           />
                         }
-                        meta={this.props.meta}
                         model={this.props.model}
                         onStageMount={this.props.onStageMount}
                         onSubmit={this.handleFormSubmit}
@@ -290,32 +289,22 @@ export class ProgressFlow extends Component {
 
 ProgressFlow.defaultProps = {
   basename: '',
-  saveModel: () => {},
   onStageMount: () => {},
-  returnPath: '',
   previewPath: '',
-  publishText: 'Publish',
-  confirmationText: 'I understand that this opportunity will be published on the Digital Marketplace',
-  showReturnButton: true,
-  showReviewButton: true,
-  showConfirmationCheckbox: true,
-  meta: {}
+  progressButtons: {},
+  returnPath: '',
+  saveModel: () => {}
 }
 
 ProgressFlow.propTypes = {
   basename: PropTypes.string,
-  stages: PropTypes.array.isRequired,
   model: PropTypes.string.isRequired,
-  returnPath: PropTypes.string,
-  previewPath: PropTypes.string,
-  saveModel: PropTypes.func,
   onStageMount: PropTypes.func,
-  showReturnButton: PropTypes.bool,
-  showReviewButton: PropTypes.bool,
-  showConfirmationCheckbox: PropTypes.bool,
-  publishText: PropTypes.string,
-  confirmationText: PropTypes.string,
-  meta: PropTypes.object
+  previewPath: PropTypes.string,
+  progressButtons: PropTypes.object,
+  returnPath: PropTypes.string,
+  saveModel: PropTypes.func,
+  stages: PropTypes.array.isRequired
 }
 
 const mapStateToProps = (state, props) => ({

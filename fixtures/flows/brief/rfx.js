@@ -1,3 +1,4 @@
+import format from 'date-fns/format'
 import * as util from '../../flows/utils'
 
 const clickSaveContinue = async () => {
@@ -12,12 +13,12 @@ const createBrief = async () => {
 }
 
 const selectDropBox = async () => {
-  const rfxPanelCategory = process.env.RFX_PANEL_CATEGORY
-  await page.select(`#seller-search-category-select`, rfxPanelCategory)
+  const sellerCategory = process.env.SELLER_CATEGORY
+  await page.select(`#seller-search-category-select`, sellerCategory)
 
-  const rfxSellerName = process.env.RFX_SELLER_NAME
+  const sellerName = process.env.SELLER_NAME
   await util.sleep(100)
-  await util.typeInReactInput('seller-search', { value: rfxSellerName })
+  await util.typeInReactInput('seller-search', { value: sellerName })
   let searchResult = await util.getElementHandles(`//input[@id="seller-search"]/../../ul/li[1]/a`)
   let sr = searchResult[0]
   sr.click()
@@ -120,14 +121,15 @@ const fillClosingDate = async () => {
   await util.matchText('li', 'You must add a contact number')
   const now = new Date()
   const future = new Date(now.setDate(now.getDate() + 14))
-  await util.typeInReactInput('day', { value: `${future.getDate()}` })
-  await util.typeInReactInput('month', { value: `${future.getMonth() + 1}` })
-  await util.typeInReactInput('year', { value: `${future.getFullYear()}` })
+  await util.typeInReactInput('day', { value: `${format(future, 'DD')}` })
+  await util.typeInReactInput('month', { value: `${format(future, 'MM')}` })
+  await util.typeInReactInput('year', { value: `${format(future, 'YYYY')}` })
   await util.typeInReactInput('contact', { value: '0123456789' })
   await clickSaveContinue()
 }
 
 const fillPublishBrief = async () => {
+  await util.selectCheck('cb-declaration', 'id')
   await util.clickButton('Publish')
   await util.matchText('h1', 'Your opportunity is now live, and the invited sellers have been notified.')
 }
