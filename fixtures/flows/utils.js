@@ -24,15 +24,23 @@ export const getElementHandle = async xpath => {
   return elements[0]
 }
 
-export const selectCheck = async value => {
-  console.log(`Selecting check box "//input[@value="${value}"]"`)
-  const radio = await getElementHandle(`//input[@value="${value}"]`)
+export const selectCheck = async (value, attribute) => {
+  if (!attribute) {
+    // eslint-disable-next-line no-param-reassign
+    attribute = 'value'
+  }
+  console.log(`Selecting check box "//input[@${attribute}="${value}"]"`)
+  const radio = await getElementHandle(`//input[@${attribute}="${value}"]`)
   await radio.press('Space')
 }
 
-export const selectRadio = async value => {
-  console.log(`Selecting radio "//input[@value="${value}"]"`)
-  const radio = await getElementHandle(`//input[@value="${value}"]`)
+export const selectRadio = async (value, attribute) => {
+  if (!attribute) {
+    // eslint-disable-next-line no-param-reassign
+    attribute = 'value'
+  }
+  console.log(`Selecting radio "//input[@${attribute}="${value}"]"`)
+  const radio = await getElementHandle(`//input[@${attribute}="${value}"]`)
   await radio.press('Space')
 }
 

@@ -49,9 +49,19 @@ export class BriefDownloadResponses extends Component {
     return (
       <span>
         <AUheading size="xl" level="1">
-          {this.props.briefResponses.length === 1 && `You've had 1 response to your brief.`}
-          {this.props.briefResponses.length > 1 &&
-            `You've had ${this.props.briefResponses.length} responses to your brief.`}
+          {this.props.brief.lot === 'specialist' ? (
+            <React.Fragment>
+              {this.props.briefResponses.length === 1 && `1 candidate has responded to your opportunity.`}
+              {this.props.briefResponses.length > 1 &&
+                `${this.props.briefResponses.length} candidates have responded to your opportunity.`}
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              {this.props.briefResponses.length === 1 && `You've had 1 response to your opportunity.`}
+              {this.props.briefResponses.length > 1 &&
+                `You've had ${this.props.briefResponses.length} responses to your opportunity.`}
+            </React.Fragment>
+          )}
           <small className={styles.headingSub}>{this.props.brief.title}</small>
         </AUheading>
         <p>

@@ -7,8 +7,9 @@
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "chai": "^4.2.0",
-    "mocha": "^5.2.0",
     "clipboardy": "^1.2.3",
+    "date-fns": "^1.30.1",
+    "mocha": "^5.2.0",
     "puppeteer": "^1.14.0",
     "random-words": "^1.1.0"
   },

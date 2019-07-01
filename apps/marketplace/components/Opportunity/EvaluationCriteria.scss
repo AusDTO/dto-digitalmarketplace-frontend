@@ -13,3 +13,7 @@ div.container > div  {
 div.container > div:nth-child(even) {
   background-color: #fbfbfb;
 }
+
+.newLines {
+  white-space: pre-line;
+}

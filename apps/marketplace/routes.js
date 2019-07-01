@@ -21,9 +21,14 @@ import BuyerBriefOverviewPage from './pages/BuyerBriefOverviewPage'
 import BuyerATMCreatePage from './pages/BuyerATMCreatePage'
 import BuyerATMCompletedPage from './pages/BuyerATMCompletedPage'
 import BuyerATMFlowPage from './pages/BuyerATMFlowPage'
+import BuyerSpecialistCreatePage from './pages/BuyerSpecialistCreatePage'
+import BuyerSpecialistCompletedPage from './pages/BuyerSpecialistCompletedPage'
+import BuyerSpecialistFlowPage from './pages/BuyerSpecialistFlowPage'
 import BriefOutcomeChoicePage from './pages/BriefOutcomeChoicePage'
 import OpportunityPage from './pages/OpportunityPage'
 import TeamsPage from './pages/TeamsPage'
+import SellerEditFlowPage from './pages/SellerEditFlowPage'
+import BuyerAwardSellerPage from './pages/BuyerAwardSellerPage'
 
 export const rootPath = '/2'
 
@@ -44,6 +49,11 @@ export const Routes = () => (
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
     <Route path={`${rootPath}/login`} component={LoginPage} />
     <Route path={`${rootPath}/seller-dashboard`} component={SellerDashboardPage} />
+    <PrivateRoute
+      restrictedTo="supplier"
+      path={`${rootPath}/seller-edit/:supplierCode`}
+      component={SellerEditFlowPage}
+    />
     <Route path={`${rootPath}/:framework/opportunities/:briefId`} component={OpportunityPage} />
     <Route path={`${rootPath}/opportunities`} component={OpportunitiesPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-dashboard`} component={BuyerDashboardPage} />
@@ -53,6 +63,7 @@ export const Routes = () => (
       path={`${rootPath}/buyer-rfx/:briefId/completed`}
       component={BuyerRFXCompletedPage}
     />
+    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-award/:briefId`} component={BuyerAwardSellerPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/:briefId/:stage?`} component={BuyerRFXFlowPage} />
     <PrivateRoute
       restrictedTo="buyer"
@@ -62,6 +73,21 @@ export const Routes = () => (
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/create`} component={BuyerATMCreatePage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/:briefId/:stage?`} component={BuyerATMFlowPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/teams/create/:stage?`} component={CreateTeamPage} />
+    <PrivateRoute
+      restrictedTo="buyer"
+      path={`${rootPath}/buyer-specialist/create`}
+      component={BuyerSpecialistCreatePage}
+    />
+    <PrivateRoute
+      restrictedTo="buyer"
+      path={`${rootPath}/buyer-specialist/:briefId/completed`}
+      component={BuyerSpecialistCompletedPage}
+    />
+    <PrivateRoute
+      restrictedTo="buyer"
+      path={`${rootPath}/buyer-specialist/:briefId/:stage?`}
+      component={BuyerSpecialistFlowPage}
+    />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/outcome-choice`} component={BriefOutcomeChoicePage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/teams`} component={TeamsPage} />
     <Route component={NotFound} />

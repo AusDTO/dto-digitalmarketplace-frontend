@@ -66,7 +66,7 @@ const BuyerRFXAboutStage = props => (
       id="organisation"
       htmlFor="organisation"
       defaultValue={props[props.model].organisation}
-      maxLength={100}
+      maxLength={150}
       showMaxLength
       validators={{
         required
@@ -79,7 +79,7 @@ const BuyerRFXAboutStage = props => (
       id="summary"
       htmlFor="summary"
       defaultValue={props[props.model].summary}
-      controlProps={{ limit: 150 }}
+      controlProps={{ limit: 200 }}
       validators={{
         required
       }}

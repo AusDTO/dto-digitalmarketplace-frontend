@@ -63,7 +63,7 @@ class BuyerDashboardHeader extends Component {
               >
                 <ul>
                   <li>
-                    <a href="/buyers/frameworks/digital-marketplace/requirements/digital-professionals">Specialist</a>
+                    <a href="/2/buyer-specialist/create">Specialist</a>
                   </li>
                   <li>
                     <a href={`${rootPath}/outcome-choice`}>Outcome</a>

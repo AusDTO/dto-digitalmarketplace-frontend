@@ -6,6 +6,7 @@ import {
   BRIEF_RFX_CREATE_SUCCESS,
   BRIEF_ATM_CREATE_SUCCESS,
   SPECIALIST_NAME,
+  SPECIALIST_NAME_SPLIT,
   SPECIALIST_NUMBER,
   ADD_ANOTHER_SPECIALIST,
   BRIEF_OVERVIEW_SUCCESS,
@@ -20,6 +21,8 @@ const defaultBriefState = {
   brief: {},
   briefResponses: [],
   specialistName: '',
+  specialistGivenNames: '',
+  specialistSurname: '',
   specialistNumber: 1,
   addAnotherSpecialist: false,
   overview: {
@@ -29,6 +32,7 @@ const defaultBriefState = {
   },
   briefResponseCount: 0,
   invitedSellerCount: 0,
+  supplierBriefResponseCount: 0,
   canRespond: false,
   isAssessedForCategory: false,
   isAssessedForAnyCategory: false,
@@ -44,7 +48,10 @@ const defaultBriefState = {
   isAwaitingDomainAssessment: false,
   hasBeenAssessedForBrief: false,
   hasResponded: false,
-  domains: []
+  domains: [],
+  hasSupplierErrors: false,
+  isInvited: false,
+  hasSignedCurrentAgreement: false
 }
 
 const briefReducer = (state = defaultBriefState, action) => {
@@ -63,7 +70,8 @@ const briefReducer = (state = defaultBriefState, action) => {
         loadBriefSuccess: true,
         briefResponses: action.briefResponses,
         specialistNumber: action.briefResponses.length + 1,
-        loadedAt: new Date().valueOf()
+        loadedAt: new Date().valueOf(),
+        oldWorkOrderCreator: action.oldWorkOrderCreator
       }
 
     case BRIEF_PUBLIC_INFO_FETCH_DATA_SUCCESS:
@@ -72,6 +80,7 @@ const briefReducer = (state = defaultBriefState, action) => {
         brief: action.brief,
         briefResponseCount: action.briefResponseCount,
         invitedSellerCount: action.invitedSellerCount,
+        supplierBriefResponseCount: action.supplierBriefResponseCount,
         canRespond: action.canRespond,
         isAssessedForCategory: action.isAssessedForCategory,
         isAssessedForAnyCategory: action.isAssessedForAnyCategory,
@@ -89,7 +98,10 @@ const briefReducer = (state = defaultBriefState, action) => {
         hasResponded: action.hasResponded,
         domains: action.domains,
         loadBriefSuccess: true,
-        loadedAt: new Date().valueOf()
+        loadedAt: new Date().valueOf(),
+        hasSupplierErrors: action.hasSupplierErrors,
+        isInvited: action.isInvited,
+        hasSignedCurrentAgreement: action.hasSignedCurrentAgreement
       }
 
     case BRIEF_SAVE_SUCCESS:
@@ -126,6 +138,12 @@ const briefReducer = (state = defaultBriefState, action) => {
       return {
         ...state,
         specialistName: action.specialistName
+      }
+    case SPECIALIST_NAME_SPLIT:
+      return {
+        ...state,
+        specialistGivenNames: action.specialistGivenNames,
+        specialistSurname: action.specialistSurname
       }
 
     case SPECIALIST_NUMBER:

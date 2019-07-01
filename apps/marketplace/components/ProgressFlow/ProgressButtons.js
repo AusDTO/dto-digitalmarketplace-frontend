@@ -1,10 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
+import { AUcheckbox } from '@gov.au/control-input'
 import styles from './ProgressButtons.scss'
 
 const ProgressButtons = props => (
   <div className={styles.container}>
+    {props.isLastStage &&
+      !props.isFirstStage && (
+        <p>
+          <span>
+            <AUcheckbox
+              id="cb-declaration"
+              onClick={e => {
+                props.onConfirmationClick(e.target.checked)
+              }}
+              label="I understand that this opportunity will be published on the Digital Marketplace"
+            />
+          </span>
+        </p>
+      )}
     <p>
       {props.isFirstStage && !props.isLastStage && <AUbutton type="submit">{props.startText}</AUbutton>}
       {props.isLastStage &&
@@ -33,15 +48,17 @@ const ProgressButtons = props => (
           </span>
         )}
       {!props.isFirstStage && !props.isLastStage && <AUbutton type="submit">{props.continueText}</AUbutton>}
-      <AUbutton
-        as="tertiary"
-        onClick={e => {
-          e.preventDefault()
-          props.onReturn()
-        }}
-      >
-        {props.returnText}
-      </AUbutton>
+      {props.showReturnText && (
+        <AUbutton
+          as="tertiary"
+          onClick={e => {
+            e.preventDefault()
+            props.onReturn()
+          }}
+        >
+          {props.returnText}
+        </AUbutton>
+      )}
     </p>
   </div>
 )
@@ -52,10 +69,12 @@ ProgressButtons.defaultProps = {
   previewText: 'Review',
   publishText: 'Publish',
   returnText: 'Return to overview',
+  showReturnText: true,
   publishEnabled: false,
   onPublish: () => {},
   onPreview: () => {},
-  onReturn: () => {}
+  onReturn: () => {},
+  onConfirmationClick: () => {}
 }
 
 ProgressButtons.propTypes = {
@@ -63,11 +82,13 @@ ProgressButtons.propTypes = {
   continueText: PropTypes.string,
   publishText: PropTypes.string,
   returnText: PropTypes.string,
+  showReturnText: PropTypes.bool,
   isLastStage: PropTypes.bool.isRequired,
   isFirstStage: PropTypes.bool.isRequired,
   publishEnabled: PropTypes.bool,
   onPublish: PropTypes.func,
-  onReturn: PropTypes.func
+  onReturn: PropTypes.func,
+  onConfirmationClick: PropTypes.func
 }
 
 export default ProgressButtons
