@@ -54,10 +54,13 @@ const SellerAssessmentFeedback = props => (
               {Object.keys(props.feedback.criteria).map(criteriaId => (
                 <li key={criteriaId}>
                   {!props.feedback.criteria[criteriaId].has_feedback && (
-                    <span>
-                      <Tick colour="#17788D" className={styles.icon} />Evidence demonstrates &quot;{
-                        props.feedback.criteria[criteriaId].name
-                      }&quot;
+                    <span className={styles.feedbackFlex}>
+                      <span className={styles.iconBlock}>
+                        <Tick colour="#17788D" className={styles.icon} />
+                      </span>
+                      <span className={styles.iconBlock}>
+                        Evidence demonstrates &quot;{props.feedback.criteria[criteriaId].name}&quot;
+                      </span>
                     </span>
                   )}
                 </li>
@@ -66,9 +69,13 @@ const SellerAssessmentFeedback = props => (
                 <li key={criteriaId}>
                   {props.feedback.criteria[criteriaId].has_feedback && (
                     <React.Fragment>
-                      <span>
-                        <Cross colour="#FF0000" className={styles.icon} />Evidence does not demonstrate &quot;
-                        {props.feedback.criteria[criteriaId].name}&quot;
+                      <span className={styles.feedbackFlex}>
+                        <span className={styles.iconBlock}>
+                          <Cross colour="#FF0000" className={styles.icon} />
+                        </span>
+                        <span className={styles.iconBlock}>
+                          Evidence does not demonstrate &quot;{props.feedback.criteria[criteriaId].name}&quot;
+                        </span>
                       </span>
                       {renderCriteriaFeedback(criteriaId, props.feedback.criteria)}
                     </React.Fragment>

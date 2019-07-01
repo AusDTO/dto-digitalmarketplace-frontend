@@ -12,6 +12,14 @@ ul.feedbackList {
     margin-bottom: 1.5rem;
   }
 
+  .feedbackFlex {
+    display: flex;
+  }
+
+  .iconBlock {
+    display: inline-block;
+  }
+
   .icon {
     margin-right: 0.75rem;
     vertical-align: middle;
