@@ -134,7 +134,7 @@ class DomainList extends BaseForm {
         <div class="au-body au-page-alerts au-page-alerts--warning">
           <h3>Important change coming!</h3>
           <p>We are making changes to the way you request assessment and approval for categories.</p>
-          <p>From X July 2019 instead of being assessed through case studies, you must prove your ability against individual criteria based on your previous work.</p>
+          <p>From 15 July 2019 instead of being assessed through case studies, you must prove your ability against individual criteria based on your previous work.</p>
         </div>
         <br />
         <p>
@@ -151,7 +151,7 @@ class DomainList extends BaseForm {
           <div class="au-body au-page-alerts au-page-alerts--warning">
             <h3>Important change coming!</h3>
             <p>We are making changes to the way you request assessment and approval for categories.</p>
-            <p>From X July 2019 instead of being assessed through case studies, you must prove your ability against individual criteria based on your previous work.</p>
+            <p>From 15 July 2019 instead of being assessed through case studies, you must prove your ability against individual criteria based on your previous work.</p>
           </div>
           <br />
           <p>Case studies are important for showing you meet our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a> for any new
