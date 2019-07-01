@@ -21,14 +21,16 @@ const teamLeadsStage = {
 
 const teamMembersStage = {
   component: TeamMembersStage,
-  isDone: formValues => Object.keys(formValues.teamMembers).length > 0,
+  isDone: formValues => formValues.teamMembers && Object.keys(formValues.teamMembers).length > 0,
   slug: 'members',
   title: 'Team members'
 }
 
 const permissionsStage = {
   component: PermissionsStage,
-  isDone: formValues => Object.keys(formValues.teamMembers).every(userId => formValues.teamMembers[userId].permissions),
+  isDone: formValues =>
+    formValues.teamMembers &&
+    Object.keys(formValues.teamMembers).every(userId => formValues.teamMembers[userId].permissions),
   slug: 'permissions',
   title: 'Permissions'
 }
