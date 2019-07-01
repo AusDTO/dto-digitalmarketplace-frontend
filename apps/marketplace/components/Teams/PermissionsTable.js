@@ -18,12 +18,12 @@ export class PermissionsTable extends Component {
   handlePermissionClick(applyPermission, userId, permissionType) {
     const teamMembers = { ...this.props[this.props.model].teamMembers }
     let permissionsToApply = {
-      answerSellerQuestions: false,
-      createDrafts: false,
-      createWorkOrders: false,
-      downloadReportingData: false,
-      downloadResponses: false,
-      publishOpportunities: false
+      answer_seller_questions: false,
+      create_drafts: false,
+      create_work_orders: false,
+      download_reporting_data: false,
+      download_responses: false,
+      publish_opportunities: false
     }
 
     if (!Object.prototype.hasOwnProperty.call(teamMembers[userId], 'permissions')) {
@@ -59,79 +59,79 @@ export class PermissionsTable extends Component {
               <td>{teamMembers[userId].name}</td>
               <td>
                 <AUcheckbox
-                  checked={teamMembers[userId].permissions ? teamMembers[userId].permissions.createDrafts : false}
+                  checked={teamMembers[userId].permissions ? teamMembers[userId].permissions.create_drafts : false}
                   className={styles.permissionsTableCheckbox}
                   id="create-drafts-checkbox"
                   label=""
                   name="permissions"
                   onClick={e => {
-                    this.handlePermissionClick(e.target.checked, userId, 'createDrafts')
+                    this.handlePermissionClick(e.target.checked, userId, 'create_drafts')
                   }}
                 />
               </td>
               <td>
                 <AUcheckbox
                   checked={
-                    teamMembers[userId].permissions ? teamMembers[userId].permissions.publishOpportunities : false
+                    teamMembers[userId].permissions ? teamMembers[userId].permissions.publish_opportunities : false
                   }
                   className={styles.permissionsTableCheckbox}
                   id="publish-opportunities-checkbox"
                   label=""
                   name="permissions"
                   onClick={e => {
-                    this.handlePermissionClick(e.target.checked, userId, 'publishOpportunities')
+                    this.handlePermissionClick(e.target.checked, userId, 'publish_opportunities')
                   }}
                 />
               </td>
               <td>
                 <AUcheckbox
                   checked={
-                    teamMembers[userId].permissions ? teamMembers[userId].permissions.answerSellerQuestions : false
+                    teamMembers[userId].permissions ? teamMembers[userId].permissions.answer_seller_questions : false
                   }
                   className={styles.permissionsTableCheckbox}
                   id="answer-seller-questions-checkbox"
                   label=""
                   name="permissions"
                   onClick={e => {
-                    this.handlePermissionClick(e.target.checked, userId, 'answerSellerQuestions')
+                    this.handlePermissionClick(e.target.checked, userId, 'answer_seller_questions')
                   }}
                 />
               </td>
               <td>
                 <AUcheckbox
-                  checked={teamMembers[userId].permissions ? teamMembers[userId].permissions.downloadResponses : false}
+                  checked={teamMembers[userId].permissions ? teamMembers[userId].permissions.download_responses : false}
                   className={styles.permissionsTableCheckbox}
                   id="download-responses-checkbox"
                   label=""
                   name="permissions"
                   onClick={e => {
-                    this.handlePermissionClick(e.target.checked, userId, 'downloadResponses')
+                    this.handlePermissionClick(e.target.checked, userId, 'download_responses')
                   }}
                 />
               </td>
               <td>
                 <AUcheckbox
-                  checked={teamMembers[userId].permissions ? teamMembers[userId].permissions.createWorkOrders : false}
+                  checked={teamMembers[userId].permissions ? teamMembers[userId].permissions.create_work_orders : false}
                   className={styles.permissionsTableCheckbox}
                   id="create-work-orders-checkbox"
                   label=""
                   name="permissions"
                   onClick={e => {
-                    this.handlePermissionClick(e.target.checked, userId, 'createWorkOrders')
+                    this.handlePermissionClick(e.target.checked, userId, 'create_work_orders')
                   }}
                 />
               </td>
               <td>
                 <AUcheckbox
                   checked={
-                    teamMembers[userId].permissions ? teamMembers[userId].permissions.downloadReportingData : false
+                    teamMembers[userId].permissions ? teamMembers[userId].permissions.download_reporting_data : false
                   }
                   className={styles.permissionsTableCheckbox}
                   id="download-reporting-data-checkbox"
                   label=""
                   name="permissions"
                   onClick={e => {
-                    this.handlePermissionClick(e.target.checked, userId, 'downloadReportingData')
+                    this.handlePermissionClick(e.target.checked, userId, 'download_reporting_data')
                   }}
                 />
               </td>
@@ -149,7 +149,6 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = (dispatch, props) => ({
   updateTeamMembers: teamMembers => dispatch(actions.change(`${props.model}.teamMembers`, teamMembers))
-  // updatePermissions: permissions => dispatch(actions.change(`${props.model}.permissions`, permissions))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PermissionsTable)

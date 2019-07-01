@@ -38,20 +38,20 @@ export class PermissionsStage extends Component {
     const teamMembers = { ...this.props[this.props.model].teamMembers }
     const permissionsToApply = applyAllPermissions
       ? {
-          answerSellerQuestions: true,
-          createDrafts: true,
-          createWorkOrders: true,
-          downloadReportingData: true,
-          downloadResponses: true,
-          publishOpportunities: true
+          answer_seller_questions: true,
+          create_drafts: true,
+          create_work_orders: true,
+          download_reporting_data: true,
+          download_responses: true,
+          publish_opportunities: true
         }
       : {
-          answerSellerQuestions: false,
-          createDrafts: false,
-          createWorkOrders: false,
-          downloadReportingData: false,
-          downloadResponses: false,
-          publishOpportunities: false
+          answer_seller_questions: false,
+          create_drafts: false,
+          create_work_orders: false,
+          download_reporting_data: false,
+          download_responses: false,
+          publish_opportunities: false
         }
 
     Object.keys(teamMembers).forEach(userId => {
