@@ -28,7 +28,7 @@ const teamMembersStage = {
 
 const permissionsStage = {
   component: PermissionsStage,
-  isDone: true,
+  isDone: formValues => Object.keys(formValues.teamMembers).every(userId => formValues.teamMembers[userId].permissions),
   slug: 'permissions',
   title: 'Permissions'
 }
