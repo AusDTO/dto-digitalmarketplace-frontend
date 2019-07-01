@@ -78,6 +78,7 @@ export class PermissionsStage extends Component {
             id="all-permissions-checkbox"
             label="Every member can create drafts, publish opportunities, answer seller questions, download responses, create work orders, download reporting data"
             name="permissions"
+            onChange={() => {}}
             onClick={e => {
               this.handleSelectAllPermissionsClick(e.target.checked)
             }}

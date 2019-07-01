@@ -64,6 +64,7 @@ export class PermissionsTable extends Component {
                   id="create-drafts-checkbox"
                   label=""
                   name="permissions"
+                  onChange={() => {}}
                   onClick={e => {
                     this.handlePermissionClick(e.target.checked, userId, 'create_drafts')
                   }}
@@ -78,6 +79,7 @@ export class PermissionsTable extends Component {
                   id="publish-opportunities-checkbox"
                   label=""
                   name="permissions"
+                  onChange={() => {}}
                   onClick={e => {
                     this.handlePermissionClick(e.target.checked, userId, 'publish_opportunities')
                   }}
@@ -92,6 +94,7 @@ export class PermissionsTable extends Component {
                   id="answer-seller-questions-checkbox"
                   label=""
                   name="permissions"
+                  onChange={() => {}}
                   onClick={e => {
                     this.handlePermissionClick(e.target.checked, userId, 'answer_seller_questions')
                   }}
@@ -104,6 +107,7 @@ export class PermissionsTable extends Component {
                   id="download-responses-checkbox"
                   label=""
                   name="permissions"
+                  onChange={() => {}}
                   onClick={e => {
                     this.handlePermissionClick(e.target.checked, userId, 'download_responses')
                   }}
@@ -116,6 +120,7 @@ export class PermissionsTable extends Component {
                   id="create-work-orders-checkbox"
                   label=""
                   name="permissions"
+                  onChange={() => {}}
                   onClick={e => {
                     this.handlePermissionClick(e.target.checked, userId, 'create_work_orders')
                   }}
@@ -130,6 +135,7 @@ export class PermissionsTable extends Component {
                   id="download-reporting-data-checkbox"
                   label=""
                   name="permissions"
+                  onChange={() => {}}
                   onClick={e => {
                     this.handlePermissionClick(e.target.checked, userId, 'download_reporting_data')
                   }}
