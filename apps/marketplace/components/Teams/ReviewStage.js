@@ -11,6 +11,7 @@ import commonStyles from './TeamStages.scss'
 
 const ReviewStage = props => {
   const { formButtons, model, onSubmit, onSubmitFailed } = props
+  const team = props[model]
 
   return (
     <Form model={model} onSubmit={onSubmit} onSubmitFailed={onSubmitFailed}>
@@ -18,9 +19,9 @@ const ReviewStage = props => {
         Review
       </AUheading>
       <AUheading level="2" size="lg">
-        {props[model].name}
+        {team.name}
       </AUheading>
-      <TeamTable teamLeads={props[model].teamLeads} teamMembers={props[model].teamMembers} />
+      <TeamTable teamLeads={team.teamLeads} teamMembers={team.teamMembers} />
       <AUheading level="2" size="lg">
         What happens next
       </AUheading>
