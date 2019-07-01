@@ -46,8 +46,15 @@ const SellerAssessmentFeedback = props => (
         <ul className={styles.feedbackList}>
           {props.feedback.vfm === false ? (
             <li>
-              <Cross colour="#FF0000" className={styles.icon} />You have been assessed as not offering value for money.
-              Your maximum daily rate is above the price threshold for {props.feedback.domainName}.
+              <span className={styles.feedbackFlex}>
+                <span className={styles.iconBlock}>
+                  <Cross colour="#FF0000" className={styles.icon} />
+                </span>
+                <span className={styles.iconBlock}>
+                  You have been assessed as not offering value for money. Your maximum daily rate is above the price
+                  threshold for {props.feedback.domainName}.
+                </span>
+              </span>
             </li>
           ) : (
             <React.Fragment>
