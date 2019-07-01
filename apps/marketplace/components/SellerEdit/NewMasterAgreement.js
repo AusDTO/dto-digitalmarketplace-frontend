@@ -16,19 +16,23 @@ const NewMasterAgreement = props => (
     </p>
     <p>We recommend you review the new Master Agreement and circulate to relevant parties before this date.</p>
     <p>
-      <AgreementLinks />
+      <AgreementLinks htmlUrl={props.agreementHtmlUrl} pdfUrl={props.agreementPdfUrl} />
     </p>
   </React.Fragment>
 )
 
 NewMasterAgreement.defaultProps = {
   startDate: '',
-  representative: ''
+  representative: '',
+  agreementHtmlUrl: null,
+  agreementPdfUrl: null
 }
 
 NewMasterAgreement.propTypes = {
   startDate: PropTypes.string,
-  representative: PropTypes.string
+  representative: PropTypes.string,
+  agreementHtmlUrl: PropTypes.string,
+  agreementPdfUrl: PropTypes.string
 }
 
 export default NewMasterAgreement

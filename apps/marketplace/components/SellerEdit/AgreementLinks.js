@@ -1,9 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-const AgreementLinks = () => (
+const AgreementLinks = props => (
   <React.Fragment>
     <a
-      href="/static/media/documents/digital-marketplace-master-agreement-2019-07-01.pdf"
+      href={props.pdfUrl ? props.pdfUrl : '/api/2/r/master-agreement-current.pdf'}
       rel="noopener noreferrer"
       target="_blank"
     >
@@ -11,7 +12,7 @@ const AgreementLinks = () => (
     </a>
     <br />
     <a
-      href="/static/media/documents/digital-marketplace-master-agreement-2019-07-01.html"
+      href={props.htmlUrl ? props.htmlUrl : '/api/2/r/master-agreement-current.html'}
       rel="noopener noreferrer"
       target="_blank"
     >
@@ -19,4 +20,15 @@ const AgreementLinks = () => (
     </a>
   </React.Fragment>
 )
+
+AgreementLinks.defaultProps = {
+  htmlUrl: null,
+  pdfUrl: null
+}
+
+AgreementLinks.propTypes = {
+  htmlUrl: PropTypes.string,
+  pdfUrl: PropTypes.string
+}
+
 export default AgreementLinks

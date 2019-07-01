@@ -83,7 +83,8 @@ export const deleteBrief = briefId => (dispatch, getState) => {
 export const handleBriefInfoSuccess = response => ({
   type: BRIEF_INFO_FETCH_DATA_SUCCESS,
   brief: response.data.brief,
-  briefResponses: response.data.briefResponses
+  briefResponses: response.data.briefResponses,
+  oldWorkOrderCreator: response.data.oldWorkOrderCreator
 })
 
 export const handlePublicBriefInfoSuccess = response => ({
@@ -304,3 +305,20 @@ export function handleSpecialistNumberSubmit(specialistNumber) {
 export function addAnotherSpecialistSubmit(addAnotherSpecialist) {
   return { type: ADD_ANOTHER_SPECIALIST, addAnotherSpecialist }
 }
+
+export const loadSuppliersResponded = briefId => () =>
+  dmapi({ url: `/brief-response/${briefId}/suppliers` }).then(response => {
+    response.data.loadedAt = new Date().valueOf()
+    return response
+  })
+
+export const handleBriefAwardedSubmit = (briefId, model) => (dispatch, getState) =>
+  dmapi({
+    url: `/brief/${briefId}/award-seller`,
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify(model)
+  }).then(response => response)

@@ -16,6 +16,7 @@ import BriefRFXResponseSubmitted from 'marketplace/components/Brief/BriefRFXResp
 import BriefATMResponseForm from 'marketplace/components/Brief/BriefATMResponseForm'
 import BriefATMResponseSubmitted from 'marketplace/components/Brief/BriefATMResponseSubmitted'
 import BriefDownloadResponses from 'marketplace/components/Brief/BriefDownloadResponses'
+import BriefDownloadWorkOrder from 'marketplace/components/Brief/BriefDownloadWorkOrder'
 import {
   loadBrief,
   handleBriefResponseSubmit,
@@ -368,6 +369,18 @@ class BriefPage extends Component {
                     <BriefDownloadResponses brief={this.props.brief} briefResponses={this.props.briefResponses} />
                   ) : (
                     <ErrorBox title="There was a problem downloading the documents" setFocus={setFocus} />
+                  )}{' '}
+                </span>
+              )}
+            />
+            <Route
+              path={`${match.url}/download-work-order`}
+              render={() => (
+                <span>
+                  {!app.errorMessage && loadBriefSuccess ? (
+                    <BriefDownloadWorkOrder brief={this.props.brief} />
+                  ) : (
+                    <ErrorBox title="There was a problem loading the brief" setFocus={setFocus} />
                   )}{' '}
                 </span>
               )}

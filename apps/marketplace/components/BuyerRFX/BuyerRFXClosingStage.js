@@ -8,6 +8,7 @@ import Textfield from 'shared/form/Textfield'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
 import ClosingDateControl from 'marketplace/components/BuyerBriefFlow/ClosingDateControl'
+import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import styles from './BuyerRFXClosingStage.scss'
 
 class BuyerRFXClosingStage extends Component {
@@ -25,6 +26,7 @@ class BuyerRFXClosingStage extends Component {
     const { model } = this.props
     return (
       <Form
+        className={styles.closingStageContainer}
         model={model}
         validators={{
           '': {
@@ -70,6 +72,28 @@ class BuyerRFXClosingStage extends Component {
             required
           }}
         />
+        <AUheading level="2" size="sm">
+          Comprehensive terms
+        </AUheading>
+        <p className={styles.reduceVerticalSpacing}>
+          We recommend that the{' '}
+          <a href="/api/2/r/comprehensive-terms-current.pdf" rel="noopener noreferrer" target="_blank">
+            comprehensive terms
+          </a>{' '}
+          only be applied to procurements that are complex or high value. The terms will apply to your work order, in
+          addition to the Master Agreement.
+        </p>
+        <p>
+          <CheckboxDetailsField
+            model={`${this.props.model}.comprehensiveTerms`}
+            id={`comprehensiveTerms`}
+            name={`comprehensiveTerms`}
+            label="Apply the comprehensive terms to this opportunity"
+            detailsModel={this.props.model}
+            validators={{}}
+            messages={{}}
+          />
+        </p>
         {this.props.formButtons}
       </Form>
     )
