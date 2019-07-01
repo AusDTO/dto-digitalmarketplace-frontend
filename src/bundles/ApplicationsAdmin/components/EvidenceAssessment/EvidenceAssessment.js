@@ -183,7 +183,7 @@ class EvidenceAssessment extends React.Component {
           </p>
           {evidence.previous_rejected && (
             <p>
-              <a href={`/admin/evidence-assessments/${evidence.id}/previous`}>View previous assessment</a>
+              <a href={`/admin/evidence-assessments/${evidence.id}/previous`} target="_blank">View previous assessment</a>
             </p>
           )}
           {evidence.brief_id && (
