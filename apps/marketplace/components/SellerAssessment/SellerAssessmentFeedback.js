@@ -46,7 +46,8 @@ const SellerAssessmentFeedback = props => (
         <ul className={styles.feedbackList}>
           {props.feedback.vfm === false ? (
             <li>
-              <Cross colour="#FF0000" className={styles.icon} />The submitted rate was not considered value for money.
+              <Cross colour="#FF0000" className={styles.icon} />You have been assessed as not offering value for money.
+              Your maximum daily rate is above the price threshold for {props.feedback.domainName}.
             </li>
           ) : (
             <React.Fragment>
@@ -83,19 +84,34 @@ const SellerAssessmentFeedback = props => (
         {props.feedback.vfm === false &&
           !props.feedback.currentEvidenceId && (
             <p>
-              You will need to{' '}
-              <a href={`${rootPath}/seller-assessment/create/${props.feedback.domainId}`}>reduce your daily rate</a> so
-              it is no higher than $XXX.
+              To be approved in {props.feedback.domainName}, you may need to reconsider your maximum daily rate and{' '}
+              <a href={`${rootPath}/seller-assessment/create/${props.feedback.domainId}`}>resubmit for review</a>. You
+              can read our{' '}
+              <a
+                href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476-Panel-categories-and-rates"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                guide on pricing thresholds
+              </a>{' '}
+              for each category.
             </p>
           )}
         {props.feedback.vfm === false &&
           props.feedback.currentEvidenceId && (
             <p>
-              You will need to{' '}
+              To be approved in {props.feedback.domainName}, you may need to reconsider your maximum daily rate and{' '}
               <a href={`${rootPath}/seller-assessment/${props.feedback.currentEvidenceId}/introduction`}>
-                reduce your daily rate
+                resubmit for review
+              </a>. You can read our{' '}
+              <a
+                href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476-Panel-categories-and-rates"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                guide on pricing thresholds
               </a>{' '}
-              so it is no higher than $XXX.
+              for each category.
             </p>
           )}
         {!allCriteriaPassed(props.feedback.criteria) &&
