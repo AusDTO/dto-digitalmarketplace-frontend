@@ -97,7 +97,10 @@ export class TeamLeadsStage extends Component {
     })
 
     const newTeamLeads = { ...this.props[this.props.model].teamLeads }
-    newTeamLeads[user.id] = { name: user.name }
+    newTeamLeads[user.id] = {
+      emailAddress: user.email,
+      name: user.name
+    }
     this.props.updateTeamLeads(newTeamLeads)
   }
 
