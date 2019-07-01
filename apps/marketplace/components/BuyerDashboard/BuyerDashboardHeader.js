@@ -37,18 +37,23 @@ class BuyerDashboardHeader extends Component {
               <nav className={styles.dashNav}>
                 <ul className={styles.menu}>
                   <li>
-                    <NavLink id="my-briefs-link" to="/" activeClassName={styles.active} exact>
-                      My opportunities
+                    <NavLink id="all-link" to="/all-briefs" activeClassName={styles.active}>
+                      All (32)
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink id="team-briefs-link" to="/team-briefs" activeClassName={styles.active}>
-                      Team opportunities
+                    <NavLink id="drafts-link" to="/draft-briefs" activeClassName={styles.active}>
+                      Drafts (32)
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink id="team-overview-link" to="/team-overview" activeClassName={styles.active}>
-                      Team overview
+                    <NavLink id="Live-link" to="/live-briefs" activeClassName={styles.active}>
+                      Live (32)
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink id="Closed-link" to="/closed-briefs" activeClassName={styles.active}>
+                      Closed (32)
                     </NavLink>
                   </li>
                 </ul>
