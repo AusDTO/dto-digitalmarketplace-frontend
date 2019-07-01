@@ -18,7 +18,7 @@ const ReviewStage = props => {
         Review
       </AUheading>
       <AUheading level="2" size="lg">
-        Golden State Warriors
+        {props[model].name}
       </AUheading>
       <TeamTable teamLeads={props[model].teamLeads} teamMembers={props[model].teamMembers} />
       <AUheading level="2" size="lg">
