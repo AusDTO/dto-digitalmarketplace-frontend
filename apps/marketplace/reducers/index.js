@@ -127,6 +127,9 @@ export default combineReducers({
   errorMessage,
   team,
   ...createForms({
+    askAQuestionForm: {
+      question: ''
+    },
     signupForm: {
       name: '',
       email_address: ''
