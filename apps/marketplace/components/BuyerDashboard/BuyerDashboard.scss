@@ -1,3 +1,7 @@
+.internalReference {
+  margin-left: 1rem;
+}
+
 .organisation {
   opacity: 0.6;
 }
@@ -132,11 +136,16 @@ table.resultListing .colName {
   width: 520px;
 }
 
-table.resultListingTeamOverview .colName {
-  padding-left: 20px;
+table.resultListing .colOwner {
+  width: 520px;
 }
 
 table.resultListing .colClosing {
+  width: 180px;
+  white-space: nowrap;
+}
+
+table.resultListing .colQuestion {
   width: 180px;
   white-space: nowrap;
 }

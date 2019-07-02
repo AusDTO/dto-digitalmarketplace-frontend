@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import ClosedDate from 'shared/ClosedDate'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { loadBuyerDashboardMyBriefs } from 'marketplace/actions/dashboardActions'
-import { statusConvert } from 'marketplace/components/helpers'
+import loadBuyerDashboard from 'marketplace/actions/buyerDashboardActions'
 import { rootPath } from 'marketplace/routes'
 import BuyerDashboardHelp from './BuyerDashboardHelp'
 import styles from './BuyerDashboard.scss'
@@ -38,17 +37,55 @@ const getLinkedBriefTitle = item => {
   return <a href={url}>{item.name || name}</a>
 }
 
-export class BuyerDashboardMyBriefs extends Component {
+const mapLot = item => {
+  switch (item.lot) {
+    case 'atm':
+    case 'digital-outcome':
+      return 'Ask the market'
+    case 'rfx':
+      return 'Seek proposals and quotes'
+    case 'digital-professionals':
+    case 'specialist':
+      return 'Specialist'
+    case 'training':
+      return 'Training'
+    default:
+      return item.lot
+  }
+}
+
+export class BuyerDashboardBriefTable extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      loading: true,
+      briefCount: {
+        closed: 0,
+        draft: 0,
+        live: 0,
+        withdrawn: 0
+      },
+      briefs: []
+    }
+  }
+
   componentDidMount() {
-    this.props.loadData()
+    this.props.loadData(this.props.status).then(response => {
+      this.setState({
+        briefs: response.data.briefs,
+        briefCount: response.data.brief_counts,
+        loading: false
+      })
+      this.props.briefCountUpdated(response.data.brief_counts)
+    })
   }
 
   render() {
-    if (this.props.currentlySending) {
+    if (this.state.loading) {
       return <LoadingIndicatorFullPage />
     }
 
-    if (this.props.items.length === 0) {
+    if (this.state.briefs.length === 0) {
       return (
         <div>
           <div className="row">
@@ -78,52 +115,24 @@ export class BuyerDashboardMyBriefs extends Component {
                 <th scope="col" className={styles.colName}>
                   Name
                 </th>
-                <th scope="col" className={styles.colClosing}>
-                  Closing time
+                <th scope="col" className={styles.colOwner}>
+                  Owner
                 </th>
-                <th scope="col" className={styles.colSubmissions}>
-                  Submissions
-                </th>
-                <th scope="col" className={styles.colStatus}>
-                  Status
-                </th>
+                {this.props.additionalColumns.headers.map(ac => ac)}
               </tr>
             </thead>
             <tbody>
-              {this.props.items.map(item => (
+              {this.state.briefs.map(item => (
                 <tr key={`item.${item.id}`}>
                   <td className={styles.colId}>{item.id}</td>
-                  <td className={styles.colName}>{getLinkedBriefTitle(item)}</td>
-                  <td
-                    className={`${item.status === 'live' || item.status !== 'draft' ? '' : styles.empty} ${
-                      styles.colClosing
-                    }`}
-                  >
-                    {item.status === 'live' && (
-                      <span className={styles.hideSmall}>
-                        <ClosedDate countdown date={item.closed_at} />
-                      </span>
-                    )}
+                  <td className={styles.colName}>
+                    {getLinkedBriefTitle(item)}
+                    <br />
+                    <span>{mapLot(item)}</span>
+                    <span className={styles.internalReference}>{item.internalReference}</span>
                   </td>
-                  <td className={styles.colSubmissions}>
-                    {item.status !== 'draft' && (
-                      <div>
-                        {item.applications}
-                        <span className={styles.submissionCount}> submission{item.applications !== 1 && 's'}</span>
-                      </div>
-                    )}
-                  </td>
-                  <td className={styles.colStatus}>
-                    <div
-                      className={`${styles.badge}
-                        ${(item.status === 'withdrawn' && styles.badgeGrey) ||
-                          (item.status === 'live' && styles.badgeBlue) ||
-                          (item.status === 'closed' && styles.badgeYellow) ||
-                          styles.badgeGrey}`}
-                    >
-                      {statusConvert(item.status)}
-                    </div>
-                  </td>
+                  <td className={styles.colName}>{item.owner}</td>
+                  {this.props.additionalColumns.columns.map(ac => ac(item))}
                 </tr>
               ))}
             </tbody>
@@ -135,14 +144,25 @@ export class BuyerDashboardMyBriefs extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  items: state.dashboard.buyerDashboardMyBriefs.items,
-  loadSuccess: state.dashboard.loadBuyerDashboardMyBriefsSuccess,
-  currentlySending: state.app.currentlySending
-})
+BuyerDashboardBriefTable.defaultProps = {
+  status: null,
+  additionalColumns: {},
+  briefCountUpdated: () => ({
+    closed: 0,
+    draft: 0,
+    live: 0,
+    withdrawn: 0
+  })
+}
+
+BuyerDashboardBriefTable.propTypes = {
+  status: PropTypes.string,
+  additionalColumns: PropTypes.object,
+  briefCountUpdated: PropTypes.func
+}
 
 const mapDispatchToProps = dispatch => ({
-  loadData: () => dispatch(loadBuyerDashboardMyBriefs())
+  loadData: status => dispatch(loadBuyerDashboard(status))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerDashboardMyBriefs)
+export default connect(null, mapDispatchToProps)(BuyerDashboardBriefTable)
