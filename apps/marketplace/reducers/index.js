@@ -128,6 +128,9 @@ export default combineReducers({
   errorMessage,
   teamsDashboard,
   ...createForms({
+    askAQuestionForm: {
+      question: ''
+    },
     signupForm: {
       name: '',
       email_address: ''

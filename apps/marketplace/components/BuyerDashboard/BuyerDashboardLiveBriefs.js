@@ -21,7 +21,7 @@ const BuyerDashboardLiveBriefs = props => (
           <td key={`questions_closed_at_${item.id}`} className={styles.colQuestion}>
             {format(new Date(item.questions_closed_at), 'DD/MM/YYYY')}
             <br />
-            {`x asked ${item.questionsAnswered} answered`}
+            {`${item.questionsAsked} asked ${item.questionsAnswered} answered`}
           </td>
         ),
         item => (
