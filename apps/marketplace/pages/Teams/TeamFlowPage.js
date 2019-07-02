@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 import { getTeam, saveTeam } from 'marketplace/actions/teamActions'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
@@ -40,6 +41,7 @@ export class TeamFlowPage extends Component {
 
     const team = { ...this.props[model] }
     team.createTeam = createTeam
+
     return this.props.saveTeam(team).then(response => {
       this.setState({
         loading: false
@@ -76,6 +78,10 @@ export class TeamFlowPage extends Component {
 
     if (this.state.loading) {
       return <LoadingIndicatorFullPage />
+    }
+
+    if (this.state.teamCreated) {
+      return <Redirect to={`${rootPath}/teams`} push />
     }
 
     const teamId = this.props.match.params.teamId
