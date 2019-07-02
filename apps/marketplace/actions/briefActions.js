@@ -325,7 +325,7 @@ export const handleBriefAwardedSubmit = (briefId, model) => (dispatch, getState)
 
 export const submitSupplierQuestion = (briefId, values) => (dispatch, getState) =>
   dmapi({
-    url: `/brief/${briefId}/ask-question`,
+    url: `/brief/${briefId}/ask-a-question`,
     method: 'POST',
     headers: {
       'X-CSRFToken': getState().app.csrfToken,
