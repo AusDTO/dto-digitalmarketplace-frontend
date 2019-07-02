@@ -11,8 +11,8 @@ import PageNavigation from '../components/PageNavigation/PageNavigation'
 import PeopleOverview from '../components/Teams/PeopleOverview'
 import TeamsOverview from '../components/Teams/TeamsOverview'
 
-const createTeamButton = (
-  <AUbutton as="secondary" href="#" key="Create a team">
+const getCreateTeamButton = () => (
+  <AUbutton as="secondary" href={`${rootPath}/teams/create/about`} key="Create a team">
     Create a team
   </AUbutton>
 )
@@ -42,11 +42,11 @@ const TeamsPage = props => (
           invalidFields={[]}
         />
       )}
-      <PageHeader actions={[createTeamButton]} organisation={props.organisation} title="Teams and people" />
+      <PageHeader actions={[getCreateTeamButton()]} organisation={props.organisation} title="Teams and people" />
       <PageNavigation links={navLinks} />
       <div>
         <Switch>
-          <Route exact path="/" render={() => <TeamsOverview {...props} />} />
+          <Route exact path="/" render={() => <TeamsOverview createTeamButton={getCreateTeamButton()} {...props} />} />
           <Route path="/people" render={() => <PeopleOverview {...props} />} />
         </Switch>
       </div>
