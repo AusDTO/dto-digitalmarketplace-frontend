@@ -56,7 +56,7 @@ const TeamsPage = props => (
 
 const mapStateToProps = state => ({
   errorMessage: state.app.errorMessage,
-  organisation: state.team.organisation
+  organisation: state.teamsDashboard.organisation
 })
 
 export default withRouter(connect(mapStateToProps)(TeamsPage))
