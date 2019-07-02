@@ -20,21 +20,23 @@ const TeamTable = props => {
         </tr>
       </thead>
       <tbody>
-        {sortedTeamLeadKeys.map(userId => (
-          <tr key={userId}>
-            <td>
-              {teamLeads[userId].name}
-              <span className={commonStyles.bold}> (team lead)</span>
-            </td>
-            <td>{teamLeads[userId].emailAddress}</td>
-          </tr>
-        ))}
-        {sortedTeamMemberKeys.map(userId => (
-          <tr key={userId}>
-            <td>{teamMembers[userId].name}</td>
-            <td>{teamMembers[userId].emailAddress}</td>
-          </tr>
-        ))}
+        {sortedTeamLeadKeys &&
+          sortedTeamLeadKeys.map(userId => (
+            <tr key={userId}>
+              <td>
+                {teamLeads[userId].name}
+                <span className={commonStyles.bold}> (team lead)</span>
+              </td>
+              <td>{teamLeads[userId].emailAddress}</td>
+            </tr>
+          ))}
+        {sortedTeamMemberKeys &&
+          sortedTeamMemberKeys.map(userId => (
+            <tr key={userId}>
+              <td>{teamMembers[userId].name}</td>
+              <td>{teamMembers[userId].emailAddress}</td>
+            </tr>
+          ))}
       </tbody>
     </table>
   )

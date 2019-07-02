@@ -66,7 +66,7 @@ export const getEmailFromQueryString = location => {
 }
 
 export const sortObjectByName = objectToSort =>
-  Object.keys(objectToSort).sort((a, b) => (objectToSort[a].name > objectToSort[b].name ? 1 : -1))
+  objectToSort && Object.keys(objectToSort).sort((a, b) => (objectToSort[a].name > objectToSort[b].name ? 1 : -1))
 
 export const padStart = (value, length, character) => {
   if (!value || value.length === length) {
