@@ -4,8 +4,10 @@ import { connect } from 'react-redux'
 import { getTeam, saveTeam } from 'marketplace/actions/teamActions'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import formProps from 'shared/form/formPropsSelector'
+import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import TeamStages from '../../components/Teams/TeamStages'
 import ProgressFlow from '../../components/ProgressFlow/ProgressFlow'
+
 import { rootPath } from '../../routes'
 
 const model = 'team'
@@ -13,6 +15,12 @@ const model = 'team'
 export class TeamFlowPage extends Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      loading: false,
+      teamCreated: false
+    }
+
     this.saveTeam = this.saveTeam.bind(this)
   }
 
@@ -23,9 +31,26 @@ export class TeamFlowPage extends Component {
     }
   }
 
-  saveTeam() {
+  saveTeam(createTeam = false) {
+    if (createTeam) {
+      this.setState({
+        loading: true
+      })
+    }
+
     const team = { ...this.props[model] }
-    return this.props.saveTeam(team)
+    team.createTeam = createTeam
+    return this.props.saveTeam(team).then(response => {
+      this.setState({
+        loading: false
+      })
+
+      if (response.status === 200 && createTeam) {
+        this.setState({
+          teamCreated: true
+        })
+      }
+    })
   }
 
   render() {
@@ -47,6 +72,10 @@ export class TeamFlowPage extends Component {
           invalidFields={[]}
         />
       )
+    }
+
+    if (this.state.loading) {
+      return <LoadingIndicatorFullPage />
     }
 
     const teamId = this.props.match.params.teamId
