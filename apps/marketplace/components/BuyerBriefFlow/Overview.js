@@ -189,11 +189,9 @@ class Overview extends Component {
             </li>
             <li>
               {answerSellerQuestionsRender(brief, flow, isPublished, isClosed)}
-              {questionsAnswered > 0 && (
-                <div className={styles.stageStatus}>
-                  X questions asked, {questionsAnswered} answer{questionsAnswered > 1 && `s`} published
-                </div>
-              )}
+              <div className={styles.stageStatus}>
+                X questions asked, {questionsAnswered} answer{questionsAnswered > 1 && `s`} published
+              </div>
             </li>
             {(briefResponseCount > 0 || !isPublished || !isClosed) && (
               <li>
