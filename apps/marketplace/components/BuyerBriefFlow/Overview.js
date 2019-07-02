@@ -191,7 +191,7 @@ class Overview extends Component {
               {answerSellerQuestionsRender(brief, flow, isPublished, isClosed)}
               {questionsAnswered > 0 && (
                 <div className={styles.stageStatus}>
-                  {questionsAnswered} question{questionsAnswered > 1 && `s`} answered
+                  X questions asked, {questionsAnswered} answer{questionsAnswered > 1 && `s`} published
                 </div>
               )}
             </li>
@@ -201,8 +201,8 @@ class Overview extends Component {
                 {briefResponseCount > 0 && (
                   <div className={styles.stageStatus}>
                     {flow === 'specialist'
-                      ? `${briefResponseCount} candidate${briefResponseCount > 1 ? `s` : ''} responded`
-                      : `${briefResponseCount} seller${briefResponseCount > 1 ? `s` : ''} responded`}
+                      ? `${briefResponseCount} candidate${briefResponseCount > 1 ? `s` : ''} submitted`
+                      : `${briefResponseCount} seller${briefResponseCount > 1 ? `s` : ''} submitted`}
                   </div>
                 )}
               </li>
