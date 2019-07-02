@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
+import { Link } from 'react-router-dom'
 
 import AUheading from '@gov.au/headings'
 import { AUcheckbox } from '@gov.au/control-input'
@@ -93,7 +94,7 @@ export class PermissionsStage extends Component {
         ) : (
           <React.Fragment>
             <p>
-              You must <a href={`${rootPath}/team/${team.id}/members`}>add team members</a> to control access within
+              You must <Link to={`${rootPath}/team/${team.id}/members`}>add team members</Link> to control access within
               your team.
             </p>
             <p>
