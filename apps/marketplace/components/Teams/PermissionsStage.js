@@ -4,6 +4,7 @@ import { actions, Form } from 'react-redux-form'
 
 import AUheading from '@gov.au/headings'
 import { AUcheckbox } from '@gov.au/control-input'
+import { rootPath } from 'marketplace/routes'
 import formProps from 'shared/form/formPropsSelector'
 import PermissionsTable from './PermissionsTable'
 
@@ -63,28 +64,44 @@ export class PermissionsStage extends Component {
 
   render() {
     const { formButtons, model, onSubmit, onSubmitFailed } = this.props
+    const team = this.props[model]
 
     return (
       <Form model={model} onSubmit={onSubmit} onSubmitFailed={onSubmitFailed}>
         <AUheading level="1" size="xl">
           Permissions
         </AUheading>
-        <p>Team members automatically see opportunities created by anyone in the team.</p>
-        <p className={commonStyles.bold}>What can each team member do?</p>
-        <div className={styles.allPermissionsContainer}>
-          <AUcheckbox
-            checked={this.allPermissionsChecked()}
-            className={styles.allPermissionsCheckbox}
-            id="all-permissions-checkbox"
-            label="Every member can create drafts, publish opportunities, answer seller questions, download responses, create work orders, download reporting data"
-            name="permissions"
-            onChange={() => {}}
-            onClick={e => {
-              this.handleSelectAllPermissionsClick(e.target.checked)
-            }}
-          />
-        </div>
-        <PermissionsTable model={this.props.model} />
+        {team.teamMembers ? (
+          <React.Fragment>
+            <p>Team members automatically see opportunities created by anyone in the team.</p>
+            <p className={commonStyles.bold}>What can each team member do?</p>
+            <div className={styles.allPermissionsContainer}>
+              <AUcheckbox
+                checked={this.allPermissionsChecked()}
+                className={styles.allPermissionsCheckbox}
+                id="all-permissions-checkbox"
+                label="Every member can create drafts, publish opportunities, answer seller questions, download responses, create work orders, download reporting data"
+                name="permissions"
+                onChange={() => {}}
+                onClick={e => {
+                  this.handleSelectAllPermissionsClick(e.target.checked)
+                }}
+              />
+            </div>
+            <PermissionsTable model={this.props.model} />
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            <p>
+              You must <a href={`${rootPath}/team/${team.id}/members`}>add team members</a> to control access within
+              your team.
+            </p>
+            <p>
+              Team leads are able to create drafts, opportunities, answer seller questions, download responses, create
+              work orders and download reporting data.
+            </p>
+          </React.Fragment>
+        )}
         {formButtons}
       </Form>
     )
