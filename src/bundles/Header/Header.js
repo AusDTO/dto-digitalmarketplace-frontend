@@ -26,6 +26,62 @@ class Header extends React.Component {
   }
 
   render() {
+    const applicantHeaderActions = (
+      <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
+        <li>
+          <a href="/sellers/application">Continue application</a>
+        </li>
+        <li>
+          <a href="/logout">Sign out</a>
+        </li>
+      </ul>
+    )
+
+    const buyerHeaderActions = (
+      <AUaccordion header="Menu" speed={0.2}>
+        <ul>
+          <li>
+            <a href="/2/buyer-dashboard">Dashboard</a>
+          </li>
+          <li>
+            <a href="/2/teams">Teams and people</a>
+          </li>
+          <li>
+            <a href="/logout">Sign out</a>
+          </li>
+        </ul>
+      </AUaccordion>
+    )
+
+    const sellerHeaderActions = (
+      <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
+        <li>
+          <a href="/2/seller-dashboard">Dashboard</a>
+          {(this.props.notificationCount &&
+            this.props.notificationCount > 0 &&
+            <div className="notification">{this.props.notificationCount}</div>)}
+        </li>
+        <li>
+          <a href="/logout">Sign out</a>
+        </li>
+      </ul>
+    )
+
+    const unauthenticatedHeaderActions = (
+      <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
+        <li>
+          <a href="/2/signup" className="au-btn au-btn--secondary au-btn--dark">
+            Sign up
+          </a>
+        </li>
+        <li>
+          <a href="/login" className="au-btn au-btn--dark">
+            Log in
+          </a>
+        </li>
+      </ul>
+    )
+
     return (
       <section className="au-marketplace-header">
         <div className="wrapper">
@@ -42,22 +98,14 @@ class Header extends React.Component {
             </div>
             <div className="col-md-4 col-sm-4 col-xs-12 hide-mobile no-padding-tablet">
               <div className="au-marketplace-header-user-nav">
-                <div id="react-bundle-auth-header-state" />
-                <div id="react-bundle-auth-header">
-                  <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
-                    <li>
-                      {this.props.isAuthenticated ? 
-                      <span>
-                        <a href={this.props.dashboardUrl}>{this.props.dashboardText}</a>
-                        {(this.props.notificationCount && this.props.notificationCount !== 0) ?
-                          <div className="notification">{this.props.notificationCount}</div> : ''
-                        }
-                      </span> : <a href="/2/signup" className="au-btn au-btn--secondary au-btn--dark">Sign up</a>}
-                    </li>
-                    <li>
-                      {this.props.isAuthenticated ? <a href={this.props.logoutUrl}>Sign out</a> : <a href="/login" className="au-btn au-btn--dark">Log in</a>}
-                    </li>
-                  </ul>
+                <div className="au-marketplace-header-actions">
+                  {this.props.isAuthenticated ? (
+                    (this.props.userType === 'applicant' && applicantHeaderActions) ||
+                    (this.props.userType === 'buyer' && buyerHeaderActions) ||
+                    (this.props.userType === 'supplier' && sellerHeaderActions)
+                  ) : (
+                    unauthenticatedHeaderActions
+                  )}
                 </div>
               </div>
             </div>
@@ -164,29 +212,31 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
-  registerUrl: PropTypes.string,
-  registerText: PropTypes.string,
-  loginUrl: PropTypes.string,
   dashboardUrl: PropTypes.string,
-  logoutUrl: PropTypes.string,
   isAuthenticated: PropTypes.bool,
-  notificationCount: PropTypes.number
+  loginUrl: PropTypes.string,
+  logoutUrl: PropTypes.string,
+  notificationCount: PropTypes.number,
+  registerText: PropTypes.string,
+  registerUrl: PropTypes.string,
+  userType: PropTypes.string
 }
 
 Header.defaultProps = {
-    registerText: 'Register',
-    dashboardText: 'Dashboard'
+  dashboardText: 'Dashboard',
+  registerText: 'Register'
 }
 
 const mapStateToProps = (state) => {
   return {
-    registerUrl: state.registerUrl,
-    registerText: state.registerText,
-    loginUrl: state.loginUrl,
     dashboardUrl: state.dashboardUrl,
-    logoutUrl: state.logoutUrl,
     isAuthenticated: state.isAuthenticated,
-    notificationCount: state.notificationCount
+    loginUrl: state.loginUrl,
+    logoutUrl: state.logoutUrl,
+    notificationCount: state.notificationCount,
+    registerText: state.registerText,
+    registerUrl: state.registerUrl,
+    userType: state.userType
   };
 };
 

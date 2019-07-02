@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import AUaccordion from '@gov.au/accordion/lib/js/react.js'
 import DashBoardLink from './DashBoardLink'
+import HeaderActions from './HeaderActions'
 import logoGovCrest from './Government_crest.svg'
 
 export class Header extends Component {
@@ -24,7 +25,7 @@ export class Header extends Component {
   }
 
   render() {
-    const { userType, location, loggedIn, notificationCount } = this.props
+    const { location, loggedIn, notificationCount, userType } = this.props
 
     return (
       <section className="au-marketplace-header">
@@ -45,29 +46,7 @@ export class Header extends Component {
             </div>
             <div className="col-md-4 col-sm-4 col-xs-12 hide-mobile no-padding-tablet">
               <div className="au-marketplace-header-user-nav">
-                <div id="react-bundle-auth-header-state" />
-                <div id="react-bundle-auth-header">
-                  <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
-                    <li>
-                      {loggedIn ? (
-                        <DashBoardLink userType={userType} notificationCount={notificationCount} />
-                      ) : (
-                        <a href="/2/signup" className="au-btn au-btn--secondary au-btn--dark">
-                          Sign up
-                        </a>
-                      )}
-                    </li>
-                    <li>
-                      {loggedIn ? (
-                        <a href="/logout">Sign out</a>
-                      ) : (
-                        <a href="/login" className="au-btn au-btn--dark">
-                          Log in
-                        </a>
-                      )}
-                    </li>
-                  </ul>
-                </div>
+                <HeaderActions loggedIn={loggedIn} notificationCount={notificationCount} userType={userType} />
               </div>
             </div>
           </div>
@@ -150,15 +129,15 @@ export class Header extends Component {
 }
 
 Header.propTypes = {
-  userType: PropTypes.string.isRequired,
   loggedIn: PropTypes.bool.isRequired,
-  notificationCount: PropTypes.number
+  notificationCount: PropTypes.number,
+  userType: PropTypes.string.isRequired
 }
 
 const mapStateToProps = ({ app }) => ({
   loggedIn: app.loggedIn,
-  userType: app.userType,
-  notificationCount: app.notificationCount
+  notificationCount: app.notificationCount,
+  userType: app.userType
 })
 
 export default withRouter(connect(mapStateToProps)(Header))

@@ -1,7 +1,13 @@
-import { CREATE_TEAM_SUCCESS, GET_TEAM_SUCCESS, SAVE_TEAM_SUCCESS } from '../constants/constants'
+import {
+  BUYER_TEAM_MEMBERS_SUCCESS,
+  CREATE_TEAM_SUCCESS,
+  GET_TEAM_SUCCESS,
+  SAVE_TEAM_SUCCESS,
+  USER_ORGANISATION
+} from '../constants/constants'
 import { GENERAL_ERROR } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
-import { sendingRequest, setErrorMessage } from './appActions'
+import { clearErrorMessages, sendingRequest, setErrorMessage } from './appActions'
 
 export const handleCreateTeamSuccess = response => ({
   type: CREATE_TEAM_SUCCESS,
@@ -103,5 +109,22 @@ export const findTeamMember = keywords => (dispatch, getState) => {
     }
     dispatch(sendingRequest(false))
     return response
+  })
+}
+
+export const handleTeamActionSuccess = (data, type) => ({ data, type })
+
+export const loadBuyerTeamMembers = (endpoint = '/dashboard/team/overview') => dispatch => {
+  dispatch(sendingRequest(true))
+  dmapi({ url: endpoint }).then(response => {
+    if (!response || response.error) {
+      dispatch(setErrorMessage(GENERAL_ERROR))
+    } else {
+      response.data.loadedAt = new Date().valueOf()
+      dispatch(clearErrorMessages())
+      dispatch(handleTeamActionSuccess(response.data.organisation, USER_ORGANISATION))
+      dispatch(handleTeamActionSuccess(response.data, BUYER_TEAM_MEMBERS_SUCCESS))
+    }
+    dispatch(sendingRequest(false))
   })
 }

@@ -11,7 +11,7 @@ import opportunities from './opportunitiesReducers'
 import errorMessage from './errorMessage'
 import form_options from './form_options'
 import messages from './messagesReducers'
-import team from './teamReducers'
+import team, { TeamFormReducer } from './teamReducers'
 
 export const BuyerRFXFormReducer = {
   id: 0,
@@ -125,6 +125,7 @@ export default combineReducers({
   messages,
   form_options,
   errorMessage,
+  team,
   ...createForms({
     signupForm: {
       name: '',
@@ -190,6 +191,6 @@ export default combineReducers({
     BuyerATMForm: BuyerATMFormReducer,
     BuyerSpecialistForm: BuyerSpecialistFormReducer,
     SellerEditFlowPage: SellerEditFormReducer,
-    team
+    TeamForm: TeamFormReducer
   })
 })
