@@ -1,26 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import BuyerDashboardBriefTable from './BuyerDashboardBriefTable'
-import { connect } from 'react-redux'
-import ClosedDate from 'shared/ClosedDate'
-import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { loadBriefs } from 'marketplace/actions/buyerDashboardActions'
-import { statusConvert } from 'marketplace/components/helpers'
-import { rootPath } from 'marketplace/routes'
-import BuyerDashboardHelp from './BuyerDashboardHelp'
-import styles from './BuyerDashboard.scss'
 
-export class BuyerDashboardMyBriefs extends Component {
-  render() {
-    return (
-      <BuyerDashboardBriefTable
-        status={'draft'}
-        additionalColumns={{
-          headers: [],
-          columns: []
-        }}
-      />
-    )
-  }
+const BuyerDashboardDraftBriefs = props => (
+  <BuyerDashboardBriefTable
+    status={'draft'}
+    additionalColumns={{
+      headers: [],
+      columns: []
+    }}
+    briefCountUpdated={bc => props.briefCountUpdated(bc)}
+  />
+)
+
+BuyerDashboardDraftBriefs.propTypes = {
+  briefCountUpdated: PropTypes.func.isRequired
 }
 
-export default BuyerDashboardMyBriefs
+export default BuyerDashboardDraftBriefs

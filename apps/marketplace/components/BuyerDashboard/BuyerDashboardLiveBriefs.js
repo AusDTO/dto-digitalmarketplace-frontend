@@ -1,45 +1,46 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import ClosedDate from 'shared/ClosedDate'
-import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { loadBriefs } from 'marketplace/actions/buyerDashboardActions'
-import BuyerDashboardBriefTable from './BuyerDashboardBriefTable'
-import { statusConvert } from 'marketplace/components/helpers'
-import { rootPath } from 'marketplace/routes'
-import BuyerDashboardHelp from './BuyerDashboardHelp'
-import styles from './BuyerDashboard.scss'
+import React from 'react'
+import PropTypes from 'prop-types'
 import format from 'date-fns/format'
+import BuyerDashboardBriefTable from './BuyerDashboardBriefTable'
+import styles from './BuyerDashboard.scss'
 
-export class BuyerDashboardLiveBriefs extends Component {
-  render() {
-    return (
-      <BuyerDashboardBriefTable
-        status={'live'}
-        additionalColumns={{
-          headers: [
-            <th scope="col" key={1} className={styles.colSubmissions}>
-              Questions end date
-            </th>,
-            <th scope="col" key={2} className={styles.colStatus}>
-              Closing date
-            </th>
-          ],
-          columns: [
-            item => (
-              <td key={`questions_closed_at_${item.id}`} className={styles.colName}>
-                {format(new Date(item.questions_closed_at), 'DD/MM/YYYY')}
-              </td>
-            ),
-            item => (
-              <td key={`closed_at_${item.id}`} className={styles.colClosing}>
-                {format(new Date(item.closed_at), 'DD/MM/YYYY')}
-              </td>
-            )
-          ]
-        }}
-      />
-    )
-  }
+const BuyerDashboardLiveBriefs = props => (
+  <BuyerDashboardBriefTable
+    status={'live'}
+    additionalColumns={{
+      headers: [
+        <th scope="col" key={1} className={styles.colSubmissions}>
+          Questions end date
+        </th>,
+        <th scope="col" key={2} className={styles.colStatus}>
+          Closing date
+        </th>
+      ],
+      columns: [
+        item => (
+          <td key={`questions_closed_at_${item.id}`} className={styles.colQuestion}>
+            {format(new Date(item.questions_closed_at), 'DD/MM/YYYY')}
+            <br />
+            {`x asked ${item.questionsAnswered} answered`}
+          </td>
+        ),
+        item => (
+          <td key={`closed_at_${item.id}`} className={styles.colClosing}>
+            {format(new Date(item.closed_at), 'DD/MM/YYYY')}
+            <br />
+            {item.sellers
+              ? `${item.responses} of ${Object.keys(item.sellers).length} submitted`
+              : `${item.responses} submitted`}
+          </td>
+        )
+      ]
+    }}
+    briefCountUpdated={bc => props.briefCountUpdated(bc)}
+  />
+)
+
+BuyerDashboardLiveBriefs.propTypes = {
+  briefCountUpdated: PropTypes.func.isRequired
 }
 
 export default BuyerDashboardLiveBriefs

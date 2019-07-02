@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import ClosedDate from 'shared/ClosedDate'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { loadBriefs } from 'marketplace/actions/buyerDashboardActions'
-import { statusConvert } from 'marketplace/components/helpers'
+import { loadBuyerDashboard } from 'marketplace/actions/buyerDashboardActions'
 import { rootPath } from 'marketplace/routes'
 import BuyerDashboardHelp from './BuyerDashboardHelp'
 import styles from './BuyerDashboard.scss'
@@ -39,25 +37,46 @@ const getLinkedBriefTitle = item => {
   return <a href={url}>{item.name || name}</a>
 }
 
+const mapLot = item => {
+  switch (item.lot) {
+    case 'atm':
+    case 'digital-outcome':
+      return 'Ask the market'
+    case 'rfx':
+      return 'Seek proposals and quotes'
+    case 'digital-professionals':
+    case 'specialist':
+      return 'Specialist'
+    case 'training':
+      return 'Training'
+    default:
+      return item.lot
+  }
+}
+
 export class BuyerDashboardBriefTable extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      loading: false,
+      loading: true,
+      briefCount: {
+        closed: 0,
+        draft: 0,
+        live: 0,
+        withdrawn: 0
+      },
       briefs: []
     }
   }
 
   componentDidMount() {
-    this.setState({
-      loading: true
-    })
-    console.log(this.props)
     this.props.loadData(this.props.status).then(response => {
       this.setState({
         briefs: response.data.briefs,
+        briefCount: response.data.brief_counts,
         loading: false
       })
+      this.props.briefCountUpdated(response.data.brief_counts)
     })
   }
 
@@ -96,23 +115,24 @@ export class BuyerDashboardBriefTable extends Component {
                 <th scope="col" className={styles.colName}>
                   Name
                 </th>
-                <th scope="col" className={styles.colName}>
+                <th scope="col" className={styles.colOwner}>
                   Owner
                 </th>
                 {this.props.additionalColumns.headers.map(ac => ac)}
-                <th scope="col" className={styles.colSubmissions}>
-                  Actions
-                </th>
               </tr>
             </thead>
             <tbody>
               {this.state.briefs.map(item => (
                 <tr key={`item.${item.id}`}>
                   <td className={styles.colId}>{item.id}</td>
-                  <td className={styles.colName}>{getLinkedBriefTitle(item)}</td>
+                  <td className={styles.colName}>
+                    {getLinkedBriefTitle(item)}
+                    <br />
+                    <span>{mapLot(item)}</span>
+                    <span className={styles.internalReference}>{item.internalReference}</span>
+                  </td>
                   <td className={styles.colName}>{item.owner}</td>
                   {this.props.additionalColumns.columns.map(ac => ac(item))}
-                  <td>Actions</td>
                 </tr>
               ))}
             </tbody>
@@ -126,16 +146,23 @@ export class BuyerDashboardBriefTable extends Component {
 
 BuyerDashboardBriefTable.defaultProps = {
   status: null,
-  additionalColumns: {}
+  additionalColumns: {},
+  briefCountUpdated: () => ({
+    closed: 0,
+    draft: 0,
+    live: 0,
+    withdrawn: 0
+  })
 }
 
 BuyerDashboardBriefTable.propTypes = {
   status: PropTypes.string,
-  additionalColumns: PropTypes.object
+  additionalColumns: PropTypes.object,
+  briefCountUpdated: PropTypes.func
 }
 
 const mapDispatchToProps = dispatch => ({
-  loadData: status => dispatch(loadBriefs(status))
+  loadData: status => dispatch(loadBuyerDashboard(status))
 })
 
 export default connect(null, mapDispatchToProps)(BuyerDashboardBriefTable)

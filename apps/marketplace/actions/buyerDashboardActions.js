@@ -1,10 +1,6 @@
 import dmapi from '../services/apiClient'
 
-export const loadBriefs = status => () => {
-  return dmapi({
-    url: `/buyer/dashboard`,
-    params: { status: status }
-  }).then(response => {
-    return response
-  })
-}
+const loadBuyerDashboard = status => () =>
+  dmapi({ url: `/buyer/dashboard`, params: { status } }).then(response => response)
+
+export default loadBuyerDashboard
