@@ -47,7 +47,11 @@ export const Routes = () => (
     />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/overview`} component={BriefOverviewPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/assessors`} component={BriefAssessorsPage} />
-    <PrivateRoute restrictedTo="supplier" path={`${rootPath}/brief/:briefId/ask-a-question`} component={AskQuestionPage} />
+    <PrivateRoute
+      restrictedTo="supplier"
+      path={`${rootPath}/brief/:briefId/ask-a-question`}
+      component={AskQuestionPage}
+    />
     <PrivateRoute path={`${rootPath}/brief/:briefId`} component={BriefPage} />
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
     <Route path={`${rootPath}/login`} component={LoginPage} />

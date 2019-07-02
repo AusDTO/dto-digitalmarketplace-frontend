@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import styles from './QuestionAnswer.scss'
 import { rootPath } from 'marketplace/routes'
+import styles from './QuestionAnswer.scss'
 
 const QuestionAnswer = props => (
   <div className={styles.container}>
