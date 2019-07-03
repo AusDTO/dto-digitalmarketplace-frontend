@@ -52,6 +52,8 @@ export class TeamFlowPage extends Component {
           teamCreated: true
         })
       }
+
+      return response
     })
   }
 
