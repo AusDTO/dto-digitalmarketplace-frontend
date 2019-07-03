@@ -142,7 +142,7 @@ const SellerAssessmentFeedback = props => (
             <p>
               You can incorporate the assessment team&apos;s feedback and{' '}
               <a href={`${rootPath}/seller-assessment/${props.feedback.currentEvidenceId}/introduction`}>
-                continue editing your request
+                resubmit your request
               </a>.
             </p>
           )}
