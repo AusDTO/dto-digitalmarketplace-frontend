@@ -31,6 +31,8 @@ import TeamsPage from './pages/TeamsPage'
 import SellerEditFlowPage from './pages/SellerEditFlowPage'
 import BuyerAwardSellerPage from './pages/BuyerAwardSellerPage'
 import AskQuestionPage from './pages/AskQuestionPage'
+import QuestionPage from './pages/QuestionPage'
+import PublishAnswerPage from './pages/PublishAnswerPage'
 
 export const rootPath = '/2'
 
@@ -47,6 +49,12 @@ export const Routes = () => (
     />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/overview`} component={BriefOverviewPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/assessors`} component={BriefAssessorsPage} />
+    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/questions`} component={QuestionPage} />
+    <PrivateRoute
+      restrictedTo="buyer"
+      path={`${rootPath}/brief/:briefId/publish-answer`}
+      component={PublishAnswerPage}
+    />
     <PrivateRoute
       restrictedTo="supplier"
       path={`${rootPath}/brief/:briefId/ask-a-question`}

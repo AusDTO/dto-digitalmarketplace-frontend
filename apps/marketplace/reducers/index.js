@@ -131,6 +131,10 @@ export default combineReducers({
     askAQuestionForm: {
       question: ''
     },
+    publishAQuestionForm: {
+      question: '',
+      answer: ''
+    },
     signupForm: {
       name: '',
       email_address: ''

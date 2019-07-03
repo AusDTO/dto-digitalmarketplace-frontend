@@ -1,0 +1,289 @@
+.internalReference {
+  margin-left: 1rem;
+}
+
+.organisation {
+  opacity: 0.6;
+}
+
+nav.dashNav {
+  border-bottom: 8px solid #f5f5f5;
+  display: block;
+}
+
+.dashActions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dashActions > * {
+  flex: 1;
+}
+
+.createNew ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.createNew ul li {
+  text-align: left;
+}
+
+.createNew ul:not([class])>li {
+  margin-top: 0;
+}
+
+.createNew ul li a {
+  display: block;
+  color: #313131;
+  text-decoration: none;
+  padding: 0.75rem;
+}
+
+.createNew ul li a:hover {
+  background: #f4f4f4;
+}
+
+@media (max-width: 991px) {
+  .createNew {
+    margin-top: 1.5rem;
+  }
+}
+
+.menuRow {
+  margin-top: 2.5rem;
+}
+
+ul.menu {
+  box-sizing: content-box;
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+  margin-bottom: -8px;
+}
+
+ul.menu li {
+  display: inline-block;
+  margin: 0;
+}
+
+ul.menu li a {
+  font-size: 1.15rem;
+  display: block;
+  padding: 1rem;
+  border-bottom: 0;
+  text-decoration: none;
+}
+
+ul.menu li a:hover {
+  text-decoration: underline;
+}
+
+ul.menu li a.active:hover {
+  text-decoration: none;
+}
+
+ul.menu li a.active {
+  border-bottom: solid 8px #00698f;
+}
+
+@media (max-width: 991px) {
+  nav.dashNav {
+    border-bottom: 0;
+  }
+
+  ul.menu {
+    margin-bottom: 1.5rem;
+  }
+
+  ul.menu li {
+    display: block;
+    border-top: 1px solid gray;
+  }
+  
+  ul.menu li:last-child {
+    border-bottom: 1px solid gray;
+  }
+
+  ul.menu li a.active {
+    font-weight: 700;
+    border-bottom: 0;
+    background-color: #dff5fd;
+  }
+}
+
+table.resultListing {
+  border-collapse: collapse;
+  margin-top: 2.5rem;
+}
+
+table.resultListing tr {
+  border-bottom: solid 1px #bebebe;
+  color: #313131;
+}
+
+table.resultListing tr:nth-child(2n) {
+  background-color: #fafafa;
+}
+
+table.resultListing .colId {
+  width: 30px;
+  padding-left: 20px;
+}
+
+table.resultListing .colName {
+  width: 520px;
+}
+
+table.resultListing .colOwner {
+  width: 520px;
+}
+
+table.resultListing .colClosing {
+  width: 180px;
+  white-space: nowrap;
+}
+
+table.resultListing .colQuestion {
+  width: 180px;
+  white-space: nowrap;
+}
+
+table.resultListing .colSubmissions {
+  width: 180px;
+  white-space: nowrap;
+}
+
+table.resultListing .colAuthor {
+  width: 130px;
+}
+
+table.resultListing .colStatus {
+  width: 90px;
+}
+
+table.resultListing .colAction {
+  width: 300px;
+  padding-right: 20px;
+}
+
+table.resultListingTeamBriefs .colAction {
+  width: 180px;
+  padding-right: 20px;
+}
+
+table.resultListing .colAction a {
+  margin-right: 15px;
+  white-space: nowrap;
+}
+
+table.resultListing td, table.resultListing th {
+  text-align: left;
+  padding: 20px 40px 20px 0px;
+  box-sizing: content-box;
+}
+
+span.submissionCount {
+  display: none;
+  visibility: hidden;
+}
+
+@media (max-width: 1195px) and (min-width: 900px) {
+  table.resultListing .colAction {
+    width: 140px;
+  }
+
+  table.resultListing td, table.resultListing th {
+    padding: 20px 30px 20px 0px;
+  }
+
+  table.resultListing .colAction a::after {
+    content: "\a";
+    white-space: pre;
+  }
+}
+
+@media (max-width: 899px) {
+  .header, table.resultListing {
+    margin-bottom: 20px;
+  }
+
+  table.resultListing thead, table.resultListing .empty, table.resultListing .colId, table.resultListing .colAuthor, .hideSmall {
+    display: none;
+  }
+
+  table.resultListing .colName {
+    padding-left: 5px;
+    max-width: 520px;
+  }
+
+  table.resultListing tr {
+    display: block;
+    padding: 15px 0px;
+  }
+
+  table.resultListing td {
+    display: block;
+    padding: 5px;
+  }
+
+  table.resultListing .colName, table.resultListing .colClosing, table.resultListing .colSubmissions, table.resultListing .colAction, table.resultListing .colStatus {
+    width: auto;
+  }
+
+  table.resultListing .colAction a::after {
+    content: "";
+  }
+
+  span.submissionCount {
+    display: inline;
+    visibility: visible;
+  }
+}
+
+.badge {
+  border-radius: 3px;
+  border: solid 2px #0f979b;
+  color: #0f979b;
+  padding: 2px 5px;
+  display: inline-block;
+}
+
+.badgeRed {
+  border-color: #ff0000;
+  color: #ff0000;
+}
+
+.badgeBlue {
+  border-color: #224a60;
+  color: #224a60;
+}
+
+.badgeGreen {
+  border-color: #40ac78;
+  color: #40ac78;
+}
+
+.badgeYellow {
+  border-color: #f5bf47;
+  color: #313131;
+}
+
+.badgeGrey {
+  border-color: #d6d6d6;
+  color: #313131;
+}
+
+.alignCenter {
+  text-align: center;
+}
+
+.alignRight {
+  text-align: right;
+}
+
+.firstButton {
+  width: 100%;
+  text-align: center;
+}
