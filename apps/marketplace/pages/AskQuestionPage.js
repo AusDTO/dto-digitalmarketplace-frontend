@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Form, actions } from 'react-redux-form'
-import { withRouter, Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import DocumentTitle from 'react-document-title'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import format from 'date-fns/format'
 import { loadPublicBrief, submitSupplierQuestion } from 'marketplace/actions/briefActions'
 import { required } from 'marketplace/components/validators'
@@ -79,48 +80,71 @@ class AskQuestionPage extends Component {
   render() {
     const { brief } = this.props
 
-    if (this.state.saved) {
-      return <Redirect to={getOpportunityUrl(brief)} />
-    }
     if (this.state.loading) {
       return <LoadingIndicatorFullPage />
     }
 
-    if (this.props.brief && this.props.brief.id) {
+    if (brief && brief.id) {
       return (
-        <div className="row">
-          <DocumentTitle title="Ask a question - Digital Marketplace">
-            <div className="col-sm-push-2 col-sm-8 col-xs-12">
-              <article role="main">
-                {this.state.errorMessage && <AUpageAlert as="error">{this.state.errorMessage}</AUpageAlert>}
-                <Form model={model} id="askAQuestion" onSubmit={data => this.handleSubmit(data)}>
-                  <h1 className="au-display-xl">{`Ask a question about '${brief.title}'`}</h1>
-                  <p>
-                    Submit your questions before {format(new Date(brief.dates.questions_close), 'dddd D MMMM YYYY')}{' '}
-                    i.e. at least 2 days before the closing date. Answers will be published on the opportunity before it
-                    closes.
-                  </p>
-                  <Textarea
-                    key={'question'}
-                    model={`${model}.question`}
-                    name={`question`}
-                    id={`question`}
-                    controlProps={{
-                      limit: 100,
-                      rows: '8'
-                    }}
-                    label={'Question'}
-                    validators={{ required }}
-                    messages={{
-                      required: `question is required`
-                    }}
-                  />
-                  <input className="au-btn right-button-margin" type="submit" value="Submit question" />
-                </Form>
-              </article>
+        <DocumentTitle title="Ask a question - Digital Marketplace">
+          <React.Fragment>
+            {this.state.errorMessage && (
+              <div className="row">
+                <div className="col-sm-push-2 col-sm-8 col-xs-12">
+                  <AUpageAlert as="error">{this.state.errorMessage}</AUpageAlert>
+                </div>
+              </div>
+            )}
+            {this.state.saved && (
+              <div className="row">
+                <div className="col-sm-push-2 col-sm-8 col-xs-12">
+                  <AUpageAlert as="success">
+                    <React.Fragment>
+                      <AUheading level="4" size="md">
+                        {`Thank you, your question is submitted successfully to ${brief.organisation}`}.
+                      </AUheading>
+                      <p>
+                        <a href={getOpportunityUrl(brief)} className="au-btn">
+                          Return to brief
+                        </a>
+                      </p>
+                    </React.Fragment>
+                  </AUpageAlert>
+                </div>
+              </div>
+            )}
+            <div className="row">
+              <div className="col-sm-push-2 col-sm-8 col-xs-12">
+                <article role="main">
+                  <Form model={model} id="askAQuestion" onSubmit={data => this.handleSubmit(data)}>
+                    <h1 className="au-display-xl">{`Ask a question about '${brief.title}'`}</h1>
+                    <p>
+                      Submit your questions before {format(new Date(brief.dates.questions_close), 'dddd D MMMM YYYY')}{' '}
+                      i.e. at least 2 days before the closing date. Answers will be published on the opportunity before
+                      it closes.
+                    </p>
+                    <Textarea
+                      key={'question'}
+                      model={`${model}.question`}
+                      name={`question`}
+                      id={`question`}
+                      controlProps={{
+                        limit: 100,
+                        rows: '8'
+                      }}
+                      label={'Question'}
+                      validators={{ required }}
+                      messages={{
+                        required: `question is required`
+                      }}
+                    />
+                    <input className="au-btn right-button-margin" type="submit" value="Submit question" />
+                  </Form>
+                </article>
+              </div>
             </div>
-          </DocumentTitle>
-        </div>
+          </React.Fragment>
+        </DocumentTitle>
       )
     }
 

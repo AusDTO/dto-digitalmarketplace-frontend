@@ -172,6 +172,10 @@ header ul#main-navigation a.au-btn--secondary:focus,header ul#main-navigation a.
   margin-bottom: 1rem;
 }
 
+.au-page-alerts--success {
+  margin-bottom: 1rem;
+}
+
 .primary-nav ul a, .local-nav ul a {
   display: block;
   border: none;
