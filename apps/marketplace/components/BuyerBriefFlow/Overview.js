@@ -99,7 +99,7 @@ class Overview extends Component {
       return <Redirect to={`${rootPath}/buyer-dashboard`} />
     }
 
-    const { brief, briefResponses, flow, oldWorkOrderCreator } = this.props
+    const { brief, briefResponses, flow, oldWorkOrderCreator, questionsAsked } = this.props
 
     if (brief && brief.id && brief.dates) {
       const isPublished = brief.dates.published_date && isValid(new Date(brief.dates.published_date))
@@ -190,7 +190,7 @@ class Overview extends Component {
             <li>
               {answerSellerQuestionsRender(brief, flow, isPublished, isClosed)}
               <div className={styles.stageStatus}>
-                X questions asked, {questionsAnswered} answer{questionsAnswered > 1 && `s`} published
+                {questionsAsked} questions asked, {questionsAnswered} answer{questionsAnswered > 1 && `s`} published
               </div>
             </li>
             {(briefResponseCount > 0 || !isPublished || !isClosed) && (
@@ -219,13 +219,15 @@ class Overview extends Component {
 }
 
 Overview.defaultProps = {
-  oldWorkOrderCreator: true
+  oldWorkOrderCreator: true,
+  questionsAsked: 0
 }
 
 Overview.propTypes = {
   brief: PropTypes.object.isRequired,
   flow: PropTypes.string.isRequired,
-  oldWorkOrderCreator: PropTypes.bool
+  oldWorkOrderCreator: PropTypes.bool,
+  questionsAsked: PropTypes.number
 }
 
 const mapStateToProps = state => ({

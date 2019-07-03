@@ -84,7 +84,8 @@ export const handleBriefInfoSuccess = response => ({
   type: BRIEF_INFO_FETCH_DATA_SUCCESS,
   brief: response.data.brief,
   briefResponses: response.data.briefResponses,
-  oldWorkOrderCreator: response.data.oldWorkOrderCreator
+  oldWorkOrderCreator: response.data.oldWorkOrderCreator,
+  questionsAsked: response.data.questionsAsked
 })
 
 export const handlePublicBriefInfoSuccess = response => ({
