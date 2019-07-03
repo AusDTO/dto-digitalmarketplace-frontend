@@ -71,7 +71,8 @@ const briefReducer = (state = defaultBriefState, action) => {
         briefResponses: action.briefResponses,
         specialistNumber: action.briefResponses.length + 1,
         loadedAt: new Date().valueOf(),
-        oldWorkOrderCreator: action.oldWorkOrderCreator
+        oldWorkOrderCreator: action.oldWorkOrderCreator,
+        questionsAsked: action.questionsAsked
       }
 
     case BRIEF_PUBLIC_INFO_FETCH_DATA_SUCCESS:
