@@ -334,3 +334,14 @@ export const submitSupplierQuestion = (briefId, values) => (dispatch, getState) 
     },
     data: JSON.stringify(values)
   }).then(response => response)
+
+export const publishAnswer = (briefId, values) => (dispatch, getState) =>
+  dmapi({
+    url: `/brief/${briefId}/publish-answer`,
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify(values)
+  }).then(response => response)

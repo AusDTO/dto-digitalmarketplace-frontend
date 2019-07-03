@@ -26,15 +26,7 @@ const answerSellerQuestionsRender = (brief, flow, isPublished, isClosed) => {
     )
   }
 
-  return (
-    <a
-      href={`/buyers/frameworks/digital-marketplace/requirements/${flow}/${
-        brief.id
-      }/supplier-questions/answer-question`}
-    >
-      Answer seller questions
-    </a>
-  )
+  return <a href={`${rootPath}/brief/${brief.id}/questions`}>Answer seller questions</a>
 }
 
 const downloadResponsesRender = (brief, isPublished, isClosed) => {

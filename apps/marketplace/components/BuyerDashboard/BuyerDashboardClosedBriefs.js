@@ -19,8 +19,8 @@ const BuyerDashboardClosedBriefs = props => (
             {format(new Date(item.closed_at), 'DD/MM/YYYY')}
             <br />
             {item.sellers
-              ? `${item.responses} of ${Object.keys(item.sellers).length} submitted`
-              : `${item.responses} submitted`}
+              ? `${item.responses ? item.responses : 0} of ${Object.keys(item.sellers).length} submitted`
+              : `${item.responses ? item.responses : 0} submitted`}
           </td>
         )
       ]
