@@ -11,12 +11,6 @@ import PageNavigation from '../components/PageNavigation/PageNavigation'
 import PeopleOverview from '../components/Teams/PeopleOverview'
 import TeamsOverview from '../components/Teams/TeamsOverview'
 
-const getCreateTeamButton = () => (
-  <AUbutton as="secondary" href={`${rootPath}/team/create`} key="Create a team">
-    Create a team
-  </AUbutton>
-)
-
 let hasFocused = false
 const setFocus = e => {
   if (!hasFocused) {
@@ -32,6 +26,11 @@ const navLinks = [
 
 const TeamsPage = props => {
   const { errorMessage, organisation } = props
+  const createTeamButton = (
+    <AUbutton as="secondary" href={`${rootPath}/team/create`} key="Create a team">
+      Create a team
+    </AUbutton>
+  )
 
   return (
     <BrowserRouter basename={`${rootPath}/teams`}>
@@ -45,15 +44,11 @@ const TeamsPage = props => {
             invalidFields={[]}
           />
         )}
-        <PageHeader actions={[getCreateTeamButton()]} organisation={organisation} title="Teams and people" />
+        <PageHeader actions={[createTeamButton]} organisation={organisation} title="Teams and people" />
         <PageNavigation links={navLinks} />
         <div>
           <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => <TeamsOverview createTeamButton={getCreateTeamButton()} {...props} />}
-            />
+            <Route exact path="/" render={() => <TeamsOverview createTeamButton={createTeamButton} {...props} />} />
             <Route path="/people" render={() => <PeopleOverview {...props} />} />
           </Switch>
         </div>
