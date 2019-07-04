@@ -30,29 +30,37 @@ const navLinks = [
   { exact: false, id: 'people-link', text: 'People', to: '/people' }
 ]
 
-const TeamsPage = props => (
-  <BrowserRouter basename={`${rootPath}/teams`}>
-    <div>
-      {props.errorMessage && (
-        <ErrorBoxComponent
-          title="A problem occurred loading team details"
-          errorMessage={props.errorMessage}
-          setFocus={setFocus}
-          form={{}}
-          invalidFields={[]}
-        />
-      )}
-      <PageHeader actions={[getCreateTeamButton()]} organisation={props.organisation} title="Teams and people" />
-      <PageNavigation links={navLinks} />
+const TeamsPage = props => {
+  const { errorMessage, organisation } = props
+
+  return (
+    <BrowserRouter basename={`${rootPath}/teams`}>
       <div>
-        <Switch>
-          <Route exact path="/" render={() => <TeamsOverview createTeamButton={getCreateTeamButton()} {...props} />} />
-          <Route path="/people" render={() => <PeopleOverview {...props} />} />
-        </Switch>
+        {errorMessage && (
+          <ErrorBoxComponent
+            title="A problem occurred loading team details"
+            errorMessage={errorMessage}
+            setFocus={setFocus}
+            form={{}}
+            invalidFields={[]}
+          />
+        )}
+        <PageHeader actions={[getCreateTeamButton()]} organisation={organisation} title="Teams and people" />
+        <PageNavigation links={navLinks} />
+        <div>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => <TeamsOverview createTeamButton={getCreateTeamButton()} {...props} />}
+            />
+            <Route path="/people" render={() => <PeopleOverview {...props} />} />
+          </Switch>
+        </div>
       </div>
-    </div>
-  </BrowserRouter>
-)
+    </BrowserRouter>
+  )
+}
 
 const mapStateToProps = state => ({
   errorMessage: state.app.errorMessage,
