@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { loadBuyerTeams } from '../../actions/teamActions'
+import TeamsOverviewTable from './TeamsOverviewTable'
 
 import styles from './TeamsOverview.scss'
 
@@ -21,10 +22,10 @@ export class TeamsOverview extends Component {
         <a href="">How teams work</a>
       </div>
     )
-  
+
     return (
       <div className={styles.teams}>
-        {Object.keys(teams).length === 0 && <NoTeamsMessage />}
+        {Object.keys(teams).length === 0 ? <NoTeamsMessage /> : <TeamsOverviewTable teams={teams.overview} />}
       </div>
     )
   }
