@@ -38,25 +38,31 @@ class BuyerDashboardHeader extends Component {
                 <ul className={styles.menu}>
                   <li>
                     <NavLink id="all-link" to="/" activeClassName={styles.active} exact>
-                      All ({this.props.briefCounts.closed +
-                        this.props.briefCounts.draft +
-                        this.props.briefCounts.live +
-                        this.props.briefCounts.withdrawn})
+                      All{' '}
+                      <span className={styles.subText}>
+                        ({this.props.briefCounts.closed +
+                          this.props.briefCounts.draft +
+                          this.props.briefCounts.live +
+                          this.props.briefCounts.withdrawn})
+                      </span>
                     </NavLink>
                   </li>
                   <li>
                     <NavLink id="drafts-link" to="/draft-briefs" activeClassName={styles.active}>
-                      Drafts ({this.props.briefCounts.draft})
+                      Drafts <span className={styles.subText}>({this.props.briefCounts.draft})</span>
                     </NavLink>
                   </li>
                   <li>
                     <NavLink id="Live-link" to="/live-briefs" activeClassName={styles.active}>
-                      Live ({this.props.briefCounts.live})
+                      Live <span className={styles.subText}>({this.props.briefCounts.live})</span>
                     </NavLink>
                   </li>
                   <li>
                     <NavLink id="Closed-link" to="/closed-briefs" activeClassName={styles.active}>
-                      Closed ({this.props.briefCounts.closed + this.props.briefCounts.withdrawn})
+                      Closed{' '}
+                      <span className={styles.subText}>
+                        ({this.props.briefCounts.closed + this.props.briefCounts.withdrawn})
+                      </span>
                     </NavLink>
                   </li>
                 </ul>
