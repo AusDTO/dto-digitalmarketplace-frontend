@@ -183,7 +183,8 @@ export class ProgressFlow extends Component {
     }
     return (
       !Object.values(stages).some(val => val === false) &&
-      (!this.props.progressButtons.showConfirmationCheckbox || (this.props.progressButtons.showConfirmationCheckbox && this.state.confirmationChecked))
+      (!this.props.progressButtons.showConfirmationCheckbox ||
+        (this.props.progressButtons.showConfirmationCheckbox && this.state.confirmationChecked))
     )
   }
 
