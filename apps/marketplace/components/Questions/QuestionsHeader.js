@@ -39,12 +39,12 @@ class QuestionsHeader extends Component {
                 <ul className={styles.menu}>
                   <li>
                     <NavLink id="questions-link" to="/" activeClassName={styles.active} exact>
-                      Seller questions ({this.props.questionCount.questions})
+                      Seller questions <span className={styles.subText}>({this.props.questionCount.questions})</span>
                     </NavLink>
                   </li>
                   <li>
                     <NavLink id="answers-link" to="/published-answers" activeClassName={styles.active}>
-                      Published answers ({this.props.questionCount.answers})
+                      Published answers <span className={styles.subText}>({this.props.questionCount.answers})</span>
                     </NavLink>
                   </li>
                 </ul>

@@ -6,6 +6,10 @@
   opacity: 0.6;
 }
 
+.subText {
+  color: #999999;
+}
+
 nav.dashNav {
   border-bottom: 8px solid #f5f5f5;
   display: block;
@@ -135,10 +139,6 @@ table.resultListing .colPublishedBy {
 table.resultListing .colDate {
   width: 150px;
   padding-left: 15px;
-}
-
-table.resultListing .subText {
-  color: rgb(153, 153, 153);
 }
 
 table.resultListing .colName {
