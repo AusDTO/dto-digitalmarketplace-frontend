@@ -3,6 +3,7 @@ import {
   CREATE_TEAM_SUCCESS,
   GET_TEAM_SUCCESS,
   SAVE_TEAM_SUCCESS,
+  TEAMS_OVERVIEW_SUCCESS,
   USER_ORGANISATION
 } from '../constants/constants'
 import { GENERAL_ERROR } from '../constants/messageConstants'
@@ -113,6 +114,20 @@ export const findTeamMember = keywords => (dispatch, getState) => {
 }
 
 export const handleTeamActionSuccess = (data, type) => ({ data, type })
+
+export const loadBuyerTeams = (endpoint = '/teams') => dispatch => {
+  dispatch(sendingRequest(true))
+  dmapi({ url: endpoint }).then(response => {
+    if (!response || response.error) {
+      dispatch(setErrorMessage(GENERAL_ERROR))
+    } else {
+      response.data.loadedAt = new Date().valueOf()
+      dispatch(clearErrorMessages())
+      dispatch(handleTeamActionSuccess(response.data, TEAMS_OVERVIEW_SUCCESS))
+    }
+    dispatch(sendingRequest(false))
+  })
+}
 
 export const loadBuyerTeamMembers = (endpoint = '/dashboard/team/overview') => dispatch => {
   dispatch(sendingRequest(true))
