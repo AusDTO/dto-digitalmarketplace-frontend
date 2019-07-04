@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
+import styles from './TeamsOverviewTable.scss'
+
 const TeamsOverviewTable = props => {
   const { teams } = props
 
   return (
     <div className={`row`}>
       <div className="col-xs-12">
-        <table className={`col-xs-12`}>
+        <table className={`col-xs-12 ${styles.teamsOverview}`}>
           <thead>
             <tr>
               <th scope="col">Name</th>
