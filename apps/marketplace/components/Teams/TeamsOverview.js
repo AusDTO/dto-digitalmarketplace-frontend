@@ -11,15 +11,20 @@ export class TeamsOverview extends Component {
   }
 
   render() {
-    const { createTeamButton } = this.props
+    const { createTeamButton, teamsOverview } = this.props
+    const teams = teamsOverview.teams
 
+    const NoTeamsMessage = () => (
+      <div className={styles.initial}>
+        <p>Easily track and manage access to opportunities created within your organisation.</p>
+        {createTeamButton}
+        <a href="">How teams work</a>
+      </div>
+    )
+  
     return (
       <div className={styles.teams}>
-        <div className={styles.initial}>
-          <p>Easily track and manage access to opportunities created within your organisation.</p>
-          {createTeamButton}
-          <a href="">How teams work</a>
-        </div>
+        {Object.keys(teams).length === 0 && <NoTeamsMessage />}
       </div>
     )
   }
@@ -27,7 +32,7 @@ export class TeamsOverview extends Component {
 
 const mapStateToProps = state => ({
   loading: state.app.currentlySending,
-  teams: state.teamsDashboard.teams
+  teamsOverview: state.teamsDashboard.teamsOverview
 })
 
 const mapDispatchToProps = dispatch => ({
