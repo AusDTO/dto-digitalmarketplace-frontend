@@ -11,14 +11,6 @@ import PageNavigation from '../components/PageNavigation/PageNavigation'
 import PeopleOverview from '../components/Teams/PeopleOverview'
 import TeamsOverview from '../components/Teams/TeamsOverview'
 
-let hasFocused = false
-const setFocus = e => {
-  if (!hasFocused) {
-    hasFocused = true
-    e.focus()
-  }
-}
-
 const TeamsPage = props => {
   const { errorMessage, organisation } = props
 
@@ -32,6 +24,14 @@ const TeamsPage = props => {
     { exact: true, id: 'teams-link', text: 'Teams', to: '/' },
     { exact: false, id: 'people-link', text: 'People', to: '/people' }
   ]
+
+  let hasFocused = false
+  const setFocus = e => {
+    if (!hasFocused) {
+      hasFocused = true
+      e.focus()
+    }
+  }
 
   return (
     <BrowserRouter basename={`${rootPath}/teams`}>
