@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import format from 'date-fns/format'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { loadAnswers } from 'marketplace/actions/questionActions'
 import styles from './Questions.scss'
@@ -49,13 +50,13 @@ export class PublishedAnswers extends Component {
           <table className={`${styles.resultListing} col-xs-12`}>
             <thead>
               <tr className={styles.headingRow}>
-                <th scope="col" className={styles.colId}>
+                <th scope="col" className={styles.colPublishedBy}>
                   Published by
                 </th>
-                <th scope="col" className={styles.colName}>
+                <th scope="col" className={styles.colQuestion}>
                   Question
                 </th>
-                <th scope="col" className={styles.colOwner}>
+                <th scope="col" className={styles.colAnswer}>
                   Answer
                 </th>
               </tr>
@@ -63,9 +64,13 @@ export class PublishedAnswers extends Component {
             <tbody>
               {this.state.answers.map(item => (
                 <tr key={`item.${item.id}`}>
-                  <td className={styles.colId}>{item.owner}</td>
-                  <td className={styles.colName}>{item.question}</td>
-                  <td className={styles.colName}>{item.answer}</td>
+                  <td className={styles.colPublishedBy}>
+                    {item.name}
+                    <br />
+                    <span className={styles.subText}>{format(new Date(item.published_at), 'HH:mm DD/MM/YYYY')}</span>
+                  </td>
+                  <td className={styles.colQuestion}>{item.question}</td>
+                  <td className={styles.colAnswer}>{item.answer}</td>
                 </tr>
               ))}
             </tbody>

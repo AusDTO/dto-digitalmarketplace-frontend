@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import format from 'date-fns/format'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { loadQuestions } from 'marketplace/actions/questionActions'
 import styles from './Questions.scss'
@@ -49,16 +50,16 @@ export class SellerQuestions extends Component {
           <table className={`${styles.resultListing} col-xs-12`}>
             <thead>
               <tr className={styles.headingRow}>
-                <th scope="col" className={styles.colId}>
+                <th scope="col" className={styles.colDate}>
                   Date
                 </th>
                 <th scope="col" className={styles.colName}>
                   Seller
                 </th>
-                <th scope="col" className={styles.colOwner}>
+                <th scope="col" className={styles.colQuestion}>
                   Question
                 </th>
-                <th scope="col" className={styles.colOwner}>
+                <th scope="col" className={styles.colAction}>
                   Actions
                 </th>
               </tr>
@@ -66,10 +67,10 @@ export class SellerQuestions extends Component {
             <tbody>
               {this.state.questions.map(item => (
                 <tr key={`item.${item.id}`}>
-                  <td className={styles.colId}>{item.created_at}</td>
+                  <td className={styles.colDate}>{format(new Date(item.created_at), 'HH:mm DD/MM/YYYY')}</td>
                   <td className={styles.colName}>{item.supplierName}</td>
-                  <td className={styles.colName}>{item.question}</td>
-                  <td className={styles.colName}>Action</td>
+                  <td className={styles.colQuestion}>{item.question}</td>
+                  <td className={styles.colAction}>Action</td>
                 </tr>
               ))}
             </tbody>

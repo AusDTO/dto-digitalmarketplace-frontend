@@ -127,50 +127,38 @@ table.resultListing tr:nth-child(2n) {
   background-color: #fafafa;
 }
 
-table.resultListing .colId {
-  width: 30px;
-  padding-left: 20px;
+table.resultListing .colPublishedBy {
+  width: 150px;
+  padding-left: 15px;
+}
+
+table.resultListing .colDate {
+  width: 150px;
+  padding-left: 15px;
+}
+
+table.resultListing .subText {
+  color: rgb(153, 153, 153);
 }
 
 table.resultListing .colName {
-  width: 520px;
+  width: 300px;
 }
 
 table.resultListing .colOwner {
   width: 520px;
 }
 
-table.resultListing .colClosing {
-  width: 180px;
-  white-space: nowrap;
-}
-
 table.resultListing .colQuestion {
-  width: 180px;
-  white-space: nowrap;
+  width: 520px;
 }
 
-table.resultListing .colSubmissions {
-  width: 180px;
-  white-space: nowrap;
-}
-
-table.resultListing .colAuthor {
-  width: 130px;
-}
-
-table.resultListing .colStatus {
-  width: 90px;
+table.resultListing .colAnswer {
+  width: 520px;
 }
 
 table.resultListing .colAction {
-  width: 300px;
-  padding-right: 20px;
-}
-
-table.resultListingTeamBriefs .colAction {
-  width: 180px;
-  padding-right: 20px;
+  width: 100px;
 }
 
 table.resultListing .colAction a {
@@ -228,7 +216,7 @@ span.submissionCount {
     padding: 5px;
   }
 
-  table.resultListing .colName, table.resultListing .colClosing, table.resultListing .colSubmissions, table.resultListing .colAction, table.resultListing .colStatus {
+  table.resultListing .colPublishedBy, table.resultListing .colQuestion, table.resultListing .colAnswer {
     width: auto;
   }
 
