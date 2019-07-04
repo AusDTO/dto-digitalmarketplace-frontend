@@ -20,7 +20,7 @@ const TeamsOverviewTable = props => {
             {Object.keys(teams).map(teamId => (
               <tr key={teamId}>
                 <td>{teams[teamId].name}</td>
-                <td>{teams[teamId].members}</td>
+                <td>{teams[teamId].members.join(', ')}</td>
               </tr>
             ))}
           </tbody>
