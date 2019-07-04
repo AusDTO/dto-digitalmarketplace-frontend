@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
+import { rootPath } from 'marketplace/routes'
+
 import styles from './TeamsOverviewTable.scss'
 
 const TeamsOverviewTable = props => {
@@ -14,6 +16,7 @@ const TeamsOverviewTable = props => {
             <tr>
               <th scope="col">Name</th>
               <th scope="col">Members</th>
+              <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -21,6 +24,9 @@ const TeamsOverviewTable = props => {
               <tr key={teamId}>
                 <td>{teams[teamId].name}</td>
                 <td>{teams[teamId].members.join(', ')}</td>
+                <td>
+                  <a href={`${rootPath}/team/${teamId}/about/edit`}>Edit team</a>
+                </td>
               </tr>
             ))}
           </tbody>
