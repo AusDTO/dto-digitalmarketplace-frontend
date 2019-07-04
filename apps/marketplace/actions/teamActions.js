@@ -121,7 +121,6 @@ export const loadBuyerTeams = (endpoint = '/teams') => dispatch => {
     if (!response || response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
     } else {
-      response.data.loadedAt = new Date().valueOf()
       dispatch(clearErrorMessages())
       dispatch(handleTeamActionSuccess(response.data, TEAMS_OVERVIEW_SUCCESS))
     }

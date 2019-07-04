@@ -8,7 +8,9 @@ import {
 const defaultState = {
   buyerTeamMembers: { items: [] },
   organisation: '',
-  teams: {}
+  teamsOverview: {
+    teams: {}
+  }
 }
 
 const teamsDashboardReducer = (state = defaultState, action) => {
@@ -27,7 +29,10 @@ const teamsDashboardReducer = (state = defaultState, action) => {
     case TEAMS_OVERVIEW_SUCCESS:
       return {
         ...state,
-        teams: action.data
+        teamsOverview: {
+          loadedAt: new Date().valueOf(),
+          teams: action.data
+        }
       }
     case USER_ORGANISATION:
       return {
