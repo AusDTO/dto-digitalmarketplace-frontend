@@ -12,7 +12,7 @@ import PeopleOverview from '../components/Teams/PeopleOverview'
 import TeamsOverview from '../components/Teams/TeamsOverview'
 
 const getCreateTeamButton = () => (
-  <AUbutton as="secondary" href={`${rootPath}/teams/create/about`} key="Create a team">
+  <AUbutton as="secondary" href={`${rootPath}/team/create`} key="Create a team">
     Create a team
   </AUbutton>
 )
