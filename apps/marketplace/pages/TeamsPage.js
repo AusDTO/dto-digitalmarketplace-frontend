@@ -19,18 +19,19 @@ const setFocus = e => {
   }
 }
 
-const navLinks = [
-  { exact: true, id: 'teams-link', text: 'Teams', to: '/' },
-  { exact: false, id: 'people-link', text: 'People', to: '/people' }
-]
-
 const TeamsPage = props => {
   const { errorMessage, organisation } = props
+
   const createTeamButton = (
     <AUbutton as="secondary" href={`${rootPath}/team/create`} key="Create a team">
       Create a team
     </AUbutton>
   )
+
+  const navLinks = [
+    { exact: true, id: 'teams-link', text: 'Teams', to: '/' },
+    { exact: false, id: 'people-link', text: 'People', to: '/people' }
+  ]
 
   return (
     <BrowserRouter basename={`${rootPath}/teams`}>
