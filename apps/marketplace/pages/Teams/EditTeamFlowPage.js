@@ -94,11 +94,12 @@ export class EditTeamFlowPage extends Component {
         model={model}
         previewPath=""
         progressButtons={{
-          publishText: 'Create team',
+          continueText: 'Submit updates',
+          publishText: 'Submit updates',
           showConfirmationCheckbox: false,
           showReturnText: false,
           showReviewButton: false,
-          startText: 'Save and continue'
+          startText: 'Submit updates'
         }}
         returnPath={`${rootPath}/teams`}
         saveModel={this.saveTeam}
