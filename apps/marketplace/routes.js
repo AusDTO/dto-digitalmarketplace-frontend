@@ -52,7 +52,7 @@ export const Routes = () => (
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/questions`} component={QuestionPage} />
     <PrivateRoute
       restrictedTo="buyer"
-      path={`${rootPath}/brief/:briefId/publish-answer`}
+      path={`${rootPath}/brief/:briefId/publish-answer/:questionId?`}
       component={PublishAnswerPage}
     />
     <PrivateRoute

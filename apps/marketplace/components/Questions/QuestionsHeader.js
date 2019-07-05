@@ -34,7 +34,14 @@ class QuestionsHeader extends Component {
             </div>
           </div>
           <div className={`${styles.menuRow} row`}>
-            <div className="col-xs-12 col-md-10">
+            <div className="col-xs-12 col-md-12">
+              You must publish answers to all relevant questions asked by sellers. These will be publicly visible on the
+              opportunity. If the question you want to answer does not appear, you can{' '}
+              <a href={`${rootPath}/brief/${brief.id}/publish-answer`}>add additional questions</a>.
+            </div>
+          </div>
+          <div className={`${styles.menuRow} row`}>
+            <div className="col-xs-12 col-md-12">
               <nav className={styles.dashNav}>
                 <ul className={styles.menu}>
                   <li>
@@ -49,11 +56,6 @@ class QuestionsHeader extends Component {
                   </li>
                 </ul>
               </nav>
-            </div>
-            <div className={`${styles.dashActions} ${styles.createNew} col-xs-12 col-md-2 buyer-dashboard-actions`}>
-              <a href={`${rootPath}/brief/${brief.id}/publish-answer`} className="au-btn">
-                Publish answer
-              </a>
             </div>
           </div>
         </div>
