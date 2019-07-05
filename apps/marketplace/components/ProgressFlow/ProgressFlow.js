@@ -254,6 +254,7 @@ export class ProgressFlow extends Component {
                         formButtons={
                           <ProgressButtons
                             confirmationText={this.props.confirmationText}
+                            continueText={this.props.progressButtons.continueText}
                             isFirstStage={this.isFirstStage(stage.slug)}
                             isLastStage={this.isLastStage(stage.slug)}
                             onConfirmationClick={this.handleConfirmationClick}
