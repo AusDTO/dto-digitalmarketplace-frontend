@@ -7,6 +7,7 @@ import styles from './TeamsOverviewTable.scss'
 
 const TeamsOverviewTable = props => {
   const { teams } = props
+  const showActions = Object.values(teams).some(team => team.isTeamLead)
 
   return (
     <div className={`row`}>
@@ -16,7 +17,7 @@ const TeamsOverviewTable = props => {
             <tr>
               <th scope="col">Name</th>
               <th scope="col">Members</th>
-              <th scope="col">Actions</th>
+              <th scope="col">{showActions && 'Actions'}</th>
             </tr>
           </thead>
           <tbody>
