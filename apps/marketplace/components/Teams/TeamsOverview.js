@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { loadBuyerTeams } from '../../actions/teamActions'
 import TeamsOverviewTable from './TeamsOverviewTable'
 
@@ -12,7 +13,7 @@ export class TeamsOverview extends Component {
   }
 
   render() {
-    const { createTeamButton, teamsOverview } = this.props
+    const { createTeamButton, loading, teamsOverview } = this.props
     const teams = teamsOverview.teams
 
     const NoTeamsMessage = () => (
@@ -22,6 +23,10 @@ export class TeamsOverview extends Component {
         <a href="">How teams work</a>
       </div>
     )
+
+    if (loading) {
+      return <LoadingIndicatorFullPage />
+    }
 
     return (
       <div className={styles.teams}>
