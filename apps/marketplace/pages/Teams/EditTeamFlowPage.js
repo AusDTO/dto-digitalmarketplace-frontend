@@ -6,7 +6,7 @@ import { getTeam, saveTeam } from 'marketplace/actions/teamActions'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import formProps from 'shared/form/formPropsSelector'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import TeamStages from '../../components/Teams/TeamStages'
+import { EditTeamStages } from '../../components/Teams/TeamStages'
 import ProgressFlow from '../../components/ProgressFlow/ProgressFlow'
 
 import { rootPath } from '../../routes'
@@ -102,7 +102,7 @@ export class EditTeamFlowPage extends Component {
         }}
         returnPath={`${rootPath}/teams`}
         saveModel={this.saveTeam}
-        stages={TeamStages}
+        stages={EditTeamStages}
       />
     )
   }

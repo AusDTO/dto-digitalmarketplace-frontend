@@ -52,6 +52,7 @@ const reviewStage = {
   title: 'Review'
 }
 
-const CreateTeamStages = [aboutStage, teamLeadsStage, teamMembersStage, permissionsStage, reviewStage]
+export const CreateTeamStages = [aboutStage, teamLeadsStage, teamMembersStage, permissionsStage, reviewStage]
+export const EditTeamStages = [aboutStage, teamLeadsStage, teamMembersStage, permissionsStage]
 
 export default CreateTeamStages
