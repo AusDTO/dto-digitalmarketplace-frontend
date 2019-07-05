@@ -25,9 +25,7 @@ const TeamsOverviewTable = props => {
               <tr key={teamId}>
                 <td>{teams[teamId].name}</td>
                 <td>{teams[teamId].members.join(', ')}</td>
-                <td>
-                  <a href={`${rootPath}/team/${teamId}/about/edit`}>Edit team</a>
-                </td>
+                <td>{teams[teamId].isTeamLead && <a href={`${rootPath}/team/${teamId}/about/edit`}>Edit team</a>}</td>
               </tr>
             ))}
           </tbody>
