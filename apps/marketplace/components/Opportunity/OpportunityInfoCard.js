@@ -172,8 +172,7 @@ const OpportunityInfoCard = props => (
                   <span> Your application for this category is currently being assessed.</span>
                 )}
                 {!props.isAwaitingDomainAssessment &&
-                  props.hasEvidenceInDraftForCategory &&
-                  props.draftEvidenceId && (
+                  props.hasEvidenceInDraftForCategory && (
                     <span>
                       {' '}
                       You currently have a{' '}
@@ -183,15 +182,33 @@ const OpportunityInfoCard = props => (
                       for assessment in this category.
                     </span>
                   )}
+                {!props.isAwaitingDomainAssessment &&
+                  props.hasLatestEvidenceRejectedForCategory &&
+                  props.rejectedEvidenceId && (
+                    <span> Your submitted assessment has been reviewed by the Marketplace and was not successful.</span>
+                  )}
               </p>
               {!props.isAwaitingDomainAssessment &&
-                !props.hasEvidenceInDraftForCategory && (
+                !props.hasEvidenceInDraftForCategory &&
+                !props.hasLatestEvidenceRejectedForCategory && (
                   <p>
                     <a
                       href={`${rootPath}/seller-assessment/create/${props.sellerCategory}/${props.briefId}`}
                       className={`au-btn au-btn--block ${styles.redBtn}`}
                     >
                       Request assessment
+                    </a>
+                  </p>
+                )}
+              {!props.isAwaitingDomainAssessment &&
+                props.hasLatestEvidenceRejectedForCategory &&
+                props.rejectedEvidenceId && (
+                  <p>
+                    <a
+                      href={`${rootPath}/seller-assessment/${props.rejectedEvidenceId}/feedback`}
+                      className={`au-btn au-btn--block ${styles.redBtn}`}
+                    >
+                      View assessment feedback
                     </a>
                   </p>
                 )}
@@ -269,7 +286,9 @@ OpportunityInfoCard.defaultProps = {
   isAssessedForCategory: false,
   isAssessedForAnyCategory: false,
   hasEvidenceInDraftForCategory: false,
+  hasLatestEvidenceRejectedForCategory: false,
   draftEvidenceId: undefined,
+  rejectedEvidenceId: undefined,
   isOpenToCategory: false,
   isOpenToAll: false,
   loggedIn: false,
@@ -294,7 +313,9 @@ OpportunityInfoCard.propTypes = {
   isAssessedForCategory: PropTypes.bool,
   isAssessedForAnyCategory: PropTypes.bool,
   hasEvidenceInDraftForCategory: PropTypes.bool,
+  hasLatestEvidenceRejectedForCategory: PropTypes.bool,
   draftEvidenceId: PropTypes.number,
+  rejectedEvidenceId: PropTypes.number,
   isOpenToCategory: PropTypes.bool,
   isOpenToAll: PropTypes.bool,
   loggedIn: PropTypes.bool,

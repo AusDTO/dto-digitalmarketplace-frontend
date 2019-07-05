@@ -178,9 +178,15 @@ const OpportunitySpecialistInfoCard = props => (
                       for assessment in this category.
                     </span>
                   )}
+                {!props.isAwaitingDomainAssessment &&
+                  props.hasLatestEvidenceRejectedForCategory &&
+                  props.rejectedEvidenceId && (
+                    <span> Your submitted assessment has been reviewed by the Marketplace and was not successful.</span>
+                  )}
               </p>
               {!props.isAwaitingDomainAssessment &&
                 !props.hasEvidenceInDraftForCategory &&
+                !props.hasLatestEvidenceRejectedForCategory &&
                 !props.isRecruiterOnly && (
                   <p>
                     <a
@@ -188,6 +194,18 @@ const OpportunitySpecialistInfoCard = props => (
                       className={`au-btn au-btn--block ${styles.redBtn}`}
                     >
                       Request assessment
+                    </a>
+                  </p>
+                )}
+              {!props.isAwaitingDomainAssessment &&
+                props.hasLatestEvidenceRejectedForCategory &&
+                props.rejectedEvidenceId && (
+                  <p>
+                    <a
+                      href={`${rootPath}/seller-assessment/${props.rejectedEvidenceId}/feedback`}
+                      className={`au-btn au-btn--block ${styles.redBtn}`}
+                    >
+                      View assessment feedback
                     </a>
                   </p>
                 )}
@@ -242,6 +260,10 @@ OpportunitySpecialistInfoCard.defaultProps = {
   sellerResponses: 0,
   canRespond: false,
   isAssessedForCategory: false,
+  hasEvidenceInDraftForCategory: false,
+  hasLatestEvidenceRejectedForCategory: false,
+  draftEvidenceId: undefined,
+  rejectedEvidenceId: undefined,
   isOpenToAll: false,
   loggedIn: false,
   hasResponded: false,
@@ -267,6 +289,10 @@ OpportunitySpecialistInfoCard.propTypes = {
   sellerResponses: PropTypes.number,
   canRespond: PropTypes.bool,
   isAssessedForCategory: PropTypes.bool,
+  hasEvidenceInDraftForCategory: PropTypes.bool,
+  hasLatestEvidenceRejectedForCategory: PropTypes.bool,
+  draftEvidenceId: PropTypes.number,
+  rejectedEvidenceId: PropTypes.number,
   isOpenToAll: PropTypes.bool,
   loggedIn: PropTypes.bool,
   hasResponded: PropTypes.bool,

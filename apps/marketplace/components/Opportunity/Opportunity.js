@@ -88,7 +88,9 @@ const Opportunity = props => {
     isAssessedForCategory,
     isAssessedForAnyCategory,
     hasEvidenceInDraftForCategory,
+    hasLatestEvidenceRejectedForCategory,
     draftEvidenceId,
+    rejectedEvidenceId,
     isOpenToAll,
     isOpenToCategory,
     isBriefOwner,
@@ -564,7 +566,9 @@ const Opportunity = props => {
               isOpenToAll={isOpenToAll}
               isAssessedForCategory={isAssessedForCategory}
               hasEvidenceInDraftForCategory={hasEvidenceInDraftForCategory}
+              hasLatestEvidenceRejectedForCategory={hasLatestEvidenceRejectedForCategory}
               draftEvidenceId={draftEvidenceId}
+              rejectedEvidenceId={rejectedEvidenceId}
               isOpenToCategory={isOpenToCategory}
               hasResponded={hasResponded}
               briefId={brief.id}
@@ -599,7 +603,9 @@ const Opportunity = props => {
               isAssessedForCategory={isAssessedForCategory}
               isAssessedForAnyCategory={isAssessedForAnyCategory}
               hasEvidenceInDraftForCategory={hasEvidenceInDraftForCategory}
+              hasLatestEvidenceRejectedForCategory={hasLatestEvidenceRejectedForCategory}
               draftEvidenceId={draftEvidenceId}
+              rejectedEvidenceId={rejectedEvidenceId}
               isOpenToCategory={isOpenToCategory}
               hasResponded={hasResponded}
               briefId={brief.id}
@@ -638,7 +644,9 @@ Opportunity.defaultProps = {
   isAssessedForCategory: false,
   isAssessedForAnyCategory: false,
   hasEvidenceInDraftForCategory: false,
+  hasLatestEvidenceRejectedForCategory: false,
   draftEvidenceId: undefined,
+  rejectedEvidenceId: undefined,
   isOpenToCategory: false,
   isOpenToAll: false,
   isBriefOwner: false,
@@ -710,7 +718,9 @@ Opportunity.propTypes = {
   isAssessedForCategory: PropTypes.bool,
   isAssessedForAnyCategory: PropTypes.bool,
   hasEvidenceInDraftForCategory: PropTypes.bool,
+  hasLatestEvidenceRejectedForCategory: PropTypes.bool,
   draftEvidenceId: PropTypes.number,
+  rejectedEvidenceId: PropTypes.number,
   isOpenToCategory: PropTypes.bool,
   isOpenToAll: PropTypes.bool,
   isBriefOwner: PropTypes.bool,
