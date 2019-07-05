@@ -75,7 +75,7 @@ export const Routes = () => (
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/create`} component={BuyerATMCreatePage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/:briefId/:stage?`} component={BuyerATMFlowPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/create`} component={CreateTeamPage} />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/:teamId/:stage?/edit`} component={EditTeamFlowPage} />
+    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/edit/:teamId/:stage?`} component={EditTeamFlowPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/:teamId/:stage?`} component={TeamFlowPage} />
     <PrivateRoute
       restrictedTo="buyer"

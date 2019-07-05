@@ -90,7 +90,7 @@ export class EditTeamFlowPage extends Component {
 
     return (
       <ProgressFlow
-        basename={`${rootPath}/team/${teamId}`}
+        basename={`${rootPath}/team/edit/${teamId}`}
         model={model}
         previewPath=""
         progressButtons={{
