@@ -30,7 +30,7 @@ export class TeamsOverview extends Component {
 
     return (
       <div className={styles.teams}>
-        {Object.keys(teams).length === 0 ? <NoTeamsMessage /> : <TeamsOverviewTable teams={teams.overview} />}
+        {Object.keys(teams).length === 0 ? <NoTeamsMessage /> : <TeamsOverviewTable teams={teams} />}
       </div>
     )
   }

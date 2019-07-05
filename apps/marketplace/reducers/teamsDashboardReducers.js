@@ -29,9 +29,10 @@ const teamsDashboardReducer = (state = defaultState, action) => {
     case TEAMS_OVERVIEW_SUCCESS:
       return {
         ...state,
+        organisation: action.data.organisation,
         teamsOverview: {
           loadedAt: new Date().valueOf(),
-          teams: action.data
+          teams: { ...action.data.overview }
         }
       }
     case USER_ORGANISATION:
