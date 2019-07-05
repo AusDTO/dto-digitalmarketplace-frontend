@@ -5,7 +5,9 @@ import { withRouter } from 'react-router-dom'
 import DocumentTitle from 'react-document-title'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import { loadPublicBrief, publishAnswer } from 'marketplace/actions/briefActions'
+import format from 'date-fns/format'
+import { publishAnswer } from 'marketplace/actions/briefActions'
+import { loadQuestion } from 'marketplace/actions/questionActions'
 import { required } from 'marketplace/components/validators'
 import Textarea from 'shared/form/Textarea'
 import { rootPath } from 'marketplace/routes'
@@ -19,7 +21,9 @@ class PublishAnswerPage extends Component {
     this.state = {
       loading: false,
       errorMessage: '',
-      saved: false
+      saved: false,
+      brief: null,
+      question: null
     }
   }
 
@@ -28,26 +32,38 @@ class PublishAnswerPage extends Component {
       loading: true
     })
     const briefId = this.props.match.params.briefId
+    const questionId = this.props.match.params.questionId
     if (briefId.length > 0) {
-      this.props.loadInitialData(briefId).then(response => {
+      this.props.loadInitialData(briefId, questionId).then(response => {
         let errorMessage = null
+        let brief = null
+        let question = null
         if (response.status !== 200) {
           errorMessage = response.errorMessage
+        } else {
+          brief = response.data.brief
+          question = response.data.question
+          if (question) {
+            this.props.changeModel(`${model}.question`, question.data.question)
+          }
         }
         this.setState({
           loading: false,
-          errorMessage
+          errorMessage,
+          brief,
+          question
         })
       })
     }
   }
 
   handleSubmit(values) {
-    const { brief } = this.props
+    const { brief, question } = this.state
 
     const submitData = {
       question: values.question ? values.question : null,
-      answer: values.answer ? values.answer : null
+      answer: values.answer ? values.answer : null,
+      questionId: question ? question.id : null
     }
 
     this.setState({
@@ -72,9 +88,9 @@ class PublishAnswerPage extends Component {
   }
 
   render() {
-    const { brief } = this.props
+    const { brief, loading, errorMessage, saved } = this.state
 
-    if (this.state.loading) {
+    if (loading) {
       return <LoadingIndicatorFullPage />
     }
 
@@ -82,14 +98,14 @@ class PublishAnswerPage extends Component {
       return (
         <DocumentTitle title="Publish an answer - Digital Marketplace">
           <React.Fragment>
-            {this.state.errorMessage && (
+            {errorMessage && (
               <div className="row">
                 <div className="col-sm-push-2 col-sm-8 col-xs-12">
-                  <AUpageAlert as="error">{this.state.errorMessage}</AUpageAlert>
+                  <AUpageAlert as="error">{errorMessage}</AUpageAlert>
                 </div>
               </div>
             )}
-            {this.state.saved && (
+            {saved && (
               <div className="row">
                 <div className="col-sm-push-2 col-sm-8 col-xs-12">
                   <AUpageAlert as="success">
@@ -111,30 +127,15 @@ class PublishAnswerPage extends Component {
               <div className="col-sm-push-2 col-sm-8 col-xs-12">
                 <article role="main">
                   <Form model={model} id="askAQuestion" onSubmit={data => this.handleSubmit(data)}>
-                    <h1 className="au-display-xl">{`Publish a question and answer`}</h1>
+                    <h1 className="au-display-xl">{`Answer a seller question`}</h1>
                     <p>
-                      You must make sure that suppliers have access to the same information about the work. This means
-                      all suppliers will have an equal opportunity to win the contract.
-                    </p>
-                    <p>You must publish all questions and answers.</p>
-                    <p>
-                      {`All published questions and answers will be public. They'll appear at the bottom of your published requirements page.`}
+                      You must publish answers to all relevant questions asked by sellers. These will be publicly
+                      visible on the opportunity.
                     </p>
                     <p>
-                      Read more about{' '}
-                      <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000575036#while-open">
-                        how to manage supplier questions
-                      </a>.
+                      Questions about this opportunity must be answered before{' '}
+                      <b>{format(new Date(brief.questionsCloseAt), 'DD/MM/YYYY')}</b>.
                     </p>
-                    <h1 className="au-display-md">Supplier question</h1>
-                    <p>You must:</p>
-                    <ul>
-                      <li>publish all questions that suppliers ask</li>
-                      <li>publish 1 question at a time</li>
-                      <li>
-                        remove any reference to the supplier’s name or any confidential information about the supplier
-                      </li>
-                    </ul>
                     <Textarea
                       key={'question'}
                       model={`${model}.question`}
@@ -144,25 +145,12 @@ class PublishAnswerPage extends Component {
                         limit: 100,
                         rows: '8'
                       }}
-                      label={'Supplier Question'}
+                      label={'Seller Question'}
                       validators={{ required }}
                       messages={{
                         required: `question is required`
                       }}
                     />
-                    <h1 className="au-display-md">Your answer</h1>
-                    <p>You must:</p>
-                    <ul>
-                      <li>answer all supplier questions</li>
-                      <li>give an individual response to each question even when questions are similar</li>
-                      <li>publish 1 answer at a time</li>
-                      <li>
-                        answer all questions at least 1 working day before the deadline to give suppliers time to decide
-                        if the work is right for them
-                      </li>
-                      <li>answer questions within 2 to 3 working days</li>
-                      <li>answer questions more frequently when the deadline is approaching</li>
-                    </ul>
                     <Textarea
                       key={'answer'}
                       model={`${model}.answer`}
@@ -192,14 +180,11 @@ class PublishAnswerPage extends Component {
   }
 }
 
-const mapResetStateToProps = state => ({
-  brief: state.brief.brief
-})
-
 const mapResetDispatchToProps = dispatch => ({
-  loadInitialData: briefId => dispatch(loadPublicBrief(briefId)),
+  loadInitialData: (briefId, questionId) => dispatch(loadQuestion(briefId, questionId)),
   clearModel: m => dispatch(actions.reset(m)),
+  changeModel: (m, value) => dispatch(actions.change(m, value)),
   submit: (briefId, values) => dispatch(publishAnswer(briefId, values))
 })
 
-export default withRouter(connect(mapResetStateToProps, mapResetDispatchToProps)(PublishAnswerPage))
+export default withRouter(connect(null, mapResetDispatchToProps)(PublishAnswerPage))
