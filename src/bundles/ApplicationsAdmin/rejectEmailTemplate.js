@@ -2,16 +2,13 @@ export const templateString = (
   
   `Hi,
 
-We have completed an assessment for {{ domain_name }}. Unfortunately the case study did not demonstrate the criteria for the following reason/s:
+We have completed an assessment for {{ domain_name }}. Your case study did not clearly demonstrate your ability against this category because:
 
 \#
 
-If you wish to respond to opportunities in {{ domain_name }}:
+If you wish to be reassessed for {{ domain_name }}, you must complete an assessment through the [new assessment process](https://marketplace1.zendesk.com/hc/en-gb/articles/115011292847-Request-an-assessment). The feedback provided may assist you in drafting your responses.
 
-  1. Incorporate the feedback and [read our guide](https://marketplace1.zendesk.com/hc/en-gb/articles/115011407668-Writing-a-case-study) on how to best demonstrate your expertise.
-  1. Select the [assessment criteria](https://marketplace1.zendesk.com/hc/en-gb/articles/333757011655-Assessment-criteria) that best demonstrates your expertise in {{ domain_name }}.
-  1. Write about what you did for each criteria. Make sure you demonstrate at least the minimum number of required criteria for the category.
-  1. Resubmit your case study for assessment.
+[Request a new assessment now](https://marketplace.service.gov.au/2/seller-dashboard).
 
 If you have any questions, [contact the Marketplace](https://marketplace.service.gov.au/contact-us).
 
