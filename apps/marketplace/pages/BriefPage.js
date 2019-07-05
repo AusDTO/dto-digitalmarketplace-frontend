@@ -366,7 +366,12 @@ class BriefPage extends Component {
               render={() => (
                 <span>
                   {!app.errorMessage && loadBriefSuccess ? (
-                    <BriefDownloadResponses brief={this.props.brief} briefResponses={this.props.briefResponses} />
+                    <BriefDownloadResponses
+                      brief={this.props.brief}
+                      briefResponses={this.props.briefResponses}
+                      briefResponseDownloaded={this.props.briefResponseDownloaded}
+                      reloadBrief={() => this.props.loadInitialData(this.props.brief.id)}
+                    />
                   ) : (
                     <ErrorBox title="There was a problem downloading the documents" setFocus={setFocus} />
                   )}{' '}
@@ -415,6 +420,7 @@ const mapResetStateToProps = state => ({
   ...formProps(state, 'briefResponseForm'),
   brief: state.brief.brief,
   briefResponses: state.brief.briefResponses,
+  briefResponseDownloaded: state.brief.briefResponseDownloaded,
   loadedAt: state.brief.loadedAt,
   app: state.app,
   supplierCode: state.app.supplierCode,
