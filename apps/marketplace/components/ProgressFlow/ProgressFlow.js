@@ -252,22 +252,24 @@ export class ProgressFlow extends Component {
                       <ProgressContent
                         component={stage.component}
                         formButtons={
-                          <ProgressButtons
-                            confirmationText={this.props.confirmationText}
-                            continueText={this.props.progressButtons.continueText}
-                            isFirstStage={this.isFirstStage(stage.slug)}
-                            isLastStage={this.isLastStage(stage.slug)}
-                            onConfirmationClick={this.handleConfirmationClick}
-                            onPreview={this.handlePreview}
-                            onPublish={this.handlePublish}
-                            onReturn={this.handleReturn}
-                            publishEnabled={this.allStagesDone()}
-                            publishText={this.props.progressButtons.publishText}
-                            showConfirmationCheckbox={this.props.progressButtons.showConfirmationCheckbox}
-                            showReturnText={this.props.progressButtons.showReturnText}
-                            showReviewButton={this.props.progressButtons.showReviewButton}
-                            startText={this.props.progressButtons.startText}
-                          />
+                          stage.actions || (
+                            <ProgressButtons
+                              confirmationText={this.props.confirmationText}
+                              continueText={this.props.progressButtons.continueText}
+                              isFirstStage={this.isFirstStage(stage.slug)}
+                              isLastStage={this.isLastStage(stage.slug)}
+                              onConfirmationClick={this.handleConfirmationClick}
+                              onPreview={this.handlePreview}
+                              onPublish={this.handlePublish}
+                              onReturn={this.handleReturn}
+                              publishEnabled={this.allStagesDone()}
+                              publishText={this.props.progressButtons.publishText}
+                              showConfirmationCheckbox={this.props.progressButtons.showConfirmationCheckbox}
+                              showReturnText={this.props.progressButtons.showReturnText}
+                              showReviewButton={this.props.progressButtons.showReviewButton}
+                              startText={this.props.progressButtons.startText}
+                            />
+                          )
                         }
                         model={this.props.model}
                         onStageMount={this.props.onStageMount}
