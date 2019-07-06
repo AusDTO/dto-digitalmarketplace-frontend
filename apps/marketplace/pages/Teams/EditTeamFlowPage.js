@@ -1,7 +1,9 @@
+/* eslint-disable no-param-reassign */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
+import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import { getTeam, saveTeam } from 'marketplace/actions/teamActions'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import formProps from 'shared/form/formPropsSelector'
@@ -13,6 +15,23 @@ import { rootPath } from '../../routes'
 
 const model = 'team'
 
+const SubmitAllUpdatesButton = () => <AUbutton>Submit all updates</AUbutton>
+
+const SaveAndContinueButton = () => <AUbutton as="tertiary">Save and continue</AUbutton>
+
+const stageActions = (
+  <div>
+    <SubmitAllUpdatesButton />
+    <SaveAndContinueButton />
+  </div>
+)
+
+const lastStageActions = (
+  <div>
+    <SubmitAllUpdatesButton />
+  </div>
+)
+
 export class EditTeamFlowPage extends Component {
   constructor(props) {
     super(props)
@@ -23,6 +42,7 @@ export class EditTeamFlowPage extends Component {
     }
 
     this.saveTeam = this.saveTeam.bind(this)
+    this.setStageActions = this.setStageActions.bind(this)
   }
 
   componentDidMount() {
@@ -30,6 +50,18 @@ export class EditTeamFlowPage extends Component {
     if (teamId) {
       this.props.getTeam(teamId)
     }
+
+    this.setStageActions(EditTeamStages)
+  }
+
+  setStageActions = stages => {
+    stages.forEach((stage, index, editStages) => {
+      stage.actions = stageActions
+
+      if (editStages.length - 1 === index) {
+        stage.actions = lastStageActions
+      }
+    })
   }
 
   saveTeam(createTeam = false) {
