@@ -39,10 +39,11 @@ export class EditTeamFlowPage extends Component {
 
   setStageActions = stages => {
     stages.forEach((stage, index, editStages) => {
-      stage.actions = stageActions
+      const props = { saveTeam: this.saveTeam }
+      stage.actions = stageActions(props)
 
       if (editStages.length - 1 === index) {
-        stage.actions = lastStageActions
+        stage.actions = lastStageActions(props)
       }
     })
   }

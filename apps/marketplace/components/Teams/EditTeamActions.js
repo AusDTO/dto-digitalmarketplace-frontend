@@ -4,19 +4,40 @@ import AUbutton from '@gov.au/buttons/lib/js/react.js'
 
 import styles from './EditTeamActions.scss'
 
-const SubmitAllUpdatesButton = () => <AUbutton>Submit all updates</AUbutton>
+const SubmitAllUpdatesButton = props => {
+  const { onClick } = props
 
-const SaveAndContinueButton = () => <AUbutton as="tertiary">Save and continue</AUbutton>
+  // Passing true indicates the flow is complete and should transition to the next page
+  return <AUbutton onClick={() => onClick(true)}>Submit all updates</AUbutton>
+}
 
-export const stageActions = (
-  <div className={styles.actionsContainer}>
-    <SubmitAllUpdatesButton />
-    <SaveAndContinueButton />
-  </div>
-)
+const SaveAndContinueButton = props => {
+  const { onClick } = props
 
-export const lastStageActions = (
-  <div className={styles.actionsContainer}>
-    <SubmitAllUpdatesButton />
-  </div>
-)
+  return (
+    <AUbutton as="tertiary" onClick={() => onClick()} type="submit">
+      Save and continue
+    </AUbutton>
+  )
+}
+
+export const stageActions = props => {
+  const { saveTeam } = props
+
+  return (
+    <div className={styles.actionsContainer}>
+      <SubmitAllUpdatesButton onClick={saveTeam} />
+      <SaveAndContinueButton onClick={saveTeam} />
+    </div>
+  )
+}
+
+export const lastStageActions = props => {
+  const { saveTeam } = props
+
+  return (
+    <div className={styles.actionsContainer}>
+      <SubmitAllUpdatesButton onClick={saveTeam} />
+    </div>
+  )
+}
