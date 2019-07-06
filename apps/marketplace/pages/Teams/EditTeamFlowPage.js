@@ -3,34 +3,17 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
-import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import { getTeam, saveTeam } from 'marketplace/actions/teamActions'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import formProps from 'shared/form/formPropsSelector'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
+import { lastStageActions, stageActions } from '../../components/Teams/EditTeamActions'
 import { EditTeamStages } from '../../components/Teams/TeamStages'
 import ProgressFlow from '../../components/ProgressFlow/ProgressFlow'
 
 import { rootPath } from '../../routes'
 
 const model = 'team'
-
-const SubmitAllUpdatesButton = () => <AUbutton>Submit all updates</AUbutton>
-
-const SaveAndContinueButton = () => <AUbutton as="tertiary">Save and continue</AUbutton>
-
-const stageActions = (
-  <div>
-    <SubmitAllUpdatesButton />
-    <SaveAndContinueButton />
-  </div>
-)
-
-const lastStageActions = (
-  <div>
-    <SubmitAllUpdatesButton />
-  </div>
-)
 
 export class EditTeamFlowPage extends Component {
   constructor(props) {
