@@ -21,7 +21,7 @@ export class EditTeamFlowPage extends Component {
 
     this.state = {
       loading: false,
-      teamCreated: false
+      returnToTeamsDashboard: false
     }
 
     this.saveTeam = this.saveTeam.bind(this)
@@ -48,24 +48,24 @@ export class EditTeamFlowPage extends Component {
     })
   }
 
-  saveTeam(createTeam = false) {
-    if (createTeam) {
+  saveTeam(returnToTeamsDashboard = false) {
+    if (returnToTeamsDashboard) {
       this.setState({
         loading: true
       })
     }
 
     const team = { ...this.props[model] }
-    team.createTeam = createTeam
+    team.returnToTeamsDashboard = returnToTeamsDashboard
 
     return this.props.saveTeam(team).then(response => {
       this.setState({
         loading: false
       })
 
-      if (response.status === 200 && createTeam) {
+      if (response.status === 200 && returnToTeamsDashboard) {
         this.setState({
-          teamCreated: true
+          returnToTeamsDashboard: true
         })
       }
 
@@ -98,7 +98,7 @@ export class EditTeamFlowPage extends Component {
       return <LoadingIndicatorFullPage />
     }
 
-    if (this.state.teamCreated) {
+    if (this.state.returnToTeamsDashboard) {
       return <Redirect to={`${rootPath}/teams`} push />
     }
 
