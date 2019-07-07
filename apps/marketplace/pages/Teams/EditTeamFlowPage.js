@@ -56,7 +56,6 @@ export class EditTeamFlowPage extends Component {
     }
 
     const team = { ...this.props[model] }
-    team.returnToTeamsDashboard = returnToTeamsDashboard
 
     return this.props.saveTeam(team).then(response => {
       this.setState({
