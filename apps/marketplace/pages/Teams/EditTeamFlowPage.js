@@ -108,15 +108,6 @@ export class EditTeamFlowPage extends Component {
       <ProgressFlow
         basename={`${rootPath}/team/edit/${teamId}`}
         model={model}
-        previewPath=""
-        progressButtons={{
-          continueText: 'Submit updates',
-          publishText: 'Submit updates',
-          showConfirmationCheckbox: false,
-          showReturnText: false,
-          showReviewButton: false,
-          startText: 'Submit updates'
-        }}
         returnPath={`${rootPath}/teams`}
         saveModel={this.saveTeam}
         stages={EditTeamStages}
