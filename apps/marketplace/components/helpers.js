@@ -80,3 +80,16 @@ export const padStart = (value, length, character) => {
 }
 
 export const escapeQuote = value => value.replace(/'/g, "\\'")
+
+export const hasPermission = (isPartOfTeam = false, isTeamLead = true, teams = [], permission) => {
+  if (!isPartOfTeam) {
+    return true
+  }
+  if (isPartOfTeam && isTeamLead) {
+    return true
+  }
+  if (isPartOfTeam && (!teams || teams.length === 0)) {
+    return false
+  }
+  return teams.every(t => t.permissions.includes(permission))
+}

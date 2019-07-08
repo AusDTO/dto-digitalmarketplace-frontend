@@ -73,7 +73,10 @@ const appReducer = (state = initialState, action) => {
         supplierCode: action.newState.supplierCode,
         emailAddress: action.newState.emailAddress,
         csrfToken: action.newState.csrfToken,
-        notificationCount: action.newState.notificationCount
+        notificationCount: action.newState.notificationCount,
+        teams: action.newState.teams,
+        isTeamLead: action.newState.isTeamLead,
+        isPartOfTeam: action.newState.isPartOfTeam
       }
     default:
       return state
