@@ -19,7 +19,7 @@ const SellerAssessmentIntroductionStage = props => (
     <AUheadings level="2" size="lg">
       You will be asked for
     </AUheadings>
-    <ol>
+    <ul>
       <li>
         your maximum daily rate for your services in {props.meta.domain.name}. Use{' '}
         <a
@@ -41,7 +41,7 @@ const SellerAssessmentIntroductionStage = props => (
       </li>
       <li>which criteria you are requesting assessment in</li>
       <li>evidence of your expertise in the criteria</li>
-    </ol>
+    </ul>
     {props.formButtons}
   </Form>
 )
