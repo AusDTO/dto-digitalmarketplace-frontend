@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
@@ -6,6 +7,7 @@ import { getTeam, saveTeam } from 'marketplace/actions/teamActions'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import formProps from 'shared/form/formPropsSelector'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
+import { lastStageActions, stageActions } from '../../components/Teams/CreateTeamActions'
 import TeamStages from '../../components/Teams/TeamStages'
 import ProgressFlow from '../../components/ProgressFlow/ProgressFlow'
 
@@ -23,6 +25,7 @@ export class CreateTeamFlowPage extends Component {
     }
 
     this.saveTeam = this.saveTeam.bind(this)
+    this.setStageActions = this.setStageActions.bind(this)
   }
 
   componentDidMount() {
@@ -30,6 +33,19 @@ export class CreateTeamFlowPage extends Component {
     if (teamId) {
       this.props.getTeam(teamId)
     }
+
+    this.setStageActions(TeamStages)
+  }
+
+  setStageActions = stages => {
+    stages.forEach((stage, index, editStages) => {
+      const props = { saveTeam: this.saveTeam }
+      stage.actions = stageActions(props)
+
+      if (editStages.length - 1 === index) {
+        stage.actions = lastStageActions(props)
+      }
+    })
   }
 
   saveTeam(createTeam = false) {
@@ -92,14 +108,6 @@ export class CreateTeamFlowPage extends Component {
       <ProgressFlow
         basename={`${rootPath}/team/${teamId}`}
         model={model}
-        previewPath=""
-        progressButtons={{
-          publishText: 'Create team',
-          showConfirmationCheckbox: false,
-          showReturnText: false,
-          showReviewButton: false,
-          startText: 'Save and continue'
-        }}
         returnPath={`${rootPath}/teams`}
         saveModel={this.saveTeam}
         stages={TeamStages}
