@@ -49,7 +49,9 @@ const SellerAssessmentRateStage = props => (
       model={`${props.model}.maxDailyRate`}
       prefix={'$'}
       label="What is your maximum daily rate (including GST)"
-      description={`The upper limit for ${props.meta.domain.name} is $${props.meta.domain.priceMaximum}`}
+      description={`The threshold for ${props.meta.domain.name} is $${
+        props.meta.domain.priceMaximum
+      }. If you nominate a price above this threshold, you will be asked to match more criteria to prove you offer value for money.`}
       name="maxDailyRate"
       id="maxDailyRate"
       htmlFor="maxDailyRate"
@@ -58,8 +60,8 @@ const SellerAssessmentRateStage = props => (
     {parseInt(props[props.model].maxDailyRate, 10) > parseInt(props.meta.domain.priceMaximum, 10) && (
       <AUpageAlert as="info">
         <p>
-          This price is above the upper limit for {props.meta.domain.name} assessments. If you nominate a price above
-          the upper limit, you will need to match more criteria in this assessment.
+          This price is above the threshold for {props.meta.domain.name} assessments. You will be asked to match more
+          criteria in this assessment.
         </p>
       </AUpageAlert>
     )}
