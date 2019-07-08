@@ -11,15 +11,11 @@ const SubmitAllUpdatesButton = props => {
   return <AUbutton onClick={() => onClick(true)}>Submit all updates</AUbutton>
 }
 
-const SaveAndContinueButton = props => {
-  const { onClick } = props
-
-  return (
-    <AUbutton as="tertiary" onClick={() => onClick()} type="submit">
-      Save and continue
-    </AUbutton>
-  )
-}
+const SaveAndContinueButton = () => (
+  <AUbutton as="tertiary" type="submit">
+    Save and continue
+  </AUbutton>
+)
 
 export const stageActions = props => {
   const { saveTeam } = props
@@ -27,7 +23,7 @@ export const stageActions = props => {
   return (
     <div className={styles.actionsContainer}>
       <SubmitAllUpdatesButton onClick={saveTeam} />
-      <SaveAndContinueButton onClick={saveTeam} />
+      <SaveAndContinueButton />
     </div>
   )
 }
