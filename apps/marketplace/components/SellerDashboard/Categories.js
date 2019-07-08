@@ -94,6 +94,7 @@ export class Categories extends Component {
           </React.Fragment>
         )
       case 'submitted':
+        return 'The Marketplace is reviewing your request for assessment.'
       default:
         return ''
     }
