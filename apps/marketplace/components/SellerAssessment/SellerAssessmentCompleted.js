@@ -17,25 +17,11 @@ const SellerAssessmentCompleted = props => (
     <AUheading level="2" size="lg">
       What happens next
     </AUheading>
-    <p>We will assess the rate and evidence against the criteria you selected.</p>
-    <AUheading level="3" size="md">
-      If the assessment is successful:
-    </AUheading>
-    <ol>
-      <li>We will email {props.contactEmail} to let you know you are approved.</li>
-      <li>You will be able to respond to &quot;open to all&quot; opportunities in the category.</li>
-      <li>
-        You will be able to respond to &quot;open to selected&quot; opportunities in the category, if the buyer has
-        invited you.
-      </li>
-    </ol>
-    <AUheading level="3" size="md">
-      If the assessment is not successful:
-    </AUheading>
-    <ol>
-      <li>We will email {props.contactEmail} with a link to view the assessment team&apos;s feedback.</li>
-      <li>You can update your submission and resubmit for assessment.</li>
-    </ol>
+    <p>The Marketplace will assess your submitted pricing and responses against the criteria you selected.</p>
+    <p>
+      The time we take to assess your criteria is dependent on volume, seasonal peaks, complex cases and incomplete
+      submissions. We will endeavour to assess your criteria in a reasonable timeframe.
+    </p>
   </div>
 )
 

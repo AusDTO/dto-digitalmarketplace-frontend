@@ -12,6 +12,10 @@ const SellerAssessmentIntroductionStage = props => (
       Every seller must be assessed as offering value for money before they can respond to opportunities published on
       the Digital Marketplace. The information you provide will only be visible to the assessment team.
     </p>
+    <p>
+      <strong>Please note:</strong> The time we take to assess your criteria is dependent on volume, seasonal peaks,
+      complex cases and incomplete submissions. We will endeavour to assess your criteria in a reasonable timeframe.
+    </p>
     <AUheadings level="2" size="lg">
       You will be asked for
     </AUheadings>
