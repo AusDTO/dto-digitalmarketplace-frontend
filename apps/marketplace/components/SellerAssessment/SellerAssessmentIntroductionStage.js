@@ -9,8 +9,8 @@ const SellerAssessmentIntroductionStage = props => (
       {props.meta.domain.name} assessment
     </AUheadings>
     <p>
-      Every seller must be assessed as offering value for money before they can respond to opportunities published on
-      the Digital Marketplace. The information you provide will only be visible to the assessment team.
+      You must be assessed as offering value for money before you can respond to opportunities published on the Digital
+      Marketplace. The information you submit will only be visible to the assessment team.
     </p>
     <p>
       <strong>Please note:</strong> The time we take to assess your criteria is dependent on volume, seasonal peaks,
@@ -21,7 +21,7 @@ const SellerAssessmentIntroductionStage = props => (
     </AUheadings>
     <ol>
       <li>
-        A maximum daily rate for your services in {props.meta.domain.name}. Use{' '}
+        your maximum daily rate for your services in {props.meta.domain.name}. Use{' '}
         <a
           href="https://www.sfia-online.org/en/framework/sfia-7/busskills/level-5"
           rel="noopener noreferrer"
@@ -39,8 +39,8 @@ const SellerAssessmentIntroductionStage = props => (
         </a>{' '}
         as a guide
       </li>
-      <li>Which criteria you are requesting assessment in</li>
-      <li>Evidence of your expertise in the criteria</li>
+      <li>which criteria you are requesting assessment in</li>
+      <li>evidence of your expertise in the criteria</li>
     </ol>
     {props.formButtons}
   </Form>
