@@ -58,7 +58,7 @@ export const categoryIdToHash = domainId => {
       result = 'ictaudit'
       break
     case 18:
-      result = 'ictservices'
+      result = 'ictintegration'
       break
     case 19:
       result = 'ictprocurement'
