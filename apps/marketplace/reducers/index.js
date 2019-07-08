@@ -11,7 +11,8 @@ import opportunities from './opportunitiesReducers'
 import errorMessage from './errorMessage'
 import form_options from './form_options'
 import messages from './messagesReducers'
-import team, { TeamFormReducer } from './teamReducers'
+import team from './teamReducers'
+import teamsDashboard from './teamsDashboardReducers'
 
 export const BuyerRFXFormReducer = {
   id: 0,
@@ -125,7 +126,7 @@ export default combineReducers({
   messages,
   form_options,
   errorMessage,
-  team,
+  teamsDashboard,
   ...createForms({
     askAQuestionForm: {
       question: ''
@@ -198,6 +199,6 @@ export default combineReducers({
     BuyerATMForm: BuyerATMFormReducer,
     BuyerSpecialistForm: BuyerSpecialistFormReducer,
     SellerEditFlowPage: SellerEditFormReducer,
-    TeamForm: TeamFormReducer
+    team
   })
 })

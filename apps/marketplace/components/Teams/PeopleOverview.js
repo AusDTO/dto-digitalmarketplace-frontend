@@ -60,7 +60,7 @@ export class PeopleOverview extends Component {
 
 const mapStateToProps = state => ({
   loading: state.app.currentlySending,
-  teamMembers: state.team.buyerTeamMembers.items
+  teamMembers: state.teamsDashboard.buyerTeamMembers.items
 })
 
 const mapDispatchToProps = dispatch => ({
