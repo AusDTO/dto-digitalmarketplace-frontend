@@ -2,7 +2,7 @@ import React from 'react'
 
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 
-import styles from './EditTeamActions.scss'
+import styles from './TeamFlowActions.scss'
 
 const CreateTeamButton = props => {
   const { onClick } = props
