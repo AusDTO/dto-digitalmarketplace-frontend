@@ -35,14 +35,14 @@ export default [
         description: 'Emerging technology is about developing proof of concepts using recent digital advances for commercial or government purposes. Examples include artificial intelligence, robotics, wearables, Internet of Things and augmented or virtual reality.'
     },
     {
-        key: 'ictservices',
-        label: 'ICT managed services',
-        description: 'ICT managed services is the practice of outsourcing certain processes and functions to improve operations and cut expenses. Examples include end user services, network management services, management of cloud implementations, service desk operations and onside support services.'
-    },
-    {
         key: 'ictaudit',
         label: 'ICT risk management and audit activities',
         description: 'ICT risk management and audit involves the identification, evaluation, and prioritization of risks and the activities to minimize, monitor, and control the impact of unfortunate events. Examples include saving initiatives, reporting obligations, investment framework, business case development and costing frameworks.'
+    },
+    {
+        key: 'ictintegration',
+        label: 'ICT systems integration',
+        description: 'ICT systems integration is the practice of outsourcing certain processes and functions to improve operations and cut expenses. Examples include end user services, network management services, management of cloud implementations, service desk operations and onsite support services.'
     },
     {
         key: 'marketingcomms',

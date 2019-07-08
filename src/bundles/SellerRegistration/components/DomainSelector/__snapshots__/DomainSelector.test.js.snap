@@ -235,33 +235,6 @@ exports[`DomainSelector renders 1`] = `
           <input
             checked={false}
             disabled={false}
-            id="ict-managed-services"
-            name="ict-managed-services"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="ICT managed services"
-          />
-          <label
-            htmlFor="ict-managed-services"
-          >
-            ICT managed services
-             
-            <p
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "ICT managed services is the practice of outsourcing certain processes and functions to improve operations and cut expenses. Examples include end user services, network management services, management of cloud implementations, service desk operations and onside support services.",
-                }
-              }
-            />
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
             id="ict-risk-management-and-audit-activities"
             name="ict-risk-management-and-audit-activities"
             onBlur={[Function]}
@@ -280,6 +253,33 @@ exports[`DomainSelector renders 1`] = `
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "ICT risk management and audit involves the identification, evaluation, and prioritization of risks and the activities to minimize, monitor, and control the impact of unfortunate events. Examples include saving initiatives, reporting obligations, investment framework, business case development and costing frameworks.",
+                }
+              }
+            />
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="ict-systems-integration"
+            name="ict-systems-integration"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="ICT systems integration"
+          />
+          <label
+            htmlFor="ict-systems-integration"
+          >
+            ICT systems integration
+             
+            <p
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "ICT systems integration is the practice of outsourcing certain processes and functions to improve operations and cut expenses. Examples include end user services, network management services, management of cloud implementations, service desk operations and onsite support services.",
                 }
               }
             />
@@ -724,33 +724,6 @@ exports[`DomainSelector renders with populated fields 1`] = `
           <input
             checked={false}
             disabled={false}
-            id="ict-managed-services"
-            name="ict-managed-services"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="ICT managed services"
-          />
-          <label
-            htmlFor="ict-managed-services"
-          >
-            ICT managed services
-             
-            <p
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "ICT managed services is the practice of outsourcing certain processes and functions to improve operations and cut expenses. Examples include end user services, network management services, management of cloud implementations, service desk operations and onside support services.",
-                }
-              }
-            />
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
             id="ict-risk-management-and-audit-activities"
             name="ict-risk-management-and-audit-activities"
             onBlur={[Function]}
@@ -769,6 +742,33 @@ exports[`DomainSelector renders with populated fields 1`] = `
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "ICT risk management and audit involves the identification, evaluation, and prioritization of risks and the activities to minimize, monitor, and control the impact of unfortunate events. Examples include saving initiatives, reporting obligations, investment framework, business case development and costing frameworks.",
+                }
+              }
+            />
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="ict-systems-integration"
+            name="ict-systems-integration"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="ICT systems integration"
+          />
+          <label
+            htmlFor="ict-systems-integration"
+          >
+            ICT systems integration
+             
+            <p
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "ICT systems integration is the practice of outsourcing certain processes and functions to improve operations and cut expenses. Examples include end user services, network management services, management of cloud implementations, service desk operations and onsite support services.",
                 }
               }
             />
