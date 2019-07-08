@@ -21,7 +21,7 @@ const TeamsPage = props => {
   )
 
   const navLinks = [
-    { exact: true, id: 'teams-link', text: 'Teams', to: '/' },
+    { exact: false, id: 'teams-link', text: 'Teams', to: '/teams' },
     { exact: false, id: 'people-link', text: 'People', to: '/people' }
   ]
 
@@ -34,7 +34,7 @@ const TeamsPage = props => {
   }
 
   return (
-    <BrowserRouter basename={`${rootPath}/teams`}>
+    <BrowserRouter basename={`${rootPath}/`}>
       <div>
         {errorMessage && (
           <ErrorBoxComponent
@@ -49,7 +49,7 @@ const TeamsPage = props => {
         <PageNavigation links={navLinks} />
         <div>
           <Switch>
-            <Route exact path="/" render={() => <TeamsOverview createTeamButton={createTeamButton} {...props} />} />
+            <Route path="/teams" render={() => <TeamsOverview createTeamButton={createTeamButton} {...props} />} />
             <Route path="/people" render={() => <PeopleOverview {...props} />} />
           </Switch>
         </div>
