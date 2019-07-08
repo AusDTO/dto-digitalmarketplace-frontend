@@ -70,19 +70,19 @@ export class TeamMembersStage extends Component {
     this.handleRemoveTeamMember = this.handleRemoveTeamMember.bind(this)
     this.handleSearchChange = this.handleSearchChange.bind(this)
     this.handleUserClick = this.handleUserClick.bind(this)
-    this.removeTeamMember = this.removeTeamMember.bind(this)
+    this.removeUser = this.removeUser.bind(this)
   }
 
-  removeTeamMember(userId) {
-    const newTeamMembers = { ...this.props[this.props.model].teamMembers }
-    delete newTeamMembers[userId]
-    return newTeamMembers
+  removeUser(userId, property) {
+    const newObject = { ...this.props[this.props.model][property] }
+    delete newObject[userId]
+    return newObject
   }
 
   handleConvertToTeamLead(userId) {
     const user = { id: userId, name: this.props[this.props.model].teamMembers[userId] }
 
-    const newTeamMembers = this.removeTeamMember(userId)
+    const newTeamMembers = this.removeUser(userId, 'teamMembers')
     this.props.updateTeamMembers(newTeamMembers)
 
     const newTeamLeads = { ...this.props[this.props.model].teamLeads }
@@ -101,11 +101,19 @@ export class TeamMembersStage extends Component {
       emailAddress: user.email,
       name: user.name
     }
+
     this.props.updateTeamMembers(newTeamMembers)
+
+    // Remove as team lead if user has been added as one
+    const teamLeads = { ...this.props[this.props.model].teamLeads }
+    if (teamLeads[user.id]) {
+      const newTeamLeads = this.removeUser(user.id, 'teamLeads')
+      this.props.updateTeamLeads(newTeamLeads)
+    }
   }
 
   handleRemoveTeamMember(userId) {
-    const newTeamMembers = this.removeTeamMember(userId)
+    const newTeamMembers = this.removeUser(userId, 'teamMembers')
     this.props.updateTeamMembers(newTeamMembers)
   }
 
