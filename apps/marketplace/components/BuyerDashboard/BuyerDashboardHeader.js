@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { withRouter, NavLink } from 'react-router-dom'
 import AUaccordion from '@gov.au/accordion/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
+import { hasPermission } from 'marketplace/components/helpers'
 import styles from './BuyerDashboard.scss'
 
 class BuyerDashboardHeader extends Component {
@@ -23,6 +25,7 @@ class BuyerDashboardHeader extends Component {
   }
 
   render() {
+    const { isPartOfTeam, isTeamLead, teams } = this.props
     return (
       <div className={`${styles.header} row`}>
         <div className="col-sm-12">
@@ -33,7 +36,7 @@ class BuyerDashboardHeader extends Component {
             </div>
           </div>
           <div className={`${styles.menuRow} row`}>
-            <div className="col-xs-12 col-md-8">
+            <div className="col-xs-12 col-md-9">
               <nav className={styles.dashNav}>
                 <ul className={styles.menu}>
                   <li>
@@ -68,26 +71,28 @@ class BuyerDashboardHeader extends Component {
                 </ul>
               </nav>
             </div>
-            <div className={`${styles.dashActions} ${styles.createNew} col-xs-12 col-md-4 buyer-dashboard-actions`}>
-              <AUaccordion
-                header="Create new request"
-                open={this.state.createNewIsOpen}
-                onOpen={this.handleCreateNewToggle}
-                onClose={this.handleCreateNewToggle}
-              >
-                <ul>
-                  <li>
-                    <a href="/2/buyer-specialist/create">Specialist</a>
-                  </li>
-                  <li>
-                    <a href={`${rootPath}/outcome-choice`}>Outcome</a>
-                  </li>
-                  <li>
-                    <a href="/buyers/frameworks/digital-marketplace/requirements/training">Training</a>
-                  </li>
-                </ul>
-              </AUaccordion>
-            </div>
+            {hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') && (
+              <div className={`${styles.dashActions} ${styles.createNew} col-xs-12 col-md-3 buyer-dashboard-actions`}>
+                <AUaccordion
+                  header="Create new request"
+                  open={this.state.createNewIsOpen}
+                  onOpen={this.handleCreateNewToggle}
+                  onClose={this.handleCreateNewToggle}
+                >
+                  <ul>
+                    <li>
+                      <a href="/2/buyer-specialist/create">Specialist</a>
+                    </li>
+                    <li>
+                      <a href={`${rootPath}/outcome-choice`}>Outcome</a>
+                    </li>
+                    <li>
+                      <a href="/buyers/frameworks/digital-marketplace/requirements/training">Training</a>
+                    </li>
+                  </ul>
+                </AUaccordion>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -95,4 +100,10 @@ class BuyerDashboardHeader extends Component {
   }
 }
 
-export default withRouter(BuyerDashboardHeader)
+const mapStateToProps = state => ({
+  teams: state.app.teams,
+  isTeamLead: state.app.isTeamLead,
+  isPartOfTeam: state.app.isPartOfTeam
+})
+
+export default withRouter(connect(mapStateToProps)(BuyerDashboardHeader))

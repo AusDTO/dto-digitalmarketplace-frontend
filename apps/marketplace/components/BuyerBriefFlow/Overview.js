@@ -5,58 +5,13 @@ import PropTypes from 'prop-types'
 import { deleteBrief } from 'marketplace/actions/briefActions'
 import isValid from 'date-fns/is_valid'
 import { rootPath } from 'marketplace/routes'
+import { hasPermission } from 'marketplace/components/helpers'
 import Tick from 'marketplace/components/Icons/Tick/Tick'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import ClosedDate from 'shared/ClosedDate'
 import styles from './Overview.scss'
-
-const answerSellerQuestionsRender = (brief, flow, isPublished, isClosed) => {
-  if (!isPublished) {
-    return <span>Answer seller questions</span>
-  }
-
-  if (isPublished && isClosed) {
-    return (
-      <span>
-        <Tick className={styles.tick} colour="#17788D" />
-        <span>Answer seller questions</span>
-      </span>
-    )
-  }
-
-  return <a href={`${rootPath}/brief/${brief.id}/questions`}>Answer seller questions</a>
-}
-
-const downloadResponsesRender = (brief, isPublished, isClosed) => {
-  if (isPublished && isClosed) {
-    return <a href={`${rootPath}/brief/${brief.id}/download-responses`}>Download responses</a>
-  }
-
-  return <span>Download responses</span>
-}
-
-const createWorkOrderRender = (brief, flow, isPublished, isClosed, oldWorkOrderCreator) => {
-  if (isPublished && isClosed) {
-    let url = ''
-    let title = ''
-    if (brief.work_order_id) {
-      url = `/work-orders/${brief.work_order_id}`
-      title = 'Edit work order'
-    } else {
-      url = `/buyers/frameworks/${brief.frameworkSlug}/requirements/${flow}/${brief.id}/work-orders/create`
-      title = 'Create work order'
-    }
-    if (!oldWorkOrderCreator) {
-      url = `/2/buyer-award/${brief.id}`
-      title = 'Download work order'
-    }
-    return <a href={url}>{title}</a>
-  }
-
-  return <span>Create work order</span>
-}
 
 class Overview extends Component {
   constructor(props) {
@@ -86,12 +41,75 @@ class Overview extends Component {
     })
   }
 
+  answerSellerQuestionsRender(brief, flow, isPublished, isClosed) {
+    const { isPartOfTeam, isTeamLead, teams } = this.props
+    const text = <span>Answer seller questions</span>
+
+    if (!isPublished) {
+      return text
+    }
+
+    if (isPublished && isClosed) {
+      return (
+        <span>
+          <Tick className={styles.tick} colour="#17788D" />
+          {text}
+        </span>
+      )
+    }
+
+    if (hasPermission(isPartOfTeam, isTeamLead, teams, 'answer_seller_questions')) {
+      return <a href={`${rootPath}/brief/${brief.id}/questions`}>Answer seller questions</a>
+    }
+    return text
+  }
+
+  downloadResponsesRender(brief, isPublished, isClosed) {
+    const { isPartOfTeam, isTeamLead, teams } = this.props
+    if (isPublished && isClosed && hasPermission(isPartOfTeam, isTeamLead, teams, 'download_responses')) {
+      return <a href={`${rootPath}/brief/${brief.id}/download-responses`}>Download responses</a>
+    }
+
+    return <span>Download responses</span>
+  }
+
+  createWorkOrderRender(brief, flow, isPublished, isClosed, oldWorkOrderCreator) {
+    const { isPartOfTeam, isTeamLead, teams } = this.props
+    if (isPublished && isClosed && hasPermission(isPartOfTeam, isTeamLead, teams, 'create_work_orders')) {
+      let url = ''
+      let title = ''
+      if (brief.work_order_id) {
+        url = `/work-orders/${brief.work_order_id}`
+        title = 'Edit work order'
+      } else {
+        url = `/buyers/frameworks/${brief.frameworkSlug}/requirements/${flow}/${brief.id}/work-orders/create`
+        title = 'Create work order'
+      }
+      if (!oldWorkOrderCreator) {
+        url = `/2/buyer-award/${brief.id}`
+        title = 'Download work order'
+      }
+      return <a href={url}>{title}</a>
+    }
+
+    return <span>Create work order</span>
+  }
+
   render() {
     if (this.props.deleteBriefSuccess) {
       return <Redirect to={`${rootPath}/buyer-dashboard`} />
     }
 
-    const { brief, briefResponses, flow, oldWorkOrderCreator, questionsAsked } = this.props
+    const {
+      brief,
+      briefResponses,
+      flow,
+      oldWorkOrderCreator,
+      questionsAsked,
+      isPartOfTeam,
+      isTeamLead,
+      teams
+    } = this.props
 
     if (brief && brief.id && brief.dates) {
       const isPublished = brief.dates.published_date && isValid(new Date(brief.dates.published_date))
@@ -132,18 +150,19 @@ class Overview extends Component {
                     <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>View opportunity</a>
                   </li>
                 )}
-                {!isPublished && (
-                  <div>
-                    <li>
-                      <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>Preview</a>
-                    </li>
-                    <li>
-                      <a href="#delete" onClick={this.handleDeleteClick} className={styles.headerMenuDelete}>
-                        Delete draft
-                      </a>
-                    </li>
-                  </div>
-                )}
+                {!isPublished &&
+                  hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') && (
+                    <div>
+                      <li>
+                        <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>Preview</a>
+                      </li>
+                      <li>
+                        <a href="#delete" onClick={this.handleDeleteClick} className={styles.headerMenuDelete}>
+                          Delete draft
+                        </a>
+                      </li>
+                    </div>
+                  )}
               </ul>
             </div>
           </div>
@@ -180,14 +199,14 @@ class Overview extends Component {
               )}
             </li>
             <li>
-              {answerSellerQuestionsRender(brief, flow, isPublished, isClosed)}
+              {this.answerSellerQuestionsRender(brief, flow, isPublished, isClosed)}
               <div className={styles.stageStatus}>
                 {questionsAsked} questions asked, {questionsAnswered} answer{questionsAnswered > 1 && `s`} published
               </div>
             </li>
             {(briefResponseCount > 0 || !isPublished || !isClosed) && (
               <li>
-                {downloadResponsesRender(brief, isPublished, isClosed)}
+                {this.downloadResponsesRender(brief, isPublished, isClosed)}
                 {briefResponseCount > 0 && (
                   <div className={styles.stageStatus}>
                     {flow === 'specialist'
@@ -199,7 +218,7 @@ class Overview extends Component {
             )}
             {(flow === 'rfx' || flow === 'specialist') &&
               (briefResponseCount > 0 || !isPublished || !isClosed) && (
-                <li>{createWorkOrderRender(brief, flow, isPublished, isClosed, oldWorkOrderCreator)}</li>
+                <li>{this.createWorkOrderRender(brief, flow, isPublished, isClosed, oldWorkOrderCreator)}</li>
               )}
             {briefResponseCount === 0 && isClosed && <li>No sellers responded</li>}
           </ul>
@@ -223,7 +242,10 @@ Overview.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  deleteBriefSuccess: state.brief.deleteBriefSuccess
+  deleteBriefSuccess: state.brief.deleteBriefSuccess,
+  teams: state.app.teams,
+  isTeamLead: state.app.isTeamLead,
+  isPartOfTeam: state.app.isPartOfTeam
 })
 
 const mapDispatchToProps = dispatch => ({
