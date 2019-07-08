@@ -37,10 +37,10 @@ const SellerAssessmentIntroductionStage = props => (
         >
           panel categories and rates
         </a>{' '}
-        as a guide
+        as a guide.
       </li>
-      <li>which criteria you are requesting assessment in</li>
-      <li>evidence of your expertise in the criteria</li>
+      <li>which criteria you are requesting assessment in.</li>
+      <li>evidence of your expertise in the criteria.</li>
     </ul>
     {props.formButtons}
   </Form>
