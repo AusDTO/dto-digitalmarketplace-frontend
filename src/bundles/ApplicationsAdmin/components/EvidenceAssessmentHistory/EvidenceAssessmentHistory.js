@@ -13,12 +13,16 @@ class EvidenceAssessmentHistory extends React.Component {
   }
 
   getCriteriaPassedStatus(criteriaId) {
-    return !Object.keys(this.props.evidence.feedback.failed_criteria).includes(criteriaId)
+    let passed = true
+    if ('feedback' in this.props.evidence && 'failed_criteria' in this.props.evidence.feedback && Object.keys(this.props.evidence.feedback.failed_criteria).includes(criteriaId)) {
+      passed = false
+    }
+    return passed
   }
 
   getFeedbackForCriteria(criteriaId) {
     let feedback = {}
-    if (criteriaId in this.props.evidence.feedback.failed_criteria) {
+    if ('feedback' in this.props.evidence && 'failed_criteria' in this.props.evidence.feedback && criteriaId in this.props.evidence.feedback.failed_criteria) {
       feedback = this.props.evidence.feedback.failed_criteria[criteriaId]
     }
     return feedback
@@ -54,9 +58,11 @@ class EvidenceAssessmentHistory extends React.Component {
             {evidence.supplierName} (code: {evidence.supplierCode})
           </span>
           <h1 className="au-display-xl">Previous {evidence.domainName} assessment</h1>
-          <p styleName="largerText">
-            <strong>Assessed by:</strong> {evidence.assessor}
-          </p>
+          {evidence.assessor && (
+            <p styleName="largerText">
+              <strong>Assessed by:</strong> {evidence.assessor}
+            </p>
+          )}
           {Object.keys(evidence.evidence).map(criteriaId => (
             <React.Fragment key={criteriaId}>
               <p>
@@ -89,7 +95,7 @@ class EvidenceAssessmentHistory extends React.Component {
               )}
             </React.Fragment>
           ))}
-          {'vfm' in evidence.feedback && (
+          {'feedback' in evidence && 'vfm' in evidence.feedback && (
             <React.Fragment>
               <p>
                 <strong>Does the submitted rate represent VFM?</strong>
