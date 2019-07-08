@@ -13,7 +13,7 @@ import { rootPath } from '../../routes'
 
 const model = 'team'
 
-export class TeamFlowPage extends Component {
+export class CreateTeamFlowPage extends Component {
   constructor(props) {
     super(props)
 
@@ -119,4 +119,4 @@ const mapDispatchToProps = dispatch => ({
   saveTeam: team => dispatch(saveTeam(team))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(TeamFlowPage)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateTeamFlowPage)
