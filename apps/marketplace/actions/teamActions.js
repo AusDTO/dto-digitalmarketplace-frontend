@@ -128,7 +128,7 @@ export const loadBuyerTeams = (endpoint = '/teams') => dispatch => {
   })
 }
 
-export const loadBuyerTeamMembers = (endpoint = '/dashboard/team/overview') => dispatch => {
+export const loadBuyerTeamMembers = (endpoint = '/people') => dispatch => {
   dispatch(sendingRequest(true))
   dmapi({ url: endpoint }).then(response => {
     if (!response || response.error) {

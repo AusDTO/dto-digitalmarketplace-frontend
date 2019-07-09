@@ -10,7 +10,8 @@ const defaultState = {
   organisation: '',
   teamsOverview: {
     teams: {}
-  }
+  },
+  users: []
 }
 
 const teamsDashboardReducer = (state = defaultState, action) => {
@@ -18,8 +19,8 @@ const teamsDashboardReducer = (state = defaultState, action) => {
     case BUYER_TEAM_MEMBERS_SUCCESS:
       return {
         ...state,
-        buyerTeamMembers: action.data,
-        loadBuyerTeamMembersErrored: false
+        loadBuyerTeamMembersErrored: false,
+        users: [...action.data.users]
       }
     case SET_ERROR_MESSAGE:
       return {
