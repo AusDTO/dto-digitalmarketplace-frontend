@@ -298,7 +298,6 @@ ProgressFlow.defaultProps = {
   onStageMount: () => {},
   returnPath: '',
   previewPath: '',
-  hasPermissionToPublish: true,
   publishText: 'Publish',
   startText: 'Start now',
   confirmationText: 'I understand that this opportunity will be published on the Digital Marketplace',
@@ -306,7 +305,8 @@ ProgressFlow.defaultProps = {
   showReviewButton: true,
   showConfirmationCheckbox: true,
   meta: {},
-  continueText: 'Save & continue'
+  continueText: 'Save & continue',
+  hasPermissionToPublish: true
 }
 
 ProgressFlow.propTypes = {
@@ -317,7 +317,6 @@ ProgressFlow.propTypes = {
   previewPath: PropTypes.string,
   saveModel: PropTypes.func,
   onStageMount: PropTypes.func,
-  hasPermissionToPublish: PropTypes.bool,
   showReturnButton: PropTypes.bool,
   showReviewButton: PropTypes.bool,
   showConfirmationCheckbox: PropTypes.bool,
@@ -325,7 +324,8 @@ ProgressFlow.propTypes = {
   confirmationText: PropTypes.string,
   meta: PropTypes.object,
   continueText: PropTypes.string,
-  startText: PropTypes.string
+  startText: PropTypes.string,
+  hasPermissionToPublish: PropTypes.bool
 }
 
 const mapStateToProps = (state, props) => ({

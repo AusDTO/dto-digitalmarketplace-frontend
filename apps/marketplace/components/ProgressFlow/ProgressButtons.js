@@ -100,8 +100,8 @@ ProgressButtons.propTypes = {
   onReturn: PropTypes.func,
   onConfirmationClick: PropTypes.func,
   showReturnButton: PropTypes.bool,
-  showConfirmationCheckbox: PropTypes.bool,
   showReviewButton: PropTypes.bool,
+  showConfirmationCheckbox: PropTypes.bool,
   hasPermissionToPublish: PropTypes.bool
 }
 
