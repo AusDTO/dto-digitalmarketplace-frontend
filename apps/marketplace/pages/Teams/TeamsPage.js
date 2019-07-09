@@ -6,13 +6,13 @@ import { rootPath } from 'marketplace/routes'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 
 import AUbutton from '@gov.au/buttons'
-import PageHeader from '../components/PageHeader/PageHeader'
-import PageNavigation from '../components/PageNavigation/PageNavigation'
-import PeopleOverview from '../components/Teams/PeopleOverview'
-import TeamsOverview from '../components/Teams/TeamsOverview'
+import PageHeader from '../../components/PageHeader/PageHeader'
+import PageNavigation from '../../components/PageNavigation/PageNavigation'
+import PeopleOverview from '../../components/Teams/PeopleOverview'
+import TeamsOverview from '../../components/Teams/TeamsOverview'
 
 const TeamsPage = props => {
-  const { errorMessage, organisation } = props
+  const { errorMessage, organisation, showCreateTeamButton } = props
 
   const createTeamButton = (
     <AUbutton as="secondary" href={`${rootPath}/team/create`} key="Create a team">
@@ -21,9 +21,11 @@ const TeamsPage = props => {
   )
 
   const navLinks = [
-    { exact: true, id: 'teams-link', text: 'Teams', to: '/' },
+    { exact: false, id: 'teams-link', text: 'Teams', to: '/teams' },
     { exact: false, id: 'people-link', text: 'People', to: '/people' }
   ]
+
+  const pageHeaderActions = showCreateTeamButton ? [createTeamButton] : []
 
   let hasFocused = false
   const setFocus = e => {
@@ -34,7 +36,7 @@ const TeamsPage = props => {
   }
 
   return (
-    <BrowserRouter basename={`${rootPath}/teams`}>
+    <BrowserRouter basename={`${rootPath}/`}>
       <div>
         {errorMessage && (
           <ErrorBoxComponent
@@ -45,11 +47,11 @@ const TeamsPage = props => {
             invalidFields={[]}
           />
         )}
-        <PageHeader actions={[createTeamButton]} organisation={organisation} title="Teams and people" />
+        <PageHeader actions={pageHeaderActions} organisation={organisation} title="Teams and people" />
         <PageNavigation links={navLinks} />
         <div>
           <Switch>
-            <Route exact path="/" render={() => <TeamsOverview createTeamButton={createTeamButton} {...props} />} />
+            <Route path="/teams" render={() => <TeamsOverview createTeamButton={createTeamButton} {...props} />} />
             <Route path="/people" render={() => <PeopleOverview {...props} />} />
           </Switch>
         </div>
@@ -60,7 +62,8 @@ const TeamsPage = props => {
 
 const mapStateToProps = state => ({
   errorMessage: state.app.errorMessage,
-  organisation: state.teamsDashboard.organisation
+  organisation: state.teamsDashboard.organisation,
+  showCreateTeamButton: state.teamsDashboard.showCreateTeamButton
 })
 
 export default withRouter(connect(mapStateToProps)(TeamsPage))

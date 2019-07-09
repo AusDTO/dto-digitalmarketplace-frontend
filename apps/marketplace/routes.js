@@ -28,11 +28,11 @@ import BriefOutcomeChoicePage from './pages/BriefOutcomeChoicePage'
 import EditTeamFlowPage from './pages/Teams/EditTeamFlowPage'
 import OpportunityPage from './pages/OpportunityPage'
 import CreateTeamFlowPage from './pages/Teams/CreateTeamFlowPage'
-import TeamsPage from './pages/TeamsPage'
 import SellerAssessmentFlowPage from './pages/SellerAssessmentFlowPage'
 import SellerAssessmentCreatePage from './pages/SellerAssessmentCreatePage'
 import SellerAssessmentCompletedPage from './pages/SellerAssessmentCompletedPage'
 import SellerAssessmentFeedbackPage from './pages/SellerAssessmentFeedbackPage'
+import TeamsPage from './pages/Teams/TeamsPage'
 import SellerEditFlowPage from './pages/SellerEditFlowPage'
 import BuyerAwardSellerPage from './pages/BuyerAwardSellerPage'
 import AskQuestionPage from './pages/AskQuestionPage'
@@ -92,6 +92,7 @@ export const Routes = () => (
     />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/create`} component={BuyerATMCreatePage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/:briefId/:stage?`} component={BuyerATMFlowPage} />
+    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/(teams|people)`} component={TeamsPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/create`} component={CreateTeamPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/edit/:teamId/:stage?`} component={EditTeamFlowPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/:teamId/:stage?`} component={CreateTeamFlowPage} />
@@ -111,7 +112,6 @@ export const Routes = () => (
       component={BuyerSpecialistFlowPage}
     />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/outcome-choice`} component={BriefOutcomeChoicePage} />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/teams`} component={TeamsPage} />
     <PrivateRoute
       restrictedTo="supplier"
       path={`${rootPath}/seller-assessment/:evidenceId/completed`}
