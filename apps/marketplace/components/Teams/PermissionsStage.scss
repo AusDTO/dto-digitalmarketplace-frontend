@@ -17,7 +17,19 @@
         width: 25%;
     }
 
+    .permissionsColumn {
+        text-align: center;
+    }
+
     .permissionsTableCheckbox {
         top: -0.325rem;
+
+        input {
+            left: 1rem;
+        }
+
+        span::before, span::after {
+            margin: 0 17%;
+        }
     }
 }
