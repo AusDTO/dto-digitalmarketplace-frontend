@@ -255,35 +255,31 @@ export class ProgressFlow extends Component {
                         setCurrentStage={this.setCurrentStage}
                         saveModel={this.props.saveModel}
                         component={stage.component}
+                        stagesTodo={this.getTodoStages()}
+                        onSubmit={this.handleFormSubmit}
+                        onSubmitFailed={handleFormSubmitFailed}
+                        onStageMount={this.props.onStageMount}
                         formButtons={
                           stage.actions || (
                             <ProgressButtons
-                              confirmationText={this.props.confirmationText}
-                              continueText={this.props.progressButtons.continueText}
-                              isFirstStage={this.isFirstStage(stage.slug)}
                               isLastStage={this.isLastStage(stage.slug)}
-                              onConfirmationClick={this.handleConfirmationClick}
-                              onPreview={this.handlePreview}
-                              onPublish={this.handlePublish}
-                              onReturn={this.handleReturn}
+                              isFirstStage={this.isFirstStage(stage.slug)}
                               publishEnabled={this.allStagesDone()}
-                              publishText={this.props.progressButtons.publishText}
-                              showConfirmationCheckbox={this.props.progressButtons.showConfirmationCheckbox}
+                              onPublish={this.handlePublish}
+                              onPreview={this.handlePreview}
+                              onReturn={this.handleReturn}
+                              onConfirmationClick={this.handleConfirmationClick}
                               showReturnButton={this.props.showReturnButton}
                               showReviewButton={this.props.progressButtons.showReviewButton}
+                              publishText={this.props.progressButtons.publishText}
+                              showConfirmationCheckbox={this.props.progressButtons.showConfirmationCheckbox}
+                              confirmationText={this.props.confirmationText}
+                              continueText={this.props.progressButtons.continueText}
                               startText={this.props.progressButtons.startText}
                               hasPermissionToPublish={this.props.hasPermissionToPublish}
                             />
                           )
                         }
-                        model={this.props.model}
-                        onStageMount={this.props.onStageMount}
-                        onSubmit={this.handleFormSubmit}
-                        onSubmitFailed={handleFormSubmitFailed}
-                        saveModel={this.props.saveModel}
-                        setCurrentStage={this.setCurrentStage}
-                        stage={stage.slug}
-                        stagesTodo={this.getTodoStages()}
                       />
                     </div>
                   )}
@@ -298,11 +294,11 @@ export class ProgressFlow extends Component {
 
 ProgressFlow.defaultProps = {
   basename: '',
+  saveModel: () => {},
   onStageMount: () => {},
+  returnPath: '',
   previewPath: '',
   progressButtons: {},
-  returnPath: '',
-  saveModel: () => {},
   hasPermissionToPublish: true,
   publishText: 'Publish',
   startText: 'Start now',
@@ -315,13 +311,13 @@ ProgressFlow.defaultProps = {
 
 ProgressFlow.propTypes = {
   basename: PropTypes.string,
+  stages: PropTypes.array.isRequired,
   model: PropTypes.string.isRequired,
-  onStageMount: PropTypes.func,
+  returnPath: PropTypes.string,
   previewPath: PropTypes.string,
   progressButtons: PropTypes.object,
-  returnPath: PropTypes.string,
   saveModel: PropTypes.func,
-  stages: PropTypes.array.isRequired,
+  onStageMount: PropTypes.func,
   hasPermissionToPublish: PropTypes.bool,
   showReturnButton: PropTypes.bool,
   showReviewButton: PropTypes.bool,

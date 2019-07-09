@@ -70,39 +70,39 @@ const ProgressButtons = props => (
 )
 
 ProgressButtons.defaultProps = {
+  startText: 'Start now',
   confirmationText: 'I understand that this opportunity will be published on the Digital Marketplace',
   continueText: 'Save and continue',
+  previewText: 'Review',
+  publishText: 'Publish',
+  returnText: 'Return to overview',
+  publishEnabled: false,
   onPublish: () => {},
   onPreview: () => {},
   onReturn: () => {},
   onConfirmationClick: () => {},
-  previewText: 'Review',
-  publishEnabled: false,
-  publishText: 'Publish',
-  returnText: 'Return to overview',
   showReturnButton: true,
   showReviewButton: true,
   showConfirmationCheckbox: true,
-  startText: 'Start now',
   hasPermissionToPublish: true
 }
 
 ProgressButtons.propTypes = {
-  confirmationText: PropTypes.string,
+  startText: PropTypes.string,
   continueText: PropTypes.string,
   publishText: PropTypes.string,
   returnText: PropTypes.string,
+  confirmationText: PropTypes.string,
   isLastStage: PropTypes.bool.isRequired,
   isFirstStage: PropTypes.bool.isRequired,
-  onConfirmationClick: PropTypes.func,
+  publishEnabled: PropTypes.bool,
   onPublish: PropTypes.func,
   onReturn: PropTypes.func,
-  publishEnabled: PropTypes.bool,
+  onConfirmationClick: PropTypes.func,
+  showReturnButton: PropTypes.bool,
   showConfirmationCheckbox: PropTypes.bool,
   showReviewButton: PropTypes.bool,
-  startText: PropTypes.string,
-  hasPermissionToPublish: PropTypes.bool,
-  showReturnButton: PropTypes.bool
+  hasPermissionToPublish: PropTypes.bool
 }
 
 export default ProgressButtons
