@@ -39,6 +39,7 @@ export class PeopleOverview extends Component {
               <tr>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
+                <th scope="col">Team</th>
               </tr>
             </thead>
             <tbody>
@@ -48,6 +49,7 @@ export class PeopleOverview extends Component {
                   <td>
                     <a href={`mailto:${user.emailAddress}`}>{user.emailAddress}</a>
                   </td>
+                  <td>{user.teamName}</td>
                 </tr>
               ))}
             </tbody>
