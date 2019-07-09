@@ -8,7 +8,8 @@ const ProgressButtons = props => (
   <div className={styles.container}>
     {props.showConfirmationCheckbox &&
       props.isLastStage &&
-      !props.isFirstStage && (
+      !props.isFirstStage &&
+      props.hasPermissionToPublish && (
         <p>
           <span>
             <AUcheckbox
@@ -38,16 +39,18 @@ const ProgressButtons = props => (
                 {props.previewText}
               </AUbutton>
             )}
-            <AUbutton
-              type="submit"
-              disabled={!props.publishEnabled}
-              onClick={e => {
-                e.preventDefault()
-                props.onPublish()
-              }}
-            >
-              {props.publishText}
-            </AUbutton>
+            {props.hasPermissionToPublish && (
+              <AUbutton
+                type="submit"
+                disabled={!props.publishEnabled}
+                onClick={e => {
+                  e.preventDefault()
+                  props.onPublish()
+                }}
+              >
+                {props.publishText}
+              </AUbutton>
+            )}
           </span>
         )}
       {!props.isFirstStage && !props.isLastStage && <AUbutton type="submit">{props.continueText}</AUbutton>}
@@ -80,7 +83,11 @@ ProgressButtons.defaultProps = {
   showReturnText: true,
   showReviewButton: true,
   showConfirmationCheckbox: true,
-  startText: 'Start now'
+  startText: 'Start now',
+  isPartOfTeam: false,
+  isTeamLead: true,
+  teams: [],
+  hasPermissionToPublish: true
 }
 
 ProgressButtons.propTypes = {
@@ -97,7 +104,8 @@ ProgressButtons.propTypes = {
   showConfirmationCheckbox: PropTypes.bool,
   showReturnText: PropTypes.bool,
   showReviewButton: PropTypes.bool,
-  startText: PropTypes.string
+  startText: PropTypes.string,
+  hasPermissionToPublish: PropTypes.bool
 }
 
 export default ProgressButtons

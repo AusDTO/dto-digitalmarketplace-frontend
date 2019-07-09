@@ -266,6 +266,7 @@ export class ProgressFlow extends Component {
                             showReturnText={this.props.progressButtons.showReturnText}
                             showReviewButton={this.props.progressButtons.showReviewButton}
                             startText={this.props.progressButtons.startText}
+                            hasPermissionToPublish={this.props.hasPermissionToPublish}
                           />
                         }
                         model={this.props.model}
@@ -294,7 +295,8 @@ ProgressFlow.defaultProps = {
   previewPath: '',
   progressButtons: {},
   returnPath: '',
-  saveModel: () => {}
+  saveModel: () => {},
+  hasPermissionToPublish: true
 }
 
 ProgressFlow.propTypes = {
@@ -305,7 +307,8 @@ ProgressFlow.propTypes = {
   progressButtons: PropTypes.object,
   returnPath: PropTypes.string,
   saveModel: PropTypes.func,
-  stages: PropTypes.array.isRequired
+  stages: PropTypes.array.isRequired,
+  hasPermissionToPublish: PropTypes.bool
 }
 
 const mapStateToProps = (state, props) => ({

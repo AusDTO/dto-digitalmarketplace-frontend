@@ -11,6 +11,7 @@ import { loadPublicBrief, saveBrief } from 'marketplace/actions/briefActions'
 import { setErrorMessage } from 'marketplace/actions/appActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { BuyerATMFormReducer } from 'marketplace/reducers'
+import { hasPermission } from 'marketplace/components/helpers'
 
 const model = 'BuyerATMForm'
 
@@ -126,6 +127,12 @@ export class BuyerATMFlowPage extends Component {
         saveModel={this.saveBrief}
         returnPath={`${rootPath}/brief/${briefId}/overview/atm`}
         previewPath={`${rootPath}/digital-marketplace/opportunities/${briefId}`}
+        hasPermissionToPublish={hasPermission(
+          this.props.isPartOfTeam,
+          this.props.isTeamLead,
+          this.props.teams,
+          'publish_opportunities'
+        )}
       />
     )
   }
@@ -135,7 +142,10 @@ const mapStateToProps = state => ({
   ...formProps(state, model),
   csrfToken: state.app.csrfToken,
   errorMessage: state.app.errorMessage,
-  emailAddress: state.app.emailAddress
+  emailAddress: state.app.emailAddress,
+  teams: state.app.teams,
+  isTeamLead: state.app.isTeamLead,
+  isPartOfTeam: state.app.isPartOfTeam
 })
 
 const mapDispatchToProps = dispatch => ({
