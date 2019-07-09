@@ -93,7 +93,7 @@ export const Routes = () => (
       component={BuyerSpecialistFlowPage}
     />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/outcome-choice`} component={BriefOutcomeChoicePage} />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/teams`} component={TeamsPage} />
+    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/(teams|people)`} component={TeamsPage} />
     <Route component={NotFound} />
   </Switch>
 )
