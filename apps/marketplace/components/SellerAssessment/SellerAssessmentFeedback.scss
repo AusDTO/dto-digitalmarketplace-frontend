@@ -1,0 +1,35 @@
+ul.feedbackList {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 1.5rem;
+  max-width: 42em;
+
+  ol {
+    padding-left: 3rem;
+  }
+
+  li {
+    margin-bottom: 1.5rem;
+  }
+
+  .feedbackFlex {
+    display: flex;
+  }
+
+  .iconBlock {
+    display: inline-block;
+  }
+
+  .icon {
+    margin-right: 0.75rem;
+    vertical-align: middle;
+  }
+}
+
+.criteriaReview {
+  margin-top: 1.5rem;
+  margin-left: 3rem;
+  padding-left: 1.5rem;
+  display: block;
+  border-left: solid 10px #FF0000;
+}

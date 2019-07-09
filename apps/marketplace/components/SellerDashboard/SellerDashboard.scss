@@ -66,20 +66,21 @@ table.resultListing .colEmail {
 }
 
 table.resultListing .colService {
-  width: 600px;
-}
-
-table.resultListing .colAssessmentCriteria {
-  width: 250px;
-}
-
-table.resultListing .colAssessmentCriteria a {
-  margin-right: 15px;
-  white-space: nowrap;
+  width: 400px;
+  padding-left: 20px;
 }
 
 table.resultListing .colStatus {
-  width: 250px;
+  width: 150px;
+}
+
+table.resultListing .colAssessmentAction {
+  width: 550px;
+}
+
+table.resultListing .colAssessmentAction a {
+  margin-right: 15px;
+  white-space: nowrap;
 }
 
 table.resultListing td, table.resultListing th {
@@ -127,7 +128,7 @@ table.resultListing td, table.resultListing th {
     padding: 5px;
   }
 
-  table.resultListing .colName, table.resultListing .colEmail, table.resultListing .colMessage, table.resultListing .colAction, table.resultListing .colStatus {
+  table.resultListing .colName, table.resultListing .colService, table.resultListing .colEmail, table.resultListing .colMessage, table.resultListing .colAction, table.resultListing .colStatus {
     width: auto;
     padding-left: 5px;
   }
@@ -150,24 +151,25 @@ table.resultListing td, table.resultListing th {
 
 .badge {
   border-radius: 3px;
-  border: solid 2px #0A6FB6;
+  border: solid 3px #0A6FB6;
   color: #0A6FB6;
   padding: 2px 5px;
   width: fit-content;
+  display: inline-block;
 }
 
 .badge.approved {
-  border: solid 2px rgba(0, 128, 0, 1);
+  border: solid 3px rgba(0, 128, 0, 1);
   color: rgba(0, 128, 0, 1);
 }
 
 .badge.rejected {
-  border: solid 2px #FF0000;
+  border: solid 3px #FF0000;
   color: #FF0000;
 }
 
-.badge.requested {
-  border: solid 2px rgba(204, 204, 204, 1);
+.badge.submitted {
+  border: solid 3px rgba(54, 108, 148, 1);
   color: black;
 }
 

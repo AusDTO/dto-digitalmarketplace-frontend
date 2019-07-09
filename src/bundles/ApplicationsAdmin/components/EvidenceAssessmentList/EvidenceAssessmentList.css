@@ -1,0 +1,29 @@
+.evidenceList table {
+  margin-left: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.evidenceList tr {
+  line-height: 2.5rem;
+}
+
+.evidenceList td, .evidenceList th {
+  padding: 0.1rem 0 0.1rem 0;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.evidenceList th {
+  text-align: left
+}
+
+.evidenceList table a.application {
+  margin: 0 0.1rem;
+  padding: 0.5rem 0.5rem;
+  border: none;
+  text-overflow: ellipsis;
+  width: 500px;
+  display: block;
+  overflow: hidden;
+}

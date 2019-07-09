@@ -8,16 +8,18 @@ class Textarea extends Component {
   static defaultProps = {
     onChange: () => {},
     onBlur: () => {},
-    onFocus: () => {}
+    onFocus: () => {},
+    onCustomChange: () => {}
   }
 
   constructor(props) {
     super(props)
-    const { value = '', limit = 0 } = props
+    const { value = '', limit = 0, minimum = 0 } = props
     const words = this.countWords(value)
 
     this.state = {
-      wordsLeft: limit - words
+      wordsLeft: limit - words,
+      wordsToGo: minimum - words
     }
   }
 
@@ -29,11 +31,13 @@ class Textarea extends Component {
   onChange(e) {
     const content = e.target.value
     const words = this.countWords(content)
-    const { limit, onChange } = this.props
+    const { limit, minimum, onChange, onCustomChange } = this.props
     this.setState({
-      wordsLeft: limit - words
+      wordsLeft: limit - words,
+      wordsToGo: minimum - words
     })
     onChange(content)
+    onCustomChange(content)
   }
 
   limitText(counter: number, wordsLeft: number) {
@@ -51,13 +55,51 @@ class Textarea extends Component {
     return `${counter} ${words} ${affix}`
   }
 
+  toGoText(counter, wordsToGo) {
+    let words = 'words'
+    let affix = 'to go'
+
+    if (counter === 1 || counter === -1) {
+      words = 'word'
+    }
+
+    if (counter <= 0) {
+      words = ''
+      counter = ''
+    }
+
+    if (wordsToGo <= 0) {
+      affix = ''
+    }
+
+    return `${counter} ${words} ${affix}`
+  }
+
   render() {
-    let { value, limit, name, id, onBlur, onFocus, className = '', describedby, hint, rows } = this.props
-    let { wordsLeft } = this.state
+    let {
+      value,
+      limit,
+      minimum,
+      name,
+      id,
+      onBlur,
+      onFocus,
+      className = '',
+      describedby,
+      hint,
+      rows,
+      disabled
+    } = this.props
+    let { wordsLeft, wordsToGo } = this.state
 
     let counter = wordsLeft
     if (counter < 0) {
       counter *= -1
+    }
+
+    let toGoCounter = wordsToGo
+    if (toGoCounter < 0) {
+      toGoCounter = 0
     }
 
     if (limit) {
@@ -81,13 +123,17 @@ class Textarea extends Component {
           aria-describedby={describedby}
           onChange={this.onChange.bind(this)}
           rows={rows}
+          disabled={disabled}
         />
-        {limit ? (
+        {limit && (
           <span className={`word-count-counter ${styles.wordCount}`} aria-live="polite">
             {this.limitText(counter, wordsLeft)}
           </span>
-        ) : (
-          ''
+        )}
+        {minimum && (
+          <span className={`word-count-counter ${styles.wordCount}`} aria-live="polite">
+            {this.toGoText(toGoCounter, wordsToGo)}
+          </span>
         )}
       </div>
     )

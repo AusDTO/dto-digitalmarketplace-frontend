@@ -105,7 +105,7 @@ Textfield.propTypes = {
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
   type: PropTypes.string,
-  defaultValue: PropTypes.string,
+  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   placeholder: PropTypes.string,
   step: PropTypes.string,
   className: PropTypes.string,
