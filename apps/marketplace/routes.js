@@ -28,7 +28,7 @@ import BriefOutcomeChoicePage from './pages/BriefOutcomeChoicePage'
 import EditTeamFlowPage from './pages/Teams/EditTeamFlowPage'
 import OpportunityPage from './pages/OpportunityPage'
 import CreateTeamFlowPage from './pages/Teams/CreateTeamFlowPage'
-import TeamsPage from './pages/TeamsPage'
+import TeamsPage from './pages/Teams/TeamsPage'
 import SellerEditFlowPage from './pages/SellerEditFlowPage'
 import BuyerAwardSellerPage from './pages/BuyerAwardSellerPage'
 
