@@ -54,7 +54,7 @@ const ProgressButtons = props => (
           </span>
         )}
       {!props.isFirstStage && !props.isLastStage && <AUbutton type="submit">{props.continueText}</AUbutton>}
-      {props.showReturnText && (
+      {props.showReturnButton && (
         <AUbutton
           as="tertiary"
           onClick={e => {
@@ -80,32 +80,29 @@ ProgressButtons.defaultProps = {
   publishEnabled: false,
   publishText: 'Publish',
   returnText: 'Return to overview',
-  showReturnText: true,
+  showReturnButton: true,
   showReviewButton: true,
   showConfirmationCheckbox: true,
   startText: 'Start now',
-  isPartOfTeam: false,
-  isTeamLead: true,
-  teams: [],
   hasPermissionToPublish: true
 }
 
 ProgressButtons.propTypes = {
   confirmationText: PropTypes.string,
   continueText: PropTypes.string,
-  isFirstStage: PropTypes.bool.isRequired,
+  publishText: PropTypes.string,
+  returnText: PropTypes.string,
   isLastStage: PropTypes.bool.isRequired,
+  isFirstStage: PropTypes.bool.isRequired,
   onConfirmationClick: PropTypes.func,
   onPublish: PropTypes.func,
   onReturn: PropTypes.func,
   publishEnabled: PropTypes.bool,
-  publishText: PropTypes.string,
-  returnText: PropTypes.string,
   showConfirmationCheckbox: PropTypes.bool,
-  showReturnText: PropTypes.bool,
   showReviewButton: PropTypes.bool,
   startText: PropTypes.string,
-  hasPermissionToPublish: PropTypes.bool
+  hasPermissionToPublish: PropTypes.bool,
+  showReturnButton: PropTypes.bool
 }
 
 export default ProgressButtons

@@ -89,7 +89,10 @@ class OpportunityPage extends Component {
           canRespond={this.props.canRespond}
           isAssessedForCategory={this.props.isAssessedForCategory}
           isAssessedForAnyCategory={this.props.isAssessedForAnyCategory}
-          hasChosenBriefCategory={this.props.hasChosenBriefCategory}
+          hasEvidenceInDraftForCategory={this.props.hasEvidenceInDraftForCategory}
+          hasLatestEvidenceRejectedForCategory={this.props.hasLatestEvidenceRejectedForCategory}
+          draftEvidenceId={this.props.draftEvidenceId}
+          rejectedEvidenceId={this.props.rejectedEvidenceId}
           isOpenToCategory={this.props.isOpenToCategory}
           isOpenToAll={this.props.isOpenToAll}
           isBriefOwner={this.props.isBriefOwner}
@@ -124,7 +127,10 @@ const mapResetStateToProps = state => ({
   canRespond: state.brief.canRespond,
   isAssessedForCategory: state.brief.isAssessedForCategory,
   isAssessedForAnyCategory: state.brief.isAssessedForAnyCategory,
-  hasChosenBriefCategory: state.brief.hasChosenBriefCategory,
+  hasEvidenceInDraftForCategory: state.brief.hasEvidenceInDraftForCategory,
+  hasLatestEvidenceRejectedForCategory: state.brief.hasLatestEvidenceRejectedForCategory,
+  draftEvidenceId: state.brief.draftEvidenceId,
+  rejectedEvidenceId: state.brief.rejectedEvidenceId,
   isOpenToCategory: state.brief.isOpenToCategory,
   isOpenToAll: state.brief.isOpenToAll,
   isBriefOwner: state.brief.isBriefOwner,

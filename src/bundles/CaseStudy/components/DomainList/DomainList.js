@@ -131,6 +131,12 @@ class DomainList extends BaseForm {
       let header = (<header styleName="styles.content">
         <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'case-study' && type === 'edit'} />
         <h1 className="au-display-xl" styleName="styles.content-heading" tabIndex="-1">{title}</h1>
+        <div class="au-body au-page-alerts au-page-alerts--warning">
+          <h3>Important change coming!</h3>
+          <p>We are making changes to the way you request assessment and approval for categories.</p>
+          <p>From 15 July 2019 instead of being assessed through case studies, you must prove your ability against individual criteria based on your previous work.</p>
+        </div>
+        <br />
         <p>
           Your case studies are important for more than meeting our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>.<br/>
           They become part of your seller profile, so think of them as the beginning of your conversation
@@ -142,6 +148,12 @@ class DomainList extends BaseForm {
         header = (<header styleName="styles.content">
           <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'case-study' && type === 'edit'} />
           <h1 className="au-display-xl" styleName="styles.content-heading" tabIndex="-1">{title}</h1>
+          <div class="au-body au-page-alerts au-page-alerts--warning">
+            <h3>Important change coming!</h3>
+            <p>We are making changes to the way you request assessment and approval for categories.</p>
+            <p>From 15 July 2019 instead of being assessed through case studies, you must prove your ability against individual criteria based on your previous work.</p>
+          </div>
+          <br />
           <p>Case studies are important for showing you meet our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a> for any new
             services you wish to offer.</p>
           <p> But they are also much more. Think of them as the beginning of a

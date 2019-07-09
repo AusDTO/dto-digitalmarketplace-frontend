@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import Layout         from '../../../../shared/Layout';
 import BaseForm       from '../../../../shared/form/BaseForm';
 import ErrorBox       from '../../../../shared/form/ErrorBox';
+import SubmitForm   from '../../../../shared/form/SubmitForm';
 import StatefulError  from '../../../../shared/form/StatefulError';
 import formProps      from '../../../../shared/reduxModules/formPropsSelector';
 import StepNav        from '../StepNav';
@@ -103,7 +104,9 @@ class DomainSelector extends BaseForm {
                                     .length;
                             }
                         }}
-                        onSubmit={onSubmit}>
+                        valid={form.valid}
+                        component={SubmitForm}
+                        onCustomSubmit={onSubmit}>
 
                         {csrf_token && (
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>

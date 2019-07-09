@@ -122,10 +122,8 @@ export class SellerEditFlowPage extends Component {
         saveModel={this.save}
         returnPath={`${rootPath}/seller-dashboard`}
         previewPath={`${rootPath}/digital-marketplace/opportunities/${supplierCode}`}
-        progressButtons={{
-          startText: 'Save & continue',
-          showReturnText: false
-        }}
+        showReturnButton={false}
+        startText="Save &amp; continue"
       />
     )
   }

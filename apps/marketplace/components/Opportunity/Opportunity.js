@@ -87,7 +87,10 @@ const Opportunity = props => {
     canRespond,
     isAssessedForCategory,
     isAssessedForAnyCategory,
-    hasChosenBriefCategory,
+    hasEvidenceInDraftForCategory,
+    hasLatestEvidenceRejectedForCategory,
+    draftEvidenceId,
+    rejectedEvidenceId,
     isOpenToAll,
     isOpenToCategory,
     isBriefOwner,
@@ -562,7 +565,10 @@ const Opportunity = props => {
               isInvited={isInvited}
               isOpenToAll={isOpenToAll}
               isAssessedForCategory={isAssessedForCategory}
-              hasChosenBriefCategory={hasChosenBriefCategory}
+              hasEvidenceInDraftForCategory={hasEvidenceInDraftForCategory}
+              hasLatestEvidenceRejectedForCategory={hasLatestEvidenceRejectedForCategory}
+              draftEvidenceId={draftEvidenceId}
+              rejectedEvidenceId={rejectedEvidenceId}
               isOpenToCategory={isOpenToCategory}
               hasResponded={hasResponded}
               briefId={brief.id}
@@ -572,6 +578,7 @@ const Opportunity = props => {
               isBuyer={isBuyer}
               isApprovedSeller={isApprovedSeller}
               isApplicant={isApplicant}
+              isRecruiterOnly={isRecruiterOnly}
               isAwaitingApplicationAssessment={isAwaitingApplicationAssessment}
               isAwaitingDomainAssessment={isAwaitingDomainAssessment}
               hasBeenAssessedForBrief={hasBeenAssessedForBrief}
@@ -595,7 +602,10 @@ const Opportunity = props => {
               isOpenToAll={isOpenToAll}
               isAssessedForCategory={isAssessedForCategory}
               isAssessedForAnyCategory={isAssessedForAnyCategory}
-              hasChosenBriefCategory={hasChosenBriefCategory}
+              hasEvidenceInDraftForCategory={hasEvidenceInDraftForCategory}
+              hasLatestEvidenceRejectedForCategory={hasLatestEvidenceRejectedForCategory}
+              draftEvidenceId={draftEvidenceId}
+              rejectedEvidenceId={rejectedEvidenceId}
               isOpenToCategory={isOpenToCategory}
               hasResponded={hasResponded}
               briefId={brief.id}
@@ -633,7 +643,10 @@ Opportunity.defaultProps = {
   isInvited: false,
   isAssessedForCategory: false,
   isAssessedForAnyCategory: false,
-  hasChosenBriefCategory: false,
+  hasEvidenceInDraftForCategory: false,
+  hasLatestEvidenceRejectedForCategory: false,
+  draftEvidenceId: undefined,
+  rejectedEvidenceId: undefined,
   isOpenToCategory: false,
   isOpenToAll: false,
   isBriefOwner: false,
@@ -704,7 +717,10 @@ Opportunity.propTypes = {
   isInvited: PropTypes.bool,
   isAssessedForCategory: PropTypes.bool,
   isAssessedForAnyCategory: PropTypes.bool,
-  hasChosenBriefCategory: PropTypes.bool,
+  hasEvidenceInDraftForCategory: PropTypes.bool,
+  hasLatestEvidenceRejectedForCategory: PropTypes.bool,
+  draftEvidenceId: PropTypes.number,
+  rejectedEvidenceId: PropTypes.number,
   isOpenToCategory: PropTypes.bool,
   isOpenToAll: PropTypes.bool,
   isBriefOwner: PropTypes.bool,
