@@ -11,48 +11,52 @@ import PageNavigation from '../components/PageNavigation/PageNavigation'
 import PeopleOverview from '../components/Teams/PeopleOverview'
 import TeamsOverview from '../components/Teams/TeamsOverview'
 
-const getCreateTeamButton = () => (
-  <AUbutton as="secondary" href={`${rootPath}/teams/create/about`} key="Create a team">
-    Create a team
-  </AUbutton>
-)
+const TeamsPage = props => {
+  const { errorMessage, organisation } = props
 
-let hasFocused = false
-const setFocus = e => {
-  if (!hasFocused) {
-    hasFocused = true
-    e.focus()
+  const createTeamButton = (
+    <AUbutton as="secondary" href={`${rootPath}/team/create`} key="Create a team">
+      Create a team
+    </AUbutton>
+  )
+
+  const navLinks = [
+    { exact: true, id: 'teams-link', text: 'Teams', to: '/' },
+    { exact: false, id: 'people-link', text: 'People', to: '/people' }
+  ]
+
+  let hasFocused = false
+  const setFocus = e => {
+    if (!hasFocused) {
+      hasFocused = true
+      e.focus()
+    }
   }
-}
 
-const navLinks = [
-  { exact: true, id: 'teams-link', text: 'Teams', to: '/' },
-  { exact: false, id: 'people-link', text: 'People', to: '/people' }
-]
-
-const TeamsPage = props => (
-  <BrowserRouter basename={`${rootPath}/teams`}>
-    <div>
-      {props.errorMessage && (
-        <ErrorBoxComponent
-          title="A problem occurred loading team details"
-          errorMessage={props.errorMessage}
-          setFocus={setFocus}
-          form={{}}
-          invalidFields={[]}
-        />
-      )}
-      <PageHeader actions={[getCreateTeamButton()]} organisation={props.organisation} title="Teams and people" />
-      <PageNavigation links={navLinks} />
+  return (
+    <BrowserRouter basename={`${rootPath}/teams`}>
       <div>
-        <Switch>
-          <Route exact path="/" render={() => <TeamsOverview createTeamButton={getCreateTeamButton()} {...props} />} />
-          <Route path="/people" render={() => <PeopleOverview {...props} />} />
-        </Switch>
+        {errorMessage && (
+          <ErrorBoxComponent
+            title="A problem occurred loading team details"
+            errorMessage={errorMessage}
+            setFocus={setFocus}
+            form={{}}
+            invalidFields={[]}
+          />
+        )}
+        <PageHeader actions={[createTeamButton]} organisation={organisation} title="Teams and people" />
+        <PageNavigation links={navLinks} />
+        <div>
+          <Switch>
+            <Route exact path="/" render={() => <TeamsOverview createTeamButton={createTeamButton} {...props} />} />
+            <Route path="/people" render={() => <PeopleOverview {...props} />} />
+          </Switch>
+        </div>
       </div>
-    </div>
-  </BrowserRouter>
-)
+    </BrowserRouter>
+  )
+}
 
 const mapStateToProps = state => ({
   errorMessage: state.app.errorMessage,

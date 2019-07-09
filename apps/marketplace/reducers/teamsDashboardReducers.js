@@ -1,8 +1,16 @@
-import { BUYER_TEAM_MEMBERS_SUCCESS, SET_ERROR_MESSAGE, USER_ORGANISATION } from '../constants/constants'
+import {
+  BUYER_TEAM_MEMBERS_SUCCESS,
+  SET_ERROR_MESSAGE,
+  TEAMS_OVERVIEW_SUCCESS,
+  USER_ORGANISATION
+} from '../constants/constants'
 
 const defaultState = {
   buyerTeamMembers: { items: [] },
-  organisation: ''
+  organisation: '',
+  teamsOverview: {
+    teams: {}
+  }
 }
 
 const teamsDashboardReducer = (state = defaultState, action) => {
@@ -17,6 +25,15 @@ const teamsDashboardReducer = (state = defaultState, action) => {
       return {
         ...state,
         message: action.message
+      }
+    case TEAMS_OVERVIEW_SUCCESS:
+      return {
+        ...state,
+        organisation: action.data.organisation,
+        teamsOverview: {
+          loadedAt: new Date().valueOf(),
+          teams: { ...action.data.overview }
+        }
       }
     case USER_ORGANISATION:
       return {
