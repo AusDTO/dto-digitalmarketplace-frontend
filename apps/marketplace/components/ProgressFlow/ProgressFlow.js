@@ -270,12 +270,12 @@ export class ProgressFlow extends Component {
                               onReturn={this.handleReturn}
                               onConfirmationClick={this.handleConfirmationClick}
                               showReturnButton={this.props.showReturnButton}
-                              showReviewButton={this.props.progressButtons.showReviewButton}
-                              publishText={this.props.progressButtons.publishText}
-                              showConfirmationCheckbox={this.props.progressButtons.showConfirmationCheckbox}
+                              showReviewButton={this.props.showReviewButton}
+                              publishText={this.props.publishText}
+                              showConfirmationCheckbox={this.props.showConfirmationCheckbox}
                               confirmationText={this.props.confirmationText}
-                              continueText={this.props.progressButtons.continueText}
-                              startText={this.props.progressButtons.startText}
+                              continueText={this.props.continueText}
+                              startText={this.props.startText}
                               hasPermissionToPublish={this.props.hasPermissionToPublish}
                             />
                           )
@@ -298,7 +298,6 @@ ProgressFlow.defaultProps = {
   onStageMount: () => {},
   returnPath: '',
   previewPath: '',
-  progressButtons: {},
   hasPermissionToPublish: true,
   publishText: 'Publish',
   startText: 'Start now',
@@ -306,7 +305,8 @@ ProgressFlow.defaultProps = {
   showReturnButton: true,
   showReviewButton: true,
   showConfirmationCheckbox: true,
-  meta: {}
+  meta: {},
+  continueText: 'Save & continue'
 }
 
 ProgressFlow.propTypes = {
@@ -315,7 +315,6 @@ ProgressFlow.propTypes = {
   model: PropTypes.string.isRequired,
   returnPath: PropTypes.string,
   previewPath: PropTypes.string,
-  progressButtons: PropTypes.object,
   saveModel: PropTypes.func,
   onStageMount: PropTypes.func,
   hasPermissionToPublish: PropTypes.bool,
@@ -324,7 +323,9 @@ ProgressFlow.propTypes = {
   showConfirmationCheckbox: PropTypes.bool,
   publishText: PropTypes.string,
   confirmationText: PropTypes.string,
-  meta: PropTypes.object
+  meta: PropTypes.object,
+  continueText: PropTypes.string,
+  startText: PropTypes.string
 }
 
 const mapStateToProps = (state, props) => ({
