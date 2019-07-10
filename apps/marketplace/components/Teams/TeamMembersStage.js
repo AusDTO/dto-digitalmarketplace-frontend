@@ -15,7 +15,7 @@ import TeamMemberListItems from './TeamMemberListItems'
 import MarketplaceAlert from '../Alerts/MarketplaceAlert'
 import ItemSelect from '../ItemSelect/ItemSelect'
 
-import commonStyles from './TeamStages.scss'
+import styles from './TeamStages.scss'
 
 export class TeamMembersStage extends Component {
   constructor(props) {
@@ -176,7 +176,7 @@ export class TeamMembersStage extends Component {
       return (
         <div>
           <p>
-            Are you sure you want to change <span className={commonStyles.bold}>{name}</span> to a team lead?
+            Are you sure you want to change <span className={styles.bold}>{name}</span> to a team lead?
           </p>
           <p>They will be able to add and remove members, specify permissions and create other team leads.</p>
         </div>
@@ -189,7 +189,7 @@ export class TeamMembersStage extends Component {
       return (
         <div>
           <p>
-            Are you sure you want to remove <span className={commonStyles.bold}>{name}</span> from your team?
+            Are you sure you want to remove <span className={styles.bold}>{name}</span> from your team?
           </p>
           <p>You will become the owner of their opportunities.</p>
         </div>
