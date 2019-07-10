@@ -9,14 +9,13 @@ import formProps from 'shared/form/formPropsSelector'
 
 import ChangeToTeamLeadMessage from './ChangeToTeamLeadMessage'
 import EmptyItemSelectMessage from './EmptyItemSelectMessage'
+import RemoveTeamMemberMessage from './RemoveTeamMemberMessage'
 import TeamMemberActions from './TeamMemberActions'
 import TeamMemberNameDescription from './TeamMemberNameDescription'
 import TeamMemberListItems from './TeamMemberListItems'
 
 import MarketplaceAlert from '../Alerts/MarketplaceAlert'
 import ItemSelect from '../ItemSelect/ItemSelect'
-
-import styles from './TeamStages.scss'
 
 export class TeamMembersStage extends Component {
   constructor(props) {
@@ -170,19 +169,6 @@ export class TeamMembersStage extends Component {
         handleRemoveTeamMember={this.handleRemoveTeamMemberClick}
       />
     )
-
-    const RemoveTeamMemberMessage = props => {
-      const { name } = props
-
-      return (
-        <div>
-          <p>
-            Are you sure you want to remove <span className={styles.bold}>{name}</span> from your team?
-          </p>
-          <p>You will become the owner of their opportunities.</p>
-        </div>
-      )
-    }
 
     return (
       <Form model={model} onSubmit={onSubmit} onSubmitFailed={onSubmitFailed}>
