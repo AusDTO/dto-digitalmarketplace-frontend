@@ -7,6 +7,7 @@ import AUheading from '@gov.au/headings'
 import { findTeamMember } from 'marketplace/actions/teamActions'
 import formProps from 'shared/form/formPropsSelector'
 
+import ChangeToTeamMemberMessage from './ChangeToTeamMemberMessage'
 import EmptyItemSelectMessage from './EmptyItemSelectMessage'
 import TeamLeadActions from './TeamLeadActions'
 import TeamLeadNameDescription from './TeamLeadNameDescription'
@@ -169,19 +170,6 @@ export class TeamLeadsStage extends Component {
       />
     )
 
-    const ChangeToTeamMemberConfirmationMessage = props => {
-      const { name } = props
-
-      return (
-        <div>
-          <p>
-            Are you sure you want to change <span className={commonStyles.bold}>{name}</span> to a team member?
-          </p>
-          <p>They will no longer be able to add and remove members, specify permissions or create team leads.</p>
-        </div>
-      )
-    }
-
     const RemoveTeamLeadConfirmationMessage = props => {
       const { name } = props
 
@@ -201,7 +189,7 @@ export class TeamLeadsStage extends Component {
           <MarketplaceAlert
             cancelButtonText="Do not change"
             confirmButtonText="Yes, change to member"
-            content={<ChangeToTeamMemberConfirmationMessage name={this.state.userToConfirm.data.name} />}
+            content={<ChangeToTeamMemberMessage name={this.state.userToConfirm.data.name} />}
             handleCancelClick={this.handleCancelAction}
             handleConfirmClick={() => this.handleChangeToTeamMember(this.state.userToConfirm)}
             type="warning"
