@@ -7,6 +7,7 @@ import AUheading from '@gov.au/headings'
 import { findTeamMember } from 'marketplace/actions/teamActions'
 import formProps from 'shared/form/formPropsSelector'
 
+import ChangeToTeamLeadMessage from './ChangeToTeamLeadMessage'
 import EmptyItemSelectMessage from './EmptyItemSelectMessage'
 import TeamMemberActions from './TeamMemberActions'
 import TeamMemberNameDescription from './TeamMemberNameDescription'
@@ -169,19 +170,6 @@ export class TeamMembersStage extends Component {
         handleRemoveTeamMember={this.handleRemoveTeamMemberClick}
       />
     )
-
-    const ChangeToTeamLeadMessage = props => {
-      const { name } = props
-
-      return (
-        <div>
-          <p>
-            Are you sure you want to change <span className={styles.bold}>{name}</span> to a team lead?
-          </p>
-          <p>They will be able to add and remove members, specify permissions and create other team leads.</p>
-        </div>
-      )
-    }
 
     const RemoveTeamMemberMessage = props => {
       const { name } = props
