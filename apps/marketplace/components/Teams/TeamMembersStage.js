@@ -4,46 +4,16 @@ import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 
 import AUheading from '@gov.au/headings'
-import AUlinklist from '@gov.au/link-list/lib/js/react.js'
 import { findTeamMember } from 'marketplace/actions/teamActions'
 import formProps from 'shared/form/formPropsSelector'
 
-import MarketplaceAlert from '../Alerts/MarketplaceAlert'
-import ItemSelect from '../ItemSelect/ItemSelect'
+import TeamMemberActions from './TeamMemberActions'
 import TeamMemberListItems from './TeamMemberListItems'
 
+import MarketplaceAlert from '../Alerts/MarketplaceAlert'
+import ItemSelect from '../ItemSelect/ItemSelect'
+
 import commonStyles from './TeamStages.scss'
-import actionStyles from '../ItemSelect/SelectedItems.scss'
-
-const TeamMemberActions = props => {
-  const { handleConvertToTeamLead, handleRemoveTeamMember, id } = props
-
-  return (
-    <AUlinklist
-      className={actionStyles.selectedItemActions}
-      inline
-      items={[
-        {
-          link: '#change-to-lead',
-          onClick: e => {
-            e.preventDefault()
-            handleConvertToTeamLead(id)
-          },
-          text: 'Change to lead'
-        },
-        {
-          className: commonStyles.removeLink,
-          link: '#remove',
-          onClick: e => {
-            e.preventDefault()
-            handleRemoveTeamMember(id)
-          },
-          text: 'Remove'
-        }
-      ]}
-    />
-  )
-}
 
 const TeamMemberNameDescription = props => {
   const { domain } = props
