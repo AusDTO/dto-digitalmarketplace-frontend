@@ -255,7 +255,7 @@ export class TeamLeadsStage extends Component {
             confirmButtonText="Yes, remove"
             content={<RemoveTeamLeadConfirmationMessage name={this.state.userToConfirm.data.name} />}
             handleCancelClick={this.handleCancelAction}
-            handleConfirmClick={() => this.handleRemoveTeamLead(this.state.userToConfirm)}
+            handleConfirmClick={() => this.handleRemoveTeamLead(this.state.userToConfirm.id)}
             type="warning"
           />
         )}
