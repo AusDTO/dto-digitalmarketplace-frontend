@@ -6,7 +6,7 @@ import { actions, Form } from 'react-redux-form'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings'
 import AUlinklist from '@gov.au/link-list/lib/js/react.js'
-import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
+import MarketplaceAlert from '../Alerts/MarketplaceAlert'
 import { findTeamMember } from 'marketplace/actions/teamActions'
 import formProps from 'shared/form/formPropsSelector'
 import ItemSelect from '../ItemSelect/ItemSelect'
@@ -14,17 +14,6 @@ import TeamMemberListItems from './TeamMemberListItems'
 
 import commonStyles from './TeamStages.scss'
 import actionStyles from '../ItemSelect/SelectedItems.scss'
-
-const MarketplaceAlert = props => {
-  const { alertActions, content, type } = props
-
-  return (
-    <AUpageAlert as={type}>
-      {content}
-      <div className={commonStyles.alertActionsContainer}>{alertActions}</div>
-    </AUpageAlert>
-  )
-}
 
 const TeamLeadActions = props => {
   const { handleConvertToTeamMember, handleRemoveTeamLead, id } = props
@@ -285,7 +274,7 @@ export class TeamLeadsStage extends Component {
       <Form model={model} onSubmit={onSubmit} onSubmitFailed={onSubmitFailed}>
         {this.state.confirmChangeToTeamMember && (
           <MarketplaceAlert
-            alertActions={
+            actions={
               <ChangeToTeamMemberActions
                 handleCancelChangeToTeamMember={this.handleCancelChangeToTeamMember}
                 handleChangeToTeamMember={this.handleChangeToTeamMember}
@@ -298,7 +287,7 @@ export class TeamLeadsStage extends Component {
         )}
         {this.state.confirmTeamLeadRemoval && (
           <MarketplaceAlert
-            alertActions={
+            actions={
               <RemoveTeamLeadConfirmationActions
                 handleCancelRemoveTeamLead={this.handleCancelRemoveTeamLead}
                 handleRemoveTeamLead={this.handleRemoveTeamLead}
