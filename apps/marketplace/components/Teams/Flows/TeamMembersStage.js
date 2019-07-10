@@ -14,7 +14,7 @@ import TeamMemberActions from './TeamMemberActions'
 import TeamMemberNameDescription from './TeamMemberNameDescription'
 import TeamMemberListItems from './TeamMemberListItems'
 
-import MarketplaceAlert from '../../Alerts/MarketplaceAlert'
+import ConfirmActionAlert from '../../Alerts/ConfirmActionAlert'
 import ItemSelect from '../../ItemSelect/ItemSelect'
 
 export class TeamMembersStage extends Component {
@@ -173,7 +173,7 @@ export class TeamMembersStage extends Component {
     return (
       <Form model={model} onSubmit={onSubmit} onSubmitFailed={onSubmitFailed}>
         {this.state.confirmChangeToTeamLead && (
-          <MarketplaceAlert
+          <ConfirmActionAlert
             cancelButtonText="Do not change"
             confirmButtonText="Yes, change to team lead"
             content={<ChangeToTeamLeadMessage name={this.state.userToConfirm.data.name} />}
@@ -183,7 +183,7 @@ export class TeamMembersStage extends Component {
           />
         )}
         {this.state.confirmTeamMemberRemoval && (
-          <MarketplaceAlert
+          <ConfirmActionAlert
             cancelButtonText="Do not remove"
             confirmButtonText="Yes, remove"
             content={<RemoveTeamMemberMessage name={this.state.userToConfirm.data.name} />}
