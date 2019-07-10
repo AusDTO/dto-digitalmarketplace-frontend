@@ -71,8 +71,7 @@ export class TeamLeadsStage extends Component {
       users: []
     }
 
-    this.handleCancelChangeToTeamMember = this.handleCancelChangeToTeamMember.bind(this)
-    this.handleCancelRemoveTeamLead = this.handleCancelRemoveTeamLead.bind(this)
+    this.handleCancelAction = this.handleCancelAction.bind(this)
     this.handleChangeToTeamMember = this.handleChangeToTeamMember.bind(this)
     this.handleConvertToTeamMember = this.handleConvertToTeamMember.bind(this)
     this.handleRemoveTeamLead = this.handleRemoveTeamLead.bind(this)
@@ -88,15 +87,9 @@ export class TeamLeadsStage extends Component {
     return newObject
   }
 
-  handleCancelChangeToTeamMember() {
+  handleCancelAction() {
     this.setState({
       confirmChangeToTeamMember: false,
-      userToConfirm: {}
-    })
-  }
-
-  handleCancelRemoveTeamLead() {
-    this.setState({
       confirmTeamLeadRemoval: false,
       userToConfirm: {}
     })
@@ -251,7 +244,7 @@ export class TeamLeadsStage extends Component {
             cancelButtonText="Do not change"
             confirmButtonText="Yes, change to member"
             content={<ChangeToTeamMemberConfirmationMessage name={this.state.userToConfirm.data.name} />}
-            handleCancelClick={this.handleCancelChangeToTeamMember}
+            handleCancelClick={this.handleCancelAction}
             handleConfirmClick={() => this.handleChangeToTeamMember(this.state.userToConfirm)}
             type="warning"
           />
@@ -261,7 +254,7 @@ export class TeamLeadsStage extends Component {
             cancelButtonText="Do not remove"
             confirmButtonText="Yes, remove"
             content={<RemoveTeamLeadConfirmationMessage name={this.state.userToConfirm.data.name} />}
-            handleCancelClick={this.handleCancelRemoveTeamLead}
+            handleCancelClick={this.handleCancelAction}
             handleConfirmClick={() => this.handleRemoveTeamLead(this.state.userToConfirm)}
             type="warning"
           />
