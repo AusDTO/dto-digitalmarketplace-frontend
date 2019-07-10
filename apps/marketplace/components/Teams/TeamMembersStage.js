@@ -8,23 +8,13 @@ import { findTeamMember } from 'marketplace/actions/teamActions'
 import formProps from 'shared/form/formPropsSelector'
 
 import TeamMemberActions from './TeamMemberActions'
+import TeamMemberNameDescription from './TeamMemberNameDescription'
 import TeamMemberListItems from './TeamMemberListItems'
 
 import MarketplaceAlert from '../Alerts/MarketplaceAlert'
 import ItemSelect from '../ItemSelect/ItemSelect'
 
 import commonStyles from './TeamStages.scss'
-
-const TeamMemberNameDescription = props => {
-  const { domain } = props
-
-  return (
-    <span>
-      Members must already have a Digital Marketplace account in their name that ends in{' '}
-      <span className={commonStyles.bold}>@{domain}</span>
-    </span>
-  )
-}
 
 const EmptyResultsMessage = () => <li>User cannot be found.</li>
 
