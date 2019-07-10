@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 
-import styles from './MarketplaceAlert.scss'
+import styles from './ConfirmActionAlert.scss'
 
-class MarketplaceAlert extends Component {
+class ConfirmActionAlert extends Component {
   constructor(props) {
     super(props)
 
@@ -58,4 +58,4 @@ class MarketplaceAlert extends Component {
   }
 }
 
-export default MarketplaceAlert
+export default ConfirmActionAlert
