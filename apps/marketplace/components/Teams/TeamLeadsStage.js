@@ -12,9 +12,10 @@ import EmptyItemSelectMessage from './EmptyItemSelectMessage'
 import RemoveTeamLeadMessage from './RemoveTeamLeadMessage'
 import TeamLeadActions from './TeamLeadActions'
 import TeamLeadNameDescription from './TeamLeadNameDescription'
+import TeamMemberListItems from './TeamMemberListItems'
+
 import MarketplaceAlert from '../Alerts/MarketplaceAlert'
 import ItemSelect from '../ItemSelect/ItemSelect'
-import TeamMemberListItems from './TeamMemberListItems'
 
 import commonStyles from './TeamStages.scss'
 
