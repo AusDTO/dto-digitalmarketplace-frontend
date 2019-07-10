@@ -7,6 +7,8 @@ import AUheading from '@gov.au/headings'
 import AUlinklist from '@gov.au/link-list/lib/js/react.js'
 import { findTeamMember } from 'marketplace/actions/teamActions'
 import formProps from 'shared/form/formPropsSelector'
+
+import MarketplaceAlert from '../Alerts/MarketplaceAlert'
 import ItemSelect from '../ItemSelect/ItemSelect'
 import TeamMemberListItems from './TeamMemberListItems'
 
@@ -61,11 +63,14 @@ export class TeamMembersStage extends Component {
     super(props)
 
     this.state = {
+      confirmChangeToTeamLead: false,
       inputValue: '',
       timeoutId: null,
+      userToConfirm: {},
       users: []
     }
 
+    this.handleCancelChangeToTeamLead = this.handleCancelChangeToTeamLead.bind(this)
     this.handleConvertToTeamLead = this.handleConvertToTeamLead.bind(this)
     this.handleRemoveTeamMember = this.handleRemoveTeamMember.bind(this)
     this.handleSearchChange = this.handleSearchChange.bind(this)
@@ -79,15 +84,37 @@ export class TeamMembersStage extends Component {
     return newObject
   }
 
-  handleConvertToTeamLead(userId) {
-    const user = { id: userId, name: this.props[this.props.model].teamMembers[userId] }
+  handleCancelChangeToTeamLead() {
+    this.setState({
+      confirmChangeToTeamLead: false,
+      userToConfirm: {}
+    })
+  }
 
-    const newTeamMembers = this.removeUser(userId, 'teamMembers')
+  handleChangeToTeamLead(teamMember) {
+    const newTeamMembers = this.removeUser(teamMember.id, 'teamMembers')
     this.props.updateTeamMembers(newTeamMembers)
 
     const newTeamLeads = { ...this.props[this.props.model].teamLeads }
-    newTeamLeads[user.id] = user.name
+    newTeamLeads[teamMember.id] = teamMember.data
     this.props.updateTeamLeads(newTeamLeads)
+
+    this.setState({
+      confirmChangeToTeamLead: false,
+      userToConfirm: {}
+    })
+  }
+
+  handleConvertToTeamLead(userId) {
+    const teamLead = {
+      id: userId,
+      data: { ...this.props[this.props.model].teamMembers[userId] }
+    }
+
+    this.setState({
+      confirmChangeToTeamLead: true,
+      userToConfirm: teamLead
+    })
   }
 
   handleUserClick(user) {
@@ -161,8 +188,31 @@ export class TeamMembersStage extends Component {
       />
     )
 
+    const ChangeToTeamLeadMessage = props => {
+      const { name } = props
+
+      return (
+        <div>
+          <p>
+            Are you sure you want to change <span className={commonStyles.bold}>{name}</span> to a team lead?
+          </p>
+          <p>They will be able to add and remove members, specify permissions and create other team leads.</p>
+        </div>
+      )
+    }
+
     return (
       <Form model={model} onSubmit={onSubmit} onSubmitFailed={onSubmitFailed}>
+        {this.state.confirmChangeToTeamLead && (
+          <MarketplaceAlert
+            cancelButtonText="Do not change"
+            confirmButtonText="Yes, change to team lead"
+            content={<ChangeToTeamLeadMessage name={this.state.userToConfirm.data.name} />}
+            handleCancelClick={this.handleCancelChangeToTeamLead}
+            handleConfirmClick={() => this.handleChangeToTeamLead(this.state.userToConfirm)}
+            type="warning"
+          />
+        )}
         <AUheading level="1" size="xl">
           Team members
         </AUheading>
