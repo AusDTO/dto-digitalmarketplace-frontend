@@ -25,7 +25,7 @@ const ChangeToTeamMemberConfirmation = props => {
         member?
       </p>
       <p>They will no longer be able to add and remove members, specify permissions or create team leads.</p>
-      <div>
+      <div className={commonStyles.alertActionsContainer}>
         <AUbutton onClick={() => handleChangeToTeamMember(teamLead)}>Yes, change to member</AUbutton>
         <AUbutton as="secondary" onClick={handleCancelChangeToTeamMember}>
           Do not change
