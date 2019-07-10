@@ -9,6 +9,7 @@ import formProps from 'shared/form/formPropsSelector'
 
 import ChangeToTeamMemberMessage from './ChangeToTeamMemberMessage'
 import EmptyItemSelectMessage from './EmptyItemSelectMessage'
+import RemoveTeamLeadMessage from './RemoveTeamLeadMessage'
 import TeamLeadActions from './TeamLeadActions'
 import TeamLeadNameDescription from './TeamLeadNameDescription'
 import MarketplaceAlert from '../Alerts/MarketplaceAlert'
@@ -170,19 +171,6 @@ export class TeamLeadsStage extends Component {
       />
     )
 
-    const RemoveTeamLeadConfirmationMessage = props => {
-      const { name } = props
-
-      return (
-        <div>
-          <p>
-            Are you sure you want to remove <span className={commonStyles.bold}>{name}</span> from your team?
-          </p>
-          <p>You will become the owner of their opportunities.</p>
-        </div>
-      )
-    }
-
     return (
       <Form model={model} onSubmit={onSubmit} onSubmitFailed={onSubmitFailed}>
         {this.state.confirmChangeToTeamMember && (
@@ -199,7 +187,7 @@ export class TeamLeadsStage extends Component {
           <MarketplaceAlert
             cancelButtonText="Do not remove"
             confirmButtonText="Yes, remove"
-            content={<RemoveTeamLeadConfirmationMessage name={this.state.userToConfirm.data.name} />}
+            content={<RemoveTeamLeadMessage name={this.state.userToConfirm.data.name} />}
             handleCancelClick={this.handleCancelAction}
             handleConfirmClick={() => this.handleRemoveTeamLead(this.state.userToConfirm.id)}
             type="warning"
