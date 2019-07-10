@@ -3,12 +3,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 
-import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings'
 import AUlinklist from '@gov.au/link-list/lib/js/react.js'
-import MarketplaceAlert from '../Alerts/MarketplaceAlert'
 import { findTeamMember } from 'marketplace/actions/teamActions'
 import formProps from 'shared/form/formPropsSelector'
+
+import MarketplaceAlert from '../Alerts/MarketplaceAlert'
 import ItemSelect from '../ItemSelect/ItemSelect'
 import TeamMemberListItems from './TeamMemberListItems'
 
@@ -231,19 +231,6 @@ export class TeamLeadsStage extends Component {
       )
     }
 
-    const ChangeToTeamMemberActions = props => {
-      const { handleCancelChangeToTeamMember, handleChangeToTeamMember, teamLead } = props
-
-      return (
-        <React.Fragment>
-          <AUbutton onClick={() => handleChangeToTeamMember(teamLead)}>Yes, change to member</AUbutton>
-          <AUbutton as="secondary" onClick={handleCancelChangeToTeamMember}>
-            Do not change
-          </AUbutton>
-        </React.Fragment>
-      )
-    }
-
     const RemoveTeamLeadConfirmationMessage = props => {
       const { name } = props
 
@@ -257,44 +244,25 @@ export class TeamLeadsStage extends Component {
       )
     }
 
-    const RemoveTeamLeadConfirmationActions = props => {
-      const { handleCancelRemoveTeamLead, handleRemoveTeamLead, teamLead } = props
-
-      return (
-        <React.Fragment>
-          <AUbutton onClick={() => handleRemoveTeamLead(teamLead.id)}>Yes, remove</AUbutton>
-          <AUbutton as="secondary" onClick={handleCancelRemoveTeamLead}>
-            Do not remove
-          </AUbutton>
-        </React.Fragment>
-      )
-    }
-
     return (
       <Form model={model} onSubmit={onSubmit} onSubmitFailed={onSubmitFailed}>
         {this.state.confirmChangeToTeamMember && (
           <MarketplaceAlert
-            actions={
-              <ChangeToTeamMemberActions
-                handleCancelChangeToTeamMember={this.handleCancelChangeToTeamMember}
-                handleChangeToTeamMember={this.handleChangeToTeamMember}
-                teamLead={this.state.userToConfirm}
-              />
-            }
+            cancelButtonText="Do not change"
+            confirmButtonText="Yes, change to member"
             content={<ChangeToTeamMemberConfirmationMessage name={this.state.userToConfirm.data.name} />}
+            handleCancelClick={this.handleCancelChangeToTeamMember}
+            handleConfirmClick={() => this.handleChangeToTeamMember(this.state.userToConfirm)}
             type="warning"
           />
         )}
         {this.state.confirmTeamLeadRemoval && (
           <MarketplaceAlert
-            actions={
-              <RemoveTeamLeadConfirmationActions
-                handleCancelRemoveTeamLead={this.handleCancelRemoveTeamLead}
-                handleRemoveTeamLead={this.handleRemoveTeamLead}
-                teamLead={this.state.userToConfirm}
-              />
-            }
+            cancelButtonText="Do not remove"
+            confirmButtonText="Yes, remove"
             content={<RemoveTeamLeadConfirmationMessage name={this.state.userToConfirm.data.name} />}
+            handleCancelClick={this.handleCancelRemoveTeamLead}
+            handleConfirmClick={() => this.handleRemoveTeamLead(this.state.userToConfirm)}
             type="warning"
           />
         )}
