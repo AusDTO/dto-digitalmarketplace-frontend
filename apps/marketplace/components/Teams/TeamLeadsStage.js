@@ -15,22 +15,13 @@ import TeamMemberListItems from './TeamMemberListItems'
 import commonStyles from './TeamStages.scss'
 import actionStyles from '../ItemSelect/SelectedItems.scss'
 
-const ChangeToTeamMemberConfirmation = props => {
-  const { handleCancelChangeToTeamMember, handleChangeToTeamMember, teamLead } = props
+const MarketplaceAlert = props => {
+  const { alertActions, content, type } = props
 
   return (
-    <AUpageAlert as="warning">
-      <p>
-        Are you sure you want to change <span className={commonStyles.bold}>{teamLead.data.name}</span> to a team
-        member?
-      </p>
-      <p>They will no longer be able to add and remove members, specify permissions or create team leads.</p>
-      <div className={commonStyles.alertActionsContainer}>
-        <AUbutton onClick={() => handleChangeToTeamMember(teamLead)}>Yes, change to member</AUbutton>
-        <AUbutton as="secondary" onClick={handleCancelChangeToTeamMember}>
-          Do not change
-        </AUbutton>
-      </div>
+    <AUpageAlert as={type}>
+      {content}
+      <div className={commonStyles.alertActionsContainer}>{alertActions}</div>
     </AUpageAlert>
   )
 }
@@ -209,13 +200,45 @@ export class TeamLeadsStage extends Component {
       />
     )
 
+    const ChangeToTeamMemberConfirmationMessage = props => {
+      const { name } = props
+
+      return (
+        <div>
+          <p>
+            Are you sure you want to change <span className={commonStyles.bold}>{name}</span> to a team member?
+          </p>
+          <p>They will no longer be able to add and remove members, specify permissions or create team leads.</p>
+        </div>
+      )
+    }
+
+    const ChangeToTeamMemberActions = props => {
+      const { handleCancelChangeToTeamMember, handleChangeToTeamMember, teamLead } = props
+
+      return (
+        <React.Fragment>
+          <AUbutton onClick={() => handleChangeToTeamMember(teamLead)}>Yes, change to member</AUbutton>
+          <AUbutton as="secondary" onClick={handleCancelChangeToTeamMember}>
+            Do not change
+          </AUbutton>
+        </React.Fragment>
+      )
+    }
+
     return (
       <Form model={model} onSubmit={onSubmit} onSubmitFailed={onSubmitFailed}>
         {this.state.confirmChangeToTeamMember && (
-          <ChangeToTeamMemberConfirmation
-            handleCancelChangeToTeamMember={this.handleCancelChangeToTeamMember}
-            handleChangeToTeamMember={this.handleChangeToTeamMember}
-            teamLead={this.state.userToConfirm}
+          <MarketplaceAlert
+            alertActions={
+              <ChangeToTeamMemberActions
+                handleCancelChangeToTeamMember={this.handleCancelChangeToTeamMember}
+                handleChangeToTeamMember={this.handleChangeToTeamMember}
+                teamLead={this.state.userToConfirm}
+              />
+            }
+            content={<ChangeToTeamMemberConfirmationMessage name={this.state.userToConfirm.data.name} />}
+            type="warning"
           />
         )}
         <AUheading level="1" size="xl">
