@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import { AUcheckbox } from '@gov.au/control-input'
 import styles from './ProgressButtons.scss'
+import { rootPath } from '../../routes'
 
 const ProgressButtons = props => (
   <div className={styles.container}>
     {props.showConfirmationCheckbox &&
       props.isLastStage &&
-      !props.isFirstStage &&
-      props.hasPermissionToPublish && (
+      !props.isFirstStage && (
         <p>
           <span>
             <AUcheckbox
@@ -39,7 +39,7 @@ const ProgressButtons = props => (
                 {props.previewText}
               </AUbutton>
             )}
-            {props.hasPermissionToPublish && (
+            {props.hasPermissionToPublish ? (
               <AUbutton
                 type="submit"
                 disabled={!props.publishEnabled}
@@ -50,6 +50,14 @@ const ProgressButtons = props => (
               >
                 {props.publishText}
               </AUbutton>
+            ) : (
+              <a
+                href={`${rootPath}/request-access/publish_opportunities`}
+                className="au-btn"
+                disabled={!props.publishEnabled}
+              >
+                {props.publishText}
+              </a>
             )}
           </span>
         )}
