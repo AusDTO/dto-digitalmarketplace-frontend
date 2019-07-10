@@ -80,13 +80,13 @@ export class TeamMembersStage extends Component {
     this.removeUser = this.removeUser.bind(this)
   }
 
-  removeUser(userId, property) {
+  removeUser = (userId, property) => {
     const newObject = { ...this.props[this.props.model][property] }
     delete newObject[userId]
     return newObject
   }
 
-  handleCancelAction() {
+  handleCancelAction = () => {
     this.setState({
       confirmChangeToTeamLead: false,
       confirmTeamMemberRemoval: false,
@@ -94,7 +94,7 @@ export class TeamMembersStage extends Component {
     })
   }
 
-  handleChangeToTeamLead(teamMember) {
+  handleChangeToTeamLead = teamMember => {
     const newTeamMembers = this.removeUser(teamMember.id, 'teamMembers')
     this.props.updateTeamMembers(newTeamMembers)
 
@@ -108,7 +108,7 @@ export class TeamMembersStage extends Component {
     })
   }
 
-  handleConvertToTeamLead(userId) {
+  handleConvertToTeamLead = userId => {
     const teamLead = {
       id: userId,
       data: { ...this.props[this.props.model].teamMembers[userId] }
@@ -121,7 +121,7 @@ export class TeamMembersStage extends Component {
     })
   }
 
-  handleRemoveTeamMemberClick(userId) {
+  handleRemoveTeamMemberClick = userId => {
     const teamMember = {
       id: userId,
       data: { ...this.props[this.props.model].teamMembers[userId] }
@@ -134,7 +134,7 @@ export class TeamMembersStage extends Component {
     })
   }
 
-  handleUserClick(user) {
+  handleUserClick = user => {
     this.setState({
       inputValue: '',
       users: []
@@ -156,7 +156,7 @@ export class TeamMembersStage extends Component {
     }
   }
 
-  handleRemoveTeamMember(userId) {
+  handleRemoveTeamMember = userId => {
     const newTeamMembers = this.removeUser(userId, 'teamMembers')
     this.props.updateTeamMembers(newTeamMembers)
 
@@ -166,7 +166,7 @@ export class TeamMembersStage extends Component {
     })
   }
 
-  handleSearchChange(e) {
+  handleSearchChange = e => {
     this.setState({
       inputValue: e.target.value
     })
