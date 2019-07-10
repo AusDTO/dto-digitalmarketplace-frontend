@@ -7,6 +7,7 @@ import AUheading from '@gov.au/headings'
 import { findTeamMember } from 'marketplace/actions/teamActions'
 import formProps from 'shared/form/formPropsSelector'
 
+import EmptyItemSelectMessage from './EmptyItemSelectMessage'
 import TeamMemberActions from './TeamMemberActions'
 import TeamMemberNameDescription from './TeamMemberNameDescription'
 import TeamMemberListItems from './TeamMemberListItems'
@@ -15,8 +16,6 @@ import MarketplaceAlert from '../Alerts/MarketplaceAlert'
 import ItemSelect from '../ItemSelect/ItemSelect'
 
 import commonStyles from './TeamStages.scss'
-
-const EmptyResultsMessage = () => <li>User cannot be found.</li>
 
 export class TeamMembersStage extends Component {
   constructor(props) {
@@ -159,7 +158,7 @@ export class TeamMembersStage extends Component {
   render = () => {
     const { formButtons, minimumSearchChars, model, onSubmit, onSubmitFailed } = this.props
     const teamMemberNameDescription = <TeamMemberNameDescription domain={this.props[model].domain} />
-    const emptyResultsMessage = <EmptyResultsMessage />
+    const emptyResultsMessage = <EmptyItemSelectMessage />
     const teamMemberListItems = (
       <TeamMemberListItems handleTeamMemberClick={this.handleUserClick} teamMembers={this.state.users} />
     )
