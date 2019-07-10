@@ -3,7 +3,7 @@ import React from 'react'
 import AUlinklist from '@gov.au/link-list/lib/js/react.js'
 
 import commonStyles from './TeamStages.scss'
-import itemSelectStyles from '../ItemSelect/SelectedItems.scss'
+import itemSelectStyles from '../../ItemSelect/SelectedItems.scss'
 
 const TeamLeadActions = props => {
   const { handleConvertToTeamMember, handleRemoveTeamLead, id } = props

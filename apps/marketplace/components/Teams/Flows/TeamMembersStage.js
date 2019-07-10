@@ -7,25 +7,23 @@ import AUheading from '@gov.au/headings'
 import { findTeamMember } from 'marketplace/actions/teamActions'
 import formProps from 'shared/form/formPropsSelector'
 
-import ChangeToTeamMemberMessage from './ChangeToTeamMemberMessage'
+import ChangeToTeamLeadMessage from './ChangeToTeamLeadMessage'
 import EmptyItemSelectMessage from './EmptyItemSelectMessage'
-import RemoveTeamLeadMessage from './RemoveTeamLeadMessage'
-import TeamLeadActions from './TeamLeadActions'
-import TeamLeadNameDescription from './TeamLeadNameDescription'
+import RemoveTeamMemberMessage from './RemoveTeamMemberMessage'
+import TeamMemberActions from './TeamMemberActions'
+import TeamMemberNameDescription from './TeamMemberNameDescription'
 import TeamMemberListItems from './TeamMemberListItems'
 
-import MarketplaceAlert from '../Alerts/MarketplaceAlert'
-import ItemSelect from '../ItemSelect/ItemSelect'
+import MarketplaceAlert from '../../Alerts/MarketplaceAlert'
+import ItemSelect from '../../ItemSelect/ItemSelect'
 
-import styles from './TeamStages.scss'
-
-export class TeamLeadsStage extends Component {
+export class TeamMembersStage extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      confirmChangeToTeamMember: false,
-      confirmTeamLeadRemoval: false,
+      confirmChangeToTeamLead: false,
+      confirmTeamMemberRemoval: false,
       inputValue: '',
       timeoutId: null,
       userToConfirm: {},
@@ -33,10 +31,10 @@ export class TeamLeadsStage extends Component {
     }
 
     this.handleCancelAction = this.handleCancelAction.bind(this)
-    this.handleChangeToTeamMember = this.handleChangeToTeamMember.bind(this)
-    this.handleConvertToTeamMember = this.handleConvertToTeamMember.bind(this)
-    this.handleRemoveTeamLead = this.handleRemoveTeamLead.bind(this)
-    this.handleRemoveTeamLeadClick = this.handleRemoveTeamLeadClick.bind(this)
+    this.handleChangeToTeamLead = this.handleChangeToTeamLead.bind(this)
+    this.handleConvertToTeamLead = this.handleConvertToTeamLead.bind(this)
+    this.handleRemoveTeamMember = this.handleRemoveTeamMember.bind(this)
+    this.handleRemoveTeamMemberClick = this.handleRemoveTeamMemberClick.bind(this)
     this.handleSearchChange = this.handleSearchChange.bind(this)
     this.handleUserClick = this.handleUserClick.bind(this)
     this.removeUser = this.removeUser.bind(this)
@@ -44,59 +42,59 @@ export class TeamLeadsStage extends Component {
 
   handleCancelAction = () => {
     this.setState({
-      confirmChangeToTeamMember: false,
-      confirmTeamLeadRemoval: false,
+      confirmChangeToTeamLead: false,
+      confirmTeamMemberRemoval: false,
       userToConfirm: {}
     })
   }
 
-  handleChangeToTeamMember = teamLead => {
-    const newTeamLeads = this.removeUser(teamLead.id, 'teamLeads')
+  handleChangeToTeamLead = teamMember => {
+    const newTeamMembers = this.removeUser(teamMember.id, 'teamMembers')
+    this.props.updateTeamMembers(newTeamMembers)
+
+    const newTeamLeads = { ...this.props[this.props.model].teamLeads }
+    newTeamLeads[teamMember.id] = teamMember.data
     this.props.updateTeamLeads(newTeamLeads)
 
-    const newTeamMembers = { ...this.props[this.props.model].teamMembers }
-    newTeamMembers[teamLead.id] = teamLead.data
+    this.setState({
+      confirmChangeToTeamLead: false,
+      userToConfirm: {}
+    })
+  }
+
+  handleConvertToTeamLead = userId => {
+    const teamLead = {
+      id: userId,
+      data: { ...this.props[this.props.model].teamMembers[userId] }
+    }
+
+    this.setState({
+      confirmChangeToTeamLead: true,
+      confirmTeamMemberRemoval: false,
+      userToConfirm: teamLead
+    })
+  }
+
+  handleRemoveTeamMember = userId => {
+    const newTeamMembers = this.removeUser(userId, 'teamMembers')
     this.props.updateTeamMembers(newTeamMembers)
 
     this.setState({
-      confirmChangeToTeamMember: false,
+      confirmTeamMemberRemoval: false,
       userToConfirm: {}
     })
   }
 
-  handleConvertToTeamMember = userId => {
-    const teamLead = {
+  handleRemoveTeamMemberClick = userId => {
+    const teamMember = {
       id: userId,
-      data: { ...this.props[this.props.model].teamLeads[userId] }
+      data: { ...this.props[this.props.model].teamMembers[userId] }
     }
 
     this.setState({
-      confirmChangeToTeamMember: true,
-      confirmTeamLeadRemoval: false,
-      userToConfirm: teamLead
-    })
-  }
-
-  handleRemoveTeamLead = userId => {
-    const newTeamLeads = this.removeUser(userId, 'teamLeads')
-    this.props.updateTeamLeads(newTeamLeads)
-
-    this.setState({
-      confirmTeamLeadRemoval: false,
-      userToConfirm: {}
-    })
-  }
-
-  handleRemoveTeamLeadClick = userId => {
-    const teamLead = {
-      id: userId,
-      data: { ...this.props[this.props.model].teamLeads[userId] }
-    }
-
-    this.setState({
-      confirmChangeToTeamMember: false,
-      confirmTeamLeadRemoval: true,
-      userToConfirm: teamLead
+      confirmChangeToTeamLead: false,
+      confirmTeamMemberRemoval: true,
+      userToConfirm: teamMember
     })
   }
 
@@ -135,19 +133,19 @@ export class TeamLeadsStage extends Component {
       users: []
     })
 
-    const newTeamLeads = { ...this.props[this.props.model].teamLeads }
-    newTeamLeads[user.id] = {
+    const newTeamMembers = { ...this.props[this.props.model].teamMembers }
+    newTeamMembers[user.id] = {
       emailAddress: user.email,
       name: user.name
     }
 
-    this.props.updateTeamLeads(newTeamLeads)
+    this.props.updateTeamMembers(newTeamMembers)
 
-    // Remove as team member if user has been added as one
-    const teamMembers = { ...this.props[this.props.model].teamMembers }
-    if (teamMembers[user.id]) {
-      const newTeamMembers = this.removeUser(user.id, 'teamMembers')
-      this.props.updateTeamMembers(newTeamMembers)
+    // Remove as team lead if user has been added as one
+    const teamLeads = { ...this.props[this.props.model].teamLeads }
+    if (teamLeads[user.id]) {
+      const newTeamLeads = this.removeUser(user.id, 'teamLeads')
+      this.props.updateTeamLeads(newTeamLeads)
     }
   }
 
@@ -159,71 +157,63 @@ export class TeamLeadsStage extends Component {
 
   render = () => {
     const { formButtons, minimumSearchChars, model, onSubmit, onSubmitFailed } = this.props
-    const teamLeadNameDescription = <TeamLeadNameDescription domain={this.props[model].domain} />
+    const teamMemberNameDescription = <TeamMemberNameDescription domain={this.props[model].domain} />
     const emptyResultsMessage = <EmptyItemSelectMessage />
     const teamMemberListItems = (
       <TeamMemberListItems handleTeamMemberClick={this.handleUserClick} teamMembers={this.state.users} />
     )
 
-    const teamLeadActions = (
-      <TeamLeadActions
-        handleConvertToTeamMember={this.handleConvertToTeamMember}
-        handleRemoveTeamLead={this.handleRemoveTeamLeadClick}
+    const teamMemberActions = (
+      <TeamMemberActions
+        handleConvertToTeamLead={this.handleConvertToTeamLead}
+        handleRemoveTeamMember={this.handleRemoveTeamMemberClick}
       />
     )
 
     return (
       <Form model={model} onSubmit={onSubmit} onSubmitFailed={onSubmitFailed}>
-        {this.state.confirmChangeToTeamMember && (
+        {this.state.confirmChangeToTeamLead && (
           <MarketplaceAlert
             cancelButtonText="Do not change"
-            confirmButtonText="Yes, change to member"
-            content={<ChangeToTeamMemberMessage name={this.state.userToConfirm.data.name} />}
+            confirmButtonText="Yes, change to team lead"
+            content={<ChangeToTeamLeadMessage name={this.state.userToConfirm.data.name} />}
             handleCancelClick={this.handleCancelAction}
-            handleConfirmClick={() => this.handleChangeToTeamMember(this.state.userToConfirm)}
+            handleConfirmClick={() => this.handleChangeToTeamLead(this.state.userToConfirm)}
             type="warning"
           />
         )}
-        {this.state.confirmTeamLeadRemoval && (
+        {this.state.confirmTeamMemberRemoval && (
           <MarketplaceAlert
             cancelButtonText="Do not remove"
             confirmButtonText="Yes, remove"
-            content={<RemoveTeamLeadMessage name={this.state.userToConfirm.data.name} />}
+            content={<RemoveTeamMemberMessage name={this.state.userToConfirm.data.name} />}
             handleCancelClick={this.handleCancelAction}
-            handleConfirmClick={() => this.handleRemoveTeamLead(this.state.userToConfirm.id)}
+            handleConfirmClick={() => this.handleRemoveTeamMember(this.state.userToConfirm.id)}
             type="warning"
           />
         )}
         <AUheading level="1" size="xl">
-          Team leads
+          Team members
         </AUheading>
-        <div className={styles.stageContentContainer}>
-          <p className={styles.bold}>Team leads can:</p>
-          <ul className={styles.stageList}>
-            <li>Add and remove members</li>
-            <li>Specify what each member can do</li>
-            <li>Assign other team leads</li>
-          </ul>
-        </div>
         <ItemSelect
-          defaultValue={this.props[model].teamLeadName}
-          description={teamLeadNameDescription}
+          defaultValue=""
+          description={teamMemberNameDescription}
           emptyResultsMessage={emptyResultsMessage}
           handleSearchChange={this.handleSearchChange}
-          htmlFor="teamLeadName"
-          id="teamLeadName"
+          htmlFor="teamMemberName"
+          id="teamMemberName"
           inputValue={this.state.inputValue}
           items={this.state.users}
-          label="Team lead name"
+          label="Team member name"
           maxLength={100}
           minimumSearchChars={minimumSearchChars}
-          model={`${model}.teamLeads`}
-          name="teamLeadName"
+          model={`${model}.teamMembers`}
+          name="teamMemberName"
           placeholder=""
           resultIsEmpty={this.state.users.length < 1}
           resultListItems={teamMemberListItems}
-          selectedItemActions={teamLeadActions}
-          selectedItemsHeading="Current team leads"
+          selectedItemActions={teamMemberActions}
+          selectedItemsHeading="Current team members"
           showSearchButton={false}
           validators={{}}
         />
@@ -233,13 +223,13 @@ export class TeamLeadsStage extends Component {
   }
 }
 
-TeamLeadsStage.defaultProps = {
+TeamMembersStage.defaultProps = {
   minimumSearchChars: 2,
   onSubmit: () => {},
   onSubmitFailed: () => {}
 }
 
-TeamLeadsStage.propTypes = {
+TeamMembersStage.propTypes = {
   formButtons: PropTypes.node.isRequired,
   minimumSearchChars: PropTypes.number,
   model: PropTypes.string.isRequired,
@@ -257,4 +247,4 @@ const mapDispatchToProps = (dispatch, props) => ({
   updateTeamMembers: teamMembers => dispatch(actions.change(`${props.model}.teamMembers`, teamMembers))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(TeamLeadsStage)
+export default connect(mapStateToProps, mapDispatchToProps)(TeamMembersStage)

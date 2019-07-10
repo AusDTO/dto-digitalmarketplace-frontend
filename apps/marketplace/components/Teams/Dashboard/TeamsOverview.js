@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { loadBuyerTeams } from '../../actions/teamActions'
+import { loadBuyerTeams } from '../../../actions/teamActions'
 import TeamsOverviewTable from './TeamsOverviewTable'
 
 import styles from './TeamsOverview.scss'

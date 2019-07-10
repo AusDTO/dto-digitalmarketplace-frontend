@@ -8,8 +8,8 @@ import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import AUbutton from '@gov.au/buttons'
 import PageHeader from '../../components/PageHeader/PageHeader'
 import PageNavigation from '../../components/PageNavigation/PageNavigation'
-import PeopleOverview from '../../components/Teams/PeopleOverview'
-import TeamsOverview from '../../components/Teams/TeamsOverview'
+import PeopleOverview from '../../components/Teams/Dashboard/PeopleOverview'
+import TeamsOverview from '../../components/Teams/Dashboard/TeamsOverview'
 
 const TeamsPage = props => {
   const { errorMessage, organisation, showCreateTeamButton } = props

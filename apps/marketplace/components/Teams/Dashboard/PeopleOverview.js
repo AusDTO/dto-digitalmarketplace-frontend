@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { loadBuyerTeamMembers } from '../../actions/teamActions'
+import { loadBuyerTeamMembers } from '../../../actions/teamActions'
 
 import styles from './PeopleOverview.scss'
 
