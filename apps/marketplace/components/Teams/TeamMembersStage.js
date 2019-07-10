@@ -72,6 +72,7 @@ export class TeamMembersStage extends Component {
     }
 
     this.handleCancelAction = this.handleCancelAction.bind(this)
+    this.handleChangeToTeamLead = this.handleChangeToTeamLead.bind(this)
     this.handleConvertToTeamLead = this.handleConvertToTeamLead.bind(this)
     this.handleRemoveTeamMember = this.handleRemoveTeamMember.bind(this)
     this.handleRemoveTeamMemberClick = this.handleRemoveTeamMemberClick.bind(this)
