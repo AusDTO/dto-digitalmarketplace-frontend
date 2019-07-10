@@ -17,7 +17,7 @@ import TeamMemberListItems from './TeamMemberListItems'
 import MarketplaceAlert from '../Alerts/MarketplaceAlert'
 import ItemSelect from '../ItemSelect/ItemSelect'
 
-import commonStyles from './TeamStages.scss'
+import styles from './TeamStages.scss'
 
 export class TeamLeadsStage extends Component {
   constructor(props) {
@@ -197,9 +197,9 @@ export class TeamLeadsStage extends Component {
         <AUheading level="1" size="xl">
           Team leads
         </AUheading>
-        <div className={commonStyles.stageContentContainer}>
-          <p className={commonStyles.bold}>Team leads can:</p>
-          <ul className={commonStyles.stageList}>
+        <div className={styles.stageContentContainer}>
+          <p className={styles.bold}>Team leads can:</p>
+          <ul className={styles.stageList}>
             <li>Add and remove members</li>
             <li>Specify what each member can do</li>
             <li>Assign other team leads</li>
