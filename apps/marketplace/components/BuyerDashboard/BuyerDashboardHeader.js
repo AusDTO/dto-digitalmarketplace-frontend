@@ -71,17 +71,17 @@ class BuyerDashboardHeader extends Component {
                 </ul>
               </nav>
             </div>
-            {hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') && (
-              <div className={`${styles.dashActions} ${styles.createNew} col-xs-12 col-md-3 buyer-dashboard-actions`}>
-                <AUaccordion
-                  header="Create new request"
-                  open={this.state.createNewIsOpen}
-                  onOpen={this.handleCreateNewToggle}
-                  onClose={this.handleCreateNewToggle}
-                >
+            <div className={`${styles.dashActions} ${styles.createNew} col-xs-12 col-md-3 buyer-dashboard-actions`}>
+              <AUaccordion
+                header="Create new request"
+                open={this.state.createNewIsOpen}
+                onOpen={this.handleCreateNewToggle}
+                onClose={this.handleCreateNewToggle}
+              >
+                {hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') ? (
                   <ul>
                     <li>
-                      <a href="/2/buyer-specialist/create">Specialist</a>
+                      <a href={`${rootPath}/buyer-specialist/create`}>Specialist</a>
                     </li>
                     <li>
                       <a href={`${rootPath}/outcome-choice`}>Outcome</a>
@@ -90,9 +90,21 @@ class BuyerDashboardHeader extends Component {
                       <a href="/buyers/frameworks/digital-marketplace/requirements/training">Training</a>
                     </li>
                   </ul>
-                </AUaccordion>
-              </div>
-            )}
+                ) : (
+                  <ul>
+                    <li>
+                      <a href={`${rootPath}/request-access/create_drafts`}>Specialist</a>
+                    </li>
+                    <li>
+                      <a href={`${rootPath}/request-access/create_drafts`}>Outcome</a>
+                    </li>
+                    <li>
+                      <a href={`${rootPath}/request-access/create_drafts`}>Training</a>
+                    </li>
+                  </ul>
+                )}
+              </AUaccordion>
+            </div>
           </div>
         </div>
       </div>

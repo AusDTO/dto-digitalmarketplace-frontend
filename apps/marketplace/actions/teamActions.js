@@ -142,3 +142,16 @@ export const loadBuyerTeamMembers = (endpoint = '/people') => dispatch => {
     dispatch(sendingRequest(false))
   })
 }
+
+export const requestAccess = permission => (dispatch, getState) =>
+  dmapi({
+    url: `/teams/request-access`,
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify({
+      permission
+    })
+  }).then(response => response)

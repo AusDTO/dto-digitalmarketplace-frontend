@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import AUlinklist from '@gov.au/link-list/lib/js/react.js'
 
 import styles from './BriefOverviewSectionList.scss'
+import { rootPath } from '../../../routes'
 
 export class BriefOverviewSectionListComponent extends Component {
   static propTypes = {
@@ -35,7 +36,11 @@ export class BriefOverviewSectionListComponent extends Component {
       text: link.text
     }
 
-    if (link.path) item.link = link.path
+    if (link.permissionNeeded) {
+      item.link = `${rootPath}/request-access/${link.permissionNeeded}`
+    } else if (link.path) {
+      item.link = link.path
+    }
 
     return item
   }

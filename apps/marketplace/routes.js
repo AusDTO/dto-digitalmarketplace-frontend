@@ -38,6 +38,7 @@ import BuyerAwardSellerPage from './pages/BuyerAwardSellerPage'
 import AskQuestionPage from './pages/AskQuestionPage'
 import QuestionPage from './pages/QuestionPage'
 import PublishAnswerPage from './pages/PublishAnswerPage'
+import RequestAccessPage from './pages/RequestAccessPage'
 
 export const rootPath = '/2'
 
@@ -112,6 +113,8 @@ export const Routes = () => (
       component={BuyerSpecialistFlowPage}
     />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/outcome-choice`} component={BriefOutcomeChoicePage} />
+    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/teams`} component={TeamsPage} />
+    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/request-access/:permission`} component={RequestAccessPage} />
     <PrivateRoute
       restrictedTo="supplier"
       path={`${rootPath}/seller-assessment/:evidenceId/completed`}

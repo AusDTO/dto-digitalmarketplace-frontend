@@ -58,16 +58,22 @@ class Overview extends Component {
       )
     }
 
+    let url = `${rootPath}/request-access/answer_seller_questions`
     if (hasPermission(isPartOfTeam, isTeamLead, teams, 'answer_seller_questions')) {
-      return <a href={`${rootPath}/brief/${brief.id}/questions`}>Answer seller questions</a>
+      url = `${rootPath}/brief/${brief.id}/questions`
     }
-    return text
+    return <a href={url}>Answer seller questions</a>
   }
 
   downloadResponsesRender(brief, isPublished, isClosed) {
     const { isPartOfTeam, isTeamLead, teams } = this.props
-    if (isPublished && isClosed && hasPermission(isPartOfTeam, isTeamLead, teams, 'download_responses')) {
-      return <a href={`${rootPath}/brief/${brief.id}/download-responses`}>Download responses</a>
+
+    if (isPublished && isClosed) {
+      let url = `${rootPath}/request-access/download_responses`
+      if (hasPermission(isPartOfTeam, isTeamLead, teams, 'download_responses')) {
+        url = `${rootPath}/brief/${brief.id}/download-responses`
+      }
+      return <a href={url}>Download responses</a>
     }
 
     return <span>Download responses</span>
@@ -75,7 +81,7 @@ class Overview extends Component {
 
   createWorkOrderRender(brief, flow, isPublished, isClosed, oldWorkOrderCreator) {
     const { isPartOfTeam, isTeamLead, teams } = this.props
-    if (isPublished && isClosed && hasPermission(isPartOfTeam, isTeamLead, teams, 'create_work_orders')) {
+    if (isPublished && isClosed) {
       let url = ''
       let title = ''
       if (brief.work_order_id) {
@@ -88,6 +94,9 @@ class Overview extends Component {
       if (!oldWorkOrderCreator) {
         url = `/2/buyer-award/${brief.id}`
         title = 'Download work order'
+      }
+      if (!hasPermission(isPartOfTeam, isTeamLead, teams, 'create_work_orders')) {
+        url = `${rootPath}/request-access/create_work_orders`
       }
       return <a href={url}>{title}</a>
     }
@@ -150,19 +159,22 @@ class Overview extends Component {
                     <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>View opportunity</a>
                   </li>
                 )}
-                {!isPublished &&
-                  hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') && (
-                    <div>
-                      <li>
+                {!isPublished && (
+                  <div>
+                    <li>
+                      {hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') ? (
                         <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>Preview</a>
-                      </li>
-                      <li>
-                        <a href="#delete" onClick={this.handleDeleteClick} className={styles.headerMenuDelete}>
-                          Delete draft
-                        </a>
-                      </li>
-                    </div>
-                  )}
+                      ) : (
+                        <a href={`${rootPath}/request-access/create_drafts`}>Preview</a>
+                      )}
+                    </li>
+                    <li>
+                      <a href="#delete" onClick={this.handleDeleteClick} className={styles.headerMenuDelete}>
+                        Delete draft
+                      </a>
+                    </li>
+                  </div>
+                )}
               </ul>
             </div>
           </div>
