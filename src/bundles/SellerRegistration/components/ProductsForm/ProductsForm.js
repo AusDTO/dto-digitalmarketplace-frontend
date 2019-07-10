@@ -73,7 +73,7 @@ class ProductsForm extends BaseForm {
         <header styleName="styles.content">
           <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'products' && type === 'edit'} />
           <h1 className="au-display-xl" styleName="styles.content-heading" tabIndex="-1">Products</h1>
-            <p>If your business has developed any digital products, you can now showcase them through your profile. Just remember, they have to be your own proprietary products.</p>
+            <p>If your business has developed any digital products, you can showcase them through your profile. Just remember, they have to be your own proprietary products.</p>
 
           {hasProducts && [<div className="calloutMistake">
             <b> Avoid common mistakes </b>
