@@ -4,120 +4,103 @@ import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 
 import AUheading from '@gov.au/headings'
-import AUlinklist from '@gov.au/link-list/lib/js/react.js'
 import { findTeamMember } from 'marketplace/actions/teamActions'
 import formProps from 'shared/form/formPropsSelector'
-import ItemSelect from '../ItemSelect/ItemSelect'
+
+import ChangeToTeamMemberMessage from './ChangeToTeamMemberMessage'
+import EmptyItemSelectMessage from './EmptyItemSelectMessage'
+import RemoveTeamLeadMessage from './RemoveTeamLeadMessage'
+import TeamLeadActions from './TeamLeadActions'
+import TeamLeadNameDescription from './TeamLeadNameDescription'
 import TeamMemberListItems from './TeamMemberListItems'
 
-import commonStyles from './TeamStages.scss'
-import actionStyles from '../ItemSelect/SelectedItems.scss'
+import MarketplaceAlert from '../../Alerts/MarketplaceAlert'
+import ItemSelect from '../../ItemSelect/ItemSelect'
 
-const TeamLeadActions = props => {
-  const { handleConvertToTeamMember, handleRemoveTeamLead, id } = props
-
-  return (
-    <AUlinklist
-      className={actionStyles.selectedItemActions}
-      inline
-      items={[
-        {
-          link: '#change-to-member',
-          onClick: e => {
-            e.preventDefault()
-            handleConvertToTeamMember(id)
-          },
-          text: 'Change to member'
-        },
-        {
-          className: commonStyles.removeLink,
-          link: '#remove',
-          onClick: e => {
-            e.preventDefault()
-            handleRemoveTeamLead(id)
-          },
-          text: 'Remove'
-        }
-      ]}
-    />
-  )
-}
-
-const TeamLeadNameDescription = props => {
-  const { domain } = props
-
-  return (
-    <span>
-      Team leads must already have a Digital Marketplace account in their name that ends in{' '}
-      <span className={commonStyles.bold}>@{domain}</span>
-    </span>
-  )
-}
-
-const EmptyResultsMessage = () => <li>User cannot be found.</li>
+import styles from './TeamStages.scss'
 
 export class TeamLeadsStage extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
+      confirmChangeToTeamMember: false,
+      confirmTeamLeadRemoval: false,
       inputValue: '',
       timeoutId: null,
+      userToConfirm: {},
       users: []
     }
 
+    this.handleCancelAction = this.handleCancelAction.bind(this)
+    this.handleChangeToTeamMember = this.handleChangeToTeamMember.bind(this)
     this.handleConvertToTeamMember = this.handleConvertToTeamMember.bind(this)
     this.handleRemoveTeamLead = this.handleRemoveTeamLead.bind(this)
+    this.handleRemoveTeamLeadClick = this.handleRemoveTeamLeadClick.bind(this)
     this.handleSearchChange = this.handleSearchChange.bind(this)
     this.handleUserClick = this.handleUserClick.bind(this)
     this.removeUser = this.removeUser.bind(this)
   }
 
-  removeUser(userId, property) {
-    const newObject = { ...this.props[this.props.model][property] }
-    delete newObject[userId]
-    return newObject
+  handleCancelAction = () => {
+    this.setState({
+      confirmChangeToTeamMember: false,
+      confirmTeamLeadRemoval: false,
+      userToConfirm: {}
+    })
   }
 
-  handleConvertToTeamMember(userId) {
-    const user = { id: userId, name: this.props[this.props.model].teamLeads[userId] }
-
-    const newTeamLeads = this.removeUser(userId, 'teamLeads')
+  handleChangeToTeamMember = teamLead => {
+    const newTeamLeads = this.removeUser(teamLead.id, 'teamLeads')
     this.props.updateTeamLeads(newTeamLeads)
 
     const newTeamMembers = { ...this.props[this.props.model].teamMembers }
-    newTeamMembers[user.id] = user.name
+    newTeamMembers[teamLead.id] = teamLead.data
     this.props.updateTeamMembers(newTeamMembers)
-  }
 
-  handleUserClick(user) {
     this.setState({
-      inputValue: '',
-      users: []
+      confirmChangeToTeamMember: false,
+      userToConfirm: {}
     })
-
-    const newTeamLeads = { ...this.props[this.props.model].teamLeads }
-    newTeamLeads[user.id] = {
-      emailAddress: user.email,
-      name: user.name
-    }
-
-    this.props.updateTeamLeads(newTeamLeads)
-
-    // Remove as team member if user has been added as one
-    const teamMembers = { ...this.props[this.props.model].teamMembers }
-    if (teamMembers[user.id]) {
-      const newTeamMembers = this.removeUser(user.id, 'teamMembers')
-      this.props.updateTeamMembers(newTeamMembers)
-    }
   }
 
-  handleRemoveTeamLead(userId) {
+  handleConvertToTeamMember = userId => {
+    const teamLead = {
+      id: userId,
+      data: { ...this.props[this.props.model].teamLeads[userId] }
+    }
+
+    this.setState({
+      confirmChangeToTeamMember: true,
+      confirmTeamLeadRemoval: false,
+      userToConfirm: teamLead
+    })
+  }
+
+  handleRemoveTeamLead = userId => {
     const newTeamLeads = this.removeUser(userId, 'teamLeads')
     this.props.updateTeamLeads(newTeamLeads)
+
+    this.setState({
+      confirmTeamLeadRemoval: false,
+      userToConfirm: {}
+    })
   }
 
-  handleSearchChange(e) {
+  handleRemoveTeamLeadClick = userId => {
+    const teamLead = {
+      id: userId,
+      data: { ...this.props[this.props.model].teamLeads[userId] }
+    }
+
+    this.setState({
+      confirmChangeToTeamMember: false,
+      confirmTeamLeadRemoval: true,
+      userToConfirm: teamLead
+    })
+  }
+
+  handleSearchChange = e => {
     this.setState({
       inputValue: e.target.value
     })
@@ -146,10 +129,38 @@ export class TeamLeadsStage extends Component {
     })
   }
 
-  render() {
+  handleUserClick = user => {
+    this.setState({
+      inputValue: '',
+      users: []
+    })
+
+    const newTeamLeads = { ...this.props[this.props.model].teamLeads }
+    newTeamLeads[user.id] = {
+      emailAddress: user.email,
+      name: user.name
+    }
+
+    this.props.updateTeamLeads(newTeamLeads)
+
+    // Remove as team member if user has been added as one
+    const teamMembers = { ...this.props[this.props.model].teamMembers }
+    if (teamMembers[user.id]) {
+      const newTeamMembers = this.removeUser(user.id, 'teamMembers')
+      this.props.updateTeamMembers(newTeamMembers)
+    }
+  }
+
+  removeUser = (userId, property) => {
+    const newObject = { ...this.props[this.props.model][property] }
+    delete newObject[userId]
+    return newObject
+  }
+
+  render = () => {
     const { formButtons, minimumSearchChars, model, onSubmit, onSubmitFailed } = this.props
     const teamLeadNameDescription = <TeamLeadNameDescription domain={this.props[model].domain} />
-    const emptyResultsMessage = <EmptyResultsMessage />
+    const emptyResultsMessage = <EmptyItemSelectMessage />
     const teamMemberListItems = (
       <TeamMemberListItems handleTeamMemberClick={this.handleUserClick} teamMembers={this.state.users} />
     )
@@ -157,18 +168,38 @@ export class TeamLeadsStage extends Component {
     const teamLeadActions = (
       <TeamLeadActions
         handleConvertToTeamMember={this.handleConvertToTeamMember}
-        handleRemoveTeamLead={this.handleRemoveTeamLead}
+        handleRemoveTeamLead={this.handleRemoveTeamLeadClick}
       />
     )
 
     return (
       <Form model={model} onSubmit={onSubmit} onSubmitFailed={onSubmitFailed}>
+        {this.state.confirmChangeToTeamMember && (
+          <MarketplaceAlert
+            cancelButtonText="Do not change"
+            confirmButtonText="Yes, change to member"
+            content={<ChangeToTeamMemberMessage name={this.state.userToConfirm.data.name} />}
+            handleCancelClick={this.handleCancelAction}
+            handleConfirmClick={() => this.handleChangeToTeamMember(this.state.userToConfirm)}
+            type="warning"
+          />
+        )}
+        {this.state.confirmTeamLeadRemoval && (
+          <MarketplaceAlert
+            cancelButtonText="Do not remove"
+            confirmButtonText="Yes, remove"
+            content={<RemoveTeamLeadMessage name={this.state.userToConfirm.data.name} />}
+            handleCancelClick={this.handleCancelAction}
+            handleConfirmClick={() => this.handleRemoveTeamLead(this.state.userToConfirm.id)}
+            type="warning"
+          />
+        )}
         <AUheading level="1" size="xl">
           Team leads
         </AUheading>
-        <div className={commonStyles.stageContentContainer}>
-          <p className={commonStyles.bold}>Team leads can:</p>
-          <ul className={commonStyles.stageList}>
+        <div className={styles.stageContentContainer}>
+          <p className={styles.bold}>Team leads can:</p>
+          <ul className={styles.stageList}>
             <li>Add and remove members</li>
             <li>Specify what each member can do</li>
             <li>Assign other team leads</li>

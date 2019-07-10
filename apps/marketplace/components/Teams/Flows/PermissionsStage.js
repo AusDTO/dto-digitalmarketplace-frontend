@@ -20,7 +20,7 @@ export class PermissionsStage extends Component {
     this.handleSelectAllPermissionsClick = this.handleSelectAllPermissionsClick.bind(this)
   }
 
-  allPermissionsChecked() {
+  allPermissionsChecked = () => {
     const teamMembers = { ...this.props[this.props.model].teamMembers }
     let allPermissionsChecked = false
 
@@ -36,7 +36,7 @@ export class PermissionsStage extends Component {
     return allPermissionsChecked
   }
 
-  handleSelectAllPermissionsClick(applyAllPermissions) {
+  handleSelectAllPermissionsClick = applyAllPermissions => {
     const teamMembers = { ...this.props[this.props.model].teamMembers }
     const permissionsToApply = applyAllPermissions
       ? {
@@ -63,7 +63,7 @@ export class PermissionsStage extends Component {
     this.props.updateTeamMembers(teamMembers)
   }
 
-  render() {
+  render = () => {
     const { formButtons, model, onSubmit, onSubmitFailed } = this.props
     const team = this.props[model]
 
