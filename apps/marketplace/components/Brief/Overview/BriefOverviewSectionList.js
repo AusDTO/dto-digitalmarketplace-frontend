@@ -36,10 +36,12 @@ export class BriefOverviewSectionListComponent extends Component {
       text: link.text
     }
 
-    if (link.permissionNeeded) {
-      item.link = `${rootPath}/request-access/${link.permissionNeeded}`
-    } else if (link.path) {
-      item.link = link.path
+    if (link.path) {
+      if (link.permissionNeeded) {
+        item.link = `${rootPath}/request-access/${link.permissionNeeded}`
+      } else  {
+        item.link = link.path
+      }
     }
 
     return item
