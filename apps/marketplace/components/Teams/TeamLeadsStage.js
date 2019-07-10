@@ -196,7 +196,7 @@ export class TeamLeadsStage extends Component {
     })
   }
 
-  render() {
+  render = () => {
     const { formButtons, minimumSearchChars, model, onSubmit, onSubmitFailed } = this.props
     const teamLeadNameDescription = <TeamLeadNameDescription domain={this.props[model].domain} />
     const emptyResultsMessage = <EmptyResultsMessage />
