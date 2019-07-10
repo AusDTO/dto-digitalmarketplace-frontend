@@ -81,12 +81,6 @@ export class TeamLeadsStage extends Component {
     this.removeUser = this.removeUser.bind(this)
   }
 
-  removeUser = (userId, property) => {
-    const newObject = { ...this.props[this.props.model][property] }
-    delete newObject[userId]
-    return newObject
-  }
-
   handleCancelAction = () => {
     this.setState({
       confirmChangeToTeamMember: false,
@@ -122,6 +116,16 @@ export class TeamLeadsStage extends Component {
     })
   }
 
+  handleRemoveTeamLead = userId => {
+    const newTeamLeads = this.removeUser(userId, 'teamLeads')
+    this.props.updateTeamLeads(newTeamLeads)
+
+    this.setState({
+      confirmTeamLeadRemoval: false,
+      userToConfirm: {}
+    })
+  }
+
   handleRemoveTeamLeadClick = userId => {
     const teamLead = {
       id: userId,
@@ -132,38 +136,6 @@ export class TeamLeadsStage extends Component {
       confirmChangeToTeamMember: false,
       confirmTeamLeadRemoval: true,
       userToConfirm: teamLead
-    })
-  }
-
-  handleUserClick = user => {
-    this.setState({
-      inputValue: '',
-      users: []
-    })
-
-    const newTeamLeads = { ...this.props[this.props.model].teamLeads }
-    newTeamLeads[user.id] = {
-      emailAddress: user.email,
-      name: user.name
-    }
-
-    this.props.updateTeamLeads(newTeamLeads)
-
-    // Remove as team member if user has been added as one
-    const teamMembers = { ...this.props[this.props.model].teamMembers }
-    if (teamMembers[user.id]) {
-      const newTeamMembers = this.removeUser(user.id, 'teamMembers')
-      this.props.updateTeamMembers(newTeamMembers)
-    }
-  }
-
-  handleRemoveTeamLead = userId => {
-    const newTeamLeads = this.removeUser(userId, 'teamLeads')
-    this.props.updateTeamLeads(newTeamLeads)
-
-    this.setState({
-      confirmTeamLeadRemoval: false,
-      userToConfirm: {}
     })
   }
 
@@ -194,6 +166,34 @@ export class TeamLeadsStage extends Component {
         }
       }, 500)
     })
+  }
+
+  handleUserClick = user => {
+    this.setState({
+      inputValue: '',
+      users: []
+    })
+
+    const newTeamLeads = { ...this.props[this.props.model].teamLeads }
+    newTeamLeads[user.id] = {
+      emailAddress: user.email,
+      name: user.name
+    }
+
+    this.props.updateTeamLeads(newTeamLeads)
+
+    // Remove as team member if user has been added as one
+    const teamMembers = { ...this.props[this.props.model].teamMembers }
+    if (teamMembers[user.id]) {
+      const newTeamMembers = this.removeUser(user.id, 'teamMembers')
+      this.props.updateTeamMembers(newTeamMembers)
+    }
+  }
+
+  removeUser = (userId, property) => {
+    const newObject = { ...this.props[this.props.model][property] }
+    delete newObject[userId]
+    return newObject
   }
 
   render = () => {
