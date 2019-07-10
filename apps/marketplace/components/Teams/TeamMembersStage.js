@@ -64,6 +64,7 @@ export class TeamMembersStage extends Component {
 
     this.state = {
       confirmChangeToTeamLead: false,
+      confirmTeamMemberRemoval: false,
       inputValue: '',
       timeoutId: null,
       userToConfirm: {},
@@ -71,8 +72,10 @@ export class TeamMembersStage extends Component {
     }
 
     this.handleCancelChangeToTeamLead = this.handleCancelChangeToTeamLead.bind(this)
+    this.handleCancelRemoveTeamMember = this.handleCancelRemoveTeamMember.bind(this)
     this.handleConvertToTeamLead = this.handleConvertToTeamLead.bind(this)
     this.handleRemoveTeamMember = this.handleRemoveTeamMember.bind(this)
+    this.handleRemoveTeamMemberClick = this.handleRemoveTeamMemberClick.bind(this)
     this.handleSearchChange = this.handleSearchChange.bind(this)
     this.handleUserClick = this.handleUserClick.bind(this)
     this.removeUser = this.removeUser.bind(this)
@@ -87,6 +90,13 @@ export class TeamMembersStage extends Component {
   handleCancelChangeToTeamLead() {
     this.setState({
       confirmChangeToTeamLead: false,
+      userToConfirm: {}
+    })
+  }
+
+  handleCancelRemoveTeamMember() {
+    this.setState({
+      confirmTeamMemberRemoval: false,
       userToConfirm: {}
     })
   }
@@ -113,7 +123,21 @@ export class TeamMembersStage extends Component {
 
     this.setState({
       confirmChangeToTeamLead: true,
+      confirmTeamMemberRemoval: false,
       userToConfirm: teamLead
+    })
+  }
+
+  handleRemoveTeamMemberClick(userId) {
+    const teamMember = {
+      id: userId,
+      data: { ...this.props[this.props.model].teamMembers[userId] }
+    }
+
+    this.setState({
+      confirmChangeToTeamLead: false,
+      confirmTeamMemberRemoval: true,
+      userToConfirm: teamMember
     })
   }
 
@@ -142,6 +166,11 @@ export class TeamMembersStage extends Component {
   handleRemoveTeamMember(userId) {
     const newTeamMembers = this.removeUser(userId, 'teamMembers')
     this.props.updateTeamMembers(newTeamMembers)
+
+    this.setState({
+      confirmTeamMemberRemoval: false,
+      userToConfirm: {}
+    })
   }
 
   handleSearchChange(e) {
@@ -184,7 +213,7 @@ export class TeamMembersStage extends Component {
     const teamMemberActions = (
       <TeamMemberActions
         handleConvertToTeamLead={this.handleConvertToTeamLead}
-        handleRemoveTeamMember={this.handleRemoveTeamMember}
+        handleRemoveTeamMember={this.handleRemoveTeamMemberClick}
       />
     )
 
@@ -201,6 +230,19 @@ export class TeamMembersStage extends Component {
       )
     }
 
+    const RemoveTeamMemberMessage = props => {
+      const { name } = props
+
+      return (
+        <div>
+          <p>
+            Are you sure you want to remove <span className={commonStyles.bold}>{name}</span> from your team?
+          </p>
+          <p>You will become the owner of their opportunities.</p>
+        </div>
+      )
+    }
+
     return (
       <Form model={model} onSubmit={onSubmit} onSubmitFailed={onSubmitFailed}>
         {this.state.confirmChangeToTeamLead && (
@@ -210,6 +252,16 @@ export class TeamMembersStage extends Component {
             content={<ChangeToTeamLeadMessage name={this.state.userToConfirm.data.name} />}
             handleCancelClick={this.handleCancelChangeToTeamLead}
             handleConfirmClick={() => this.handleChangeToTeamLead(this.state.userToConfirm)}
+            type="warning"
+          />
+        )}
+        {this.state.confirmTeamMemberRemoval && (
+          <MarketplaceAlert
+            cancelButtonText="Do not remove"
+            confirmButtonText="Yes, remove"
+            content={<RemoveTeamMemberMessage name={this.state.userToConfirm.data.name} />}
+            handleCancelClick={this.handleCancelRemoveTeamMember}
+            handleConfirmClick={() => this.handleRemoveTeamMember(this.state.userToConfirm.id)}
             type="warning"
           />
         )}
