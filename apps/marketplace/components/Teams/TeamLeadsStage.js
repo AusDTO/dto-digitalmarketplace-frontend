@@ -20,7 +20,10 @@ const ChangeToTeamMemberConfirmation = props => {
 
   return (
     <AUpageAlert as="warning">
-      <p>Are you sure you want to change {teamLead.data.name} to a team member?</p>
+      <p>
+        Are you sure you want to change <span className={commonStyles.bold}>{teamLead.data.name}</span> to a team
+        member?
+      </p>
       <p>They will no longer be able to add and remove members, specify permissions or create team leads.</p>
       <div>
         <AUbutton onClick={() => handleChangeToTeamMember(teamLead)}>Yes, change to member</AUbutton>
