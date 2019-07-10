@@ -3,8 +3,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 
+import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings'
 import AUlinklist from '@gov.au/link-list/lib/js/react.js'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import { findTeamMember } from 'marketplace/actions/teamActions'
 import formProps from 'shared/form/formPropsSelector'
 import ItemSelect from '../ItemSelect/ItemSelect'
@@ -12,6 +14,23 @@ import TeamMemberListItems from './TeamMemberListItems'
 
 import commonStyles from './TeamStages.scss'
 import actionStyles from '../ItemSelect/SelectedItems.scss'
+
+const ChangeToTeamMemberConfirmation = props => {
+  const { handleCancelChangeToTeamMember, handleChangeToTeamMember, teamLead } = props
+
+  return (
+    <AUpageAlert as="warning">
+      <p>Are you sure you want to change {teamLead.data.name} to a team member?</p>
+      <p>They will no longer be able to add and remove members, specify permissions or create team leads.</p>
+      <div>
+        <AUbutton onClick={() => handleChangeToTeamMember(teamLead)}>Yes, change to member</AUbutton>
+        <AUbutton as="secondary" onClick={handleCancelChangeToTeamMember}>
+          Do not change
+        </AUbutton>
+      </div>
+    </AUpageAlert>
+  )
+}
 
 const TeamLeadActions = props => {
   const { handleConvertToTeamMember, handleRemoveTeamLead, id } = props
@@ -61,11 +80,15 @@ export class TeamLeadsStage extends Component {
     super(props)
 
     this.state = {
+      confirmChangeToTeamMember: false,
       inputValue: '',
       timeoutId: null,
+      userToConfirm: {},
       users: []
     }
 
+    this.handleCancelChangeToTeamMember = this.handleCancelChangeToTeamMember.bind(this)
+    this.handleChangeToTeamMember = this.handleChangeToTeamMember.bind(this)
     this.handleConvertToTeamMember = this.handleConvertToTeamMember.bind(this)
     this.handleRemoveTeamLead = this.handleRemoveTeamLead.bind(this)
     this.handleSearchChange = this.handleSearchChange.bind(this)
@@ -79,15 +102,37 @@ export class TeamLeadsStage extends Component {
     return newObject
   }
 
-  handleConvertToTeamMember(userId) {
-    const user = { id: userId, name: this.props[this.props.model].teamLeads[userId] }
+  handleCancelChangeToTeamMember() {
+    this.setState({
+      confirmChangeToTeamMember: false,
+      userToConfirm: {}
+    })
+  }
 
-    const newTeamLeads = this.removeUser(userId, 'teamLeads')
+  handleChangeToTeamMember(teamLead) {
+    const newTeamLeads = this.removeUser(teamLead.id, 'teamLeads')
     this.props.updateTeamLeads(newTeamLeads)
 
     const newTeamMembers = { ...this.props[this.props.model].teamMembers }
-    newTeamMembers[user.id] = user.name
+    newTeamMembers[teamLead.id] = teamLead.data
     this.props.updateTeamMembers(newTeamMembers)
+
+    this.setState({
+      confirmChangeToTeamMember: false,
+      userToConfirm: {}
+    })
+  }
+
+  handleConvertToTeamMember(userId) {
+    const teamLead = {
+      id: userId,
+      data: { ...this.props[this.props.model].teamLeads[userId] }
+    }
+
+    this.setState({
+      confirmChangeToTeamMember: true,
+      userToConfirm: teamLead
+    })
   }
 
   handleUserClick(user) {
@@ -163,6 +208,13 @@ export class TeamLeadsStage extends Component {
 
     return (
       <Form model={model} onSubmit={onSubmit} onSubmitFailed={onSubmitFailed}>
+        {this.state.confirmChangeToTeamMember && (
+          <ChangeToTeamMemberConfirmation
+            handleCancelChangeToTeamMember={this.handleCancelChangeToTeamMember}
+            handleChangeToTeamMember={this.handleChangeToTeamMember}
+            teamLead={this.state.userToConfirm}
+          />
+        )}
         <AUheading level="1" size="xl">
           Team leads
         </AUheading>
