@@ -75,6 +75,7 @@ export class TeamLeadsStage extends Component {
 
     this.state = {
       confirmChangeToTeamMember: false,
+      confirmTeamLeadRemoval: false,
       inputValue: '',
       timeoutId: null,
       userToConfirm: {},
@@ -82,9 +83,11 @@ export class TeamLeadsStage extends Component {
     }
 
     this.handleCancelChangeToTeamMember = this.handleCancelChangeToTeamMember.bind(this)
+    this.handleCancelRemoveTeamLead = this.handleCancelRemoveTeamLead.bind(this)
     this.handleChangeToTeamMember = this.handleChangeToTeamMember.bind(this)
     this.handleConvertToTeamMember = this.handleConvertToTeamMember.bind(this)
     this.handleRemoveTeamLead = this.handleRemoveTeamLead.bind(this)
+    this.handleRemoveTeamLeadClick = this.handleRemoveTeamLeadClick.bind(this)
     this.handleSearchChange = this.handleSearchChange.bind(this)
     this.handleUserClick = this.handleUserClick.bind(this)
     this.removeUser = this.removeUser.bind(this)
@@ -99,6 +102,13 @@ export class TeamLeadsStage extends Component {
   handleCancelChangeToTeamMember() {
     this.setState({
       confirmChangeToTeamMember: false,
+      userToConfirm: {}
+    })
+  }
+
+  handleCancelRemoveTeamLead() {
+    this.setState({
+      confirmTeamLeadRemoval: false,
       userToConfirm: {}
     })
   }
@@ -125,6 +135,20 @@ export class TeamLeadsStage extends Component {
 
     this.setState({
       confirmChangeToTeamMember: true,
+      confirmTeamLeadRemoval: false,
+      userToConfirm: teamLead
+    })
+  }
+
+  handleRemoveTeamLeadClick(userId) {
+    const teamLead = {
+      id: userId,
+      data: { ...this.props[this.props.model].teamLeads[userId] }
+    }
+
+    this.setState({
+      confirmChangeToTeamMember: false,
+      confirmTeamLeadRemoval: true,
       userToConfirm: teamLead
     })
   }
@@ -154,6 +178,11 @@ export class TeamLeadsStage extends Component {
   handleRemoveTeamLead(userId) {
     const newTeamLeads = this.removeUser(userId, 'teamLeads')
     this.props.updateTeamLeads(newTeamLeads)
+
+    this.setState({
+      confirmTeamLeadRemoval: false,
+      userToConfirm: {}
+    })
   }
 
   handleSearchChange(e) {
@@ -196,7 +225,7 @@ export class TeamLeadsStage extends Component {
     const teamLeadActions = (
       <TeamLeadActions
         handleConvertToTeamMember={this.handleConvertToTeamMember}
-        handleRemoveTeamLead={this.handleRemoveTeamLead}
+        handleRemoveTeamLead={this.handleRemoveTeamLeadClick}
       />
     )
 
@@ -226,6 +255,32 @@ export class TeamLeadsStage extends Component {
       )
     }
 
+    const RemoveTeamLeadConfirmationMessage = props => {
+      const { name } = props
+
+      return (
+        <div>
+          <p>
+            Are you sure you want to remove <span className={commonStyles.bold}>{name}</span> from your team?
+          </p>
+          <p>You will become the owner of their opportunities.</p>
+        </div>
+      )
+    }
+
+    const RemoveTeamLeadConfirmationActions = props => {
+      const { handleCancelRemoveTeamLead, handleRemoveTeamLead, teamLead } = props
+
+      return (
+        <React.Fragment>
+          <AUbutton onClick={() => handleRemoveTeamLead(teamLead.id)}>Yes, remove</AUbutton>
+          <AUbutton as="secondary" onClick={handleCancelRemoveTeamLead}>
+            Do not remove
+          </AUbutton>
+        </React.Fragment>
+      )
+    }
+
     return (
       <Form model={model} onSubmit={onSubmit} onSubmitFailed={onSubmitFailed}>
         {this.state.confirmChangeToTeamMember && (
@@ -238,6 +293,19 @@ export class TeamLeadsStage extends Component {
               />
             }
             content={<ChangeToTeamMemberConfirmationMessage name={this.state.userToConfirm.data.name} />}
+            type="warning"
+          />
+        )}
+        {this.state.confirmTeamLeadRemoval && (
+          <MarketplaceAlert
+            alertActions={
+              <RemoveTeamLeadConfirmationActions
+                handleCancelRemoveTeamLead={this.handleCancelRemoveTeamLead}
+                handleRemoveTeamLead={this.handleRemoveTeamLead}
+                teamLead={this.state.userToConfirm}
+              />
+            }
+            content={<RemoveTeamLeadConfirmationMessage name={this.state.userToConfirm.data.name} />}
             type="warning"
           />
         )}
