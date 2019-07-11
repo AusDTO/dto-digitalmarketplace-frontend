@@ -230,7 +230,7 @@ SellerSelect.defaultProps = {
   showCategorySelect: false,
   allSuppliers: false,
   categories: [],
-  minimumSearchChars: 3,
+  minimumSearchChars: 2,
   onSellerSelect: () => {},
   onSellerCategorySelect: () => {},
   onSearch: () => {},
