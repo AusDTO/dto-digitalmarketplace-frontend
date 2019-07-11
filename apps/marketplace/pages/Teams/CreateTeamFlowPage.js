@@ -74,26 +74,6 @@ export class CreateTeamFlowPage extends Component {
   }
 
   render() {
-    if (this.props.errorMessage) {
-      let hasFocused = false
-      const setFocus = e => {
-        if (!hasFocused) {
-          hasFocused = true
-          e.focus()
-        }
-      }
-
-      return (
-        <ErrorBoxComponent
-          title="A problem occurred loading team details"
-          errorMessage={this.props.errorMessage}
-          setFocus={setFocus}
-          form={{}}
-          invalidFields={[]}
-        />
-      )
-    }
-
     if (this.state.loading) {
       return <LoadingIndicatorFullPage />
     }
@@ -103,15 +83,41 @@ export class CreateTeamFlowPage extends Component {
     }
 
     const teamId = this.props.match.params.teamId
+    let hasFocused = false
+    const setFocus = e => {
+      if (!hasFocused) {
+        hasFocused = true
+        e.focus()
+      }
+    }
 
     return (
-      <ProgressFlow
-        basename={`${rootPath}/team/${teamId}`}
-        model={model}
-        returnPath={`${rootPath}/teams`}
-        saveModel={this.saveTeam}
-        stages={TeamStages}
-      />
+      <React.Fragment>
+        {this.props.errorMessage && (
+          <div className="row">
+            <div className="col-xs-12">
+              <ErrorBoxComponent
+                title="A problem has occurred"
+                errorMessage={this.props.errorMessage}
+                setFocus={setFocus}
+                form={{}}
+                invalidFields={[]}
+              />
+            </div>
+          </div>
+        )}
+        <div className="row">
+          <div className="col-xs-12">
+            <ProgressFlow
+              basename={`${rootPath}/team/${teamId}`}
+              model={model}
+              returnPath={`${rootPath}/teams`}
+              saveModel={this.saveTeam}
+              stages={TeamStages}
+            />
+          </div>
+        </div>
+      </React.Fragment>
     )
   }
 }
