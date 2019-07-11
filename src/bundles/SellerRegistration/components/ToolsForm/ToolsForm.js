@@ -39,13 +39,11 @@ class ToolsForm extends BaseForm {
                 <header styleName="content">
                     <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'tools' && type === 'edit'} />
                     <h1 className="au-display-xl" styleName="content-heading" tabIndex="-1">Tools and methodologies</h1>
-                    <p>Enhance your profile and give buyers more ways to find you when searching</p>
 
                   <div className="calloutMistake">
                     <b> Avoid common mistakes </b>
                     <ul className="mistake-list">
                       <li>If using acronyms, their meaning must be written out clearly.</li>
-                      <li>If a section does not apply to your business, leave it blank. The section will not appear on your profile.</li>
                       <li>Use plain english to explain the tools, methodologies and technologies used.</li>
                     </ul>
                   </div>
