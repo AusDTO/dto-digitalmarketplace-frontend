@@ -69,6 +69,7 @@ export const handleSaveTeamSuccess = response => ({
 
 export const saveTeam = team => (dispatch, getState) => {
   dispatch(sendingRequest(true))
+  dispatch(setErrorMessage(null))
   return dmapi({
     url: `/team/${team.id}/update`,
     method: 'POST',
