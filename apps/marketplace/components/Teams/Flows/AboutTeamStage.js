@@ -29,7 +29,7 @@ const AboutTeamStage = props => {
       />
       <Textfield
         defaultValue={props[model].emailAddress}
-        description="Receive emails about opportunities created by any team member"
+        description="All communications about opportunities in this team will be copied to this email address."
         htmlFor="emailAddress"
         id="emailAddress"
         label="Team email address (optional)"
