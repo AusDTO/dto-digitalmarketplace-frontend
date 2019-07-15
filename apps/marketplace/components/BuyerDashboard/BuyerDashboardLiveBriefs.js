@@ -9,10 +9,10 @@ const BuyerDashboardLiveBriefs = props => (
     status={'live'}
     additionalColumns={{
       headers: [
-        <th scope="col" key={1} className={styles.colSubmissions}>
+        <th scope="col" key={1} className={styles.colQuestion}>
           Questions end date
         </th>,
-        <th scope="col" key={2} className={styles.colStatus}>
+        <th scope="col" key={2} className={styles.colClosing}>
           Closing date
         </th>
       ],

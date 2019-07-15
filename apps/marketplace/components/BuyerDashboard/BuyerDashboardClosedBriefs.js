@@ -9,7 +9,7 @@ const BuyerDashboardClosedBriefs = props => (
     status={'closed'}
     additionalColumns={{
       headers: [
-        <th scope="col" key={1} className={styles.colName}>
+        <th scope="col" key={1} className={styles.colClosing}>
           Closing date
         </th>
       ],

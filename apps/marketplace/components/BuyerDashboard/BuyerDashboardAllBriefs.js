@@ -8,7 +8,7 @@ const BuyerDashboardAllBriefs = props => (
   <BuyerDashboardBriefTable
     additionalColumns={{
       headers: [
-        <th scope="col" key={1} className={styles.colSubmissions}>
+        <th scope="col" key={1} className={styles.colStatus}>
           Status
         </th>
       ],

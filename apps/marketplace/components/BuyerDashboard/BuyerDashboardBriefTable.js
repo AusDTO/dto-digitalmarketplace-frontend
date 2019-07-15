@@ -131,7 +131,7 @@ export class BuyerDashboardBriefTable extends Component {
                     <span>{mapLot(item)}</span>
                     <span className={styles.internalReference}>{item.internalReference}</span>
                   </td>
-                  <td className={styles.colName}>{item.owner}</td>
+                  <td className={styles.colOwner}>{item.owner}</td>
                   {this.props.additionalColumns.columns.map(ac => ac(item))}
                 </tr>
               ))}
