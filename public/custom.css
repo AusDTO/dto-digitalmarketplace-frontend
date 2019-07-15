@@ -683,7 +683,7 @@ li:first-child.au-marketplace-header-link-list a {
 .au-marketplace-header-actions .au-accordion {
   border: 2px solid #ffffff;
   border-radius: 4px;
-  min-width: 10.5rem;
+  min-width: 11.5rem;
   position: absolute;
   right: 0;
   text-align: left;
@@ -741,7 +741,7 @@ li:first-child.au-marketplace-header-link-list a {
   background-color: #ffffff;
   color: #00698f;
   display: block;
-  padding: 0.75rem;
+  padding: 0.75rem 1.35rem;
 }
 
 .au-marketplace-header-actions .au-accordion__body a:hover {
