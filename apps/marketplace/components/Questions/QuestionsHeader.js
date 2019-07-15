@@ -35,9 +35,14 @@ class QuestionsHeader extends Component {
           </div>
           <div className={`${styles.menuRow} row`}>
             <div className="col-xs-12 col-md-12">
-              You must publish answers to all relevant questions asked by sellers. These will be publicly visible on the
-              opportunity. If the question you want to answer does not appear, you can{' '}
-              <a href={`${rootPath}/brief/${brief.id}/publish-answer`}>add additional questions</a>.
+              <p>
+                You must publish answers to all relevant questions asked by sellers. These will be publicly visible on
+                the opportunity.
+              </p>
+              <p>
+                If the question you want to answer does not appear, you can{' '}
+                <a href={`${rootPath}/brief/${brief.id}/publish-answer`}>add additional questions</a>.
+              </p>
             </div>
           </div>
           <div className={`${styles.menuRow} row`}>
