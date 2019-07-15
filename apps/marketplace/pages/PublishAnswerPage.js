@@ -115,7 +115,7 @@ class PublishAnswerPage extends Component {
                       </AUheading>
                       <p>
                         <a href={`${rootPath}/brief/${brief.id}/questions/published-answers`} className="au-btn">
-                          Return to questions
+                          View published answers
                         </a>
                       </p>
                     </React.Fragment>
