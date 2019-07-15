@@ -105,7 +105,7 @@ class AskQuestionPage extends Component {
                       </AUheading>
                       <p>
                         <a href={getOpportunityUrl(brief)} className="au-btn">
-                          Return to brief
+                          Return to opportunity
                         </a>
                       </p>
                     </React.Fragment>
