@@ -49,6 +49,7 @@ main {
 
 main {
   box-sizing: border-box;
+  display: block;
   padding-top: 3.2em;
   width: 100%;
   margin-bottom: 3.2em;
