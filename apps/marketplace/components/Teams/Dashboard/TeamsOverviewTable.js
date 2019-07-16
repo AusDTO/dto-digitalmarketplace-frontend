@@ -21,11 +21,13 @@ const TeamsOverviewTable = props => {
             </tr>
           </thead>
           <tbody>
-            {Object.keys(teams).map(teamId => (
-              <tr key={teamId}>
-                <td>{teams[teamId].name}</td>
-                <td>{teams[teamId].members.join(', ')}</td>
-                <td>{teams[teamId].isTeamLead && <a href={`${rootPath}/team/edit/${teamId}/about`}>Edit team</a>}</td>
+            {Object.keys(teams).map(index => (
+              <tr key={index}>
+                <td>{teams[index].name}</td>
+                <td>{teams[index].members.join(', ')}</td>
+                <td>
+                  {teams[index].isTeamLead && <a href={`${rootPath}/team/edit/${teams[index].id}/about`}>Edit team</a>}
+                </td>
               </tr>
             ))}
           </tbody>
