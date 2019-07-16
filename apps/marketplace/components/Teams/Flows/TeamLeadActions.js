@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import AUlinklist from '@gov.au/link-list/lib/js/react.js'
 
@@ -6,8 +7,11 @@ import commonStyles from './TeamStages.scss'
 import itemSelectStyles from '../../ItemSelect/SelectedItems.scss'
 
 const TeamLeadActions = props => {
-  const { handleConvertToTeamMember, handleRemoveTeamLead, id } = props
+  const { handleConvertToTeamMember, handleRemoveTeamLead, id, emailAddress, currentUserEmailAddress, team } = props
 
+  if (emailAddress === currentUserEmailAddress && team.status === 'created') {
+    return ''
+  }
   return (
     <AUlinklist
       className={itemSelectStyles.selectedItemActions}
@@ -35,4 +39,8 @@ const TeamLeadActions = props => {
   )
 }
 
-export default TeamLeadActions
+const mapStateToProps = state => ({
+  currentUserEmailAddress: state.app.emailAddress
+})
+
+export default connect(mapStateToProps)(TeamLeadActions)

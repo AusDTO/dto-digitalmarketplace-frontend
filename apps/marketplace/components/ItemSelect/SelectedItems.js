@@ -19,7 +19,7 @@ const SelectedItemsList = props => {
         {sortedKeys.map(key => (
           <li key={key}>
             <span>{selectedItems[key].name}</span>
-            {React.cloneElement(actions, { id: key })}
+            {React.cloneElement(actions, { id: key, ...selectedItems[key] })}
           </li>
         ))}
       </ul>
