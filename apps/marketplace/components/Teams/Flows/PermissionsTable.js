@@ -60,9 +60,6 @@ export class PermissionsTable extends Component {
             <th className={styles.permissionsColumn} scope="col">
               Create work orders
             </th>
-            <th className={styles.permissionsColumn} scope="col">
-              Download reporting data
-            </th>
           </tr>
         </thead>
         <tbody>
@@ -151,25 +148,6 @@ export class PermissionsTable extends Component {
                       onChange={() => {}}
                       onClick={e => {
                         this.handlePermissionClick(e.target.checked, userId, 'create_work_orders')
-                      }}
-                    />
-                  </div>
-                </td>
-                <td align="center">
-                  <div>
-                    <AUcheckbox
-                      checked={
-                        teamMembers[userId].permissions
-                          ? teamMembers[userId].permissions.download_reporting_data
-                          : false
-                      }
-                      className={styles.permissionsTableCheckbox}
-                      id="download-reporting-data-checkbox"
-                      label=""
-                      name="permissions"
-                      onChange={() => {}}
-                      onClick={e => {
-                        this.handlePermissionClick(e.target.checked, userId, 'download_reporting_data')
                       }}
                     />
                   </div>
