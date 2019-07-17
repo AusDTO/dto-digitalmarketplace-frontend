@@ -38,7 +38,7 @@ export class EditTeamFlowPage extends Component {
         this.setState({
           loading: false
         })
-  
+
         if (response.status === 403) {
           this.setState({
             returnToTeamsDashboard: true
