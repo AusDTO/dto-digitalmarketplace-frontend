@@ -10,7 +10,16 @@ const RemoveTeamMemberMessage = props => {
       <p>
         Are you sure you want to remove <span className={styles.bold}>{name}</span> from your team?
       </p>
-      <p>You will become the owner of their opportunities.</p>
+      <ul>
+        <li>
+          The team will no longer be able to access the opportunities <span className={styles.bold}>{name}</span>{' '}
+          created before joining the team.
+        </li>
+        <li>
+          <span className={styles.bold}>{name}</span> will no longer be able to access the opportunities created in this
+          team
+        </li>
+      </ul>
     </div>
   )
 }
