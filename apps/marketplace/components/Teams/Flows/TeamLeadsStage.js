@@ -169,7 +169,6 @@ export class TeamLeadsStage extends Component {
       <TeamLeadActions
         handleConvertToTeamMember={this.handleConvertToTeamMember}
         handleRemoveTeamLead={this.handleRemoveTeamLeadClick}
-        team={this.props[this.props.model]}
       />
     )
 
