@@ -131,7 +131,14 @@ export class BuyerDashboardBriefTable extends Component {
                     <span>{mapLot(item)}</span>
                     <span className={styles.internalReference}>{item.internalReference}</span>
                   </td>
-                  <td className={styles.colOwner}>{item.owner}</td>
+                  <td className={styles.colOwner}>
+                    {item.creators.map(c => (
+                      <React.Fragment key={c}>
+                        {c}<br/>
+                      </React.Fragment>
+                      ))
+                    }
+                  </td>
                   {this.props.additionalColumns.columns.map(ac => ac(item))}
                 </tr>
               ))}
