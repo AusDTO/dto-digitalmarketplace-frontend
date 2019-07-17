@@ -134,10 +134,10 @@ export class BuyerDashboardBriefTable extends Component {
                   <td className={styles.colOwner}>
                     {item.creators.map(c => (
                       <React.Fragment key={c}>
-                        {c}<br/>
+                        {c}
+                        <br />
                       </React.Fragment>
-                      ))
-                    }
+                    ))}
                   </td>
                   {this.props.additionalColumns.columns.map(ac => ac(item))}
                 </tr>
