@@ -22,7 +22,9 @@ export class SellerQuestions extends Component {
 
   componentDidMount() {
     this.props.loadData(this.props.briefId).then(response => {
-      this.processLoad(response.data)
+      if (response.status === 200) {
+        this.processLoad(response.data)
+      }
       this.setState({
         loading: false
       })

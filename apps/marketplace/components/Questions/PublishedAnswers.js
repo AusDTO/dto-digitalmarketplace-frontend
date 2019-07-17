@@ -18,13 +18,17 @@ export class PublishedAnswers extends Component {
 
   componentDidMount() {
     this.props.loadData(this.props.briefId).then(response => {
+      if (response.status === 200) {
+        this.setState({
+          answers: response.data.answers ? response.data.answers : [],
+          questionCount: response.data.questionCount
+        })
+        this.props.questionCountUpdated(response.data.questionCount)
+        this.props.briefUpdated(response.data.brief)
+      }
       this.setState({
-        answers: response.data.answers,
-        questionCount: response.data.questionCount,
         loading: false
       })
-      this.props.questionCountUpdated(response.data.questionCount)
-      this.props.briefUpdated(response.data.brief)
     })
   }
 
