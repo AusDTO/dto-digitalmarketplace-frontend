@@ -69,12 +69,15 @@ export class TeamLeadsStage extends Component {
       id: userId,
       data: { ...this.props[this.props.model].teamLeads[userId] }
     }
-
-    this.setState({
-      confirmChangeToTeamMember: true,
-      confirmTeamLeadRemoval: false,
-      userToConfirm: teamLead
-    })
+    if (this.props[this.props.model].status === 'created') {
+      this.handleChangeToTeamMember(teamLead)
+    } else {
+      this.setState({
+        confirmChangeToTeamMember: true,
+        confirmTeamLeadRemoval: false,
+        userToConfirm: teamLead
+      })
+    }
   }
 
   handleRemoveTeamLead = userId => {
@@ -93,11 +96,15 @@ export class TeamLeadsStage extends Component {
       data: { ...this.props[this.props.model].teamLeads[userId] }
     }
 
-    this.setState({
-      confirmChangeToTeamMember: false,
-      confirmTeamLeadRemoval: true,
-      userToConfirm: teamLead
-    })
+    if (this.props[this.props.model].status === 'created') {
+      this.handleRemoveTeamLead(userId)
+    } else {
+      this.setState({
+        confirmChangeToTeamMember: false,
+        confirmTeamLeadRemoval: true,
+        userToConfirm: teamLead
+      })
+    }
   }
 
   handleSearchChange = e => {
