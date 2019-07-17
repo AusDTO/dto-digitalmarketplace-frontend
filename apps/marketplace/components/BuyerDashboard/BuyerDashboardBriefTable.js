@@ -116,7 +116,7 @@ export class BuyerDashboardBriefTable extends Component {
                   Name
                 </th>
                 <th scope="col" className={styles.colOwner}>
-                  Owner
+                  Created by
                 </th>
                 {this.props.additionalColumns.headers.map(ac => ac)}
               </tr>
