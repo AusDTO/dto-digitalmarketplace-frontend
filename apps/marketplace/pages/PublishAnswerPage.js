@@ -114,8 +114,8 @@ class PublishAnswerPage extends Component {
                         {`Thank you, your answer is submitted successfully for ${brief.title}`}.
                       </AUheading>
                       <p>
-                        <a href={`${rootPath}/brief/${brief.id}/questions/published-answers`} className="au-btn">
-                          View published answers
+                        <a href={`${rootPath}/brief/${brief.id}/questions`} className="au-btn">
+                          Return to questions
                         </a>
                       </p>
                     </React.Fragment>
