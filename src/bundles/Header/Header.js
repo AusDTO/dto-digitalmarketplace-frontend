@@ -57,9 +57,10 @@ class Header extends React.Component {
       <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
         <li>
           <a href="/2/seller-dashboard">Dashboard</a>
-          {(this.props.notificationCount &&
-            this.props.notificationCount > 0 &&
-            <div className="notification">{this.props.notificationCount}</div>)}
+          {this.props.notificationCount && this.props.notificationCount > 0 ?
+            <div className="notification">{this.props.notificationCount}</div>
+            : ''
+          }
         </li>
         <li>
           <a href="/logout">Sign out</a>
