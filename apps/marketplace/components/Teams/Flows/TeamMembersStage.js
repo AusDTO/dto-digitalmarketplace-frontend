@@ -17,6 +17,8 @@ import TeamMemberListItems from './TeamMemberListItems'
 import ConfirmActionAlert from '../../Alerts/ConfirmActionAlert'
 import ItemSelect from '../../ItemSelect/ItemSelect'
 
+import styles from './TeamStages.scss'
+
 export class TeamMembersStage extends Component {
   constructor(props) {
     super(props)
@@ -201,6 +203,16 @@ export class TeamMembersStage extends Component {
         <AUheading level="1" size="xl">
           Team members
         </AUheading>
+        <div className={styles.stageContentContainer}>
+          <p className={styles.bold}>You can set permissions for team members. These include:</p>
+          <ul className={styles.stageList}>
+            <li>Create opportunity drafts</li>
+            <li>Publish opportunities</li>
+            <li>Answer seller questions</li>
+            <li>Download seller responses to the opportunity</li>
+            <li>Create work orders</li>
+          </ul>
+        </div>
         <ItemSelect
           defaultValue=""
           description={teamMemberNameDescription}
