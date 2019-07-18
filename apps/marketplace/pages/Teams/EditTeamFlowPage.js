@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import { actions } from 'react-redux-form'
 
 import { getTeam, saveTeam } from 'marketplace/actions/teamActions'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
@@ -24,6 +25,7 @@ export class EditTeamFlowPage extends Component {
       returnToTeamsDashboard: false
     }
 
+    this.handleStageMount = this.handleStageMount.bind(this)
     this.saveTeam = this.saveTeam.bind(this)
     this.setStageActions = this.setStageActions.bind(this)
   }
@@ -46,6 +48,10 @@ export class EditTeamFlowPage extends Component {
         stage.actions = lastStageActions(props)
       }
     })
+  }
+
+  handleStageMount = () => {
+    this.props.resetFormValidity()
   }
 
   saveTeam(returnToTeamsDashboard = false) {
@@ -110,6 +116,7 @@ export class EditTeamFlowPage extends Component {
             <ProgressFlow
               basename={`${rootPath}/team/edit/${teamId}`}
               model={model}
+              onStageMount={this.handleStageMount}
               returnPath={`${rootPath}/teams`}
               saveModel={this.saveTeam}
               stages={EditTeamStages}
@@ -129,6 +136,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getTeam: teamId => dispatch(getTeam(teamId)),
+  resetFormValidity: () => dispatch(actions.resetValidity(model)),
   saveTeam: team => dispatch(saveTeam(team))
 })
 

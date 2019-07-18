@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { actions } from 'react-redux-form'
 import { Redirect } from 'react-router-dom'
 
 import { getTeam, saveTeam } from 'marketplace/actions/teamActions'
@@ -24,6 +25,7 @@ export class CreateTeamFlowPage extends Component {
       teamCreated: false
     }
 
+    this.handleStageMount = this.handleStageMount.bind(this)
     this.saveTeam = this.saveTeam.bind(this)
     this.setStageActions = this.setStageActions.bind(this)
   }
@@ -46,6 +48,10 @@ export class CreateTeamFlowPage extends Component {
         stage.actions = lastStageActions(props)
       }
     })
+  }
+
+  handleStageMount = () => {
+    this.props.resetFormValidity()
   }
 
   saveTeam(createTeam = false) {
@@ -111,6 +117,7 @@ export class CreateTeamFlowPage extends Component {
             <ProgressFlow
               basename={`${rootPath}/team/${teamId}`}
               model={model}
+              onStageMount={this.handleStageMount}
               returnPath={`${rootPath}/teams`}
               saveModel={this.saveTeam}
               stages={TeamStages}
@@ -130,6 +137,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getTeam: teamId => dispatch(getTeam(teamId)),
+  resetFormValidity: () => dispatch(actions.resetValidity(model)),
   saveTeam: team => dispatch(saveTeam(team))
 })
 
