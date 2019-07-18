@@ -7,9 +7,9 @@ import commonStyles from './TeamStages.scss'
 import itemSelectStyles from '../../ItemSelect/SelectedItems.scss'
 
 const TeamLeadActions = props => {
-  const { handleConvertToTeamMember, handleRemoveTeamLead, id, emailAddress, currentUserEmailAddress, team } = props
+  const { handleConvertToTeamMember, handleRemoveTeamLead, id, emailAddress, currentUserEmailAddress } = props
 
-  if (emailAddress === currentUserEmailAddress && team.status === 'created') {
+  if (emailAddress === currentUserEmailAddress) {
     return ''
   }
   return (

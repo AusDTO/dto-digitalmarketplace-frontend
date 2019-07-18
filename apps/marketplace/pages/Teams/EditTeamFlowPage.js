@@ -33,7 +33,15 @@ export class EditTeamFlowPage extends Component {
   componentDidMount() {
     const teamId = this.props.match.params.teamId
     if (teamId) {
-      this.props.getTeam(teamId).then(response => this.props.loadModel(response.data))
+      this.props.getTeam(teamId).then(response => {
+        if (response.status === 403) {
+          this.setState({
+            returnToTeamsDashboard: true
+          })
+        }
+
+        this.props.loadModel(response.data)
+      })
     }
 
     this.setStageActions(EditTeamStages)
@@ -67,6 +75,12 @@ export class EditTeamFlowPage extends Component {
       this.setState({
         loading: false
       })
+
+      if (response.status === 403) {
+        this.setState({
+          returnToTeamsDashboard: true
+        })
+      }
 
       if (response.status === 200 && returnToTeamsDashboard) {
         this.setState({

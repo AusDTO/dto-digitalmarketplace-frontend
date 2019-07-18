@@ -69,12 +69,15 @@ export class TeamLeadsStage extends Component {
       id: userId,
       data: { ...this.props[this.props.model].teamLeads[userId] }
     }
-
-    this.setState({
-      confirmChangeToTeamMember: true,
-      confirmTeamLeadRemoval: false,
-      userToConfirm: teamLead
-    })
+    if (this.props[this.props.model].status === 'created') {
+      this.handleChangeToTeamMember(teamLead)
+    } else {
+      this.setState({
+        confirmChangeToTeamMember: true,
+        confirmTeamLeadRemoval: false,
+        userToConfirm: teamLead
+      })
+    }
   }
 
   handleRemoveTeamLead = userId => {
@@ -93,11 +96,15 @@ export class TeamLeadsStage extends Component {
       data: { ...this.props[this.props.model].teamLeads[userId] }
     }
 
-    this.setState({
-      confirmChangeToTeamMember: false,
-      confirmTeamLeadRemoval: true,
-      userToConfirm: teamLead
-    })
+    if (this.props[this.props.model].status === 'created') {
+      this.handleRemoveTeamLead(userId)
+    } else {
+      this.setState({
+        confirmChangeToTeamMember: false,
+        confirmTeamLeadRemoval: true,
+        userToConfirm: teamLead
+      })
+    }
   }
 
   handleSearchChange = e => {
@@ -112,8 +119,18 @@ export class TeamLeadsStage extends Component {
     this.setState({
       timeoutId: setTimeout(() => {
         if (this.state.inputValue && this.state.inputValue.length >= this.props.minimumSearchChars) {
+          const teamLeads = { ...this.props[this.props.model].teamLeads }
+          const teamMembers = { ...this.props[this.props.model].teamMembers }
+          const userIds = []
+          Object.keys(teamLeads).forEach(key => {
+            userIds.push(key)
+          })
+          Object.keys(teamMembers).forEach(key => {
+            userIds.push(key)
+          })
+
           this.props
-            .findTeamMember(this.state.inputValue)
+            .findTeamMember(this.state.inputValue, userIds)
             .then(data => {
               this.setState({
                 users: data.users
@@ -169,7 +186,6 @@ export class TeamLeadsStage extends Component {
       <TeamLeadActions
         handleConvertToTeamMember={this.handleConvertToTeamMember}
         handleRemoveTeamLead={this.handleRemoveTeamLeadClick}
-        team={this.props[this.props.model]}
       />
     )
 
@@ -253,7 +269,7 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
-  findTeamMember: keyword => dispatch(findTeamMember(keyword)),
+  findTeamMember: (keyword, userIds) => dispatch(findTeamMember(keyword, userIds)),
   updateTeamLeads: teamLeads => dispatch(actions.change(`${props.model}.teamLeads`, teamLeads)),
   updateTeamMembers: teamMembers => dispatch(actions.change(`${props.model}.teamMembers`, teamMembers))
 })

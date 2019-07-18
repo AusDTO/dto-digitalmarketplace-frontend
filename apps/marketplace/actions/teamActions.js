@@ -90,8 +90,8 @@ export const saveTeam = team => (dispatch, getState) => {
   })
 }
 
-export const findTeamMember = keywords => (dispatch, getState) => {
-  const params = { keywords }
+export const findTeamMember = (keywords, exclude) => (dispatch, getState) => {
+  const params = { keywords, exclude: exclude ? exclude.join(',') : '' }
 
   dispatch(sendingRequest(true))
   return dmapi({

@@ -17,6 +17,8 @@ import TeamMemberListItems from './TeamMemberListItems'
 import ConfirmActionAlert from '../../Alerts/ConfirmActionAlert'
 import ItemSelect from '../../ItemSelect/ItemSelect'
 
+import styles from './TeamStages.scss'
+
 export class TeamMembersStage extends Component {
   constructor(props) {
     super(props)
@@ -63,16 +65,19 @@ export class TeamMembersStage extends Component {
   }
 
   handleConvertToTeamLead = userId => {
-    const teamLead = {
+    const teamMember = {
       id: userId,
       data: { ...this.props[this.props.model].teamMembers[userId] }
     }
-
-    this.setState({
-      confirmChangeToTeamLead: true,
-      confirmTeamMemberRemoval: false,
-      userToConfirm: teamLead
-    })
+    if (this.props[this.props.model].status === 'created') {
+      this.handleChangeToTeamLead(teamMember)
+    } else {
+      this.setState({
+        confirmChangeToTeamLead: true,
+        confirmTeamMemberRemoval: false,
+        userToConfirm: teamMember
+      })
+    }
   }
 
   handleRemoveTeamMember = userId => {
@@ -90,12 +95,15 @@ export class TeamMembersStage extends Component {
       id: userId,
       data: { ...this.props[this.props.model].teamMembers[userId] }
     }
-
-    this.setState({
-      confirmChangeToTeamLead: false,
-      confirmTeamMemberRemoval: true,
-      userToConfirm: teamMember
-    })
+    if (this.props[this.props.model].status === 'created') {
+      this.handleRemoveTeamMember(userId)
+    } else {
+      this.setState({
+        confirmChangeToTeamLead: false,
+        confirmTeamMemberRemoval: true,
+        userToConfirm: teamMember
+      })
+    }
   }
 
   handleSearchChange = e => {
@@ -110,8 +118,17 @@ export class TeamMembersStage extends Component {
     this.setState({
       timeoutId: setTimeout(() => {
         if (this.state.inputValue && this.state.inputValue.length >= this.props.minimumSearchChars) {
+          const teamLeads = { ...this.props[this.props.model].teamLeads }
+          const teamMembers = { ...this.props[this.props.model].teamMembers }
+          const userIds = []
+          Object.keys(teamLeads).forEach(key => {
+            userIds.push(key)
+          })
+          Object.keys(teamMembers).forEach(key => {
+            userIds.push(key)
+          })
           this.props
-            .findTeamMember(this.state.inputValue)
+            .findTeamMember(this.state.inputValue, userIds)
             .then(data => {
               this.setState({
                 users: data.users
@@ -195,6 +212,16 @@ export class TeamMembersStage extends Component {
         <AUheading level="1" size="xl">
           Team members
         </AUheading>
+        <div className={styles.stageContentContainer}>
+          <p className={styles.bold}>You can set permissions for team members. These include:</p>
+          <ul className={styles.stageList}>
+            <li>Create opportunity drafts</li>
+            <li>Publish opportunities</li>
+            <li>Answer seller questions</li>
+            <li>Download seller responses to the opportunity</li>
+            <li>Create work orders</li>
+          </ul>
+        </div>
         <ItemSelect
           defaultValue=""
           description={teamMemberNameDescription}
@@ -242,7 +269,7 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
-  findTeamMember: keyword => dispatch(findTeamMember(keyword)),
+  findTeamMember: (keyword, userIds) => dispatch(findTeamMember(keyword, userIds)),
   updateTeamLeads: teamLeads => dispatch(actions.change(`${props.model}.teamLeads`, teamLeads)),
   updateTeamMembers: teamMembers => dispatch(actions.change(`${props.model}.teamMembers`, teamMembers))
 })
