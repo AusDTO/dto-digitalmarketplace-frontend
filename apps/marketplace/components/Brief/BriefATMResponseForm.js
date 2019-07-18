@@ -33,7 +33,7 @@ export class BriefATMResponseForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      fileCount: 0
+      fileCount: 1
     }
   }
 

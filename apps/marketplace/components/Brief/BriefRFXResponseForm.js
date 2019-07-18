@@ -19,7 +19,7 @@ export class BriefRFXResponseForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      fileCount: 0
+      fileCount: 1
     }
   }
 
@@ -40,7 +40,7 @@ export class BriefRFXResponseForm extends Component {
 
   updateRequiredFileCount() {
     this.setState({
-      fileCount: this.getBriefEvaluationTypesForUpload().length
+      fileCount: this.getBriefEvaluationTypesForUpload().length + 1
     })
   }
 
