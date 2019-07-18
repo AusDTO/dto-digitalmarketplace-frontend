@@ -18,6 +18,14 @@
     td {
         padding: 1.25rem;
     }
+
+    .leadsColumn {
+        max-width: 200px;
+    }
+
+    .membersColumn {
+        max-width: 400px;
+    }
 }
 
 @media (max-width: 575px) {

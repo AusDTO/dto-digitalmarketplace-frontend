@@ -16,6 +16,7 @@ const TeamsOverviewTable = props => {
           <thead>
             <tr>
               <th scope="col">Name</th>
+              <th scope="col">Leads</th>
               <th scope="col">Members</th>
               <th scope="col">{showActions && 'Actions'}</th>
             </tr>
@@ -24,7 +25,8 @@ const TeamsOverviewTable = props => {
             {Object.keys(teams).map(index => (
               <tr key={index}>
                 <td>{teams[index].name}</td>
-                <td>{teams[index].members.join(', ')}</td>
+                <td className={styles.leadsColumn}>{teams[index].leads ? teams[index].leads.join(', ') : ''}</td>
+                <td className={styles.membersColumn}>{teams[index].members ? teams[index].members.join(', ') : ''}</td>
                 <td>
                   {teams[index].isTeamLead && <a href={`${rootPath}/team/edit/${teams[index].id}/about`}>Edit team</a>}
                 </td>
