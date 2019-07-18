@@ -33,7 +33,7 @@ export class CreateTeamFlowPage extends Component {
   componentDidMount() {
     const teamId = this.props.match.params.teamId
     if (teamId) {
-      this.props.getTeam(teamId)
+      this.props.getTeam(teamId).then(response => this.props.loadModel(response.data))
     }
 
     this.setStageActions(TeamStages)
@@ -137,6 +137,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getTeam: teamId => dispatch(getTeam(teamId)),
+  loadModel: data => dispatch(actions.load(model, data)),
   resetFormValidity: () => dispatch(actions.resetValidity(model)),
   saveTeam: team => dispatch(saveTeam(team))
 })
