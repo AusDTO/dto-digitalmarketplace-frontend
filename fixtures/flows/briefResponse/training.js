@@ -15,11 +15,15 @@ const respond = async () => {
   await util.matchText('a', 'A contact number is required')
   await util.typeInReactInput('availability', { numberOfCharacters: 100 })
   await util.upload('file_0', 'document.pdf')
+  await util.sleep(2000)
   await util.upload('file_1', 'document.pdf')
+  await util.sleep(2000)
   await util.upload('file_2', 'document.pdf')
+  await util.sleep(2000)
   await util.typeInReactInput('respondToPhone', { value: '0123456789' })
 
   await clickSubmitResponse()
+  await util.matchText('h4', 'Thanks, your response has been successfully submitted.')
 }
 
 export default respond

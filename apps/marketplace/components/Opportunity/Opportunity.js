@@ -60,7 +60,7 @@ const getClosingTime = brief => {
 
 const getTrimmedFilename = fileName => {
   let newFileName = fileName
-  if (fileName.length > 32) {
+  if (fileName && fileName.length > 32) {
     // build a limited version of the file name, taking out chars from the middle
     newFileName = `${fileName.substring(0, 14)}...${fileName.substring(fileName.length - 15)}`
   }
@@ -87,7 +87,10 @@ const Opportunity = props => {
     canRespond,
     isAssessedForCategory,
     isAssessedForAnyCategory,
-    hasChosenBriefCategory,
+    hasEvidenceInDraftForCategory,
+    hasLatestEvidenceRejectedForCategory,
+    draftEvidenceId,
+    rejectedEvidenceId,
     isOpenToAll,
     isOpenToCategory,
     isBriefOwner,
@@ -102,7 +105,9 @@ const Opportunity = props => {
     hasBeenAssessedForBrief,
     domains,
     hasSupplierErrors,
-    isInvited
+    isInvited,
+    hasSignedCurrentAgreement,
+    supplierCode
   } = props
   const brief = { ...defaultBriefProps, ...props.brief }
   const category = getBriefCategory(domains, brief.sellerCategory)
@@ -174,6 +179,16 @@ const Opportunity = props => {
                   <strong>{brief.lotSlug === 'specialist' ? 'Category' : 'Panel category'}</strong>
                 </div>
                 <div className="col-xs-12 col-sm-8">{category}</div>
+              </div>
+            )}
+            {brief.comprehensiveTerms && (
+              <div className="row">
+                <div className="col-xs-12 col-sm-4">
+                  <strong>Additional terms</strong>
+                </div>
+                <div className="col-xs-12 col-sm-8">
+                  <a href="/api/2/r/comprehensive-terms-current.pdf">Comprehensive terms</a> apply
+                </div>
               </div>
             )}
             <AUheading level="2" size="lg">
@@ -550,38 +565,10 @@ const Opportunity = props => {
               isInvited={isInvited}
               isOpenToAll={isOpenToAll}
               isAssessedForCategory={isAssessedForCategory}
-              hasChosenBriefCategory={hasChosenBriefCategory}
-              isOpenToCategory={isOpenToCategory}
-              hasResponded={hasResponded}
-              briefId={brief.id}
-              briefLot={brief.lotSlug}
-              briefStatus={brief.status}
-              loggedIn={loggedIn}
-              isBuyer={isBuyer}
-              isApprovedSeller={isApprovedSeller}
-              isApplicant={isApplicant}
-              isAwaitingApplicationAssessment={isAwaitingApplicationAssessment}
-              isAwaitingDomainAssessment={isAwaitingDomainAssessment}
-              hasBeenAssessedForBrief={hasBeenAssessedForBrief}
-              isBriefOwner={isBriefOwner}
-              buyerEmail={brief.contactEmail}
-              category={category}
-              sellerCategory={brief.sellerCategory}
-              evaluationType={brief.evaluationType}
-              numberOfSuppliers={brief.numberOfSuppliers}
-              hasSupplierErrors={hasSupplierErrors}
-            />
-          ) : (
-            <OpportunityInfoCard
-              sellersInvited={invitedSellerCount}
-              sellersApplied={briefResponseCount}
-              isOpen={brief.status === 'live'}
-              closingDate={getClosingTime(brief)}
-              canRespond={canRespond}
-              isOpenToAll={isOpenToAll}
-              isAssessedForCategory={isAssessedForCategory}
-              isAssessedForAnyCategory={isAssessedForAnyCategory}
-              hasChosenBriefCategory={hasChosenBriefCategory}
+              hasEvidenceInDraftForCategory={hasEvidenceInDraftForCategory}
+              hasLatestEvidenceRejectedForCategory={hasLatestEvidenceRejectedForCategory}
+              draftEvidenceId={draftEvidenceId}
+              rejectedEvidenceId={rejectedEvidenceId}
               isOpenToCategory={isOpenToCategory}
               hasResponded={hasResponded}
               briefId={brief.id}
@@ -599,6 +586,45 @@ const Opportunity = props => {
               buyerEmail={brief.contactEmail}
               category={category}
               sellerCategory={brief.sellerCategory}
+              evaluationType={brief.evaluationType}
+              numberOfSuppliers={brief.numberOfSuppliers}
+              hasSupplierErrors={hasSupplierErrors}
+              hasSignedCurrentAgreement={hasSignedCurrentAgreement}
+              supplierCode={supplierCode}
+            />
+          ) : (
+            <OpportunityInfoCard
+              sellersInvited={invitedSellerCount}
+              sellersApplied={briefResponseCount}
+              isOpen={brief.status === 'live'}
+              closingDate={getClosingTime(brief)}
+              canRespond={canRespond}
+              isOpenToAll={isOpenToAll}
+              isAssessedForCategory={isAssessedForCategory}
+              isAssessedForAnyCategory={isAssessedForAnyCategory}
+              hasEvidenceInDraftForCategory={hasEvidenceInDraftForCategory}
+              hasLatestEvidenceRejectedForCategory={hasLatestEvidenceRejectedForCategory}
+              draftEvidenceId={draftEvidenceId}
+              rejectedEvidenceId={rejectedEvidenceId}
+              isOpenToCategory={isOpenToCategory}
+              hasResponded={hasResponded}
+              briefId={brief.id}
+              briefLot={brief.lotSlug}
+              briefStatus={brief.status}
+              loggedIn={loggedIn}
+              isBuyer={isBuyer}
+              isApprovedSeller={isApprovedSeller}
+              isApplicant={isApplicant}
+              isRecruiterOnly={isRecruiterOnly}
+              isAwaitingApplicationAssessment={isAwaitingApplicationAssessment}
+              isAwaitingDomainAssessment={isAwaitingDomainAssessment}
+              hasBeenAssessedForBrief={hasBeenAssessedForBrief}
+              isBriefOwner={isBriefOwner}
+              buyerEmail={brief.contactEmail}
+              category={category}
+              sellerCategory={brief.sellerCategory}
+              hasSignedCurrentAgreement={hasSignedCurrentAgreement}
+              supplierCode={supplierCode}
             />
           )}
         </div>
@@ -617,7 +643,10 @@ Opportunity.defaultProps = {
   isInvited: false,
   isAssessedForCategory: false,
   isAssessedForAnyCategory: false,
-  hasChosenBriefCategory: false,
+  hasEvidenceInDraftForCategory: false,
+  hasLatestEvidenceRejectedForCategory: false,
+  draftEvidenceId: undefined,
+  rejectedEvidenceId: undefined,
   isOpenToCategory: false,
   isOpenToAll: false,
   isBriefOwner: false,
@@ -630,7 +659,9 @@ Opportunity.defaultProps = {
   hasBeenAssessedForBrief: false,
   hasResponded: false,
   loggedIn: false,
-  hasSupplierErrors: false
+  hasSupplierErrors: false,
+  hasSignedCurrentAgreement: false,
+  supplierCode: null
 }
 
 Opportunity.propTypes = {
@@ -686,7 +717,10 @@ Opportunity.propTypes = {
   isInvited: PropTypes.bool,
   isAssessedForCategory: PropTypes.bool,
   isAssessedForAnyCategory: PropTypes.bool,
-  hasChosenBriefCategory: PropTypes.bool,
+  hasEvidenceInDraftForCategory: PropTypes.bool,
+  hasLatestEvidenceRejectedForCategory: PropTypes.bool,
+  draftEvidenceId: PropTypes.number,
+  rejectedEvidenceId: PropTypes.number,
   isOpenToCategory: PropTypes.bool,
   isOpenToAll: PropTypes.bool,
   isBriefOwner: PropTypes.bool,
@@ -699,7 +733,9 @@ Opportunity.propTypes = {
   hasBeenAssessedForBrief: PropTypes.bool,
   hasResponded: PropTypes.bool,
   loggedIn: PropTypes.bool,
-  hasSupplierErrors: PropTypes.bool
+  hasSupplierErrors: PropTypes.bool,
+  hasSignedCurrentAgreement: PropTypes.bool,
+  supplierCode: PropTypes.number
 }
 
 export default Opportunity

@@ -1,0 +1,49 @@
+.supplierInfo {
+  opacity: 0.5;
+  display: block;
+}
+
+.criteriaReview {
+  display: block;
+  border-left: solid 10px #5dbfe9;
+  padding-left: 1.5rem;
+}
+
+.reviewText {
+  white-space: pre-wrap;
+}
+
+.feedback {
+  display: inline-block;
+  width: 400px;
+}
+
+.feedback select, .feedback textarea {
+  margin-top: 1.5rem;
+}
+
+.redText {
+  color: rgba(255, 0, 0, 1);
+}
+
+.largerText {
+  font-size: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.priceOver {
+  color: rgba(255, 0, 0, 1);
+  margin-left: 0.75rem;
+}
+
+.actionButton {
+  border: 0;
+}
+
+.rejectButton {
+  background-color: rgba(255, 0, 0, 1);
+}
+
+.approveButton {
+  background-color: rgba(0, 153, 0, 1)
+}

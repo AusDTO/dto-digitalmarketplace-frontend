@@ -102,8 +102,9 @@ jobs:
             export USE_CLIPBOARD_FOR_TYPE_INPUT=false
             export HEADLESS=true
             export IGNORE_MULTIPLE_LINKS=true
-            export RFX_PANEL_CATEGORY=3
-            export RFX_SELLER_NAME=auto
+            export SELLER_CATEGORY=3
+            export SELLER_NAME=auto
+            export SLOW_MO=10
             npm test
 
   deploy_to_rc:
@@ -117,6 +118,18 @@ jobs:
           command: |
             cf login -a https://api.system.y.cld.gov.au -o dta -s marketplace -u $CF_USER_STAGING -p $CF_PASSWORD_STAGING
             cf zero-downtime-push dm-rc-frontend -f manifest.rc.yml --show-app-log
+
+  deploy_to_alpha:
+    <<: *deploy_docker
+    steps:
+      - attach_workspace:
+          at: .
+      - *cf_install
+      - run:
+          name: Deploy to Alpha
+          command: |
+            cf login -a https://api.system.y.cld.gov.au -o dta -s marketplace -u $CF_USER_STAGING -p $CF_PASSWORD_STAGING
+            cf zero-downtime-push dm-alpha-frontend -f manifest.alpha.yml --show-app-log
 
   deploy_to_production_clone:
     <<: *deploy_docker
@@ -199,6 +212,13 @@ workflows:
               ignore: /.*/
             branches:
               only: rc
+      - deploy_to_alpha:
+          <<: *required_for_deploy
+          filters:
+            tags:
+              ignore: /.*/
+            branches:
+              only: alpha
       - deploy_to_staging:
           <<: *required_for_deploy
           filters:

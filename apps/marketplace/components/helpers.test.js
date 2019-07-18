@@ -1,5 +1,5 @@
 import format from 'date-fns/format'
-import { getBriefLastQuestionDate } from './helpers'
+import { getBriefLastQuestionDate, padStart } from './helpers'
 
 describe('getBriefLastQuestionDate', () => {
   test('When closing date is over a week away', () => {
@@ -99,4 +99,11 @@ describe('getBriefLastQuestionDate', () => {
     const lastQuestionDate = format(getBriefLastQuestionDate(closingDate, referenceDate), 'YYYY-MM-DD')
     expect(lastQuestionDate).toEqual(format(new Date('2019-12-30'), 'YYYY-MM-DD'))
   })
+})
+
+describe('padStart', () => {
+  test('When length is the same', () => expect(padStart('V', 1, '0')).toEqual('V'))
+  test('When length is not the same', () => expect(padStart('V', 2, '0')).toEqual('0V'))
+  test('When string is longer', () => expect(padStart('VVVVV', 2, '0')).toEqual('VVVVV'))
+  test('When string is shorter', () => expect(padStart('VVVVV', 10, '0')).toEqual('00000VVVVV'))
 })

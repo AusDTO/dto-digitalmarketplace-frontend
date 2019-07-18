@@ -36,7 +36,10 @@ const defaultBriefState = {
   canRespond: false,
   isAssessedForCategory: false,
   isAssessedForAnyCategory: false,
-  hasChosenBriefCategory: false,
+  hasEvidenceInDraftForCategory: false,
+  hasLatestEvidenceRejectedForCategory: false,
+  draftEvidenceId: undefined,
+  rejectedEvidenceId: undefined,
   isOpenToCategory: false,
   isOpenToAll: false,
   isBriefOwner: false,
@@ -50,7 +53,8 @@ const defaultBriefState = {
   hasResponded: false,
   domains: [],
   hasSupplierErrors: false,
-  isInvited: false
+  isInvited: false,
+  hasSignedCurrentAgreement: false
 }
 
 const briefReducer = (state = defaultBriefState, action) => {
@@ -69,7 +73,8 @@ const briefReducer = (state = defaultBriefState, action) => {
         loadBriefSuccess: true,
         briefResponses: action.briefResponses,
         specialistNumber: action.briefResponses.length + 1,
-        loadedAt: new Date().valueOf()
+        loadedAt: new Date().valueOf(),
+        oldWorkOrderCreator: action.oldWorkOrderCreator
       }
 
     case BRIEF_PUBLIC_INFO_FETCH_DATA_SUCCESS:
@@ -82,7 +87,10 @@ const briefReducer = (state = defaultBriefState, action) => {
         canRespond: action.canRespond,
         isAssessedForCategory: action.isAssessedForCategory,
         isAssessedForAnyCategory: action.isAssessedForAnyCategory,
-        hasChosenBriefCategory: action.hasChosenBriefCategory,
+        hasEvidenceInDraftForCategory: action.hasEvidenceInDraftForCategory,
+        hasLatestEvidenceRejectedForCategory: action.hasLatestEvidenceRejectedForCategory,
+        draftEvidenceId: action.draftEvidenceId,
+        rejectedEvidenceId: action.rejectedEvidenceId,
         isOpenToCategory: action.isOpenToCategory,
         isOpenToAll: action.isOpenToAll,
         isBriefOwner: action.isBriefOwner,
@@ -98,7 +106,8 @@ const briefReducer = (state = defaultBriefState, action) => {
         loadBriefSuccess: true,
         loadedAt: new Date().valueOf(),
         hasSupplierErrors: action.hasSupplierErrors,
-        isInvited: action.isInvited
+        isInvited: action.isInvited,
+        hasSignedCurrentAgreement: action.hasSignedCurrentAgreement
       }
 
     case BRIEF_SAVE_SUCCESS:

@@ -78,7 +78,6 @@ const BuyerSpecialistAboutStage = props => (
     <Textarea
       model={`${props.model}.summary`}
       label="What will the specialist do?"
-      description="This can include the responsibilities of the specialist and expected deliverables."
       name="summary"
       id="summary"
       htmlFor="summary"

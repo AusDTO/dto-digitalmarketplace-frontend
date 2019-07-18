@@ -14,7 +14,6 @@ import './SellerProfile.css';
 const Body = (props) => {
   const {
     assessed = [],
-    unassessed = [],
     case_studies = {},
     representative,
     email,
@@ -47,13 +46,18 @@ const Body = (props) => {
   return (
     <article className="seller-profile" styleName={public_profile ? 'full-profile' : ''}>
       <div styleName="seller-profile-content">
-        <Row title="Areas of expertise" show={!isEmpty(assessed) || !isEmpty(unassessed)}>
+        <Row title="Categories" show>
+
+          {isEmpty(assessed) && (
+            <p styleName="nocategories">
+              This seller has not yet been approved in any categories.
+            </p>
+          )}
 
           {!isEmpty(assessed) && (
             <span><div className="seller-profile__evaluated-badges" styleName="badges evaluated-badges">
-                          <p styleName="bold">Assessed for</p>
               {assessed.map((service, i) => (
-                <span key={i}>{service} <Icon value="assessed-tick-nostroke" size={14}/></span>
+                <span key={i}>{service}</span>
               ))}
 
                       </div>
@@ -72,17 +76,6 @@ const Body = (props) => {
 
                       </span>
 
-          )}
-
-          {!isEmpty(unassessed) && (
-            <div className="seller-profile__provides-badges" styleName="badges provides-badges">
-              <p><b>Experience in</b><br/>
-                These areas of expertise have not yet been formally assessed by the DTA. They will be assessed once the
-                seller expresses interest in a matching opportunity.</p>
-              {unassessed.map((service, i) => (
-                <span key={i}>{service}</span>
-              ))}
-            </div>
           )}
 
         </Row>
@@ -279,11 +272,18 @@ const Body = (props) => {
           </ul>
         </Row>
         <Row title="Signed agreement" show={true}>
-          {!isEmpty(signed_agreements) && !isEmpty(head(signed_agreements)) && signed_agreements[0]['agreement'] &&
-          (<span><a href={signed_agreements[0]['agreement']['url']}>{signed_agreements[0]['agreement']['version']}
-          </a> signed on {signed_agreements[0]['signed_at']
-            && format(new Date(signed_agreements[0]['signed_at']), 'DD/MM/YYYY')}</span>)
-          }
+          {signed_agreements && signed_agreements.map((sa, i) => (
+            <React.Fragment key={i}>
+              {sa['agreement'] && <div>
+                <a href={sa['agreement']['url']}>{sa['agreement']['version']}</a>{' '}
+                signed on{' '}
+                {
+                  sa['agreement']['signed_at'] ? format(new Date(sa['agreement']['signed_at']), 'DD/MM/YYYY') :
+                  sa['signed_at'] && format(new Date(sa['signed_at']), 'DD/MM/YYYY')
+                }
+              </div>}
+            </React.Fragment> 
+          ))}
         </Row>
         <Row title="Documents provided to the Marketplace" show={!isEmpty(documents)}>
           <table className="content-table" styleName="content-table">

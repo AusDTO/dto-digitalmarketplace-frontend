@@ -89,7 +89,10 @@ class OpportunityPage extends Component {
           canRespond={this.props.canRespond}
           isAssessedForCategory={this.props.isAssessedForCategory}
           isAssessedForAnyCategory={this.props.isAssessedForAnyCategory}
-          hasChosenBriefCategory={this.props.hasChosenBriefCategory}
+          hasEvidenceInDraftForCategory={this.props.hasEvidenceInDraftForCategory}
+          hasLatestEvidenceRejectedForCategory={this.props.hasLatestEvidenceRejectedForCategory}
+          draftEvidenceId={this.props.draftEvidenceId}
+          rejectedEvidenceId={this.props.rejectedEvidenceId}
           isOpenToCategory={this.props.isOpenToCategory}
           isOpenToAll={this.props.isOpenToAll}
           isBriefOwner={this.props.isBriefOwner}
@@ -104,6 +107,8 @@ class OpportunityPage extends Component {
           loggedIn={this.props.loggedIn}
           hasSupplierErrors={this.props.hasSupplierErrors}
           isInvited={this.props.isInvited}
+          hasSignedCurrentAgreement={this.props.hasSignedCurrentAgreement}
+          supplierCode={this.props.supplierCode}
         />
       )
     }
@@ -122,7 +127,10 @@ const mapResetStateToProps = state => ({
   canRespond: state.brief.canRespond,
   isAssessedForCategory: state.brief.isAssessedForCategory,
   isAssessedForAnyCategory: state.brief.isAssessedForAnyCategory,
-  hasChosenBriefCategory: state.brief.hasChosenBriefCategory,
+  hasEvidenceInDraftForCategory: state.brief.hasEvidenceInDraftForCategory,
+  hasLatestEvidenceRejectedForCategory: state.brief.hasLatestEvidenceRejectedForCategory,
+  draftEvidenceId: state.brief.draftEvidenceId,
+  rejectedEvidenceId: state.brief.rejectedEvidenceId,
   isOpenToCategory: state.brief.isOpenToCategory,
   isOpenToAll: state.brief.isOpenToAll,
   isBriefOwner: state.brief.isBriefOwner,
@@ -137,7 +145,9 @@ const mapResetStateToProps = state => ({
   errorMessage: state.app.errorMessage,
   loggedIn: state.app.loggedIn,
   hasSupplierErrors: state.brief.hasSupplierErrors,
-  isInvited: state.brief.isInvited
+  isInvited: state.brief.isInvited,
+  hasSignedCurrentAgreement: state.brief.hasSignedCurrentAgreement,
+  supplierCode: state.app.supplierCode
 })
 
 const mapResetDispatchToProps = dispatch => ({

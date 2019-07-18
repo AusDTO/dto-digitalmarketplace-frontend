@@ -54,15 +54,15 @@ test('date control calls the onDateChange property on value changes', () => {
   component
     .find('input#day')
     .at(0)
-    .simulate('change', { target: { checked: false } })
+    .simulate('blur', { target: { checked: false } })
   component
     .find('input#month')
     .at(0)
-    .simulate('change', { target: { checked: false } })
+    .simulate('blur', { target: { checked: false } })
   component
     .find('input#year')
     .at(0)
-    .simulate('change', { target: { checked: false } })
+    .simulate('blur', { target: { checked: false } })
 
   expect(onDateChange).toHaveBeenCalledTimes(3)
 })

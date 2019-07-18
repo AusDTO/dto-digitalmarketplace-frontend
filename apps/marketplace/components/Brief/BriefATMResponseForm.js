@@ -15,6 +15,7 @@ import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import range from 'lodash/range'
 import dmapi from 'marketplace/services/apiClient'
 import styles from './BriefATMResponseForm.scss'
+import { escapeQuote } from '../helpers'
 
 const briefRequiresDocumentUpload = brief => {
   let mustUpload = false
@@ -104,7 +105,7 @@ export class BriefATMResponseForm extends Component {
                   {brief.evaluationCriteria.map((evaluationCriteria, i) => (
                     <Textarea
                       key={evaluationCriteria.criteria}
-                      model={`${model}.criteria['${evaluationCriteria.criteria}']`}
+                      model={`${model}.criteria['${escapeQuote(evaluationCriteria.criteria)}']`}
                       name={`criteria.${evaluationCriteria.criteria}`}
                       id={`criteria.${i}`}
                       controlProps={{ limit: 500 }}

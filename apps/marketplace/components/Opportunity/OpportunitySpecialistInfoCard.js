@@ -121,6 +121,23 @@ const OpportunitySpecialistInfoCard = props => (
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
+          !props.hasSignedCurrentAgreement &&
+          !props.hasResponded && (
+            <span>
+              <p className={styles.invitedStatus}>
+                You must accept the new Master agreement before you can apply for an opportunity.
+              </p>
+              <p>
+                <a href={`/2/seller-edit/${props.supplierCode}/representative`} className="au-btn au-btn--block">
+                  View Master Agreement
+                </a>
+              </p>
+            </span>
+          )}
+        {props.isOpen &&
+          props.loggedIn &&
+          props.isApprovedSeller &&
+          props.hasSignedCurrentAgreement &&
           !props.isOpenToAll &&
           !props.isInvited && (
             <div className={styles.invitedStatus}>
@@ -130,57 +147,74 @@ const OpportunitySpecialistInfoCard = props => (
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
+          props.hasSignedCurrentAgreement &&
           props.isInvited &&
           !props.isAssessedForCategory && (
             <span>
-              {props.hasChosenBriefCategory ? (
-                <span>
-                  <p className={styles.invitedStatus}>
-                    Only sellers approved in {props.category} can apply.
-                    {props.isAwaitingDomainAssessment && (
-                      <span> Your application for this category is currently being assessed.</span>
-                    )}
-                    {!props.isAwaitingDomainAssessment &&
-                      props.hasBeenAssessedForBrief && (
-                        <span> You have already submitted a request for assessment against this brief.</span>
-                      )}
-                  </p>
-                  {!props.isAwaitingDomainAssessment &&
-                    !props.hasBeenAssessedForBrief && (
-                      <p>
-                        <a
-                          href={`/sellers/opportunities/${props.briefId}/assessment/${props.sellerCategory}`}
-                          className="au-btn au-btn--block"
-                        >
-                          Request assessment
-                        </a>
-                      </p>
-                    )}
-                </span>
-              ) : (
-                <span>
-                  <p className={styles.invitedStatus}>
-                    Only sellers approved in {props.category} can apply.{' '}
-                    {props.isAwaitingApplicationAssessment ? (
-                      <span>Your seller profile is currently being assessed.</span>
-                    ) : (
-                      <span>You must edit your profile to add this category before you can request assessment.</span>
-                    )}
-                  </p>
+              <p className={styles.invitedStatus}>
+                Only sellers assessed and approved by the Marketplace in &quot;{props.category}&quot; can apply.
+                {props.isRecruiterOnly &&
+                  !props.isAwaitingDomainAssessment && (
+                    <span>
+                      {' '}
+                      You must <a href="/sellers/edit">edit your profile</a> to add this category before you can apply.
+                    </span>
+                  )}
+                {props.isRecruiterOnly &&
+                  props.isAwaitingApplicationAssessment && <span> Your application is currently being assessed.</span>}
+                {props.isAwaitingDomainAssessment && (
+                  <span> Your application for this category is currently being assessed.</span>
+                )}
+                {!props.isAwaitingDomainAssessment &&
+                  props.hasEvidenceInDraftForCategory &&
+                  !props.isRecruiterOnly &&
+                  props.draftEvidenceId && (
+                    <span>
+                      {' '}
+                      You currently have a{' '}
+                      <a href={`${rootPath}/seller-assessment/${props.draftEvidenceId}/introduction`}>
+                        draft submission
+                      </a>{' '}
+                      for assessment in this category.
+                    </span>
+                  )}
+                {!props.isAwaitingDomainAssessment &&
+                  props.hasLatestEvidenceRejectedForCategory &&
+                  props.rejectedEvidenceId && (
+                    <span> Your submitted assessment has been reviewed by the Marketplace and was not successful.</span>
+                  )}
+              </p>
+              {!props.isAwaitingDomainAssessment &&
+                !props.hasEvidenceInDraftForCategory &&
+                !props.hasLatestEvidenceRejectedForCategory &&
+                !props.isRecruiterOnly && (
                   <p>
-                    {!props.isAwaitingApplicationAssessment && (
-                      <a href="/sellers/edit" className="au-btn au-btn--block">
-                        Edit profile
-                      </a>
-                    )}
+                    <a
+                      href={`${rootPath}/seller-assessment/create/${props.sellerCategory}/${props.briefId}`}
+                      className={`au-btn au-btn--block ${styles.redBtn}`}
+                    >
+                      Request assessment
+                    </a>
                   </p>
-                </span>
-              )}
+                )}
+              {!props.isAwaitingDomainAssessment &&
+                props.hasLatestEvidenceRejectedForCategory &&
+                props.rejectedEvidenceId && (
+                  <p>
+                    <a
+                      href={`${rootPath}/seller-assessment/${props.rejectedEvidenceId}/feedback`}
+                      className={`au-btn au-btn--block ${styles.redBtn}`}
+                    >
+                      View assessment feedback
+                    </a>
+                  </p>
+                )}
             </span>
           )}
         {props.isOpen &&
           props.isApprovedSeller &&
           props.isAssessedForCategory &&
+          (props.hasSignedCurrentAgreement || (!props.hasSignedCurrentAgreement && props.hasResponded)) &&
           props.canRespond && (
             <div>
               {props.hasSupplierErrors ? (
@@ -226,7 +260,10 @@ OpportunitySpecialistInfoCard.defaultProps = {
   sellerResponses: 0,
   canRespond: false,
   isAssessedForCategory: false,
-  hasChosenBriefCategory: false,
+  hasEvidenceInDraftForCategory: false,
+  hasLatestEvidenceRejectedForCategory: false,
+  draftEvidenceId: undefined,
+  rejectedEvidenceId: undefined,
   isOpenToAll: false,
   loggedIn: false,
   hasResponded: false,
@@ -234,13 +271,15 @@ OpportunitySpecialistInfoCard.defaultProps = {
   isBuyer: false,
   isApprovedSeller: false,
   isApplicant: false,
+  isRecruiterOnly: false,
   isAwaitingApplicationAssessment: false,
   isAwaitingDomainAssessment: false,
-  hasBeenAssessedForBrief: false,
   isBriefOwner: false,
   numberOfSuppliers: '',
   hasSupplierErrors: false,
-  isInvited: false
+  isInvited: false,
+  hasSignedCurrentAgreement: false,
+  supplierCode: null
 }
 
 OpportunitySpecialistInfoCard.propTypes = {
@@ -250,7 +289,10 @@ OpportunitySpecialistInfoCard.propTypes = {
   sellerResponses: PropTypes.number,
   canRespond: PropTypes.bool,
   isAssessedForCategory: PropTypes.bool,
-  hasChosenBriefCategory: PropTypes.bool,
+  hasEvidenceInDraftForCategory: PropTypes.bool,
+  hasLatestEvidenceRejectedForCategory: PropTypes.bool,
+  draftEvidenceId: PropTypes.number,
+  rejectedEvidenceId: PropTypes.number,
   isOpenToAll: PropTypes.bool,
   loggedIn: PropTypes.bool,
   hasResponded: PropTypes.bool,
@@ -258,9 +300,9 @@ OpportunitySpecialistInfoCard.propTypes = {
   isBuyer: PropTypes.bool,
   isApprovedSeller: PropTypes.bool,
   isApplicant: PropTypes.bool,
+  isRecruiterOnly: PropTypes.bool,
   isAwaitingApplicationAssessment: PropTypes.bool,
   isAwaitingDomainAssessment: PropTypes.bool,
-  hasBeenAssessedForBrief: PropTypes.bool,
   isBriefOwner: PropTypes.bool,
   closingDate: PropTypes.string.isRequired,
   briefId: PropTypes.number.isRequired,
@@ -270,7 +312,9 @@ OpportunitySpecialistInfoCard.propTypes = {
   sellerCategory: PropTypes.string.isRequired,
   numberOfSuppliers: PropTypes.string,
   hasSupplierErrors: PropTypes.bool,
-  isInvited: PropTypes.bool
+  isInvited: PropTypes.bool,
+  hasSignedCurrentAgreement: PropTypes.bool,
+  supplierCode: PropTypes.number
 }
 
 export default OpportunitySpecialistInfoCard

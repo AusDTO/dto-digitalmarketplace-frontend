@@ -12,8 +12,8 @@ export USE_CLIPBOARD_FOR_TYPE_INPUT=[true|false]
 export SLOW_MO=[number in milliseconds|undefined]
 export HEADLESS=[true|false]
 export IGNORE_MULTIPLE_LINKS=[true|false]
-export RFX_PANEL_CATEGORY=[3]
-export RFX_SELLER_NAME=[xyz]
+export SELLER_CATEGORY=[3]
+export SELLER_NAME=[xyz]
 ```
 
 next run `npm install`  

@@ -25,6 +25,12 @@ import BuyerSpecialistCompletedPage from './pages/BuyerSpecialistCompletedPage'
 import BuyerSpecialistFlowPage from './pages/BuyerSpecialistFlowPage'
 import BriefOutcomeChoicePage from './pages/BriefOutcomeChoicePage'
 import OpportunityPage from './pages/OpportunityPage'
+import SellerAssessmentFlowPage from './pages/SellerAssessmentFlowPage'
+import SellerAssessmentCreatePage from './pages/SellerAssessmentCreatePage'
+import SellerAssessmentCompletedPage from './pages/SellerAssessmentCompletedPage'
+import SellerAssessmentFeedbackPage from './pages/SellerAssessmentFeedbackPage'
+import SellerEditFlowPage from './pages/SellerEditFlowPage'
+import BuyerAwardSellerPage from './pages/BuyerAwardSellerPage'
 
 export const rootPath = '/2'
 
@@ -45,6 +51,11 @@ export const Routes = () => (
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
     <Route path={`${rootPath}/login`} component={LoginPage} />
     <Route path={`${rootPath}/seller-dashboard`} component={SellerDashboardPage} />
+    <PrivateRoute
+      restrictedTo="supplier"
+      path={`${rootPath}/seller-edit/:supplierCode`}
+      component={SellerEditFlowPage}
+    />
     <Route path={`${rootPath}/:framework/opportunities/:briefId`} component={OpportunityPage} />
     <Route path={`${rootPath}/opportunities`} component={OpportunitiesPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-dashboard`} component={BuyerDashboardPage} />
@@ -54,6 +65,7 @@ export const Routes = () => (
       path={`${rootPath}/buyer-rfx/:briefId/completed`}
       component={BuyerRFXCompletedPage}
     />
+    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-award/:briefId`} component={BuyerAwardSellerPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/:briefId/:stage?`} component={BuyerRFXFlowPage} />
     <PrivateRoute
       restrictedTo="buyer"
@@ -78,6 +90,26 @@ export const Routes = () => (
       component={BuyerSpecialistFlowPage}
     />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/outcome-choice`} component={BriefOutcomeChoicePage} />
+    <PrivateRoute
+      restrictedTo="supplier"
+      path={`${rootPath}/seller-assessment/:evidenceId/completed`}
+      component={SellerAssessmentCompletedPage}
+    />
+    <PrivateRoute
+      restrictedTo="supplier"
+      path={`${rootPath}/seller-assessment/:evidenceId/feedback`}
+      component={SellerAssessmentFeedbackPage}
+    />
+    <PrivateRoute
+      restrictedTo="supplier"
+      path={`${rootPath}/seller-assessment/create/:domainId/:briefId?`}
+      component={SellerAssessmentCreatePage}
+    />
+    <PrivateRoute
+      restrictedTo="supplier"
+      path={`${rootPath}/seller-assessment/:evidenceId/:stage?`}
+      component={SellerAssessmentFlowPage}
+    />
     <Route component={NotFound} />
   </Switch>
 )

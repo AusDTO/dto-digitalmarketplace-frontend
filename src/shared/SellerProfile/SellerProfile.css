@@ -49,6 +49,10 @@
   margin-bottom: 2em;
 }
 
+.nocategories {
+  opacity: 0.6;
+}
+
 .tile-title {
   display: block;
   color: #6e6e6e;

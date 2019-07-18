@@ -4,12 +4,34 @@ import { createForms } from 'react-redux-form'
 import appReducer from './appReducer'
 import brief from './briefReducers'
 import user from './memberInfoReducers'
+import domain from './domainReducers'
+import evidence from './evidenceReducers'
 import dashboard from './dashboardReducers'
 import sellerDashboard from './sellerDashboardReducers'
+import sellerEdit from './sellerEditReducers'
 import opportunities from './opportunitiesReducers'
 import errorMessage from './errorMessage'
 import form_options from './form_options'
 import messages from './messagesReducers'
+
+export const SellerAssessmentFormReducer = {
+  id: 0,
+  domainId: 0,
+  maxDailyRate: 0,
+  criteria: [],
+  evidence: {}
+}
+
+export const SellerAssessmentEvidenceReducer = {
+  client: '',
+  refereeName: '',
+  refereeNumber: '',
+  startDate: '',
+  endDate: '',
+  background: '',
+  response: '',
+  sameAsFirst: true
+}
 
 export const BuyerRFXFormReducer = {
   id: 0,
@@ -34,7 +56,8 @@ export const BuyerRFXFormReducer = {
   contractExtensions: '',
   budgetRange: '',
   workingArrangements: '',
-  securityClearance: ''
+  securityClearance: '',
+  comprehensiveTerms: false
 }
 
 export const BuyerATMFormReducer = {
@@ -89,7 +112,26 @@ export const BuyerSpecialistFormReducer = {
   startDate: '',
   contractLength: '',
   contractExtensions: '',
-  closedAt: ''
+  closedAt: '',
+  comprehensiveTerms: false
+}
+
+export const SellerEditFormReducer = {
+  supplier: {
+    name: '',
+    code: '',
+    data: {
+      representative: '',
+      email: '',
+      phone: ''
+    }
+  },
+  agreementStatus: {
+    show: false,
+    canSign: false,
+    canUserSign: false,
+    signed: false
+  }
 }
 
 export default combineReducers({
@@ -97,7 +139,10 @@ export default combineReducers({
   user,
   brief,
   dashboard,
+  domain,
+  evidence,
   sellerDashboard,
+  sellerEdit,
   opportunities,
   messages,
   form_options,
@@ -110,6 +155,9 @@ export default combineReducers({
     createUserForm: {
       name: '',
       password: ''
+    },
+    briefAwardSeller: {
+      awardedSupplierCode: ''
     },
     briefResponseForm: {
       availability: '',
@@ -162,6 +210,8 @@ export default combineReducers({
     },
     BuyerRFXForm: BuyerRFXFormReducer,
     BuyerATMForm: BuyerATMFormReducer,
-    BuyerSpecialistForm: BuyerSpecialistFormReducer
+    SellerAssessmentForm: SellerAssessmentFormReducer,
+    BuyerSpecialistForm: BuyerSpecialistFormReducer,
+    SellerEditFlowPage: SellerEditFormReducer
   })
 })

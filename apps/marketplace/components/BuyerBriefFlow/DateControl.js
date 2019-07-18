@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Control } from 'react-redux-form'
 import AUtextInput from '@gov.au/text-inputs/lib/js/react'
+import { padStart } from 'marketplace/components/helpers'
 import styles from './DateControl.scss'
 
 const parseValue = value => {
@@ -32,11 +33,23 @@ export class DateComponent extends Component {
     }
 
     this.handleChange = this.handleChange.bind(this)
+    this.handleBlur = this.handleBlur.bind(this)
   }
 
   handleChange(e) {
     const name = e.target.name
     const value = e.target.value
+    this.setState(curState => {
+      const newState = { ...curState }
+      newState[name] = value
+      return newState
+    })
+  }
+
+  handleBlur(e) {
+    const name = e.target.name
+    let value = e.target.value
+    value = name === 'year' ? value : padStart(value, 2, '0')
     this.setState(curState => {
       const newState = { ...curState }
       newState[name] = value
@@ -64,6 +77,7 @@ export class DateComponent extends Component {
               name="day"
               value={this.state.day}
               onChange={this.handleChange}
+              onBlur={this.handleBlur}
               min="1"
               max="31"
               placeholder="DD"
@@ -78,6 +92,7 @@ export class DateComponent extends Component {
               name="month"
               value={this.state.month}
               onChange={this.handleChange}
+              onBlur={this.handleBlur}
               min="1"
               max="12"
               placeholder="MM"
@@ -92,6 +107,7 @@ export class DateComponent extends Component {
               name="year"
               value={this.state.year}
               onChange={this.handleChange}
+              onBlur={this.handleBlur}
               min="2019"
               max="2099"
               placeholder="YYYY"

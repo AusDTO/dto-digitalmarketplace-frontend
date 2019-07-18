@@ -115,7 +115,8 @@ test('able to apply with no responses', () => {
         hasResponded: false,
         isAssessedForCategory: true,
         numberOfSuppliers: 6,
-        sellerResponses: 0
+        sellerResponses: 0,
+        hasSignedCurrentAgreement: true
       })
     ).text()
   ).toEqual(
@@ -142,7 +143,8 @@ test('able to apply with one response', () => {
         hasResponded: false,
         isAssessedForCategory: true,
         numberOfSuppliers: 6,
-        sellerResponses: 1
+        sellerResponses: 1,
+        hasSignedCurrentAgreement: true
       })
     ).text()
   ).toEqual(
@@ -169,7 +171,8 @@ test('able to apply with multiple responses', () => {
         hasResponded: false,
         isAssessedForCategory: true,
         numberOfSuppliers: 6,
-        sellerResponses: 3
+        sellerResponses: 3,
+        hasSignedCurrentAgreement: true
       })
     ).text()
   ).toEqual(
@@ -195,7 +198,8 @@ test('not able to apply because not logged in', () => {
         isInvited: false,
         isAssessedForCategory: false,
         numberOfSuppliers: 6,
-        sellerResponses: 0
+        sellerResponses: 0,
+        hasSignedCurrentAgreement: true
       })
     ).text()
   ).toEqual(
@@ -222,7 +226,8 @@ test('not able to apply because max responses', () => {
         hasResponded: true,
         isAssessedForCategory: true,
         numberOfSuppliers: 6,
-        sellerResponses: 6
+        sellerResponses: 6,
+        hasSignedCurrentAgreement: true
       })
     ).text()
   ).toEqual('candidates appliedSellers can submit up to 6 candidates for this role.')
@@ -248,7 +253,8 @@ test('not able to apply because seller is applicant', () => {
         hasResponded: false,
         isAssessedForCategory: false,
         numberOfSuppliers: 6,
-        sellerResponses: 0
+        sellerResponses: 0,
+        hasSignedCurrentAgreement: true
       })
     ).text()
   ).toEqual(
@@ -277,7 +283,8 @@ test('not able to apply because seller is applicant and waiting for assessment',
         hasResponded: false,
         isAssessedForCategory: false,
         numberOfSuppliers: 6,
-        sellerResponses: 0
+        sellerResponses: 0,
+        hasSignedCurrentAgreement: true
       })
     ).text()
   ).toEqual(
@@ -301,7 +308,8 @@ test('not able to apply because seller is applicant and not waiting for assessme
         isAwaitingApplicationAssessment: false,
         isOpenToAll: true,
         numberOfSuppliers: 6,
-        sellerResponses: 0
+        sellerResponses: 0,
+        hasSignedCurrentAgreement: true
       })
     ).text()
   ).toEqual(
@@ -329,11 +337,12 @@ test('not able to apply because seller does not have approved domain', () => {
         hasChosenBriefCategory: true,
         isOpenToAll: true,
         numberOfSuppliers: 6,
-        sellerResponses: 0
+        sellerResponses: 0,
+        hasSignedCurrentAgreement: true
       })
     ).text()
   ).toEqual(
-    'candidates appliedSellers can submit up to 6 candidates for this role.Only sellers approved in software can apply.Request assessment'
+    'candidates appliedSellers can submit up to 6 candidates for this role.Only sellers assessed and approved by the Marketplace in "software" can apply.Request assessment'
   )
 })
 
@@ -358,41 +367,12 @@ test('not able to apply because seller does not have approved domain and waiting
         isAwaitingDomainAssessment: true,
         isOpenToAll: true,
         numberOfSuppliers: 6,
-        sellerResponses: 0
+        sellerResponses: 0,
+        hasSignedCurrentAgreement: true
       })
     ).text()
   ).toEqual(
-    'candidates appliedSellers can submit up to 6 candidates for this role.Only sellers approved in software can apply. Your application for this category is currently being assessed.'
-  )
-})
-
-test('not able to apply because seller does not have approved domain and already requested assessment', () => {
-  expect(
-    mount(
-      OpportunitySpecialistInfoCard({
-        closingDate: '',
-        briefId: '1',
-        briefLot: 'specialist',
-        briefStatus: 'not draft',
-        loggedIn: true,
-        isOpen: true,
-        category: 'software',
-        sellerCategory: 'software',
-        isApprovedSeller: true,
-        canRespond: true,
-        isInvited: true,
-        hasResponded: false,
-        isAssessedForCategory: false,
-        hasChosenBriefCategory: true,
-        isAwaitingDomainAssessment: false,
-        hasBeenAssessedForBrief: true,
-        isOpenToAll: true,
-        numberOfSuppliers: 6,
-        sellerResponses: 0
-      })
-    ).text()
-  ).toEqual(
-    'candidates appliedSellers can submit up to 6 candidates for this role.Only sellers approved in software can apply. You have already submitted a request for assessment against this brief.'
+    'candidates appliedSellers can submit up to 6 candidates for this role.Only sellers assessed and approved by the Marketplace in "software" can apply. Your application for this category is currently being assessed.'
   )
 })
 
@@ -417,7 +397,8 @@ test('not able to apply because seller has errors in their profile', () => {
         hasSupplierErrors: true,
         isOpenToAll: true,
         numberOfSuppliers: 6,
-        sellerResponses: 0
+        sellerResponses: 0,
+        hasSignedCurrentAgreement: true
       })
     ).text()
   ).toEqual(

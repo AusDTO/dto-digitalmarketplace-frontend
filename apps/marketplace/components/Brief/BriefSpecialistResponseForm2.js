@@ -17,6 +17,7 @@ import Textarea from 'shared/form/Textarea'
 import RadioList from 'shared/form/RadioList'
 import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import dmapi from 'marketplace/services/apiClient'
+import { escapeQuote } from '../helpers'
 
 import styles from './BriefSpecialistResponseForm2.scss'
 
@@ -322,7 +323,7 @@ const BriefSpecialistResponseForm2 = ({
                   brief.essentialRequirements.map((requirement, i) => (
                     <Textarea
                       key={requirement.criteria}
-                      model={`${model}.essentialRequirements['${requirement.criteria}']`}
+                      model={`${model}.essentialRequirements['${escapeQuote(requirement.criteria)}']`}
                       name={`essentialRequirement.${requirement.criteria}`}
                       id={`essentialRequirement.${i}`}
                       controlProps={{
@@ -345,7 +346,7 @@ const BriefSpecialistResponseForm2 = ({
                       {brief.niceToHaveRequirements.map((requirement, i) => (
                         <Textarea
                           key={requirement.criteria}
-                          model={`${model}.niceToHaveRequirements['${requirement.criteria}']`}
+                          model={`${model}.niceToHaveRequirements['${escapeQuote(requirement.criteria)}']`}
                           name={`niceToHaveRequirement.${requirement.criteria}`}
                           id={`niceToHaveRequirement.${i}`}
                           controlProps={{

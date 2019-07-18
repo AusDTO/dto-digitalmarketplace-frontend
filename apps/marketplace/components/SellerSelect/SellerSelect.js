@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import AUtextInput from '@gov.au/text-inputs/lib/js/react.js'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUselect from '@gov.au/select/lib/js/react.js'
-import findSuppliers from 'marketplace/actions/supplierActions'
+import { findSuppliers } from 'marketplace/actions/supplierActions'
 import styles from './SellerSelect.scss'
 
 const PanelCategorySelectView = props => (
@@ -230,7 +230,7 @@ SellerSelect.defaultProps = {
   showCategorySelect: false,
   allSuppliers: false,
   categories: [],
-  minimumSearchChars: 3,
+  minimumSearchChars: 2,
   onSellerSelect: () => {},
   onSellerCategorySelect: () => {},
   onSearch: () => {},

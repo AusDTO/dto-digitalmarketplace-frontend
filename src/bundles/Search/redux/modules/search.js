@@ -167,8 +167,8 @@ export const search = (type, value, options = {}) => {
     // Update either role, type or keyword.
     dispatch({ type, value });
 
-    // don't search for less than 3 characters
-    if (!doSearch || !value || value.length < 3) {
+    // don't search for less than 2 characters
+    if (!doSearch || !value || value.length < 2) {
       return Promise.resolve();
     }
 

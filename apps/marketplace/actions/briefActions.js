@@ -83,7 +83,8 @@ export const deleteBrief = briefId => (dispatch, getState) => {
 export const handleBriefInfoSuccess = response => ({
   type: BRIEF_INFO_FETCH_DATA_SUCCESS,
   brief: response.data.brief,
-  briefResponses: response.data.briefResponses
+  briefResponses: response.data.briefResponses,
+  oldWorkOrderCreator: response.data.oldWorkOrderCreator
 })
 
 export const handlePublicBriefInfoSuccess = response => ({
@@ -95,7 +96,10 @@ export const handlePublicBriefInfoSuccess = response => ({
   canRespond: response.data.can_respond,
   isAssessedForCategory: response.data.is_assessed_for_category,
   isAssessedForAnyCategory: response.data.is_assessed_in_any_category,
-  hasChosenBriefCategory: response.data.has_chosen_brief_category,
+  hasEvidenceInDraftForCategory: response.data.has_evidence_in_draft_for_category,
+  hasLatestEvidenceRejectedForCategory: response.data.has_latest_evidence_rejected_for_category,
+  draftEvidenceId: response.data.evidence_id,
+  rejectedEvidenceId: response.data.evidence_id_rejected,
   isOpenToCategory: response.data.open_to_category,
   isOpenToAll: response.data.open_to_all,
   isBriefOwner: response.data.is_brief_owner,
@@ -109,7 +113,8 @@ export const handlePublicBriefInfoSuccess = response => ({
   hasResponded: response.data.has_responded,
   domains: response.data.domains,
   hasSupplierErrors: response.data.has_supplier_errors,
-  isInvited: response.data.is_invited
+  isInvited: response.data.is_invited,
+  hasSignedCurrentAgreement: response.data.has_signed_current_agreement
 })
 
 export const handleErrorFailure = response => dispatch => {
@@ -303,3 +308,20 @@ export function handleSpecialistNumberSubmit(specialistNumber) {
 export function addAnotherSpecialistSubmit(addAnotherSpecialist) {
   return { type: ADD_ANOTHER_SPECIALIST, addAnotherSpecialist }
 }
+
+export const loadSuppliersResponded = briefId => () =>
+  dmapi({ url: `/brief-response/${briefId}/suppliers` }).then(response => {
+    response.data.loadedAt = new Date().valueOf()
+    return response
+  })
+
+export const handleBriefAwardedSubmit = (briefId, model) => (dispatch, getState) =>
+  dmapi({
+    url: `/brief/${briefId}/award-seller`,
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify(model)
+  }).then(response => response)
