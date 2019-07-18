@@ -28,7 +28,7 @@ const AboutTeamStage = props => {
         placeholder=""
         validators={{ required }}
         messages={{
-          required: `Team name is required`
+          required: 'A team name is required'
         }}
       />
       <Textfield
@@ -43,7 +43,7 @@ const AboutTeamStage = props => {
         placeholder=""
         validators={{ validEmail }}
         messages={{
-          validEmail: `Team email is invalid`
+          validEmail: 'Please add a valid email address'
         }}
       />
       {formButtons}
