@@ -6,7 +6,7 @@ import Textfield from 'shared/form/Textfield'
 import formProps from 'shared/form/formPropsSelector'
 import { required, validPhoneNumber, validEmail } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
-import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
+import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 
 const requiredName = v => required(v.supplier.data.representative)
 const requiredEmail = v => required(v.supplier.data.email)

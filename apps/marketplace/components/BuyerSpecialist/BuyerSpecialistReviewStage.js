@@ -7,7 +7,7 @@ import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import { getBriefLastQuestionDate } from 'marketplace/components/helpers'
 import format from 'date-fns/format'
-import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
+import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import BuyerSpecialistStages from './BuyerSpecialistStages'
 import styles from './BuyerSpecialistReviewStage.scss'
 

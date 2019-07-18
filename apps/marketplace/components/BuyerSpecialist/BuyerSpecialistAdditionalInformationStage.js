@@ -18,7 +18,7 @@ import {
   dateIs2DaysInFuture,
   dateIsBefore
 } from 'marketplace/components/validators'
-import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
+import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import styles from './BuyerSpecialistAdditionalInformationStage.scss'
