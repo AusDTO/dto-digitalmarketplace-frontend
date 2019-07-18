@@ -7,7 +7,7 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import SellerSelect, { PanelCategorySelect } from 'marketplace/components/SellerSelect/SellerSelect'
 import SelectedSellersControl from 'marketplace/components/BuyerBriefFlow/SelectedSellersControl'
 import RadioList from 'shared/form/RadioList'
-import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
+import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 
 const requiredCategory = v => v.sellerCategory
 const requiredChoice = v => !v.sellerCategory || v.openTo
