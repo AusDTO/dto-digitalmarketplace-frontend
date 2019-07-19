@@ -47,8 +47,7 @@ export const getTeam = teamId => (dispatch, getState) => {
     url: `/team/${teamId}`,
     method: 'GET',
     headers: {
-      'Content-Type': 'application/json',
-      'X-CSRFToken': getState().app.csrfToken
+      'Content-Type': 'application/json'
     }
   }).then(response => {
     if (!response || response.error) {
@@ -98,8 +97,7 @@ export const findTeamMember = (keywords, exclude) => (dispatch, getState) => {
     url: '/team/members/search',
     method: 'GET',
     headers: {
-      'Content-Type': 'application/json',
-      'X-CSRFToken': getState().app.csrfToken
+      'Content-Type': 'application/json'
     },
     params
   }).then(response => {
