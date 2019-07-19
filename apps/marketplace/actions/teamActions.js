@@ -41,7 +41,7 @@ export const handleGetTeamSuccess = response => ({
   team: response.data
 })
 
-export const getTeam = teamId => (dispatch) => {
+export const getTeam = teamId => dispatch => {
   dispatch(sendingRequest(true))
   return dmapi({
     url: `/team/${teamId}`,
@@ -89,7 +89,7 @@ export const saveTeam = team => (dispatch, getState) => {
   })
 }
 
-export const findTeamMember = (keywords, exclude) => (dispatch) => {
+export const findTeamMember = (keywords, exclude) => dispatch => {
   const params = { keywords, exclude: exclude ? exclude.join(',') : '' }
 
   dispatch(sendingRequest(true))
