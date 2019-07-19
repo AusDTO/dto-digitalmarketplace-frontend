@@ -4,38 +4,9 @@ import { connect } from 'react-redux'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import loadBuyerDashboard from 'marketplace/actions/buyerDashboardActions'
 import { rootPath } from 'marketplace/routes'
+import { hasPermission } from 'marketplace/components/helpers'
 import BuyerDashboardHelp from './BuyerDashboardHelp'
 import styles from './BuyerDashboard.scss'
-
-const getLinkedBriefTitle = item => {
-  let name = ''
-  let url = ''
-  switch (item.lot) {
-    case 'rfx':
-      url = `${rootPath}/brief/${item.id}/overview/rfx`
-      name = 'Untitled seek proposals and quotes'
-      break
-    case 'atm':
-      url = `${rootPath}/brief/${item.id}/overview/atm`
-      name = 'Untitled ask the market'
-      break
-    case 'specialist':
-      url = `${rootPath}/brief/${item.id}/overview/specialist`
-      name = 'Untitled specialist'
-      break
-    case 'digital-outcome':
-      url = `/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}`
-      name = 'Untitled outcome'
-      break
-    case 'digital-professionals':
-    case 'training':
-      url = `${rootPath}/brief/${item.id}/overview`
-      break
-    default:
-      url = ''
-  }
-  return <a href={url}>{item.name || name}</a>
-}
 
 const mapLot = item => {
   switch (item.lot) {
@@ -78,6 +49,59 @@ export class BuyerDashboardBriefTable extends Component {
       })
       this.props.briefCountUpdated(response.data.brief_counts)
     })
+  }
+
+
+
+  getLinkedBriefTitle(item) {
+    const {
+      isPartOfTeam,
+      isTeamLead,
+      teams
+    } = this.props
+
+    let name = ''
+    let url = ''
+    let permissionToEdit = false
+    if (item.status === 'draft') {
+      if (
+        hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') ||
+        hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities')
+      ) {
+        permissionToEdit = true
+      }
+    } else {
+      permissionToEdit = true
+    }
+    switch (item.lot) {
+      case 'rfx':
+        url = `${rootPath}/brief/${item.id}/overview/rfx`
+        name = 'Untitled seek proposals and quotes'
+        break
+      case 'atm':
+        url = `${rootPath}/brief/${item.id}/overview/atm`
+        name = 'Untitled ask the market'
+        break
+      case 'specialist':
+        url = `${rootPath}/brief/${item.id}/overview/specialist`
+        name = 'Untitled specialist'
+        break
+      case 'digital-outcome':
+        url = `/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}`
+        name = 'Untitled outcome'
+        break
+      case 'digital-professionals':
+      case 'training':
+        url = `${rootPath}/brief/${item.id}/overview`
+        break
+      default:
+        url = ''
+    }
+    if (!permissionToEdit) {
+      url = `${rootPath}/request-access/create_drafts`
+    }
+    
+    return <a href={url}>{item.name || name}</a>
   }
 
   render() {
@@ -126,7 +150,7 @@ export class BuyerDashboardBriefTable extends Component {
                 <tr key={`item.${item.id}`}>
                   <td className={styles.colId}>{item.id}</td>
                   <td className={styles.colName}>
-                    {getLinkedBriefTitle(item)}
+                    {this.getLinkedBriefTitle(item)}
                     <br />
                     <span>{mapLot(item)}</span>
                     <span className={styles.internalReference}>{item.internalReference}</span>
@@ -168,8 +192,14 @@ BuyerDashboardBriefTable.propTypes = {
   briefCountUpdated: PropTypes.func
 }
 
+const mapStateToProps = state => ({
+  teams: state.app.teams,
+  isTeamLead: state.app.isTeamLead,
+  isPartOfTeam: state.app.isPartOfTeam
+})
+
 const mapDispatchToProps = dispatch => ({
   loadData: status => dispatch(loadBuyerDashboard(status))
 })
 
-export default connect(null, mapDispatchToProps)(BuyerDashboardBriefTable)
+export default connect(mapStateToProps, mapDispatchToProps)(BuyerDashboardBriefTable)

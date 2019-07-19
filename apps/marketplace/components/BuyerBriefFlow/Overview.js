@@ -204,9 +204,16 @@ class Overview extends Component {
                 </span>
               ) : (
                 <span>
-                  <a href={`${rootPath}/buyer-${flow}/${brief.id}/introduction`}>
-                    {brief.title ? 'Edit and publish request' : 'Create and publish request'}
-                  </a>
+                  {hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') ||
+                   hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') ? (
+                    <a href={`${rootPath}/buyer-${flow}/${brief.id}/introduction`}>
+                      {brief.title ? 'Edit and publish request' : 'Create and publish request'}
+                    </a>
+                  ) : (
+                    <a href={`${rootPath}/request-access/create_drafts`}>
+                      {brief.title ? 'Edit and publish request' : 'Create and publish request'}
+                    </a>
+                  )}
                 </span>
               )}
             </li>
