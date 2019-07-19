@@ -51,14 +51,8 @@ export class BuyerDashboardBriefTable extends Component {
     })
   }
 
-
-
   getLinkedBriefTitle(item) {
-    const {
-      isPartOfTeam,
-      isTeamLead,
-      teams
-    } = this.props
+    const { isPartOfTeam, isTeamLead, teams } = this.props
 
     let name = ''
     let url = ''
@@ -100,7 +94,7 @@ export class BuyerDashboardBriefTable extends Component {
     if (!permissionToEdit) {
       url = `${rootPath}/request-access/create_drafts`
     }
-    
+
     return <a href={url}>{item.name || name}</a>
   }
 
