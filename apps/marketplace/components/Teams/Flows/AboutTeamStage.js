@@ -28,12 +28,12 @@ const AboutTeamStage = props => {
         placeholder=""
         validators={{ required }}
         messages={{
-          required: `Team name is required`
+          required: 'A team name is required'
         }}
       />
       <Textfield
         defaultValue={props[model].emailAddress}
-        description="All communications about opportunities in this team will be copied to this email address."
+        description="All communications about opportunities in this team will be sent to the creator of the opportunity and this email address:"
         htmlFor="emailAddress"
         id="emailAddress"
         label="Team email address (optional)"
@@ -43,7 +43,7 @@ const AboutTeamStage = props => {
         placeholder=""
         validators={{ validEmail }}
         messages={{
-          validEmail: `Team email is invalid`
+          validEmail: 'Please add a valid email address'
         }}
       />
       {formButtons}
