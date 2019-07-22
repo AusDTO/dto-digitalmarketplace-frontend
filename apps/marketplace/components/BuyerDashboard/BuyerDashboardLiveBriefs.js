@@ -37,12 +37,12 @@ const BuyerDashboardLiveBriefs = props => (
         )
       ]
     }}
-    briefCountUpdated={bc => props.briefCountUpdated(bc)}
+    dashboardLoaded={bc => props.dashboardLoaded(bc)}
   />
 )
 
 BuyerDashboardLiveBriefs.propTypes = {
-  briefCountUpdated: PropTypes.func.isRequired
+  dashboardLoaded: PropTypes.func.isRequired
 }
 
 export default BuyerDashboardLiveBriefs

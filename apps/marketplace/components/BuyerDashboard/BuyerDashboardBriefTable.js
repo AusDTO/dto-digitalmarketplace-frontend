@@ -36,18 +36,24 @@ export class BuyerDashboardBriefTable extends Component {
         live: 0,
         withdrawn: 0
       },
-      briefs: []
+      briefs: [],
+      organisation: ''
     }
   }
 
   componentDidMount() {
     this.props.loadData(this.props.status).then(response => {
-      this.setState({
+      const data = {
         briefs: response.data.briefs,
         briefCount: response.data.brief_counts,
+        organisation: response.data.organisation
+      }
+      this.setState({
+        ...data,
         loading: false
       })
-      this.props.briefCountUpdated(response.data.brief_counts)
+
+      this.props.dashboardLoaded(data)
     })
   }
 
@@ -172,18 +178,22 @@ export class BuyerDashboardBriefTable extends Component {
 BuyerDashboardBriefTable.defaultProps = {
   status: null,
   additionalColumns: {},
-  briefCountUpdated: () => ({
-    closed: 0,
-    draft: 0,
-    live: 0,
-    withdrawn: 0
+  dashboardLoaded: () => ({
+    briefCount: {
+      closed: 0,
+      draft: 0,
+      live: 0,
+      withdrawn: 0
+    },
+    briefs: [],
+    organisation: ''
   })
 }
 
 BuyerDashboardBriefTable.propTypes = {
   status: PropTypes.string,
   additionalColumns: PropTypes.object,
-  briefCountUpdated: PropTypes.func
+  dashboardLoaded: PropTypes.func
 }
 
 const mapStateToProps = state => ({

@@ -21,9 +21,10 @@ export class BuyerDashboardPage extends Component {
     }
   }
 
-  briefCountUpdated(briefCounts) {
+  dashboardLoaded(data) {
     this.setState({
-      briefCounts
+      briefCounts: data.briefCount,
+      organisation: data.organisation
     })
   }
 
@@ -32,32 +33,36 @@ export class BuyerDashboardPage extends Component {
     return (
       <BrowserRouter basename={`${rootPath}/buyer-dashboard`}>
         <div>
-          <BuyerDashboardHeader {...props} briefCounts={this.state.briefCounts} />
+          <BuyerDashboardHeader
+            {...props}
+            briefCounts={this.state.briefCounts}
+            organisation={this.state.organisation}
+          />
           <article role="main">
             <Switch>
               <Route
                 exact
                 path="/"
                 render={() => (
-                  <BuyerDashboardAllBriefs {...props} briefCountUpdated={bc => this.briefCountUpdated(bc)} />
+                  <BuyerDashboardAllBriefs {...props} dashboardLoaded={data => this.dashboardLoaded(data)} />
                 )}
               />
               <Route
                 path="/draft-briefs"
                 render={() => (
-                  <BuyerDashboardDraftBriefs {...props} briefCountUpdated={bc => this.briefCountUpdated(bc)} />
+                  <BuyerDashboardDraftBriefs {...props} dashboardLoaded={data => this.dashboardLoaded(data)} />
                 )}
               />
               <Route
                 path="/live-briefs"
                 render={() => (
-                  <BuyerDashboardLiveBriefs {...props} briefCountUpdated={bc => this.briefCountUpdated(bc)} />
+                  <BuyerDashboardLiveBriefs {...props} dashboardLoaded={data => this.dashboardLoaded(data)} />
                 )}
               />
               <Route
                 path="/closed-briefs"
                 render={() => (
-                  <BuyerDashboardClosedBriefs {...props} briefCountUpdated={bc => this.briefCountUpdated(bc)} />
+                  <BuyerDashboardClosedBriefs {...props} dashboardLoaded={data => this.dashboardLoaded(data)} />
                 )}
               />
             </Switch>
