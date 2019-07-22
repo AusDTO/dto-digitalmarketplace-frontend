@@ -31,7 +31,7 @@ const teamsDashboardReducer = (state = defaultState, action) => {
       return {
         ...state,
         organisation: action.data.organisation,
-        showCreateTeamButton: action.data.showCreateTeamButton,
+        completedTeamsCount: action.data.completedTeamsCount,
         teamsOverview: {
           loadedAt: new Date().valueOf(),
           teams: { ...action.data.overview }

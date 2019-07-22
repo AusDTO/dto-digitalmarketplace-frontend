@@ -12,7 +12,7 @@ import PeopleOverview from '../../components/Teams/Dashboard/PeopleOverview'
 import TeamsOverview from '../../components/Teams/Dashboard/TeamsOverview'
 
 const TeamsPage = props => {
-  const { errorMessage, organisation, showCreateTeamButton } = props
+  const { completedTeamsCount, errorMessage, organisation } = props
 
   const createTeamButton = (
     <AUbutton as="secondary" href={`${rootPath}/team/create`} key="Create a team">
@@ -25,7 +25,7 @@ const TeamsPage = props => {
     { exact: false, id: 'people-link', text: 'People', to: '/people' }
   ]
 
-  const pageHeaderActions = showCreateTeamButton ? [createTeamButton] : []
+  const pageHeaderActions = completedTeamsCount === 0 ? [createTeamButton] : []
 
   let hasFocused = false
   const setFocus = e => {
@@ -63,7 +63,7 @@ const TeamsPage = props => {
 const mapStateToProps = state => ({
   errorMessage: state.app.errorMessage,
   organisation: state.teamsDashboard.organisation,
-  showCreateTeamButton: state.teamsDashboard.showCreateTeamButton
+  completedTeamsCount: state.teamsDashboard.completedTeamsCount
 })
 
 export default withRouter(connect(mapStateToProps)(TeamsPage))
