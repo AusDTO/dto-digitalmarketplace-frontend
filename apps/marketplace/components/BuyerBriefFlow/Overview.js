@@ -13,6 +13,27 @@ import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import ClosedDate from 'shared/ClosedDate'
 import styles from './Overview.scss'
 
+const createWorkOrderRender = (brief, flow, isPublished, isClosed, oldWorkOrderCreator) => {
+  if (isPublished && isClosed) {
+    let url = ''
+    let title = ''
+    if (brief.work_order_id) {
+      url = `/work-orders/${brief.work_order_id}`
+      title = 'Edit work order'
+    } else {
+      url = `/buyers/frameworks/${brief.frameworkSlug}/requirements/${flow}/${brief.id}/work-orders/create`
+      title = 'Create work order'
+    }
+    if (!oldWorkOrderCreator) {
+      url = `/2/buyer-award/${brief.id}`
+      title = 'Download work order'
+    }
+    return <a href={url}>{title}</a>
+  }
+
+  return <span>Create work order</span>
+}
+
 class Overview extends Component {
   constructor(props) {
     super(props)
@@ -79,28 +100,6 @@ class Overview extends Component {
     return <span>Download responses</span>
   }
 
-  createWorkOrderRender(brief, flow, isPublished, isClosed, oldWorkOrderCreator) {
-    const { isPartOfTeam, isTeamLead, teams } = this.props
-    if (isPublished && isClosed) {
-      let url = ''
-      let title = ''
-      if (brief.work_order_id) {
-        url = `/work-orders/${brief.work_order_id}`
-        title = 'Edit work order'
-      } else {
-        url = `/buyers/frameworks/${brief.frameworkSlug}/requirements/${flow}/${brief.id}/work-orders/create`
-        title = 'Create work order'
-      }
-      if (!oldWorkOrderCreator) {
-        url = `/2/buyer-award/${brief.id}`
-        title = 'Download work order'
-      }
-      return <a href={url}>{title}</a>
-    }
-
-    return <span>Create work order</span>
-  }
-
   render() {
     if (this.props.deleteBriefSuccess) {
       return <Redirect to={`${rootPath}/buyer-dashboard`} />
@@ -160,7 +159,7 @@ class Overview extends Component {
                   <div>
                     <li>
                       {hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') ||
-                       hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') ? (
+                      hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') ? (
                         <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>Preview</a>
                       ) : (
                         <a href={`${rootPath}/request-access/create_drafts`}>Preview</a>
@@ -168,12 +167,14 @@ class Overview extends Component {
                     </li>
                     <li>
                       {hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') ||
-                       hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') ? (
+                      hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') ? (
                         <a href="#delete" onClick={this.handleDeleteClick} className={styles.headerMenuDelete}>
                           Delete draft
                         </a>
                       ) : (
-                         <a href={`${rootPath}/request-access/create_drafts`} className={styles.headerMenuDelete}>Delete draft</a>
+                        <a href={`${rootPath}/request-access/create_drafts`} className={styles.headerMenuDelete}>
+                          Delete draft
+                        </a>
                       )}
                     </li>
                   </div>
@@ -240,7 +241,7 @@ class Overview extends Component {
             )}
             {(flow === 'rfx' || flow === 'specialist') &&
               (briefResponseCount > 0 || !isPublished || !isClosed) && (
-                <li>{this.createWorkOrderRender(brief, flow, isPublished, isClosed, oldWorkOrderCreator)}</li>
+                <li>{createWorkOrderRender(brief, flow, isPublished, isClosed, oldWorkOrderCreator)}</li>
               )}
             {briefResponseCount === 0 && isClosed && <li>No sellers responded</li>}
           </ul>
