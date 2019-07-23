@@ -95,9 +95,6 @@ class Overview extends Component {
         url = `/2/buyer-award/${brief.id}`
         title = 'Download work order'
       }
-      if (!hasPermission(isPartOfTeam, isTeamLead, teams, 'create_work_orders')) {
-        url = `${rootPath}/request-access/create_work_orders`
-      }
       return <a href={url}>{title}</a>
     }
 
@@ -162,16 +159,22 @@ class Overview extends Component {
                 {!isPublished && (
                   <div>
                     <li>
-                      {hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') ? (
+                      {hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') ||
+                       hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') ? (
                         <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>Preview</a>
                       ) : (
                         <a href={`${rootPath}/request-access/create_drafts`}>Preview</a>
                       )}
                     </li>
                     <li>
-                      <a href="#delete" onClick={this.handleDeleteClick} className={styles.headerMenuDelete}>
-                        Delete draft
-                      </a>
+                      {hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') ||
+                       hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') ? (
+                        <a href="#delete" onClick={this.handleDeleteClick} className={styles.headerMenuDelete}>
+                          Delete draft
+                        </a>
+                      ) : (
+                         <a href={`${rootPath}/request-access/create_drafts`} className={styles.headerMenuDelete}>Delete draft</a>
+                      )}
                     </li>
                   </div>
                 )}
