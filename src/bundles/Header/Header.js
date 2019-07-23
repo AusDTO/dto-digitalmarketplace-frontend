@@ -26,6 +26,14 @@ class Header extends React.Component {
   }
 
   render() {
+    const adminHeaderActions = (
+      <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
+        <li>
+          <a href="/logout">Sign out</a>
+        </li>
+      </ul>
+    )
+
     const applicantHeaderActions = (
       <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
         <li>
@@ -101,6 +109,7 @@ class Header extends React.Component {
               <div className="au-marketplace-header-user-nav">
                 <div className="au-marketplace-header-actions">
                   {this.props.isAuthenticated ? (
+                    (this.props.userType === 'admin' && adminHeaderActions) ||
                     (this.props.userType === 'applicant' && applicantHeaderActions) ||
                     (this.props.userType === 'buyer' && buyerHeaderActions) ||
                     (this.props.userType === 'supplier' && sellerHeaderActions)
