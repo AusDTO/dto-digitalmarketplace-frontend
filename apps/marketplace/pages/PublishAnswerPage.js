@@ -105,7 +105,7 @@ class PublishAnswerPage extends Component {
                 </div>
               </div>
             )}
-            {saved && (
+            {saved ? (
               <div className="row">
                 <div className="col-sm-push-2 col-sm-8 col-xs-12">
                   <AUpageAlert as="success">
@@ -122,55 +122,56 @@ class PublishAnswerPage extends Component {
                   </AUpageAlert>
                 </div>
               </div>
-            )}
-            <div className="row">
-              <div className="col-sm-push-2 col-sm-8 col-xs-12">
-                <article role="main">
-                  <Form model={model} id="askAQuestion" onSubmit={data => this.handleSubmit(data)}>
-                    <h1 className="au-display-xl">{`Answer a seller question`}</h1>
-                    <p>
-                      You must publish answers to all relevant questions asked by sellers. These will be publicly
-                      visible on the opportunity.
-                    </p>
-                    <p>
-                      Questions about this opportunity must be answered before{' '}
-                      <b>{format(new Date(brief.questionsCloseAt), 'DD/MM/YYYY')}</b>.
-                    </p>
-                    <Textarea
-                      key={'question'}
-                      model={`${model}.question`}
-                      name={`question`}
-                      id={`question`}
-                      controlProps={{
-                        limit: 100,
-                        rows: '8'
-                      }}
-                      label={'Seller Question'}
-                      validators={{ required }}
-                      messages={{
-                        required: `question is required`
-                      }}
-                    />
-                    <Textarea
-                      key={'answer'}
-                      model={`${model}.answer`}
-                      name={`answer`}
-                      id={`answer`}
-                      controlProps={{
-                        limit: 100,
-                        rows: '8'
-                      }}
-                      label={'Your answer'}
-                      validators={{ required }}
-                      messages={{
-                        required: `answer is required`
-                      }}
-                    />
-                    <input className="au-btn right-button-margin" type="submit" value="Publish answer" />
-                  </Form>
-                </article>
+            ) : (
+              <div className="row">
+                <div className="col-sm-push-2 col-sm-8 col-xs-12">
+                  <article role="main">
+                    <Form model={model} id="askAQuestion" onSubmit={data => this.handleSubmit(data)}>
+                      <h1 className="au-display-xl">{`Answer a seller question`}</h1>
+                      <p>
+                        You must publish answers to all relevant questions asked by sellers. These will be publicly
+                        visible on the opportunity.
+                      </p>
+                      <p>
+                        Questions about this opportunity must be answered before{' '}
+                        <b>{format(new Date(brief.closedAt), 'DD/MM/YYYY')}</b>.
+                      </p>
+                      <Textarea
+                        key={'question'}
+                        model={`${model}.question`}
+                        name={`question`}
+                        id={`question`}
+                        controlProps={{
+                          limit: 100,
+                          rows: '8'
+                        }}
+                        label={'Seller Question'}
+                        validators={{ required }}
+                        messages={{
+                          required: `question is required`
+                        }}
+                      />
+                      <Textarea
+                        key={'answer'}
+                        model={`${model}.answer`}
+                        name={`answer`}
+                        id={`answer`}
+                        controlProps={{
+                          limit: 100,
+                          rows: '8'
+                        }}
+                        label={'Your answer'}
+                        validators={{ required }}
+                        messages={{
+                          required: `answer is required`
+                        }}
+                      />
+                      <input className="au-btn right-button-margin" type="submit" value="Publish answer" />
+                    </Form>
+                  </article>
+                </div>
               </div>
-            </div>
+            )}
           </React.Fragment>
         </DocumentTitle>
       )
