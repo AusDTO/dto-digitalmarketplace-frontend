@@ -89,6 +89,7 @@ export class BuyerATMFlowPage extends Component {
   }
 
   render() {
+    const { isPartOfTeam, isTeamLead, teams } = this.props
     if (this.props.errorMessage) {
       let hasFocused = false
       const setFocus = e => {
@@ -114,6 +115,15 @@ export class BuyerATMFlowPage extends Component {
       return <LoadingIndicatorFullPage />
     }
 
+    if (
+      !(
+        hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') ||
+        hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities')
+      )
+    ) {
+      return <Redirect to={`${rootPath}/request-access/create_drafts`} />
+    }
+
     if (this.state.flowIsDone) {
       return <Redirect to={`${rootPath}/buyer-atm/${briefId}/completed`} push />
     }
@@ -128,9 +138,9 @@ export class BuyerATMFlowPage extends Component {
         returnPath={`${rootPath}/brief/${briefId}/overview/atm`}
         previewPath={`${rootPath}/digital-marketplace/opportunities/${briefId}`}
         hasPermissionToPublish={hasPermission(
-          this.props.isPartOfTeam,
-          this.props.isTeamLead,
-          this.props.teams,
+          isPartOfTeam,
+          isTeamLead,
+          teams,
           'publish_opportunities'
         )}
       />
