@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter, Switch, Route, BrowserRouter } from 'react-router-dom'
+import { withRouter, Switch, Route, BrowserRouter, Redirect } from 'react-router-dom'
 import QuestionsHeader from 'marketplace/components/Questions/QuestionsHeader'
 import SellerQuestions from 'marketplace/components/Questions/SellerQuestions'
 import PublishedAnswers from 'marketplace/components/Questions/PublishedAnswers'
+import { hasPermission } from 'marketplace/components/helpers'
 import { rootPath } from 'marketplace/routes'
 
 export class QuestionPage extends Component {
@@ -35,8 +36,13 @@ export class QuestionPage extends Component {
   }
 
   render() {
-    const props = this.props
-    const briefId = props.match.params.briefId
+    const { isPartOfTeam, isTeamLead, teams } = this.props
+    const briefId = this.props.match.params.briefId
+
+    if (!hasPermission(isPartOfTeam, isTeamLead, teams, 'answer_seller_questions')) {
+      return <Redirect to={`${rootPath}/request-access/answer_seller_questions`} />
+    }
+
     return (
       <BrowserRouter basename={`${rootPath}/brief/${briefId}/questions`}>
         <div>
@@ -73,7 +79,10 @@ export class QuestionPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  organisation: state.dashboard.buyerDashboardOrganisation
+  organisation: state.dashboard.buyerDashboardOrganisation,
+  teams: state.app.teams,
+  isTeamLead: state.app.isTeamLead,
+  isPartOfTeam: state.app.isPartOfTeam
 })
 
 export default withRouter(connect(mapStateToProps)(QuestionPage))

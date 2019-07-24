@@ -89,6 +89,7 @@ export class BuyerSpecialistFlowPage extends Component {
   }
 
   render() {
+    const { isPartOfTeam, isTeamLead, teams } = this.props
     if (this.props.errorMessage) {
       let hasFocused = false
       const setFocus = e => {
@@ -114,6 +115,15 @@ export class BuyerSpecialistFlowPage extends Component {
       return <LoadingIndicatorFullPage />
     }
 
+    if (
+      !(
+        hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') ||
+        hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities')
+      )
+    ) {
+      return <Redirect to={`${rootPath}/request-access/create_drafts`} />
+    }
+
     if (this.state.flowIsDone) {
       return <Redirect to={`${rootPath}/buyer-specialist/${briefId}/completed`} push />
     }
@@ -127,12 +137,7 @@ export class BuyerSpecialistFlowPage extends Component {
         saveModel={this.saveBrief}
         returnPath={`${rootPath}/brief/${briefId}/overview/specialist`}
         previewPath={`${rootPath}/digital-marketplace/opportunities/${briefId}`}
-        hasPermissionToPublish={hasPermission(
-          this.props.isPartOfTeam,
-          this.props.isTeamLead,
-          this.props.teams,
-          'publish_opportunities'
-        )}
+        hasPermissionToPublish={hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities')}
       />
     )
   }

@@ -65,7 +65,7 @@ class RequestionAccessPage extends Component {
               </div>
             </div>
           )}
-          {this.state.saved && (
+          {this.state.saved ? (
             <div className="row">
               <div className="col-sm-push-2 col-sm-8 col-xs-12">
                 <AUpageAlert as="success">
@@ -82,23 +82,24 @@ class RequestionAccessPage extends Component {
                 </AUpageAlert>
               </div>
             </div>
-          )}
-          <div className="row">
-            <div className="col-sm-push-2 col-sm-8 col-xs-12">
-              <article role="main">
-                <h1 className="au-display-xl">
-                  {`You need "${mapToDisplay(this.state.permission)}" permission to proceed`}.
-                </h1>
-                <p>
-                  You currently do not have permission to view this page. Request access from the team lead to view it.
-                </p>
-                <br />
-                <AUbutton as="primary" onClick={e => this.onRequestAccessClick(e)}>
-                  Request access
-                </AUbutton>
-              </article>
+          ) : (
+            <div className="row">
+              <div className="col-sm-push-2 col-sm-8 col-xs-12">
+                <article role="main">
+                  <h1 className="au-display-xl">
+                    {`You need "${mapToDisplay(this.state.permission)}" permission to proceed`}.
+                  </h1>
+                  <p>
+                    You currently do not have permission to view this page. Request access from the team lead to view it.
+                  </p>
+                  <br />
+                  <AUbutton as="primary" onClick={e => this.onRequestAccessClick(e)}>
+                    Request access
+                  </AUbutton>
+                </article>
+              </div>
             </div>
-          </div>
+          )}
         </React.Fragment>
       </DocumentTitle>
     )
