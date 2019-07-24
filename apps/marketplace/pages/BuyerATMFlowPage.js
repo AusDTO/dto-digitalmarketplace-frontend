@@ -137,12 +137,7 @@ export class BuyerATMFlowPage extends Component {
         saveModel={this.saveBrief}
         returnPath={`${rootPath}/brief/${briefId}/overview/atm`}
         previewPath={`${rootPath}/digital-marketplace/opportunities/${briefId}`}
-        hasPermissionToPublish={hasPermission(
-          isPartOfTeam,
-          isTeamLead,
-          teams,
-          'publish_opportunities'
-        )}
+        hasPermissionToPublish={hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities')}
       />
     )
   }

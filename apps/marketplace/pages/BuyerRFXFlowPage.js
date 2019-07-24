@@ -138,12 +138,7 @@ export class BuyerRFXFlowPage extends Component {
         saveModel={this.saveBrief}
         returnPath={`${rootPath}/brief/${briefId}/overview/rfx`}
         previewPath={`${rootPath}/digital-marketplace/opportunities/${briefId}`}
-        hasPermissionToPublish={hasPermission(
-          isPartOfTeam,
-          isTeamLead,
-          teams,
-          'publish_opportunities'
-        )}
+        hasPermissionToPublish={hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities')}
       />
     )
   }
