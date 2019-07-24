@@ -64,96 +64,102 @@ export class PermissionsTable extends Component {
         </thead>
         <tbody>
           {teamMembers &&
-            Object.keys(teamMembers).map(userId => (
-              <tr key={`item.${userId}`}>
-                <td>{teamMembers[userId].name}</td>
-                <td align="center">
-                  <div>
-                    <AUcheckbox
-                      checked={teamMembers[userId].permissions ? teamMembers[userId].permissions.create_drafts : false}
-                      className={styles.permissionsTableCheckbox}
-                      id="create-drafts-checkbox"
-                      label=""
-                      name="permissions"
-                      onChange={() => {}}
-                      onClick={e => {
-                        this.handlePermissionClick(e.target.checked, userId, 'create_drafts')
-                      }}
-                    />
-                  </div>
-                </td>
-                <td align="center">
-                  <div>
-                    <AUcheckbox
-                      checked={
-                        teamMembers[userId].permissions ? teamMembers[userId].permissions.publish_opportunities : false
-                      }
-                      className={styles.permissionsTableCheckbox}
-                      id="publish-opportunities-checkbox"
-                      label=""
-                      name="permissions"
-                      onChange={() => {}}
-                      onClick={e => {
-                        this.handlePermissionClick(e.target.checked, userId, 'publish_opportunities')
-                      }}
-                    />
-                  </div>
-                </td>
-                <td align="center">
-                  <div>
-                    <AUcheckbox
-                      checked={
-                        teamMembers[userId].permissions
-                          ? teamMembers[userId].permissions.answer_seller_questions
-                          : false
-                      }
-                      className={styles.permissionsTableCheckbox}
-                      id="answer-seller-questions-checkbox"
-                      label=""
-                      name="permissions"
-                      onChange={() => {}}
-                      onClick={e => {
-                        this.handlePermissionClick(e.target.checked, userId, 'answer_seller_questions')
-                      }}
-                    />
-                  </div>
-                </td>
-                <td align="center">
-                  <div>
-                    <AUcheckbox
-                      checked={
-                        teamMembers[userId].permissions ? teamMembers[userId].permissions.download_responses : false
-                      }
-                      className={styles.permissionsTableCheckbox}
-                      id="download-responses-checkbox"
-                      label=""
-                      name="permissions"
-                      onChange={() => {}}
-                      onClick={e => {
-                        this.handlePermissionClick(e.target.checked, userId, 'download_responses')
-                      }}
-                    />
-                  </div>
-                </td>
-                <td align="center">
-                  <div>
-                    <AUcheckbox
-                      checked={
-                        teamMembers[userId].permissions ? teamMembers[userId].permissions.create_work_orders : false
-                      }
-                      className={styles.permissionsTableCheckbox}
-                      id="create-work-orders-checkbox"
-                      label=""
-                      name="permissions"
-                      onChange={() => {}}
-                      onClick={e => {
-                        this.handlePermissionClick(e.target.checked, userId, 'create_work_orders')
-                      }}
-                    />
-                  </div>
-                </td>
-              </tr>
-            ))}
+            Object.keys(teamMembers)
+              .sort((a, b) => teamMembers[a].name.localeCompare(teamMembers[b].name))
+              .map(userId => (
+                <tr key={`item.${userId}`}>
+                  <td>{teamMembers[userId].name}</td>
+                  <td align="center">
+                    <div>
+                      <AUcheckbox
+                        checked={
+                          teamMembers[userId].permissions ? teamMembers[userId].permissions.create_drafts : false
+                        }
+                        className={styles.permissionsTableCheckbox}
+                        id="create-drafts-checkbox"
+                        label=""
+                        name="permissions"
+                        onChange={() => {}}
+                        onClick={e => {
+                          this.handlePermissionClick(e.target.checked, userId, 'create_drafts')
+                        }}
+                      />
+                    </div>
+                  </td>
+                  <td align="center">
+                    <div>
+                      <AUcheckbox
+                        checked={
+                          teamMembers[userId].permissions
+                            ? teamMembers[userId].permissions.publish_opportunities
+                            : false
+                        }
+                        className={styles.permissionsTableCheckbox}
+                        id="publish-opportunities-checkbox"
+                        label=""
+                        name="permissions"
+                        onChange={() => {}}
+                        onClick={e => {
+                          this.handlePermissionClick(e.target.checked, userId, 'publish_opportunities')
+                        }}
+                      />
+                    </div>
+                  </td>
+                  <td align="center">
+                    <div>
+                      <AUcheckbox
+                        checked={
+                          teamMembers[userId].permissions
+                            ? teamMembers[userId].permissions.answer_seller_questions
+                            : false
+                        }
+                        className={styles.permissionsTableCheckbox}
+                        id="answer-seller-questions-checkbox"
+                        label=""
+                        name="permissions"
+                        onChange={() => {}}
+                        onClick={e => {
+                          this.handlePermissionClick(e.target.checked, userId, 'answer_seller_questions')
+                        }}
+                      />
+                    </div>
+                  </td>
+                  <td align="center">
+                    <div>
+                      <AUcheckbox
+                        checked={
+                          teamMembers[userId].permissions ? teamMembers[userId].permissions.download_responses : false
+                        }
+                        className={styles.permissionsTableCheckbox}
+                        id="download-responses-checkbox"
+                        label=""
+                        name="permissions"
+                        onChange={() => {}}
+                        onClick={e => {
+                          this.handlePermissionClick(e.target.checked, userId, 'download_responses')
+                        }}
+                      />
+                    </div>
+                  </td>
+                  <td align="center">
+                    <div>
+                      <AUcheckbox
+                        checked={
+                          teamMembers[userId].permissions ? teamMembers[userId].permissions.create_work_orders : false
+                        }
+                        className={styles.permissionsTableCheckbox}
+                        id="create-work-orders-checkbox"
+                        label=""
+                        name="permissions"
+                        onChange={() => {}}
+                        onClick={e => {
+                          this.handlePermissionClick(e.target.checked, userId, 'create_work_orders')
+                        }}
+                      />
+                    </div>
+                  </td>
+                </tr>
+              ))}
         </tbody>
       </table>
     )
