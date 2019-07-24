@@ -9,6 +9,8 @@ import { requestAccess } from 'marketplace/actions/teamActions'
 import { rootPath } from 'marketplace/routes'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 
+import styles from '../main.scss'
+
 const mapToDisplay = p => p.replace(/_/g, ' ')
 
 class RequestionAccessPage extends Component {
@@ -94,9 +96,10 @@ class RequestionAccessPage extends Component {
                     it.
                   </p>
                   <br />
-                  <AUbutton as="primary" onClick={e => this.onRequestAccessClick(e)}>
+                  <AUbutton as="primary" className={styles['space-right']} onClick={e => this.onRequestAccessClick(e)}>
                     Request access
                   </AUbutton>
+                  <a href={`${rootPath}/buyer-dashboard`}>Return to dashboard</a>
                 </article>
               </div>
             </div>
