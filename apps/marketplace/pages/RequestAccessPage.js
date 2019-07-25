@@ -77,7 +77,7 @@ class RequestionAccessPage extends Component {
                     </AUheading>
                     <p>
                       <a href={`${rootPath}/buyer-dashboard`} className="au-btn">
-                        Return to buyer dashboard
+                        Return to dashboard
                       </a>
                     </p>
                   </React.Fragment>
