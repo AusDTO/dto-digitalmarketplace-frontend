@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter, NavLink } from 'react-router-dom'
+import format from 'date-fns/format'
 import { rootPath } from 'marketplace/routes'
 import styles from './Questions.scss'
 
@@ -36,8 +37,9 @@ class QuestionsHeader extends Component {
           <div className={`${styles.menuRow} row`}>
             <div className="col-xs-12 col-md-12">
               <p>
-                You must publish answers to all relevant questions asked by sellers. These will be publicly visible on
-                the opportunity.
+                You must publish answers to all relevant questions asked by sellers before{' '}
+                <b>{format(new Date(brief.closedAt), 'DD/MM/YYYY')}</b>. These will be publicly visible on the
+                opportunity.
               </p>
               <p>
                 If the question you want to answer does not appear, you can{' '}
