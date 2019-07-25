@@ -1,31 +1,22 @@
 export const templateString  = (
 
-  "Thanks for applying to join the Digital Marketplace. We’ve reviewed your application and require more detail or changes to your profile:"+"\n"+"\n"+
+  `Dear Marketplace seller
 
-    "- "+"\n"+"\n"+
+We’ve reviewed your submission to the Digital Marketplace and require more detail or changes to your profile.
 
-    "To update your profile:"+"\n"+"\n"+
+YOUR NOTES GO HERE
 
-    "- access [Digital Marketplace](https://marketplace.service.gov.au) and sign in"+"\n"+
-    "- update your profile as advised"+"\n"+
-    "- resubmit your application for review"+"\n"+"\n"+
+To update your profile:
 
-    "We recommend you read our support guides on seller profiles and case studies:"+"\n"+"\n"+
+  1. Log in to your [Digital Marketplace dashboard](https://marketplace.service.gov.au/2/seller-dashboard).
+  2. Update your seller profile.
+  3. Resubmit your application for review.
 
-    "- read the useful [Seller guide and FAQs](https://marketplace1.zendesk.com/hc/en-gb/categories/115001540368-Seller-guide-and-FAQs)"+"\n"+
-    "- see the digital [areas of expertise](https://marketplace1.zendesk.com/hc/en-gb/articles/115011258607) in the marketplace"+"\n"+
-    "- understand the relevant [assessment criteria](https://marketplace1.zendesk.com/hc/en-gb/articles/333757011655-Assessment-criteria) for each area of expertise you nominate"+"\n"+
-    "- create a compelling [case study](https://marketplace1.zendesk.com/hc/en-gb/articles/115011407668-Adding-case-studies) to showcase your digital expertise"+"\n"+"\n"+
+We'll advise you once we've reviewed the changes.
 
-    "Once you’ve resubmitted your profile updates, we’ll review it again and advise you via email. "+"\n"+"\n"+
-
-    "Thanks,"+"\n"+"\n"+
-
-    "The Digital Marketplace team"+"\n"+"\n"+
-
-    "Digital Marketplace [https://marketplace.service.gov.au](https://marketplace.service.gov.au)  "+"\n"+
-    "Digital Transformation Agency (DTA) [https://www.dta.gov.au](https://www.dta.gov.au)"+"\n"+"\n"+
-
-    "[Terms of Use](https://marketplace.service.gov.au/terms-of-use) | [Privacy](https://marketplace.service.gov.au/privacy-policy) | [Copyright](https://marketplace.service.gov.au/copyright)"
+Regards,  
+The Digital Marketplace team  
+Digital Transformation Agency  
+[marketplace.service.gov.au](https://marketplace.service.gov.au) | [dta.gov.au](https://dta.gov.au)`
 
 );
