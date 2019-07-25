@@ -95,7 +95,7 @@ class AskQuestionPage extends Component {
                 </div>
               </div>
             )}
-            {this.state.saved && (
+            {this.state.saved ? (
               <div className="row">
                 <div className="col-sm-push-2 col-sm-8 col-xs-12">
                   <AUpageAlert as="success">
@@ -112,36 +112,37 @@ class AskQuestionPage extends Component {
                   </AUpageAlert>
                 </div>
               </div>
-            )}
-            <div className="row">
-              <div className="col-sm-push-2 col-sm-8 col-xs-12">
-                <article role="main">
-                  <Form model={model} id="askAQuestion" onSubmit={data => this.handleSubmit(data)}>
-                    <h1 className="au-display-xl">{`Ask a question about '${brief.title}'`}</h1>
-                    <p>
-                      Submit your questions before {format(new Date(brief.dates.questions_close), 'dddd D MMMM YYYY')}.{' '}
-                      Answers will be published on the opportunity before it closes.
-                    </p>
-                    <Textarea
-                      key={'question'}
-                      model={`${model}.question`}
-                      name={`question`}
-                      id={`question`}
-                      controlProps={{
-                        limit: 100,
-                        rows: '8'
-                      }}
-                      label={'Question'}
-                      validators={{ required }}
-                      messages={{
-                        required: `question is required`
-                      }}
-                    />
-                    <input className="au-btn right-button-margin" type="submit" value="Submit question" />
-                  </Form>
-                </article>
+            ) : (
+              <div className="row">
+                <div className="col-sm-push-2 col-sm-8 col-xs-12">
+                  <article role="main">
+                    <Form model={model} id="askAQuestion" onSubmit={data => this.handleSubmit(data)}>
+                      <h1 className="au-display-xl">{`Ask a question about '${brief.title}'`}</h1>
+                      <p>
+                        Submit your questions before {format(new Date(brief.dates.questions_close), 'dddd D MMMM YYYY')}.{' '}
+                        Answers will be published on the opportunity before it closes.
+                      </p>
+                      <Textarea
+                        key={'question'}
+                        model={`${model}.question`}
+                        name={`question`}
+                        id={`question`}
+                        controlProps={{
+                          limit: 100,
+                          rows: '8'
+                        }}
+                        label={'Question'}
+                        validators={{ required }}
+                        messages={{
+                          required: `question is required`
+                        }}
+                      />
+                      <input className="au-btn right-button-margin" type="submit" value="Submit question" />
+                    </Form>
+                  </article>
+                </div>
               </div>
-            </div>
+            )}
           </React.Fragment>
         </DocumentTitle>
       )
