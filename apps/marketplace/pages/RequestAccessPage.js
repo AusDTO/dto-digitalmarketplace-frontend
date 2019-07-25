@@ -90,10 +90,8 @@ class RequestionAccessPage extends Component {
                 <article role="main">
                   <h1 className="au-display-xl">You need permission to proceed.</h1>
                   <p>
-                    {`You currently do not have permission to '${mapToDisplay(
-                      this.state.permission
-                    )}'. Request access from the team lead to view
-                    it.`}
+                    You currently do not have permission to <b>{mapToDisplay(this.state.permission)}</b>. Request access
+                    from the team lead to view it.
                   </p>
                   <br />
                   <AUbutton as="primary" className={styles['space-right']} onClick={e => this.onRequestAccessClick(e)}>
