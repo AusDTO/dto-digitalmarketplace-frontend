@@ -12,7 +12,7 @@ const SubmitAllUpdatesButton = props => {
 }
 
 const SaveAndContinueButton = () => (
-  <AUbutton as="tertiary" type="submit">
+  <AUbutton as="secondary" className={styles.saveAndContinue} type="submit">
     Save and continue
   </AUbutton>
 )
