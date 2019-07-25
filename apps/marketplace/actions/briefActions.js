@@ -326,7 +326,7 @@ export const handleBriefAwardedSubmit = (briefId, model) => (dispatch, getState)
       'Content-Type': 'application/json'
     },
     data: JSON.stringify(model)
-  }).then(response => response)
+  })
 
 export const submitSupplierQuestion = (briefId, values) => (dispatch, getState) =>
   dmapi({
@@ -337,7 +337,7 @@ export const submitSupplierQuestion = (briefId, values) => (dispatch, getState) 
       'Content-Type': 'application/json'
     },
     data: JSON.stringify(values)
-  }).then(response => response)
+  })
 
 export const publishAnswer = (briefId, values) => (dispatch, getState) =>
   dmapi({
@@ -348,4 +348,4 @@ export const publishAnswer = (briefId, values) => (dispatch, getState) =>
       'Content-Type': 'application/json'
     },
     data: JSON.stringify(values)
-  }).then(response => response)
+  })

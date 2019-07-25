@@ -153,4 +153,4 @@ export const requestAccess = permission => (dispatch, getState) =>
     data: JSON.stringify({
       permission
     })
-  }).then(response => response)
+  })
