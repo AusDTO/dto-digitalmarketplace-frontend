@@ -33,3 +33,9 @@
         }
     }
 }
+
+@media (max-width: 575px) {
+    .permissionsTableContainer {
+        overflow-x: auto;
+    }
+}
