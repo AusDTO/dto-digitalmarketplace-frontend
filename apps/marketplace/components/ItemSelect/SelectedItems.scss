@@ -24,6 +24,18 @@
                 padding: 0;
             }
         }
+
+        @media (max-width: 575px) {
+            ul.selectedItemActions {
+                display: block;
+                float: none;
+
+                li {
+                    display: block;
+                    margin: 0;
+                }
+            }
+        }
     }
 }
 
