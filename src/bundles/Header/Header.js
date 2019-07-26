@@ -1,11 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import AUaccordion from '@gov.au/accordion/lib/js/react.js'
-
-import RegisterComponent from '../../RegisterComponent'
-import { returnPath } from './helper'
 import logoGovCrest from './Government_crest.svg'
 import './Header.css'
 
@@ -26,15 +23,14 @@ class Header extends React.Component {
   }
 
   render() {
-    const adminHeaderActions = (
+    const AdminHeaderActions = () =>
       <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
         <li>
           <a href="/logout">Sign out</a>
         </li>
       </ul>
-    )
 
-    const applicantHeaderActions = (
+    const ApplicantHeaderActions = () =>
       <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
         <li>
           <a href="/sellers/application">Continue application</a>
@@ -43,9 +39,8 @@ class Header extends React.Component {
           <a href="/logout">Sign out</a>
         </li>
       </ul>
-    )
 
-    const buyerHeaderActions = (
+    const BuyerHeaderActions = () =>
       <AUaccordion header="Menu" speed={0.2}>
         <ul>
           <li>
@@ -59,9 +54,8 @@ class Header extends React.Component {
           </li>
         </ul>
       </AUaccordion>
-    )
 
-    const sellerHeaderActions = (
+    const SellerHeaderActions = () =>
       <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
         <li>
           <a href="/2/seller-dashboard">Dashboard</a>
@@ -74,9 +68,8 @@ class Header extends React.Component {
           <a href="/logout">Sign out</a>
         </li>
       </ul>
-    )
 
-    const unauthenticatedHeaderActions = (
+    const UnauthenticatedHeaderActions = () =>
       <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
         <li>
           <a href="/2/signup" className="au-btn au-btn--secondary au-btn--dark">
@@ -89,7 +82,72 @@ class Header extends React.Component {
           </a>
         </li>
       </ul>
-    )
+
+    const CommonMobileLinks = () =>
+      <React.Fragment>
+        <div className="au-marketplace-header_mobile-link">
+          <a href="/2/opportunities">
+            Opportunities
+          </a>
+        </div>
+        <div className="au-marketplace-header_mobile-link">
+          <a href="/search/sellers">
+            Seller Catalogue
+          </a>
+        </div>
+        <div className="au-marketplace-header_mobile-link">
+          <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000141616">
+            Insights
+          </a>
+        </div>
+        <div className="au-marketplace-header_mobile-link">
+          <a href="https://marketplace1.zendesk.com/hc/en-gb">
+            Support
+          </a>
+        </div>
+        <div className="au-marketplace-header_mobile-link">
+          <a href="/contact-us">
+            Contact
+          </a>
+        </div>
+      </React.Fragment>
+
+    const AuthenticatedMobileLinks = props => {
+      const { userType } = props
+
+      return (
+        <React.Fragment>
+          <div className="au-marketplace-header_mobile-link">
+            <span>
+              <a href={this.props.dashboardUrl}>{this.props.dashboardText}</a>
+              { (this.props.notificationCount && this.props.notificationCount !== 0) &&
+                <div className="notification">{this.props.notificationCount}</div>
+              }
+            </span>
+          </div>
+          {userType === 'buyer' && (
+            <div className="au-marketplace-header_mobile-link">
+              <a href="/2/teams">Teams and People</a>
+            </div>
+          )}
+          <CommonMobileLinks />
+          <div className="au-marketplace-header_mobile-link">
+            <a href="/logout">Sign out</a>
+          </div>
+        </React.Fragment>
+      )
+    }
+
+    const UnauthenticatedMobileLinks = () => 
+      <React.Fragment>
+        <div className="au-marketplace-header_mobile-link">
+          <a href="/2/signup">Sign up</a>
+        </div>
+        <div className="au-marketplace-header_mobile-link">
+          <a href="/login">Sign in</a>
+        </div>
+        <CommonMobileLinks />
+      </React.Fragment>
 
     return (
       <section className="au-marketplace-header">
@@ -109,12 +167,12 @@ class Header extends React.Component {
               <div className="au-marketplace-header-user-nav">
                 <div className="au-marketplace-header-actions">
                   {this.props.isAuthenticated ? (
-                    (this.props.userType === 'admin' && adminHeaderActions) ||
-                    (this.props.userType === 'applicant' && applicantHeaderActions) ||
-                    (this.props.userType === 'buyer' && buyerHeaderActions) ||
-                    (this.props.userType === 'supplier' && sellerHeaderActions)
+                    (this.props.userType === 'admin' && <AdminHeaderActions />) ||
+                    (this.props.userType === 'applicant' && <ApplicantHeaderActions />) ||
+                    (this.props.userType === 'buyer' && <BuyerHeaderActions />) ||
+                    (this.props.userType === 'supplier' && <SellerHeaderActions />)
                   ) : (
-                    unauthenticatedHeaderActions
+                    <UnauthenticatedHeaderActions />
                   )}
                 </div>
               </div>
@@ -172,44 +230,9 @@ class Header extends React.Component {
                   onClose={ () => { this.closeAccordion() } }
                 >
                   <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
-                    <div className="au-marketplace-header_mobile-link">
-                      {this.props.isAuthenticated ? 
-                      <span>
-                        <a href={this.props.dashboardUrl}>{this.props.dashboardText}</a>
-                        { (this.props.notificationCount && this.props.notificationCount !== 0) &&
-                          <div className="notification">{this.props.notificationCount}</div>
-                        }
-                      </span>
-                      : <a href="/2/signup">Sign up</a>}
-                    </div>
-                    <div className="au-marketplace-header_mobile-link">
-                      {this.props.isAuthenticated ? <a href="/logout">Sign out</a> : <a href="/login">Sign in</a>}
-                    </div>
-                    <div className="au-marketplace-header_mobile-link">
-                      <a href="/2/opportunities">
-                        Opportunities
-                      </a>
-                    </div>
-                    <div className="au-marketplace-header_mobile-link">
-                      <a href="/search/sellers">
-                        Seller Catalogue
-                      </a>
-                    </div>
-                    <div className="au-marketplace-header_mobile-link">
-                      <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000141616">
-                        Insights
-                      </a>
-                    </div>
-                    <div className="au-marketplace-header_mobile-link">
-                      <a href="https://marketplace1.zendesk.com/hc/en-gb">
-                        Support
-                      </a>
-                    </div>
-                    <div className="au-marketplace-header_mobile-link">
-                      <a href="/contact-us">
-                        Contact
-                      </a>
-                    </div>
+                    {this.props.isAuthenticated
+                      ? <AuthenticatedMobileLinks userType={this.props.userType} />
+                      : <UnauthenticatedMobileLinks />}
                   </div>
                 </AUaccordion>
               </div>
