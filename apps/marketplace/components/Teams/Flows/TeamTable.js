@@ -3,7 +3,7 @@ import React from 'react'
 import { sortObjectByName } from 'marketplace/components/helpers'
 
 import commonStyles from './TeamStages.scss'
-import styles from './ReviewStage.scss'
+import styles from './ReviewTeamStage.scss'
 
 const TeamTable = props => {
   const { teamLeads, teamMembers } = props

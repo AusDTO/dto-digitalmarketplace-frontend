@@ -9,7 +9,7 @@ import TeamTable from './TeamTable'
 
 import commonStyles from './TeamStages.scss'
 
-const ReviewStage = props => {
+const ReviewTeamStage = props => {
   const { formButtons, model, onSubmit, onSubmitFailed } = props
   const team = props[model]
 
@@ -37,12 +37,12 @@ const ReviewStage = props => {
   )
 }
 
-ReviewStage.defaultProps = {
+ReviewTeamStage.defaultProps = {
   onSubmit: () => {},
   onSubmitFailed: () => {}
 }
 
-ReviewStage.propTypes = {
+ReviewTeamStage.propTypes = {
   formButtons: PropTypes.node.isRequired,
   model: PropTypes.string.isRequired,
   onSubmit: PropTypes.func,
@@ -53,4 +53,4 @@ const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)
 })
 
-export default connect(mapStateToProps)(ReviewStage)
+export default connect(mapStateToProps)(ReviewTeamStage)

@@ -1,7 +1,7 @@
 import { validEmail } from 'marketplace/components/validators'
 import AboutTeamStage from './AboutTeamStage'
 import PermissionsStage from './PermissionsStage'
-import ReviewStage from './ReviewStage'
+import ReviewTeamStage from './ReviewTeamStage'
 import TeamLeadsStage from './TeamLeadsStage'
 import TeamMembersStage from './TeamMembersStage'
 
@@ -46,7 +46,7 @@ const permissionsStage = {
 }
 
 const reviewStage = {
-  component: ReviewStage,
+  component: ReviewTeamStage,
   isDone: true,
   slug: 'review',
   title: 'Review'
