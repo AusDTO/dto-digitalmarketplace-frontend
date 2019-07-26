@@ -4,4 +4,10 @@
     button {
         margin-right: 1rem;
     }
+
+    @media (max-width: 575px) {
+        .cancelButton {
+            margin-top: 1rem;
+        }
+    }
 }

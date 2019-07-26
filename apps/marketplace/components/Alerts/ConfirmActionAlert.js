@@ -43,7 +43,7 @@ class ConfirmActionAlert extends Component {
               {confirmButtonText}
             </button>
             <button
-              className="au-btn au-btn--secondary"
+              className={`au-btn au-btn--secondary ${styles.cancelButton}`}
               onClick={handleCancelClick}
               ref={ref => {
                 this.actionRef = ref
