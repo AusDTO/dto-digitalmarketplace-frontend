@@ -121,22 +121,31 @@ class Header extends React.Component {
       </React.Fragment>
     )
 
-    const authenticatedMobileLinks = (
-      <React.Fragment>
-        <div className="au-marketplace-header_mobile-link">
-          <span>
-            <a href={this.props.dashboardUrl}>{this.props.dashboardText}</a>
-            { (this.props.notificationCount && this.props.notificationCount !== 0) &&
-              <div className="notification">{this.props.notificationCount}</div>
-            }
-          </span>
-        </div>
-        {commonMobileLinks}
-        <div className="au-marketplace-header_mobile-link">
-          <a href="/logout">Sign out</a>
-        </div>
-      </React.Fragment>
-    )
+    const AuthenticatedMobileLinks = props => {
+      const { userType } = props
+
+      return (
+        <React.Fragment>
+          <div className="au-marketplace-header_mobile-link">
+            <span>
+              <a href={this.props.dashboardUrl}>{this.props.dashboardText}</a>
+              { (this.props.notificationCount && this.props.notificationCount !== 0) &&
+                <div className="notification">{this.props.notificationCount}</div>
+              }
+            </span>
+          </div>
+          {userType === 'buyer' && (
+            <div className="au-marketplace-header_mobile-link">
+              <a href="/2/teams">Teams and People</a>
+            </div>
+          )}
+          {commonMobileLinks}
+          <div className="au-marketplace-header_mobile-link">
+            <a href="/logout">Sign out</a>
+          </div>
+        </React.Fragment>
+      )
+    }
 
     const unauthenticatedMobileLinks = (
       <React.Fragment>
@@ -232,7 +241,7 @@ class Header extends React.Component {
                 >
                   <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
                     {this.props.isAuthenticated
-                      ? authenticatedMobileLinks
+                      ? <AuthenticatedMobileLinks userType={this.props.userType} />
                       : unauthenticatedMobileLinks}
                   </div>
                 </AUaccordion>

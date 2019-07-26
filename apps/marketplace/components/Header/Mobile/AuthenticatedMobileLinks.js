@@ -11,6 +11,11 @@ const AuthenticatedMobileLinks = props => {
       <div className="au-marketplace-header_mobile-link">
         <DashBoardLink userType={userType} notificationCount={notificationCount} />
       </div>
+      {userType === 'buyer' && (
+        <div className="au-marketplace-header_mobile-link">
+          <a href="/2/teams">Teams and People</a>
+        </div>
+      )}
       <CommonMobileLinks />
       <div className="au-marketplace-header_mobile-link">
         <a href="/logout">Sign out</a>
