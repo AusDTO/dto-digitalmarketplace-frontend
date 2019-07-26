@@ -1,11 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import AUaccordion from '@gov.au/accordion/lib/js/react.js'
-
-import RegisterComponent from '../../RegisterComponent'
-import { returnPath } from './helper'
 import logoGovCrest from './Government_crest.svg'
 import './Header.css'
 
