@@ -91,6 +91,65 @@ class Header extends React.Component {
       </ul>
     )
 
+    const commonMobileLinks = (
+      <React.Fragment>
+        <div className="au-marketplace-header_mobile-link">
+          <a href="/2/opportunities">
+            Opportunities
+          </a>
+        </div>
+        <div className="au-marketplace-header_mobile-link">
+          <a href="/search/sellers">
+            Seller Catalogue
+          </a>
+        </div>
+        <div className="au-marketplace-header_mobile-link">
+          <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000141616">
+            Insights
+          </a>
+        </div>
+        <div className="au-marketplace-header_mobile-link">
+          <a href="https://marketplace1.zendesk.com/hc/en-gb">
+            Support
+          </a>
+        </div>
+        <div className="au-marketplace-header_mobile-link">
+          <a href="/contact-us">
+            Contact
+          </a>
+        </div>
+      </React.Fragment>
+    )
+
+    const authenticatedMobileLinks = (
+      <React.Fragment>
+        <div className="au-marketplace-header_mobile-link">
+          <span>
+            <a href={this.props.dashboardUrl}>{this.props.dashboardText}</a>
+            { (this.props.notificationCount && this.props.notificationCount !== 0) &&
+              <div className="notification">{this.props.notificationCount}</div>
+            }
+          </span>
+        </div>
+        {commonMobileLinks}
+        <div className="au-marketplace-header_mobile-link">
+          <a href="/logout">Sign out</a>
+        </div>
+      </React.Fragment>
+    )
+
+    const unauthenticatedMobileLinks = (
+      <React.Fragment>
+        <div className="au-marketplace-header_mobile-link">
+          <a href="/2/signup">Sign up</a>
+        </div>
+        <div className="au-marketplace-header_mobile-link">
+          <a href="/login">Sign in</a>
+        </div>
+        {commonMobileLinks}
+      </React.Fragment>
+    )
+
     return (
       <section className="au-marketplace-header">
         <div className="wrapper">
@@ -172,44 +231,9 @@ class Header extends React.Component {
                   onClose={ () => { this.closeAccordion() } }
                 >
                   <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
-                    <div className="au-marketplace-header_mobile-link">
-                      {this.props.isAuthenticated ? 
-                      <span>
-                        <a href={this.props.dashboardUrl}>{this.props.dashboardText}</a>
-                        { (this.props.notificationCount && this.props.notificationCount !== 0) &&
-                          <div className="notification">{this.props.notificationCount}</div>
-                        }
-                      </span>
-                      : <a href="/2/signup">Sign up</a>}
-                    </div>
-                    <div className="au-marketplace-header_mobile-link">
-                      {this.props.isAuthenticated ? <a href="/logout">Sign out</a> : <a href="/login">Sign in</a>}
-                    </div>
-                    <div className="au-marketplace-header_mobile-link">
-                      <a href="/2/opportunities">
-                        Opportunities
-                      </a>
-                    </div>
-                    <div className="au-marketplace-header_mobile-link">
-                      <a href="/search/sellers">
-                        Seller Catalogue
-                      </a>
-                    </div>
-                    <div className="au-marketplace-header_mobile-link">
-                      <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000141616">
-                        Insights
-                      </a>
-                    </div>
-                    <div className="au-marketplace-header_mobile-link">
-                      <a href="https://marketplace1.zendesk.com/hc/en-gb">
-                        Support
-                      </a>
-                    </div>
-                    <div className="au-marketplace-header_mobile-link">
-                      <a href="/contact-us">
-                        Contact
-                      </a>
-                    </div>
+                    {this.props.isAuthenticated
+                      ? authenticatedMobileLinks
+                      : unauthenticatedMobileLinks}
                   </div>
                 </AUaccordion>
               </div>
