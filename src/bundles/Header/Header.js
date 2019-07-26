@@ -26,15 +26,14 @@ class Header extends React.Component {
   }
 
   render() {
-    const adminHeaderActions = (
+    const AdminHeaderActions = () =>
       <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
         <li>
           <a href="/logout">Sign out</a>
         </li>
       </ul>
-    )
 
-    const applicantHeaderActions = (
+    const ApplicantHeaderActions = () =>
       <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
         <li>
           <a href="/sellers/application">Continue application</a>
@@ -43,9 +42,8 @@ class Header extends React.Component {
           <a href="/logout">Sign out</a>
         </li>
       </ul>
-    )
 
-    const buyerHeaderActions = (
+    const BuyerHeaderActions = () =>
       <AUaccordion header="Menu" speed={0.2}>
         <ul>
           <li>
@@ -59,9 +57,8 @@ class Header extends React.Component {
           </li>
         </ul>
       </AUaccordion>
-    )
 
-    const sellerHeaderActions = (
+    const SellerHeaderActions = () =>
       <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
         <li>
           <a href="/2/seller-dashboard">Dashboard</a>
@@ -74,9 +71,8 @@ class Header extends React.Component {
           <a href="/logout">Sign out</a>
         </li>
       </ul>
-    )
 
-    const unauthenticatedHeaderActions = (
+    const UnauthenticatedHeaderActions = () =>
       <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
         <li>
           <a href="/2/signup" className="au-btn au-btn--secondary au-btn--dark">
@@ -89,9 +85,8 @@ class Header extends React.Component {
           </a>
         </li>
       </ul>
-    )
 
-    const commonMobileLinks = (
+    const CommonMobileLinks = () =>
       <React.Fragment>
         <div className="au-marketplace-header_mobile-link">
           <a href="/2/opportunities">
@@ -119,7 +114,6 @@ class Header extends React.Component {
           </a>
         </div>
       </React.Fragment>
-    )
 
     const AuthenticatedMobileLinks = props => {
       const { userType } = props
@@ -139,7 +133,7 @@ class Header extends React.Component {
               <a href="/2/teams">Teams and People</a>
             </div>
           )}
-          {commonMobileLinks}
+          <CommonMobileLinks />
           <div className="au-marketplace-header_mobile-link">
             <a href="/logout">Sign out</a>
           </div>
@@ -147,7 +141,7 @@ class Header extends React.Component {
       )
     }
 
-    const unauthenticatedMobileLinks = (
+    const UnauthenticatedMobileLinks = () => 
       <React.Fragment>
         <div className="au-marketplace-header_mobile-link">
           <a href="/2/signup">Sign up</a>
@@ -155,9 +149,8 @@ class Header extends React.Component {
         <div className="au-marketplace-header_mobile-link">
           <a href="/login">Sign in</a>
         </div>
-        {commonMobileLinks}
+        <CommonMobileLinks />
       </React.Fragment>
-    )
 
     return (
       <section className="au-marketplace-header">
@@ -177,12 +170,12 @@ class Header extends React.Component {
               <div className="au-marketplace-header-user-nav">
                 <div className="au-marketplace-header-actions">
                   {this.props.isAuthenticated ? (
-                    (this.props.userType === 'admin' && adminHeaderActions) ||
-                    (this.props.userType === 'applicant' && applicantHeaderActions) ||
-                    (this.props.userType === 'buyer' && buyerHeaderActions) ||
-                    (this.props.userType === 'supplier' && sellerHeaderActions)
+                    (this.props.userType === 'admin' && <AdminHeaderActions />) ||
+                    (this.props.userType === 'applicant' && <ApplicantHeaderActions />) ||
+                    (this.props.userType === 'buyer' && <BuyerHeaderActions />) ||
+                    (this.props.userType === 'supplier' && <SellerHeaderActions />)
                   ) : (
-                    unauthenticatedHeaderActions
+                    <UnauthenticatedHeaderActions />
                   )}
                 </div>
               </div>
@@ -242,7 +235,7 @@ class Header extends React.Component {
                   <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
                     {this.props.isAuthenticated
                       ? <AuthenticatedMobileLinks userType={this.props.userType} />
-                      : unauthenticatedMobileLinks}
+                      : <UnauthenticatedMobileLinks />}
                   </div>
                 </AUaccordion>
               </div>
