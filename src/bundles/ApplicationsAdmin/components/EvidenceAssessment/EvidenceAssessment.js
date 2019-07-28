@@ -258,7 +258,7 @@ class EvidenceAssessment extends React.Component {
           {this.hasMetEnoughCriteria() && this.hasReviewedAllCriteria() && (
             <React.Fragment>
               <p>
-                <strong>Does the submitted rate represent VFM?</strong>
+                <strong>Considering the maximum daily rate provided by the seller, and based on your assessment of the seller&apos;s technical capabilities, does this seller&apos;s application represent VFM to the Commonwealth?</strong>
               </p>
               <p>Limit: ${evidence.domain_price_maximum}</p>
               <p>

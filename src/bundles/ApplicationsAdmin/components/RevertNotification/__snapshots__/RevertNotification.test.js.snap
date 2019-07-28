@@ -15,33 +15,24 @@ exports[`RevertedNotificationForm with required attributes 1`] = `
     </b>
     <textarea
       onChange={[Function]}
-      value="Thanks for applying to join the Digital Marketplace. We’ve reviewed your application and require more detail or changes to your profile:
+      value="Dear Marketplace seller
 
-- 
+We’ve reviewed your submission to the Digital Marketplace and require more detail or changes to your profile.
+
+YOUR NOTES GO HERE
 
 To update your profile:
 
-- access [Digital Marketplace](https://marketplace.service.gov.au) and sign in
-- update your profile as advised
-- resubmit your application for review
+  1. Log in to your [Digital Marketplace dashboard]({{ frontend_url }}/2/seller-dashboard).
+  2. Update your seller profile.
+  3. Resubmit your application for review.
 
-We recommend you read our support guides on seller profiles and case studies:
+We'll advise you once we've reviewed the changes.
 
-- read the useful [Seller guide and FAQs](https://marketplace1.zendesk.com/hc/en-gb/categories/115001540368-Seller-guide-and-FAQs)
-- see the digital [areas of expertise](https://marketplace1.zendesk.com/hc/en-gb/articles/115011258607) in the marketplace
-- understand the relevant [assessment criteria](https://marketplace1.zendesk.com/hc/en-gb/articles/333757011655-Assessment-criteria) for each area of expertise you nominate
-- create a compelling [case study](https://marketplace1.zendesk.com/hc/en-gb/articles/115011407668-Adding-case-studies) to showcase your digital expertise
-
-Once you’ve resubmitted your profile updates, we’ll review it again and advise you via email. 
-
-Thanks,
-
-The Digital Marketplace team
-
-Digital Marketplace [https://marketplace.service.gov.au](https://marketplace.service.gov.au)  
-Digital Transformation Agency (DTA) [https://www.dta.gov.au](https://www.dta.gov.au)
-
-[Terms of Use](https://marketplace.service.gov.au/terms-of-use) | [Privacy](https://marketplace.service.gov.au/privacy-policy) | [Copyright](https://marketplace.service.gov.au/copyright)"
+Regards,  
+The Digital Marketplace team  
+Digital Transformation Agency  
+[{{ frontend_url }}]({{ frontend_url }}) | [dta.gov.au](https://dta.gov.au)"
     />
   </label>
   <div
