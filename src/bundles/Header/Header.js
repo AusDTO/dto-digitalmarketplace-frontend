@@ -141,10 +141,10 @@ class Header extends React.Component {
     const UnauthenticatedMobileLinks = () => 
       <React.Fragment>
         <div className="au-marketplace-header_mobile-link">
-          <a href="/2/signup">Sign up</a>
+          <a href="/login">Sign in</a>
         </div>
         <div className="au-marketplace-header_mobile-link">
-          <a href="/login">Sign in</a>
+          <a href="/2/signup">Sign up</a>
         </div>
         <CommonMobileLinks />
       </React.Fragment>
