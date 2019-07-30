@@ -93,9 +93,11 @@ export class Header extends Component {
                   }}
                 >
                   <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
-                    {loggedIn
-                      ? <AuthenticatedMobileLinks notificationCount={notificationCount} userType={userType} />
-                      : <UnauthenticatedMobileLinks />}
+                    {loggedIn ? (
+                      <AuthenticatedMobileLinks notificationCount={notificationCount} userType={userType} />
+                    ) : (
+                      <UnauthenticatedMobileLinks />
+                    )}
                   </div>
                 </AUaccordion>
               </div>
