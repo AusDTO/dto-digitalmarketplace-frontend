@@ -113,7 +113,6 @@ export const Routes = () => (
       component={BuyerSpecialistFlowPage}
     />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/outcome-choice`} component={BriefOutcomeChoicePage} />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/teams`} component={TeamsPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/request-access/:permission`} component={RequestAccessPage} />
     <PrivateRoute
       restrictedTo="supplier"

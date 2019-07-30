@@ -21,7 +21,6 @@ export class PermissionsTable extends Component {
       answer_seller_questions: false,
       create_drafts: false,
       create_work_orders: false,
-      download_reporting_data: false,
       download_responses: false,
       publish_opportunities: false
     }
