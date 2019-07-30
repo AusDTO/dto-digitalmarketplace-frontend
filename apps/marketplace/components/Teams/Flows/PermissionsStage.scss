@@ -1,15 +1,6 @@
 .allPermissionsContainer {
-    margin-top: 1rem;
-
-    .allPermissionsCheckbox {
-        input {
-            top: 0.85rem;
-        }
-
-        span::before, span::after  {
-            top: 0.25rem;
-        }
-    }
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .permissionsTable {
