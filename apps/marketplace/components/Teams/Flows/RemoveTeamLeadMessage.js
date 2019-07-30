@@ -17,7 +17,7 @@ const RemoveTeamLeadMessage = props => {
         </li>
         <li>
           <span className={styles.bold}>{name}</span> will no longer be able to access the opportunities created in this
-          team
+          team.
         </li>
       </ul>
     </div>

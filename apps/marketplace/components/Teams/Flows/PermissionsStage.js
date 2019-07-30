@@ -70,7 +70,7 @@ export class PermissionsStage extends Component {
         <AUheading level="1" size="xl">
           Permissions
         </AUheading>
-        {team.teamMembers ? (
+        {Object.keys(team.teamMembers).length > 0 ? (
           <React.Fragment>
             <p>Team members automatically see opportunities created by anyone in the team.</p>
             <p className={commonStyles.bold}>What can each team member do?</p>
@@ -95,10 +95,7 @@ export class PermissionsStage extends Component {
               You must <Link to={`${rootPath}/team/${team.id}/members`}>add team members</Link> to control access within
               your team.
             </p>
-            <p>
-              Team leads are able to create drafts, opportunities, answer seller questions, download responses, create
-              work orders and download reporting data.
-            </p>
+            <p>As team lead you have access to all permissions.</p>
           </React.Fragment>
         )}
         {formButtons}
