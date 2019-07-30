@@ -34,7 +34,7 @@ class AskQuestionPage extends Component {
       loading: true
     })
     const briefId = this.props.match.params.briefId
-    if (briefId.length > 0) {
+    if (briefId) {
       this.props.loadInitialData(briefId).then(response => {
         let errorMessage = null
         if (response.status !== 200) {
