@@ -8,7 +8,7 @@ const SubmitAllUpdatesButton = props => {
   const { onClick } = props
 
   // Passing true indicates the flow is complete and should transition to the next page
-  return <AUbutton onClick={() => onClick(true)}>Submit all updates</AUbutton>
+  return <AUbutton onClick={() => onClick(true)}>Save and close</AUbutton>
 }
 
 const SaveAndContinueButton = () => (
