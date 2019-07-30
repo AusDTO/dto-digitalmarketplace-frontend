@@ -101,7 +101,7 @@ class AskQuestionPage extends Component {
                   <AUpageAlert as="success">
                     <React.Fragment>
                       <AUheading level="4" size="md">
-                        {`Thank you, your question is submitted successfully to ${brief.organisation}`}.
+                        {`Thank you, your question has been submitted successfully to ${brief.organisation}`}.
                       </AUheading>
                       <p>
                         <a href={getOpportunityUrl(brief)} className="au-btn">
