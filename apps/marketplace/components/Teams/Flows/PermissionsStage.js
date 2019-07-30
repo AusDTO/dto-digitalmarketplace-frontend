@@ -96,8 +96,8 @@ export class PermissionsStage extends Component {
               your team.
             </p>
             <p>
-              Team leads are able to create drafts, opportunities, answer seller questions, download responses, create
-              work orders and download reporting data.
+              Team leads are able to create drafts, opportunities, answer seller questions, download responses and work
+              orders.
             </p>
           </React.Fragment>
         )}
