@@ -95,10 +95,7 @@ export class PermissionsStage extends Component {
               You must <Link to={`${rootPath}/team/${team.id}/members`}>add team members</Link> to control access within
               your team.
             </p>
-            <p>
-              Team leads are able to create drafts, opportunities, answer seller questions, download responses and work
-              orders.
-            </p>
+            <p>As team lead you have access to all permissions.</p>
           </React.Fragment>
         )}
         {formButtons}
