@@ -70,7 +70,7 @@ export class PermissionsStage extends Component {
         <AUheading level="1" size="xl">
           Permissions
         </AUheading>
-        {team.teamMembers ? (
+        {Object.keys(team.teamMembers).length > 0 ? (
           <React.Fragment>
             <p>Team members automatically see opportunities created by anyone in the team.</p>
             <p className={commonStyles.bold}>What can each team member do?</p>
