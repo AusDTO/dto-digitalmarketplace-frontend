@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter, NavLink } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import AUaccordion from '@gov.au/accordion/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
 import { hasPermission } from 'marketplace/components/helpers'
+import PageHeader from 'marketplace/components/PageHeader/PageHeader'
+import PageNavigation from 'marketplace/components/PageNavigation/PageNavigation'
 import styles from './BuyerDashboard.scss'
 
 class BuyerDashboardHeader extends Component {
@@ -25,53 +27,17 @@ class BuyerDashboardHeader extends Component {
   }
 
   render() {
-    const { isPartOfTeam, isTeamLead, teams } = this.props
+    const { briefCounts, isPartOfTeam, isTeamLead, organisation, teams } = this.props
     return (
-      <div className={`${styles.header} row`}>
-        <div className="col-sm-12">
-          <small className={styles.organisation}>{this.props.organisation}</small>
-          <div className="row">
-            <div className="col-xs-12">
-              <h1 className="au-display-xl">Dashboard</h1>
-            </div>
-          </div>
-          <div className={`${styles.menuRow} row`}>
-            <div className="col-xs-12 col-md-9">
-              <nav className={styles.dashNav}>
-                <ul className={styles.menu}>
-                  <li>
-                    <NavLink id="all-link" to="/" activeClassName={styles.active} exact>
-                      All{' '}
-                      <span className={styles.subText}>
-                        ({this.props.briefCounts.closed +
-                          this.props.briefCounts.draft +
-                          this.props.briefCounts.live +
-                          this.props.briefCounts.withdrawn})
-                      </span>
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink id="drafts-link" to="/draft-briefs" activeClassName={styles.active}>
-                      Drafts <span className={styles.subText}>({this.props.briefCounts.draft})</span>
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink id="Live-link" to="/live-briefs" activeClassName={styles.active}>
-                      Live <span className={styles.subText}>({this.props.briefCounts.live})</span>
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink id="Closed-link" to="/closed-briefs" activeClassName={styles.active}>
-                      Closed{' '}
-                      <span className={styles.subText}>
-                        ({this.props.briefCounts.closed + this.props.briefCounts.withdrawn})
-                      </span>
-                    </NavLink>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-            <div className={`${styles.dashActions} ${styles.createNew} col-xs-12 col-md-3 buyer-dashboard-actions`}>
+      <React.Fragment>
+        <PageHeader
+          organisation={organisation}
+          title="Dashboard"
+          actions={[
+            <div
+              key="create-opportunity"
+              className={`${styles.dashActions} ${styles.createNew} buyer-dashboard-actions`}
+            >
               <AUaccordion
                 header="Create new request"
                 open={this.state.createNewIsOpen}
@@ -105,9 +71,56 @@ class BuyerDashboardHeader extends Component {
                 )}
               </AUaccordion>
             </div>
-          </div>
-        </div>
-      </div>
+          ]}
+        />
+        <PageNavigation
+          links={[
+            {
+              exact: true,
+              id: 'all-link',
+              text: (
+                <React.Fragment>
+                  All{' '}
+                  <span className={styles.subText}>
+                    ({briefCounts.closed + briefCounts.draft + briefCounts.live + briefCounts.withdrawn})
+                  </span>
+                </React.Fragment>
+              ),
+              to: '/'
+            },
+            {
+              exact: false,
+              id: 'drafts-link',
+              text: (
+                <React.Fragment>
+                  Drafts <span className={styles.subText}>({briefCounts.draft})</span>
+                </React.Fragment>
+              ),
+              to: '/draft-briefs'
+            },
+            {
+              exact: false,
+              id: 'live-link',
+              text: (
+                <React.Fragment>
+                  Live <span className={styles.subText}>({briefCounts.live})</span>
+                </React.Fragment>
+              ),
+              to: '/live-briefs'
+            },
+            {
+              exact: false,
+              id: 'closed-link',
+              text: (
+                <React.Fragment>
+                  Closed <span className={styles.subText}>({briefCounts.closed + briefCounts.withdrawn})</span>
+                </React.Fragment>
+              ),
+              to: '/closed-briefs'
+            }
+          ]}
+        />
+      </React.Fragment>
     )
   }
 }
