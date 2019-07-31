@@ -14,13 +14,13 @@ const AboutTeamStage = props => {
   const userDomain = currentUserEmailAddress.split('@')[1]
 
   const governmentEmail = team => validGovernmentEmail(team.emailAddress, currentUserEmailAddress)
-  const governmentEmailMessage = `You must use an email address ending in @${userDomain}`
+  const governmentEmailMessage = `You must use an email address ending in @${userDomain}.`
 
   const requiredName = team => required(team.name)
-  const requiredNameMessage = 'A team name is required'
+  const requiredNameMessage = 'A team name is required.'
 
   const validTeamEmail = team => validEmail(team.emailAddress)
-  const validTeamEmailMessage = 'Please add a valid email address'
+  const validTeamEmailMessage = 'Please add a valid email address.'
 
   return (
     <Form
