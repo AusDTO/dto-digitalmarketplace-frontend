@@ -370,7 +370,7 @@ class BriefPage extends Component {
                       brief={this.props.brief}
                       briefResponses={this.props.briefResponses}
                       briefResponseDownloaded={this.props.briefResponseDownloaded}
-                      reloadBrief={() => this.props.loadInitialData(this.props.brief.id)}
+                      onDownloadBrief={() => this.props.loadInitialData(this.props.brief.id)}
                     />
                   ) : (
                     <ErrorBox title="There was a problem downloading the documents" setFocus={setFocus} />

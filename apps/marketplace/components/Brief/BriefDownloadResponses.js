@@ -17,7 +17,7 @@ export class BriefDownloadResponses extends Component {
 
   handleButtonClick() {
     setTimeout(() => {
-      this.props.reloadBrief()
+      this.props.onDownloadBrief()
     }, 500)
   }
 
@@ -104,14 +104,14 @@ export class BriefDownloadResponses extends Component {
 }
 
 BriefDownloadResponses.defaultProps = {
-  reloadBrief: () => {}
+  onDownloadBrief: () => {}
 }
 
 BriefDownloadResponses.propTypes = {
   brief: PropTypes.object.isRequired,
   briefResponses: PropTypes.array.isRequired,
   briefResponseDownloaded: PropTypes.array.isRequired,
-  reloadBrief: PropTypes.func
+  onDownloadBrief: PropTypes.func
 }
 
 const mapStateToProps = state => ({
