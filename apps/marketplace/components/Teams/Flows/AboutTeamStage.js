@@ -4,18 +4,50 @@ import { connect } from 'react-redux'
 import { Form } from 'react-redux-form'
 
 import AUheading from '@gov.au/headings'
+import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import formProps from 'shared/form/formPropsSelector'
 import Textfield from 'shared/form/Textfield'
-import { required, validEmail } from 'marketplace/components/validators'
+import { required, validEmail, validGovernmentEmail } from 'marketplace/components/validators'
 
 const AboutTeamStage = props => {
-  const { formButtons, model, onSubmit, onSubmitFailed } = props
+  const { currentUserEmailAddress, formButtons, model, onSubmit, onSubmitFailed } = props
+  const userDomain = currentUserEmailAddress.split('@')[1]
+
+  const governmentEmail = team => validGovernmentEmail(team.emailAddress, currentUserEmailAddress)
+  const governmentEmailMessage = `You must use an email address ending in ${userDomain}`
+
+  const requiredName = team => required(team.name)
+  const requiredNameMessage = 'A team name is required'
+
+  const validTeamEmail = team => validEmail(team.emailAddress)
+  const validTeamEmailMessage = 'Please add a valid email address'
 
   return (
-    <Form model={model} onSubmit={onSubmit} onSubmitFailed={onSubmitFailed}>
+    <Form
+      model={model}
+      onSubmit={onSubmit}
+      onSubmitFailed={onSubmitFailed}
+      validateOn="submit"
+      validators={{
+        '': {
+          requiredName,
+          validTeamEmail,
+          governmentEmail
+        }
+      }}
+    >
       <AUheading level="1" size="xl">
         Name and email
       </AUheading>
+      <ErrorAlert
+        title="An error occurred"
+        model={model}
+        messages={{
+          requiredName: requiredNameMessage,
+          validTeamEmail: validTeamEmailMessage,
+          governmentEmail: governmentEmailMessage
+        }}
+      />
       <Textfield
         defaultValue={props[model].name}
         description=""
@@ -28,7 +60,7 @@ const AboutTeamStage = props => {
         placeholder=""
         validators={{ required }}
         messages={{
-          required: 'A team name is required'
+          required: requiredNameMessage
         }}
       />
       <Textfield
@@ -41,9 +73,13 @@ const AboutTeamStage = props => {
         model={`${model}.emailAddress`}
         name="emailAddress"
         placeholder=""
-        validators={{ validEmail }}
+        validators={{
+          validEmail,
+          governmentEmail: teamEmailAddress => validGovernmentEmail(teamEmailAddress, currentUserEmailAddress)
+        }}
         messages={{
-          validEmail: 'Please add a valid email address'
+          validEmail: validTeamEmailMessage,
+          governmentEmail: governmentEmailMessage
         }}
       />
       {formButtons}
@@ -64,7 +100,8 @@ AboutTeamStage.propTypes = {
 }
 
 const mapStateToProps = (state, props) => ({
-  ...formProps(state, props.model)
+  ...formProps(state, props.model),
+  currentUserEmailAddress: state.app.emailAddress
 })
 
 export default connect(mapStateToProps)(AboutTeamStage)
