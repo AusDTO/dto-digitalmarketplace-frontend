@@ -27,7 +27,7 @@ const ReviewTeamStage = props => {
       </AUheading>
       <div className={commonStyles.stageContentContainer}>
         <ul className={commonStyles.stageList}>
-          <li>We will email each member to sign in with the email you have provided.</li>
+          <li>We will send a confirmation email to all team leads and members you added.</li>
           <li>Members will see any current opportunities created by other team members.</li>
           <li>Members will see all new opportunities created by other team members.</li>
         </ul>
