@@ -6,7 +6,7 @@ import { Form } from 'react-redux-form'
 import AUheading from '@gov.au/headings'
 import formProps from 'shared/form/formPropsSelector'
 import Textfield from 'shared/form/Textfield'
-import { governmentEmail, required, validEmail } from 'marketplace/components/validators'
+import { required, validEmail, validGovernmentEmail } from 'marketplace/components/validators'
 
 const AboutTeamStage = props => {
   const { currentUserEmailAddress, formButtons, model, onSubmit, onSubmitFailed } = props
@@ -43,7 +43,7 @@ const AboutTeamStage = props => {
         placeholder=""
         validators={{
           validEmail,
-          governmentEmail: teamEmailAddress => governmentEmail(teamEmailAddress, currentUserEmailAddress)
+          governmentEmail: teamEmailAddress => validGovernmentEmail(teamEmailAddress, currentUserEmailAddress)
         }}
         messages={{
           validEmail: 'Please add a valid email address',
