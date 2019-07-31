@@ -6,10 +6,10 @@ import { Form } from 'react-redux-form'
 import AUheading from '@gov.au/headings'
 import formProps from 'shared/form/formPropsSelector'
 import Textfield from 'shared/form/Textfield'
-import { required, validEmail } from 'marketplace/components/validators'
+import { governmentEmail, required, validEmail } from 'marketplace/components/validators'
 
 const AboutTeamStage = props => {
-  const { formButtons, model, onSubmit, onSubmitFailed } = props
+  const { currentUserEmailAddress, formButtons, model, onSubmit, onSubmitFailed } = props
 
   return (
     <Form model={model} onSubmit={onSubmit} onSubmitFailed={onSubmitFailed}>
@@ -41,9 +41,13 @@ const AboutTeamStage = props => {
         model={`${model}.emailAddress`}
         name="emailAddress"
         placeholder=""
-        validators={{ validEmail }}
+        validators={{
+          validEmail,
+          governmentEmail: teamEmailAddress => governmentEmail(teamEmailAddress, currentUserEmailAddress)
+        }}
         messages={{
-          validEmail: 'Please add a valid email address'
+          validEmail: 'Please add a valid email address',
+          governmentEmail: 'You must only use a government email address'
         }}
       />
       {formButtons}
@@ -64,7 +68,8 @@ AboutTeamStage.propTypes = {
 }
 
 const mapStateToProps = (state, props) => ({
-  ...formProps(state, props.model)
+  ...formProps(state, props.model),
+  currentUserEmailAddress: state.app.emailAddress
 })
 
 export default connect(mapStateToProps)(AboutTeamStage)
