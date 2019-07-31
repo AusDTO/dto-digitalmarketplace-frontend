@@ -147,3 +147,20 @@ export const hasPermission = (isPartOfTeam = false, isTeamLead = true, teams = [
   }
   return teams.every(t => t.permissions.includes(permission))
 }
+
+export const mapLot = lot => {
+  switch (lot) {
+    case 'atm':
+    case 'digital-outcome':
+      return 'Ask the market'
+    case 'rfx':
+      return 'Seek proposals and quotes'
+    case 'digital-professionals':
+    case 'specialist':
+      return 'Specialist'
+    case 'training':
+      return 'Training'
+    default:
+      return lot
+  }
+}
