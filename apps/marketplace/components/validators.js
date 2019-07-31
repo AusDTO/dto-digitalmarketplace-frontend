@@ -79,6 +79,21 @@ export const validEmail = val => {
   return false
 }
 
+export const validGovernmentEmail = (emailAddress, userEmailAddress) => {
+  if (!validEmail(emailAddress)) {
+    return true
+  }
+
+  const domain = emailAddress.split('@')[1]
+  const userDomain = userEmailAddress.split('@')[1]
+
+  if (domain === userDomain) {
+    return true
+  }
+
+  return false
+}
+
 export const minArrayLength = len => (arr = []) => Array.isArray(arr) && arr.filter(v => v.trim()).length >= len
 
 export const min = len => (val = '') => val.length >= len
