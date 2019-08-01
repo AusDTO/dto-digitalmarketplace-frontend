@@ -139,10 +139,11 @@ export class ProgressFlow extends Component {
       saving: true
     })
     this.props.saveModel().then(response => {
+      this.setState({
+        saving: false
+      })
+
       if (!response || !response.error) {
-        this.setState({
-          saving: false
-        })
         const nextStage = this.getNextStage(this.state.currentStage)
         if (nextStage) {
           this.props.history.push(`${this.props.basename}/${nextStage}`)
