@@ -436,6 +436,7 @@ const Opportunity = props => {
                       )}
                       {brief.evaluationType.includes('Case study') && <li>Case study</li>}
                       {brief.evaluationType.includes('References') && <li>References</li>}
+                      {brief.evaluationType.includes('Résumés') && <li>Résumés</li>}
                     </ul>
                   )}
                 {(brief.evaluationType.includes('Demonstration') || brief.evaluationType.includes('Presentation')) && (
