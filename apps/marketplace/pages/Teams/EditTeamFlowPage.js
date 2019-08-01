@@ -34,7 +34,7 @@ export class EditTeamFlowPage extends Component {
     const teamId = this.props.match.params.teamId
     if (teamId) {
       this.props.getTeam(teamId).then(response => {
-        if (response.status === 403) {
+        if (response.status === 403 || response.status === 404) {
           this.setState({
             returnToTeamsDashboard: true
           })
@@ -76,7 +76,7 @@ export class EditTeamFlowPage extends Component {
         loading: false
       })
 
-      if (response.status === 403) {
+      if (response.status === 403 || response.status === 404) {
         this.setState({
           returnToTeamsDashboard: true
         })
