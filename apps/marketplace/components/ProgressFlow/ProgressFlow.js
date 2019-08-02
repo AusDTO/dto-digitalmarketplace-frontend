@@ -140,9 +140,6 @@ export class ProgressFlow extends Component {
     })
     this.props.saveModel().then(response => {
       if (!response || !response.error) {
-        this.setState({
-          saving: false
-        })
         const nextStage = this.getNextStage(this.state.currentStage)
         if (nextStage) {
           this.props.history.push(`${this.props.basename}/${nextStage}`)
@@ -150,6 +147,9 @@ export class ProgressFlow extends Component {
         }
         window.scrollTo(0, 0)
       }
+      this.setState({
+        saving: false
+      })
     })
   }
 
