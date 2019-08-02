@@ -17,17 +17,17 @@ export class BriefDownloadResponses extends Component {
 
   handleButtonClick() {
     setTimeout(() => {
-      this.props.reloadBrief()
+      this.props.onDownloadBrief()
     }, 500)
   }
 
   render() {
-    const { isPartOfTeam, isTeamLead, teams } = this.props
+    const { brief, briefResponses, briefResponseDownloaded, isPartOfTeam, isTeamLead, teams } = this.props
 
     if (!hasPermission(isPartOfTeam, isTeamLead, teams, 'download_responses')) {
       return <Redirect to={`${rootPath}/request-access/download_responses`} />
     }
-    if (this.props.briefResponses.length === 0) {
+    if (briefResponses.length === 0) {
       return (
         <span>
           <AUheading size="xl" level="1">
@@ -40,7 +40,7 @@ export class BriefDownloadResponses extends Component {
       )
     }
 
-    if (!this.props.brief.responsesZipFilesize && this.props.brief.lot === 'digital-professionals') {
+    if (!brief.responsesZipFilesize && brief.lot === 'digital-professionals') {
       return (
         <AUpageAlert as="error">
           <AUheading size="md" level="1">
@@ -56,40 +56,37 @@ export class BriefDownloadResponses extends Component {
     return (
       <span>
         <AUheading size="xl" level="1">
-          {this.props.brief.lot === 'specialist' ? (
+          {brief.lot === 'specialist' ? (
             <React.Fragment>
-              {this.props.briefResponses.length === 1 && `1 candidate has responded to your opportunity.`}
-              {this.props.briefResponses.length > 1 &&
-                `${this.props.briefResponses.length} candidates have responded to your opportunity.`}
+              {briefResponses.length === 1 && `1 candidate has responded to your opportunity.`}
+              {briefResponses.length > 1 && `${briefResponses.length} candidates have responded to your opportunity.`}
             </React.Fragment>
           ) : (
             <React.Fragment>
-              {this.props.briefResponses.length === 1 && `You've had 1 response to your opportunity.`}
-              {this.props.briefResponses.length > 1 &&
-                `You've had ${this.props.briefResponses.length} responses to your opportunity.`}
+              {briefResponses.length === 1 && `You've had 1 response to your opportunity.`}
+              {briefResponses.length > 1 && `You've had ${briefResponses.length} responses to your opportunity.`}
             </React.Fragment>
           )}
-          <small className={styles.headingSub}>{this.props.brief.title}</small>
+          <small className={styles.headingSub}>{brief.title}</small>
         </AUheading>
         <p>
           <a
-            href={`/api/2/brief/${this.props.brief.id}/respond/documents`}
+            href={`/api/2/brief/${brief.id}/respond/documents`}
             onClick={this.handleButtonClick}
             rel="noopener noreferrer"
             target="_blank"
             className="au-btn"
           >
-            Download responses{' '}
-            {getResponsesFileSizeAndType(this.props.brief.responsesZipFilesize, this.props.brief.lot)}
+            Download responses {getResponsesFileSizeAndType(brief.responsesZipFilesize, brief.lot)}
           </a>
         </p>
         <AUheading size="md" level="2">
           Downloaded by:
         </AUheading>
-        {this.props.briefResponseDownloaded && (
+        {briefResponseDownloaded && (
           <table className={styles.downloadedByTable}>
             <tbody>
-              {this.props.briefResponseDownloaded.map(item => (
+              {briefResponseDownloaded.map(item => (
                 <tr key={`${item.name}_${item.created_at}`}>
                   <td className={styles.colName}>{item.name}</td>
                   <td className={styles.colDate}>{format(new Date(item.created_at), 'HH:mm DD/MM/YYYY')}</td>
@@ -107,14 +104,14 @@ export class BriefDownloadResponses extends Component {
 }
 
 BriefDownloadResponses.defaultProps = {
-  reloadBrief: () => {}
+  onDownloadBrief: () => {}
 }
 
 BriefDownloadResponses.propTypes = {
   brief: PropTypes.object.isRequired,
   briefResponses: PropTypes.array.isRequired,
   briefResponseDownloaded: PropTypes.array.isRequired,
-  reloadBrief: PropTypes.func
+  onDownloadBrief: PropTypes.func
 }
 
 const mapStateToProps = state => ({

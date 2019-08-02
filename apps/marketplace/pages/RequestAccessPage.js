@@ -13,7 +13,7 @@ import styles from '../main.scss'
 
 const mapToDisplay = p => p.replace(/_/g, ' ')
 
-class RequestionAccessPage extends Component {
+class RequestAccessPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -112,4 +112,4 @@ const mapResetDispatchToProps = dispatch => ({
   request: p => dispatch(requestAccess(p))
 })
 
-export default withRouter(connect(null, mapResetDispatchToProps)(RequestionAccessPage))
+export default withRouter(connect(null, mapResetDispatchToProps)(RequestAccessPage))

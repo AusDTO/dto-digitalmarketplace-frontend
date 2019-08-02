@@ -111,7 +111,7 @@ class PublishAnswerPage extends Component {
                   <AUpageAlert as="success">
                     <React.Fragment>
                       <AUheading level="4" size="md">
-                        {`Thank you, your answer is submitted successfully for ${brief.title}`}.
+                        {`Thank you, your answer has been submitted successfully for ${brief.title}`}.
                       </AUheading>
                       <p>
                         <a href={`${rootPath}/brief/${brief.id}/questions`} className="au-btn">

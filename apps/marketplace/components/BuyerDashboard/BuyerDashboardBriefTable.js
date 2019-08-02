@@ -4,26 +4,9 @@ import { connect } from 'react-redux'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import loadBuyerDashboard from 'marketplace/actions/buyerDashboardActions'
 import { rootPath } from 'marketplace/routes'
-import { hasPermission } from 'marketplace/components/helpers'
+import { hasPermission, mapLot } from 'marketplace/components/helpers'
 import BuyerDashboardHelp from './BuyerDashboardHelp'
 import styles from './BuyerDashboard.scss'
-
-const mapLot = item => {
-  switch (item.lot) {
-    case 'atm':
-    case 'digital-outcome':
-      return 'Ask the market'
-    case 'rfx':
-      return 'Seek proposals and quotes'
-    case 'digital-professionals':
-    case 'specialist':
-      return 'Specialist'
-    case 'training':
-      return 'Training'
-    default:
-      return item.lot
-  }
-}
 
 export class BuyerDashboardBriefTable extends Component {
   constructor(props) {
@@ -152,7 +135,7 @@ export class BuyerDashboardBriefTable extends Component {
                   <td className={styles.colName}>
                     {this.getLinkedBriefTitle(item)}
                     <br />
-                    <span>{mapLot(item)}</span>
+                    <span>{mapLot(item.lot)}</span>
                     <span className={styles.internalReference}>{item.internalReference}</span>
                   </td>
                   <td className={styles.colOwner}>
