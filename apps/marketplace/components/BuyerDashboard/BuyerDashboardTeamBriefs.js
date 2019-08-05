@@ -93,9 +93,7 @@ export class BuyerDashboardTeamBriefs extends Component {
                   <td className={`${styles.actions} ${item.status === 'live' ? '' : styles.empty} ${styles.colAction}`}>
                     {item.status === 'live' && (
                       <a
-                        href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${
-                          item.id
-                        }/supplier-questions/answer-question`}
+                        href={`/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}/supplier-questions/answer-question`}
                       >
                         <strong>Answer a question</strong>
                       </a>

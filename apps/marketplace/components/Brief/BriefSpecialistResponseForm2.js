@@ -292,9 +292,7 @@ const BriefSpecialistResponseForm2 = ({
                 )}
                 <RadioList
                   id="previouslyWorked"
-                  label={`Has ${specialistGivenNames} ${specialistSurname} previously worked for the ${
-                    brief.organisation
-                  }?`}
+                  label={`Has ${specialistGivenNames} ${specialistSurname} previously worked for the ${brief.organisation}?`}
                   name="previouslyWorked"
                   model={`${model}.previouslyWorked`}
                   validators={{
@@ -311,9 +309,7 @@ const BriefSpecialistResponseForm2 = ({
                     }
                   ]}
                   messages={{
-                    required: `"Has ${specialistGivenNames} ${specialistSurname} previously worked for the ${
-                      brief.organisation
-                    }?" is a required field`
+                    required: `"Has ${specialistGivenNames} ${specialistSurname} previously worked for the ${brief.organisation}?" is a required field`
                   }}
                 />
                 <h2 className="au-display-lg">Essential selection criteria</h2>
