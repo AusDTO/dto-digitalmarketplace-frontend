@@ -141,6 +141,7 @@
     "prettier": "./node_modules/.bin/prettier --print-width 120 --single-quote --no-semi --write \"apps/**/*.js\"  --write \"fixtures/**/*.js\""
   },
   "jest": {
+    "verbose": false,
     "coverageDirectory": "coverage",
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}",
