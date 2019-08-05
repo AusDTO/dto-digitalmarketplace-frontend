@@ -22,8 +22,8 @@ class BuyerRFXResponseFormatsStage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      proposalEnabled: false,
-      templateEnabled: false
+      proposalDisabled: this.props[this.props.model].evaluationType.includes('Response template'),
+      templateDisabled: this.props[this.props.model].evaluationType.includes('Written proposal')
     }
     this.handleEvaluationTypeClick = this.handleEvaluationTypeClick.bind(this)
   }
@@ -33,12 +33,12 @@ class BuyerRFXResponseFormatsStage extends Component {
     switch (e.target.name) {
       case 'response_format_proposal':
         this.setState({
-          templateEnabled: checked
+          templateDisabled: checked
         })
         break
       case 'response_format_template':
         this.setState({
-          proposalEnabled: checked
+          proposalDisabled: checked
         })
         break
       default:
@@ -82,7 +82,7 @@ class BuyerRFXResponseFormatsStage extends Component {
             detailsModel={this.props.model}
             validators={{}}
             messages={{}}
-            disabled={this.state.proposalEnabled}
+            disabled={this.state.proposalDisabled}
             onClick={this.handleEvaluationTypeClick}
           />
           <div>
@@ -151,7 +151,7 @@ class BuyerRFXResponseFormatsStage extends Component {
             detailsModel={this.props.model}
             validators={{}}
             messages={{}}
-            disabled={this.state.templateEnabled}
+            disabled={this.state.templateDisabled}
             onClick={this.handleEvaluationTypeClick}
           />
         </div>
