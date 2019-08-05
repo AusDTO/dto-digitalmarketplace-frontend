@@ -27,7 +27,7 @@ exports[`Test suite for CreateUserPage page Because snaphots 1`] = `
           onSubmit={[Function]}
         >
           <div
-            className="field"
+            className="field "
           >
             <label
               className="question-heading au-text-input__label"
@@ -42,22 +42,27 @@ exports[`Test suite for CreateUserPage page Because snaphots 1`] = `
             >
               At least 10 characters
             </div>
-            <input
-              aria-describedby="password-label"
-              className="au-text-input au-text-input--block"
-              disabled={false}
-              id="password"
-              name="password"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyPress={[Function]}
-              pattern={null}
-              placeholder=""
-              readOnly={false}
-              type="password"
-              value=""
-            />
+            <div
+              className="table"
+            >
+              <input
+                aria-describedby="password-label"
+                className="au-text-input au-text-input--block"
+                disabled={false}
+                id="password"
+                name="password"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyPress={[Function]}
+                pattern={null}
+                placeholder=""
+                readOnly={false}
+                step={null}
+                type="password"
+                value=""
+              />
+            </div>
           </div>
           <label
             className="au-control-input"

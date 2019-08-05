@@ -2,9 +2,11 @@
 /* eslint-disable camelcase */
 import isEmpty from 'lodash/isEmpty'
 import parse_date from 'date-fns/parse'
+import format from 'date-fns/format'
 import isValid from 'date-fns/is_valid'
 import isFuture from 'date-fns/is_future'
 import isAfter from 'date-fns/is_after'
+import isBefore from 'date-fns/is_before'
 import addDays from 'date-fns/add_days'
 import endOfDay from 'date-fns/end_of_day'
 import { isValidABN } from 'abnacn-validator'
@@ -34,7 +36,11 @@ export const requiredFile = val => {
 }
 
 export const validDate = val => {
-  if (!val || !isValid(parse_date(val))) {
+  const dateObj = parse_date(val)
+  if (!val || !isValid(dateObj)) {
+    return false
+  }
+  if (format(dateObj, 'YYYY-MM-DD') !== val) {
     return false
   }
   if (isFuture(val)) {
@@ -53,11 +59,21 @@ export const dateIs2DaysInFuture = val => {
   return false
 }
 
+export const dateIsBefore = (val, before) => {
+  if (!validDate(val)) {
+    return false
+  }
+  if (isBefore(endOfDay(parse_date(val)), before)) {
+    return true
+  }
+  return false
+}
+
 export const validEmail = val => {
   if (!val) {
     return true
   }
-  if (val.includes('@') && val.includes('.') && !val.includes(' ')) {
+  if (val.includes('@') && val.includes('.') && !val.includes(' ') && val.split('@').length <= 2) {
     return true
   }
   return false

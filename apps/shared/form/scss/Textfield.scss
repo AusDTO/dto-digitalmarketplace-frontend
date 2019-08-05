@@ -3,3 +3,22 @@
   text-align: right;
   color: #717171;
 }
+
+.prefix {
+  display: table-cell;
+  font-size: 1.1rem;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.postfix {
+  display: table-cell;
+  font-size: 1.1rem;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.table {
+  display: table;
+  width: 100%;
+}

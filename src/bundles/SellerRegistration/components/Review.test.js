@@ -21,7 +21,7 @@ describe('<Review />', () => {
     </MemoryRouter>
     );
 
-    expect(wrapper.find('#preview-link').text()).toMatch(/Preview your profile before submitting your updates/);
+    expect(wrapper.find('#preview-link').text()).toMatch(/Preview and submitTo submit your updates for review, select 'Preview and submit updates' then select 'Submit updates'.The preview page will only show details visible to registered government buyers.If you did not make any changes, or you don't want to keep your saved updates, select 'Discard all updates'.Preview and submit updates/);
   });
   
   it('should render a case study', () => {

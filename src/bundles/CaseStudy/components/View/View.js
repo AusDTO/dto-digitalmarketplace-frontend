@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import isEmpty from 'lodash/isEmpty';
 
-import { newline } from '../../../../helpers';
+import { newline, validURL } from '../../../../helpers';
 
 import view from './View.css'
 
@@ -54,7 +54,7 @@ class View extends React.Component {
           <div className="meta col-xs-12">
             <div className="row">
               <div className="col-xs-12 col-sm-7">
-                <p>by {supplier_url ? <a href={supplier_url}>{supplier_name}</a> : supplier_name}</p>
+                <p>by {supplier_url && validURL(supplier_url) ? <a href={supplier_url}>{supplier_name}</a> : supplier_name}</p>
               </div>
               {meta && (
                 <div className="col-xs-12 col-sm-5 actions">
@@ -103,9 +103,9 @@ class View extends React.Component {
                   <ul>
                     {project_links.map((item, i) => <li key={i}>
                         {typeof item == 'object' ?
-                            <a className="project__links" href={item.url} rel="external" target="_blank">{isEmpty(item.title) ? item.url : item.title}</a>
+                            validURL(item.url) && <a className="project__links" href={item.url} rel="external" target="_blank">{isEmpty(item.title) ? item.url : item.title}</a>
                             :
-                            <a className="project__links" href={item} rel="external" target="_blank">{item}</a>
+                            validURL(item) && <a className="project__links" href={item} rel="external" target="_blank">{item}</a>
                         }
                     </li>)}
                   </ul>

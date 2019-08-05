@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { rootPath } from 'marketplace/routes'
 
 const DashBoardLink = props => {
-  const { userType } = props
+  const { userType, notificationCount } = props
   return (
     <span>
       {userType === 'buyer' ? (
@@ -12,7 +12,10 @@ const DashBoardLink = props => {
       ) : userType === 'applicant' ? (
         <a href="/sellers/application">Continue application</a>
       ) : (
-        <a href="/sellers">Dashboard</a>
+        <span>
+          <a href="/2/seller-dashboard">Dashboard</a>
+          {notificationCount && notificationCount !== 0 ? <div className="notification">{notificationCount}</div> : ''}
+        </span>
       )}
     </span>
   )

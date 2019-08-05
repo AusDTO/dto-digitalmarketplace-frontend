@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import AUtextInput from '@gov.au/text-inputs/lib/js/react.js'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUselect from '@gov.au/select/lib/js/react.js'
-import findSuppliers from 'marketplace/actions/supplierActions'
+import { findSuppliers } from 'marketplace/actions/supplierActions'
 import styles from './SellerSelect.scss'
 
 const PanelCategorySelectView = props => (
   <div className={styles.categorySelect}>
-    <label htmlFor={`${props.id}-category-select`}>Panel category</label>
+    <label htmlFor={`${props.id}-category-select`}>{props.label}</label>
     <a
       href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476-Panel-categories-and-rates"
       rel="external noopener noreferrer"
@@ -33,25 +33,33 @@ export const PanelCategorySelect = props => (
       categories={props.categories}
       onChange={props.onChange}
       selectedCategory={props.selectedCategory}
+      label={props.label}
     />
   </div>
 )
 
 PanelCategorySelect.defaultProps = {
   onChange: () => {},
-  selectedCategory: ''
+  selectedCategory: '',
+  label: 'Panel category'
 }
 
 PanelCategorySelect.propTypes = {
   id: PropTypes.string.isRequired,
   categories: PropTypes.array.isRequired,
   onChange: PropTypes.func,
-  selectedCategory: PropTypes.string
+  selectedCategory: PropTypes.string,
+  label: PropTypes.string
 }
 
 const SellerSelectView = props => (
-  <div>
+  <div className={styles.sellerSelectView}>
     <label htmlFor={props.id}>{props.label}</label>
+    {props.showSellerCatalogueLink && (
+      <a href="/search/sellers" rel="external noopener noreferrer" target="_blank" className={styles.searchAllLink}>
+        View seller catalogue
+      </a>
+    )}
     {typeof props.description === 'string' ? (
       <span className={styles.description}>{props.description}</span>
     ) : (
@@ -134,7 +142,7 @@ export class SellerSelect extends Component {
 
     timeoutHandle = setTimeout(() => {
       if (keyword && keyword.length >= this.props.minimumSearchChars && this.categoryIsValid()) {
-        findSuppliers(keyword, this.props.selectedCategory)
+        findSuppliers(keyword, this.props.selectedCategory, this.props.allSuppliers ? 'true' : '')
           .then(data => {
             const noResults = !data.sellers.length > 0
             this.setState({
@@ -189,6 +197,7 @@ export class SellerSelect extends Component {
               className={this.props.showSearchButton ? styles.noRightRadius : ''}
               showSearchButton={this.props.showSearchButton}
               handleSearchClick={this.handleSearchClick}
+              showSellerCatalogueLink={this.props.showSellerCatalogueLink}
             />
             {this.state.inputValue.length >= this.props.minimumSearchChars && (
               <SellerSelectResultsView
@@ -219,11 +228,13 @@ SellerSelect.defaultProps = {
   showSelected: true,
   showSearchButton: true,
   showCategorySelect: false,
+  allSuppliers: false,
   categories: [],
-  minimumSearchChars: 3,
+  minimumSearchChars: 2,
   onSellerSelect: () => {},
   onSellerCategorySelect: () => {},
-  onSearch: () => {}
+  onSearch: () => {},
+  showSellerCatalogueLink: false
 }
 
 SellerSelect.propTypes = {
@@ -236,11 +247,13 @@ SellerSelect.propTypes = {
   showSelected: PropTypes.bool,
   showSearchButton: PropTypes.bool,
   showCategorySelect: PropTypes.bool,
+  allSuppliers: PropTypes.bool,
   categories: PropTypes.array,
   minimumSearchChars: PropTypes.number,
   onSellerSelect: PropTypes.func,
   onSellerCategorySelect: PropTypes.func,
-  onSearch: PropTypes.func
+  onSearch: PropTypes.func,
+  showSellerCatalogueLink: PropTypes.bool
 }
 
 export default SellerSelect

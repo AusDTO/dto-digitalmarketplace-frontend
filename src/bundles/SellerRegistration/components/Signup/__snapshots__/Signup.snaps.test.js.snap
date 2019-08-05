@@ -136,28 +136,6 @@ exports[`Signup renders 1`] = `
         <li>
           <a
             className=""
-            href="/pricing"
-            onClick={[Function]}
-          >
-            <span>
-              Pricing
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/case-study"
-            onClick={[Function]}
-          >
-            <span>
-              Case studies
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
             href="/candidates"
             onClick={[Function]}
           >
@@ -195,7 +173,7 @@ exports[`Signup renders 1`] = `
             onClick={[Function]}
           >
             <span>
-              Preview and update
+              Preview and submit
             </span>
           </a>
         </li>
@@ -225,7 +203,7 @@ exports[`Signup renders 1`] = `
           Joining the Digital Marketplace
         </h1>
         <p>
-          To become a registered seller and offer your services or software products to government you need to tell us about your business. 
+          To become a registered seller and offer your services or software products to government you need to tell us about your business. The information you share will be used to create your seller profile.
         </p>
         <p>
           By completing this application you are automatically responding to an open approach to market, whose terms and conditions, like other government tenders, are 
@@ -237,20 +215,6 @@ exports[`Signup renders 1`] = `
             publicly available.
           </a>
         </p>
-        <p>
-           The information you share will be used to create your seller profile. If you offer services it will also be used to confirm you meet the 
-          <a
-            href="/assessment-criteria"
-            rel="external"
-            target="_blank"
-          >
-            assessment criteria
-          </a>
-           when you express interest in opportunities.
-        </p>
-        <p>
-           It may take more than one visit to complete this application. But do not worry, your information will be saved automatically if you need to come back later.
-        </p>
         <h2
           className="au-display-lg"
         >
@@ -258,41 +222,31 @@ exports[`Signup renders 1`] = `
         </h2>
         <ul>
           <li>
-            Your basic business information
+            your basic business information
           </li>
           <li>
-            Recent financial records or a viability statement from your accountant
+            recent financial records or a viability statement from your accountant
           </li>
           <li>
-            Proof of relevant insurance cover
-          </li>
-        </ul>
-        <h2
-          className="au-display-lg"
-        >
-          You will be asked to
-        </h2>
-        <ul>
-          <li>
-            Share details about services or products you wish to provide
+            proof of relevant insurance cover
           </li>
           <li>
-             Provide case studies and referees to support your application
-          </li>
-          <li>
-            Accept the Digital Marketplace Master Agreement
+            to accept the Digital Marketplace Master Agreement
           </li>
         </ul>
         <p>
           <a
-            href="/static/media/documents/digital-marketplace-master-agreement.pdf"
+            href="/api/2/r/master-agreement-current.pdf"
             rel="external"
             target="_blank"
           >
-            Download Digital Marketplace Master Agreement (PDF 229kb)
+            Download Digital Marketplace Master Agreement (PDF 245KB)
           </a>
           <br />
           <br />
+        </p>
+        <p>
+          You can save the progress of your application by selecting "Save and continue". If you wish to leave and come back later, select "Save and finish later".
         </p>
         <div />
         <p>
@@ -446,28 +400,6 @@ exports[`Signup renders empty Your Info form 1`] = `
         <li>
           <a
             className=""
-            href="/pricing"
-            onClick={[Function]}
-          >
-            <span>
-              Pricing
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/case-study"
-            onClick={[Function]}
-          >
-            <span>
-              Case studies
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
             href="/candidates"
             onClick={[Function]}
           >
@@ -505,7 +437,7 @@ exports[`Signup renders empty Your Info form 1`] = `
             onClick={[Function]}
           >
             <span>
-              Preview and update
+              Preview and submit
             </span>
           </a>
         </li>
@@ -918,28 +850,6 @@ exports[`Signup renders populated Your Info form 1`] = `
         <li>
           <a
             className=""
-            href="/pricing"
-            onClick={[Function]}
-          >
-            <span>
-              Pricing
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/case-study"
-            onClick={[Function]}
-          >
-            <span>
-              Case studies
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
             href="/candidates"
             onClick={[Function]}
           >
@@ -977,7 +887,7 @@ exports[`Signup renders populated Your Info form 1`] = `
             onClick={[Function]}
           >
             <span>
-              Preview and update
+              Preview and submit
             </span>
           </a>
         </li>

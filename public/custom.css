@@ -78,7 +78,6 @@ main form textarea {
 }
 
 main form .validation-message span {
-  color: #c00;
   font-size: 0.875rem;
   font-weight: 400;
 }
@@ -95,6 +94,7 @@ main form .validation-message span {
 }
 
 main form .validation-message {
+  color: #c00;
   display: inline-block;
   border: 0;
 }
@@ -585,6 +585,19 @@ li:first-child.au-marketplace-header-link-list a {
   border-top: solid 1px #a2a2a2;
   display: block;
 }
+
+.notification {
+  margin-left: 2px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  width: 25px;
+  height: 0;
+  display: inline-block;
+  text-align: center;
+  padding-bottom: 25px;
+}
+
 
 @media screen and (min-width: 768px) {
   .au-marketplace-header-logo {

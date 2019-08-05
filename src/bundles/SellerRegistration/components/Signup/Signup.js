@@ -23,12 +23,10 @@ import YourInfoForm         from '../YourInfoForm';
 import BusinessDetailsForm  from '../BusinessDetailsForm';
 import BusinessInfoForm     from '../BusinessInfoForm';
 import DomainSelector       from '../DomainSelector';
-import PricingForm          from '../PricingForm';
 import DisclosuresForm      from '../DisclosuresForm';
 import AwardsForm           from '../AwardsForm';
 import ToolsForm            from '../ToolsForm';
 import DocumentsForm        from '../DocumentsForm';
-import DomainList           from '../../../CaseStudy/components/DomainList';
 import Review               from '../Review';
 import SubmitStepForm       from '../Submit';
 import Finish               from '../Finish';
@@ -73,12 +71,10 @@ class Signup extends React.Component {
     { id: 'awards', label: 'Recognition', component: AwardsForm, pattern: '/awards', formKey: 'awardsForm' },
     { id: 'recruiter', label: 'Recruiter', component: RecruiterForm, pattern: '/recruiter', formKey: 'recruiterForm' },
     { id: 'domains', label: 'Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
-    { id: 'pricing', label: 'Pricing', component: PricingForm, pattern: '/pricing', formKey: 'pricingForm' },
-    { id: 'case-study', label: 'Case studies', component: DomainList, pattern: '/case-study', formKey: 'caseStudyForm' },
     { id: 'candidates', label: 'Candidates', component: CandidatesForm, pattern: '/candidates', formKey: 'candidatesForm' },
     { id: 'products', label: 'Products', component: ProductsForm, pattern: '/products', formKey: 'productForm' },
     { id: 'review', label: 'Preview profile', component: Review, pattern: '/review' },
-    { id: 'update', label: 'Preview and update', component: Review, pattern: '/update' },
+    { id: 'update', label: 'Preview and submit', component: Review, pattern: '/update' },
     { id: 'finish-profile', label: 'Finish', component: FinishProfile, pattern: '/profile-finish' },
   ]
 
@@ -153,7 +149,10 @@ class Signup extends React.Component {
     const { forms, location, steps = {}, actions, application } = this.props;
 
     let { recruiter = 'no'} = forms.recruiterForm;
-    let filter = recruiter === 'yes' ? /\/pricing|\/case-study/ : (recruiter === 'no' ? /\/candidates/ : null )
+    let filter = null
+    if (recruiter === 'no') {
+      filter = /\/candidates|\/domains/
+    }
     this.filteredSteps = this.steps.filter(s => !s.pattern.match(filter));
 
     let stepKeys = this.filteredSteps.map(s => s['id']);
@@ -235,6 +234,7 @@ class Signup extends React.Component {
                   applicationValid,
                   domains: this.props.application.domains,
                   type: this.props.application.type,
+                  confirmDiscard: this.props.application.confirmDiscard,
                   stepsRemaining,
                   services,
                   nextRoute: this.nextStep && this.nextStep.pattern,
@@ -275,7 +275,8 @@ Signup.propTypes = {
   applicant: PropTypes.object,
   applicationErrors: PropTypes.array,
   forms: PropTypes.object,
-  filterSteps: PropTypes.func
+  filterSteps: PropTypes.func,
+  confirmDiscard: PropTypes.bool
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -283,13 +284,15 @@ const mapStateToProps = (state, ownProps) => {
     application = {},
     application_errors = [],
     steps,
-    options
+    options,
+    confirmDiscard
   } = state;
 
   return {
     forms: getStateForms(state),
     application,
     applicationErrors: application_errors,
+    confirmDiscard,
     steps,
     options,
     ...ownProps

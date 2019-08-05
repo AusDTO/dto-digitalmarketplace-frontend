@@ -29,7 +29,8 @@ const initialState = {
   emailAddress: null,
   userType: '',
   frameworkError: false,
-  csrfToken: ''
+  csrfToken: '',
+  notificationCount: null
 }
 
 const appReducer = (state = initialState, action) => {
@@ -71,7 +72,8 @@ const appReducer = (state = initialState, action) => {
         userType: action.newState.userType,
         supplierCode: action.newState.supplierCode,
         emailAddress: action.newState.emailAddress,
-        csrfToken: action.newState.csrfToken
+        csrfToken: action.newState.csrfToken,
+        notificationCount: action.newState.notificationCount
       }
     default:
       return state

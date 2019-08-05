@@ -13,15 +13,6 @@ exports[`DomainSelector renders 1`] = `
       What services will you offer?
     </h1>
     <p>
-       If you only have software products to offer, 
-      <a
-        href="/products"
-        onClick={[Function]}
-      >
-        skip to the product section.
-      </a>
-    </p>
-    <p>
       Select the services you have the expertise to provide.  For each you choose you will need to provide a case study and referee to ensure you meet our 
       <a
         href="/assessment-criteria"
@@ -54,60 +45,6 @@ exports[`DomainSelector renders 1`] = `
           <input
             checked={false}
             disabled={false}
-            id="strategy-and-policy"
-            name="strategy-and-policy"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Strategy and Policy"
-          />
-          <label
-            htmlFor="strategy-and-policy"
-          >
-            Strategy and Policy
-             
-            <p
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Strategy and policy relates to the higher level planning and policy considerations of a digital product or service. Examples include business case development, policy analysis and policy advice.",
-                }
-              }
-            />
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
-            id="user-research-and-design"
-            name="user-research-and-design"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="User research and Design"
-          />
-          <label
-            htmlFor="user-research-and-design"
-          >
-            User research and Design
-             
-            <p
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "User research and design covers all activities relating to the research and design of a service. Examples include user research, interaction, inclusive, and service design, participant recruitment and facilities for usability testing.",
-                }
-              }
-            />
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
             id="agile-delivery-and-governance"
             name="agile-delivery-and-governance"
             onBlur={[Function]}
@@ -126,87 +63,6 @@ exports[`DomainSelector renders 1`] = `
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "Agile delivery and governance covers all services relating to the delivery and management of a digital service or product. Examples include business analysis, delivery management, performance and web analysis, and product management.",
-                }
-              }
-            />
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
-            id="software-engineering-and-development"
-            name="software-engineering-and-development"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Software engineering and Development"
-          />
-          <label
-            htmlFor="software-engineering-and-development"
-          >
-            Software engineering and Development
-             
-            <p
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Engineering and development cover the technical aspects of the creation of a digital service. Examples include web development, devops, technical leadership, architecture, continuous delivery, testing and quality assurance.",
-                }
-              }
-            />
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
-            id="support-and-operations"
-            name="support-and-operations"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Support and Operations"
-          />
-          <label
-            htmlFor="support-and-operations"
-          >
-            Support and Operations
-             
-            <p
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Support and operations covers the day-to-day activities that can be needed when running a digital service. Examples include administration, business operations, data entry, call centres and tech support.",
-                }
-              }
-            />
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
-            id="content-and-publishing"
-            name="content-and-publishing"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Content and Publishing"
-          />
-          <label
-            htmlFor="content-and-publishing"
-          >
-            Content and Publishing
-             
-            <p
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Content and publishing covers all services that provide or manage of any type of online or offline content. Examples include content design, writing, translation, photography, video, interactive, illustration and animation.",
                 }
               }
             />
@@ -243,51 +99,24 @@ exports[`DomainSelector renders 1`] = `
           <input
             checked={false}
             disabled={false}
-            id="training-learning-and-development"
-            name="training-learning-and-development"
+            id="content-and-publishing"
+            name="content-and-publishing"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Training, Learning and Development"
+            value="Content and Publishing"
           />
           <label
-            htmlFor="training-learning-and-development"
+            htmlFor="content-and-publishing"
           >
-            Training, Learning and Development
+            Content and Publishing
              
             <p
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "Training, learning and development builds skills and expertise to deliver government services digitally. Examples include training needs analysis, developing and delivering learning solutions, coaching and mentoring and learning impact evaluation.",
-                }
-              }
-            />
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
-            id="marketing-communications-and-engagement"
-            name="marketing-communications-and-engagement"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Marketing, Communications and Engagement"
-          />
-          <label
-            htmlFor="marketing-communications-and-engagement"
-          >
-            Marketing, Communications and Engagement
-             
-            <p
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Marketing, communications and engagement create awareness, adoption and ongoing use of a digital service. Examples include advertising, PR, event marketing, content marketing, social, SEO and growth hacking.",
+                  "__html": "Content and publishing covers all services that provide or manage of any type of online or offline content. Examples include content design, writing, translation, photography, video, interactive, illustration and animation.",
                 }
               }
             />
@@ -351,6 +180,33 @@ exports[`DomainSelector renders 1`] = `
           <input
             checked={false}
             disabled={false}
+            id="digital-sourcing-and-ict-procurement"
+            name="digital-sourcing-and-ict-procurement"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Digital sourcing and ICT procurement"
+          />
+          <label
+            htmlFor="digital-sourcing-and-ict-procurement"
+          >
+            Digital sourcing and ICT procurement
+             
+            <p
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Digital sourcing includes the identification and application of activities surrounding ICT procurement. Examples include providing subject matter expertise and recommendations, managing complex or high risk procurements, probity, and managing internal documentation.",
+                }
+              }
+            />
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
             id="emerging-technologies"
             name="emerging-technologies"
             onBlur={[Function]}
@@ -369,6 +225,222 @@ exports[`DomainSelector renders 1`] = `
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "Emerging technology is about developing proof of concepts using recent digital advances for commercial or government purposes. Examples include artificial intelligence, robotics, wearables, Internet of Things and augmented or virtual reality.",
+                }
+              }
+            />
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="ict-risk-management-and-audit-activities"
+            name="ict-risk-management-and-audit-activities"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="ICT risk management and audit activities"
+          />
+          <label
+            htmlFor="ict-risk-management-and-audit-activities"
+          >
+            ICT risk management and audit activities
+             
+            <p
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "ICT risk management and audit involves the identification, evaluation, and prioritization of risks and the activities to minimize, monitor, and control the impact of unfortunate events. Examples include saving initiatives, reporting obligations, investment framework, business case development and costing frameworks.",
+                }
+              }
+            />
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="ict-systems-integration"
+            name="ict-systems-integration"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="ICT systems integration"
+          />
+          <label
+            htmlFor="ict-systems-integration"
+          >
+            ICT systems integration
+             
+            <p
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "ICT systems integration is the practice of outsourcing certain processes and functions to improve operations and cut expenses. Examples include end user services, network management services, management of cloud implementations, service desk operations and onsite support services.",
+                }
+              }
+            />
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="marketing-communications-and-engagement"
+            name="marketing-communications-and-engagement"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Marketing, Communications and Engagement"
+          />
+          <label
+            htmlFor="marketing-communications-and-engagement"
+          >
+            Marketing, Communications and Engagement
+             
+            <p
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Marketing, communications and engagement create awareness, adoption and ongoing use of a digital service. Examples include advertising, PR, event marketing, content marketing, social, SEO and growth hacking.",
+                }
+              }
+            />
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="software-engineering-and-development"
+            name="software-engineering-and-development"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Software engineering and Development"
+          />
+          <label
+            htmlFor="software-engineering-and-development"
+          >
+            Software engineering and Development
+             
+            <p
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Engineering and development cover the technical aspects of the creation of a digital service. Examples include web development, devops, technical leadership, architecture, continuous delivery, testing and quality assurance.",
+                }
+              }
+            />
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="strategy-and-policy"
+            name="strategy-and-policy"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Strategy and Policy"
+          />
+          <label
+            htmlFor="strategy-and-policy"
+          >
+            Strategy and Policy
+             
+            <p
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Strategy and policy relates to the higher level planning and policy considerations of a digital product or service. Examples include business case development, policy analysis and policy advice.",
+                }
+              }
+            />
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="support-and-operations"
+            name="support-and-operations"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Support and Operations"
+          />
+          <label
+            htmlFor="support-and-operations"
+          >
+            Support and Operations
+             
+            <p
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Support and operations covers the day-to-day activities that can be needed when running a digital service. Examples include administration, business operations, data entry, call centres and tech support.",
+                }
+              }
+            />
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="training-learning-and-development"
+            name="training-learning-and-development"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Training, Learning and Development"
+          />
+          <label
+            htmlFor="training-learning-and-development"
+          >
+            Training, Learning and Development
+             
+            <p
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Training, learning and development builds skills and expertise to deliver government services digitally. Examples include training needs analysis, developing and delivering learning solutions, coaching and mentoring and learning impact evaluation.",
+                }
+              }
+            />
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="user-research-and-design"
+            name="user-research-and-design"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="User research and Design"
+          />
+          <label
+            htmlFor="user-research-and-design"
+          >
+            User research and Design
+             
+            <p
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "User research and design covers all activities relating to the research and design of a service. Examples include user research, interaction, inclusive, and service design, participant recruitment and facilities for usability testing.",
                 }
               }
             />
@@ -429,15 +501,6 @@ exports[`DomainSelector renders with populated fields 1`] = `
       What services will you offer?
     </h1>
     <p>
-       If you only have software products to offer, 
-      <a
-        href="/products"
-        onClick={[Function]}
-      >
-        skip to the product section.
-      </a>
-    </p>
-    <p>
       Select the services you have the expertise to provide.  For each you choose you will need to provide a case study and referee to ensure you meet our 
       <a
         href="/assessment-criteria"
@@ -470,60 +533,6 @@ exports[`DomainSelector renders with populated fields 1`] = `
           <input
             checked={false}
             disabled={false}
-            id="strategy-and-policy"
-            name="strategy-and-policy"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Strategy and Policy"
-          />
-          <label
-            htmlFor="strategy-and-policy"
-          >
-            Strategy and Policy
-             
-            <p
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Strategy and policy relates to the higher level planning and policy considerations of a digital product or service. Examples include business case development, policy analysis and policy advice.",
-                }
-              }
-            />
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
-            id="user-research-and-design"
-            name="user-research-and-design"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="User research and Design"
-          />
-          <label
-            htmlFor="user-research-and-design"
-          >
-            User research and Design
-             
-            <p
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "User research and design covers all activities relating to the research and design of a service. Examples include user research, interaction, inclusive, and service design, participant recruitment and facilities for usability testing.",
-                }
-              }
-            />
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
             id="agile-delivery-and-governance"
             name="agile-delivery-and-governance"
             onBlur={[Function]}
@@ -542,87 +551,6 @@ exports[`DomainSelector renders with populated fields 1`] = `
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "Agile delivery and governance covers all services relating to the delivery and management of a digital service or product. Examples include business analysis, delivery management, performance and web analysis, and product management.",
-                }
-              }
-            />
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
-            id="software-engineering-and-development"
-            name="software-engineering-and-development"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Software engineering and Development"
-          />
-          <label
-            htmlFor="software-engineering-and-development"
-          >
-            Software engineering and Development
-             
-            <p
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Engineering and development cover the technical aspects of the creation of a digital service. Examples include web development, devops, technical leadership, architecture, continuous delivery, testing and quality assurance.",
-                }
-              }
-            />
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
-            id="support-and-operations"
-            name="support-and-operations"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Support and Operations"
-          />
-          <label
-            htmlFor="support-and-operations"
-          >
-            Support and Operations
-             
-            <p
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Support and operations covers the day-to-day activities that can be needed when running a digital service. Examples include administration, business operations, data entry, call centres and tech support.",
-                }
-              }
-            />
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
-            id="content-and-publishing"
-            name="content-and-publishing"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Content and Publishing"
-          />
-          <label
-            htmlFor="content-and-publishing"
-          >
-            Content and Publishing
-             
-            <p
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Content and publishing covers all services that provide or manage of any type of online or offline content. Examples include content design, writing, translation, photography, video, interactive, illustration and animation.",
                 }
               }
             />
@@ -659,51 +587,24 @@ exports[`DomainSelector renders with populated fields 1`] = `
           <input
             checked={false}
             disabled={false}
-            id="training-learning-and-development"
-            name="training-learning-and-development"
+            id="content-and-publishing"
+            name="content-and-publishing"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
             type="checkbox"
-            value="Training, Learning and Development"
+            value="Content and Publishing"
           />
           <label
-            htmlFor="training-learning-and-development"
+            htmlFor="content-and-publishing"
           >
-            Training, Learning and Development
+            Content and Publishing
              
             <p
               dangerouslySetInnerHTML={
                 Object {
-                  "__html": "Training, learning and development builds skills and expertise to deliver government services digitally. Examples include training needs analysis, developing and delivering learning solutions, coaching and mentoring and learning impact evaluation.",
-                }
-              }
-            />
-          </label>
-        </div>
-        <div>
-          <input
-            checked={false}
-            disabled={false}
-            id="marketing-communications-and-engagement"
-            name="marketing-communications-and-engagement"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyPress={[Function]}
-            type="checkbox"
-            value="Marketing, Communications and Engagement"
-          />
-          <label
-            htmlFor="marketing-communications-and-engagement"
-          >
-            Marketing, Communications and Engagement
-             
-            <p
-              dangerouslySetInnerHTML={
-                Object {
-                  "__html": "Marketing, communications and engagement create awareness, adoption and ongoing use of a digital service. Examples include advertising, PR, event marketing, content marketing, social, SEO and growth hacking.",
+                  "__html": "Content and publishing covers all services that provide or manage of any type of online or offline content. Examples include content design, writing, translation, photography, video, interactive, illustration and animation.",
                 }
               }
             />
@@ -767,6 +668,33 @@ exports[`DomainSelector renders with populated fields 1`] = `
           <input
             checked={false}
             disabled={false}
+            id="digital-sourcing-and-ict-procurement"
+            name="digital-sourcing-and-ict-procurement"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Digital sourcing and ICT procurement"
+          />
+          <label
+            htmlFor="digital-sourcing-and-ict-procurement"
+          >
+            Digital sourcing and ICT procurement
+             
+            <p
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Digital sourcing includes the identification and application of activities surrounding ICT procurement. Examples include providing subject matter expertise and recommendations, managing complex or high risk procurements, probity, and managing internal documentation.",
+                }
+              }
+            />
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
             id="emerging-technologies"
             name="emerging-technologies"
             onBlur={[Function]}
@@ -785,6 +713,222 @@ exports[`DomainSelector renders with populated fields 1`] = `
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "Emerging technology is about developing proof of concepts using recent digital advances for commercial or government purposes. Examples include artificial intelligence, robotics, wearables, Internet of Things and augmented or virtual reality.",
+                }
+              }
+            />
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="ict-risk-management-and-audit-activities"
+            name="ict-risk-management-and-audit-activities"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="ICT risk management and audit activities"
+          />
+          <label
+            htmlFor="ict-risk-management-and-audit-activities"
+          >
+            ICT risk management and audit activities
+             
+            <p
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "ICT risk management and audit involves the identification, evaluation, and prioritization of risks and the activities to minimize, monitor, and control the impact of unfortunate events. Examples include saving initiatives, reporting obligations, investment framework, business case development and costing frameworks.",
+                }
+              }
+            />
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="ict-systems-integration"
+            name="ict-systems-integration"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="ICT systems integration"
+          />
+          <label
+            htmlFor="ict-systems-integration"
+          >
+            ICT systems integration
+             
+            <p
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "ICT systems integration is the practice of outsourcing certain processes and functions to improve operations and cut expenses. Examples include end user services, network management services, management of cloud implementations, service desk operations and onsite support services.",
+                }
+              }
+            />
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="marketing-communications-and-engagement"
+            name="marketing-communications-and-engagement"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Marketing, Communications and Engagement"
+          />
+          <label
+            htmlFor="marketing-communications-and-engagement"
+          >
+            Marketing, Communications and Engagement
+             
+            <p
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Marketing, communications and engagement create awareness, adoption and ongoing use of a digital service. Examples include advertising, PR, event marketing, content marketing, social, SEO and growth hacking.",
+                }
+              }
+            />
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="software-engineering-and-development"
+            name="software-engineering-and-development"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Software engineering and Development"
+          />
+          <label
+            htmlFor="software-engineering-and-development"
+          >
+            Software engineering and Development
+             
+            <p
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Engineering and development cover the technical aspects of the creation of a digital service. Examples include web development, devops, technical leadership, architecture, continuous delivery, testing and quality assurance.",
+                }
+              }
+            />
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="strategy-and-policy"
+            name="strategy-and-policy"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Strategy and Policy"
+          />
+          <label
+            htmlFor="strategy-and-policy"
+          >
+            Strategy and Policy
+             
+            <p
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Strategy and policy relates to the higher level planning and policy considerations of a digital product or service. Examples include business case development, policy analysis and policy advice.",
+                }
+              }
+            />
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="support-and-operations"
+            name="support-and-operations"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Support and Operations"
+          />
+          <label
+            htmlFor="support-and-operations"
+          >
+            Support and Operations
+             
+            <p
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Support and operations covers the day-to-day activities that can be needed when running a digital service. Examples include administration, business operations, data entry, call centres and tech support.",
+                }
+              }
+            />
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="training-learning-and-development"
+            name="training-learning-and-development"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="Training, Learning and Development"
+          />
+          <label
+            htmlFor="training-learning-and-development"
+          >
+            Training, Learning and Development
+             
+            <p
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "Training, learning and development builds skills and expertise to deliver government services digitally. Examples include training needs analysis, developing and delivering learning solutions, coaching and mentoring and learning impact evaluation.",
+                }
+              }
+            />
+          </label>
+        </div>
+        <div>
+          <input
+            checked={false}
+            disabled={false}
+            id="user-research-and-design"
+            name="user-research-and-design"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            type="checkbox"
+            value="User research and Design"
+          />
+          <label
+            htmlFor="user-research-and-design"
+          >
+            User research and Design
+             
+            <p
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "User research and design covers all activities relating to the research and design of a service. Examples include user research, interaction, inclusive, and service design, participant recruitment and facilities for usability testing.",
                 }
               }
             />

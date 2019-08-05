@@ -4,7 +4,7 @@ import Row from './Row';
 import format from 'date-fns/format';
 import isEmpty from 'lodash/isEmpty';
 import head from 'lodash/head';
-import {newline} from '../../helpers';
+import { newline, validURL } from '../../helpers';
 
 import SimpleAccordion  from '../SimpleAccordion';
 import Icon             from '../Icon';
@@ -14,7 +14,6 @@ import './SellerProfile.css';
 const Body = (props) => {
   const {
     assessed = [],
-    unassessed = [],
     case_studies = {},
     representative,
     email,
@@ -47,13 +46,18 @@ const Body = (props) => {
   return (
     <article className="seller-profile" styleName={public_profile ? 'full-profile' : ''}>
       <div styleName="seller-profile-content">
-        <Row title="Areas of expertise" show={!isEmpty(assessed) || !isEmpty(unassessed)}>
+        <Row title="Categories" show>
+
+          {isEmpty(assessed) && (
+            <p styleName="nocategories">
+              This seller has not yet been approved in any categories.
+            </p>
+          )}
 
           {!isEmpty(assessed) && (
             <span><div className="seller-profile__evaluated-badges" styleName="badges evaluated-badges">
-                          <p styleName="bold">Assessed for</p>
               {assessed.map((service, i) => (
-                <span key={i}>{service} <Icon value="assessed-tick-nostroke" size={14}/></span>
+                <span key={i}>{service}</span>
               ))}
 
                       </div>
@@ -72,17 +76,6 @@ const Body = (props) => {
 
                       </span>
 
-          )}
-
-          {!isEmpty(unassessed) && (
-            <div className="seller-profile__provides-badges" styleName="badges provides-badges">
-              <p><b>Experience in</b><br/>
-                These areas of expertise have not yet been formally assessed by the DTA. They will be assessed once the
-                seller expresses interest in a matching opportunity.</p>
-              {unassessed.map((service, i) => (
-                <span key={i}>{service}</span>
-              ))}
-            </div>
           )}
 
         </Row>
@@ -132,21 +125,27 @@ const Body = (props) => {
               return (
                 <div key={`product.${i}`} styleName="product">
                   <div className="col-xs-12">
-                    <h3 className="au-display-md" styleName="product-heading">
-                      <a  href={product.website} target="_blank"
-                        rel="external">{product.name}</a>
-                    </h3>
+                    {validURL(product.website) && (
+                      <h3 className="au-display-md" styleName="product-heading">
+                        <a  href={product.website} target="_blank"
+                          rel="external">{product.name}</a>
+                      </h3>
+                    )}
                     <p className="freetext">
                       {newline(product.summary)}
                     </p>
-                    <p>
-                      <a  href={product.pricing} target="_blank"
-                        rel="external">Product pricing</a>
-                    </p>
-                    <p>
-                      <a  href={product.support} target="_blank"
-                        rel="external">Product support</a>
-                    </p>
+                    {validURL(product.pricing) && (
+                      <p>
+                        <a  href={product.pricing} target="_blank"
+                          rel="external">Product pricing</a>
+                      </p>
+                    )}
+                    {validURL(product.support) && (
+                      <p>
+                        <a  href={product.support} target="_blank"
+                          rel="external">Product support</a>
+                      </p>
+                    )}
                   </div>
                   {i < Object.keys(products).length - 1 && (<hr styleName="productHr"/>)}
                 </div>
@@ -273,11 +272,18 @@ const Body = (props) => {
           </ul>
         </Row>
         <Row title="Signed agreement" show={true}>
-          {!isEmpty(signed_agreements) && !isEmpty(head(signed_agreements)) && signed_agreements[0]['agreement'] &&
-          (<span><a href={signed_agreements[0]['agreement']['url']}>{signed_agreements[0]['agreement']['version']}
-          </a> signed on {signed_agreements[0]['signed_at']
-            && format(new Date(signed_agreements[0]['signed_at']), 'DD/MM/YYYY')}</span>)
-          }
+          {signed_agreements && signed_agreements.map((sa, i) => (
+            <React.Fragment key={i}>
+              {sa['agreement'] && <div>
+                <a href={sa['agreement']['url']}>{sa['agreement']['version']}</a>{' '}
+                signed on{' '}
+                {
+                  sa['agreement']['signed_at'] ? format(new Date(sa['agreement']['signed_at']), 'DD/MM/YYYY') :
+                  sa['signed_at'] && format(new Date(sa['signed_at']), 'DD/MM/YYYY')
+                }
+              </div>}
+            </React.Fragment> 
+          ))}
         </Row>
         <Row title="Documents provided to the Marketplace" show={!isEmpty(documents)}>
           <table className="content-table" styleName="content-table">

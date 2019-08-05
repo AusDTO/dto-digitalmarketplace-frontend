@@ -9,6 +9,7 @@ import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import EvaluationCriteria from './EvaluationCriteria'
 import QuestionAnswer from './QuestionAnswer'
 import OpportunityInfoCard from './OpportunityInfoCard'
+import OpportunitySpecialistInfoCard from './OpportunitySpecialistInfoCard'
 import styles from './Opportunity.scss'
 
 // defining default brief data up here so render() has access to it
@@ -59,7 +60,7 @@ const getClosingTime = brief => {
 
 const getTrimmedFilename = fileName => {
   let newFileName = fileName
-  if (fileName.length > 32) {
+  if (fileName && fileName.length > 32) {
     // build a limited version of the file name, taking out chars from the middle
     newFileName = `${fileName.substring(0, 14)}...${fileName.substring(fileName.length - 15)}`
   }
@@ -82,10 +83,14 @@ const Opportunity = props => {
   const {
     briefResponseCount,
     invitedSellerCount,
+    supplierBriefResponseCount,
     canRespond,
     isAssessedForCategory,
     isAssessedForAnyCategory,
-    hasChosenBriefCategory,
+    hasEvidenceInDraftForCategory,
+    hasLatestEvidenceRejectedForCategory,
+    draftEvidenceId,
+    rejectedEvidenceId,
     isOpenToAll,
     isOpenToCategory,
     isBriefOwner,
@@ -98,7 +103,11 @@ const Opportunity = props => {
     isAwaitingApplicationAssessment,
     isAwaitingDomainAssessment,
     hasBeenAssessedForBrief,
-    domains
+    domains,
+    hasSupplierErrors,
+    isInvited,
+    hasSignedCurrentAgreement,
+    supplierCode
   } = props
   const brief = { ...defaultBriefProps, ...props.brief }
   const category = getBriefCategory(domains, brief.sellerCategory)
@@ -167,22 +176,61 @@ const Opportunity = props => {
             {category && (
               <div className="row">
                 <div className="col-xs-12 col-sm-4">
-                  <strong>Panel category</strong>
+                  <strong>{brief.lotSlug === 'specialist' ? 'Category' : 'Panel category'}</strong>
                 </div>
                 <div className="col-xs-12 col-sm-8">{category}</div>
+              </div>
+            )}
+            {brief.comprehensiveTerms && (
+              <div className="row">
+                <div className="col-xs-12 col-sm-4">
+                  <strong>Additional terms</strong>
+                </div>
+                <div className="col-xs-12 col-sm-8">
+                  <a href="/api/2/r/comprehensive-terms-current.pdf">Comprehensive terms</a> apply
+                </div>
               </div>
             )}
             <AUheading level="2" size="lg">
               Overview
             </AUheading>
-            <p>{brief.summary}</p>
+            <p className={styles.newLines}>{brief.summary}</p>
             <br />
             <div className="row">
               <div className="col-xs-12 col-sm-4">
                 <strong>Estimated start date</strong>
               </div>
-              <div className="col-xs-12 col-sm-8">{brief.startDate}</div>
+              <div className="col-xs-12 col-sm-8">
+                {brief.lotSlug === 'specialist' ? format(brief.startDate, 'D-MM-YYYY') : brief.startDate}
+              </div>
             </div>
+            {brief.lotSlug === 'specialist' && brief.maxRate && (
+              <div className="row">
+                <div className="col-xs-12 col-sm-4">
+                  <strong>
+                    {'Maximum '}
+                    {brief.preferredFormatForRates ? '' : 'rate'}
+                    {brief.preferredFormatForRates === 'dailyRate' ? 'daily' : 'hourly'}
+                    {' rate'}
+                  </strong>
+                </div>
+                <div className="col-xs-12 col-sm-8">
+                  {'$'}
+                  {brief.maxRate}
+                  {' per '}
+                  {brief.preferredFormatForRates === 'dailyRate' ? 'day' : 'hour'}
+                  {', including GST'}
+                </div>
+              </div>
+            )}
+            {brief.lotSlug === 'specialist' && brief.budgetRange && (
+              <div className="row">
+                <div className="col-xs-12 col-sm-4">
+                  <strong>Budget information</strong>
+                </div>
+                <div className="col-xs-12 col-sm-8">{brief.budgetRange}</div>
+              </div>
+            )}
             {brief.lotSlug === 'rfx' && (
               <div className="row">
                 <div className="col-xs-12 col-sm-4">
@@ -212,26 +260,62 @@ const Opportunity = props => {
                 <div className="col-xs-12 col-sm-8">{brief.workingArrangements}</div>
               </div>
             )}
-            {brief.lotSlug === 'rfx' && (
-              <div className="row">
-                <div className="col-xs-12 col-sm-4">
-                  <strong>Length of contract</strong>
+            {brief.lotSlug === 'rfx' ||
+              (brief.lotSlug === 'specialist' && (
+                <div className="row">
+                  <div className="col-xs-12 col-sm-4">
+                    <strong>Length of contract</strong>
+                  </div>
+                  <div className="col-xs-12 col-sm-8">{brief.contractLength}</div>
                 </div>
-                <div className="col-xs-12 col-sm-8">{brief.contractLength}</div>
-              </div>
-            )}
-            {brief.lotSlug === 'rfx' && brief.contractExtensions && (
-              <div className="row">
-                <div className="col-xs-12 col-sm-4">
-                  <strong>Contract extensions</strong>
+              ))}
+            {brief.lotSlug === 'rfx' ||
+              (brief.lotSlug === 'specialist' && brief.contractExtensions && (
+                <div className="row">
+                  <div className="col-xs-12 col-sm-4">
+                    <strong>Contract extensions</strong>
+                  </div>
+                  <div className="col-xs-12 col-sm-8">{brief.contractExtensions}</div>
                 </div>
-                <div className="col-xs-12 col-sm-8">{brief.contractExtensions}</div>
-              </div>
-            )}
+              ))}
             {brief.lotSlug === 'rfx' && brief.securityClearance && (
               <div className="row">
                 <div className="col-xs-12 col-sm-4">
                   <strong>Security clearance</strong>
+                </div>
+                <div className="col-xs-12 col-sm-8">{brief.securityClearance}</div>
+              </div>
+            )}
+            {brief.lotSlug === 'specialist' && brief.securityClearance && (
+              <div>
+                <div className="row">
+                  <div className="col-xs-12 col-sm-4">
+                    <strong>Security clearance</strong>
+                  </div>
+                  <div className={`col-xs-12 col-sm-8 ${styles.newLines}`}>
+                    {brief.securityClearance === 'noneRequired' && 'None required'}
+                    {brief.securityClearance === 'abilityToObtain' && (
+                      <span>
+                        {'Ability to obtain '}
+                        {brief.securityClearanceObtain === 'baseline' && 'baseline'}
+                        {brief.securityClearanceObtain === 'nv1' && 'negative vetting level 1'}
+                        {brief.securityClearanceObtain === 'nv2' && 'negative vetting level 2'}
+                        {brief.securityClearanceObtain === 'pv' && 'positive vetting'}
+                        {' clearance'}
+                      </span>
+                    )}
+                    {brief.securityClearance === 'mustHave' && (
+                      <span>
+                        {'Must have current '}
+                        {brief.securityClearanceCurrent === 'baseline' && 'baseline'}
+                        {brief.securityClearanceCurrent === 'nv1' && 'negative vetting level 1'}
+                        {brief.securityClearanceCurrent === 'nv2' && 'negative vetting level 2'}
+                        {brief.securityClearanceCurrent === 'pv' && 'positive vetting'}
+                        {' clearance'}
+                      </span>
+                    )}
+                    {brief.securityClearance === 'other' && brief.securityClearanceOther}
+                  </div>
                 </div>
                 <div className="col-xs-12 col-sm-8">{brief.securityClearance}</div>
               </div>
@@ -266,21 +350,29 @@ const Opportunity = props => {
             </AUheading>
           )}
           {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && <p>{brief.workAlreadyDone}</p>}
-          {loggedIn && (canRespond || isBuyer) && (
-            <AUheading level="2" size="lg">
-              Additional information
-            </AUheading>
-          )}
-          {isBriefOwner && !isOpenToAll && (
+          {loggedIn &&
+            (canRespond || isInvited || isBuyer) &&
+            (brief.lotSlug !== 'specialist' || brief.attachments.length > 0) && (
+              <AUheading level="2" size="lg">
+                Additional information
+              </AUheading>
+            )}
+          {isBriefOwner && !isOpenToAll && brief.lotSlug !== 'specialist' && brief.attachments.length > 0 && (
             <div className={styles.noticeBar}>
               <NotVisible colour="#00698F" className={styles.noticeBarIcon} />
               <span>
-                Only invited sellers and other buyers can view attached documents. Only invited sellers can view
-                industry briefing details you provide.
+                {'Only invited sellers and other buyers can view attached documents. '}
+                {'Only invited sellers can view industry briefing details you provide.'}
               </span>
             </div>
           )}
-          {loggedIn && (isOpenToAll || canRespond || isBuyer) && (
+          {isBriefOwner && brief.lotSlug === 'specialist' && brief.attachments.length > 0 && (
+            <div className={styles.noticeBar}>
+              <NotVisible colour="#00698F" className={styles.noticeBarIcon} />
+              <span>{'Only invited sellers and other buyers can view attached documents. '}</span>
+            </div>
+          )}
+          {loggedIn && (isOpenToAll || canRespond || isInvited || isBuyer) && (
             <div className={isBriefOwner ? styles.additionalInfoOwner : styles.additionalInfo}>
               {(brief.requirementsDocument.length > 0 || brief.attachments.length > 0) && (
                 <ul>
@@ -302,37 +394,42 @@ const Opportunity = props => {
                   ))}
                 </ul>
               )}
-              {(brief.responseTemplate.length > 0 || brief.evaluationType.length > 0) && (
-                <AUheading level="3" size="sm">
-                  What sellers need to submit
-                </AUheading>
-              )}
-              {(brief.responseTemplate.length > 0 || brief.evaluationType.length > 0) && (
-                <ul className={styles.submitList}>
-                  {brief.responseTemplate.map(responseTemplate => (
-                    <li key={responseTemplate}>
-                      Completed{' '}
-                      <a href={`/api/2/brief/${brief.id}/attachments/${responseTemplate}`}>response template</a>
-                    </li>
-                  ))}
-                  {brief.evaluationType.includes('Written proposal') && brief.proposalType.length > 0 && (
-                    <li>
-                      Written proposal, including:
-                      <ul>
-                        {brief.proposalType.map(proposalType => (
-                          <li key={proposalType}>{proposalType}</li>
-                        ))}
-                      </ul>
-                    </li>
-                  )}
-                  {brief.evaluationType.includes('500 word responses to your criteria') && (
-                    <li>500 word responses to your criteria</li>
-                  )}
-                  {brief.evaluationType.includes('Case study') && <li>Case study</li>}
-                  {brief.evaluationType.includes('References') && <li>References</li>}
-                  {brief.evaluationType.includes('Résumés') && <li>Résumés</li>}
-                </ul>
-              )}
+              {brief.lotSlug !== 'specialist' &&
+                (brief.responseTemplate.length > 0 || brief.evaluationType.length > 0) && (
+                  <AUheading level="3" size="sm">
+                    What sellers need to submit
+                  </AUheading>
+                )}
+              {brief.lotSlug !== 'specialist' &&
+                (brief.responseTemplate.length > 0 || brief.evaluationType.length > 0) && (
+                  <ul className={styles.submitList}>
+                    {brief.responseTemplate.map(responseTemplate => (
+                      <li key={responseTemplate}>
+                        Completed{' '}
+                        <a href={`/api/2/brief/${brief.id}/attachments/${responseTemplate}`}>response template</a>
+                      </li>
+                    ))}
+                    {brief.evaluationType.includes('Written proposal') && brief.proposalType.length > 0 && (
+                      <li>
+                        Written proposal, including:
+                        <ul>
+                          {brief.proposalType.map(proposalType => (
+                            <li key={proposalType}>{proposalType}</li>
+                          ))}
+                        </ul>
+                      </li>
+                    )}
+                    {brief.evaluationType.includes('500 word responses to your criteria') && (
+                      <li>500 word responses to your criteria</li>
+                    )}
+                    {brief.evaluationType.includes('Responses to selection criteria') && (
+                      <li>Responses to selection criteria</li>
+                    )}
+                    {brief.evaluationType.includes('Case study') && <li>Case study</li>}
+                    {brief.evaluationType.includes('References') && <li>References</li>}
+                    {brief.evaluationType.includes('Résumés') && <li>Résumés</li>}
+                  </ul>
+                )}
               {(brief.evaluationType.includes('Demonstration') || brief.evaluationType.includes('Presentation')) && (
                 <AUheading level="3" size="sm">
                   Buyers will later request
@@ -347,55 +444,180 @@ const Opportunity = props => {
                   {brief.evaluationType.includes('Prototype') && <li>Prototype</li>}
                 </ul>
               )}
-              {brief.industryBriefing && (canRespond || isBriefOwner) && (
+              {brief.industryBriefing && (canRespond || isInvited || isBriefOwner) && (
                 <AUheading level="3" size="sm">
                   Industry briefing
                 </AUheading>
               )}
-              {brief.industryBriefing && (canRespond || isBriefOwner) && <p>{brief.industryBriefing}</p>}
+              {brief.industryBriefing && (canRespond || isInvited || isBriefOwner) && <p>{brief.industryBriefing}</p>}
             </div>
           )}
-          <EvaluationCriteria
-            title={brief.lotSlug === 'atm' ? 'Response criteria' : 'Evaluation criteria'}
-            evaluationCriteria={brief.evaluationCriteria}
-            showWeightings={brief.includeWeightings}
-          />
+          {brief.lotSlug !== 'specialist' && (
+            <EvaluationCriteria
+              title={brief.lotSlug === 'atm' ? 'Response criteria' : 'Evaluation criteria'}
+              evaluationCriteria={brief.evaluationCriteria}
+              showWeightings={brief.includeWeightings}
+            />
+          )}
+          {brief.lotSlug === 'specialist' && (
+            <AUheading level="2" size="lg">
+              Selection criteria
+            </AUheading>
+          )}
+          {brief.lotSlug === 'specialist' && (
+            <EvaluationCriteria
+              title={'Essential criteria'}
+              titleLevel="3"
+              titleSize="sm"
+              evaluationCriteria={brief.essentialRequirements}
+              showWeightings={brief.includeWeightingsEssential}
+            />
+          )}
+          {brief.lotSlug === 'specialist' &&
+            brief.niceToHaveRequirements &&
+            brief.niceToHaveRequirements.length > 0 &&
+            brief.niceToHaveRequirements[0].criteria && (
+              <EvaluationCriteria
+                title={'Desirable criteria'}
+                titleLevel="3"
+                titleSize="sm"
+                evaluationCriteria={brief.niceToHaveRequirements}
+                showWeightings={brief.includeWeightingsNiceToHave}
+              />
+            )}
+          {brief.lotSlug === 'specialist' && (
+            <React.Fragment>
+              <AUheading level="2" size="lg">
+                What to submit
+              </AUheading>
+              <AUheading level="3" size="sm">
+                For each candidate, you must include:
+              </AUheading>
+              <ul>
+                <li>start date</li>
+                <li>
+                  {brief.preferredFormatForRates === 'dailyRate' ? 'daily' : 'hourly'}
+                  {' rate (excluding GST)'}
+                </li>
+                <li>résumé</li>
+                <li>responses to the selection criteria (up to 500 words per criteria)</li>
+                <li>references (this can be included in their résumé)</li>
+                <li>any additional information if requested by {brief.organisation}</li>
+              </ul>
+              <AUheading level="3" size="sm">
+                Candidates will be asked if they:
+              </AUheading>
+              <ul>
+                <li>are eligible to work in Australia</li>
+                {brief.securityClearance === 'mustHave' && (
+                  <li>
+                    {'hold a '}
+                    {brief.securityClearanceCurrent === 'baseline' && 'baseline'}
+                    {brief.securityClearanceCurrent === 'nv1' && 'negative vetting level 1'}
+                    {brief.securityClearanceCurrent === 'nv2' && 'negative vetting level 2'}
+                    {brief.securityClearanceCurrent === 'pv' && 'positive vetting'}
+                    {' clearance'}
+                  </li>
+                )}
+                <li>have worked for {brief.organisation} in the past</li>
+              </ul>
+              {(brief.evaluationType.includes('Interviews') ||
+                brief.evaluationType.includes('Scenario or tests') ||
+                brief.evaluationType.includes('Presentations')) && (
+                <React.Fragment>
+                  <AUheading level="3" size="sm">
+                    Buyers may request:
+                  </AUheading>
+                  <ul>
+                    {brief.evaluationType.includes('Interviews') && <li>interviews</li>}
+                    {brief.evaluationType.includes('Scenario or tests') && <li>scenario or tests</li>}
+                    {brief.evaluationType.includes('Presentations') && <li>presentations</li>}
+                  </ul>
+                </React.Fragment>
+              )}
+            </React.Fragment>
+          )}
           <QuestionAnswer
             questions={brief.clarificationQuestions}
             clarificationQuestionsAreClosed={brief.clarificationQuestionsAreClosed}
             briefId={brief.id}
-            showAskQuestionInfo={canRespond}
+            showAskQuestionInfo={canRespond || isInvited}
           />
         </div>
         <div className="col-xs-12 col-md-4">
-          <OpportunityInfoCard
-            sellersInvited={invitedSellerCount}
-            sellersApplied={briefResponseCount}
-            isOpen={brief.status === 'live'}
-            closingDate={getClosingTime(brief)}
-            canRespond={canRespond}
-            isOpenToAll={isOpenToAll}
-            isAssessedForCategory={isAssessedForCategory}
-            isAssessedForAnyCategory={isAssessedForAnyCategory}
-            hasChosenBriefCategory={hasChosenBriefCategory}
-            isOpenToCategory={isOpenToCategory}
-            hasResponded={hasResponded}
-            briefId={brief.id}
-            briefLot={brief.lotSlug}
-            briefStatus={brief.status}
-            loggedIn={loggedIn}
-            isBuyer={isBuyer}
-            isApprovedSeller={isApprovedSeller}
-            isApplicant={isApplicant}
-            isRecruiterOnly={isRecruiterOnly}
-            isAwaitingApplicationAssessment={isAwaitingApplicationAssessment}
-            isAwaitingDomainAssessment={isAwaitingDomainAssessment}
-            hasBeenAssessedForBrief={hasBeenAssessedForBrief}
-            isBriefOwner={isBriefOwner}
-            buyerEmail={brief.contactEmail}
-            category={category}
-            sellerCategory={brief.sellerCategory}
-          />
+          {brief.lotSlug === 'specialist' ? (
+            <OpportunitySpecialistInfoCard
+              sellersInvited={invitedSellerCount}
+              sellersApplied={briefResponseCount}
+              sellerResponses={supplierBriefResponseCount}
+              isOpen={brief.status === 'live'}
+              closingDate={getClosingTime(brief)}
+              canRespond={canRespond}
+              isInvited={isInvited}
+              isOpenToAll={isOpenToAll}
+              isAssessedForCategory={isAssessedForCategory}
+              hasEvidenceInDraftForCategory={hasEvidenceInDraftForCategory}
+              hasLatestEvidenceRejectedForCategory={hasLatestEvidenceRejectedForCategory}
+              draftEvidenceId={draftEvidenceId}
+              rejectedEvidenceId={rejectedEvidenceId}
+              isOpenToCategory={isOpenToCategory}
+              hasResponded={hasResponded}
+              briefId={brief.id}
+              briefLot={brief.lotSlug}
+              briefStatus={brief.status}
+              loggedIn={loggedIn}
+              isBuyer={isBuyer}
+              isApprovedSeller={isApprovedSeller}
+              isApplicant={isApplicant}
+              isRecruiterOnly={isRecruiterOnly}
+              isAwaitingApplicationAssessment={isAwaitingApplicationAssessment}
+              isAwaitingDomainAssessment={isAwaitingDomainAssessment}
+              hasBeenAssessedForBrief={hasBeenAssessedForBrief}
+              isBriefOwner={isBriefOwner}
+              buyerEmail={brief.contactEmail}
+              category={category}
+              sellerCategory={brief.sellerCategory}
+              evaluationType={brief.evaluationType}
+              numberOfSuppliers={brief.numberOfSuppliers}
+              hasSupplierErrors={hasSupplierErrors}
+              hasSignedCurrentAgreement={hasSignedCurrentAgreement}
+              supplierCode={supplierCode}
+            />
+          ) : (
+            <OpportunityInfoCard
+              sellersInvited={invitedSellerCount}
+              sellersApplied={briefResponseCount}
+              isOpen={brief.status === 'live'}
+              closingDate={getClosingTime(brief)}
+              canRespond={canRespond}
+              isOpenToAll={isOpenToAll}
+              isAssessedForCategory={isAssessedForCategory}
+              isAssessedForAnyCategory={isAssessedForAnyCategory}
+              hasEvidenceInDraftForCategory={hasEvidenceInDraftForCategory}
+              hasLatestEvidenceRejectedForCategory={hasLatestEvidenceRejectedForCategory}
+              draftEvidenceId={draftEvidenceId}
+              rejectedEvidenceId={rejectedEvidenceId}
+              isOpenToCategory={isOpenToCategory}
+              hasResponded={hasResponded}
+              briefId={brief.id}
+              briefLot={brief.lotSlug}
+              briefStatus={brief.status}
+              loggedIn={loggedIn}
+              isBuyer={isBuyer}
+              isApprovedSeller={isApprovedSeller}
+              isApplicant={isApplicant}
+              isRecruiterOnly={isRecruiterOnly}
+              isAwaitingApplicationAssessment={isAwaitingApplicationAssessment}
+              isAwaitingDomainAssessment={isAwaitingDomainAssessment}
+              hasBeenAssessedForBrief={hasBeenAssessedForBrief}
+              isBriefOwner={isBriefOwner}
+              buyerEmail={brief.contactEmail}
+              category={category}
+              sellerCategory={brief.sellerCategory}
+              hasSignedCurrentAgreement={hasSignedCurrentAgreement}
+              supplierCode={supplierCode}
+            />
+          )}
         </div>
       </div>
     </div>
@@ -407,10 +629,15 @@ Opportunity.defaultProps = {
   domains: [],
   briefResponseCount: 0,
   invitedSellerCount: 0,
+  supplierBriefResponseCount: 0,
   canRespond: false,
+  isInvited: false,
   isAssessedForCategory: false,
   isAssessedForAnyCategory: false,
-  hasChosenBriefCategory: false,
+  hasEvidenceInDraftForCategory: false,
+  hasLatestEvidenceRejectedForCategory: false,
+  draftEvidenceId: undefined,
+  rejectedEvidenceId: undefined,
   isOpenToCategory: false,
   isOpenToAll: false,
   isBriefOwner: false,
@@ -422,7 +649,10 @@ Opportunity.defaultProps = {
   isAwaitingDomainAssessment: false,
   hasBeenAssessedForBrief: false,
   hasResponded: false,
-  loggedIn: false
+  loggedIn: false,
+  hasSupplierErrors: false,
+  hasSignedCurrentAgreement: false,
+  supplierCode: null
 }
 
 Opportunity.propTypes = {
@@ -443,7 +673,6 @@ Opportunity.propTypes = {
     contractLength: PropTypes.string,
     securityClearance: PropTypes.string,
     sellerCategory: PropTypes.string,
-    budgetRange: PropTypes.string,
     includeWeightings: PropTypes.bool,
     evaluationCriteria: PropTypes.array,
     evaluationType: PropTypes.array,
@@ -458,15 +687,31 @@ Opportunity.propTypes = {
     outcome: PropTypes.string,
     timeframeConstraints: PropTypes.string,
     clarificationQuestions: PropTypes.array,
-    clarificationQuestionsAreClosed: PropTypes.bool
+    clarificationQuestionsAreClosed: PropTypes.bool,
+    maxRate: PropTypes.string,
+    budgetRange: PropTypes.string,
+    preferredFormatForRates: PropTypes.string,
+    securityClearanceObtain: PropTypes.string,
+    securityClearanceCurrent: PropTypes.string,
+    securityClearanceOther: PropTypes.string,
+    includeWeightingsEssential: PropTypes.bool,
+    essentialRequirements: PropTypes.array,
+    includeWeightingsNiceToHave: PropTypes.bool,
+    niceToHaveRequirements: PropTypes.array,
+    numberOfSuppliers: PropTypes.string
   }),
   domains: PropTypes.array,
   briefResponseCount: PropTypes.number,
   invitedSellerCount: PropTypes.number,
+  supplierBriefResponseCount: PropTypes.number,
   canRespond: PropTypes.bool,
+  isInvited: PropTypes.bool,
   isAssessedForCategory: PropTypes.bool,
   isAssessedForAnyCategory: PropTypes.bool,
-  hasChosenBriefCategory: PropTypes.bool,
+  hasEvidenceInDraftForCategory: PropTypes.bool,
+  hasLatestEvidenceRejectedForCategory: PropTypes.bool,
+  draftEvidenceId: PropTypes.number,
+  rejectedEvidenceId: PropTypes.number,
   isOpenToCategory: PropTypes.bool,
   isOpenToAll: PropTypes.bool,
   isBriefOwner: PropTypes.bool,
@@ -478,7 +723,10 @@ Opportunity.propTypes = {
   isAwaitingDomainAssessment: PropTypes.bool,
   hasBeenAssessedForBrief: PropTypes.bool,
   hasResponded: PropTypes.bool,
-  loggedIn: PropTypes.bool
+  loggedIn: PropTypes.bool,
+  hasSupplierErrors: PropTypes.bool,
+  hasSignedCurrentAgreement: PropTypes.bool,
+  supplierCode: PropTypes.number
 }
 
 export default Opportunity

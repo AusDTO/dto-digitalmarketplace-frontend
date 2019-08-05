@@ -35,6 +35,21 @@
     padding: 0.5rem 0;
   }
 
+  .sellerSelectView {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .sellerSelectView label {
+    display: inline-block;
+    width: auto;
+    margin-right: 1.5rem;
+  }
+
+  .sellerSelectView a {
+    padding: 0.5rem 0;
+  }
+
   .noRightRadius {
     border-radius: 4px 0px 0px 4px;
     border-right: 0;

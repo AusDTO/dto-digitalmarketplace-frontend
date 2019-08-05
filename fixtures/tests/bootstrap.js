@@ -5,9 +5,11 @@ import { expect } from 'chai'
 const opts = {
   headless: process.env.HEADLESS !== 'false',
   slowMo: process.env.SLOW_MO ? process.env.SLOW_MO : undefined,
-  defaultViewport: null,
-  pipe: true
+  defaultViewport: null
 }
+
+console.log(process.env.FRONTEND_ADDRESS)
+console.log(process.env.HEADLESS)
 
 // expose variables
 before(async () => {
@@ -22,5 +24,7 @@ beforeEach(async () => {
 })
 
 afterEach(async () => {
-  await global.browser.close()
+  if (global.browser) {
+    await global.browser.close()
+  }
 })

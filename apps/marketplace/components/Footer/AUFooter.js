@@ -16,19 +16,19 @@ const AUFooter = () => (
               <a href="/contact-us">Contact us</a>
             </li>
             <li>
-              <a href="/terms-of-use">Terms of Use</a>
+              <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360001037036">Terms of Use</a>
             </li>
             <li>
-              <a href="/privacy-policy">Privacy</a>
+              <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360001027895">Privacy</a>
             </li>
             <li>
-              <a href="/security">Security</a>
+              <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360001027915">Security</a>
             </li>
             <li>
-              <a href="/disclaimer">Disclaimer</a>
+              <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360001028135">Disclaimer</a>
             </li>
             <li>
-              <a href="/copyright">Copyright</a>
+              <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360001037656">Copyright</a>
             </li>
           </ul>
           <div className="au-footer__end">

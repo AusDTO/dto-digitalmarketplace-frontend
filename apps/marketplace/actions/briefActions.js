@@ -6,8 +6,10 @@ import {
   BRIEF_SAVE_SUCCESS,
   BRIEF_RFX_CREATE_SUCCESS,
   BRIEF_ATM_CREATE_SUCCESS,
+  BRIEF_SPECIALIST_CREATE_SUCCESS,
   DELETE_BRIEF_SUCCESS,
   SPECIALIST_NAME,
+  SPECIALIST_NAME_SPLIT,
   SPECIALIST_NUMBER,
   ADD_ANOTHER_SPECIALIST
 } from '../constants/constants'
@@ -81,7 +83,8 @@ export const deleteBrief = briefId => (dispatch, getState) => {
 export const handleBriefInfoSuccess = response => ({
   type: BRIEF_INFO_FETCH_DATA_SUCCESS,
   brief: response.data.brief,
-  briefResponses: response.data.briefResponses
+  briefResponses: response.data.briefResponses,
+  oldWorkOrderCreator: response.data.oldWorkOrderCreator
 })
 
 export const handlePublicBriefInfoSuccess = response => ({
@@ -89,10 +92,14 @@ export const handlePublicBriefInfoSuccess = response => ({
   brief: response.data.brief,
   briefResponseCount: response.data.brief_response_count,
   invitedSellerCount: response.data.invited_seller_count,
+  supplierBriefResponseCount: response.data.supplier_brief_response_count,
   canRespond: response.data.can_respond,
   isAssessedForCategory: response.data.is_assessed_for_category,
   isAssessedForAnyCategory: response.data.is_assessed_in_any_category,
-  hasChosenBriefCategory: response.data.has_chosen_brief_category,
+  hasEvidenceInDraftForCategory: response.data.has_evidence_in_draft_for_category,
+  hasLatestEvidenceRejectedForCategory: response.data.has_latest_evidence_rejected_for_category,
+  draftEvidenceId: response.data.evidence_id,
+  rejectedEvidenceId: response.data.evidence_id_rejected,
   isOpenToCategory: response.data.open_to_category,
   isOpenToAll: response.data.open_to_all,
   isBriefOwner: response.data.is_brief_owner,
@@ -104,7 +111,10 @@ export const handlePublicBriefInfoSuccess = response => ({
   isAwaitingDomainAssessment: response.data.is_awaiting_domain_assessment,
   hasBeenAssessedForBrief: response.data.has_been_assessed_for_brief,
   hasResponded: response.data.has_responded,
-  domains: response.data.domains
+  domains: response.data.domains,
+  hasSupplierErrors: response.data.has_supplier_errors,
+  isInvited: response.data.is_invited,
+  hasSignedCurrentAgreement: response.data.has_signed_current_agreement
 })
 
 export const handleErrorFailure = response => dispatch => {
@@ -133,6 +143,11 @@ export const handleCreateRFXBriefSuccess = response => ({
 
 export const handleCreateATMBriefSuccess = response => ({
   type: BRIEF_ATM_CREATE_SUCCESS,
+  brief: response.data
+})
+
+export const handleCreateSpecialistBriefSuccess = response => ({
+  type: BRIEF_SPECIALIST_CREATE_SUCCESS,
   brief: response.data
 })
 
@@ -170,6 +185,26 @@ export const createATMBrief = () => (dispatch, getState) => {
       dispatch(handleErrorFailure(response))
     } else {
       dispatch(handleCreateATMBriefSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
+
+export const createSpecialistBrief = () => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: '/brief/specialist',
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleCreateSpecialistBriefSuccess(response))
     }
     dispatch(sendingRequest(false))
     return response
@@ -258,6 +293,14 @@ export function handleBriefNameSubmit(specialistName) {
   return { type: SPECIALIST_NAME, specialistName }
 }
 
+export function handleBriefNameSplitSubmit(specialistGivenNames, specialistSurname) {
+  return {
+    type: SPECIALIST_NAME_SPLIT,
+    specialistGivenNames,
+    specialistSurname
+  }
+}
+
 export function handleSpecialistNumberSubmit(specialistNumber) {
   return { type: SPECIALIST_NUMBER, specialistNumber }
 }
@@ -265,3 +308,20 @@ export function handleSpecialistNumberSubmit(specialistNumber) {
 export function addAnotherSpecialistSubmit(addAnotherSpecialist) {
   return { type: ADD_ANOTHER_SPECIALIST, addAnotherSpecialist }
 }
+
+export const loadSuppliersResponded = briefId => () =>
+  dmapi({ url: `/brief-response/${briefId}/suppliers` }).then(response => {
+    response.data.loadedAt = new Date().valueOf()
+    return response
+  })
+
+export const handleBriefAwardedSubmit = (briefId, model) => (dispatch, getState) =>
+  dmapi({
+    url: `/brief/${briefId}/award-seller`,
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify(model)
+  }).then(response => response)

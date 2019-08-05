@@ -1,7 +1,7 @@
 import { MESSAGES_SUCCESS, MESSAGES_SENDING } from '../constants/constants'
 
 const defaultState = {
-  data: {},
+  data: null,
   currentlySending: false
 }
 

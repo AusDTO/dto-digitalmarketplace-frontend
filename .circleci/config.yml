@@ -80,6 +80,33 @@ jobs:
           command: |
             ./scripts/ci-notify-approval.sh
 
+  run_automation_tests:
+    docker:
+      - image: circleci/node:10.15.3-stretch-browsers
+    steps:
+      - attach_workspace:
+          at: .
+      - checkout
+      - run: 
+          name: Run Tests
+          command: |
+            cd fixtures
+            npm install
+            export FRONTEND_ADDRESS=http://dm-dev.apps.y.cld.gov.au
+            export SELLER_EMAIL=$AUTOMATION_SELLER_EMAIL_STAGING
+            export SELLER_PASSWORD=$AUTOMATION_SELLER_PASSWORD_STAGING
+            export BUYER_EMAIL=$AUTOMATION_BUYER_EMAIL_STAGING
+            export BUYER_PASSWORD=$AUTOMATION_BUYER_PASSWORD_STAGING
+            export TYPE_INPUT=false
+            export SHORTEN_TYPED_INPUT=false
+            export USE_CLIPBOARD_FOR_TYPE_INPUT=false
+            export HEADLESS=true
+            export IGNORE_MULTIPLE_LINKS=true
+            export SELLER_CATEGORY=3
+            export SELLER_NAME=auto
+            export SLOW_MO=10
+            npm test
+
   deploy_to_rc:
     <<: *deploy_docker
     steps:
@@ -91,6 +118,18 @@ jobs:
           command: |
             cf login -a https://api.system.y.cld.gov.au -o dta -s marketplace -u $CF_USER_STAGING -p $CF_PASSWORD_STAGING
             cf zero-downtime-push dm-rc-frontend -f manifest.rc.yml --show-app-log
+
+  deploy_to_alpha:
+    <<: *deploy_docker
+    steps:
+      - attach_workspace:
+          at: .
+      - *cf_install
+      - run:
+          name: Deploy to Alpha
+          command: |
+            cf login -a https://api.system.y.cld.gov.au -o dta -s marketplace -u $CF_USER_STAGING -p $CF_PASSWORD_STAGING
+            cf zero-downtime-push dm-alpha-frontend -f manifest.alpha.yml --show-app-log
 
   deploy_to_production_clone:
     <<: *deploy_docker
@@ -173,6 +212,13 @@ workflows:
               ignore: /.*/
             branches:
               only: rc
+      - deploy_to_alpha:
+          <<: *required_for_deploy
+          filters:
+            tags:
+              ignore: /.*/
+            branches:
+              only: alpha
       - deploy_to_staging:
           <<: *required_for_deploy
           filters:
@@ -196,3 +242,17 @@ workflows:
               only: /[0-9]+(\.[0-9]+)*/
             branches:
               ignore: /.*/
+  automation_test:
+    triggers:
+      - schedule:
+          cron: "0 9 * * 4"
+          filters:
+            branches:
+              only: master
+    jobs:
+      - run_automation_tests:
+          filters:
+            tags:
+              ignore: /.*/
+            branches:
+              only: master

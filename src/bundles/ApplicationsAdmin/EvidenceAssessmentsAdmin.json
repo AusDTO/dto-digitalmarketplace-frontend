@@ -1,0 +1,71 @@
+{
+  "form_options": {
+    "csrf_token": "whateva"
+  },
+  "evidence": [
+    {
+      "created_at": "2017-01-03T14:15:19.131000+00:00",
+      "active": true,
+      "id": 2,
+      "links": {
+        "self": "http://localhost:5000/assessments/2",
+        "supplier_domain": "http://localhost:5000/supplier_domains/2"
+      },
+      "briefs": [
+        {
+          "id": 1,
+          "title": "Web-ops Engineers x2",
+          "dates": {
+            "closing_time": "2017-01-13T14:15:19.131000+00:00"
+          }
+        }
+      ],
+      "supplier_domain": {
+        "id": 2,
+        "domain": {
+          "id": 1,
+          "name": "Strategy and Policy"
+        },
+        "domain_id": 1,
+        "supplier":{
+          "id": 3,
+          "name": "Example Pty Ltd"
+        },
+        "supplier_id": 3,
+        "status": "unassessed"
+      }
+    },
+    {
+      "created_at": "2017-01-04T14:15:19.131000+00:00",
+      "active": false,
+      "id": 3,
+      "links": {
+        "self": "http://localhost:5000/assessments/3",
+        "supplier_domain": "http://localhost:5000/supplier_domains/3"
+      },
+      "briefs": [
+        {
+          "id": 3,
+          "title": "Redevelop an existing system",
+          "dates": {
+            "closing_time": "2017-01-07T14:15:19.131000+00:00"
+          }
+        }
+      ],
+      "supplier_domain": {
+        "id": 3,
+        "domain": {
+          "id": 2,
+          "name": "User research and Design"
+        },
+        "domain_id": 2,
+        "supplier":{
+          "id": 4,
+          "name": "My Company Pty Ltd"
+        },
+        "supplier_id": 4,
+        "status": "unassessed"
+      }
+    }
+  ]
+}

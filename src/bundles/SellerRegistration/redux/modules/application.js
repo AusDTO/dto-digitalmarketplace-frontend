@@ -12,6 +12,7 @@ const APP_POST_SUBMIT = 'application/post-submit';
 const APP_SAVED = 'application/saved';
 const APP_ERROR = 'application/error';
 const LINK_CLICK = 'link/click';
+const CONFIRM_DISCARD = 'application/confirm-discard';
 
 const statusCheck = (response) => {
   if (response.status >= 200 && response.status < 300) {
@@ -36,6 +37,8 @@ export default function reducer(state = {}, action = {}) {
       return Object.assign({}, state, {saved: void 0});
     case APP_PRE_SUBMIT:
       return Object.assign({}, state, {error: void 0});
+    case CONFIRM_DISCARD:
+      return Object.assign({}, state, {confirmDiscard: action.show});
     default:
       return state;
   }
@@ -46,6 +49,7 @@ export const postSubmit = () => ({type: APP_POST_SUBMIT});
 export const submit = (payload = {}) => ({type: APP_SUBMIT, payload});
 export const saveApplication = () => ({type: APP_SAVED});
 export const errorApplication = () => ({type: APP_ERROR});
+export const confirmDiscard = (show) => ({type: CONFIRM_DISCARD, show});
 
 export const preStep = () => ({type: STEP_PRE});
 export const nextStep = (to) => ({type: STEP_NEXT, to});
@@ -158,6 +162,12 @@ export const uploadDocument = (id, file) => {
     })
       .then(statusCheck)
       .then(r => r.text())
+  }
+};
+
+export const showConfirmDiscard = (show) => {
+  return (dispatch) => {
+    dispatch(confirmDiscard(show));
   }
 };
 

@@ -45,7 +45,7 @@ const downloadResponsesRender = (brief, isPublished, isClosed) => {
   return <span>Download responses</span>
 }
 
-const createWorkOrderRender = (brief, flow, isPublished, isClosed) => {
+const createWorkOrderRender = (brief, flow, isPublished, isClosed, oldWorkOrderCreator) => {
   if (isPublished && isClosed) {
     let url = ''
     let title = ''
@@ -55,6 +55,10 @@ const createWorkOrderRender = (brief, flow, isPublished, isClosed) => {
     } else {
       url = `/buyers/frameworks/${brief.frameworkSlug}/requirements/${flow}/${brief.id}/work-orders/create`
       title = 'Create work order'
+    }
+    if (!oldWorkOrderCreator) {
+      url = `/2/buyer-award/${brief.id}`
+      title = 'Download work order'
     }
     return <a href={url}>{title}</a>
   }
@@ -95,7 +99,7 @@ class Overview extends Component {
       return <Redirect to={`${rootPath}/buyer-dashboard`} />
     }
 
-    const { brief, briefResponses, flow } = this.props
+    const { brief, briefResponses, flow, oldWorkOrderCreator } = this.props
 
     if (brief && brief.id && brief.dates) {
       const isPublished = brief.dates.published_date && isValid(new Date(brief.dates.published_date))
@@ -111,12 +115,13 @@ class Overview extends Component {
           : 0
 
       const briefResponseCount = briefResponses && briefResponses.length > 0 ? briefResponses.length : 0
+      const flowName = flow !== 'specialist' ? flow.toUpperCase() : 'specialist'
 
       return (
         <div>
           <div className={styles.header}>
             <AUheading size="xl" level="1">
-              <small className={styles.briefTitle}>{brief.title || `New ${flow.toUpperCase()} request`}</small>
+              <small className={styles.briefTitle}>{brief.title || `New ${flowName} request`}</small>
               Overview
             </AUheading>
             <div className={styles.headerMenu}>
@@ -195,13 +200,15 @@ class Overview extends Component {
                 {downloadResponsesRender(brief, isPublished, isClosed)}
                 {briefResponseCount > 0 && (
                   <div className={styles.stageStatus}>
-                    {briefResponseCount} seller{briefResponseCount > 1 && `s`} responded
+                    {flow === 'specialist'
+                      ? `${briefResponseCount} candidate${briefResponseCount > 1 ? `s` : ''} responded`
+                      : `${briefResponseCount} seller${briefResponseCount > 1 ? `s` : ''} responded`}
                   </div>
                 )}
               </li>
             )}
-            {flow === 'rfx' && (briefResponseCount > 0 || !isPublished || !isClosed) && (
-              <li>{createWorkOrderRender(brief, flow, isPublished, isClosed)}</li>
+            {(flow === 'rfx' || flow === 'specialist') && (briefResponseCount > 0 || !isPublished || !isClosed) && (
+              <li>{createWorkOrderRender(brief, flow, isPublished, isClosed, oldWorkOrderCreator)}</li>
             )}
             {briefResponseCount === 0 && isClosed && <li>No sellers responded</li>}
           </ul>
@@ -212,9 +219,14 @@ class Overview extends Component {
   }
 }
 
+Overview.defaultProps = {
+  oldWorkOrderCreator: true
+}
+
 Overview.propTypes = {
   brief: PropTypes.object.isRequired,
-  flow: PropTypes.string.isRequired
+  flow: PropTypes.string.isRequired,
+  oldWorkOrderCreator: PropTypes.bool
 }
 
 const mapStateToProps = state => ({

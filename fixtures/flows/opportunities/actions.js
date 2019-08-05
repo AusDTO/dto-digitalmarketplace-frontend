@@ -13,28 +13,33 @@ export const applyForAtm = async () => {
 }
 
 export const checkAppliedForAtm = async title => {
-  await util.navigate()
-  await util.selectBrief(title)
+  await navigate()
+  await selectBrief(title)
   await util.matchText('p', 'You have already applied for this opportunity.')
 }
 
+export const checkAppliedForSpecialist = async (title, specialistNumber, numberOfSuppliers) => {
+  await navigate()
+  await selectBrief(title)
+  if (specialistNumber + 1 === parseInt(numberOfSuppliers, 10)) {
+    await util.matchText('div', `Sellers can submit up to `)
+  } else {
+    await util.matchText('p', `You have submitted ${specialistNumber + 1} candidate`)
+  }
+}
+
+export const applyForSpecialist = async () => {
+  await util.clickLink('Apply for opportunity')
+}
+
 export const checkAppliedForRfx = async title => {
-  await util.navigate()
-  await util.selectBrief(title)
+  await navigate()
+  await selectBrief(title)
   await util.matchText('p', 'You have already applied for this opportunity.')
 }
 
 export const applyForRfx = async () => {
   await util.clickLink('Apply for opportunity')
-}
-
-export const applyForSpecialist = async number => {
-  if (number === 0) {
-    await util.clickLink('Apply Now')
-  } else {
-    await util.clickLink('Edit application')
-    await util.clickLink('Add another specialist')
-  }
 }
 
 export const viewSpecialistApplication = async title => {

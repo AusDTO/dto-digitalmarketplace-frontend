@@ -28,7 +28,8 @@ export class ProgressFlow extends Component {
       currentStage: '',
       activateReturn: false,
       activatePreview: false,
-      saving: false
+      saving: false,
+      confirmationChecked: false
     }
 
     // populate the stage states
@@ -56,6 +57,7 @@ export class ProgressFlow extends Component {
     this.handlePublish = this.handlePublish.bind(this)
     this.handlePreview = this.handlePreview.bind(this)
     this.handleReturn = this.handleReturn.bind(this)
+    this.handleConfirmationClick = this.handleConfirmationClick.bind(this)
   }
 
   componentDidMount() {
@@ -117,7 +119,7 @@ export class ProgressFlow extends Component {
     const stages = { ...this.state.stages }
     this.props.stages.map(stage => {
       if (typeof stage.isDone === 'function') {
-        stagesDone[stage.slug] = stage.isDone(this.props[this.props.model])
+        stagesDone[stage.slug] = stage.isDone(this.props[this.props.model], this.props.meta)
         if (stagesDone[stage.slug] && stages[stage.slug] !== 'doing') {
           stages[stage.slug] = 'done'
         }
@@ -165,13 +167,22 @@ export class ProgressFlow extends Component {
     })
   }
 
+  handleConfirmationClick(checked) {
+    this.setState({
+      confirmationChecked: checked
+    })
+  }
+
   allStagesDone() {
     // remove the final review stage if it exists
     const stages = { ...this.state.stagesDone }
     if (stages.review !== undefined) {
       delete stages.review
     }
-    return !Object.values(stages).some(val => val === false)
+    return (
+      !Object.values(stages).some(val => val === false) &&
+      (!this.props.showConfirmationCheckbox || (this.props.showConfirmationCheckbox && this.state.confirmationChecked))
+    )
   }
 
   isLastStage(stage) {
@@ -185,11 +196,11 @@ export class ProgressFlow extends Component {
   }
 
   render() {
-    if (this.state.activateReturn) {
+    if (this.state.activateReturn && this.props.returnPath) {
       return <Redirect to={this.props.returnPath} push />
     }
 
-    if (this.state.activatePreview) {
+    if (this.state.activatePreview && this.props.previewPath) {
       return <Redirect to={this.props.previewPath} push />
     }
 
@@ -238,6 +249,7 @@ export class ProgressFlow extends Component {
                       <ProgressContent
                         stage={stage.slug}
                         model={this.props.model}
+                        meta={this.props.meta}
                         setCurrentStage={this.setCurrentStage}
                         saveModel={this.props.saveModel}
                         component={stage.component}
@@ -253,6 +265,13 @@ export class ProgressFlow extends Component {
                             onPublish={this.handlePublish}
                             onPreview={this.handlePreview}
                             onReturn={this.handleReturn}
+                            onConfirmationClick={this.handleConfirmationClick}
+                            showReturnButton={this.props.showReturnButton}
+                            showReviewButton={this.props.showReviewButton}
+                            publishText={this.props.publishText}
+                            showConfirmationCheckbox={this.props.showConfirmationCheckbox}
+                            confirmationText={this.props.confirmationText}
+                            startText={this.props.startText}
                           />
                         }
                       />
@@ -270,17 +289,32 @@ export class ProgressFlow extends Component {
 ProgressFlow.defaultProps = {
   basename: '',
   saveModel: () => {},
-  onStageMount: () => {}
+  onStageMount: () => {},
+  returnPath: '',
+  previewPath: '',
+  publishText: 'Publish',
+  startText: 'Start now',
+  confirmationText: 'I understand that this opportunity will be published on the Digital Marketplace',
+  showReturnButton: true,
+  showReviewButton: true,
+  showConfirmationCheckbox: true,
+  meta: {}
 }
 
 ProgressFlow.propTypes = {
   basename: PropTypes.string,
   stages: PropTypes.array.isRequired,
   model: PropTypes.string.isRequired,
-  returnPath: PropTypes.string.isRequired,
-  previewPath: PropTypes.string.isRequired,
+  returnPath: PropTypes.string,
+  previewPath: PropTypes.string,
   saveModel: PropTypes.func,
-  onStageMount: PropTypes.func
+  onStageMount: PropTypes.func,
+  showReturnButton: PropTypes.bool,
+  showReviewButton: PropTypes.bool,
+  showConfirmationCheckbox: PropTypes.bool,
+  publishText: PropTypes.string,
+  confirmationText: PropTypes.string,
+  meta: PropTypes.object
 }
 
 const mapStateToProps = (state, props) => ({

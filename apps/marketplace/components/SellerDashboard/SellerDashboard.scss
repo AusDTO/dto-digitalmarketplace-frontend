@@ -2,6 +2,24 @@
   margin-bottom: 100px;
 }
 
+.noRecords {
+  margin-top: 24px;
+  margin-bottom: 48px;
+}
+
+.tableMargin {
+  margin-top: 2.5rem;
+}
+
+.confirmDelete {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.confirmDeleteButton {
+  margin-right: 10px;
+}
+
 .headingRow {
   font-weight: bold;
   color: #202751;
@@ -23,34 +41,44 @@ table.resultListing tr:nth-child(2n) {
   background-color: #fafafa;
 }
 
-table.resultListing .colId {
-  width: 30px;
+table.resultListing .colMessage {
+  width: 600px;
   padding-left: 20px;
 }
 
-table.resultListing .colName {
-  width: 400px;
-}
-
-table.resultListing .colClosing {
-  width: 180px;
-  white-space: nowrap;
-}
-
-table.resultListing .colAuthor {
-  width: 130px;
-}
-
-table.resultListing .colStatus {
-  width: 190px;
-}
-
-table.resultListingTeamBriefs .colAction {
-  width: 180px;
-  padding-right: 20px;
+table.resultListing .colAction {
+  width: 200px;
 }
 
 table.resultListing .colAction a {
+  margin-right: 15px;
+  white-space: nowrap;
+}
+
+table.resultListing .colName {
+  width: 200px;
+  padding-left: 20px;
+}
+
+table.resultListing .colEmail {
+  width: 500px;
+  padding-left: 20px;
+}
+
+table.resultListing .colService {
+  width: 400px;
+  padding-left: 20px;
+}
+
+table.resultListing .colStatus {
+  width: 150px;
+}
+
+table.resultListing .colAssessmentAction {
+  width: 550px;
+}
+
+table.resultListing .colAssessmentAction a {
   margin-right: 15px;
   white-space: nowrap;
 }
@@ -81,7 +109,7 @@ table.resultListing td, table.resultListing th {
     margin-bottom: 20px;
   }
 
-  table.resultListing thead, table.resultListing .empty, table.resultListing .colId, table.resultListing .colAuthor, .hideSmall {
+  table.resultListing thead, table.resultListing .empty, table.resultListing .colAuthor, .hideSmall {
     display: none !important;
   }
 
@@ -100,8 +128,9 @@ table.resultListing td, table.resultListing th {
     padding: 5px;
   }
 
-  table.resultListing .colName, table.resultListing .colClosing, table.resultListing .colStatus, table.resultListing .colAction {
+  table.resultListing .colName, table.resultListing .colService, table.resultListing .colEmail, table.resultListing .colMessage, table.resultListing .colAction, table.resultListing .colStatus {
     width: auto;
+    padding-left: 5px;
   }
 
   table.resultListing .colAction a::after {
@@ -109,18 +138,49 @@ table.resultListing td, table.resultListing th {
   }
 }
 
-.briefsFilter {
-  float: right;
-  text-align: right;
-  margin-top: -2.5em;
+.notification {
+  margin-left: 2px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  width: 26px;
+  height: 26px;
+  display: inline-block;
+  text-align: center;
 }
 
 .badge {
   border-radius: 3px;
-  border: solid 2px #0A6FB6;
+  border: solid 3px #0A6FB6;
   color: #0A6FB6;
   padding: 2px 5px;
   width: fit-content;
+  display: inline-block;
+}
+
+.badge.approved {
+  border: solid 3px rgba(0, 128, 0, 1);
+  color: rgba(0, 128, 0, 1);
+}
+
+.badge.rejected {
+  border: solid 3px #FF0000;
+  color: #FF0000;
+}
+
+.badge.submitted {
+  border: solid 3px rgba(54, 108, 148, 1);
+  color: black;
+}
+
+.badge.authorisedrepresentative {
+  position: relative;
+  display: inline;
+  margin-left: 0.5rem;
+}
+
+.unassessed {
+  color: #999999;
 }
 
 .disclaimer {
@@ -129,4 +189,67 @@ table.resultListing td, table.resultListing th {
 
 .lightText {
   color: #6f6f6f;
+}
+
+nav.dashNav {
+  border-bottom: 8px solid #f5f5f5;
+  display: block;
+}
+
+.dashActions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dashActions > * {
+  flex: 1;
+}
+
+ul.menu {
+  box-sizing: content-box;
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+  margin-bottom: -8px;
+}
+
+ul.menu li {
+  display: inline-block;
+  margin: 0;
+}
+
+ul.menu li a {
+  font-size: 1.15rem;
+  display: block;
+  padding: 1rem;
+  border-bottom: 0;
+  text-decoration: none;
+}
+
+ul.menu li a:hover {
+  text-decoration: underline;
+}
+
+ul.menu li a.active:hover {
+  text-decoration: none;
+}
+
+ul.menu li a.active {
+  border-bottom: solid 8px #00698f;
+}
+
+@media (max-width: 991px) {
+  .profileActionRow {
+    margin-top: 2.5rem;
+  }
+
+  .profileActionRow a {
+    margin-top: 0.5rem;
+  }
+
+  .badge.authorisedrepresentative {
+    display: block;
+    margin-left: 0rem;
+    margin-top: 0.1rem;
+  }
 }

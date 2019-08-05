@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import Layout         from '../../../../shared/Layout';
 import BaseForm       from '../../../../shared/form/BaseForm';
 import ErrorBox       from '../../../../shared/form/ErrorBox';
+import SubmitForm   from '../../../../shared/form/SubmitForm';
 import StatefulError  from '../../../../shared/form/StatefulError';
 import formProps      from '../../../../shared/reduxModules/formPropsSelector';
 import StepNav        from '../StepNav';
@@ -40,15 +41,6 @@ class DomainSelector extends BaseForm {
         let header = (
             <header>
                 <h1 className="au-display-xl" tabIndex="-1">What services will you offer?</h1>
-                <p> If you only have software products to offer, <Link
-                    to="/products"
-                    onClick={() => {
-                        // Hardcoded is ugly.
-                        actions.stepComplete('casestudy');
-                        actions.stepComplete('digital');
-                        actions.navigateToStep('/products');
-                    }}>skip to the product section.
-                </Link></p>
                 <p>Select the services you have the expertise to provide.  For each you choose you will need to provide
                     a case study and referee to ensure you meet our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a></p>
 
@@ -112,7 +104,9 @@ class DomainSelector extends BaseForm {
                                     .length;
                             }
                         }}
-                        onSubmit={onSubmit}>
+                        valid={form.valid}
+                        component={SubmitForm}
+                        onCustomSubmit={onSubmit}>
 
                         {csrf_token && (
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>

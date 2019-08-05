@@ -54,22 +54,22 @@ describe('tests that generate network requests', () => {
 
   jest.useFakeTimers()
 
-  test('component sends a network request on input text change when the value is 3 or more chars in length', async () => {
+  test('component sends a network request on input text change when the value is 2 or more chars in length', async () => {
     const component = mount(<SellerSelect />)
 
     await component
       .find('input[type="text"]')
       .at(0)
-      .simulate('change', { target: { value: 'ab' } })
+      .simulate('change', { target: { value: 'a' } })
     await jest.runAllTimers()
     expect(server.requests.length).toBe(0)
 
     await component
       .find('input[type="text"]')
       .at(0)
-      .simulate('change', { target: { value: 'abc' } })
+      .simulate('change', { target: { value: 'ab' } })
     await jest.runAllTimers()
     expect(server.requests.length).toBe(1)
-    expect(server.requests[0].url).toEqual('/api/2/suppliers/search?keyword=abc&category=')
+    expect(server.requests[0].url).toEqual('/api/2/suppliers/search?keyword=ab&category=&all=')
   })
 })

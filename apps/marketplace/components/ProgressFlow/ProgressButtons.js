@@ -1,24 +1,40 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
+import { AUcheckbox } from '@gov.au/control-input'
 import styles from './ProgressButtons.scss'
 
 const ProgressButtons = props => (
   <div className={styles.container}>
+    {props.showConfirmationCheckbox && props.isLastStage && !props.isFirstStage && (
+      <p>
+        <span>
+          <AUcheckbox
+            id="cb-declaration"
+            onClick={e => {
+              props.onConfirmationClick(e.target.checked)
+            }}
+            label={props.confirmationText}
+          />
+        </span>
+      </p>
+    )}
     <p>
       {props.isFirstStage && !props.isLastStage && <AUbutton type="submit">{props.startText}</AUbutton>}
       {props.isLastStage && !props.isFirstStage && (
         <span>
-          <AUbutton
-            onClick={e => {
-              e.preventDefault()
-              props.onPreview()
-            }}
-            as="secondary"
-            className={styles.button}
-          >
-            {props.previewText}
-          </AUbutton>
+          {props.showReviewButton && (
+            <AUbutton
+              onClick={e => {
+                e.preventDefault()
+                props.onPreview()
+              }}
+              as="secondary"
+              className={styles.button}
+            >
+              {props.previewText}
+            </AUbutton>
+          )}
           <AUbutton
             type="submit"
             disabled={!props.publishEnabled}
@@ -32,15 +48,17 @@ const ProgressButtons = props => (
         </span>
       )}
       {!props.isFirstStage && !props.isLastStage && <AUbutton type="submit">{props.continueText}</AUbutton>}
-      <AUbutton
-        as="tertiary"
-        onClick={e => {
-          e.preventDefault()
-          props.onReturn()
-        }}
-      >
-        {props.returnText}
-      </AUbutton>
+      {props.showReturnButton && (
+        <AUbutton
+          as="tertiary"
+          onClick={e => {
+            e.preventDefault()
+            props.onReturn()
+          }}
+        >
+          {props.returnText}
+        </AUbutton>
+      )}
     </p>
   </div>
 )
@@ -54,7 +72,11 @@ ProgressButtons.defaultProps = {
   publishEnabled: false,
   onPublish: () => {},
   onPreview: () => {},
-  onReturn: () => {}
+  onReturn: () => {},
+  onConfirmationClick: () => {},
+  showReturnButton: true,
+  showReviewButton: true,
+  showConfirmationCheckbox: true
 }
 
 ProgressButtons.propTypes = {
@@ -62,11 +84,16 @@ ProgressButtons.propTypes = {
   continueText: PropTypes.string,
   publishText: PropTypes.string,
   returnText: PropTypes.string,
+  confirmationText: PropTypes.string.isRequired,
   isLastStage: PropTypes.bool.isRequired,
   isFirstStage: PropTypes.bool.isRequired,
   publishEnabled: PropTypes.bool,
   onPublish: PropTypes.func,
-  onReturn: PropTypes.func
+  onReturn: PropTypes.func,
+  onConfirmationClick: PropTypes.func,
+  showReturnButton: PropTypes.bool,
+  showReviewButton: PropTypes.bool,
+  showConfirmationCheckbox: PropTypes.bool
 }
 
 export default ProgressButtons

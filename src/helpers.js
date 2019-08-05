@@ -1,5 +1,9 @@
 import React, {createElement} from 'react';
 
+export const validURL = val => {
+  return val.match('^(https?://|\/)')
+}
+
 export const newline = (val) => {
   if (!val) return val;
   // https://medium.com/@kevinsimper/react-newline-to-break-nl2br-a1c240ba746
