@@ -10,7 +10,7 @@ const OnboardingContainer = props => {
   return (
     <Switch>
       <Route path={`${match.url}/seller`} component={SellerOnboarding} />
-      <Route path={`${match.url}/supplier`} render={() => <SellerOnboarding isSupplier />} />
+      <Route path={`${match.url}/supplier`} component={SellerOnboarding} />
       <Route path={`${match.url}/applicant`} component={SellerOnboarding} />
       <Route path={`${match.url}/buyer`} component={BuyerOnboarding} />
       <Route component={NotFound} />
