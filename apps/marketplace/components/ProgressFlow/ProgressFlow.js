@@ -309,7 +309,7 @@ ProgressFlow.defaultProps = {
   showReviewButton: true,
   showConfirmationCheckbox: true,
   meta: {},
-  continueText: 'Save & continue',
+  continueText: 'Save and continue',
   hasPermissionToPublish: true
 }
 
