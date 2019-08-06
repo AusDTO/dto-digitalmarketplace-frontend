@@ -80,7 +80,7 @@ export const validEmail = val => {
 }
 
 export const validGovernmentEmail = (emailAddress, userEmailAddress) => {
-  if (!validEmail(emailAddress)) {
+  if (!emailAddress || !validEmail(emailAddress)) {
     return true
   }
 
