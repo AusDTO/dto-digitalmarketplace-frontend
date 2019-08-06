@@ -58,7 +58,7 @@ class RequestAccessPage extends Component {
     }
 
     return (
-      <DocumentTitle title="Ask a question - Digital Marketplace">
+      <DocumentTitle title="Request access - Digital Marketplace">
         <React.Fragment>
           {this.state.errorMessage && (
             <div className="row">
