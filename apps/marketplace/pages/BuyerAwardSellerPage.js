@@ -6,6 +6,7 @@ import { loadSuppliersResponded, handleBriefAwardedSubmit } from 'marketplace/ac
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import BuyerAwardSeller from 'marketplace/components/Brief/BuyerAwardSeller'
 import { rootPath } from 'marketplace/routes'
+import { hasPermission } from 'marketplace/components/helpers'
 
 export class BuyerAwardSellerPage extends Component {
   constructor(props) {
@@ -56,11 +57,16 @@ export class BuyerAwardSellerPage extends Component {
   render() {
     const { suppliers, workOrderCreated, error, loading } = this.state
 
+    const { isPartOfTeam, isTeamLead, teams } = this.props
+
     if (workOrderCreated) {
       return <Redirect to={`${rootPath}/brief/${this.props.match.params.briefId}/download-work-order`} />
     }
     if (loading) {
       return <LoadingIndicatorFullPage />
+    }
+    if (!hasPermission(isPartOfTeam, isTeamLead, teams, 'create_work_orders')) {
+      return <Redirect to={`${rootPath}/request-access/create_work_orders`} />
     }
 
     return (
@@ -87,9 +93,15 @@ const mapDispatchToProps = dispatch => ({
   handleBriefAwardedSubmit: (briefId, model) => dispatch(handleBriefAwardedSubmit(briefId, model))
 })
 
+const mapStateToProps = state => ({
+  teams: state.app.teams,
+  isTeamLead: state.app.isTeamLead,
+  isPartOfTeam: state.app.isPartOfTeam
+})
+
 export default withRouter(
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   )(BuyerAwardSellerPage)
 )

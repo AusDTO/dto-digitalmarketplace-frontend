@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { createATMBrief } from 'marketplace/actions/briefActions'
 import { rootPath } from 'marketplace/routes'
+import { hasPermission } from 'marketplace/components/helpers'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 
 export class BuyerATMCreatePage extends Component {
@@ -24,6 +25,12 @@ export class BuyerATMCreatePage extends Component {
   }
 
   render() {
+    const { isPartOfTeam, isTeamLead, teams } = this.props
+
+    if (!hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts')) {
+      return <Redirect to={`${rootPath}/request-access/create_drafts`} />
+    }
+
     if (this.state.briefId) {
       return <Redirect to={`${rootPath}/brief/${this.state.briefId}/overview/atm`} />
     }
@@ -33,7 +40,10 @@ export class BuyerATMCreatePage extends Component {
 }
 
 const mapStateToProps = state => ({
-  csrfToken: state.app.csrfToken
+  csrfToken: state.app.csrfToken,
+  teams: state.app.teams,
+  isTeamLead: state.app.isTeamLead,
+  isPartOfTeam: state.app.isPartOfTeam
 })
 
 const mapDispatchToProps = dispatch => ({

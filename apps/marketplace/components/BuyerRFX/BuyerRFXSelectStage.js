@@ -6,7 +6,7 @@ import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import SellerSelect from 'marketplace/components/SellerSelect/SellerSelect'
 import SelectedSellersControl from 'marketplace/components/BuyerBriefFlow/SelectedSellersControl'
-import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
+import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import styles from './BuyerRFXSelectStage.scss'
 
 export class BuyerRFXSelectStage extends Component {

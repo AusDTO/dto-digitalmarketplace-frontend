@@ -13,6 +13,8 @@ import opportunities from './opportunitiesReducers'
 import errorMessage from './errorMessage'
 import form_options from './form_options'
 import messages from './messagesReducers'
+import team from './teamReducers'
+import teamsDashboard from './teamsDashboardReducers'
 
 export const SellerAssessmentFormReducer = {
   id: 0,
@@ -147,7 +149,15 @@ export default combineReducers({
   messages,
   form_options,
   errorMessage,
+  teamsDashboard,
   ...createForms({
+    askAQuestionForm: {
+      question: ''
+    },
+    publishAQuestionForm: {
+      question: '',
+      answer: ''
+    },
     signupForm: {
       name: '',
       email_address: ''
@@ -212,6 +222,7 @@ export default combineReducers({
     BuyerATMForm: BuyerATMFormReducer,
     SellerAssessmentForm: SellerAssessmentFormReducer,
     BuyerSpecialistForm: BuyerSpecialistFormReducer,
-    SellerEditFlowPage: SellerEditFormReducer
+    SellerEditFlowPage: SellerEditFormReducer,
+    team
   })
 })

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import { rootPath } from 'marketplace/routes'
@@ -7,6 +8,7 @@ import ErrorBox from 'shared/form/ErrorBox'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
+import { hasPermission } from 'marketplace/components/helpers'
 import BriefOverviewSection from './BriefOverviewSection'
 
 import styles from './BriefOverview.scss'
@@ -47,7 +49,30 @@ export class BriefOverview extends Component {
   }
 
   render() {
-    const { briefId, deleteBrief, deleteBriefSuccess, sections, setFocus, title, lotSlug, status } = this.props
+    const {
+      briefId,
+      deleteBrief,
+      deleteBriefSuccess,
+      sections,
+      setFocus,
+      title,
+      lotSlug,
+      status,
+      isPartOfTeam,
+      isTeamLead,
+      teams
+    } = this.props
+
+    if (status === 'draft') {
+      if (
+        !(
+          hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') ||
+          hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities')
+        )
+      ) {
+        return <Redirect to={`${rootPath}/request-access/create_drafts`} />
+      }
+    }
 
     return (
       <div className="row">
@@ -110,4 +135,10 @@ export class BriefOverview extends Component {
   }
 }
 
-export default BriefOverview
+const mapStateToProps = state => ({
+  teams: state.app.teams,
+  isTeamLead: state.app.isTeamLead,
+  isPartOfTeam: state.app.isPartOfTeam
+})
+
+export default connect(mapStateToProps)(BriefOverview)

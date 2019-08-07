@@ -1,10 +1,12 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import format from 'date-fns/format'
 import { rootPath } from 'marketplace/routes'
 import NotVisible from 'marketplace/components/Icons/NotVisible/NotVisible'
-import { getBriefLastQuestionDate } from 'marketplace/components/helpers'
+import { getBriefLastQuestionDate, hasPermission } from 'marketplace/components/helpers'
 import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import EvaluationCriteria from './EvaluationCriteria'
 import QuestionAnswer from './QuestionAnswer'
@@ -107,10 +109,23 @@ const Opportunity = props => {
     hasSupplierErrors,
     isInvited,
     hasSignedCurrentAgreement,
-    supplierCode
+    supplierCode,
+    isPartOfTeam,
+    isTeamLead,
+    teams
   } = props
   const brief = { ...defaultBriefProps, ...props.brief }
   const category = getBriefCategory(domains, brief.sellerCategory)
+  if (brief.status === 'draft') {
+    if (
+      !(
+        hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') ||
+        hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities')
+      )
+    ) {
+      return <Redirect to={`${rootPath}/request-access/create_drafts`} />
+    }
+  }
   return (
     <div>
       <div className="row">
@@ -729,4 +744,10 @@ Opportunity.propTypes = {
   supplierCode: PropTypes.number
 }
 
-export default Opportunity
+const mapStateToProps = state => ({
+  teams: state.app.teams,
+  isTeamLead: state.app.isTeamLead,
+  isPartOfTeam: state.app.isPartOfTeam
+})
+
+export default connect(mapStateToProps)(Opportunity)

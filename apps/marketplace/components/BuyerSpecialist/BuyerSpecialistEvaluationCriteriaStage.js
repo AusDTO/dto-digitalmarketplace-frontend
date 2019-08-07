@@ -8,7 +8,7 @@ import Textarea from 'shared/form/Textarea'
 import Textfield from 'shared/form/Textfield'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
-import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
+import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import styles from './BuyerSpecialistEvaluationCriteriaStage.scss'
 
 const noEmptyWeightingsEssential = v =>
