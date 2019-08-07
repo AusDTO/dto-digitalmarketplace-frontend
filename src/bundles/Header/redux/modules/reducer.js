@@ -13,5 +13,6 @@ export default combineReducers({
   logoutUrl: (state = {}) => state,
   options: (state = {}) => state,
   registerText: (state = {}) => state,
-  registerUrl: (state = {}) => state
+  registerUrl: (state = {}) => state,
+  userType: (state = {}) => state
 })

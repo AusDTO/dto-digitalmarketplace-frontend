@@ -1,0 +1,13 @@
+.actionsContainer {
+    margin-top: 1.5rem;
+
+    button {
+        margin-right: 1rem;
+    }
+
+    @media (max-width: 575px) {
+        .cancelButton {
+            margin-top: 1rem;
+        }
+    }
+}

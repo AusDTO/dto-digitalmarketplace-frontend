@@ -49,6 +49,7 @@ main {
 
 main {
   box-sizing: border-box;
+  display: block;
   padding-top: 3.2em;
   width: 100%;
   margin-bottom: 3.2em;
@@ -169,6 +170,10 @@ header ul#main-navigation a.au-btn--secondary:focus,header ul#main-navigation a.
 }
 
 .au-page-alerts--error {
+  margin-bottom: 1rem;
+}
+
+.au-page-alerts--success {
   margin-bottom: 1rem;
 }
 
@@ -633,6 +638,10 @@ li:first-child.au-marketplace-header-link-list a {
   color: #ffffff;
 }
 
+.au-marketplace-auth-header {
+  margin-left: auto;
+}
+
 .au-marketplace-header-inline-links {
   padding-left: 0;
   margin-top: 16px;
@@ -670,6 +679,74 @@ li:first-child.au-marketplace-header-link-list a {
 .au-marketplace-header-inline-links li {
   display: inline-block;
   margin: 0px;
+}
+
+.au-marketplace-header-actions .au-accordion {
+  border: 2px solid #ffffff;
+  border-radius: 4px;
+  min-width: 11.5rem;
+  position: absolute;
+  right: 0;
+  text-align: left;
+  z-index: 1;
+}
+
+.au-marketplace-header-actions .au-accordion a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.au-marketplace-header-actions a.au-accordion__title {
+  background: none;
+  font-size: 1rem;
+  max-width: 23ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.au-marketplace-header-actions a.au-accordion__title:after,
+.au-marketplace-header-actions a.au-accordion__title:hover:after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E %3Cpath fill='%23ffffff' d='M64 0l64 64-16 16-64-64'/%3E %3Cpath fill='%23ffffff' d='M64 0l16 16-64 64L0 64'/%3E%3C/svg%3E");
+}
+
+.au-marketplace-header-actions a.au-accordion__title:hover {
+  color: #ffffff;
+}
+
+.au-marketplace-header-actions .au-accordion ul {
+  padding: 0;
+}
+
+.au-marketplace-header-actions .au-accordion__body {
+  background-color: #ffffff;
+}
+
+.au-marketplace-header-actions .au-accordion__body-wrapper {
+  border: 2px solid #e0e0e0;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 2px 2px 30px 0 rgba(0, 0, 0, 0.15);
+  padding: 0;
+}
+
+.au-marketplace-header-actions .au-accordion__body li {
+  list-style-type: none;
+}
+
+.au-marketplace-header-actions .au-accordion__body ul:not([class]) > li {
+  margin: 0;
+}
+
+.au-marketplace-header-actions .au-accordion__body a {
+  background-color: #ffffff;
+  color: #00698f;
+  display: block;
+  padding: 0.75rem 1.35rem;
+}
+
+.au-marketplace-header-actions .au-accordion__body a:hover {
+  background-color: #f4f4f4;
 }
 
 .au-marketplace-header-goverment-logo {

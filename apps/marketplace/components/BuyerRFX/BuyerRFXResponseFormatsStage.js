@@ -5,7 +5,7 @@ import { Form } from 'react-redux-form'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import formProps from 'shared/form/formPropsSelector'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
-import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
+import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import styles from './BuyerRFXResponseFormatsStage.scss'
 
 export const atleastOneFormat = formValues =>

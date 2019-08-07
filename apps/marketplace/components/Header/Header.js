@@ -2,9 +2,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import AUaccordion from '@gov.au/accordion/lib/js/react.js'
-import DashBoardLink from './DashBoardLink'
+import AuthenticatedMobileLinks from './Mobile/AuthenticatedMobileLinks'
+import HeaderActions from './HeaderActions'
+import UnauthenticatedMobileLinks from './Mobile/UnauthenticatedMobileLinks'
 import logoGovCrest from './Government_crest.svg'
 
 export class Header extends Component {
@@ -24,7 +26,7 @@ export class Header extends Component {
   }
 
   render() {
-    const { userType, location, loggedIn, notificationCount } = this.props
+    const { location, loggedIn, notificationCount, userType } = this.props
 
     return (
       <section className="au-marketplace-header">
@@ -45,29 +47,7 @@ export class Header extends Component {
             </div>
             <div className="col-md-4 col-sm-4 col-xs-12 hide-mobile no-padding-tablet">
               <div className="au-marketplace-header-user-nav">
-                <div id="react-bundle-auth-header-state" />
-                <div id="react-bundle-auth-header">
-                  <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
-                    <li>
-                      {loggedIn ? (
-                        <DashBoardLink userType={userType} notificationCount={notificationCount} />
-                      ) : (
-                        <a href="/2/signup" className="au-btn au-btn--secondary au-btn--dark">
-                          Sign up
-                        </a>
-                      )}
-                    </li>
-                    <li>
-                      {loggedIn ? (
-                        <a href="/logout">Sign out</a>
-                      ) : (
-                        <a href="/login" className="au-btn au-btn--dark">
-                          Log in
-                        </a>
-                      )}
-                    </li>
-                  </ul>
-                </div>
+                <HeaderActions loggedIn={loggedIn} notificationCount={notificationCount} userType={userType} />
               </div>
             </div>
           </div>
@@ -113,31 +93,11 @@ export class Header extends Component {
                   }}
                 >
                   <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
-                    <div className="au-marketplace-header_mobile-link">
-                      {loggedIn ? (
-                        <DashBoardLink userType={userType} notificationCount={notificationCount} />
-                      ) : (
-                        <a href="/2/signup">Sign up</a>
-                      )}
-                    </div>
-                    <div className="au-marketplace-header_mobile-link">
-                      {loggedIn ? <a href="/logout">Sign out</a> : <a href="/login">Sign in</a>}
-                    </div>
-                    <div className="au-marketplace-header_mobile-link">
-                      <a href="/2/opportunities">Opportunities</a>
-                    </div>
-                    <div className="au-marketplace-header_mobile-link">
-                      <a href="/search/sellers">Seller Catalogue</a>
-                    </div>
-                    <div className="au-marketplace-header_mobile-link">
-                      <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000141616">Insights</a>
-                    </div>
-                    <div className="au-marketplace-header_mobile-link">
-                      <a href="https://marketplace1.zendesk.com/hc/en-gb">Support</a>
-                    </div>
-                    <div className="au-marketplace-header_mobile-link">
-                      <a href="/contact-us">Contact</a>
-                    </div>
+                    {loggedIn ? (
+                      <AuthenticatedMobileLinks notificationCount={notificationCount} userType={userType} />
+                    ) : (
+                      <UnauthenticatedMobileLinks />
+                    )}
                   </div>
                 </AUaccordion>
               </div>
@@ -150,15 +110,15 @@ export class Header extends Component {
 }
 
 Header.propTypes = {
-  userType: PropTypes.string.isRequired,
   loggedIn: PropTypes.bool.isRequired,
-  notificationCount: PropTypes.number
+  notificationCount: PropTypes.number,
+  userType: PropTypes.string.isRequired
 }
 
 const mapStateToProps = ({ app }) => ({
   loggedIn: app.loggedIn,
-  userType: app.userType,
-  notificationCount: app.notificationCount
+  notificationCount: app.notificationCount,
+  userType: app.userType
 })
 
 export default withRouter(connect(mapStateToProps)(Header))

@@ -9,7 +9,7 @@ import dmapi from 'marketplace/services/apiClient'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import range from 'lodash/range'
 import { required } from 'marketplace/components/validators'
-import ErrorAlert from 'marketplace/components/BuyerBriefFlow/ErrorAlert'
+import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 
 export class BuyerATMRequirementsStage extends Component {
   constructor(props) {

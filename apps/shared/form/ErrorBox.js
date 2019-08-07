@@ -83,7 +83,7 @@ ErrorBoxComponent.propTypes = {
   ).isRequired,
   form: PropTypes.object,
   title: PropTypes.string,
-  errorMessage: PropTypes.string
+  errorMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.array])
 }
 
 export const mapStateToProps = (state, { model }) => ({
