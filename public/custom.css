@@ -694,12 +694,12 @@ li:first-child.au-marketplace-header-link-list a {
   z-index: 1;
 }
 
-.au-marketplace-header-actions .au-accordion a {
+.au-marketplace-header-actions .au-accordion a, .au-marketplace-header-actions .au-accordion button {
   color: #ffffff;
   text-decoration: none;
 }
 
-.au-marketplace-header-actions a.au-accordion__title {
+.au-marketplace-header-actions button.au-accordion__title {
   background: none;
   font-size: 1rem;
   max-width: 23ch;
@@ -708,12 +708,12 @@ li:first-child.au-marketplace-header-link-list a {
   white-space: nowrap;
 }
 
-.au-marketplace-header-actions a.au-accordion__title:after,
-.au-marketplace-header-actions a.au-accordion__title:hover:after {
+.au-marketplace-header-actions button.au-accordion__title:after,
+.au-marketplace-header-actions button.au-accordion__title:hover:after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E %3Cpath fill='%23ffffff' d='M64 0l64 64-16 16-64-64'/%3E %3Cpath fill='%23ffffff' d='M64 0l16 16-64 64L0 64'/%3E%3C/svg%3E");
 }
 
-.au-marketplace-header-actions a.au-accordion__title:hover {
+.au-marketplace-header-actions button.au-accordion__title:hover {
   color: #ffffff;
 }
 
