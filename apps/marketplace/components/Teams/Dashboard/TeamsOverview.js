@@ -20,7 +20,7 @@ export class TeamsOverview extends Component {
       <div className={styles.initial}>
         <p>Easily track and manage access to opportunities created within your organisation.</p>
         {createTeamButton}
-        <a href="">How to manage teams within an organisation</a>
+        <a href="/api/2/r/how-teams-work">How to manage teams within an organisation</a>
       </div>
     )
 
