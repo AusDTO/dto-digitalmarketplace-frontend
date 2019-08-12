@@ -130,7 +130,8 @@ class Overview extends Component {
           : 0
 
       const briefResponseCount = briefResponses && briefResponses.length > 0 ? briefResponses.length : 0
-      const flowName = flow !== 'specialist' ? flow.toUpperCase() : 'specialist'
+      let flowName = flow !== 'specialist' ? flow.toUpperCase() : 'specialist'
+      flowName = flow === 'training2' ? 'training' : flowName
 
       return (
         <div>
