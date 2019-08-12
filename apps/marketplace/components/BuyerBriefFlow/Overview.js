@@ -239,7 +239,7 @@ class Overview extends Component {
                 )}
               </li>
             )}
-            {(flow === 'rfx' || flow === 'specialist') &&
+            {['rfx', 'training2', 'specialist'].includes(flow) &&
               (briefResponseCount > 0 || !isPublished || !isClosed) && (
                 <li>{createWorkOrderRender(brief, flow, isPublished, isClosed, oldWorkOrderCreator)}</li>
               )}

@@ -150,7 +150,7 @@ const OpportunityInfoCard = props => (
           props.loggedIn &&
           props.isApprovedSeller &&
           props.hasSignedCurrentAgreement &&
-          ((props.briefLot === 'atm' && !props.isRecruiterOnly) || props.briefLot === 'rfx') &&
+          ((props.briefLot === 'atm' && !props.isRecruiterOnly) || ['rfx', 'training2'].includes(props.briefLot)) &&
           (!props.isOpenToAll && !props.isOpenToCategory) &&
           !props.canRespond && (
             <div className={styles.invitedStatus}>
@@ -241,7 +241,7 @@ const OpportunityInfoCard = props => (
           props.loggedIn &&
           props.isApprovedSeller &&
           props.hasSignedCurrentAgreement &&
-          props.briefLot === 'rfx' &&
+          ['rfx', 'training2'].includes(props.briefLot) &&
           props.canRespond &&
           !props.isAssessedForCategory && (
             <span>
@@ -255,7 +255,7 @@ const OpportunityInfoCard = props => (
           props.isApprovedSeller &&
           (props.hasSignedCurrentAgreement || (!props.hasSignedCurrentAgreement && props.hasResponded)) &&
           ((props.briefLot === 'atm' && !props.isRecruiterOnly) ||
-            (props.briefLot === 'rfx' && props.isAssessedForCategory)) &&
+            (['rfx', 'training2'].includes(props.briefLot) && props.isAssessedForCategory)) &&
           props.canRespond && (
             <div>
               {props.hasResponded ? (

@@ -248,7 +248,7 @@ const Opportunity = props => {
                   <div className="col-xs-12 col-sm-8">{brief.budgetRange}</div>
                 </div>
               )}
-            {brief.lotSlug === 'rfx' && (
+            {['rfx', 'training2'].includes(brief.lotSlug) && (
               <div className="row">
                 <div className="col-xs-12 col-sm-4">
                   <strong>Budget range</strong>
@@ -269,7 +269,7 @@ const Opportunity = props => {
                 ))}
               </div>
             </div>
-            {brief.lotSlug === 'rfx' && (
+            {['rfx', 'training2'].includes(brief.lotSlug) && (
               <div className="row">
                 <div className="col-xs-12 col-sm-4">
                   <strong>Working arrangements</strong>
@@ -277,26 +277,24 @@ const Opportunity = props => {
                 <div className="col-xs-12 col-sm-8">{brief.workingArrangements}</div>
               </div>
             )}
-            {brief.lotSlug === 'rfx' ||
-              (brief.lotSlug === 'specialist' && (
+            {['rfx', 'training2', 'specialist'].includes(brief.lotSlug) && (
+              <div className="row">
+                <div className="col-xs-12 col-sm-4">
+                  <strong>Length of contract</strong>
+                </div>
+                <div className="col-xs-12 col-sm-8">{brief.contractLength}</div>
+              </div>
+            )}
+            {['rfx', 'training2', 'specialist'].includes(brief.lotSlug) &&
+              brief.contractExtensions && (
                 <div className="row">
                   <div className="col-xs-12 col-sm-4">
-                    <strong>Length of contract</strong>
+                    <strong>Contract extensions</strong>
                   </div>
-                  <div className="col-xs-12 col-sm-8">{brief.contractLength}</div>
+                  <div className="col-xs-12 col-sm-8">{brief.contractExtensions}</div>
                 </div>
-              ))}
-            {brief.lotSlug === 'rfx' ||
-              (brief.lotSlug === 'specialist' &&
-                brief.contractExtensions && (
-                  <div className="row">
-                    <div className="col-xs-12 col-sm-4">
-                      <strong>Contract extensions</strong>
-                    </div>
-                    <div className="col-xs-12 col-sm-8">{brief.contractExtensions}</div>
-                  </div>
-                ))}
-            {brief.lotSlug === 'rfx' &&
+              )}
+            {['rfx', 'training2'].includes(brief.lotSlug) &&
               brief.securityClearance && (
                 <div className="row">
                   <div className="col-xs-12 col-sm-4">

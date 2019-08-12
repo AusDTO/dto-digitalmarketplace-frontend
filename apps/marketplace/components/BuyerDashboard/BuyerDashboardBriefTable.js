@@ -61,6 +61,10 @@ export class BuyerDashboardBriefTable extends Component {
         url = `${rootPath}/brief/${item.id}/overview/rfx`
         name = 'Untitled seek proposals and quotes'
         break
+      case 'training2':
+        url = `${rootPath}/brief/${item.id}/overview/training2`
+        name = 'Training (untitled)'
+        break
       case 'atm':
         url = `${rootPath}/brief/${item.id}/overview/atm`
         name = 'Untitled ask the market'

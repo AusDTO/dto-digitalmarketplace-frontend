@@ -62,6 +62,33 @@ export const BuyerRFXFormReducer = {
   comprehensiveTerms: false
 }
 
+export const BuyerTrainingFormReducer = {
+  id: 0,
+  title: '',
+  organisation: '',
+  location: [],
+  summary: '',
+  industryBriefing: '',
+  sellerCategory: '',
+  sellers: {},
+  attachments: [],
+  requirementsDocument: [],
+  responseTemplate: [],
+  evaluationType: [],
+  proposalType: [],
+  evaluationCriteria: [{ criteria: '', weighting: '' }],
+  includeWeightings: true,
+  closedAt: '',
+  contactNumber: '',
+  startDate: '',
+  contractLength: '',
+  contractExtensions: '',
+  budgetRange: '',
+  workingArrangements: '',
+  securityClearance: '',
+  comprehensiveTerms: false
+}
+
 export const BuyerATMFormReducer = {
   id: 0,
   title: '',
@@ -219,6 +246,7 @@ export default combineReducers({
       }
     },
     BuyerRFXForm: BuyerRFXFormReducer,
+    BuyerTrainingForm: BuyerTrainingFormReducer,
     BuyerATMForm: BuyerATMFormReducer,
     SellerAssessmentForm: SellerAssessmentFormReducer,
     BuyerSpecialistForm: BuyerSpecialistFormReducer,

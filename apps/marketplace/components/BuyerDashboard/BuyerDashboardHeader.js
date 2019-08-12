@@ -55,6 +55,9 @@ class BuyerDashboardHeader extends Component {
                     <li>
                       <a href="/buyers/frameworks/digital-marketplace/requirements/training">Training</a>
                     </li>
+                    <li>
+                      <a href="/2/buyer-training2/create">Training (new)</a>
+                    </li>
                   </ul>
                 ) : (
                   <ul>
