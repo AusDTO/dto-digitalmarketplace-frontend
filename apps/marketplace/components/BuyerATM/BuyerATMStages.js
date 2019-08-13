@@ -69,7 +69,7 @@ const BuyerATMStages = [
       weightingsAddUpTo100(formValues)
   },
   {
-    slug: 'closing',
+    slug: 'additional',
     title: 'Closing date',
     component: BuyerATMClosingStage,
     isDone: formValues =>
