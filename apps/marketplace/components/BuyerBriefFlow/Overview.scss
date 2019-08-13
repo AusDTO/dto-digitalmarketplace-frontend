@@ -5,6 +5,10 @@ svg.tick {
 div.header {
   position: relative;
 
+  .internalReference {
+    margin-left: 0.75rem;
+  }
+
   .tagLine {
     opacity: 0.6;
   }

@@ -136,7 +136,9 @@ class Overview extends Component {
         <div>
           <div className={styles.header}>
             <small className={styles.tagLine}>{brief.title || `New ${flowName} request`}</small>
-            {brief.internalReference && <small className={styles.tagLine}>{brief.internalReference}</small>}
+            {brief.internalReference && (
+              <small className={`${styles.internalReference} ${styles.tagLine}`}>{brief.internalReference}</small>
+            )}
             <AUheading className={styles.overviewHeading} size="xl" level="1">
               Overview
             </AUheading>
