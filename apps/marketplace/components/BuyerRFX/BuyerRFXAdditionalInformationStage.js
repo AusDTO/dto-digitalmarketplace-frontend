@@ -40,7 +40,7 @@ class BuyerRFXAdditionalInformationStage extends Component {
         validateOn="submit"
       >
         <AUheading level="1" size="xl">
-          Closing date
+          Additional information
         </AUheading>
         <ErrorAlert
           title="An error occurred"
