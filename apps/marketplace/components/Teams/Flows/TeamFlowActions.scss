@@ -1,0 +1,13 @@
+.actionsContainer {
+    margin-top: 3rem;
+
+    .saveAndContinue {
+        margin-left: 1.5rem;
+    }
+
+    @media (max-width: 575px) {
+        .saveAndContinue {
+            margin: 1.5rem 0 0 0;
+        }
+    }
+}

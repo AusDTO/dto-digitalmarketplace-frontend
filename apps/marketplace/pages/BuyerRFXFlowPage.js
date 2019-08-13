@@ -11,6 +11,7 @@ import { loadPublicBrief, saveBrief } from 'marketplace/actions/briefActions'
 import { setErrorMessage } from 'marketplace/actions/appActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { BuyerRFXFormReducer } from 'marketplace/reducers'
+import { hasPermission } from 'marketplace/components/helpers'
 
 const model = 'BuyerRFXForm'
 
@@ -89,6 +90,7 @@ export class BuyerRFXFlowPage extends Component {
   }
 
   render() {
+    const { isPartOfTeam, isTeamLead, teams } = this.props
     if (this.props.errorMessage) {
       let hasFocused = false
       const setFocus = e => {
@@ -114,6 +116,15 @@ export class BuyerRFXFlowPage extends Component {
       return <LoadingIndicatorFullPage />
     }
 
+    if (
+      !(
+        hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') ||
+        hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities')
+      )
+    ) {
+      return <Redirect to={`${rootPath}/request-access/create_drafts`} />
+    }
+
     if (this.state.flowIsDone) {
       return <Redirect to={`${rootPath}/buyer-rfx/${briefId}/completed`} push />
     }
@@ -127,6 +138,7 @@ export class BuyerRFXFlowPage extends Component {
         saveModel={this.saveBrief}
         returnPath={`${rootPath}/brief/${briefId}/overview/rfx`}
         previewPath={`${rootPath}/digital-marketplace/opportunities/${briefId}`}
+        hasPermissionToPublish={hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities')}
       />
     )
   }
@@ -136,7 +148,10 @@ const mapStateToProps = state => ({
   ...formProps(state, model),
   csrfToken: state.app.csrfToken,
   errorMessage: state.app.errorMessage,
-  emailAddress: state.app.emailAddress
+  emailAddress: state.app.emailAddress,
+  teams: state.app.teams,
+  isTeamLead: state.app.isTeamLead,
+  isPartOfTeam: state.app.isPartOfTeam
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -1,26 +1,33 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
+import format from 'date-fns/format'
 import { rootPath } from 'marketplace/routes'
-import { getResponsesFileSizeAndType } from 'marketplace/components/helpers'
+import { getResponsesFileSizeAndType, hasPermission } from 'marketplace/components/helpers'
 import styles from './BriefDownloadResponses.scss'
 
 export class BriefDownloadResponses extends Component {
   constructor(props) {
     super(props)
-
     this.handleButtonClick = this.handleButtonClick.bind(this)
   }
 
-  handleButtonClick(e) {
-    e.preventDefault()
-    window.location = `/api/2/brief/${this.props.brief.id}/respond/documents`
+  handleButtonClick() {
+    setTimeout(() => {
+      this.props.onDownloadBrief()
+    }, 500)
   }
 
   render() {
-    if (this.props.briefResponses.length === 0) {
+    const { brief, briefResponses, briefResponseDownloaded, isPartOfTeam, isTeamLead, teams } = this.props
+
+    if (!hasPermission(isPartOfTeam, isTeamLead, teams, 'download_responses')) {
+      return <Redirect to={`${rootPath}/request-access/download_responses`} />
+    }
+    if (briefResponses.length === 0) {
       return (
         <span>
           <AUheading size="xl" level="1">
@@ -33,7 +40,7 @@ export class BriefDownloadResponses extends Component {
       )
     }
 
-    if (!this.props.brief.responsesZipFilesize && this.props.brief.lot === 'digital-professionals') {
+    if (!brief.responsesZipFilesize && brief.lot === 'digital-professionals') {
       return (
         <AUpageAlert as="error">
           <AUheading size="md" level="1">
@@ -49,27 +56,45 @@ export class BriefDownloadResponses extends Component {
     return (
       <span>
         <AUheading size="xl" level="1">
-          {this.props.brief.lot === 'specialist' ? (
+          {brief.lot === 'specialist' ? (
             <React.Fragment>
-              {this.props.briefResponses.length === 1 && `1 candidate has responded to your opportunity.`}
-              {this.props.briefResponses.length > 1 &&
-                `${this.props.briefResponses.length} candidates have responded to your opportunity.`}
+              {briefResponses.length === 1 && `1 candidate has responded to your opportunity.`}
+              {briefResponses.length > 1 && `${briefResponses.length} candidates have responded to your opportunity.`}
             </React.Fragment>
           ) : (
             <React.Fragment>
-              {this.props.briefResponses.length === 1 && `You've had 1 response to your opportunity.`}
-              {this.props.briefResponses.length > 1 &&
-                `You've had ${this.props.briefResponses.length} responses to your opportunity.`}
+              {briefResponses.length === 1 && `You've had 1 response to your opportunity.`}
+              {briefResponses.length > 1 && `You've had ${briefResponses.length} responses to your opportunity.`}
             </React.Fragment>
           )}
-          <small className={styles.headingSub}>{this.props.brief.title}</small>
+          <small className={styles.headingSub}>{brief.title}</small>
         </AUheading>
         <p>
-          <AUbutton onClick={this.handleButtonClick}>
-            Download responses{' '}
-            {getResponsesFileSizeAndType(this.props.brief.responsesZipFilesize, this.props.brief.lot)}
-          </AUbutton>
+          <a
+            href={`/api/2/brief/${brief.id}/respond/documents`}
+            onClick={this.handleButtonClick}
+            rel="noopener noreferrer"
+            target="_blank"
+            className="au-btn"
+          >
+            Download responses {getResponsesFileSizeAndType(brief.responsesZipFilesize, brief.lot)}
+          </a>
         </p>
+        <AUheading size="md" level="2">
+          Downloaded by:
+        </AUheading>
+        {briefResponseDownloaded && (
+          <table className={styles.downloadedByTable}>
+            <tbody>
+              {briefResponseDownloaded.map(item => (
+                <tr key={`${item.name}_${item.created_at}`}>
+                  <td className={styles.colName}>{item.name}</td>
+                  <td className={styles.colDate}>{format(new Date(item.created_at), 'HH:mm DD/MM/YYYY')}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
         <p>
           <a href={`${rootPath}/buyer-dashboard`}>Return to dashboard</a>
         </p>
@@ -78,9 +103,21 @@ export class BriefDownloadResponses extends Component {
   }
 }
 
-BriefDownloadResponses.propTypes = {
-  brief: PropTypes.object.isRequired,
-  briefResponses: PropTypes.array.isRequired
+BriefDownloadResponses.defaultProps = {
+  onDownloadBrief: () => {}
 }
 
-export default BriefDownloadResponses
+BriefDownloadResponses.propTypes = {
+  brief: PropTypes.object.isRequired,
+  briefResponses: PropTypes.array.isRequired,
+  briefResponseDownloaded: PropTypes.array.isRequired,
+  onDownloadBrief: PropTypes.func
+}
+
+const mapStateToProps = state => ({
+  teams: state.app.teams,
+  isTeamLead: state.app.isTeamLead,
+  isPartOfTeam: state.app.isPartOfTeam
+})
+
+export default connect(mapStateToProps)(BriefDownloadResponses)

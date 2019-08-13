@@ -138,16 +138,22 @@ export class ProgressFlow extends Component {
     this.setState({
       saving: true
     })
-    this.props.saveModel().then(() => {
+    this.props.saveModel().then(response => {
       this.setState({
         saving: false
       })
-      const nextStage = this.getNextStage(this.state.currentStage)
-      if (nextStage) {
-        this.props.history.push(`${this.props.basename}/${nextStage}`)
-        this.setCurrentStage(nextStage)
+
+      if (!response || !response.error) {
+        const nextStage = this.getNextStage(this.state.currentStage)
+        if (nextStage) {
+          this.props.history.push(`${this.props.basename}/${nextStage}`)
+          this.setCurrentStage(nextStage)
+        }
+        window.scrollTo(0, 0)
       }
-      window.scrollTo(0, 0)
+      this.setState({
+        saving: false
+      })
     })
   }
 
@@ -258,21 +264,25 @@ export class ProgressFlow extends Component {
                         onSubmitFailed={handleFormSubmitFailed}
                         onStageMount={this.props.onStageMount}
                         formButtons={
-                          <ProgressButtons
-                            isLastStage={this.isLastStage(stage.slug)}
-                            isFirstStage={this.isFirstStage(stage.slug)}
-                            publishEnabled={this.allStagesDone()}
-                            onPublish={this.handlePublish}
-                            onPreview={this.handlePreview}
-                            onReturn={this.handleReturn}
-                            onConfirmationClick={this.handleConfirmationClick}
-                            showReturnButton={this.props.showReturnButton}
-                            showReviewButton={this.props.showReviewButton}
-                            publishText={this.props.publishText}
-                            showConfirmationCheckbox={this.props.showConfirmationCheckbox}
-                            confirmationText={this.props.confirmationText}
-                            startText={this.props.startText}
-                          />
+                          stage.actions || (
+                            <ProgressButtons
+                              isLastStage={this.isLastStage(stage.slug)}
+                              isFirstStage={this.isFirstStage(stage.slug)}
+                              publishEnabled={this.allStagesDone()}
+                              onPublish={this.handlePublish}
+                              onPreview={this.handlePreview}
+                              onReturn={this.handleReturn}
+                              onConfirmationClick={this.handleConfirmationClick}
+                              showReturnButton={this.props.showReturnButton}
+                              showReviewButton={this.props.showReviewButton}
+                              publishText={this.props.publishText}
+                              showConfirmationCheckbox={this.props.showConfirmationCheckbox}
+                              confirmationText={this.props.confirmationText}
+                              continueText={this.props.continueText}
+                              startText={this.props.startText}
+                              hasPermissionToPublish={this.props.hasPermissionToPublish}
+                            />
+                          )
                         }
                       />
                     </div>
@@ -298,7 +308,9 @@ ProgressFlow.defaultProps = {
   showReturnButton: true,
   showReviewButton: true,
   showConfirmationCheckbox: true,
-  meta: {}
+  meta: {},
+  continueText: 'Save and continue',
+  hasPermissionToPublish: true
 }
 
 ProgressFlow.propTypes = {
@@ -314,7 +326,10 @@ ProgressFlow.propTypes = {
   showConfirmationCheckbox: PropTypes.bool,
   publishText: PropTypes.string,
   confirmationText: PropTypes.string,
-  meta: PropTypes.object
+  meta: PropTypes.object,
+  continueText: PropTypes.string,
+  startText: PropTypes.string,
+  hasPermissionToPublish: PropTypes.bool
 }
 
 const mapStateToProps = (state, props) => ({

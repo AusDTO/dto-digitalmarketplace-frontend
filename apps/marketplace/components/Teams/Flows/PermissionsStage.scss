@@ -1,0 +1,32 @@
+.allPermissionsContainer {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.permissionsTable {
+    th:first-of-type {
+        width: 25%;
+    }
+
+    .permissionsColumn {
+        text-align: center;
+    }
+
+    .permissionsTableCheckbox {
+        top: -0.325rem;
+
+        input {
+            left: 1rem;
+        }
+
+        span::before, span::after {
+            margin: 0 17%;
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .permissionsTableContainer {
+        overflow-x: auto;
+    }
+}
