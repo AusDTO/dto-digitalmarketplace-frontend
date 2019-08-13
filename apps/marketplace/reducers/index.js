@@ -42,6 +42,7 @@ export const BuyerRFXFormReducer = {
   location: [],
   summary: '',
   industryBriefing: '',
+  internalReference: '',
   sellerCategory: '',
   sellers: {},
   attachments: [],

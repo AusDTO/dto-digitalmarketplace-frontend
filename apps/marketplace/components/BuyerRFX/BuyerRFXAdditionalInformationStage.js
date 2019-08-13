@@ -94,6 +94,18 @@ class BuyerRFXAdditionalInformationStage extends Component {
             messages={{}}
           />
         </p>
+        <Textfield
+          model={`${this.props.model}.internalReference`}
+          label="Internal reference (optional)"
+          description="For example, business unit or internal procurement ID number. This will not be visible to anyone outside your organisation."
+          name="internalReference"
+          id="internalReference"
+          htmlFor="internalReference"
+          defaultValue={this.props[this.props.model].internalReference}
+          maxLength={100}
+          showMaxLength
+          validators={{}}
+        />
         {this.props.formButtons}
       </Form>
     )
