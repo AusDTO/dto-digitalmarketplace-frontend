@@ -10,7 +10,7 @@ import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import ClosingDateControl from 'marketplace/components/BuyerBriefFlow/ClosingDateControl'
 import styles from './BuyerATMAdditionalInformationStage.scss'
 
-class BuyerATMClosingStage extends Component {
+class BuyerATMAdditionalInformationStage extends Component {
   constructor(props) {
     super(props)
 
@@ -76,12 +76,12 @@ class BuyerATMClosingStage extends Component {
   }
 }
 
-BuyerATMClosingStage.defaultProps = {
+BuyerATMAdditionalInformationStage.defaultProps = {
   onSubmit: () => {},
   onSubmitFailed: () => {}
 }
 
-BuyerATMClosingStage.propTypes = {
+BuyerATMAdditionalInformationStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   onSubmit: PropTypes.func,
@@ -96,4 +96,4 @@ const mapDispatchToProps = (dispatch, props) => ({
   setDate: date => dispatch(actions.change(`${props.model}.closedAt`, date))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerATMClosingStage)
+export default connect(mapStateToProps, mapDispatchToProps)(BuyerATMAdditionalInformationStage)
