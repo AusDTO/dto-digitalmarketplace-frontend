@@ -69,6 +69,7 @@ export const BuyerATMFormReducer = {
   location: [],
   summary: '',
   industryBriefing: '',
+  internalReference: '',
   sellerCategory: '',
   attachments: [],
   requestMoreInfo: '',
