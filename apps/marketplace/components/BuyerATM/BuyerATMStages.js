@@ -4,7 +4,7 @@ import BuyerATMAboutStage from './BuyerATMAboutStage'
 import BuyerATMSelectStage from './BuyerATMSelectStage'
 import BuyerATMObjectivesStage from './BuyerATMObjectivesStage'
 import BuyerATMReviewStage from './BuyerATMReviewStage'
-import BuyerATMClosingStage from './BuyerATMClosingStage'
+import BuyerATMClosingStage from './BuyerATMAdditionalInformationStage'
 import BuyerATMResponseFormatsStage from './BuyerATMResponseFormatsStage'
 import BuyerATMTimeframesAndBudgetStage from './BuyerATMTimeframesAndBudgetStage'
 import BuyerATMEvaluationCriteriaStage, {

@@ -8,7 +8,7 @@ import Textfield from 'shared/form/Textfield'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import ClosingDateControl from 'marketplace/components/BuyerBriefFlow/ClosingDateControl'
-import styles from './BuyerATMClosingStage.scss'
+import styles from './BuyerATMAdditionalInformationStage.scss'
 
 class BuyerATMClosingStage extends Component {
   constructor(props) {
