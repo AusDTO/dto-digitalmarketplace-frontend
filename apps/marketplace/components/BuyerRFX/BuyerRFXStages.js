@@ -71,7 +71,7 @@ const BuyerRFXStages = [
   },
   {
     slug: 'additional',
-    title: 'Closing date',
+    title: 'Additional information',
     component: BuyerRFXClosingStage,
     isDone: formValues =>
       dateIs2DaysInFuture(formValues.closedAt) && formValues.contactNumber && validPhoneNumber(formValues.contactNumber)
