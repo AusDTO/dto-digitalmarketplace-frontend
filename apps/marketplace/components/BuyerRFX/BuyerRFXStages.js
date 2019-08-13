@@ -4,7 +4,7 @@ import BuyerRFXAboutStage from './BuyerRFXAboutStage'
 import BuyerRFXSelectStage from './BuyerRFXSelectStage'
 import BuyerRFXRequirementsStage from './BuyerRFXRequirementsStage'
 import BuyerRFXReviewStage from './BuyerRFXReviewStage'
-import BuyerRFXClosingStage from './BuyerRFXClosingStage'
+import BuyerRFXClosingStage from './BuyerRFXAdditionalInformationStage'
 import BuyerRFXResponseFormatsStage, { atleastOneFormat, atleastOneProposal } from './BuyerRFXResponseFormatsStage'
 import BuyerRFXTimeframesAndBudgetStage from './BuyerRFXTimeframesAndBudgetStage'
 import BuyerRFXEvaluationCriteriaStage, {

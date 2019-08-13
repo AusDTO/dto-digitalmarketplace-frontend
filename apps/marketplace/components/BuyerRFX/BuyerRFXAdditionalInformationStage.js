@@ -9,7 +9,7 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import ClosingDateControl from 'marketplace/components/BuyerBriefFlow/ClosingDateControl'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
-import styles from './BuyerRFXClosingStage.scss'
+import styles from './BuyerRFXAdditionalInformationStage.scss'
 
 class BuyerRFXClosingStage extends Component {
   constructor(props) {
