@@ -70,7 +70,7 @@ const BuyerATMStages = [
   },
   {
     slug: 'additional',
-    title: 'Closing date',
+    title: 'Additional information',
     component: BuyerATMClosingStage,
     isDone: formValues =>
       dateIs2DaysInFuture(formValues.closedAt) && formValues.contactNumber && validPhoneNumber(formValues.contactNumber)
