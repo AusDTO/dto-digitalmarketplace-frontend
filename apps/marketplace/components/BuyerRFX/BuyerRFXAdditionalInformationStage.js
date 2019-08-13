@@ -11,7 +11,7 @@ import ClosingDateControl from 'marketplace/components/BuyerBriefFlow/ClosingDat
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import styles from './BuyerRFXAdditionalInformationStage.scss'
 
-class BuyerRFXClosingStage extends Component {
+class BuyerRFXAdditionalInformationStage extends Component {
   constructor(props) {
     super(props)
 
@@ -100,12 +100,12 @@ class BuyerRFXClosingStage extends Component {
   }
 }
 
-BuyerRFXClosingStage.defaultProps = {
+BuyerRFXAdditionalInformationStage.defaultProps = {
   onSubmit: () => {},
   onSubmitFailed: () => {}
 }
 
-BuyerRFXClosingStage.propTypes = {
+BuyerRFXAdditionalInformationStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   onSubmit: PropTypes.func,
@@ -120,4 +120,4 @@ const mapDispatchToProps = (dispatch, props) => ({
   setDate: date => dispatch(actions.change(`${props.model}.closedAt`, date))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFXClosingStage)
+export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFXAdditionalInformationStage)

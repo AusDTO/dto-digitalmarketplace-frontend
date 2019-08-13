@@ -4,7 +4,7 @@ import BuyerRFXAboutStage from './BuyerRFXAboutStage'
 import BuyerRFXSelectStage from './BuyerRFXSelectStage'
 import BuyerRFXRequirementsStage from './BuyerRFXRequirementsStage'
 import BuyerRFXReviewStage from './BuyerRFXReviewStage'
-import BuyerRFXClosingStage from './BuyerRFXAdditionalInformationStage'
+import BuyerRFXAdditionalInformationStage from './BuyerRFXAdditionalInformationStage'
 import BuyerRFXResponseFormatsStage, { atleastOneFormat, atleastOneProposal } from './BuyerRFXResponseFormatsStage'
 import BuyerRFXTimeframesAndBudgetStage from './BuyerRFXTimeframesAndBudgetStage'
 import BuyerRFXEvaluationCriteriaStage, {
@@ -72,7 +72,7 @@ const BuyerRFXStages = [
   {
     slug: 'additional',
     title: 'Additional information',
-    component: BuyerRFXClosingStage,
+    component: BuyerRFXAdditionalInformationStage,
     isDone: formValues =>
       dateIs2DaysInFuture(formValues.closedAt) && formValues.contactNumber && validPhoneNumber(formValues.contactNumber)
   },
