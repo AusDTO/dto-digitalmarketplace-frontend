@@ -70,7 +70,7 @@ const BuyerRFXStages = [
       weightingsAddUpTo100(formValues)
   },
   {
-    slug: 'closing',
+    slug: 'additional',
     title: 'Closing date',
     component: BuyerRFXClosingStage,
     isDone: formValues =>
