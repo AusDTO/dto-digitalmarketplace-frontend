@@ -1,0 +1,36 @@
+ul.itemSelectList {
+  border: 3px solid gray;
+  border-radius: 0px 0px 4px 4px;
+  border-top: 0;
+  list-style-type: none;
+  margin: -2px 0 0 0;
+  padding: 0;
+  width: 100%;
+  
+  li {
+    padding: 1rem;
+  }
+
+  &.hasResults {
+    max-height: 12.5rem;
+
+    & li {
+      padding: 0;
+
+      a {
+        color: #313131;
+        display: block;
+        padding: 1rem;
+        text-decoration: none;
+      }
+
+      a:hover {
+        background: #f4f4f4;
+      }
+    }
+
+    &.hasManyResults {
+      overflow-y: scroll;
+    }
+  }
+}

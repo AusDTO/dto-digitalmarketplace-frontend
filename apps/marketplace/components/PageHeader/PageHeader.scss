@@ -1,0 +1,17 @@
+.pageHeader {
+    h1.title {
+        margin: 0;
+    }
+
+    @media (min-width: 576px) {
+        .actions {
+            float: right;
+        }
+    }
+
+    @media (max-width: 575px) {
+        .actions {
+            margin-top: 1.25rem;
+        }
+    }
+}

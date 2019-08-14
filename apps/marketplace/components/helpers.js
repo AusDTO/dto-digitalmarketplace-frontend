@@ -119,6 +119,9 @@ export const getEmailFromQueryString = location => {
   return emailAddress
 }
 
+export const sortObjectByName = objectToSort =>
+  objectToSort && Object.keys(objectToSort).sort((a, b) => objectToSort[a].name.localeCompare(objectToSort[b].name))
+
 export const padStart = (value, length, character) => {
   if (!value || value.length === length) {
     return value
@@ -131,3 +134,33 @@ export const padStart = (value, length, character) => {
 }
 
 export const escapeQuote = value => value.replace(/'/g, "\\'")
+
+export const hasPermission = (isPartOfTeam = false, isTeamLead = true, teams = [], permission) => {
+  if (!isPartOfTeam) {
+    return true
+  }
+  if (isPartOfTeam && isTeamLead) {
+    return true
+  }
+  if (isPartOfTeam && (!teams || teams.length === 0)) {
+    return false
+  }
+  return teams.every(t => t.permissions.includes(permission))
+}
+
+export const mapLot = lot => {
+  switch (lot) {
+    case 'atm':
+    case 'digital-outcome':
+      return 'Ask the market'
+    case 'rfx':
+      return 'Seek proposals and quotes'
+    case 'digital-professionals':
+    case 'specialist':
+      return 'Specialist'
+    case 'training':
+      return 'Training'
+    default:
+      return lot
+  }
+}

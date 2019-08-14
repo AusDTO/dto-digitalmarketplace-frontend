@@ -1,0 +1,25 @@
+.teamTable {
+    th {
+        font-size: 1rem;
+    }
+
+    td {
+        padding: 1rem 1rem 1rem 0.25rem;
+    }
+
+    @media (max-width: 575px) {
+        th {
+            padding: 0 0.375rem;
+        }
+    
+        tr {
+            display: block;
+            padding: 1rem 0 1rem 1rem;
+        }
+    
+        td {
+            display: block;
+            padding: 0.375rem;
+        }
+    }
+}

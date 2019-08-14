@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import { rootPath } from 'marketplace/routes'
 import styles from './QuestionAnswer.scss'
 
 const QuestionAnswer = props => (
@@ -22,7 +23,7 @@ const QuestionAnswer = props => (
     {props.showAskQuestionInfo &&
       !props.clarificationQuestionsAreClosed && (
         <p>
-          <a href={`/sellers/opportunities/${props.briefId}/ask-a-question`}>Ask a question</a>
+          <a href={`${rootPath}/brief/${props.briefId}/ask-a-question`}>Ask a question</a>
         </p>
       )}
   </div>

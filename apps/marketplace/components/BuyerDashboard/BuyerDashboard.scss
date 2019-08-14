@@ -1,5 +1,13 @@
+.internalReference {
+  margin-left: 1rem;
+}
+
 .organisation {
   opacity: 0.6;
+}
+
+.subText {
+  color: #999999;
 }
 
 nav.dashNav {
@@ -129,11 +137,11 @@ table.resultListing .colId {
 }
 
 table.resultListing .colName {
-  width: 520px;
+  width: 650px;
 }
 
-table.resultListingTeamOverview .colName {
-  padding-left: 20px;
+table.resultListing .colOwner {
+  width: 350px;
 }
 
 table.resultListing .colClosing {
@@ -141,13 +149,9 @@ table.resultListing .colClosing {
   white-space: nowrap;
 }
 
-table.resultListing .colSubmissions {
+table.resultListing .colQuestion {
   width: 180px;
   white-space: nowrap;
-}
-
-table.resultListing .colAuthor {
-  width: 130px;
 }
 
 table.resultListing .colStatus {
@@ -156,11 +160,6 @@ table.resultListing .colStatus {
 
 table.resultListing .colAction {
   width: 300px;
-  padding-right: 20px;
-}
-
-table.resultListingTeamBriefs .colAction {
-  width: 180px;
   padding-right: 20px;
 }
 
@@ -206,7 +205,7 @@ span.submissionCount {
 
   table.resultListing .colName {
     padding-left: 5px;
-    max-width: 520px;
+    max-width: 650px;
   }
 
   table.resultListing tr {

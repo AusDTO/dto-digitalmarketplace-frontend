@@ -1,0 +1,45 @@
+.bold {
+    font-weight: bold;
+}
+
+a.removeLink {
+    color: red;
+}
+
+.stageContentContainer {
+    margin-top: 1.6rem;
+}
+
+.stageList {
+    margin-top: 0.5rem;
+    padding-left: 1.25rem;
+}
+
+.stageTable {
+    border-collapse: collapse;
+    margin-top: 1rem;
+    width: 100%;
+
+    thead {
+        tr {
+            border-bottom: 2px solid #000000;
+        }
+    }
+
+    th {
+        font-size: 0.875rem;
+        text-align: left;
+    }
+
+    tr {
+        border-bottom: solid 1px #bebebe;
+    }
+
+    tr:nth-child(2n) {
+        background-color: #fafafa;
+    }
+
+    td {
+        padding: 1rem 0.25rem;
+    }
+}

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import { AUcheckbox } from '@gov.au/control-input'
 import styles from './ProgressButtons.scss'
+import { rootPath } from '../../routes'
 
 const ProgressButtons = props => (
   <div className={styles.container}>
@@ -38,16 +39,26 @@ const ProgressButtons = props => (
                 {props.previewText}
               </AUbutton>
             )}
-            <AUbutton
-              type="submit"
-              disabled={!props.publishEnabled}
-              onClick={e => {
-                e.preventDefault()
-                props.onPublish()
-              }}
-            >
-              {props.publishText}
-            </AUbutton>
+            {props.hasPermissionToPublish ? (
+              <AUbutton
+                type="submit"
+                disabled={!props.publishEnabled}
+                onClick={e => {
+                  e.preventDefault()
+                  props.onPublish()
+                }}
+              >
+                {props.publishText}
+              </AUbutton>
+            ) : (
+              <a
+                href={`${rootPath}/request-access/publish_opportunities`}
+                className="au-btn"
+                disabled={!props.publishEnabled}
+              >
+                {props.publishText}
+              </a>
+            )}
           </span>
         )}
       {!props.isFirstStage && !props.isLastStage && <AUbutton type="submit">{props.continueText}</AUbutton>}
@@ -68,6 +79,7 @@ const ProgressButtons = props => (
 
 ProgressButtons.defaultProps = {
   startText: 'Start now',
+  confirmationText: 'I understand that this opportunity will be published on the Digital Marketplace',
   continueText: 'Save and continue',
   previewText: 'Review',
   publishText: 'Publish',
@@ -79,7 +91,8 @@ ProgressButtons.defaultProps = {
   onConfirmationClick: () => {},
   showReturnButton: true,
   showReviewButton: true,
-  showConfirmationCheckbox: true
+  showConfirmationCheckbox: true,
+  hasPermissionToPublish: true
 }
 
 ProgressButtons.propTypes = {
@@ -87,7 +100,7 @@ ProgressButtons.propTypes = {
   continueText: PropTypes.string,
   publishText: PropTypes.string,
   returnText: PropTypes.string,
-  confirmationText: PropTypes.string.isRequired,
+  confirmationText: PropTypes.string,
   isLastStage: PropTypes.bool.isRequired,
   isFirstStage: PropTypes.bool.isRequired,
   publishEnabled: PropTypes.bool,
@@ -96,7 +109,8 @@ ProgressButtons.propTypes = {
   onConfirmationClick: PropTypes.func,
   showReturnButton: PropTypes.bool,
   showReviewButton: PropTypes.bool,
-  showConfirmationCheckbox: PropTypes.bool
+  showConfirmationCheckbox: PropTypes.bool,
+  hasPermissionToPublish: PropTypes.bool
 }
 
 export default ProgressButtons

@@ -84,7 +84,9 @@ export const handleBriefInfoSuccess = response => ({
   type: BRIEF_INFO_FETCH_DATA_SUCCESS,
   brief: response.data.brief,
   briefResponses: response.data.briefResponses,
-  oldWorkOrderCreator: response.data.oldWorkOrderCreator
+  oldWorkOrderCreator: response.data.oldWorkOrderCreator,
+  questionsAsked: response.data.questionsAsked,
+  briefResponseDownloaded: response.data.briefResponseDownloaded
 })
 
 export const handlePublicBriefInfoSuccess = response => ({
@@ -324,4 +326,26 @@ export const handleBriefAwardedSubmit = (briefId, model) => (dispatch, getState)
       'Content-Type': 'application/json'
     },
     data: JSON.stringify(model)
-  }).then(response => response)
+  })
+
+export const submitSupplierQuestion = (briefId, values) => (dispatch, getState) =>
+  dmapi({
+    url: `/brief/${briefId}/ask-a-question`,
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify(values)
+  })
+
+export const publishAnswer = (briefId, values) => (dispatch, getState) =>
+  dmapi({
+    url: `/brief/${briefId}/publish-answer`,
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify(values)
+  })
