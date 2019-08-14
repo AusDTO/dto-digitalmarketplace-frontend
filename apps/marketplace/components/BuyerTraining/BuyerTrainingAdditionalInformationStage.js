@@ -7,7 +7,7 @@ import formProps from 'shared/form/formPropsSelector'
 import Textfield from 'shared/form/Textfield'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
-import ClosingDateControl from 'marketplace/components/BuyerBriefFlow/ClosingDateControl'
+import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import styles from './BuyerTrainingAdditionalInformationStage.scss'
 
@@ -57,13 +57,14 @@ class BuyerTrainingAdditionalInformationStage extends Component {
             contactValidPhone: 'Contact number must be a valid phone number, including an area code'
           }}
         />
-        <ClosingDateControl
-          id="closed_at"
+        <DateControl
+          id="closedAt"
           model={`${model}.closedAt`}
           onDateChange={this.handleDateChange}
-          defaultValue={this.props[this.props.model].closedAt}
+          defaultValue={this.props[model].closedAt}
           className={styles.closingDateControl}
-          description="This date must be at least 2 days after you publish this request and responses will be available after 6pm Canberra time."
+          label="Closing date"
+          description="This date must be at least 2 days after you publish this request. Responses will be available after 6pm Canberra time."
         />
         <Textfield
           model={`${this.props.model}.contactNumber`}

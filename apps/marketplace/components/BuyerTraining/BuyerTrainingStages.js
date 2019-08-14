@@ -1,4 +1,3 @@
-import { validPhoneNumber, dateIs2DaysInFuture } from 'marketplace/components/validators'
 import BuyerTrainingIntroductionStage from './BuyerTrainingIntroductionStage'
 import BuyerTrainingAboutStage, { done as aboutDone } from './BuyerTrainingAboutStage'
 import BuyerTrainingSelectStage, { done as selectDone } from './BuyerTrainingSelectStage'
