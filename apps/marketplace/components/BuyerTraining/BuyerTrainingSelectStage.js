@@ -9,6 +9,11 @@ import SelectedSellersControl from 'marketplace/components/BuyerBriefFlow/Select
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import styles from './BuyerTrainingSelectStage.scss'
 
+const requiredCategory = v => v.sellerCategory
+const requiredSeller = v => !v.sellerCategory || (v.sellers && Object.keys(v.sellers).length > 0)
+
+export const done = v => requiredCategory(v) && requiredSeller(v)
+
 export class BuyerTrainingSelectStage extends Component {
   constructor(props) {
     super(props)
@@ -62,8 +67,8 @@ export class BuyerTrainingSelectStage extends Component {
         model={this.props.model}
         validators={{
           '': {
-            requiredCategory: val => val.sellerCategory,
-            requiredSeller: val => !val.sellerCategory || (val.sellers && Object.keys(val.sellers).length > 0)
+            requiredCategory,
+            requiredSeller
           }
         }}
         onSubmit={this.props.onSubmit}

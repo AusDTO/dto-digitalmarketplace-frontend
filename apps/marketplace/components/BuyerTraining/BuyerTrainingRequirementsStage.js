@@ -32,6 +32,20 @@ const ResponseTemplateHint = (
   </span>
 )
 
+const requiredRequirementsDocument = formValues =>
+  formValues.requirementsDocument &&
+  formValues.requirementsDocument.length > 0 &&
+  formValues.requirementsDocument.every(val => val)
+
+const requiredResponseTemplate = formValues =>
+  !formValues.evaluationType.includes('Response template') ||
+  (formValues.evaluationType.includes('Response template') &&
+    formValues.responseTemplate &&
+    formValues.responseTemplate.length > 0 &&
+    formValues.responseTemplate.every(val => val))
+
+export const done = v => requiredRequirementsDocument(v) && requiredResponseTemplate(v)
+
 export class BuyerTrainingRequirementsStage extends Component {
   constructor(props) {
     super(props)
@@ -71,16 +85,8 @@ export class BuyerTrainingRequirementsStage extends Component {
         model={model}
         validators={{
           '': {
-            requiredRequirementsDocument: formValues =>
-              formValues.requirementsDocument &&
-              formValues.requirementsDocument.length > 0 &&
-              formValues.requirementsDocument.every(val => val),
-            requiredResponseTemplate: formValues =>
-              !formValues.evaluationType.includes('Response template') ||
-              (formValues.evaluationType.includes('Response template') &&
-                formValues.responseTemplate &&
-                formValues.responseTemplate.length > 0 &&
-                formValues.responseTemplate.every(val => val))
+            requiredRequirementsDocument,
+            requiredResponseTemplate
           }
         }}
         onSubmit={this.props.onSubmit}

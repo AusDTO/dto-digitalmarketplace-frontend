@@ -11,6 +11,12 @@ import ClosingDateControl from 'marketplace/components/BuyerBriefFlow/ClosingDat
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import styles from './BuyerTrainingAdditionalInformationStage.scss'
 
+const closingDateIsValid = formValues => formValues.closedAt && dateIs2DaysInFuture(formValues.closedAt)
+const requiredContact = formValues => required(formValues.contactNumber)
+const contactValidPhone = formValues => validPhoneNumber(formValues.contactNumber)
+
+export const done = v => closingDateIsValid(v) && requiredContact(v) && contactValidPhone(v)
+
 class BuyerTrainingAdditionalInformationStage extends Component {
   constructor(props) {
     super(props)
@@ -30,9 +36,9 @@ class BuyerTrainingAdditionalInformationStage extends Component {
         model={model}
         validators={{
           '': {
-            closingDateIsValid: formValues => formValues.closedAt && dateIs2DaysInFuture(formValues.closedAt),
-            requiredContact: formValues => required(formValues.contactNumber),
-            contactValidPhone: formValues => validPhoneNumber(formValues.contactNumber)
+            closingDateIsValid,
+            requiredContact,
+            contactValidPhone
           }
         }}
         onSubmit={this.props.onSubmit}

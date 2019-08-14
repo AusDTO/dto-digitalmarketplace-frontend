@@ -12,16 +12,25 @@ import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import locations from 'marketplace/components/BuyerBriefFlow/Locations'
 import styles from './BuyerTrainingAboutStage.scss'
 
+const requiredTitle = formValues => required(formValues.title)
+const requiredOrg = formValues => required(formValues.organisation)
+const requiredSummary = formValues => required(formValues.summary)
+const requiredWorkingArrangements = formValues => required(formValues.workingArrangements)
+const atLeastOneLocation = formValues => formValues.location && formValues.location.length > 0
+
+export const done = v =>
+  requiredTitle(v) && requiredOrg(v) && requiredSummary(v) && requiredWorkingArrangements(v) && atLeastOneLocation(v)
+
 const BuyerTrainingAboutStage = props => (
   <Form
     model={props.model}
     validators={{
       '': {
-        requiredTitle: formValues => required(formValues.title),
-        requiredOrg: formValues => required(formValues.organisation),
-        requiredSummary: formValues => required(formValues.summary),
-        requiredWorkingArrangements: formValues => required(formValues.workingArrangements),
-        atLeastOneLocation: formValues => formValues.location && formValues.location.length > 0
+        requiredTitle,
+        requiredOrg,
+        requiredSummary,
+        requiredWorkingArrangements,
+        atLeastOneLocation
       }
     }}
     onSubmit={props.onSubmit}

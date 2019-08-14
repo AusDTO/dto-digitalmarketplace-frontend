@@ -8,21 +8,26 @@ import AUheadings from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import styles from './BuyerTrainingResponseFormatsStage.scss'
 
-export const atleastOneFormat = formValues =>
+const atleastOneFormat = formValues =>
   formValues.evaluationType &&
   (formValues.evaluationType.includes('Written proposal') || formValues.evaluationType.includes('Response template'))
 
-export const atleastOneProposal = formValues =>
+const atleastOneProposal = formValues =>
   !formValues.evaluationType.includes('Written proposal') ||
   (formValues.evaluationType.includes('Written proposal') &&
     formValues.proposalType &&
     formValues.proposalType.length > 0)
 
+export const done = v => atleastOneFormat(v) && atleastOneProposal(v)
+
 const BuyerTrainingResponseFormatsStage = props => (
   <Form
     model={props.model}
     validators={{
-      '': { atleastOneFormat, atleastOneProposal }
+      '': {
+        atleastOneFormat,
+        atleastOneProposal
+      }
     }}
     onSubmit={props.onSubmit}
     onSubmitFailed={props.onSubmitFailed}

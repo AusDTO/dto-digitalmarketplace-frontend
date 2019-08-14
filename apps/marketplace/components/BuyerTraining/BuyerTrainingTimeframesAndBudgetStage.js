@@ -9,6 +9,11 @@ import { required } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 
+const startDateRequired = formValues => required(formValues.startDate)
+const contractLengthRequired = formValues => required(formValues.contractLength)
+
+export const done = v => startDateRequired(v) && contractLengthRequired(v)
+
 const BuyerTrainingTimeframesAndBudgetStage = props => (
   <Form
     model={props.model}
@@ -17,8 +22,8 @@ const BuyerTrainingTimeframesAndBudgetStage = props => (
     validateOn="submit"
     validators={{
       '': {
-        startDateRequired: formValues => required(formValues.startDate),
-        contractLengthRequired: formValues => required(formValues.contractLength)
+        startDateRequired,
+        contractLengthRequired
       }
     }}
   >

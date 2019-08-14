@@ -1,15 +1,16 @@
 import { validPhoneNumber, dateIs2DaysInFuture } from 'marketplace/components/validators'
 import BuyerTrainingIntroductionStage from './BuyerTrainingIntroductionStage'
-import BuyerTrainingAboutStage from './BuyerTrainingAboutStage'
-import BuyerTrainingSelectStage from './BuyerTrainingSelectStage'
-import BuyerTrainingRequirementsStage from './BuyerTrainingRequirementsStage'
+import BuyerTrainingAboutStage, { done as aboutDone } from './BuyerTrainingAboutStage'
+import BuyerTrainingSelectStage, { done as selectDone } from './BuyerTrainingSelectStage'
+import BuyerTrainingRequirementsStage, { done as requirementsDone } from './BuyerTrainingRequirementsStage'
 import BuyerTrainingReviewStage from './BuyerTrainingReviewStage'
-import BuyerTrainingAdditionalInformationStage from './BuyerTrainingAdditionalInformationStage'
-import BuyerTrainingResponseFormatsStage, {
-  atleastOneFormat,
-  atleastOneProposal
-} from './BuyerTrainingResponseFormatsStage'
-import BuyerTrainingTimeframesAndBudgetStage from './BuyerTrainingTimeframesAndBudgetStage'
+import BuyerTrainingAdditionalInformationStage, {
+  done as additionalInformationDone
+} from './BuyerTrainingAdditionalInformationStage'
+import BuyerTrainingResponseFormatsStage, { done as responseFormatDone } from './BuyerTrainingResponseFormatsStage'
+import BuyerTrainingTimeframesAndBudgetStage, {
+  done as timeframesAndBudgetDone
+} from './BuyerTrainingTimeframesAndBudgetStage'
 import BuyerEvaluationCriteriaStage, { done as evaluationDone } from '../BuyerBriefFlow/BuyerEvaluationCriteriaStage'
 
 const BuyerTrainingStages = [
@@ -23,40 +24,31 @@ const BuyerTrainingStages = [
     slug: 'select',
     title: 'Who can respond?',
     component: BuyerTrainingSelectStage,
-    isDone: formValues => Object.keys(formValues.sellers).length > 0 && formValues.sellerCategory
+    isDone: selectDone
   },
   {
     slug: 'about',
     title: 'About',
     component: BuyerTrainingAboutStage,
-    isDone: formValues =>
-      formValues.title.length > 0 &&
-      formValues.organisation.length > 0 &&
-      formValues.summary.length > 0 &&
-      formValues.location.length > 0 &&
-      formValues.workingArrangements.length > 0
+    isDone: aboutDone
   },
   {
     slug: 'formats',
     title: 'Response formats',
     component: BuyerTrainingResponseFormatsStage,
-    isDone: formValues => atleastOneFormat(formValues) && atleastOneProposal(formValues)
+    isDone: responseFormatDone
   },
   {
     slug: 'requirements',
     title: 'Requirements',
     component: BuyerTrainingRequirementsStage,
-    isDone: formValues =>
-      formValues.requirementsDocument.length > 0 &&
-      formValues.requirementsDocument.every(val => val) &&
-      (!formValues.evaluationType.includes('Response template') ||
-        (formValues.responseTemplate.length > 0 && formValues.responseTemplate.every(val => val)))
+    isDone: requirementsDone
   },
   {
     slug: 'timeframes',
     title: 'Timeframes and budget',
     component: BuyerTrainingTimeframesAndBudgetStage,
-    isDone: formValues => formValues.startDate.length > 0 && formValues.contractLength.length > 0
+    isDone: timeframesAndBudgetDone
   },
   {
     slug: 'criteria',
@@ -68,8 +60,7 @@ const BuyerTrainingStages = [
     slug: 'additional',
     title: 'Additional information',
     component: BuyerTrainingAdditionalInformationStage,
-    isDone: formValues =>
-      dateIs2DaysInFuture(formValues.closedAt) && formValues.contactNumber && validPhoneNumber(formValues.contactNumber)
+    isDone: additionalInformationDone
   },
   {
     slug: 'review',
