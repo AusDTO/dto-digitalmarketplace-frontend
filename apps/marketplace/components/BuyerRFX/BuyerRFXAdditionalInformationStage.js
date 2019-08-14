@@ -8,9 +8,10 @@ import Textfield from 'shared/form/Textfield'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import ClosingDateControl from 'marketplace/components/BuyerBriefFlow/ClosingDateControl'
-import styles from './BuyerATMClosingStage.scss'
+import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
+import styles from './BuyerRFXAdditionalInformationStage.scss'
 
-class BuyerATMClosingStage extends Component {
+class BuyerRFXAdditionalInformationStage extends Component {
   constructor(props) {
     super(props)
 
@@ -25,6 +26,7 @@ class BuyerATMClosingStage extends Component {
     const { model } = this.props
     return (
       <Form
+        className={styles.closingStageContainer}
         model={model}
         validators={{
           '': {
@@ -38,7 +40,7 @@ class BuyerATMClosingStage extends Component {
         validateOn="submit"
       >
         <AUheading level="1" size="xl">
-          Closing date
+          Additional information
         </AUheading>
         <ErrorAlert
           title="An error occurred"
@@ -55,20 +57,54 @@ class BuyerATMClosingStage extends Component {
           onDateChange={this.handleDateChange}
           defaultValue={this.props[this.props.model].closedAt}
           className={styles.closingDateControl}
-          description="We recommend publishing for at least 2 weeks to allow interested sellers to respond. Responses will be available after 6pm Canberra time on this date."
+          description="This date must be at least 2 days after you publish this request and responses will be available after 6pm Canberra time."
         />
         <Textfield
           model={`${this.props.model}.contactNumber`}
           label="Contact number for Marketplace support"
           description="This number will not be visible on the Digital Marketplace. It will only be used by the Marketplace operations team in case they need to contact you."
-          name="contactNumber"
-          id="contactNumber"
-          htmlFor="contactNumber"
+          name="contact"
+          id="contact"
+          htmlFor="contact"
           defaultValue={this.props[this.props.model].contactNumber}
           maxLength={100}
           validators={{
             required
           }}
+        />
+        <AUheading level="2" size="sm">
+          Comprehensive terms
+        </AUheading>
+        <p className={styles.reduceVerticalSpacing}>
+          We recommend that the{' '}
+          <a href="/api/2/r/comprehensive-terms-current.pdf" rel="noopener noreferrer" target="_blank">
+            comprehensive terms
+          </a>{' '}
+          only be applied to procurements that are complex or high value. The terms will apply to your work order, in
+          addition to the Master Agreement.
+        </p>
+        <p>
+          <CheckboxDetailsField
+            model={`${this.props.model}.comprehensiveTerms`}
+            id={`comprehensiveTerms`}
+            name={`comprehensiveTerms`}
+            label="Apply the comprehensive terms to this opportunity"
+            detailsModel={this.props.model}
+            validators={{}}
+            messages={{}}
+          />
+        </p>
+        <Textfield
+          model={`${this.props.model}.internalReference`}
+          label="Internal reference (optional)"
+          description="For example, business unit or internal procurement ID number. This will not be visible to anyone outside your organisation."
+          name="internalReference"
+          id="internalReference"
+          htmlFor="internalReference"
+          defaultValue={this.props[this.props.model].internalReference}
+          maxLength={100}
+          showMaxLength
+          validators={{}}
         />
         {this.props.formButtons}
       </Form>
@@ -76,12 +112,12 @@ class BuyerATMClosingStage extends Component {
   }
 }
 
-BuyerATMClosingStage.defaultProps = {
+BuyerRFXAdditionalInformationStage.defaultProps = {
   onSubmit: () => {},
   onSubmitFailed: () => {}
 }
 
-BuyerATMClosingStage.propTypes = {
+BuyerRFXAdditionalInformationStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   onSubmit: PropTypes.func,
@@ -96,4 +132,4 @@ const mapDispatchToProps = (dispatch, props) => ({
   setDate: date => dispatch(actions.change(`${props.model}.closedAt`, date))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerATMClosingStage)
+export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFXAdditionalInformationStage)
