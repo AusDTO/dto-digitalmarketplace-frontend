@@ -486,7 +486,7 @@ const Opportunity = props => {
           ) : (
             <React.Fragment>
               <AUheading level="2" size="lg">
-                {brief.lotSlug === 'specialist' ? 'Selection' : 'Evaluation'}{' '}criteria
+                {brief.lotSlug === 'specialist' ? 'Selection' : 'Evaluation'} criteria
               </AUheading>
               <EvaluationCriteria
                 title={'Essential criteria'}
@@ -496,16 +496,16 @@ const Opportunity = props => {
                 showWeightings={brief.includeWeightingsEssential}
               />
               {brief.niceToHaveRequirements &&
-               brief.niceToHaveRequirements.length > 0 &&
-               brief.niceToHaveRequirements[0].criteria && (
-                <EvaluationCriteria
-                  title={'Desirable criteria'}
-                  titleLevel="3"
-                  titleSize="sm"
-                  evaluationCriteria={brief.niceToHaveRequirements}
-                  showWeightings={brief.includeWeightingsNiceToHave}
-                />
-              )}
+                brief.niceToHaveRequirements.length > 0 &&
+                brief.niceToHaveRequirements[0].criteria && (
+                  <EvaluationCriteria
+                    title={'Desirable criteria'}
+                    titleLevel="3"
+                    titleSize="sm"
+                    evaluationCriteria={brief.niceToHaveRequirements}
+                    showWeightings={brief.includeWeightingsNiceToHave}
+                  />
+                )}
             </React.Fragment>
           )}
           {brief.lotSlug === 'specialist' && (

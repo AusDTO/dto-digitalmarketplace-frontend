@@ -7,7 +7,7 @@ import BuyerRFXReviewStage from './BuyerRFXReviewStage'
 import BuyerRFXClosingStage from './BuyerRFXClosingStage'
 import BuyerRFXResponseFormatsStage, { atleastOneFormat, atleastOneProposal } from './BuyerRFXResponseFormatsStage'
 import BuyerRFXTimeframesAndBudgetStage from './BuyerRFXTimeframesAndBudgetStage'
-import BuyerEvaluationCriteriaStage, { done as evaluationDone} from '../BuyerBriefFlow/BuyerEvaluationCriteriaStage'
+import BuyerEvaluationCriteriaStage, { done as evaluationDone } from '../BuyerBriefFlow/BuyerEvaluationCriteriaStage'
 
 const BuyerRFXStages = [
   {

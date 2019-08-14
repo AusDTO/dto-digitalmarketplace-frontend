@@ -10,9 +10,7 @@ import BuyerTrainingResponseFormatsStage, {
   atleastOneProposal
 } from './BuyerTrainingResponseFormatsStage'
 import BuyerTrainingTimeframesAndBudgetStage from './BuyerTrainingTimeframesAndBudgetStage'
-import BuyerEvaluationCriteriaStage, {
-  done as evaluationDone 
-} from '../BuyerBriefFlow/BuyerEvaluationCriteriaStage'
+import BuyerEvaluationCriteriaStage, { done as evaluationDone } from '../BuyerBriefFlow/BuyerEvaluationCriteriaStage'
 
 const BuyerTrainingStages = [
   {

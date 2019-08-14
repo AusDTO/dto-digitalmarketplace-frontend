@@ -9,9 +9,7 @@ import BuyerSpecialistResponseFormatsStage, { done as responseFormatDone } from 
 import BuyerSpecialistTimeframesAndBudgetStage, {
   done as timeframesDone
 } from './BuyerSpecialistTimeframesAndBudgetStage'
-import BuyerEvaluationCriteriaStage, {
-  done as evaluationDone
-} from '../BuyerBriefFlow/BuyerEvaluationCriteriaStage'
+import BuyerEvaluationCriteriaStage, { done as evaluationDone } from '../BuyerBriefFlow/BuyerEvaluationCriteriaStage'
 
 const BuyerSpecialistStages = [
   {
