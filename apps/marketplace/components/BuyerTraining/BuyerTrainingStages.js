@@ -4,7 +4,7 @@ import BuyerTrainingAboutStage from './BuyerTrainingAboutStage'
 import BuyerTrainingSelectStage from './BuyerTrainingSelectStage'
 import BuyerTrainingRequirementsStage from './BuyerTrainingRequirementsStage'
 import BuyerTrainingReviewStage from './BuyerTrainingReviewStage'
-import BuyerTrainingClosingStage from './BuyerTrainingClosingStage'
+import BuyerTrainingAdditionalInformationStage from './BuyerTrainingAdditionalInformationStage'
 import BuyerTrainingResponseFormatsStage, {
   atleastOneFormat,
   atleastOneProposal
@@ -65,9 +65,9 @@ const BuyerTrainingStages = [
     isDone: evaluationDone
   },
   {
-    slug: 'closing',
-    title: 'Closing date',
-    component: BuyerTrainingClosingStage,
+    slug: 'additional',
+    title: 'Additional information',
+    component: BuyerTrainingAdditionalInformationStage,
     isDone: formValues =>
       dateIs2DaysInFuture(formValues.closedAt) && formValues.contactNumber && validPhoneNumber(formValues.contactNumber)
   },

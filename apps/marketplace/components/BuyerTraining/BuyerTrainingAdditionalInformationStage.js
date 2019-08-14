@@ -9,9 +9,9 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import ClosingDateControl from 'marketplace/components/BuyerBriefFlow/ClosingDateControl'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
-import styles from './BuyerTrainingClosingStage.scss'
+import styles from './BuyerTrainingAdditionalInformationStage.scss'
 
-class BuyerTrainingClosingStage extends Component {
+class BuyerTrainingAdditionalInformationStage extends Component {
   constructor(props) {
     super(props)
 
@@ -40,7 +40,7 @@ class BuyerTrainingClosingStage extends Component {
         validateOn="submit"
       >
         <AUheading level="1" size="xl">
-          Closing date
+          Additional information
         </AUheading>
         <ErrorAlert
           title="An error occurred"
@@ -94,18 +94,30 @@ class BuyerTrainingClosingStage extends Component {
             messages={{}}
           />
         </p>
+        <Textfield
+          model={`${this.props.model}.internalReference`}
+          label="Internal reference (optional)"
+          description="For example, business unit or internal procurement ID number. This will not be visible to anyone outside your organisation."
+          name="internalReference"
+          id="internalReference"
+          htmlFor="internalReference"
+          defaultValue={this.props[this.props.model].internalReference}
+          maxLength={100}
+          showMaxLength
+          validators={{}}
+        />
         {this.props.formButtons}
       </Form>
     )
   }
 }
 
-BuyerTrainingClosingStage.defaultProps = {
+BuyerTrainingAdditionalInformationStage.defaultProps = {
   onSubmit: () => {},
   onSubmitFailed: () => {}
 }
 
-BuyerTrainingClosingStage.propTypes = {
+BuyerTrainingAdditionalInformationStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   onSubmit: PropTypes.func,
@@ -120,4 +132,4 @@ const mapDispatchToProps = (dispatch, props) => ({
   setDate: date => dispatch(actions.change(`${props.model}.closedAt`, date))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerTrainingClosingStage)
+export default connect(mapStateToProps, mapDispatchToProps)(BuyerTrainingAdditionalInformationStage)
