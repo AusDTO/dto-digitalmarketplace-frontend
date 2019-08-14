@@ -7,11 +7,7 @@ import BuyerRFXReviewStage from './BuyerRFXReviewStage'
 import BuyerRFXClosingStage from './BuyerRFXClosingStage'
 import BuyerRFXResponseFormatsStage, { atleastOneFormat, atleastOneProposal } from './BuyerRFXResponseFormatsStage'
 import BuyerRFXTimeframesAndBudgetStage from './BuyerRFXTimeframesAndBudgetStage'
-import BuyerRFXEvaluationCriteriaStage, {
-  weightingsAddUpTo100,
-  noEmptyWeightings,
-  noEmptyCriteria
-} from './BuyerRFXEvaluationCriteriaStage'
+import BuyerEvaluationCriteriaStage, { done as evaluationDone} from '../BuyerBriefFlow/BuyerEvaluationCriteriaStage'
 
 const BuyerRFXStages = [
   {
@@ -62,12 +58,8 @@ const BuyerRFXStages = [
   {
     slug: 'criteria',
     title: 'Evaluation criteria',
-    component: BuyerRFXEvaluationCriteriaStage,
-    isDone: formValues =>
-      formValues.evaluationCriteria.length > 0 &&
-      noEmptyCriteria(formValues) &&
-      noEmptyWeightings(formValues) &&
-      weightingsAddUpTo100(formValues)
+    component: BuyerEvaluationCriteriaStage,
+    isDone: evaluationDone
   },
   {
     slug: 'closing',

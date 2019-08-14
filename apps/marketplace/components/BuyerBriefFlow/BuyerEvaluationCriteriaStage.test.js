@@ -4,14 +4,14 @@ import Adapter from 'enzyme-adapter-react-16'
 import configureStore from 'marketplace/store'
 import { Provider } from 'react-redux'
 import { actions } from 'react-redux-form'
-import BuyerTrainingEvaluationCriteriaStage, { weightingsAddUpTo100 } from './BuyerTrainingEvaluationCriteriaStage'
+import BuyerEvaluationCriteriaStage, { weightingsAddUpTo100 } from './BuyerEvaluationCriteriaStage'
 
 Enzyme.configure({ adapter: new Adapter() })
 
 test('include weightings checkbox adds the weightings inputs', () => {
   const evaluationCriteria = [{ criteria: '', weighting: '' }]
   const state = {
-    BuyerTrainingForm: {
+    BuyerForm: {
       evaluationCriteria
     }
   }
@@ -19,7 +19,7 @@ test('include weightings checkbox adds the weightings inputs', () => {
 
   const component = mount(
     <Provider store={store}>
-      <BuyerTrainingEvaluationCriteriaStage model="BuyerTrainingForm" BuyerTrainingForm={state.BuyerTrainingForm} />
+      <BuyerEvaluationCriteriaStage model="BuyerForm" BuyerForm={state.BuyerForm} />
     </Provider>
   )
 
@@ -33,7 +33,7 @@ test('include weightings checkbox adds the weightings inputs', () => {
 test('disabling weightings clears the current weighting values', () => {
   const evaluationCriteria = [{ criteria: 'this', weighting: '50' }, { criteria: 'that', weighting: '50' }]
   const state = {
-    BuyerTrainingForm: {
+    BuyerForm: {
       evaluationCriteria
     }
   }
@@ -41,7 +41,7 @@ test('disabling weightings clears the current weighting values', () => {
 
   const component = mount(
     <Provider store={store}>
-      <BuyerTrainingEvaluationCriteriaStage model="BuyerTrainingForm" BuyerTrainingForm={state.BuyerTrainingForm} />
+      <BuyerEvaluationCriteriaStage model="BuyerForm" BuyerForm={state.BuyerForm} />
     </Provider>
   )
 
@@ -73,18 +73,18 @@ test('disabling weightings clears the current weighting values', () => {
 test('removing a criteria', () => {
   const evaluationCriteria = [{ criteria: 'this', weighting: '75' }, { criteria: 'that', weighting: '25' }]
   const state = {
-    BuyerTrainingForm: {
+    BuyerForm: {
       evaluationCriteria,
       includeWeightings: true
     }
   }
   const store = configureStore()
-  store.dispatch(actions.change(`BuyerTrainingForm.evaluationCriteria`, state.BuyerTrainingForm.evaluationCriteria))
-  store.dispatch(actions.change(`BuyerTrainingForm.includeWeightings`, state.BuyerTrainingForm.includeWeightings))
+  store.dispatch(actions.change(`BuyerForm.evaluationCriteria`, state.BuyerForm.evaluationCriteria))
+  store.dispatch(actions.change(`BuyerForm.includeWeightings`, state.BuyerForm.includeWeightings))
 
   const component = mount(
     <Provider store={store}>
-      <BuyerTrainingEvaluationCriteriaStage model="BuyerTrainingForm" BuyerTrainingForm={state.BuyerTrainingForm} />
+      <BuyerEvaluationCriteriaStage model="BuyerForm" BuyerForm={state.BuyerForm} />
     </Provider>
   )
 
@@ -100,18 +100,18 @@ test('removing a criteria', () => {
 test('adding a criteria', () => {
   const evaluationCriteria = [{ criteria: 'this', weighting: '75' }, { criteria: 'that', weighting: '25' }]
   const state = {
-    BuyerTrainingForm: {
+    BuyerForm: {
       evaluationCriteria,
       includeWeightings: true
     }
   }
   const store = configureStore()
-  store.dispatch(actions.change(`BuyerTrainingForm.evaluationCriteria`, state.BuyerTrainingForm.evaluationCriteria))
-  store.dispatch(actions.change(`BuyerTrainingForm.includeWeightings`, state.BuyerTrainingForm.includeWeightings))
+  store.dispatch(actions.change(`BuyerForm.evaluationCriteria`, state.BuyerForm.evaluationCriteria))
+  store.dispatch(actions.change(`BuyerForm.includeWeightings`, state.BuyerForm.includeWeightings))
 
   const component = mount(
     <Provider store={store}>
-      <BuyerTrainingEvaluationCriteriaStage model="BuyerTrainingForm" BuyerTrainingForm={state.BuyerTrainingForm} />
+      <BuyerEvaluationCriteriaStage model="BuyerForm" BuyerForm={state.BuyerForm} />
     </Provider>
   )
 

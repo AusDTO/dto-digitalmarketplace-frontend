@@ -9,9 +9,9 @@ import BuyerSpecialistResponseFormatsStage, { done as responseFormatDone } from 
 import BuyerSpecialistTimeframesAndBudgetStage, {
   done as timeframesDone
 } from './BuyerSpecialistTimeframesAndBudgetStage'
-import BuyerSpecialistEvaluationCriteriaStage, {
+import BuyerEvaluationCriteriaStage, {
   done as evaluationDone
-} from './BuyerSpecialistEvaluationCriteriaStage'
+} from '../BuyerBriefFlow/BuyerEvaluationCriteriaStage'
 
 const BuyerSpecialistStages = [
   {
@@ -35,7 +35,7 @@ const BuyerSpecialistStages = [
   {
     slug: 'criteria',
     title: 'Selection criteria',
-    component: BuyerSpecialistEvaluationCriteriaStage,
+    component: BuyerEvaluationCriteriaStage,
     isDone: evaluationDone
   },
   {

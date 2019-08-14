@@ -128,6 +128,17 @@ const BuyerTrainingResponseFormatsStage = props => (
     <div className={styles.formats}>
       <CheckboxDetailsField
         model={`${props.model}.evaluationType[]`}
+        id={`response_format_interview`}
+        name={`response_format_interview`}
+        label="Interview"
+        description="An interview can help you understand a seller's approach to deliver your outcome, e.g. by demonstrating a live product or technical prototype."
+        value="Interview"
+        detailsModel={props.model}
+        validators={{}}
+        messages={{}}
+      />
+      <CheckboxDetailsField
+        model={`${props.model}.evaluationType[]`}
         id={`response_format_presentation`}
         name={`response_format_presentation`}
         label="Presentation"

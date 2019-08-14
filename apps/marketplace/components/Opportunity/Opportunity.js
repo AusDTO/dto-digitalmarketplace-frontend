@@ -458,10 +458,12 @@ const Opportunity = props => {
                   </AUheading>
                 )}
                 {(brief.evaluationType.includes('Demonstration') ||
+                  brief.evaluationType.includes('Interview') ||
                   brief.evaluationType.includes('Presentation') ||
                   brief.evaluationType.includes('Prototype')) && (
                   <ul>
                     {brief.evaluationType.includes('Demonstration') && <li>Demonstration</li>}
+                    {brief.evaluationType.includes('Interview') && <li>Interview</li>}
                     {brief.evaluationType.includes('Presentation') && <li>Presentation</li>}
                     {brief.evaluationType.includes('Prototype') && <li>Prototype</li>}
                   </ul>
@@ -475,39 +477,37 @@ const Opportunity = props => {
                 {brief.industryBriefing && (canRespond || isInvited || isBriefOwner) && <p>{brief.industryBriefing}</p>}
               </div>
             )}
-          {brief.lotSlug !== 'specialist' && (
+          {brief.evaluationCriteria && brief.evaluationCriteria.length > 0 ? (
             <EvaluationCriteria
               title={brief.lotSlug === 'atm' ? 'Response criteria' : 'Evaluation criteria'}
               evaluationCriteria={brief.evaluationCriteria}
               showWeightings={brief.includeWeightings}
             />
-          )}
-          {brief.lotSlug === 'specialist' && (
-            <AUheading level="2" size="lg">
-              Selection criteria
-            </AUheading>
-          )}
-          {brief.lotSlug === 'specialist' && (
-            <EvaluationCriteria
-              title={'Essential criteria'}
-              titleLevel="3"
-              titleSize="sm"
-              evaluationCriteria={brief.essentialRequirements}
-              showWeightings={brief.includeWeightingsEssential}
-            />
-          )}
-          {brief.lotSlug === 'specialist' &&
-            brief.niceToHaveRequirements &&
-            brief.niceToHaveRequirements.length > 0 &&
-            brief.niceToHaveRequirements[0].criteria && (
+          ) : (
+            <React.Fragment>
+              <AUheading level="2" size="lg">
+                {brief.lotSlug === 'specialist' ? 'Selection' : 'Evaluation'}{' '}criteria
+              </AUheading>
               <EvaluationCriteria
-                title={'Desirable criteria'}
+                title={'Essential criteria'}
                 titleLevel="3"
                 titleSize="sm"
-                evaluationCriteria={brief.niceToHaveRequirements}
-                showWeightings={brief.includeWeightingsNiceToHave}
+                evaluationCriteria={brief.essentialRequirements}
+                showWeightings={brief.includeWeightingsEssential}
               />
-            )}
+              {brief.niceToHaveRequirements &&
+               brief.niceToHaveRequirements.length > 0 &&
+               brief.niceToHaveRequirements[0].criteria && (
+                <EvaluationCriteria
+                  title={'Desirable criteria'}
+                  titleLevel="3"
+                  titleSize="sm"
+                  evaluationCriteria={brief.niceToHaveRequirements}
+                  showWeightings={brief.includeWeightingsNiceToHave}
+                />
+              )}
+            </React.Fragment>
+          )}
           {brief.lotSlug === 'specialist' && (
             <React.Fragment>
               <AUheading level="2" size="lg">

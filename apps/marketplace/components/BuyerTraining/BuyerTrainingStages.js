@@ -10,11 +10,9 @@ import BuyerTrainingResponseFormatsStage, {
   atleastOneProposal
 } from './BuyerTrainingResponseFormatsStage'
 import BuyerTrainingTimeframesAndBudgetStage from './BuyerTrainingTimeframesAndBudgetStage'
-import BuyerTrainingEvaluationCriteriaStage, {
-  weightingsAddUpTo100,
-  noEmptyWeightings,
-  noEmptyCriteria
-} from './BuyerTrainingEvaluationCriteriaStage'
+import BuyerEvaluationCriteriaStage, {
+  done as evaluationDone 
+} from '../BuyerBriefFlow/BuyerEvaluationCriteriaStage'
 
 const BuyerTrainingStages = [
   {
@@ -65,12 +63,8 @@ const BuyerTrainingStages = [
   {
     slug: 'criteria',
     title: 'Evaluation criteria',
-    component: BuyerTrainingEvaluationCriteriaStage,
-    isDone: formValues =>
-      formValues.evaluationCriteria.length > 0 &&
-      noEmptyCriteria(formValues) &&
-      noEmptyWeightings(formValues) &&
-      weightingsAddUpTo100(formValues)
+    component: BuyerEvaluationCriteriaStage,
+    isDone: evaluationDone
   },
   {
     slug: 'closing',

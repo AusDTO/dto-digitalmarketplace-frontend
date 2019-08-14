@@ -9,7 +9,7 @@ import Textfield from 'shared/form/Textfield'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
-import styles from './BuyerSpecialistEvaluationCriteriaStage.scss'
+import styles from './BuyerEvaluationCriteriaStage.scss'
 
 const noEmptyWeightingsEssential = v =>
   !v.includeWeightingsEssential || v.essentialRequirements.every(val => val.weighting)
@@ -56,7 +56,7 @@ export const done = v =>
   noZeroWeightingsNiceToHave(v) &&
   noEmptyCriteriaNiceToHave(v)
 
-class BuyerSpecialistEvaluationCriteriaStage extends Component {
+class BuyerEvaluationCriteriaStage extends Component {
   constructor(props) {
     super(props)
     this.handleIncludeWeightingsEssentialChange = this.handleIncludeWeightingsEssentialChange.bind(this)
@@ -132,7 +132,7 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
         validateOn="submit"
       >
         <AUheadings level="1" size="xl">
-          Selection criteria
+          Evaluation criteria
         </AUheadings>
         <ErrorAlert
           title="An error occurred"
@@ -202,7 +202,7 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
                         />
                         {i === this.props[this.props.model].essentialRequirements.length - 1 && (
                           <div className={styles.weightingRemaining}>
-                            {BuyerSpecialistEvaluationCriteriaStage.getRemainingWeighting(
+                            {BuyerEvaluationCriteriaStage.getRemainingWeighting(
                               this.props[this.props.model].essentialRequirements
                             )}% remaining
                           </div>
@@ -292,7 +292,7 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
                         />
                         {i === this.props[this.props.model].niceToHaveRequirements.length - 1 && (
                           <div className={styles.weightingRemaining}>
-                            {BuyerSpecialistEvaluationCriteriaStage.getRemainingWeighting(
+                            {BuyerEvaluationCriteriaStage.getRemainingWeighting(
                               this.props[this.props.model].niceToHaveRequirements
                             )}% remaining
                           </div>
@@ -334,7 +334,7 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
   }
 }
 
-BuyerSpecialistEvaluationCriteriaStage.defaultProps = {
+BuyerEvaluationCriteriaStage.defaultProps = {
   clearWeightingsFromEssentialCriteria: () => {},
   clearWeightingsFromNiceToHaveCriteria: () => {},
   addEmptyEvalutationCriteria: () => {},
@@ -343,7 +343,7 @@ BuyerSpecialistEvaluationCriteriaStage.defaultProps = {
   onSubmitFailed: () => {}
 }
 
-BuyerSpecialistEvaluationCriteriaStage.propTypes = {
+BuyerEvaluationCriteriaStage.propTypes = {
   model: PropTypes.string.isRequired,
   clearWeightingsFromEssentialCriteria: PropTypes.func,
   clearWeightingsFromNiceToHaveCriteria: PropTypes.func,
@@ -390,4 +390,4 @@ const mapDispatchToProps = (dispatch, props) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerSpecialistEvaluationCriteriaStage)
+export default connect(mapStateToProps, mapDispatchToProps)(BuyerEvaluationCriteriaStage)
