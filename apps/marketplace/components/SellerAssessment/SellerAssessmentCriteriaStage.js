@@ -17,9 +17,8 @@ const getCriteriaNeeded = (criteriaNeeded, priceMaximum, maxDailyRate) => {
   return adjustedCriteriaNeeded
 }
 
-const getCriteriaAllowed = (criteriaNeeded, priceMaximum, maxDailyRate) => {
-  return getCriteriaNeeded(criteriaNeeded, priceMaximum, maxDailyRate) + 2
-}
+const getCriteriaAllowed = (criteriaNeeded, priceMaximum, maxDailyRate) =>
+  getCriteriaNeeded(criteriaNeeded, priceMaximum, maxDailyRate) + 2
 
 const minimumCriteriaMet = (v, d) =>
   d.criteriaNeeded &&
