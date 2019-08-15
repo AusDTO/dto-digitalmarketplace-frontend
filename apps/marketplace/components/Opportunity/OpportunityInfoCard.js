@@ -78,12 +78,6 @@ const OpportunityInfoCard = props => (
             )}
           </span>
         )}
-        {props.isBuyer && !props.isBriefOwner && (
-          <a href={`mailto:${props.buyerEmail}`} className="au-btn au-btn--secondary au-btn--block">
-            Contact the buyer
-          </a>
-        )}
-
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
