@@ -1,12 +1,10 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import format from 'date-fns/format'
 import { rootPath } from 'marketplace/routes'
 import NotVisible from 'marketplace/components/Icons/NotVisible/NotVisible'
-import { getBriefLastQuestionDate, hasPermission } from 'marketplace/components/helpers'
+import { getBriefLastQuestionDate } from 'marketplace/components/helpers'
 import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import EvaluationCriteria from './EvaluationCriteria'
 import QuestionAnswer from './QuestionAnswer'
@@ -109,23 +107,10 @@ const Opportunity = props => {
     hasSupplierErrors,
     isInvited,
     hasSignedCurrentAgreement,
-    supplierCode,
-    isPartOfTeam,
-    isTeamLead,
-    teams
+    supplierCode
   } = props
   const brief = { ...defaultBriefProps, ...props.brief }
   const category = getBriefCategory(domains, brief.sellerCategory)
-  if (brief.status === 'draft') {
-    if (
-      !(
-        hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') ||
-        hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities')
-      )
-    ) {
-      return <Redirect to={`${rootPath}/request-access/create_drafts`} />
-    }
-  }
   return (
     <div>
       <div className="row">
@@ -302,37 +287,34 @@ const Opportunity = props => {
               </div>
             )}
             {brief.lotSlug === 'specialist' && brief.securityClearance && (
-              <div>
-                <div className="row">
-                  <div className="col-xs-12 col-sm-4">
-                    <strong>Security clearance</strong>
-                  </div>
-                  <div className={`col-xs-12 col-sm-8 ${styles.newLines}`}>
-                    {brief.securityClearance === 'noneRequired' && 'None required'}
-                    {brief.securityClearance === 'abilityToObtain' && (
-                      <span>
-                        {'Ability to obtain '}
-                        {brief.securityClearanceObtain === 'baseline' && 'baseline'}
-                        {brief.securityClearanceObtain === 'nv1' && 'negative vetting level 1'}
-                        {brief.securityClearanceObtain === 'nv2' && 'negative vetting level 2'}
-                        {brief.securityClearanceObtain === 'pv' && 'positive vetting'}
-                        {' clearance'}
-                      </span>
-                    )}
-                    {brief.securityClearance === 'mustHave' && (
-                      <span>
-                        {'Must have current '}
-                        {brief.securityClearanceCurrent === 'baseline' && 'baseline'}
-                        {brief.securityClearanceCurrent === 'nv1' && 'negative vetting level 1'}
-                        {brief.securityClearanceCurrent === 'nv2' && 'negative vetting level 2'}
-                        {brief.securityClearanceCurrent === 'pv' && 'positive vetting'}
-                        {' clearance'}
-                      </span>
-                    )}
-                    {brief.securityClearance === 'other' && brief.securityClearanceOther}
-                  </div>
+              <div className="row">
+                <div className="col-xs-12 col-sm-4">
+                  <strong>Security clearance</strong>
                 </div>
-                <div className="col-xs-12 col-sm-8">{brief.securityClearance}</div>
+                <div className={`col-xs-12 col-sm-8 ${styles.newLines}`}>
+                  {brief.securityClearance === 'noneRequired' && 'None required'}
+                  {brief.securityClearance === 'abilityToObtain' && (
+                    <span>
+                      {'Ability to obtain '}
+                      {brief.securityClearanceObtain === 'baseline' && 'baseline'}
+                      {brief.securityClearanceObtain === 'nv1' && 'negative vetting level 1'}
+                      {brief.securityClearanceObtain === 'nv2' && 'negative vetting level 2'}
+                      {brief.securityClearanceObtain === 'pv' && 'positive vetting'}
+                      {' clearance'}
+                    </span>
+                  )}
+                  {brief.securityClearance === 'mustHave' && (
+                    <span>
+                      {'Must have current '}
+                      {brief.securityClearanceCurrent === 'baseline' && 'baseline'}
+                      {brief.securityClearanceCurrent === 'nv1' && 'negative vetting level 1'}
+                      {brief.securityClearanceCurrent === 'nv2' && 'negative vetting level 2'}
+                      {brief.securityClearanceCurrent === 'pv' && 'positive vetting'}
+                      {' clearance'}
+                    </span>
+                  )}
+                  {brief.securityClearance === 'other' && brief.securityClearanceOther}
+                </div>
               </div>
             )}
           </div>
@@ -442,7 +424,6 @@ const Opportunity = props => {
                     )}
                     {brief.evaluationType.includes('Case study') && <li>Case study</li>}
                     {brief.evaluationType.includes('References') && <li>References</li>}
-                    {brief.evaluationType.includes('Résumés') && <li>Résumés</li>}
                   </ul>
                 )}
               {(brief.evaluationType.includes('Demonstration') || brief.evaluationType.includes('Presentation')) && (
@@ -744,10 +725,4 @@ Opportunity.propTypes = {
   supplierCode: PropTypes.number
 }
 
-const mapStateToProps = state => ({
-  teams: state.app.teams,
-  isTeamLead: state.app.isTeamLead,
-  isPartOfTeam: state.app.isPartOfTeam
-})
-
-export default connect(mapStateToProps)(Opportunity)
+export default Opportunity
