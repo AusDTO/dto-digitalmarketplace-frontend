@@ -4,7 +4,7 @@ import BuyerATMAboutStage from './BuyerATMAboutStage'
 import BuyerATMSelectStage from './BuyerATMSelectStage'
 import BuyerATMObjectivesStage from './BuyerATMObjectivesStage'
 import BuyerATMReviewStage from './BuyerATMReviewStage'
-import BuyerATMClosingStage from './BuyerATMClosingStage'
+import BuyerATMAdditionalInformationStage from './BuyerATMAdditionalInformationStage'
 import BuyerATMResponseFormatsStage from './BuyerATMResponseFormatsStage'
 import BuyerATMTimeframesAndBudgetStage from './BuyerATMTimeframesAndBudgetStage'
 import BuyerATMEvaluationCriteriaStage, {
@@ -69,9 +69,9 @@ const BuyerATMStages = [
       weightingsAddUpTo100(formValues)
   },
   {
-    slug: 'closing',
-    title: 'Closing date',
-    component: BuyerATMClosingStage,
+    slug: 'additional',
+    title: 'Additional information',
+    component: BuyerATMAdditionalInformationStage,
     isDone: formValues =>
       dateIs2DaysInFuture(formValues.closedAt) && formValues.contactNumber && validPhoneNumber(formValues.contactNumber)
   },

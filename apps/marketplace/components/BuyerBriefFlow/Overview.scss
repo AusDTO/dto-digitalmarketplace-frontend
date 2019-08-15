@@ -2,14 +2,20 @@ svg.tick {
   margin-right: 0.75rem;
 }
 
-small.briefTitle {
-  opacity: 0.6;
-  font-weight: 400;
-  display: block;
-}
-
 div.header {
   position: relative;
+
+  .internalReference {
+    margin-left: 0.75rem;
+  }
+
+  .tagLine {
+    opacity: 0.6;
+  }
+
+  .overviewHeading {
+    margin-top: 0;
+  }
 }
 
 div.headerMenu {
