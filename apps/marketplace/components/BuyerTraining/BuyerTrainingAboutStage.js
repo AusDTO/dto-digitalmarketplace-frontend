@@ -127,7 +127,7 @@ const BuyerTrainingAboutStage = props => (
         required
       }}
       messages={{
-        limitWords: 'Your working arrangements has exceeded the 150 word limit'
+        limitWords: 'Your working arrangements have exceeded the 150 word limit'
       }}
     />
     <Textfield
