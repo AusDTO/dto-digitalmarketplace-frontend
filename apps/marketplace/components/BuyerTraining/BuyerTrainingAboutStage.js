@@ -93,7 +93,7 @@ const BuyerTrainingAboutStage = props => (
         required
       }}
       messages={{
-        limitWords: 'Your summary has exceeded the 150 word limit'
+        limitWords: 'Your summary has exceeded the 200 word limit'
       }}
     />
     <AUheadings level="2" size="sm">
