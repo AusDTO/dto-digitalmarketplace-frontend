@@ -11,7 +11,7 @@ const BuyerTrainingIntroductionStage = props => (
     <AUheadings level="2" size="sm">
       Use this service to:
     </AUheadings>
-    <p>Request propposals from specific sellers to build digital skills and expertise.</p>
+    <p>Request proposals from specific sellers to build digital skills and expertise.</p>
     <AUheadings level="2" size="sm">
       What you get:
     </AUheadings>
