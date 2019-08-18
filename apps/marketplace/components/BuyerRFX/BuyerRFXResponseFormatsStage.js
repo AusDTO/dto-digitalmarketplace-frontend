@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Form } from 'react-redux-form'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import formProps from 'shared/form/formPropsSelector'
-import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import styles from './BuyerRFXResponseFormatsStage.scss'
 
@@ -28,9 +28,9 @@ const BuyerRFXResponseFormatsStage = props => (
     onSubmitFailed={props.onSubmitFailed}
     validateOn="submit"
   >
-    <AUheadings level="1" size="xl">
+    <AUheading level="1" size="xl">
       Response formats
-    </AUheadings>
+    </AUheading>
     <ErrorAlert
       title="An error occurred"
       model={props.model}
@@ -39,9 +39,9 @@ const BuyerRFXResponseFormatsStage = props => (
         atleastOneProposal: 'You must select at least one proposal type.'
       }}
     />
-    <AUheadings level="2" size="md">
+    <AUheading level="2" size="md">
       Select what sellers need to provide through the Marketplace:
-    </AUheadings>
+    </AUheading>
     <div className={styles.formats}>
       <CheckboxDetailsField
         model={`${props.model}.evaluationType[]`}
@@ -122,9 +122,9 @@ const BuyerRFXResponseFormatsStage = props => (
         messages={{}}
       />
     </div>
-    <AUheadings level="2" size="md">
+    <AUheading level="2" size="md">
       Select any additional assessment methods:
-    </AUheadings>
+    </AUheading>
     <div className={styles.formats}>
       <CheckboxDetailsField
         model={`${props.model}.evaluationType[]`}

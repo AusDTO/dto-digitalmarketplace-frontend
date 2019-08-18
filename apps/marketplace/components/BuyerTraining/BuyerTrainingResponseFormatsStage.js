@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Form } from 'react-redux-form'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import formProps from 'shared/form/formPropsSelector'
-import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import styles from './BuyerTrainingResponseFormatsStage.scss'
 
@@ -33,9 +33,9 @@ const BuyerTrainingResponseFormatsStage = props => (
     onSubmitFailed={props.onSubmitFailed}
     validateOn="submit"
   >
-    <AUheadings level="1" size="xl">
+    <AUheading level="1" size="xl">
       Response formats
-    </AUheadings>
+    </AUheading>
     <ErrorAlert
       title="An error occurred"
       model={props.model}
@@ -44,14 +44,14 @@ const BuyerTrainingResponseFormatsStage = props => (
         atleastOneProposal: 'You must select at least one proposal type.'
       }}
     />
-    <AUheadings level="2" size="md">
+    <AUheading level="2" size="md">
       Select what sellers need to provide through the Marketplace:
-    </AUheadings>
+    </AUheading>
     <div className={styles.formats}>
       <CheckboxDetailsField
         model={`${props.model}.evaluationType[]`}
-        id={`response_format_proposal`}
-        name={`response_format_proposal`}
+        id="response_format_proposal"
+        name="response_format_proposal"
         label="Written proposal"
         description="Select what you would like sellers to include:"
         value="Written proposal"
@@ -63,8 +63,8 @@ const BuyerTrainingResponseFormatsStage = props => (
         <div className={styles.subFormats}>
           <CheckboxDetailsField
             model={`${props.model}.proposalType[]`}
-            id={`proposal_costings`}
-            name={`proposal_costings`}
+            id="proposal_costings"
+            name="proposal_costings"
             label="Breakdown of costs"
             value="Breakdown of costs"
             detailsModel={props.model}
@@ -85,8 +85,8 @@ const BuyerTrainingResponseFormatsStage = props => (
           />
           <CheckboxDetailsField
             model={`${props.model}.proposalType[]`}
-            id={`proposal_references`}
-            name={`proposal_references`}
+            id="proposal_references"
+            name="proposal_references"
             label="References"
             value="References"
             detailsModel={props.model}
@@ -96,8 +96,8 @@ const BuyerTrainingResponseFormatsStage = props => (
           />
           <CheckboxDetailsField
             model={`${props.model}.proposalType[]`}
-            id={`proposal_resumes`}
-            name={`proposal_resumes`}
+            id="proposal_resumes"
+            name="proposal_resumes"
             label="Résumés"
             value="Résumés"
             detailsModel={props.model}
@@ -109,8 +109,8 @@ const BuyerTrainingResponseFormatsStage = props => (
       </div>
       <CheckboxDetailsField
         model={`${props.model}.evaluationType[]`}
-        id={`response_format_template`}
-        name={`response_format_template`}
+        id="response_format_template"
+        name="response_format_template"
         label="Completed response template"
         description={
           <span>
@@ -127,14 +127,14 @@ const BuyerTrainingResponseFormatsStage = props => (
         messages={{}}
       />
     </div>
-    <AUheadings level="2" size="md">
+    <AUheading level="2" size="md">
       Select any additional assessment methods:
-    </AUheadings>
+    </AUheading>
     <div className={styles.formats}>
       <CheckboxDetailsField
         model={`${props.model}.evaluationType[]`}
-        id={`response_format_interview`}
-        name={`response_format_interview`}
+        id="response_format_interview"
+        name="response_format_interview"
         label="Interview"
         description="An interview can help you understand a seller's approach to deliver your outcome, e.g. by demonstrating a live product or technical prototype."
         value="Interview"
@@ -144,8 +144,8 @@ const BuyerTrainingResponseFormatsStage = props => (
       />
       <CheckboxDetailsField
         model={`${props.model}.evaluationType[]`}
-        id={`response_format_presentation`}
-        name={`response_format_presentation`}
+        id="response_format_presentation"
+        name="response_format_presentation"
         label="Presentation"
         description="A presentation can help you understand a seller's approach to deliver your outcome, e.g. by demonstrating a live product or technical prototype."
         value="Presentation"

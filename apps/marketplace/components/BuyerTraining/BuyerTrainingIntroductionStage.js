@@ -1,24 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
-import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 
 const BuyerTrainingIntroductionStage = props => (
   <Form model={props.model} onSubmit={props.onSubmit}>
-    <AUheadings level="1" size="xl">
+    <AUheading level="1" size="xl">
       Get training to build digital skills
-    </AUheadings>
-    <AUheadings level="2" size="sm">
+    </AUheading>
+    <AUheading level="2" size="sm">
       Use this service to:
-    </AUheadings>
+    </AUheading>
     <p>Request proposals from specific sellers to build digital skills and expertise.</p>
-    <AUheadings level="2" size="sm">
+    <AUheading level="2" size="sm">
       What you get:
-    </AUheadings>
+    </AUheading>
     <p>Proposals and/or a completed response template used by your agency.</p>
-    <AUheadings level="2" size="sm">
+    <AUheading level="2" size="sm">
       Before you start:
-    </AUheadings>
+    </AUheading>
     <ul>
       <li>
         The{' '}

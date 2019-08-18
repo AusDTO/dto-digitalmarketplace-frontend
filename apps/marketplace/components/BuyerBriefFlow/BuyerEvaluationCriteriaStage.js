@@ -7,7 +7,7 @@ import formProps from 'shared/form/formPropsSelector'
 import Textarea from 'shared/form/Textarea'
 import Textfield from 'shared/form/Textfield'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
-import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import styles from './BuyerEvaluationCriteriaStage.scss'
 
@@ -131,9 +131,9 @@ class BuyerEvaluationCriteriaStage extends Component {
         onSubmitFailed={this.props.onSubmitFailed}
         validateOn="submit"
       >
-        <AUheadings level="1" size="xl">
+        <AUheading level="1" size="xl">
           Evaluation criteria
-        </AUheadings>
+        </AUheading>
         <ErrorAlert
           title="An error occurred"
           model={this.props.model}
@@ -148,9 +148,9 @@ class BuyerEvaluationCriteriaStage extends Component {
             noEmptyCriteriaNiceToHave: 'You cannot leave any weightings blank.'
           }}
         />
-        <AUheadings level="2" size="lg">
+        <AUheading level="2" size="lg">
           Essential criteria
-        </AUheadings>
+        </AUheading>
         <p>
           <CheckboxDetailsField
             model={`${this.props.model}.includeWeightingsEssential`}
@@ -238,9 +238,9 @@ class BuyerEvaluationCriteriaStage extends Component {
             Add another criteria
           </a>
         </div>
-        <AUheadings level="2" size="lg">
+        <AUheading level="2" size="lg">
           Desirable criteria (optional)
-        </AUheadings>
+        </AUheading>
         <p>
           <CheckboxDetailsField
             model={`${this.props.model}.includeWeightingsNiceToHave`}

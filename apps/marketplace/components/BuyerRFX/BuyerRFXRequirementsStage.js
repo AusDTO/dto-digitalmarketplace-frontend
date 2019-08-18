@@ -6,7 +6,7 @@ import formProps from 'shared/form/formPropsSelector'
 import FilesInput from 'shared/form/FilesInput'
 import Textarea from 'shared/form/Textarea'
 import dmapi from 'marketplace/services/apiClient'
-import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import range from 'lodash/range'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
@@ -86,9 +86,9 @@ export class BuyerRFXRequirementsStage extends Component {
         onSubmit={this.props.onSubmit}
         validateOn="submit"
       >
-        <AUheadings level="1" size="xl">
+        <AUheading level="1" size="xl">
           Requirements
-        </AUheadings>
+        </AUheading>
         <AUcallout description="" className={styles.noticeBar}>
           <strong>
             Only invited sellers and other buyers can view attached documents. Only invited sellers can view industry
@@ -104,9 +104,9 @@ export class BuyerRFXRequirementsStage extends Component {
           }}
         />
         <p>Documents must be in .DOC .XLS .PPT or .PDF format.</p>
-        <AUheadings level="2" size="sm">
+        <AUheading level="2" size="sm">
           Requirements document
-        </AUheadings>
+        </AUheading>
         <FilesInput
           title="Requirements document"
           description={RequirementsTemplateHint}
@@ -123,9 +123,9 @@ export class BuyerRFXRequirementsStage extends Component {
         />
         {this.props[model].evaluationType.includes('Response template') && (
           <div>
-            <AUheadings level="2" size="sm">
+            <AUheading level="2" size="sm">
               Response template
-            </AUheadings>
+            </AUheading>
             <FilesInput
               title="Response template"
               description={ResponseTemplateHint}
@@ -142,9 +142,9 @@ export class BuyerRFXRequirementsStage extends Component {
             />
           </div>
         )}
-        <AUheadings level="2" size="sm">
+        <AUheading level="2" size="sm">
           Additional documents (optional)
-        </AUheadings>
+        </AUheading>
         {range(this.state.fileCount).map(i => (
           <FilesInput
             key={i}

@@ -37,9 +37,9 @@ const BuyerTrainingAboutStage = props => (
     onSubmitFailed={props.onSubmitFailed}
     validateOn="submit"
   >
-    <AUheadings level="1" size="xl">
+    <AUheading level="1" size="xl">
       About
-    </AUheadings>
+    </AUheading>
     <ErrorAlert
       title="An error occurred"
       model={props.model}
@@ -96,9 +96,9 @@ const BuyerTrainingAboutStage = props => (
         limitWords: 'Your summary has exceeded the 200 word limit'
       }}
     />
-    <AUheadings level="2" size="sm">
+    <AUheading level="2" size="sm">
       Where can the work be done?
-    </AUheadings>
+    </AUheading>
     <div className={styles.locations}>
       {Object.keys(locations).map(key => (
         <CheckboxDetailsField
