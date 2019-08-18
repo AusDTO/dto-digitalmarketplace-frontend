@@ -45,8 +45,8 @@ const BuyerRFXResponseFormatsStage = props => (
     <div className={styles.formats}>
       <CheckboxDetailsField
         model={`${props.model}.evaluationType[]`}
-        id={`response_format_proposal`}
-        name={`response_format_proposal`}
+        id="response_format_proposal"
+        name="response_format_proposal"
         label="Written proposal"
         description="Select what you would like sellers to include:"
         value="Written proposal"
@@ -58,8 +58,8 @@ const BuyerRFXResponseFormatsStage = props => (
         <div className={styles.subFormats}>
           <CheckboxDetailsField
             model={`${props.model}.proposalType[]`}
-            id={`proposal_costings`}
-            name={`proposal_costings`}
+            id="proposal_costings"
+            name="proposal_costings"
             label="Breakdown of costs"
             value="Breakdown of costs"
             detailsModel={props.model}
@@ -69,8 +69,8 @@ const BuyerRFXResponseFormatsStage = props => (
           />
           <CheckboxDetailsField
             model={`${props.model}.proposalType[]`}
-            id={`proposal_casestudy`}
-            name={`proposal_casestudy`}
+            id="proposal_casestudy"
+            name="proposal_casestudy"
             label="Case study"
             value="Case study"
             detailsModel={props.model}
@@ -80,8 +80,8 @@ const BuyerRFXResponseFormatsStage = props => (
           />
           <CheckboxDetailsField
             model={`${props.model}.proposalType[]`}
-            id={`proposal_references`}
-            name={`proposal_references`}
+            id="proposal_references"
+            name="proposal_references"
             label="References"
             value="References"
             detailsModel={props.model}
@@ -91,8 +91,8 @@ const BuyerRFXResponseFormatsStage = props => (
           />
           <CheckboxDetailsField
             model={`${props.model}.proposalType[]`}
-            id={`proposal_resumes`}
-            name={`proposal_resumes`}
+            id="proposal_resumes"
+            name="proposal_resumes"
             label="Résumés"
             value="Résumés"
             detailsModel={props.model}
@@ -104,8 +104,8 @@ const BuyerRFXResponseFormatsStage = props => (
       </div>
       <CheckboxDetailsField
         model={`${props.model}.evaluationType[]`}
-        id={`response_format_template`}
-        name={`response_format_template`}
+        id="response_format_template"
+        name="response_format_template"
         label="Completed response template"
         description={
           <span>
@@ -128,8 +128,8 @@ const BuyerRFXResponseFormatsStage = props => (
     <div className={styles.formats}>
       <CheckboxDetailsField
         model={`${props.model}.evaluationType[]`}
-        id={`response_format_interview`}
-        name={`response_format_interview`}
+        id="response_format_interview"
+        name="response_format_interview"
         label="Interview"
         description="An interview can help you understand a seller's approach to deliver your outcome, e.g. by demonstrating a live product or technical prototype."
         value="Interview"
@@ -139,8 +139,8 @@ const BuyerRFXResponseFormatsStage = props => (
       />
       <CheckboxDetailsField
         model={`${props.model}.evaluationType[]`}
-        id={`response_format_presentation`}
-        name={`response_format_presentation`}
+        id="response_format_presentation"
+        name="response_format_presentation"
         label="Presentation"
         description="A presentation can help you understand a seller's approach to deliver your outcome, e.g. by demonstrating a live product or technical prototype."
         value="Presentation"
