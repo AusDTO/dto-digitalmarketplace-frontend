@@ -121,7 +121,9 @@ const mapStateToProps = (state, {documentsUrl, onClick, ...rest}) => {
   // calculate badges
   seller_type = Object.assign({}, {
     product: !isEmpty(state.application.products),
-    recruitment: ((recruiter === 'yes' || recruiter === 'both'))
+    recruiter_only: recruiter === 'yes',
+    consultant_only: recruiter === 'no',
+    recruiter_both: recruiter === 'both'
   }, seller_type);
 
   let caseStudyLink = null;

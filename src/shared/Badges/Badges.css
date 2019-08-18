@@ -23,6 +23,15 @@
 .badge__recruitment {
   background-color: #880e48;
 }
+.badge__recruiter_only {
+  background-color: #880e48;
+}
+.badge__recruiter_both {
+  background-color: #880e48;
+}
+.badge__consultant_only {
+  background-color: #880e48;
+}
 .badge__start_up {
   background-color: #152d3b;
 }
