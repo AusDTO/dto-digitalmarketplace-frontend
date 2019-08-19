@@ -219,7 +219,7 @@ class EvidenceAssessment extends React.Component {
                     name={`criteria-review-${criteriaId}`}
                     id={`criteria-review-${criteriaId}-yes`}
                     value="yes"
-                    checked={this.state.criteria[criteriaId].demonstrates === true}
+                    checked={evidence.approvedCriteria.includes(criteriaId) || this.state.criteria[criteriaId].demonstrates === true}
                     onChange={e => this.handleCriteriaReviewClick(e, criteriaId)}
                     block
                   />
