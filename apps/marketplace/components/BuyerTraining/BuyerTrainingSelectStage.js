@@ -48,13 +48,19 @@ export class BuyerTrainingSelectStage extends Component {
   }
 
   render() {
+    const {
+      domains,
+      formButtons,
+      model,
+      onSubmit
+    } = this.props
     const categories = [
       {
         value: '',
         text: 'Select category'
       }
     ]
-    this.props.domains.map(domain => {
+    domains.map(domain => {
       categories.push({
         value: domain.id,
         text: domain.name
@@ -62,16 +68,18 @@ export class BuyerTrainingSelectStage extends Component {
       return true
     })
 
+    const domain = domains.find(i => i.id === this.props[model].sellerCategory)
+
     return (
       <Form
-        model={this.props.model}
+        model={model}
         validators={{
           '': {
             requiredCategory,
             requiredSeller
           }
         }}
-        onSubmit={this.props.onSubmit}
+        onSubmit={onSubmit}
         validateOn="submit"
       >
         <AUheading level="1" size="xl">
@@ -79,7 +87,7 @@ export class BuyerTrainingSelectStage extends Component {
         </AUheading>
         <ErrorAlert
           title="An error occurred"
-          model={this.props.model}
+          model={model}
           messages={{
             requiredCategory: 'You must select at least one panel category',
             requiredSeller: 'You must select at least one seller'
@@ -92,7 +100,7 @@ export class BuyerTrainingSelectStage extends Component {
                 label="Seller name"
                 description={
                   <span>
-                    Only sellers approved in the category you have selected can respond. You can see each seller&apos;s
+                    Only sellers approved in {domain && domain.name} can respond. You can see each seller&apos;s
                     categories in the{' '}
                     <a href="/search/sellers" target="_blank" rel="noopener noreferrer">
                       seller catalogue
@@ -104,17 +112,17 @@ export class BuyerTrainingSelectStage extends Component {
                 categories={categories}
                 onSellerSelect={this.handleSellerSelect}
                 onSellerCategorySelect={this.handleSellerCategorySelect}
-                selectedCategory={this.props[this.props.model].sellerCategory}
+                selectedCategory={this.props[model].sellerCategory}
               />
             </div>
             <SelectedSellersControl
               id="selected-sellers"
-              model={`${this.props.model}.sellers`}
+              model={`${model}.sellers`}
               onRemoveClick={sellerCode => this.removeSeller(sellerCode)}
             />
           </div>
         </div>
-        {this.props.formButtons}
+        {formButtons}
       </Form>
     )
   }
