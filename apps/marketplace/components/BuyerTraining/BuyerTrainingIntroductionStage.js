@@ -29,7 +29,7 @@ const BuyerTrainingIntroductionStage = props => (
       </li>
       <li>
         View the{' '}
-        <a href="/api/2/r/support-article" target="_blank">
+        <a href="/api/2/r/training-support-article" target="_blank">
           support article
         </a>{' '}
         to see recommended questions and find appropriate sellers to approach.
