@@ -95,7 +95,7 @@ export class BuyerTrainingSelectStage extends Component {
                 label="Seller name"
                 description={
                   <span>
-                    Only sellers approved in {domain && domain.name} can respond. You can see each seller&apos;s
+                    Only sellers approved in <b>{domain && domain.name}</b> can respond. You can see each seller&apos;s
                     categories in the{' '}
                     <a href="/search/sellers" target="_blank" rel="noopener noreferrer">
                       seller catalogue
