@@ -222,6 +222,7 @@ class EvidenceAssessment extends React.Component {
                     checked={evidence.approvedCriteria.includes(criteriaId) || this.state.criteria[criteriaId].demonstrates === true}
                     onChange={e => this.handleCriteriaReviewClick(e, criteriaId)}
                     block
+                    disabled={evidence.approvedCriteria.includes(criteriaId)}
                   />
                   <AUradio
                     label="Does not demonstrate"
@@ -231,6 +232,7 @@ class EvidenceAssessment extends React.Component {
                     checked={this.state.criteria[criteriaId].demonstrates === false}
                     onChange={e => this.handleCriteriaReviewClick(e, criteriaId)}
                     block
+                    disabled={evidence.approvedCriteria.includes(criteriaId)}
                   />
                   {this.state.criteria[criteriaId].demonstrates === false && (
                     <span styleName="feedback">
