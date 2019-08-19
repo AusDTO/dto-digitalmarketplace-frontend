@@ -48,12 +48,7 @@ export class BuyerTrainingSelectStage extends Component {
   }
 
   render() {
-    const {
-      domains,
-      formButtons,
-      model,
-      onSubmit
-    } = this.props
+    const { domains, formButtons, model, onSubmit } = this.props
     const categories = [
       {
         value: '',
