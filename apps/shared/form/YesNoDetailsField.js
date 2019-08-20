@@ -101,4 +101,7 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(YesNoDetailsField)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(YesNoDetailsField)

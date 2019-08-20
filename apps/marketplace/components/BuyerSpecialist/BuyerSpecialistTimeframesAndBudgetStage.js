@@ -117,4 +117,7 @@ const mapDispatchToProps = (dispatch, props) => ({
   setDate: date => dispatch(actions.change(`${props.model}.startDate`, date))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerSpecialistTimeframesAndBudgetStage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BuyerSpecialistTimeframesAndBudgetStage)

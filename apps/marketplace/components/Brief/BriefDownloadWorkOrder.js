@@ -27,7 +27,7 @@ export class BriefDownloadWorkOrder extends Component {
           for simple or low value procurements.
         </p>
         <p>
-          <AUbutton href="/api/2/r/simple-work-order.docx" rel="noopener noreferrer" target="_blank">
+          <AUbutton link="/api/2/r/simple-work-order.docx" rel="noopener noreferrer" target="_blank">
             Download simple work order
           </AUbutton>
         </p>
@@ -46,7 +46,7 @@ export class BriefDownloadWorkOrder extends Component {
               suitable for hiring specialists.
             </p>
             <p>
-              <AUbutton href="/api/2/r/specialist-work-order.docx" rel="noopener noreferrer" target="_blank">
+              <AUbutton link="/api/2/r/specialist-work-order.docx" rel="noopener noreferrer" target="_blank">
                 Download specialist work order
               </AUbutton>
             </p>
@@ -61,7 +61,7 @@ export class BriefDownloadWorkOrder extends Component {
                   suitable for high-value or high-risk procurements.
                 </p>
                 <p>
-                  <AUbutton href="/api/2/r/complex-work-order.docx" rel="noopener noreferrer" target="_blank">
+                  <AUbutton link="/api/2/r/complex-work-order.docx" rel="noopener noreferrer" target="_blank">
                     Download complex work order
                   </AUbutton>
                 </p>
@@ -76,7 +76,8 @@ export class BriefDownloadWorkOrder extends Component {
           Other work orders are available on the{' '}
           <a href="/api/2/r/templates-page" rel="noopener noreferrer" target="_blank">
             templates page
-          </a>.
+          </a>
+          .
         </p>
         <p>
           <a href={`${rootPath}/buyer-dashboard`}>Return to dashboard</a>

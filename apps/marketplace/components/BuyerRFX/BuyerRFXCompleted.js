@@ -22,7 +22,8 @@ const BuyerRFXCompleted = props => (
         While your opportunity is live, you&apos;ll need to{' '}
         <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000579716#live" rel="external">
           answer seller questions
-        </a>.
+        </a>
+        .
       </li>
       <li>
         We will send an email to <strong>{props.contactEmail}</strong> when the opportunity closes, so you can download

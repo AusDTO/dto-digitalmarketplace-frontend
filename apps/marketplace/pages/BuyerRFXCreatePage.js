@@ -50,4 +50,7 @@ const mapDispatchToProps = dispatch => ({
   createRFXBrief: () => dispatch(createRFXBrief())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFXCreatePage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BuyerRFXCreatePage)

@@ -358,7 +358,10 @@ label.text-box-number-label {
 .buyer-dashboard-actions .au-accordion__title:after, .buyer-dashboard-actions .au-accordion__title:hover:after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E %3Cpath fill='%23ffffff' d='M64 0l64 64-16 16-64-64'/%3E %3Cpath fill='%23ffffff' d='M64 0l16 16-64 64L0 64'/%3E%3C/svg%3E");
 }
-.opportunities-page .au-accordion__body.au-accordion--open, .buyer-dashboard-actions .au-accordion__body.au-accordion--open {
+.opportunities-page .au-accordion__body.au-accordion--open, .opportunities-page .au-accordion__body.au-accordion--closed {
+  margin-top: 7px;
+}
+.buyer-dashboard-actions .au-accordion__body.au-accordion--open, .buyer-dashboard-actions .au-accordion__body.au-accordion--closed {
   margin-top: 7px;
 }
 
@@ -374,10 +377,10 @@ label.text-box-number-label {
     width: 225px;
   }
 
-  .opportunities-page .au-accordion__body.au-accordion--open {
+  .opportunities-page .au-accordion__body.au-accordion--open, .opportunities-page .au-accordion__body.au-accordion--closed {
     position: relative;
-    width: 310px;
-    margin-left: -147px;
+    width: 320px;
+    margin-left: -120px;
     z-index: 1;
   }
   .buyer-dashboard-actions .au-accordion__body.au-accordion--open {
@@ -399,13 +402,13 @@ label.text-box-number-label {
     width: 225px;
   }
 
-  .opportunities-page .au-accordion__body.au-accordion--open {
+  .opportunities-page .au-accordion__body.au-accordion--open, .opportunities-page .au-accordion__body.au-accordion--closed {
     position: relative;
-    width: 310px;
-    margin-left: -109px;
+    width: 320px;
+    margin-left: -120px;
     z-index: 1;
   }
-  .buyer-dashboard-actions .au-accordion__body.au-accordion--open {
+  .buyer-dashboard-actions .au-accordion__body.au-accordion--open, .buyer-dashboard-actions .au-accordion__body.au-accordion--closed {
     position: relative;
     width: 225px;
     z-index: 1;
@@ -413,13 +416,13 @@ label.text-box-number-label {
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
-  .opportunities-page .au-accordion__body.au-accordion--open {
+  .opportunities-page .au-accordion__body.au-accordion--open, .opportunities-page .au-accordion__body.au-accordion--closed {
     position: absolute;
-    width: 310px;
+    width: 320px;
     margin-left: -10px;
     z-index: 1;
   }
-  .buyer-dashboard-actions .au-accordion__body.au-accordion--open {
+  .buyer-dashboard-actions .au-accordion__body.au-accordion--open, .buyer-dashboard-actions .au-accordion__body.au-accordion--closed {
     position: absolute;
     width: 225px;
     margin-left: -10px;
@@ -691,12 +694,12 @@ li:first-child.au-marketplace-header-link-list a {
   z-index: 1;
 }
 
-.au-marketplace-header-actions .au-accordion a {
+.au-marketplace-header-actions .au-accordion a, .au-marketplace-header-actions .au-accordion button {
   color: #ffffff;
   text-decoration: none;
 }
 
-.au-marketplace-header-actions a.au-accordion__title {
+.au-marketplace-header-actions button.au-accordion__title {
   background: none;
   font-size: 1rem;
   max-width: 23ch;
@@ -705,12 +708,12 @@ li:first-child.au-marketplace-header-link-list a {
   white-space: nowrap;
 }
 
-.au-marketplace-header-actions a.au-accordion__title:after,
-.au-marketplace-header-actions a.au-accordion__title:hover:after {
+.au-marketplace-header-actions button.au-accordion__title:after,
+.au-marketplace-header-actions button.au-accordion__title:hover:after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E %3Cpath fill='%23ffffff' d='M64 0l64 64-16 16-64-64'/%3E %3Cpath fill='%23ffffff' d='M64 0l16 16-64 64L0 64'/%3E%3C/svg%3E");
 }
 
-.au-marketplace-header-actions a.au-accordion__title:hover {
+.au-marketplace-header-actions button.au-accordion__title:hover {
   color: #ffffff;
 }
 
@@ -874,7 +877,6 @@ li:first-child.au-marketplace-header-link-list a {
   margin-top: -8px;
   margin-top: -.5rem;
   width: 100%;
-  border-bottom: solid 1px #a2a2a2;
 }
 
 .footer__legal {

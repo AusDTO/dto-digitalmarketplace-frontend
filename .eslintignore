@@ -1,4 +1,4 @@
 **/*.js
-!apps/
-!fixtures/
+!apps/**/*.js
+!fixtures/**/*.js
 fixtures/node_modules/
