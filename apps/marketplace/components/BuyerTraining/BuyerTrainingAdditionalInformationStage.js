@@ -93,7 +93,7 @@ class BuyerTrainingAdditionalInformationStage extends Component {
         <p>
           <CheckboxDetailsField
             model={`${this.props.model}.comprehensiveTerms`}
-            id={`comprehensiveTerms`}
+            id="comprehensiveTerms"
             name={`comprehensiveTerms`}
             label="Apply the comprehensive terms to this opportunity"
             detailsModel={this.props.model}
