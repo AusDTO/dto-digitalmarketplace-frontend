@@ -449,14 +449,12 @@ class SellerAssessmentEvidenceStage extends Component {
                     return true
                   }}
                 />
-                <p>
-                  Your evidence for the criteria should:
-                  <ul>
-                    <li>Explain the activities you were specifically responsible for, what you did, and why.</li>
-                    <li>Avoid ambiguity e.g. &apos;we have extensive experience in...&apos;.</li>
-                    <li>Describe the result or outcome of your activities.</li>
-                  </ul>
-                </p>
+                <p>Your evidence for the criteria should:</p>
+                <ul>
+                  <li>Explain the activities you were specifically responsible for, what you did, and why.</li>
+                  <li>Avoid ambiguity e.g. &apos;we have extensive experience in...&apos;.</li>
+                  <li>Describe the result or outcome of your activities.</li>
+                </ul>
                 <Textarea
                   key={criteriaId}
                   model={`${this.props.model}.evidence[${criteriaId}].response`}

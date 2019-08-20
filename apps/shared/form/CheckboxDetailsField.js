@@ -39,6 +39,7 @@ class CheckboxDetailsField extends React.Component {
           className="au-control-input__input"
           onClick={e => {
             this.onToggle.bind(this)
+            this.onToggle(e)
             onChange(e)
           }}
           id={id}
