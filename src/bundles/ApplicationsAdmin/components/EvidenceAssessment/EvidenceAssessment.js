@@ -20,7 +20,7 @@ class EvidenceAssessment extends React.Component {
     if (this.props.evidence) {
       Object.keys(this.props.evidence.data.evidence).map(criteriaId => {
         criteria[criteriaId] = {
-          demonstrates: undefined,
+          demonstrates: this.props.evidence.approvedCriteria.includes(criteriaId) ? true : undefined,
           reason: '',
           feedback: ''
         }
