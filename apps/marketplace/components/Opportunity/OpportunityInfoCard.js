@@ -7,14 +7,13 @@ import styles from './OpportunityInfoCard.scss'
 const OpportunityInfoCard = props => (
   <div className={styles.container}>
     <div className="row">
-      {!props.isOpenToAll &&
-        !props.isOpenToCategory && (
-          <div className="col-xs-6">
-            <strong className={styles.stat}>{props.sellersInvited}</strong>
-            <br />
-            seller{props.sellersInvited === 1 ? '' : 's'} invited
-          </div>
-        )}
+      {!props.isOpenToAll && !props.isOpenToCategory && (
+        <div className="col-xs-6">
+          <strong className={styles.stat}>{props.sellersInvited}</strong>
+          <br />
+          seller{props.sellersInvited === 1 ? '' : 's'} invited
+        </div>
+      )}
       <div className="col-xs-6">
         <strong className={styles.stat}>{props.sellersApplied}</strong>
         <br />
@@ -24,68 +23,66 @@ const OpportunityInfoCard = props => (
     </div>
     <div className="row">
       <div className="col-xs-12">
-        {props.isOpen &&
-          props.closingDate && (
-            <div>
-              <span>Closes in</span>
-              <br />
-              <strong className={styles.stat}>
-                <ClosedDate countdown date={props.closingDate} />
-              </strong>
-            </div>
-          )}
+        {props.isOpen && props.closingDate && (
+          <div>
+            <span>Closes in</span>
+            <br />
+            <strong className={styles.stat}>
+              <ClosedDate countdown date={props.closingDate} />
+            </strong>
+          </div>
+        )}
       </div>
     </div>
     <div className="row">
       <div className="col-xs-12">
-        {!props.isOpen &&
-          props.briefStatus !== 'draft' && <p className={styles.invitedStatus}>This opportunity has closed.</p>}
-        {props.isOpen &&
-          !props.loggedIn && (
-            <span>
-              {props.isOpenToAll ? (
-                <span>
-                  <p>Any assessed seller can respond.</p>
-                  <p>
-                    <a
-                      href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000634456-Responding-to-an-opportunity"
-                      className="au-btn au-btn--block"
-                    >
-                      How to respond
-                    </a>
-                    <a
-                      href={`/login?next=${encodeURIComponent(
-                        `${rootPath}/digital-marketplace/opportunities/${props.briefId}`
-                      )}`}
-                      className="au-btn au-btn--secondary au-btn--block"
-                    >
-                      Login
-                    </a>
-                  </p>
-                </span>
-              ) : (
-                <span>
-                  <p>Only signed in {!props.isOpenToCategory && 'invited'} sellers can apply.</p>
-                  <p>
-                    <a
-                      href={`/login?next=${encodeURIComponent(
-                        `${rootPath}/digital-marketplace/opportunities/${props.briefId}`
-                      )}`}
-                      className="au-btn au-btn--block"
-                    >
-                      Login
-                    </a>
-                  </p>
-                </span>
-              )}
-            </span>
-          )}
-        {props.isBuyer &&
-          !props.isBriefOwner && (
-            <a href={`mailto:${props.buyerEmail}`} className="au-btn au-btn--secondary au-btn--block">
-              Contact the buyer
-            </a>
-          )}
+        {!props.isOpen && props.briefStatus !== 'draft' && (
+          <p className={styles.invitedStatus}>This opportunity has closed.</p>
+        )}
+        {props.isOpen && !props.loggedIn && (
+          <span>
+            {props.isOpenToAll ? (
+              <span>
+                <p>Any assessed seller can respond.</p>
+                <p>
+                  <a
+                    href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000634456-Responding-to-an-opportunity"
+                    className="au-btn au-btn--block"
+                  >
+                    How to respond
+                  </a>
+                  <a
+                    href={`/login?next=${encodeURIComponent(
+                      `${rootPath}/digital-marketplace/opportunities/${props.briefId}`
+                    )}`}
+                    className="au-btn au-btn--secondary au-btn--block"
+                  >
+                    Login
+                  </a>
+                </p>
+              </span>
+            ) : (
+              <span>
+                <p>Only signed in {!props.isOpenToCategory && 'invited'} sellers can apply.</p>
+                <p>
+                  <a
+                    href={`/login?next=${encodeURIComponent(
+                      `${rootPath}/digital-marketplace/opportunities/${props.briefId}`
+                    )}`}
+                    className="au-btn au-btn--block"
+                  >
+                    Login
+                  </a>
+                </p>
+              </span>
+            )}
+          </span>
+        )}
+        {props.isBuyer && !props.isBriefOwner && (
+          <a href={`mailto:${props.buyerEmail}`} className="au-btn au-btn--secondary au-btn--block">
+            Contact the buyer
+          </a>
+        )}
 
         {props.isOpen &&
           props.loggedIn &&
@@ -103,23 +100,21 @@ const OpportunityInfoCard = props => (
               </p>
             </span>
           )}
-        {props.isOpen &&
-          props.loggedIn &&
-          props.isApplicant && (
-            <span>
-              <p className={styles.invitedStatus}>
-                Only approved sellers can apply.
-                {props.isAwaitingApplicationAssessment && <span> Your application is currently being assessed.</span>}
+        {props.isOpen && props.loggedIn && props.isApplicant && (
+          <span>
+            <p className={styles.invitedStatus}>
+              Only approved sellers can apply.
+              {props.isAwaitingApplicationAssessment && <span> Your application is currently being assessed.</span>}
+            </p>
+            {!props.isAwaitingApplicationAssessment && (
+              <p>
+                <a href="/sellers/application" className="au-btn au-btn--block">
+                  Continue application
+                </a>
               </p>
-              {!props.isAwaitingApplicationAssessment && (
-                <p>
-                  <a href="/sellers/application" className="au-btn au-btn--block">
-                    Continue application
-                  </a>
-                </p>
-              )}
-            </span>
-          )}
+            )}
+          </span>
+        )}
         {props.isOpen &&
           props.loggedIn &&
           (props.briefLot === 'atm' && props.isRecruiterOnly) &&
@@ -171,17 +166,16 @@ const OpportunityInfoCard = props => (
                 {props.isAwaitingDomainAssessment && (
                   <span> Your application for this category is currently being assessed.</span>
                 )}
-                {!props.isAwaitingDomainAssessment &&
-                  props.hasEvidenceInDraftForCategory && (
-                    <span>
-                      {' '}
-                      You currently have a{' '}
-                      <a href={`${rootPath}/seller-assessment/${props.draftEvidenceId}/introduction`}>
-                        draft submission
-                      </a>{' '}
-                      for assessment in this category.
-                    </span>
-                  )}
+                {!props.isAwaitingDomainAssessment && props.hasEvidenceInDraftForCategory && (
+                  <span>
+                    {' '}
+                    You currently have a{' '}
+                    <a href={`${rootPath}/seller-assessment/${props.draftEvidenceId}/introduction`}>
+                      draft submission
+                    </a>{' '}
+                    for assessment in this category.
+                  </span>
+                )}
                 {!props.isAwaitingDomainAssessment &&
                   props.hasLatestEvidenceRejectedForCategory &&
                   props.rejectedEvidenceId && (

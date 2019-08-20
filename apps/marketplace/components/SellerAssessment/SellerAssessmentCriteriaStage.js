@@ -92,11 +92,8 @@ class SellerAssessmentCriteriaStage extends Component {
         />
         <p>
           <strong>
-            Select the criteria you will provide evidence for ({getCriteriaNeeded(
-              domain.criteriaNeeded,
-              domain.priceMaximum,
-              this.props[this.props.model].maxDailyRate
-            )}{' '}
+            Select the criteria you will provide evidence for (
+            {getCriteriaNeeded(domain.criteriaNeeded, domain.priceMaximum, this.props[this.props.model].maxDailyRate)}{' '}
             minimum required)
           </strong>
         </p>
@@ -143,4 +140,7 @@ const mapDispatchToProps = (dispatch, props) => ({
   updateCriteriaResponses: data => dispatch(actions.change(`${props.model}.evidence`, data))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SellerAssessmentCriteriaStage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SellerAssessmentCriteriaStage)

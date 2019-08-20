@@ -188,4 +188,9 @@ const mapResetDispatchToProps = dispatch => ({
   submit: (briefId, values) => dispatch(publishAnswer(briefId, values))
 })
 
-export default withRouter(connect(null, mapResetDispatchToProps)(PublishAnswerPage))
+export default withRouter(
+  connect(
+    null,
+    mapResetDispatchToProps
+  )(PublishAnswerPage)
+)

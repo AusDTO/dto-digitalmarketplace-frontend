@@ -193,4 +193,7 @@ const mapDispatchToProps = dispatch => ({
   loadData: status => dispatch(loadBuyerDashboard(status))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerDashboardBriefTable)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BuyerDashboardBriefTable)

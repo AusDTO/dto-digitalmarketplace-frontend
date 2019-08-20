@@ -219,35 +219,34 @@ const Opportunity = props => {
                 {brief.lotSlug === 'specialist' ? format(brief.startDate, 'D-MM-YYYY') : brief.startDate}
               </div>
             </div>
-            {brief.lotSlug === 'specialist' &&
-              brief.maxRate && (
-                <div className="row">
-                  <div className="col-xs-12 col-sm-4">
-                    <strong>
-                      {'Maximum '}
-                      {brief.preferredFormatForRates ? '' : 'rate'}
-                      {brief.preferredFormatForRates === 'dailyRate' ? 'daily' : 'hourly'}
-                      {' rate'}
-                    </strong>
-                  </div>
-                  <div className="col-xs-12 col-sm-8">
-                    {'$'}
-                    {brief.maxRate}
-                    {' per '}
-                    {brief.preferredFormatForRates === 'dailyRate' ? 'day' : 'hour'}
-                    {', including GST'}
-                  </div>
+            {brief.lotSlug === 'specialist' && brief.maxRate && (
+              <div className="row">
+                <div className="col-xs-12 col-sm-4">
+                  <strong>
+                    {'Maximum '}
+                    {brief.preferredFormatForRates ? '' : 'rate'}
+                    {brief.preferredFormatForRates === 'dailyRate' ? 'daily' : 'hourly'}
+                    {' rate'}
+                  </strong>
+                </div>
+                <div className="col-xs-12 col-sm-8">
+                  {'$'}
+                  {brief.maxRate}
+                  {' per '}
+                  {brief.preferredFormatForRates === 'dailyRate' ? 'day' : 'hour'}
+                  {', including GST'}
                 </div>
               )}
-            {brief.lotSlug === 'specialist' &&
-              brief.budgetRange && (
-                <div className="row">
-                  <div className="col-xs-12 col-sm-4">
-                    <strong>Budget information</strong>
-                  </div>
-                  <div className="col-xs-12 col-sm-8">{brief.budgetRange}</div>
+              </div>
+            )}
+            {brief.lotSlug === 'specialist' && brief.budgetRange && (
+              <div className="row">
+                <div className="col-xs-12 col-sm-4">
+                  <strong>Budget information</strong>
                 </div>
-              )}
+                <div className="col-xs-12 col-sm-8">{brief.budgetRange}</div>
+              </div>
+            )}
             {['rfx', 'training2'].includes(brief.lotSlug) && (
               <div className="row">
                 <div className="col-xs-12 col-sm-4">
@@ -293,48 +292,47 @@ const Opportunity = props => {
                   </div>
                   <div className="col-xs-12 col-sm-8">{brief.contractExtensions}</div>
                 </div>
-              )}
-            {['rfx', 'training2'].includes(brief.lotSlug) &&
-              brief.securityClearance && (
-                <div className="row">
-                  <div className="col-xs-12 col-sm-4">
-                    <strong>Security clearance</strong>
-                  </div>
-                  <div className="col-xs-12 col-sm-8">{brief.securityClearance}</div>
+              )
+            }
+            {['rfx', 'training2'].includes(brief.lotSlug) && brief.securityClearance && (
+              <div className="row">
+                <div className="col-xs-12 col-sm-4">
+                  <strong>Security clearance</strong>
                 </div>
-              )}
-            {brief.lotSlug === 'specialist' &&
-              brief.securityClearance && (
-                <div className="row">
-                  <div className="col-xs-12 col-sm-4">
-                    <strong>Security clearance</strong>
-                  </div>
-                  <div className={`col-xs-12 col-sm-8 ${styles.newLines}`}>
-                    {brief.securityClearance === 'noneRequired' && 'None required'}
-                    {brief.securityClearance === 'abilityToObtain' && (
-                      <span>
-                        {'Ability to obtain '}
-                        {brief.securityClearanceObtain === 'baseline' && 'baseline'}
-                        {brief.securityClearanceObtain === 'nv1' && 'negative vetting level 1'}
-                        {brief.securityClearanceObtain === 'nv2' && 'negative vetting level 2'}
-                        {brief.securityClearanceObtain === 'pv' && 'positive vetting'}
-                        {' clearance'}
-                      </span>
-                    )}
-                    {brief.securityClearance === 'mustHave' && (
-                      <span>
-                        {'Must have current '}
-                        {brief.securityClearanceCurrent === 'baseline' && 'baseline'}
-                        {brief.securityClearanceCurrent === 'nv1' && 'negative vetting level 1'}
-                        {brief.securityClearanceCurrent === 'nv2' && 'negative vetting level 2'}
-                        {brief.securityClearanceCurrent === 'pv' && 'positive vetting'}
-                        {' clearance'}
-                      </span>
-                    )}
-                    {brief.securityClearance === 'other' && brief.securityClearanceOther}
-                  </div>
+                <div className="col-xs-12 col-sm-8">{brief.securityClearance}</div>
+              </div>
+            )}
+            {brief.lotSlug === 'specialist' && brief.securityClearance && (
+              <div className="row">
+                <div className="col-xs-12 col-sm-4">
+                  <strong>Security clearance</strong>
                 </div>
-              )}
+                <div className={`col-xs-12 col-sm-8 ${styles.newLines}`}>
+                  {brief.securityClearance === 'noneRequired' && 'None required'}
+                  {brief.securityClearance === 'abilityToObtain' && (
+                    <span>
+                      {'Ability to obtain '}
+                      {brief.securityClearanceObtain === 'baseline' && 'baseline'}
+                      {brief.securityClearanceObtain === 'nv1' && 'negative vetting level 1'}
+                      {brief.securityClearanceObtain === 'nv2' && 'negative vetting level 2'}
+                      {brief.securityClearanceObtain === 'pv' && 'positive vetting'}
+                      {' clearance'}
+                    </span>
+                  )}
+                  {brief.securityClearance === 'mustHave' && (
+                    <span>
+                      {'Must have current '}
+                      {brief.securityClearanceCurrent === 'baseline' && 'baseline'}
+                      {brief.securityClearanceCurrent === 'nv1' && 'negative vetting level 1'}
+                      {brief.securityClearanceCurrent === 'nv2' && 'negative vetting level 2'}
+                      {brief.securityClearanceCurrent === 'pv' && 'positive vetting'}
+                      {' clearance'}
+                    </span>
+                  )}
+                  {brief.securityClearance === 'other' && brief.securityClearanceOther}
+                </div>
+              </div>
+            )}
           </div>
           {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && (
             <AUheading level="2" size="lg">
@@ -372,112 +370,104 @@ const Opportunity = props => {
                 Additional information
               </AUheading>
             )}
-          {isBriefOwner &&
-            !isOpenToAll &&
-            brief.lotSlug !== 'specialist' &&
-            brief.attachments.length > 0 && (
-              <div className={styles.noticeBar}>
-                <NotVisible colour="#00698F" className={styles.noticeBarIcon} />
-                <span>
-                  {'Only invited sellers and other buyers can view attached documents. '}
-                  {'Only invited sellers can view industry briefing details you provide.'}
-                </span>
-              </div>
-            )}
-          {isBriefOwner &&
-            brief.lotSlug === 'specialist' &&
-            brief.attachments.length > 0 && (
-              <div className={styles.noticeBar}>
-                <NotVisible colour="#00698F" className={styles.noticeBarIcon} />
-                <span>{'Only invited sellers and other buyers can view attached documents. '}</span>
-              </div>
-            )}
-          {loggedIn &&
-            (isOpenToAll || canRespond || isInvited || isBuyer) && (
-              <div className={isBriefOwner ? styles.additionalInfoOwner : styles.additionalInfo}>
-                {(brief.requirementsDocument.length > 0 || brief.attachments.length > 0) && (
-                  <ul>
-                    {brief.requirementsDocument.map(requirementsDocument => (
-                      <li key={requirementsDocument}>
-                        <a href={`/api/2/brief/${brief.id}/attachments/${requirementsDocument}`}>
-                          Requirements document
-                        </a>
-                      </li>
-                    ))}
-                    {brief.attachments.map(attachment => (
-                      <li key={attachment}>
-                        <a
-                          href={`/api/2/brief/${brief.id}/attachments/${attachment}`}
-                          aria-label={attachment}
-                          title={attachment}
-                        >
-                          {getTrimmedFilename(attachment)}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                {brief.lotSlug !== 'specialist' &&
-                  (brief.responseTemplate.length > 0 || brief.evaluationType.length > 0) && (
-                    <AUheading level="3" size="sm">
-                      What sellers need to submit
-                    </AUheading>
-                  )}
-                {brief.lotSlug !== 'specialist' &&
-                  (brief.responseTemplate.length > 0 || brief.evaluationType.length > 0) && (
-                    <ul className={styles.submitList}>
-                      {brief.responseTemplate.map(responseTemplate => (
-                        <li key={responseTemplate}>
-                          Completed{' '}
-                          <a href={`/api/2/brief/${brief.id}/attachments/${responseTemplate}`}>response template</a>
-                        </li>
-                      ))}
-                      {brief.evaluationType.includes('Written proposal') &&
-                        brief.proposalType.length > 0 && (
-                          <li>
-                            Written proposal, including:
-                            <ul>
-                              {brief.proposalType.map(proposalType => <li key={proposalType}>{proposalType}</li>)}
-                            </ul>
-                          </li>
-                        )}
-                      {brief.evaluationType.includes('500 word responses to your criteria') && (
-                        <li>500 word responses to your criteria</li>
-                      )}
-                      {brief.evaluationType.includes('Responses to selection criteria') && (
-                        <li>Responses to selection criteria</li>
-                      )}
-                      {brief.evaluationType.includes('Case study') && <li>Case study</li>}
-                      {brief.evaluationType.includes('References') && <li>References</li>}
-                      {brief.evaluationType.includes('Résumés') && <li>Résumés</li>}
-                    </ul>
-                  )}
-                {(brief.evaluationType.includes('Demonstration') || brief.evaluationType.includes('Presentation')) && (
+          {isBriefOwner && !isOpenToAll && brief.lotSlug !== 'specialist' && brief.attachments.length > 0 && (
+            <div className={styles.noticeBar}>
+              <NotVisible colour="#00698F" className={styles.noticeBarIcon} />
+              <span>
+                {'Only invited sellers and other buyers can view attached documents. '}
+                {'Only invited sellers can view industry briefing details you provide.'}
+              </span>
+            </div>
+          )}
+          {isBriefOwner && brief.lotSlug === 'specialist' && brief.attachments.length > 0 && (
+            <div className={styles.noticeBar}>
+              <NotVisible colour="#00698F" className={styles.noticeBarIcon} />
+              <span>{'Only invited sellers and other buyers can view attached documents. '}</span>
+            </div>
+          )}
+          {loggedIn && (isOpenToAll || canRespond || isInvited || isBuyer) && (
+            <div className={isBriefOwner ? styles.additionalInfoOwner : styles.additionalInfo}>
+              {(brief.requirementsDocument.length > 0 || brief.attachments.length > 0) && (
+                <ul>
+                  {brief.requirementsDocument.map(requirementsDocument => (
+                    <li key={requirementsDocument}>
+                      <a href={`/api/2/brief/${brief.id}/attachments/${requirementsDocument}`}>Requirements document</a>
+                    </li>
+                  ))}
+                  {brief.attachments.map(attachment => (
+                    <li key={attachment}>
+                      <a
+                        href={`/api/2/brief/${brief.id}/attachments/${attachment}`}
+                        aria-label={attachment}
+                        title={attachment}
+                      >
+                        {getTrimmedFilename(attachment)}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {brief.lotSlug !== 'specialist' &&
+                (brief.responseTemplate.length > 0 || brief.evaluationType.length > 0) && (
                   <AUheading level="3" size="sm">
-                    Buyers will later request
+                    What sellers need to submit
                   </AUheading>
                 )}
-                {(brief.evaluationType.includes('Demonstration') ||
-                  brief.evaluationType.includes('Interview') ||
-                  brief.evaluationType.includes('Presentation') ||
-                  brief.evaluationType.includes('Prototype')) && (
-                  <ul>
-                    {brief.evaluationType.includes('Demonstration') && <li>Demonstration</li>}
-                    {brief.evaluationType.includes('Interview') && <li>Interview</li>}
-                    {brief.evaluationType.includes('Presentation') && <li>Presentation</li>}
-                    {brief.evaluationType.includes('Prototype') && <li>Prototype</li>}
+              {brief.lotSlug !== 'specialist' &&
+                (brief.responseTemplate.length > 0 || brief.evaluationType.length > 0) && (
+                  <ul className={styles.submitList}>
+                    {brief.responseTemplate.map(responseTemplate => (
+                      <li key={responseTemplate}>
+                        Completed{' '}
+                        <a href={`/api/2/brief/${brief.id}/attachments/${responseTemplate}`}>response template</a>
+                      </li>
+                    ))}
+                    {brief.evaluationType.includes('Written proposal') && brief.proposalType.length > 0 && (
+                      <li>
+                        Written proposal, including:
+                        <ul>
+                          {brief.proposalType.map(proposalType => (
+                            <li key={proposalType}>{proposalType}</li>
+                          ))}
+                        </ul>
+                      </li>
+                    )}
+                    {brief.evaluationType.includes('500 word responses to your criteria') && (
+                      <li>500 word responses to your criteria</li>
+                    )}
+                    {brief.evaluationType.includes('Responses to selection criteria') && (
+                      <li>Responses to selection criteria</li>
+                    )}
+                    {brief.evaluationType.includes('Case study') && <li>Case study</li>}
+                    {brief.evaluationType.includes('References') && <li>References</li>}
+                    {brief.evaluationType.includes('Résumés') && <li>Résumés</li>}
                   </ul>
                 )}
-                {brief.industryBriefing &&
-                  (canRespond || isInvited || isBriefOwner) && (
-                    <AUheading level="3" size="sm">
-                      Industry briefing
-                    </AUheading>
-                  )}
-                {brief.industryBriefing && (canRespond || isInvited || isBriefOwner) && <p>{brief.industryBriefing}</p>}
-              </div>
-            )}
-          {brief.evaluationCriteria && brief.evaluationCriteria.length > 0 ? (
+              {(brief.evaluationType.includes('Demonstration') || brief.evaluationType.includes('Presentation')) && (
+                <AUheading level="3" size="sm">
+                  Buyers will later request
+                </AUheading>
+              )}
+              {(brief.evaluationType.includes('Demonstration') ||
+                brief.evaluationType.includes('Interview') ||
+                brief.evaluationType.includes('Presentation') ||
+                brief.evaluationType.includes('Prototype')) && (
+                <ul>
+                  {brief.evaluationType.includes('Demonstration') && <li>Demonstration</li>}
+                  {brief.evaluationType.includes('Interview') && <li>Interview</li>}
+                  {brief.evaluationType.includes('Presentation') && <li>Presentation</li>}
+                  {brief.evaluationType.includes('Prototype') && <li>Prototype</li>}
+                </ul>
+              )}
+              {brief.industryBriefing && (canRespond || isInvited || isBriefOwner) && (
+                <AUheading level="3" size="sm">
+                  Industry briefing
+                </AUheading>
+              )}
+              {brief.industryBriefing && (canRespond || isInvited || isBriefOwner) && <p>{brief.industryBriefing}</p>}
+            </div>
+          )}
+          {brief.lotSlug !== 'specialist' ? (
             <EvaluationCriteria
               title={brief.lotSlug === 'atm' ? 'Response criteria' : 'Evaluation criteria'}
               evaluationCriteria={brief.evaluationCriteria}

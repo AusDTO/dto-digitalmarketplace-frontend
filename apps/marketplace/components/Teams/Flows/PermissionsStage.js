@@ -117,4 +117,7 @@ const mapDispatchToProps = (dispatch, props) => ({
   updateTeamMembers: teamMembers => dispatch(actions.change(`${props.model}.teamMembers`, teamMembers))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(PermissionsStage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PermissionsStage)

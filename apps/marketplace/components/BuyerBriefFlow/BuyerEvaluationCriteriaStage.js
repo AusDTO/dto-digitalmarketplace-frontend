@@ -204,7 +204,8 @@ class BuyerEvaluationCriteriaStage extends Component {
                           <div className={styles.weightingRemaining}>
                             {BuyerEvaluationCriteriaStage.getRemainingWeighting(
                               this.props[this.props.model].essentialRequirements
-                            )}% remaining
+                            )}
+                            % remaining
                           </div>
                         )}
                       </div>
@@ -294,7 +295,8 @@ class BuyerEvaluationCriteriaStage extends Component {
                           <div className={styles.weightingRemaining}>
                             {BuyerEvaluationCriteriaStage.getRemainingWeighting(
                               this.props[this.props.model].niceToHaveRequirements
-                            )}% remaining
+                            )}
+                            % remaining
                           </div>
                         )}
                       </div>

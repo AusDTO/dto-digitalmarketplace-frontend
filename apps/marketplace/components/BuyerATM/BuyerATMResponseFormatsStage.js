@@ -150,4 +150,7 @@ const mapDispatchToProps = (dispatch, props) => ({
   resetEvaluationType: () => dispatch(actions.change(`${props.model}.evaluationType`, []))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerATMResponseFormatsStage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BuyerATMResponseFormatsStage)

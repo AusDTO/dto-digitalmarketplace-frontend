@@ -209,4 +209,7 @@ const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout())
 })
 
-export default connect(null, mapDispatchToProps)(YourDeclaration)
+export default connect(
+  null,
+  mapDispatchToProps
+)(YourDeclaration)

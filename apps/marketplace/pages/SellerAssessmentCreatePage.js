@@ -64,4 +64,7 @@ const mapDispatchToProps = dispatch => ({
   createEvidence: (domainId, briefId) => dispatch(createEvidence(domainId, briefId))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SellerAssessmentCreatePage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SellerAssessmentCreatePage)

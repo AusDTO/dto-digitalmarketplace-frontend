@@ -247,8 +247,7 @@ class SellerAssessmentEvidenceStage extends Component {
         {this.props[this.props.model].criteria.length < 1 ? (
           <p>
             Before providing evidence, you must first select which{' '}
-            <Link to="criteria">criteria you are responding to</Link>
-            .
+            <Link to="criteria">criteria you are responding to</Link>.
           </p>
         ) : (
           <React.Fragment>
@@ -507,4 +506,7 @@ const mapDispatchToProps = (dispatch, props) => ({
     dispatch(actions.change(`${props.model}.evidence[${criteriaId}][${fieldName}]`, fieldValue))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SellerAssessmentEvidenceStage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SellerAssessmentEvidenceStage)

@@ -18,17 +18,19 @@ const BriefRFXResponseSubmitted = props => (
               <p>
                 {props.brief.sellerSelector && props.brief.sellerSelector === 'oneSeller' ? (
                   <span>
-                    The buyer will receive your response once the opportunity closes{props.brief
-                      .applicationsClosedAt && (
+                    The buyer will receive your response once the opportunity closes
+                    {props.brief.applicationsClosedAt && (
                       <span> on {format(new Date(props.brief.applicationsClosedAt), 'dddd D MMMM YYYY')}</span>
-                    )}.
+                    )}
+                    .
                   </span>
                 ) : (
                   <span>
-                    The buyer will receive all responses once the opportunity closes{props.brief
-                      .applicationsClosedAt && (
+                    The buyer will receive all responses once the opportunity closes
+                    {props.brief.applicationsClosedAt && (
                       <span> on {format(new Date(props.brief.applicationsClosedAt), 'dddd D MMMM YYYY')}</span>
-                    )}.
+                    )}
+                    .
                   </span>
                 )}
               </p>

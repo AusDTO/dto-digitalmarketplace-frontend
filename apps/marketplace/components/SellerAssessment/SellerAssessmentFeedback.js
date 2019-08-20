@@ -95,39 +95,38 @@ const SellerAssessmentFeedback = props => (
         <AUheading level="2" size="lg">
           Next steps
         </AUheading>
-        {props.feedback.vfm === false &&
-          !props.feedback.currentEvidenceId && (
-            <p>
-              To be approved in {props.feedback.domainName}, you may need to reconsider your maximum daily rate and{' '}
-              <a href={`${rootPath}/seller-assessment/create/${props.feedback.domainId}`}>resubmit for review</a>. You
-              can read our{' '}
-              <a
-                href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476-Panel-categories-and-rates"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                guide on pricing thresholds
-              </a>{' '}
-              for each category.
-            </p>
-          )}
-        {props.feedback.vfm === false &&
-          props.feedback.currentEvidenceId && (
-            <p>
-              To be approved in {props.feedback.domainName}, you may need to reconsider your maximum daily rate and{' '}
-              <a href={`${rootPath}/seller-assessment/${props.feedback.currentEvidenceId}/introduction`}>
-                resubmit for review
-              </a>. You can read our{' '}
-              <a
-                href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476-Panel-categories-and-rates"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                guide on pricing thresholds
-              </a>{' '}
-              for each category.
-            </p>
-          )}
+        {props.feedback.vfm === false && !props.feedback.currentEvidenceId && (
+          <p>
+            To be approved in {props.feedback.domainName}, you may need to reconsider your maximum daily rate and{' '}
+            <a href={`${rootPath}/seller-assessment/create/${props.feedback.domainId}`}>resubmit for review</a>. You can
+            read our{' '}
+            <a
+              href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476-Panel-categories-and-rates"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              guide on pricing thresholds
+            </a>{' '}
+            for each category.
+          </p>
+        )}
+        {props.feedback.vfm === false && props.feedback.currentEvidenceId && (
+          <p>
+            To be approved in {props.feedback.domainName}, you may need to reconsider your maximum daily rate and{' '}
+            <a href={`${rootPath}/seller-assessment/${props.feedback.currentEvidenceId}/introduction`}>
+              resubmit for review
+            </a>
+            . You can read our{' '}
+            <a
+              href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476-Panel-categories-and-rates"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              guide on pricing thresholds
+            </a>{' '}
+            for each category.
+          </p>
+        )}
         {!allCriteriaPassed(props.feedback.criteria) &&
           props.feedback.vfm !== false &&
           !props.feedback.currentEvidenceId && (
@@ -143,7 +142,8 @@ const SellerAssessmentFeedback = props => (
               You can incorporate the assessment team&apos;s feedback and{' '}
               <a href={`${rootPath}/seller-assessment/${props.feedback.currentEvidenceId}/introduction`}>
                 resubmit your request
-              </a>.
+              </a>
+              .
             </p>
           )}
       </React.Fragment>
