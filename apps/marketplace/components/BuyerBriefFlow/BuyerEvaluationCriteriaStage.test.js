@@ -77,8 +77,8 @@ test('disabling weightings clears the current weighting values', () => {
     .at(0)
     .simulate('change', { target: { checked: true } })
     .simulate('click')
-  expect(component.find('input#essential_weighting_0').instance().value).toEqual('')
-  expect(component.find('input#essential_weighting_1').instance().value).toEqual('')
+  expect(component.find('input#essential_weighting_0').instance().value).toEqual('50')
+  expect(component.find('input#essential_weighting_1').instance().value).toEqual('50')
 })
 
 test('removing a criteria', () => {
