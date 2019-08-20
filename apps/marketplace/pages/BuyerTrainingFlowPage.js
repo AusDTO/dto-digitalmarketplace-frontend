@@ -55,7 +55,7 @@ export class BuyerTrainingFlowPage extends Component {
         }
 
         if (response.data.brief.lotSlug !== 'training2') {
-          this.props.setError('You can only edit Training briefs using this flow.')
+          this.props.setError('You can only edit training opportunities using this flow.')
         }
 
         this.props.changeFormModel(data)
