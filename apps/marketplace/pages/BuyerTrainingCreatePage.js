@@ -50,4 +50,7 @@ const mapDispatchToProps = dispatch => ({
   createTrainingBrief: () => dispatch(createTrainingBrief())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerTrainingCreatePage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BuyerTrainingCreatePage)

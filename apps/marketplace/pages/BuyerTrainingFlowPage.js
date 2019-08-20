@@ -162,4 +162,7 @@ const mapDispatchToProps = dispatch => ({
   setError: message => dispatch(setErrorMessage(message))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerTrainingFlowPage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BuyerTrainingFlowPage)

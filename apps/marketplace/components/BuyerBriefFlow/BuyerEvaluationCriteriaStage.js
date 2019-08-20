@@ -392,4 +392,7 @@ const mapDispatchToProps = (dispatch, props) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerEvaluationCriteriaStage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BuyerEvaluationCriteriaStage)

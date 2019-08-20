@@ -236,7 +236,7 @@ const Opportunity = props => {
                   {brief.preferredFormatForRates === 'dailyRate' ? 'day' : 'hour'}
                   {', including GST'}
                 </div>
-              )}
+                )}
               </div>
             )}
             {brief.lotSlug === 'specialist' && brief.budgetRange && (
@@ -284,16 +284,14 @@ const Opportunity = props => {
                 <div className="col-xs-12 col-sm-8">{brief.contractLength}</div>
               </div>
             )}
-            {['rfx', 'training2', 'specialist'].includes(brief.lotSlug) &&
-              brief.contractExtensions && (
-                <div className="row">
-                  <div className="col-xs-12 col-sm-4">
-                    <strong>Contract extensions</strong>
-                  </div>
-                  <div className="col-xs-12 col-sm-8">{brief.contractExtensions}</div>
+            {['rfx', 'training2', 'specialist'].includes(brief.lotSlug) && brief.contractExtensions && (
+              <div className="row">
+                <div className="col-xs-12 col-sm-4">
+                  <strong>Contract extensions</strong>
                 </div>
-              )
-            }
+                <div className="col-xs-12 col-sm-8">{brief.contractExtensions}</div>
+              </div>
+            )}
             {['rfx', 'training2'].includes(brief.lotSlug) && brief.securityClearance && (
               <div className="row">
                 <div className="col-xs-12 col-sm-4">
