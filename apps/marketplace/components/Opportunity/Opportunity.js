@@ -236,7 +236,6 @@ const Opportunity = props => {
                   {brief.preferredFormatForRates === 'dailyRate' ? 'day' : 'hour'}
                   {', including GST'}
                 </div>
-                )}
               </div>
             )}
             {brief.lotSlug === 'specialist' && brief.budgetRange && (
