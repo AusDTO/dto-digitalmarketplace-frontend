@@ -162,4 +162,7 @@ const mapDispatchToProps = dispatch => ({
   setError: message => dispatch(setErrorMessage(message))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFXFlowPage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BuyerRFXFlowPage)

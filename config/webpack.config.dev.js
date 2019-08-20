@@ -174,24 +174,11 @@ module.exports = [{
       test: /\.css$/,
       loader: ExtractTextPlugin.extract(
         'style',
-        'css?modules&importLoaders=1&context=' + paths.appSrc + '&localIdentName=[path]___[name]__[local]___[hash:base64:5]!postcss'
+        'css?modules&importLoaders=1&context=' + paths.appSrc + '&localIdentName=[path]___[name]__[local]___[hash:base64:5]'
       )
     })
   },
 
-  // We use PostCSS for autoprefixing only.
-  postcss: function() {
-    return [
-      autoprefixer({
-        browsers: [
-          '>1%',
-          'last 4 versions',
-          'Firefox ESR',
-          'not ie < 9', // React doesn't support IE8 anyway
-        ]
-      }),
-    ];
-  },
   plugins: [
     // Makes the public URL available as %PUBLIC_URL% in index.html, e.g.:
     // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
@@ -295,7 +282,6 @@ module.exports = [{
         loader: [
           'style-loader?singleton',
           'css-loader?modules&importLoaders=1&context=' + paths.marketplaceSrc + '&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
-          'postcss-loader',
           'sass-loader'
         ].join('!')
       },

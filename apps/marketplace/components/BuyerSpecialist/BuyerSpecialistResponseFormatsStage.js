@@ -342,4 +342,7 @@ const mapDispatchToProps = (dispatch, props) => ({
   securityClearanceChange: value => dispatch(actions.change(`${props.model}.securityClearance`, value))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerSpecialistResponseFormatsStage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BuyerSpecialistResponseFormatsStage)

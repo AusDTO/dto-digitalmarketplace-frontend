@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router } from 'react-router-dom'
-import createHistory from 'history/createBrowserHistory'
+import { createBrowserHistory } from 'history'
 
 class RegisterComponent {
 
@@ -55,7 +55,7 @@ class RegisterComponent {
 
         initialState = Object.assign({}, initialState, { options });
 
-        const history = createHistory({
+        const history = createBrowserHistory({
           basename
         });
 

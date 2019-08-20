@@ -15,7 +15,7 @@ const TeamsPage = props => {
   const { completedTeamsCount, errorMessage, organisation } = props
 
   const createTeamButton = (
-    <AUbutton as="secondary" href={`${rootPath}/team/create`} key="Create a team">
+    <AUbutton as="secondary" link={`${rootPath}/team/create`} key="Create a team">
       Create a team
     </AUbutton>
   )

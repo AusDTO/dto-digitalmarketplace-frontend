@@ -74,13 +74,12 @@ export class Categories extends Component {
       case 'assessed':
         return (
           <React.Fragment>
-            {category.is_approved &&
-              category.rate && (
-                <span>
-                  Your maximum daily rate (including GST): ${category.rate}
-                  <br />
-                </span>
-              )}
+            {category.is_approved && category.rate && (
+              <span>
+                Your maximum daily rate (including GST): ${category.rate}
+                <br />
+              </span>
+            )}
             <a href="https://marketplace1.zendesk.com/hc/en-gb/requests/new" rel="noopener noreferrer" target="_blank">
               Contact us to adjust your rate
             </a>
@@ -167,4 +166,7 @@ const mapDispatchToProps = dispatch => ({
   loadCategories: () => dispatch(loadCategories())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Categories)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Categories)

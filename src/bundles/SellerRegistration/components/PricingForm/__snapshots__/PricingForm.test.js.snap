@@ -82,7 +82,6 @@ exports[`PricingForm renders price fields when domains are present 1`] = `
     role="main"
   >
     <form
-      action={undefined}
       id="DomainSelector__create"
       method="post"
       onReset={[Function]}

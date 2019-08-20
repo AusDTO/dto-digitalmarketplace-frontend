@@ -49,9 +49,7 @@ const SellerAssessmentRateStage = props => (
       model={`${props.model}.maxDailyRate`}
       prefix={'$'}
       label="What is your maximum daily rate (including GST)"
-      description={`The threshold for ${props.meta.domain.name} is $${
-        props.meta.domain.priceMaximum
-      }. If you nominate a price above this threshold, you will be asked to match more criteria to prove you offer value for money.`}
+      description={`The threshold for ${props.meta.domain.name} is $${props.meta.domain.priceMaximum}. If you nominate a price above this threshold, you will be asked to match more criteria to prove you offer value for money.`}
       name="maxDailyRate"
       id="maxDailyRate"
       htmlFor="maxDailyRate"

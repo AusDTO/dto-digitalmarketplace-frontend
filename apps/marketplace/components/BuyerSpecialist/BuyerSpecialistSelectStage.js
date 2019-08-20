@@ -167,4 +167,7 @@ const mapDispatchToProps = (dispatch, props) => ({
   updateSelectedSellerCategory: category => dispatch(actions.change(`${props.model}.sellerCategory`, category))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerSpecialistSelectStage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BuyerSpecialistSelectStage)
