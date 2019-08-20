@@ -75,7 +75,7 @@ const BuyerTrainingResponseFormatsStage = props => (
           <CheckboxDetailsField
             model={`${props.model}.proposalType[]`}
             id="proposal_casestudy"
-            name={`proposal_casestudy`}
+            name="proposal_casestudy"
             label="Case study"
             value="Case study"
             detailsModel={props.model}
