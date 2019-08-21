@@ -103,6 +103,7 @@ export class BuyerTrainingSelectStage extends Component {
                     .
                   </span>
                 }
+                notFoundMessage="Seller cannot be found in the Training, Learning and Development category"
                 showSelected={false}
                 showSearchButton={false}
                 categories={categories}
