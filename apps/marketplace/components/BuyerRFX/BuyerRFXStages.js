@@ -34,6 +34,12 @@ const BuyerRFXStages = [
       formValues.workingArrangements.length > 0
   },
   {
+    slug: 'criteria',
+    title: 'Evaluation criteria',
+    component: BuyerEvaluationCriteriaStage,
+    isDone: evaluationDone
+  },
+  {
     slug: 'formats',
     title: 'Response formats',
     component: BuyerRFXResponseFormatsStage,
@@ -54,12 +60,6 @@ const BuyerRFXStages = [
     title: 'Timeframes and budget',
     component: BuyerRFXTimeframesAndBudgetStage,
     isDone: formValues => formValues.startDate.length > 0 && formValues.contractLength.length > 0
-  },
-  {
-    slug: 'criteria',
-    title: 'Evaluation criteria',
-    component: BuyerEvaluationCriteriaStage,
-    isDone: evaluationDone
   },
   {
     slug: 'additional',

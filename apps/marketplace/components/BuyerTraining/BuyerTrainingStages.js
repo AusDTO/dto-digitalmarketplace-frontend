@@ -32,6 +32,12 @@ const BuyerTrainingStages = [
     isDone: aboutDone
   },
   {
+    slug: 'criteria',
+    title: 'Evaluation criteria',
+    component: BuyerEvaluationCriteriaStage,
+    isDone: evaluationDone
+  },
+  {
     slug: 'formats',
     title: 'Response formats',
     component: BuyerTrainingResponseFormatsStage,
@@ -48,12 +54,6 @@ const BuyerTrainingStages = [
     title: 'Timeframes and budget',
     component: BuyerTrainingTimeframesAndBudgetStage,
     isDone: timeframesAndBudgetDone
-  },
-  {
-    slug: 'criteria',
-    title: 'Evaluation criteria',
-    component: BuyerEvaluationCriteriaStage,
-    isDone: evaluationDone
   },
   {
     slug: 'additional',
