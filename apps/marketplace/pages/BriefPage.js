@@ -288,7 +288,7 @@ class BriefPage extends Component {
               render={() => (
                 <span>
                   {loadBriefSuccess ? (
-                    <BriefTrainingResponseForm2
+                    <BriefTrainingResponseForm
                       submitClicked={this.onSubmitClicked}
                       handleSubmit={values => this.handleBriefResponseSubmit(values)}
                       setFocus={setFocus}
@@ -319,7 +319,7 @@ class BriefPage extends Component {
               render={() => (
                 <span>
                   {loadBriefSuccess ? (
-                    <BriefTrainingResponseForm
+                    <BriefTrainingResponseForm2
                       submitClicked={this.onSubmitClicked}
                       handleSubmit={values => this.handleBriefResponseSubmit(values)}
                       setFocus={setFocus}
