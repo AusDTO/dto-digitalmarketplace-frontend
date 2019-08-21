@@ -133,4 +133,7 @@ const mapDispatchToProps = dispatch => ({
   loadData: briefId => dispatch(loadQuestions(briefId))
 })
 
-export default connect(null, mapDispatchToProps)(SellerQuestions)
+export default connect(
+  null,
+  mapDispatchToProps
+)(SellerQuestions)

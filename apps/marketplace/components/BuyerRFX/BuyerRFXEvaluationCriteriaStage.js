@@ -219,4 +219,7 @@ const mapDispatchToProps = (dispatch, props) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFXEvaluationCriteriaStage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BuyerRFXEvaluationCriteriaStage)

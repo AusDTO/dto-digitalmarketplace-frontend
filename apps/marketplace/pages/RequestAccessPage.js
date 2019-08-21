@@ -112,4 +112,9 @@ const mapResetDispatchToProps = dispatch => ({
   request: p => dispatch(requestAccess(p))
 })
 
-export default withRouter(connect(null, mapResetDispatchToProps)(RequestAccessPage))
+export default withRouter(
+  connect(
+    null,
+    mapResetDispatchToProps
+  )(RequestAccessPage)
+)

@@ -171,4 +171,9 @@ const mapDispatchToProps = dispatch => ({
   removeUser: userId => dispatch(removeUser(userId))
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SellerDashboardPage))
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(SellerDashboardPage)
+)

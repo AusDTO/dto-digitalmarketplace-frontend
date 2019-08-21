@@ -67,10 +67,8 @@ const BriefSpecialistResponseForm2 = ({
                 <div>
                   <h1 className="au-display-xl">Apply for &lsquo;{brief.title}&rsquo;</h1>
                   <p>
-                    You can submit up to {brief.numberOfSuppliers} candidate{parseInt(brief.numberOfSuppliers, 10) === 1
-                      ? ''
-                      : 's'}{' '}
-                    for this role. This opportunity closes on{' '}
+                    You can submit up to {brief.numberOfSuppliers} candidate
+                    {parseInt(brief.numberOfSuppliers, 10) === 1 ? '' : 's'} for this role. This opportunity closes on{' '}
                     {format(new Date(brief.applicationsClosedAt), 'DD-MM-YYYY')}.
                   </p>
                   <br />
@@ -294,9 +292,7 @@ const BriefSpecialistResponseForm2 = ({
                 )}
                 <RadioList
                   id="previouslyWorked"
-                  label={`Has ${specialistGivenNames} ${specialistSurname} previously worked for the ${
-                    brief.organisation
-                  }?`}
+                  label={`Has ${specialistGivenNames} ${specialistSurname} previously worked for the ${brief.organisation}?`}
                   name="previouslyWorked"
                   model={`${model}.previouslyWorked`}
                   validators={{
@@ -313,9 +309,7 @@ const BriefSpecialistResponseForm2 = ({
                     }
                   ]}
                   messages={{
-                    required: `"Has ${specialistGivenNames} ${specialistSurname} previously worked for the ${
-                      brief.organisation
-                    }?" is a required field`
+                    required: `"Has ${specialistGivenNames} ${specialistSurname} previously worked for the ${brief.organisation}?" is a required field`
                   }}
                 />
                 <h2 className="au-display-lg">Essential selection criteria</h2>
@@ -339,26 +333,25 @@ const BriefSpecialistResponseForm2 = ({
                       description={brief.includeWeightingsEssential ? `Weighting: ${requirement.weighting}%` : ''}
                     />
                   ))}
-                {brief.niceToHaveRequirements &&
-                  brief.niceToHaveRequirements.length > 0 && (
-                    <React.Fragment>
-                      <h2 className="au-display-lg">Desirable selection criteria</h2>
-                      {brief.niceToHaveRequirements.map((requirement, i) => (
-                        <Textarea
-                          key={requirement.criteria}
-                          model={`${model}.niceToHaveRequirements['${escapeQuote(requirement.criteria)}']`}
-                          name={`niceToHaveRequirement.${requirement.criteria}`}
-                          id={`niceToHaveRequirement.${i}`}
-                          controlProps={{
-                            limit: 500,
-                            rows: '8'
-                          }}
-                          label={`${requirement.criteria} (optional)`}
-                          description={brief.includeWeightingsNiceToHave ? `Weighting: ${requirement.weighting}%` : ''}
-                        />
-                      ))}
-                    </React.Fragment>
-                  )}
+                {brief.niceToHaveRequirements && brief.niceToHaveRequirements.length > 0 && (
+                  <React.Fragment>
+                    <h2 className="au-display-lg">Desirable selection criteria</h2>
+                    {brief.niceToHaveRequirements.map((requirement, i) => (
+                      <Textarea
+                        key={requirement.criteria}
+                        model={`${model}.niceToHaveRequirements['${escapeQuote(requirement.criteria)}']`}
+                        name={`niceToHaveRequirement.${requirement.criteria}`}
+                        id={`niceToHaveRequirement.${i}`}
+                        controlProps={{
+                          limit: 500,
+                          rows: '8'
+                        }}
+                        label={`${requirement.criteria} (optional)`}
+                        description={brief.includeWeightingsNiceToHave ? `Weighting: ${requirement.weighting}%` : ''}
+                      />
+                    ))}
+                  </React.Fragment>
+                )}
                 <AUheadings level="2" size="sm">
                   Other documents (optional)
                 </AUheadings>

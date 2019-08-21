@@ -80,7 +80,6 @@ exports[`CaseStudyForm renders 1`] = `
     role="main"
   >
     <form
-      action={undefined}
       id="casestudy__create"
       method="post"
       onReset={[Function]}
@@ -99,16 +98,12 @@ exports[`CaseStudyForm renders 1`] = `
           className=""
           disabled={false}
           id="title"
-          maxLength={undefined}
           name="title"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -124,16 +119,12 @@ exports[`CaseStudyForm renders 1`] = `
           className=""
           disabled={false}
           id="client"
-          maxLength={undefined}
           name="client"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -155,16 +146,12 @@ exports[`CaseStudyForm renders 1`] = `
           className=""
           disabled={false}
           id="timeframe"
-          maxLength={undefined}
           name="timeframe"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -187,7 +174,6 @@ exports[`CaseStudyForm renders 1`] = `
           <textarea
             aria-describedby="roles-hint"
             className="under-100"
-            defaultValue={undefined}
             id="roles"
             name="roles"
             onBlur={[Function]}
@@ -222,7 +208,6 @@ exports[`CaseStudyForm renders 1`] = `
           <textarea
             aria-describedby="opportunity-hint"
             className="under-200"
-            defaultValue={undefined}
             id="opportunity"
             name="opportunity"
             onBlur={[Function]}
@@ -267,7 +252,6 @@ exports[`CaseStudyForm renders 1`] = `
           <textarea
             aria-describedby="approach-hint"
             className="under-200"
-            defaultValue={undefined}
             id="approach"
             name="approach"
             onBlur={[Function]}
@@ -516,16 +500,12 @@ exports[`CaseStudyForm renders 1`] = `
           className=""
           disabled={false}
           id="refereeName"
-          maxLength={undefined}
           name="refereeName"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -547,16 +527,12 @@ exports[`CaseStudyForm renders 1`] = `
           className=""
           disabled={false}
           id="refereePosition"
-          maxLength={undefined}
           name="refereePosition"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -578,16 +554,12 @@ exports[`CaseStudyForm renders 1`] = `
           className=""
           disabled={false}
           id="refereeEmail"
-          maxLength={undefined}
           name="refereeEmail"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div>
@@ -698,7 +670,6 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
     role="main"
   >
     <form
-      action={undefined}
       id="casestudy__create"
       method="post"
       onReset={[Function]}
@@ -717,16 +688,12 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           className=""
           disabled={false}
           id="title"
-          maxLength={undefined}
           name="title"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -742,16 +709,12 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           className=""
           disabled={false}
           id="client"
-          maxLength={undefined}
           name="client"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -773,16 +736,12 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           className=""
           disabled={false}
           id="timeframe"
-          maxLength={undefined}
           name="timeframe"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -805,7 +764,6 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           <textarea
             aria-describedby="roles-hint"
             className="under-100"
-            defaultValue={undefined}
             id="roles"
             name="roles"
             onBlur={[Function]}
@@ -840,7 +798,6 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           <textarea
             aria-describedby="opportunity-hint"
             className="under-200"
-            defaultValue={undefined}
             id="opportunity"
             name="opportunity"
             onBlur={[Function]}
@@ -885,7 +842,6 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           <textarea
             aria-describedby="approach-hint"
             className="under-200"
-            defaultValue={undefined}
             id="approach"
             name="approach"
             onBlur={[Function]}
@@ -1134,16 +1090,12 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           className=""
           disabled={false}
           id="refereeName"
-          maxLength={undefined}
           name="refereeName"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -1165,16 +1117,12 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           className=""
           disabled={false}
           id="refereePosition"
-          maxLength={undefined}
           name="refereePosition"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -1196,16 +1144,12 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           className=""
           disabled={false}
           id="refereeEmail"
-          maxLength={undefined}
           name="refereeEmail"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div>
@@ -1322,7 +1266,6 @@ exports[`CaseStudyForm renders with errors 1`] = `
   >
     <div
       className="au-body au-page-alerts   au-page-alerts--error"
-      role="alert"
     >
       <h4
         id="validation-masthead-heading"
@@ -1449,16 +1392,12 @@ exports[`CaseStudyForm renders with errors 1`] = `
           className="invalid"
           disabled={false}
           id="title"
-          maxLength={undefined}
           name="title"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -1487,16 +1426,12 @@ exports[`CaseStudyForm renders with errors 1`] = `
           className="invalid"
           disabled={false}
           id="client"
-          maxLength={undefined}
           name="client"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -1531,16 +1466,12 @@ exports[`CaseStudyForm renders with errors 1`] = `
           className="invalid"
           disabled={false}
           id="timeframe"
-          maxLength={undefined}
           name="timeframe"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -1576,7 +1507,6 @@ exports[`CaseStudyForm renders with errors 1`] = `
           <textarea
             aria-describedby="roles-hint"
             className="invalid under-100"
-            defaultValue={undefined}
             id="roles"
             name="roles"
             onBlur={[Function]}
@@ -1624,7 +1554,6 @@ exports[`CaseStudyForm renders with errors 1`] = `
           <textarea
             aria-describedby="opportunity-hint"
             className="invalid under-200"
-            defaultValue={undefined}
             id="opportunity"
             name="opportunity"
             onBlur={[Function]}
@@ -1682,7 +1611,6 @@ exports[`CaseStudyForm renders with errors 1`] = `
           <textarea
             aria-describedby="approach-hint"
             className="invalid under-200"
-            defaultValue={undefined}
             id="approach"
             name="approach"
             onBlur={[Function]}
@@ -1957,16 +1885,12 @@ exports[`CaseStudyForm renders with errors 1`] = `
           className="invalid"
           disabled={false}
           id="refereeName"
-          maxLength={undefined}
           name="refereeName"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -2001,16 +1925,12 @@ exports[`CaseStudyForm renders with errors 1`] = `
           className="invalid"
           disabled={false}
           id="refereePosition"
-          maxLength={undefined}
           name="refereePosition"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -2045,16 +1965,12 @@ exports[`CaseStudyForm renders with errors 1`] = `
           className="invalid"
           disabled={false}
           id="refereeEmail"
-          maxLength={undefined}
           name="refereeEmail"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div>
@@ -2203,16 +2119,12 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           className=""
           disabled={false}
           id="title"
-          maxLength={undefined}
           name="title"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -2228,16 +2140,12 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           className=""
           disabled={false}
           id="client"
-          maxLength={undefined}
           name="client"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -2259,16 +2167,12 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           className=""
           disabled={false}
           id="timeframe"
-          maxLength={undefined}
           name="timeframe"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -2291,7 +2195,6 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           <textarea
             aria-describedby="roles-hint"
             className="under-100"
-            defaultValue={undefined}
             id="roles"
             name="roles"
             onBlur={[Function]}
@@ -2326,7 +2229,6 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           <textarea
             aria-describedby="opportunity-hint"
             className="under-200"
-            defaultValue={undefined}
             id="opportunity"
             name="opportunity"
             onBlur={[Function]}
@@ -2371,7 +2273,6 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           <textarea
             aria-describedby="approach-hint"
             className="under-200"
-            defaultValue={undefined}
             id="approach"
             name="approach"
             onBlur={[Function]}
@@ -2620,16 +2521,12 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           className=""
           disabled={false}
           id="refereeName"
-          maxLength={undefined}
           name="refereeName"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -2651,16 +2548,12 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           className=""
           disabled={false}
           id="refereePosition"
-          maxLength={undefined}
           name="refereePosition"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -2682,16 +2575,12 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           className=""
           disabled={false}
           id="refereeEmail"
-          maxLength={undefined}
           name="refereeEmail"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div>
@@ -2821,16 +2710,12 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           className=""
           disabled={false}
           id="title"
-          maxLength={undefined}
           name="title"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -2846,14 +2731,11 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           className=""
           disabled={false}
           id="client"
-          maxLength={undefined}
           name="client"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
           value="The Client Name"
         />
@@ -2877,14 +2759,11 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           className=""
           disabled={false}
           id="timeframe"
-          maxLength={undefined}
           name="timeframe"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
           value="January 2016 — June 2016"
         />
@@ -2909,7 +2788,6 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           <textarea
             aria-describedby="roles-hint"
             className="under-100"
-            defaultValue={undefined}
             id="roles"
             name="roles"
             onBlur={[Function]}
@@ -3238,16 +3116,12 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           className=""
           disabled={false}
           id="refereeName"
-          maxLength={undefined}
           name="refereeName"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -3269,16 +3143,12 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           className=""
           disabled={false}
           id="refereePosition"
-          maxLength={undefined}
           name="refereePosition"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div
@@ -3300,16 +3170,12 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           className=""
           disabled={false}
           id="refereeEmail"
-          maxLength={undefined}
           name="refereeEmail"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          pattern={undefined}
-          readOnly={undefined}
           type="text"
-          value={undefined}
         />
       </div>
       <div>

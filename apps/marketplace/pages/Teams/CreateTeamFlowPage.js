@@ -142,4 +142,7 @@ const mapDispatchToProps = dispatch => ({
   saveTeam: team => dispatch(saveTeam(team))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateTeamFlowPage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CreateTeamFlowPage)

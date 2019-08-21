@@ -92,4 +92,7 @@ const mapDispatchToProps = dispatch => ({
   loadInitialData: briefId => dispatch(loadPublicBrief(briefId))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFXCompletedPage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BuyerRFXCompletedPage)

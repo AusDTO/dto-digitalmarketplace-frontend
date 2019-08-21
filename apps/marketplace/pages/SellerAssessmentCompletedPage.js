@@ -83,4 +83,7 @@ const mapDispatchToProps = dispatch => ({
   loadInitialData: evidenceId => dispatch(loadEvidenceData(evidenceId))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SellerAssessmentCompletedPage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SellerAssessmentCompletedPage)
