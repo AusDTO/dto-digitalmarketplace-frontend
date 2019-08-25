@@ -125,7 +125,9 @@ const SignupForm = props => {
                                 <span>Buyer</span>
                                 <br />
                                 <br />
-                                I want to buy on behalf of<br />government.
+                                I want to buy on behalf of
+                                <br />
+                                government.
                               </span>
                             )
                           },
@@ -136,7 +138,9 @@ const SignupForm = props => {
                                 <span>Seller</span>
                                 <br />
                                 <br />
-                                I want to sell digital products or<br />services.
+                                I want to sell digital products or
+                                <br />
+                                services.
                               </span>
                             )
                           }
@@ -200,54 +204,52 @@ const SignupForm = props => {
                         />
                       </div>
                     )}
-                    {employmentStatus &&
-                      employmentStatus === 'contractor' &&
-                      isBuyer && (
-                        <div>
-                          <p>To create your account we will also need approval from a line manager who:</p>
-                          <ul>
-                            <li>
-                              Is an employee under the Commonwealth Public Service Act (1999) or under equivalent State
-                              or Territory legislation, and
-                            </li>
-                            <li>is satisfied you need to access the Digital Marketplace.</li>
-                          </ul>
-                          <Textfield
-                            model={`${model}.line_manager_name`}
-                            name="line_manager_name"
-                            id="line_manager_name"
-                            htmlFor="line_manager_name"
-                            label="Your manager's full name"
-                            validators={{
-                              required
-                            }}
-                            messages={{
-                              required: 'You must provide the name of your manager'
-                            }}
-                          />
-                          <Textfield
-                            model={`${model}.line_manager_email`}
-                            name="line_manager_email"
-                            id="line_manager_email"
-                            htmlFor="line_manager_email"
-                            label="Your manager's email address"
-                            validators={{
-                              required,
-                              validEmail
-                            }}
-                            messages={{
-                              required: "You must provide your manager's email address",
-                              validEmail: 'A validly formatted email is required.'
-                            }}
-                          />
-                          <AUpageAlert as="info">
-                            <p>
-                              Remember to let this person know we’ll be sending them an email requesting their
-                              authorisation.
-                            </p>
-                          </AUpageAlert>
-                        </div>
-                      )}
+                    {employmentStatus && employmentStatus === 'contractor' && isBuyer && (
+                      <div>
+                        <p>To create your account we will also need approval from a line manager who:</p>
+                        <ul>
+                          <li>
+                            Is an employee under the Commonwealth Public Service Act (1999) or under equivalent State or
+                            Territory legislation, and
+                          </li>
+                          <li>is satisfied you need to access the Digital Marketplace.</li>
+                        </ul>
+                        <Textfield
+                          model={`${model}.line_manager_name`}
+                          name="line_manager_name"
+                          id="line_manager_name"
+                          htmlFor="line_manager_name"
+                          label="Your manager's full name"
+                          validators={{
+                            required
+                          }}
+                          messages={{
+                            required: 'You must provide the name of your manager'
+                          }}
+                        />
+                        <Textfield
+                          model={`${model}.line_manager_email`}
+                          name="line_manager_email"
+                          id="line_manager_email"
+                          htmlFor="line_manager_email"
+                          label="Your manager's email address"
+                          validators={{
+                            required,
+                            validEmail
+                          }}
+                          messages={{
+                            required: "You must provide your manager's email address",
+                            validEmail: 'A validly formatted email is required.'
+                          }}
+                        />
+                        <AUpageAlert as="info">
+                          <p>
+                            Remember to let this person know we’ll be sending them an email requesting their
+                            authorisation.
+                          </p>
+                        </AUpageAlert>
+                      </div>
+                    )}
                     {children}
                     <p>
                       <small>

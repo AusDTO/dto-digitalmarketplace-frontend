@@ -66,6 +66,11 @@ const mapDispatchToProps = dispatch => ({
   handleSubmit: values => dispatch(login(values))
 })
 
-const LoginPage = withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginPageComponent))
+const LoginPage = withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(LoginPageComponent)
+)
 
 export default LoginPage

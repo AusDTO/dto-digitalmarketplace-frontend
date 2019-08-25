@@ -99,4 +99,9 @@ const mapStateToProps = state => ({
   isPartOfTeam: state.app.isPartOfTeam
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BuyerAwardSellerPage))
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(BuyerAwardSellerPage)
+)

@@ -55,7 +55,8 @@ export class Feedback extends React.Component {
 
               <label htmlFor="easy" className="au-btn au-btn--secondary">
                 <div>
-                  <Icon value="smile-o" color="#000000" size={24} className={styles.smile} />Easy
+                  <Icon value="smile-o" color="#000000" size={24} className={styles.smile} />
+                  Easy
                 </div>
               </label>
               <Control.radio
@@ -70,7 +71,8 @@ export class Feedback extends React.Component {
               />
               <label htmlFor="ok" className={`au-btn au-btn--secondary ${styles.okButton}`}>
                 <div>
-                  <Icon value="meh-o" color="#000000" size={24} className={styles.meh} />OK
+                  <Icon value="meh-o" color="#000000" size={24} className={styles.meh} />
+                  OK
                 </div>
               </label>
               <Control.radio
@@ -85,7 +87,8 @@ export class Feedback extends React.Component {
               />
               <label htmlFor="difficult" className={`au-btn au-btn--secondary ${styles.difficultButton}`}>
                 <div>
-                  <Icon value="frown-o" color="#000000" size={24} className={styles.frown} />Difficult
+                  <Icon value="frown-o" color="#000000" size={24} className={styles.frown} />
+                  Difficult
                 </div>
               </label>
             </fieldset>

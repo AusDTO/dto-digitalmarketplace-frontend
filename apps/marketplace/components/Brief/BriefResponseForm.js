@@ -94,30 +94,30 @@ const BriefResponseForm = ({
                 required: 'Enter a date for when you can start the project'
               }}
             />
-            {brief.lotSlug &&
-              brief.lotSlug === 'digital-professionals' && (
-                <Textfield
-                  model={`${model}.dayRate`}
-                  name="dayRate"
-                  id="dayRate"
-                  htmlFor="dayRate"
-                  label="Day rate"
-                  description="What is your day rate, including GST?"
-                  validators={{
-                    required,
-                    validPercentage
-                  }}
-                  messages={{
-                    required: 'A day rate is required',
-                    validPercentage: 'Enter only numbers eg. 600.00'
-                  }}
-                />
-              )}
+            {brief.lotSlug && brief.lotSlug === 'digital-professionals' && (
+              <Textfield
+                model={`${model}.dayRate`}
+                name="dayRate"
+                id="dayRate"
+                htmlFor="dayRate"
+                label="Day rate"
+                description="What is your day rate, including GST?"
+                validators={{
+                  required,
+                  validPercentage
+                }}
+                messages={{
+                  required: 'A day rate is required',
+                  validPercentage: 'Enter only numbers eg. 600.00'
+                }}
+              />
+            )}
             <fieldset className={styles.x_uikit_fieldset}>
               <span />
               <h2 className="au-display-lg">Skills and experience?</h2>
-              {brief.lotSlug &&
-                brief.lotSlug === 'digital-professionals' && <p>Answer the following criteria for all candidates</p>}
+              {brief.lotSlug && brief.lotSlug === 'digital-professionals' && (
+                <p>Answer the following criteria for all candidates</p>
+              )}
               {brief.essentialRequirements &&
                 brief.essentialRequirements.map((requirement, i) => (
                   <Textarea
@@ -168,12 +168,11 @@ const BriefResponseForm = ({
             <div className="au-page-alerts au-page-alerts--warning">
               <h3 className="au-display-md">Once you submit this application:</h3>
               <ul>
-                {brief.lotSlug &&
-                  brief.lotSlug === 'digital-professionals' && (
-                    <li>
-                      You <b>cannot</b> submit another candidate
-                    </li>
-                  )}
+                {brief.lotSlug && brief.lotSlug === 'digital-professionals' && (
+                  <li>
+                    You <b>cannot</b> submit another candidate
+                  </li>
+                )}
                 <li>
                   You <b>cannot</b> edit your application after submitting
                 </li>

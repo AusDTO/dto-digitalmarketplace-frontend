@@ -23,7 +23,6 @@ exports[`Test suite for CreateUserPage page Because snaphots 1`] = `
         </div>
         <form
           id="createuser"
-          noValidate={undefined}
           onReset={[Function]}
           onSubmit={[Function]}
         >
@@ -51,7 +50,6 @@ exports[`Test suite for CreateUserPage page Because snaphots 1`] = `
                 className="au-text-input au-text-input--block"
                 disabled={false}
                 id="password"
-                maxLength={undefined}
                 name="password"
                 onBlur={[Function]}
                 onChange={[Function]}

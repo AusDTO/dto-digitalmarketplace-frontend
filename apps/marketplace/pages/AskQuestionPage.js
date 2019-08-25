@@ -119,8 +119,8 @@ class AskQuestionPage extends Component {
                     <Form model={model} id="askAQuestion" onSubmit={data => this.handleSubmit(data)}>
                       <h1 className="au-display-xl">{`Ask a question about '${brief.title}'`}</h1>
                       <p>
-                        Submit your questions before {format(new Date(brief.dates.questions_close), 'dddd D MMMM YYYY')}.{' '}
-                        Answers will be published on the opportunity before it closes.
+                        Submit your questions before {format(new Date(brief.dates.questions_close), 'dddd D MMMM YYYY')}
+                        . Answers will be published on the opportunity before it closes.
                       </p>
                       <Textarea
                         key={'question'}
@@ -163,4 +163,9 @@ const mapResetDispatchToProps = dispatch => ({
   submitSupplierQuestion: (briefId, values) => dispatch(submitSupplierQuestion(briefId, values))
 })
 
-export default withRouter(connect(mapResetStateToProps, mapResetDispatchToProps)(AskQuestionPage))
+export default withRouter(
+  connect(
+    mapResetStateToProps,
+    mapResetDispatchToProps
+  )(AskQuestionPage)
+)

@@ -156,4 +156,7 @@ const mapDispatchToProps = (dispatch, props) => ({
   updateCriteriaResponses: data => dispatch(actions.change(`${props.model}.evidence`, data))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SellerAssessmentCriteriaStage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SellerAssessmentCriteriaStage)

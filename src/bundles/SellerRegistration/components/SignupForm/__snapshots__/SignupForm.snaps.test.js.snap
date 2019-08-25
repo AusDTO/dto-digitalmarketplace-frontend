@@ -16,10 +16,8 @@ exports[`SignupForm renders 1`] = `
       role="main"
     >
       <form
-        action={undefined}
         id="signup"
         method="post"
-        noValidate={undefined}
         onReset={[Function]}
         onSubmit={[Function]}
       >
@@ -104,16 +102,12 @@ exports[`SignupForm renders 1`] = `
             className=""
             disabled={false}
             id="name"
-            maxLength={undefined}
             name="name"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
-            pattern={undefined}
-            readOnly={undefined}
             type="text"
-            value={undefined}
           />
         </div>
         <div
@@ -135,16 +129,12 @@ exports[`SignupForm renders 1`] = `
             className=""
             disabled={false}
             id="email_address"
-            maxLength={undefined}
             name="email_address"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
-            pattern={undefined}
-            readOnly={undefined}
             type="email"
-            value={undefined}
           />
         </div>
         <p>
@@ -186,10 +176,8 @@ exports[`SignupForm renders with form_options 1`] = `
       role="main"
     >
       <form
-        action={undefined}
         id="signup"
         method="post"
-        noValidate={undefined}
         onReset={[Function]}
         onSubmit={[Function]}
       >
@@ -280,16 +268,12 @@ exports[`SignupForm renders with form_options 1`] = `
             className=""
             disabled={false}
             id="name"
-            maxLength={undefined}
             name="name"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
-            pattern={undefined}
-            readOnly={undefined}
             type="text"
-            value={undefined}
           />
         </div>
         <div
@@ -311,16 +295,12 @@ exports[`SignupForm renders with form_options 1`] = `
             className=""
             disabled={false}
             id="email_address"
-            maxLength={undefined}
             name="email_address"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
             onKeyPress={[Function]}
-            pattern={undefined}
-            readOnly={undefined}
             type="email"
-            value={undefined}
           />
         </div>
         <p>

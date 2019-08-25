@@ -56,6 +56,11 @@ const mapDispatchToProps = dispatch => ({
   deleteBrief: briefId => dispatch(deleteBrief(briefId))
 })
 
-const BriefOverviewPage = withRouter(connect(mapStateToProps, mapDispatchToProps)(BriefOverviewPageComponent))
+const BriefOverviewPage = withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(BriefOverviewPageComponent)
+)
 
 export default BriefOverviewPage

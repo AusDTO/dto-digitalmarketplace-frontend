@@ -49,4 +49,7 @@ const mapDispatchToProps = dispatch => ({
   createSpecialistBrief: () => dispatch(createSpecialistBrief())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerSpecialistCreatePage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BuyerSpecialistCreatePage)

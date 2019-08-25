@@ -68,4 +68,7 @@ export const mapErrorMessages = (forms, messages) => {
     .filter(e => e.messages.length)
 }
 
-export const getInvalidFields = createSelector([getForms, getErrorMessages, getModelPath], mapErrorMessages)
+export const getInvalidFields = createSelector(
+  [getForms, getErrorMessages, getModelPath],
+  mapErrorMessages
+)

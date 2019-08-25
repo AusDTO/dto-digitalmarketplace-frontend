@@ -117,4 +117,7 @@ const mapDispatchToProps = dispatch => ({
   notifyAuthRep: supplierCode => dispatch(notifyAuthRep(supplierCode))
 })
 
-export default connect(null, mapDispatchToProps)(ShareWithAuthRep)
+export default connect(
+  null,
+  mapDispatchToProps
+)(ShareWithAuthRep)

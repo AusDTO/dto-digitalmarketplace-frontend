@@ -115,6 +115,11 @@ const mapResetDispatchToProps = dispatch => ({
   logoutForPasswordReset: () => dispatch(logout())
 })
 
-const ResetPasswordPage = withRouter(connect(mapResetStateToProps, mapResetDispatchToProps)(ResetPasswordPageComponent))
+const ResetPasswordPage = withRouter(
+  connect(
+    mapResetStateToProps,
+    mapResetDispatchToProps
+  )(ResetPasswordPageComponent)
+)
 
 export default ResetPasswordPage

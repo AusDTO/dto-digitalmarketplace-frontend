@@ -124,8 +124,8 @@ export class BuyerSpecialistSelectStage extends Component {
                   onSellerCategorySelect={this.handleSellerCategorySelect}
                   showCategorySelect={false}
                   notFoundMessage="Seller is not on the Digital Marketplace"
+                  selectedCategory={this.props[this.props.model].sellerCategory}
                   showSellerCatalogueLink
-                  allSuppliers
                 />
                 <br />
                 <SelectedSellersControl
@@ -167,4 +167,7 @@ const mapDispatchToProps = (dispatch, props) => ({
   updateSelectedSellerCategory: category => dispatch(actions.change(`${props.model}.sellerCategory`, category))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerSpecialistSelectStage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BuyerSpecialistSelectStage)

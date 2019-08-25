@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Route, Router, Link, withRouter, Redirect } from 'react-router-dom'
-import createHistory from 'history/createBrowserHistory'
+import { createBrowserHistory } from 'history'
 import { connect } from 'react-redux'
 import AUaccordion from '@gov.au/accordion/lib/js/react.js'
 import formProps from 'shared/form/formPropsSelector'
@@ -47,7 +47,7 @@ export class ProgressFlow extends Component {
       this.state.stages[this.props.match.params.stage] = 'doing'
     }
 
-    this.history = createHistory({
+    this.history = createBrowserHistory({
       basename: this.props.basename
     })
 
