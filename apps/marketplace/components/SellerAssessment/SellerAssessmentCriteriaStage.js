@@ -104,8 +104,10 @@ class SellerAssessmentCriteriaStage extends Component {
           title="An error occurred"
           model={this.props.model}
           messages={{
-            requiredMinimal: `You must submit evidence for at least ${criteriaNeeded} criteria`,
-            requiredMaximum: `You cannot submit evidence for more than ${criteriaAllowed} criteria`
+            requiredMinimal: `You must submit evidence for at least ${criteriaNeeded} ${
+              criteriaNeeded === 1 ? 'criterion' : 'criteria'
+            }.`,
+            requiredMaximum: `You cannot submit evidence for more than ${criteriaAllowed} criteria.`
           }}
         />
         <p>
