@@ -9,7 +9,7 @@ import { SellerAssessmentEvidenceReducer } from 'marketplace/reducers'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import styles from './SellerAssessmentCriteriaStage.scss'
 
-export const getCriteriaNeeded = (criteriaNeeded, priceMaximum, maxDailyRate) => {
+const getCriteriaNeeded = (criteriaNeeded, priceMaximum, maxDailyRate) => {
   let adjustedCriteriaNeeded = parseInt(criteriaNeeded, 10)
   if (parseInt(maxDailyRate, 10) > parseInt(priceMaximum, 10)) {
     adjustedCriteriaNeeded += 1
@@ -17,11 +17,24 @@ export const getCriteriaNeeded = (criteriaNeeded, priceMaximum, maxDailyRate) =>
   return adjustedCriteriaNeeded
 }
 
+const getCriteriaAllowed = (criteriaNeeded, priceMaximum, maxDailyRate) =>
+  getCriteriaNeeded(criteriaNeeded, priceMaximum, maxDailyRate) + 2
+
+const minimumCriteriaMet = (v, d) =>
+  d.criteriaNeeded &&
+  v.criteria &&
+  v.criteria.length &&
+  v.criteria.length >= getCriteriaNeeded(d.criteriaNeeded, d.priceMaximum, v.maxDailyRate)
+
+const maximumCriteriaAllowed = (v, d) =>
+  !minimumCriteriaMet(v, d) ||
+  (d.criteriaNeeded &&
+    v.criteria &&
+    v.criteria.length &&
+    v.criteria.length <= getCriteriaAllowed(d.criteriaNeeded, d.priceMaximum, v.maxDailyRate))
+
 export const done = (formValues, meta) =>
-  formValues.criteria &&
-  meta.domain.criteriaNeeded &&
-  formValues.criteria.length >=
-    getCriteriaNeeded(meta.domain.criteriaNeeded, meta.domain.priceMaximum, formValues.maxDailyRate)
+  minimumCriteriaMet(formValues, meta.domain) && maximumCriteriaAllowed(formValues, meta.domain)
 
 class SellerAssessmentCriteriaStage extends Component {
   constructor(props) {
@@ -61,15 +74,23 @@ class SellerAssessmentCriteriaStage extends Component {
 
   render() {
     const domain = this.props.meta.domain
+    const criteriaNeeded = getCriteriaNeeded(
+      domain.criteriaNeeded,
+      domain.priceMaximum,
+      this.props[this.props.model].maxDailyRate
+    )
+    const criteriaAllowed = getCriteriaAllowed(
+      domain.criteriaNeeded,
+      domain.priceMaximum,
+      this.props[this.props.model].maxDailyRate
+    )
     return (
       <Form
         model={this.props.model}
         validators={{
           '': {
-            requiredMinimal: formValues =>
-              formValues.criteria &&
-              formValues.criteria.length >=
-                getCriteriaNeeded(domain.criteriaNeeded, domain.priceMaximum, this.props[this.props.model].maxDailyRate)
+            requiredMinimal: v => minimumCriteriaMet(v, domain),
+            requiredMaximum: v => maximumCriteriaAllowed(v, domain)
           }
         }}
         onSubmit={this.props.onSubmit}
@@ -83,18 +104,15 @@ class SellerAssessmentCriteriaStage extends Component {
           title="An error occurred"
           model={this.props.model}
           messages={{
-            requiredMinimal: `You must select at least ${getCriteriaNeeded(
-              domain.criteriaNeeded,
-              domain.priceMaximum,
-              this.props[this.props.model].maxDailyRate
-            )} criteria`
+            requiredMinimal: `You must submit evidence for at least ${criteriaNeeded} ${
+              criteriaNeeded === 1 ? 'criterion' : 'criteria'
+            }.`,
+            requiredMaximum: `You cannot submit evidence for more than ${criteriaAllowed} criteria.`
           }}
         />
         <p>
           <strong>
-            Select the criteria you will provide evidence for (
-            {getCriteriaNeeded(domain.criteriaNeeded, domain.priceMaximum, this.props[this.props.model].maxDailyRate)}{' '}
-            minimum required)
+            For this assessment, you must submit evidence between {criteriaNeeded} to {criteriaAllowed} criteria.
           </strong>
         </p>
         <div className={styles.criteria}>
