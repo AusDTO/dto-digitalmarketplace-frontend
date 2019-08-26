@@ -20,7 +20,7 @@ class EvidenceAssessment extends React.Component {
     if (this.props.evidence) {
       Object.keys(this.props.evidence.data.evidence).map(criteriaId => {
         criteria[criteriaId] = {
-          demonstrates: undefined,
+          demonstrates: this.props.evidence.approvedCriteria.includes(criteriaId) ? true : undefined,
           reason: '',
           feedback: ''
         }
@@ -219,9 +219,10 @@ class EvidenceAssessment extends React.Component {
                     name={`criteria-review-${criteriaId}`}
                     id={`criteria-review-${criteriaId}-yes`}
                     value="yes"
-                    checked={this.state.criteria[criteriaId].demonstrates === true}
+                    checked={evidence.approvedCriteria.includes(criteriaId) || this.state.criteria[criteriaId].demonstrates === true}
                     onChange={e => this.handleCriteriaReviewClick(e, criteriaId)}
                     block
+                    disabled={evidence.approvedCriteria.includes(criteriaId)}
                   />
                   <AUradio
                     label="Does not demonstrate"
@@ -231,6 +232,7 @@ class EvidenceAssessment extends React.Component {
                     checked={this.state.criteria[criteriaId].demonstrates === false}
                     onChange={e => this.handleCriteriaReviewClick(e, criteriaId)}
                     block
+                    disabled={evidence.approvedCriteria.includes(criteriaId)}
                   />
                   {this.state.criteria[criteriaId].demonstrates === false && (
                     <span styleName="feedback">
