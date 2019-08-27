@@ -2,8 +2,10 @@ import React from 'react'
 
 import AUskipLink from '@gov.au/skip-link/lib/js/react.js'
 
+import styles from './SkipToLinks.scss'
+
 const SkipToLinks = () => (
-  <div>
+  <div className={styles.skipTo}>
     <AUskipLink
       links={[
         {

@@ -1,0 +1,32 @@
+.skipTo {
+    color: #313131;
+    position: relative;
+    z-index: 99;
+
+    a {
+        border: 0;
+        border-radius: 1px;
+        clip: rect(0, 0, 0, 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+
+        &:active, &:focus {
+            background-color: #5bcbe3;
+            clip: auto;
+            color: #313131;
+            height: auto;
+            left: 0.625rem;
+            margin: 0;
+            overflow: visible;
+            padding: 0.4rem 0.8rem;
+            position: absolute;
+            text-decoration: none;
+            top: 0.625rem;
+            width: auto;
+        }
+    }
+}
