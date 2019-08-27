@@ -50,6 +50,9 @@ class Header extends React.Component {
             <a href="/2/teams">Teams and people</a>
           </li>
           <li>
+            <a href="/2/download-reports">Download reports</a> 
+          </li>
+          <li>
             <a href="/logout">Sign out</a>
           </li>
         </ul>
@@ -128,6 +131,11 @@ class Header extends React.Component {
           {userType === 'buyer' && (
             <div className="au-marketplace-header_mobile-link">
               <a href="/2/teams">Teams and People</a>
+            </div>
+          )}
+          {userType === 'buyer' && (
+            <div className="au-marketplace-header_mobile-link">
+              <a href="/2/download-reports">Download reports</a>
             </div>
           )}
           <CommonMobileLinks />

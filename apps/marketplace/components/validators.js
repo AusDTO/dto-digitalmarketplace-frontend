@@ -35,7 +35,7 @@ export const requiredFile = val => {
   return false
 }
 
-export const validDate = val => {
+export const validDate = (val, enableFutureCheck) => {
   const dateObj = parse_date(val)
   if (!val || !isValid(dateObj)) {
     return false
@@ -43,7 +43,11 @@ export const validDate = val => {
   if (format(dateObj, 'YYYY-MM-DD') !== val) {
     return false
   }
-  if (isFuture(val)) {
+  if (enableFutureCheck === undefined || enableFutureCheck) {
+    if (isFuture(val)) {
+      return true
+    }
+  } else {
     return true
   }
   return false
@@ -57,6 +61,16 @@ export const dateIs2DaysInFuture = val => {
     return true
   }
   return false
+}
+
+export const startDateIsBeforeEndDate = (start, end) => {
+  // if (!validDate(start) || !validDate(end)) {
+  //   return false
+  // }
+  if (!isBefore(start, end)) {
+    return false
+  }
+  return true
 }
 
 export const dateIsBefore = (val, before) => {
