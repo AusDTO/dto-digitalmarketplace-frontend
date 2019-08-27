@@ -341,25 +341,29 @@ const Opportunity = props => {
               Why is the work being done?
             </AUheading>
           )}
-          {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && <p>{brief.backgroundInformation}</p>}
+          {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && (
+            <p className={styles.newLines}>{brief.backgroundInformation}</p>
+          )}
           {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && (
             <AUheading level="3" size="md">
               What&apos;s the key problem you need to solve?
             </AUheading>
           )}
-          {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && <p>{brief.outcome}</p>}
+          {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && <p className={styles.newLines}>{brief.outcome}</p>}
           {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && (
             <AUheading level="3" size="md">
               Describe the users and their needs
             </AUheading>
           )}
-          {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && <p>{brief.endUsers}</p>}
+          {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && <p className={styles.newLines}>{brief.endUsers}</p>}
           {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && (
             <AUheading level="3" size="md">
               What work has already been done?
             </AUheading>
           )}
-          {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && <p>{brief.workAlreadyDone}</p>}
+          {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && (
+            <p className={styles.newLines}>{brief.workAlreadyDone}</p>
+          )}
           {loggedIn &&
             (canRespond || isInvited || isBuyer) &&
             (brief.lotSlug !== 'specialist' || brief.attachments.length > 0) && (
@@ -461,7 +465,9 @@ const Opportunity = props => {
                   Industry briefing
                 </AUheading>
               )}
-              {brief.industryBriefing && (canRespond || isInvited || isBriefOwner) && <p>{brief.industryBriefing}</p>}
+              {brief.industryBriefing && (canRespond || isInvited || isBriefOwner) && (
+                <p className={styles.newLines}>{brief.industryBriefing}</p>
+              )}
             </div>
           )}
           {brief.evaluationCriteria && brief.evaluationCriteria.length > 0 ? (
