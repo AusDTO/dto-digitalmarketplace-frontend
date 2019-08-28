@@ -8,21 +8,28 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import styles from './BuyerRFXResponseFormatsStage.scss'
 
-export const atleastOneFormat = formValues =>
-  formValues.evaluationType &&
-  (formValues.evaluationType.includes('Written proposal') || formValues.evaluationType.includes('Response template'))
+const atleastOneFormat = v =>
+  v.evaluationType && (v.evaluationType.includes('Written proposal') || v.evaluationType.includes('Response template'))
 
-export const atleastOneProposal = formValues =>
-  !formValues.evaluationType.includes('Written proposal') ||
-  (formValues.evaluationType.includes('Written proposal') &&
-    formValues.proposalType &&
-    formValues.proposalType.length > 0)
+const atleastOneProposal = v =>
+  !v.evaluationType.includes('Written proposal') ||
+  (v.evaluationType.includes('Written proposal') && v.proposalType && v.proposalType.length > 0)
+
+const onlyProposalOrTemplate = v =>
+  !atleastOneFormat(v) ||
+  !(v.evaluationType.includes('Written proposal') && v.evaluationType.includes('Response template'))
+
+export const done = v => atleastOneFormat(v) && atleastOneProposal(v) && onlyProposalOrTemplate(v)
 
 const BuyerRFXResponseFormatsStage = props => (
   <Form
     model={props.model}
     validators={{
-      '': { atleastOneFormat, atleastOneProposal }
+      '': {
+        atleastOneFormat,
+        atleastOneProposal,
+        onlyProposalOrTemplate
+      }
     }}
     onSubmit={props.onSubmit}
     onSubmitFailed={props.onSubmitFailed}
@@ -36,7 +43,8 @@ const BuyerRFXResponseFormatsStage = props => (
       model={props.model}
       messages={{
         atleastOneFormat: 'You must choose what you would like sellers to provide through the Marketplace',
-        atleastOneProposal: 'You must select at least one proposal type.'
+        atleastOneProposal: 'You must select at least one proposal type.',
+        onlyProposalOrTemplate: 'You can only select either "Written proposal" or "Completed response template".'
       }}
     />
     <AUheading level="2" size="md">

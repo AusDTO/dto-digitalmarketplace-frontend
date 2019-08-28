@@ -5,7 +5,7 @@ import BuyerRFXSelectStage from './BuyerRFXSelectStage'
 import BuyerRFXRequirementsStage from './BuyerRFXRequirementsStage'
 import BuyerRFXReviewStage from './BuyerRFXReviewStage'
 import BuyerRFXAdditionalInformationStage from './BuyerRFXAdditionalInformationStage'
-import BuyerRFXResponseFormatsStage, { atleastOneFormat, atleastOneProposal } from './BuyerRFXResponseFormatsStage'
+import BuyerRFXResponseFormatsStage, { done as responseFormatDone } from './BuyerRFXResponseFormatsStage'
 import BuyerRFXTimeframesAndBudgetStage from './BuyerRFXTimeframesAndBudgetStage'
 import BuyerEvaluationCriteriaStage, { done as evaluationDone } from '../BuyerBriefFlow/BuyerEvaluationCriteriaStage'
 
@@ -43,7 +43,7 @@ const BuyerRFXStages = [
     slug: 'formats',
     title: 'Response formats',
     component: BuyerRFXResponseFormatsStage,
-    isDone: formValues => atleastOneFormat(formValues) && atleastOneProposal(formValues)
+    isDone: responseFormatDone
   },
   {
     slug: 'requirements',
