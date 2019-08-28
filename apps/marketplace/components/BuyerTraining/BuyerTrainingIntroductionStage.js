@@ -15,7 +15,7 @@ const BuyerTrainingIntroductionStage = props => (
     <AUheading level="2" size="sm">
       What you get:
     </AUheading>
-    <p>Proposals and/or a completed response template used by your agency.</p>
+    <p>Proposals or a completed response template used by your agency.</p>
     <AUheading level="2" size="sm">
       Before you start:
     </AUheading>
