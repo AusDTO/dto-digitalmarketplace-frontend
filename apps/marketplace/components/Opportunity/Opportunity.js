@@ -185,7 +185,7 @@ const Opportunity = props => {
                 <strong>Published</strong>
               </div>
               <div className="col-xs-12 col-sm-8">
-                {format(brief.dates.published_date ? brief.dates.published_date : new Date(), 'dddd D MMMM YYYY')}
+                {brief.dates.published_date && format(brief.dates.published_date, 'dddd D MMMM YYYY')}
               </div>
             </div>
             {category && (
