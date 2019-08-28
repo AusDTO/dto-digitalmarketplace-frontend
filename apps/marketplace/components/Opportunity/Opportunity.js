@@ -216,7 +216,9 @@ const Opportunity = props => {
                 <strong>Estimated start date</strong>
               </div>
               <div className="col-xs-12 col-sm-8">
-                {brief.lotSlug === 'specialist' ? format(brief.startDate, 'D-MM-YYYY') : brief.startDate}
+                {brief.lotSlug === 'specialist' && brief.startDate
+                  ? format(brief.startDate, 'D-MM-YYYY')
+                  : brief.startDate}
               </div>
             </div>
             {brief.lotSlug === 'specialist' && brief.maxRate && (
