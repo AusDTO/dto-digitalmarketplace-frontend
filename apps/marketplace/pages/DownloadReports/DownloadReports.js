@@ -31,6 +31,7 @@ const handleSubmit = values => {
   }`
   window.location.href = url
 }
+const scrollToTop = () => (typeof window !== 'undefined' ? window.scrollTo(0, 0) : '')
 
 export class DownloadReports extends Component {
   constructor(props) {
@@ -64,10 +65,7 @@ export class DownloadReports extends Component {
           }
         }}
         onSubmit={data => handleSubmit(data)}
-        // onSubmitFailed={this.handleFailedSubmit}
         validateOn="submit"
-        // action={`/api/2/buyer/download/reports?reportType=${this.props[model].reportType}&startDate=${this.props[model].startDate}&endDate=${this.props[model].endDate}`}
-        // method="get"
       >
         <AUheading size="xl" level="1">
           Activity reports
@@ -132,7 +130,10 @@ export class DownloadReports extends Component {
                   }}
                   label="I am authorised to access procurement reporting documents across my organisation and I will store, transmit and use the report in line with my agency's privacy and data policies."
                 />
-                <AUbutton type="submit" disabled={!this.state.acceptEnabled}>
+                <AUbutton type="submit" disabled={!this.state.acceptEnabled}
+                  onClick={e => {
+                    scrollToTop()
+                  }}>>
                   Download reports
                 </AUbutton>
               </div>
@@ -176,7 +177,10 @@ export class DownloadReports extends Component {
                 }}
                 label="I am authorised to access procurement reporting documents across my organisation and I will store, transmit and use the report in line with my agency's privacy and data policies."
               />
-              <AUbutton type="submit" disabled={!this.state.acceptEnabled}>
+              <AUbutton type="submit" disabled={!this.state.acceptEnabled}
+              onClick={e => {
+                scrollToTop()
+              }}>
                 Download reports
               </AUbutton>
             </React.Fragment>
