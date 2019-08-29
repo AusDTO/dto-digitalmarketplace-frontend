@@ -74,6 +74,18 @@ const getBriefCategory = (domains, briefCategory) => {
   return category ? category.name : null
 }
 
+const getQuestionsCloseDate = brief => {
+  if (brief.dates.questions_close) {
+    return new Date(brief.dates.questions_close)
+  }
+
+  if (getClosingTime(brief)) {
+    return getBriefLastQuestionDate(new Date(getClosingTime(brief)))
+  }
+
+  return false
+}
+
 const showATMObjectives = (lotSlug, isBuyer, canRespond) => {
   if (lotSlug === 'atm' && (isBuyer || canRespond)) {
     return true
@@ -163,13 +175,7 @@ const Opportunity = props => {
                 <strong>Deadline for asking questions</strong>
               </div>
               <div className="col-xs-12 col-sm-8">
-                {format(
-                  brief.dates.questions_close
-                    ? new Date(brief.dates.questions_close)
-                    : getBriefLastQuestionDate(new Date(getClosingTime(brief) || new Date())),
-                  'dddd D MMMM YYYY'
-                )}{' '}
-                at 6PM (in Canberra)
+                {getQuestionsCloseDate(brief) && `${format(getQuestionsCloseDate(brief), 'dddd D MMMM YYYY')} at 6PM (in Canberra)`}
               </div>
             </div>
             <div className="row">
