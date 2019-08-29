@@ -28,6 +28,7 @@ const minimumCriteriaMet = (v, d) =>
 
 const maximumCriteriaAllowed = (v, d) =>
   !minimumCriteriaMet(v, d) ||
+  new Date(v.created_at) <= new Date(d.criteriaEnforcementCutoffDate) ||
   (d.criteriaNeeded &&
     v.criteria &&
     v.criteria.length &&

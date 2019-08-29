@@ -21,7 +21,8 @@ export const SellerAssessmentFormReducer = {
   domainId: 0,
   maxDailyRate: 0,
   criteria: [],
-  evidence: {}
+  evidence: {},
+  created_at: null
 }
 
 export const SellerAssessmentEvidenceReducer = {
