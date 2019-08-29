@@ -51,7 +51,8 @@ export const handleDomainLoadSuccess = response => ({
     priceMinimum: response.data.price_minimum,
     priceMaximum: response.data.price_maximum,
     criteria: response.data.criteria,
-    criteriaNeeded: response.data.criteria_needed
+    criteriaNeeded: response.data.criteria_needed,
+    criteriaEnforcementCutoffDate: response.data.criteriaEnforcementCutoffDate
   }
 })
 
@@ -80,7 +81,8 @@ export const handleLoadEvidenceSuccess = response => ({
     failedCriteria: response.data.failed_criteria,
     previousEvidenceId: response.data.previous_evidence_id,
     evidence: response.data.evidence,
-    status: response.data.status
+    status: response.data.status,
+    created_at: response.data.created_at
   }
 })
 
