@@ -175,7 +175,8 @@ const Opportunity = props => {
                 <strong>Deadline for asking questions</strong>
               </div>
               <div className="col-xs-12 col-sm-8">
-                {getQuestionsCloseDate(brief) && `${format(getQuestionsCloseDate(brief), 'dddd D MMMM YYYY')} at 6PM (in Canberra)`}
+                {getQuestionsCloseDate(brief) &&
+                  `${format(getQuestionsCloseDate(brief), 'dddd D MMMM YYYY')} at 6PM (in Canberra)`}
               </div>
             </div>
             <div className="row">
