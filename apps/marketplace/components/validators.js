@@ -79,15 +79,13 @@ export const validEmail = val => {
   return false
 }
 
-export const validGovernmentEmail = (emailAddress, userEmailAddress) => {
+export const validGovernmentEmail = (emailAddress, agencyDomains) => {
   if (!emailAddress || !validEmail(emailAddress)) {
     return true
   }
 
   const domain = emailAddress.split('@')[1]
-  const userDomain = userEmailAddress.split('@')[1]
-
-  if (domain === userDomain) {
+  if (agencyDomains.includes(domain)) {
     return true
   }
 

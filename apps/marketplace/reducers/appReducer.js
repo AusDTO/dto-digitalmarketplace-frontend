@@ -30,7 +30,9 @@ const initialState = {
   userType: '',
   frameworkError: false,
   csrfToken: '',
-  notificationCount: null
+  notificationCount: null,
+  agencyId: null,
+  agencyDomains: null
 }
 
 const appReducer = (state = initialState, action) => {
@@ -76,7 +78,9 @@ const appReducer = (state = initialState, action) => {
         notificationCount: action.newState.notificationCount,
         teams: action.newState.teams,
         isTeamLead: action.newState.isTeamLead,
-        isPartOfTeam: action.newState.isPartOfTeam
+        isPartOfTeam: action.newState.isPartOfTeam,
+        agencyId: action.newState.agencyId,
+        agencyDomains: action.newState.agencyDomains
       }
     default:
       return state
