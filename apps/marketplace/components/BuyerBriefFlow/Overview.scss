@@ -74,3 +74,9 @@ div.stageStatus {
   float: right;
   font-size: 1rem;
 }
+
+@media (max-width: 450px) {
+  div.headerMenu {
+    position: relative;
+  }
+}
