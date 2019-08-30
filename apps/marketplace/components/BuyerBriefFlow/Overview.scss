@@ -78,5 +78,9 @@ div.stageStatus {
 @media (max-width: 450px) {
   div.headerMenu {
     position: relative;
+
+    .menuList {
+      margin-top: 0.25rem;
+    }
   }
 }
