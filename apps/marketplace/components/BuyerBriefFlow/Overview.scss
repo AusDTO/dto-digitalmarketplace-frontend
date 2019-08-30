@@ -22,28 +22,28 @@ div.headerMenu {
   position: absolute;
   top: 0;
   right: 0;
+
+  ul {
+    display: inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: inline-block;
+      color: #999999;
+    }
+
+    li + li:before {
+      content: "|";
+      padding: 0 5px;
+    }
+  }
 }
 
 div.headerMenuClosingTime {
   display: inline-block;
   margin-right: 0.75rem;
-}
-
-div.headerMenu ul {
-  display: inline-block;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-div.headerMenu ul li {
-  display: inline-block;
-  color: #999999;
-}
-
-div.headerMenu ul li + li:before {
-  content: "|";
-  padding: 0 5px;
 }
 
 a.headerMenuDelete, a.headerMenuDelete:hover {
@@ -52,22 +52,22 @@ a.headerMenuDelete, a.headerMenuDelete:hover {
 
 div.deleteAlert {
   margin-top: 1.5rem;
-}
 
-div.deleteAlert button {
-  margin-right: 1.5rem;
-  margin-top: 0.75rem;
+  button {
+    margin-right: 1.5rem;
+    margin-top: 0.75rem;
+  }
 }
 
 ul.overviewList {
   padding-left: 0;
   list-style-type: none;
-}
 
-ul.overviewList li {
-  border-bottom: 1px solid gray;
-  padding: 1.5rem 0;
-  font-size: 1.25rem;
+  li {
+    border-bottom: 1px solid gray;
+    padding: 1.5rem 0;
+    font-size: 1.25rem;
+  }
 }
 
 div.stageStatus {
