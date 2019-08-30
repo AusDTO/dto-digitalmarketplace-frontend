@@ -42,10 +42,10 @@ export class BuyerDashboardBriefTable extends Component {
 
   getLinkedBriefTitle(item) {
     const { isPartOfTeam, isTeamLead, teams } = this.props
-
-    let name = ''
+    const name = 'Untitled opportunity'
     let url = ''
     let permissionToEdit = false
+
     if (item.status === 'draft') {
       if (
         hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') ||
@@ -56,10 +56,10 @@ export class BuyerDashboardBriefTable extends Component {
     } else {
       permissionToEdit = true
     }
+
     switch (item.lot) {
       case 'rfx':
         url = `${rootPath}/brief/${item.id}/overview/rfx`
-        name = 'Untitled seek proposals and quotes'
         break
       case 'training2':
         url = `${rootPath}/brief/${item.id}/overview/training2`
@@ -67,15 +67,12 @@ export class BuyerDashboardBriefTable extends Component {
         break
       case 'atm':
         url = `${rootPath}/brief/${item.id}/overview/atm`
-        name = 'Untitled ask the market'
         break
       case 'specialist':
         url = `${rootPath}/brief/${item.id}/overview/specialist`
-        name = 'Untitled specialist'
         break
       case 'digital-outcome':
         url = `/buyers/frameworks/${item.framework}/requirements/${item.lot}/${item.id}`
-        name = 'Untitled outcome'
         break
       case 'digital-professionals':
       case 'training':
@@ -84,6 +81,7 @@ export class BuyerDashboardBriefTable extends Component {
       default:
         url = ''
     }
+
     if (!permissionToEdit) {
       url = `${rootPath}/request-access/create_drafts`
     }
