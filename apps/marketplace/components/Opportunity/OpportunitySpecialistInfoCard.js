@@ -271,7 +271,7 @@ OpportunitySpecialistInfoCard.defaultProps = {
   isAwaitingApplicationAssessment: false,
   isAwaitingDomainAssessment: false,
   isBriefOwner: false,
-  numberOfSuppliers: '',
+  numberOfSuppliers: '6',
   hasSupplierErrors: false,
   isInvited: false,
   hasSignedCurrentAgreement: false,

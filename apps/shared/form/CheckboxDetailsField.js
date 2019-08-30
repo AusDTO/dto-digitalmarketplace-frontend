@@ -30,18 +30,14 @@ class CheckboxDetailsField extends React.Component {
   }
 
   render() {
-    const { name, id, label, model, validators, messages, onChange, value, description, disabled } = this.props
+    const { name, id, label, model, validators, messages, value, description, disabled } = this.props
     /* eslint-disable jsx-a11y/label-has-for */
 
     return (
       <label className="au-control-input" htmlFor={id}>
         <Control.checkbox
           className="au-control-input__input"
-          onClick={e => {
-            this.onToggle.bind(this)
-            this.onToggle(e)
-            onChange(e)
-          }}
+          onClick={this.onToggle.bind(this)}
           id={id}
           name={name}
           value={value || 'yes'}
@@ -61,7 +57,6 @@ CheckboxDetailsField.defaultProps = {
   description: '',
   messages: null,
   validators: null,
-  onChange: () => {},
   onClick: () => {}
 }
 
@@ -71,7 +66,6 @@ CheckboxDetailsField.propTypes = {
   label: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
   model: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
   detailsModel: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
-  onChange: PropTypes.func,
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   validators: PropTypes.object,
   messages: PropTypes.object,
