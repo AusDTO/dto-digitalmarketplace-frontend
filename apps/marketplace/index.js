@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 
 import Header from './components/Header/Header'
 import AUFooter from './components/Footer/AUFooter'
+import SkipToLinks from './components/SkipToLinks/SkipToLinks'
 import configureStore from './store'
 import RootContainer from './routes'
 import { fetchAuth } from './actions/appActions'
@@ -19,6 +20,7 @@ const App = () => (
   <Provider store={store}>
     <BrowserRouter>
       <div id="Application">
+        <SkipToLinks />
         <header role="banner">
           <Header />
         </header>
