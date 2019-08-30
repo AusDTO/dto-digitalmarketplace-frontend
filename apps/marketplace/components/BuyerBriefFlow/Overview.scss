@@ -18,7 +18,7 @@ div.header {
   }
 }
 
-div.headerMenu {
+.headerMenu {
   position: absolute;
   top: 0;
   right: 0;
@@ -76,7 +76,7 @@ div.stageStatus {
 }
 
 @media (max-width: 450px) {
-  div.headerMenu {
+  .headerMenu {
     position: relative;
 
     .menuList {
