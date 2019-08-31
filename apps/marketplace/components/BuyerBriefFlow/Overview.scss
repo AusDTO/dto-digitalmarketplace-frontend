@@ -70,7 +70,7 @@ ul.overviewList {
   }
 }
 
-div.stageStatus {
+.stageStatus {
   float: right;
   font-size: 1rem;
 }
@@ -82,5 +82,9 @@ div.stageStatus {
     .menuList {
       margin-top: 0.25rem;
     }
+  }
+
+  .stageStatus {
+    float: none;
   }
 }
