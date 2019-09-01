@@ -18,7 +18,7 @@ const AuthenticatedMobileLinks = props => {
       )}
       {userType === 'buyer' && (
         <div className="au-marketplace-header_mobile-link">
-          <a href="/2/download-reports">Download Reports</a>
+          <a href="/2/download-reports">Download reports</a>
         </div>
       )}
       <CommonMobileLinks />

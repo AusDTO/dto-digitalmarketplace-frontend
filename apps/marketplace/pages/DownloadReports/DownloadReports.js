@@ -130,10 +130,7 @@ export class DownloadReports extends Component {
                   }}
                   label="I am authorised to access procurement reporting documents across my organisation and I will store, transmit and use the report in line with my agency's privacy and data policies."
                 />
-                <AUbutton type="submit" disabled={!this.state.acceptEnabled}
-                  onClick={e => {
-                    scrollToTop()
-                  }}>>
+                <AUbutton type="submit" disabled={!this.state.acceptEnabled}>
                   Download reports
                 </AUbutton>
               </div>
@@ -177,10 +174,7 @@ export class DownloadReports extends Component {
                 }}
                 label="I am authorised to access procurement reporting documents across my organisation and I will store, transmit and use the report in line with my agency's privacy and data policies."
               />
-              <AUbutton type="submit" disabled={!this.state.acceptEnabled}
-              onClick={e => {
-                scrollToTop()
-              }}>
+              <AUbutton type="submit" disabled={!this.state.acceptEnabled}>
                 Download reports
               </AUbutton>
             </React.Fragment>
