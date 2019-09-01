@@ -31,7 +31,6 @@ const handleSubmit = values => {
   }`
   window.location.href = url
 }
-const scrollToTop = () => (typeof window !== 'undefined' ? window.scrollTo(0, 0) : '')
 
 export class DownloadReports extends Component {
   constructor(props) {
