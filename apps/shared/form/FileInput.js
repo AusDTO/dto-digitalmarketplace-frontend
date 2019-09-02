@@ -7,6 +7,12 @@ import StatefulError from './StatefulError'
 import styles from './scss/FileInput.scss'
 
 class FileInput extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.uploadInput = null
+  }
+
   state = {
     uploading: undefined,
     file: undefined,
@@ -70,6 +76,9 @@ class FileInput extends React.Component {
                 className={styles.hidden_input}
                 validators={validators}
                 title={title || ''}
+                getRef={ref => {
+                  this.uploadInput = ref
+                }}
               />
               <label htmlFor={`file_${fileField}`} id={`label_${id}`} className={styles.custom_input}>
                 <button className="au-btn au-btn--secondary" type="button">
