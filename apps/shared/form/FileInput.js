@@ -10,13 +10,13 @@ class FileInput extends React.Component {
   constructor(props) {
     super(props)
 
-    this.uploadInput = null
-  }
+    this.state = {
+      uploading: undefined,
+      file: undefined,
+      errors: undefined
+    }
 
-  state = {
-    uploading: undefined,
-    file: undefined,
-    errors: undefined
+    this.uploadInput = null
   }
 
   onReset = e => {
