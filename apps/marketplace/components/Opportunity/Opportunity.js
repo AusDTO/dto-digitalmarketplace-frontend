@@ -260,7 +260,9 @@ const Opportunity = props => {
                 <div className="col-xs-12 col-sm-4">
                   <strong>Budget range</strong>
                 </div>
-                <div className="col-xs-12 col-sm-8">{brief.budgetRange && brief.budgetRange}</div>
+                {brief.budgetRange && (
+                  <div className="col-xs-12 col-sm-8">{brief.budgetRange}</div>
+                )}
               </div>
             )}
             <div className="row">
