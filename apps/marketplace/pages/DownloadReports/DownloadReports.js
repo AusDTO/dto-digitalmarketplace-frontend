@@ -32,6 +32,10 @@ const handleSubmit = values => {
   window.location.href = url
 }
 
+const handleSubmitFailed = () => {
+  window.scrollTo(0, 0)
+}
+
 export class DownloadReports extends Component {
   constructor(props) {
     super(props)
@@ -64,6 +68,7 @@ export class DownloadReports extends Component {
           }
         }}
         onSubmit={data => handleSubmit(data)}
+        onSubmitFailed={handleSubmitFailed}
         validateOn="submit"
       >
         <AUheading size="xl" level="1">
@@ -111,6 +116,10 @@ export class DownloadReports extends Component {
               {
                 value: 'rfx',
                 label: 'RFx opportunities'
+              },
+              {
+                value: 'training',
+                label: 'Training opportunities'
               }
             ]}
           />
