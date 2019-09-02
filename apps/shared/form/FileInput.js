@@ -72,7 +72,9 @@ class FileInput extends React.Component {
                 title={title || ''}
               />
               <label htmlFor={`file_${fileField}`} id={`label_${id}`} className={styles.custom_input}>
-                <div className="au-btn au-btn--secondary">{fieldLabel}</div>
+                <button className="au-btn au-btn--secondary" type="button">
+                  {fieldLabel}
+                </button>
               </label>
               {messages && (
                 <StatefulError
