@@ -52,6 +52,11 @@ class FileInput extends React.Component {
       uploading(false)
     })
   }
+
+  onUploadClick = () => {
+    this.uploadInput.click()
+  }
+
   render() {
     const { url, form, name, id, model, validators, messages, fieldLabel, title, accept } = this.props
     const fileField = `${id}`
@@ -81,7 +86,7 @@ class FileInput extends React.Component {
                 }}
               />
               <label htmlFor={`file_${fileField}`} id={`label_${id}`} className={styles.custom_input}>
-                <button className="au-btn au-btn--secondary" type="button">
+                <button className="au-btn au-btn--secondary" onClick={this.onUploadClick} type="button">
                   {fieldLabel}
                 </button>
               </label>
