@@ -79,15 +79,14 @@ export class BriefOverview extends Component {
         <div className="col-xs-12">
           {deleteBriefSuccess && <Redirect to={`${rootPath}/buyer-dashboard`} />}
           {!deleteBriefSuccess && <ErrorBox title="There was a problem deleting the brief" setFocus={setFocus} />}
-          {lotSlug === 'digital-professionals' &&
-            status === 'draft' && (
-              <AUpageAlert as="warning">
-                <h2>This page has been retired.</h2>
-                <p>
-                  Use the <a href="/2/buyer-specialist/create">new specialist approach</a> to publish this opportunity.
-                </p>
-              </AUpageAlert>
-            )}
+          {lotSlug === 'digital-professionals' && status === 'draft' && (
+            <AUpageAlert as="warning">
+              <h2>This page has been retired.</h2>
+              <p>
+                Use the <a href="/2/buyer-specialist/create">new specialist approach</a> to publish this opportunity.
+              </p>
+            </AUpageAlert>
+          )}
           <div className={styles.overviewHeading}>
             <span className={styles.overview}>Overview</span>
             <AUheading className={styles.briefTitle} size="xl" level="1">

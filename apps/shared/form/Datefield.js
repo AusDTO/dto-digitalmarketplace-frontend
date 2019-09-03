@@ -130,4 +130,7 @@ Datefield.propTypes = {
   description: PropTypes.string
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Datefield)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Datefield)

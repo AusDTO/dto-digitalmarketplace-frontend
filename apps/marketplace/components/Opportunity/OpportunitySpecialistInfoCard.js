@@ -23,16 +23,15 @@ const OpportunitySpecialistInfoCard = props => (
     </div>
     <div className="row">
       <div className="col-xs-12">
-        {props.isOpen &&
-          props.closingDate && (
-            <div>
-              <span>Closes in</span>
-              <br />
-              <strong className={styles.stat}>
-                <ClosedDate countdown date={props.closingDate} />
-              </strong>
-            </div>
-          )}
+        {props.isOpen && props.closingDate && (
+          <div>
+            <span>Closes in</span>
+            <br />
+            <strong className={styles.stat}>
+              <ClosedDate countdown date={props.closingDate} />
+            </strong>
+          </div>
+        )}
       </div>
     </div>
     <div className="row">
@@ -53,71 +52,68 @@ const OpportunitySpecialistInfoCard = props => (
     </div>
     <div className="row">
       <div className="col-xs-12">
-        {!props.isOpen &&
-          props.briefStatus !== 'draft' && <p className={styles.invitedStatus}>This opportunity has closed.</p>}
-        {props.isOpen &&
-          !props.loggedIn && (
-            <span>
-              {props.isOpenToAll ? (
-                <span>
-                  <p>You must be signed in and approved in {props.category} to respond</p>
-                  <p>
-                    <a
-                      href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000634456-Responding-to-an-opportunity"
-                      className="au-btn au-btn--block"
-                    >
-                      How to respond
-                    </a>
-                    <a
-                      href={`/login?next=${encodeURIComponent(
-                        `${rootPath}/digital-marketplace/opportunities/${props.briefId}`
-                      )}`}
-                      className="au-btn au-btn--secondary au-btn--block"
-                    >
-                      Login
-                    </a>
-                  </p>
-                </span>
-              ) : (
-                <span>
-                  <p>You must be signed in and invited to respond</p>
-                  <p>
-                    <a
-                      href={`/login?next=${encodeURIComponent(
-                        `${rootPath}/digital-marketplace/opportunities/${props.briefId}`
-                      )}`}
-                      className="au-btn au-btn--block"
-                    >
-                      Login
-                    </a>
-                  </p>
-                </span>
-              )}
-            </span>
-          )}
-        {props.isBuyer &&
-          !props.isBriefOwner && (
-            <a href={`mailto:${props.buyerEmail}`} className="au-btn au-btn--secondary au-btn--block">
-              Contact the buyer
-            </a>
-          )}
-        {props.isOpen &&
-          props.loggedIn &&
-          props.isApplicant && (
-            <span>
-              <p className={styles.invitedStatus}>
-                You must complete your profile and be approved in {props.category} to respond.
-                {props.isAwaitingApplicationAssessment && <span> Your application is currently being assessed.</span>}
-              </p>
-              {!props.isAwaitingApplicationAssessment && (
+        {!props.isOpen && props.briefStatus !== 'draft' && (
+          <p className={styles.invitedStatus}>This opportunity has closed.</p>
+        )}
+        {props.isOpen && !props.loggedIn && (
+          <span>
+            {props.isOpenToAll ? (
+              <span>
+                <p>You must be signed in and approved in {props.category} to respond</p>
                 <p>
-                  <a href="/sellers/application" className="au-btn au-btn--block">
-                    Continue application
+                  <a
+                    href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000634456-Responding-to-an-opportunity"
+                    className="au-btn au-btn--block"
+                  >
+                    How to respond
+                  </a>
+                  <a
+                    href={`/login?next=${encodeURIComponent(
+                      `${rootPath}/digital-marketplace/opportunities/${props.briefId}`
+                    )}`}
+                    className="au-btn au-btn--secondary au-btn--block"
+                  >
+                    Login
                   </a>
                 </p>
-              )}
-            </span>
-          )}
+              </span>
+            ) : (
+              <span>
+                <p>You must be signed in and invited to respond</p>
+                <p>
+                  <a
+                    href={`/login?next=${encodeURIComponent(
+                      `${rootPath}/digital-marketplace/opportunities/${props.briefId}`
+                    )}`}
+                    className="au-btn au-btn--block"
+                  >
+                    Login
+                  </a>
+                </p>
+              </span>
+            )}
+          </span>
+        )}
+        {props.isBuyer && !props.isBriefOwner && (
+          <a href={`mailto:${props.buyerEmail}`} className="au-btn au-btn--secondary au-btn--block">
+            Contact the buyer
+          </a>
+        )}
+        {props.isOpen && props.loggedIn && props.isApplicant && (
+          <span>
+            <p className={styles.invitedStatus}>
+              You must complete your profile and be approved in {props.category} to respond.
+              {props.isAwaitingApplicationAssessment && <span> Your application is currently being assessed.</span>}
+            </p>
+            {!props.isAwaitingApplicationAssessment && (
+              <p>
+                <a href="/sellers/application" className="au-btn au-btn--block">
+                  Continue application
+                </a>
+              </p>
+            )}
+          </span>
+        )}
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
@@ -153,15 +149,15 @@ const OpportunitySpecialistInfoCard = props => (
             <span>
               <p className={styles.invitedStatus}>
                 Only sellers assessed and approved by the Marketplace in &quot;{props.category}&quot; can apply.
-                {props.isRecruiterOnly &&
-                  !props.isAwaitingDomainAssessment && (
-                    <span>
-                      {' '}
-                      You must <a href="/sellers/edit">edit your profile</a> to add this category before you can apply.
-                    </span>
-                  )}
-                {props.isRecruiterOnly &&
-                  props.isAwaitingApplicationAssessment && <span> Your application is currently being assessed.</span>}
+                {props.isRecruiterOnly && !props.isAwaitingDomainAssessment && (
+                  <span>
+                    {' '}
+                    You must <a href="/sellers/edit">edit your profile</a> to add this category before you can apply.
+                  </span>
+                )}
+                {props.isRecruiterOnly && props.isAwaitingApplicationAssessment && (
+                  <span> Your application is currently being assessed.</span>
+                )}
                 {props.isAwaitingDomainAssessment && (
                   <span> Your application for this category is currently being assessed.</span>
                 )}
@@ -275,7 +271,7 @@ OpportunitySpecialistInfoCard.defaultProps = {
   isAwaitingApplicationAssessment: false,
   isAwaitingDomainAssessment: false,
   isBriefOwner: false,
-  numberOfSuppliers: '',
+  numberOfSuppliers: '6',
   hasSupplierErrors: false,
   isInvited: false,
   hasSignedCurrentAgreement: false,

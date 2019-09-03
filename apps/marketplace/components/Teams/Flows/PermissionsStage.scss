@@ -14,11 +14,8 @@
 
     .permissionsTableCheckbox {
         top: -0.325rem;
-
-        input {
-            left: 1rem;
-        }
-
+        left: 1rem;
+        
         span::before, span::after {
             margin: 0 17%;
         }

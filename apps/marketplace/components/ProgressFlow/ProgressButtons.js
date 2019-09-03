@@ -7,60 +7,57 @@ import { rootPath } from '../../routes'
 
 const ProgressButtons = props => (
   <div className={styles.container}>
-    {props.showConfirmationCheckbox &&
-      props.isLastStage &&
-      !props.isFirstStage && (
-        <p>
-          <span>
-            <AUcheckbox
-              id="cb-declaration"
-              onClick={e => {
-                props.onConfirmationClick(e.target.checked)
-              }}
-              label={props.confirmationText}
-            />
-          </span>
-        </p>
-      )}
+    {props.showConfirmationCheckbox && props.isLastStage && !props.isFirstStage && (
+      <p>
+        <span>
+          <AUcheckbox
+            id="cb-declaration"
+            onClick={e => {
+              props.onConfirmationClick(e.target.checked)
+            }}
+            label={props.confirmationText}
+          />
+        </span>
+      </p>
+    )}
     <p>
       {props.isFirstStage && !props.isLastStage && <AUbutton type="submit">{props.startText}</AUbutton>}
-      {props.isLastStage &&
-        !props.isFirstStage && (
-          <span>
-            {props.showReviewButton && (
-              <AUbutton
-                onClick={e => {
-                  e.preventDefault()
-                  props.onPreview()
-                }}
-                as="secondary"
-                className={styles.button}
-              >
-                {props.previewText}
-              </AUbutton>
-            )}
-            {props.hasPermissionToPublish ? (
-              <AUbutton
-                type="submit"
-                disabled={!props.publishEnabled}
-                onClick={e => {
-                  e.preventDefault()
-                  props.onPublish()
-                }}
-              >
-                {props.publishText}
-              </AUbutton>
-            ) : (
-              <a
-                href={`${rootPath}/request-access/publish_opportunities`}
-                className="au-btn"
-                disabled={!props.publishEnabled}
-              >
-                {props.publishText}
-              </a>
-            )}
-          </span>
-        )}
+      {props.isLastStage && !props.isFirstStage && (
+        <span>
+          {props.showReviewButton && (
+            <AUbutton
+              onClick={e => {
+                e.preventDefault()
+                props.onPreview()
+              }}
+              as="secondary"
+              className={styles.button}
+            >
+              {props.previewText}
+            </AUbutton>
+          )}
+          {props.hasPermissionToPublish ? (
+            <AUbutton
+              type="submit"
+              disabled={!props.publishEnabled}
+              onClick={e => {
+                e.preventDefault()
+                props.onPublish()
+              }}
+            >
+              {props.publishText}
+            </AUbutton>
+          ) : (
+            <a
+              href={`${rootPath}/request-access/publish_opportunities`}
+              className="au-btn"
+              disabled={!props.publishEnabled}
+            >
+              {props.publishText}
+            </a>
+          )}
+        </span>
+      )}
       {!props.isFirstStage && !props.isLastStage && <AUbutton type="submit">{props.continueText}</AUbutton>}
       {props.showReturnButton && (
         <AUbutton

@@ -135,20 +135,22 @@ class Overview extends Component {
       return (
         <div>
           <div className={styles.header}>
-            <AUheading size="xl" level="1">
-              <small className={styles.briefTitle}>{brief.title || `New ${flowName} request`}</small>
+            <small className={styles.tagLine}>{brief.title || `New ${flowName} request`}</small>
+            {brief.internalReference && (
+              <small className={`${styles.internalReference} ${styles.tagLine}`}>{brief.internalReference}</small>
+            )}
+            <AUheading className={styles.overviewHeading} size="xl" level="1">
               Overview
             </AUheading>
             <div className={styles.headerMenu}>
-              {isPublished &&
-                !isClosed && (
-                  <div className={styles.headerMenuClosingTime}>
-                    Closing{' '}
-                    <strong>
-                      <ClosedDate countdown date={brief.dates.closing_time} />
-                    </strong>
-                  </div>
-                )}
+              {isPublished && !isClosed && (
+                <div className={styles.headerMenuClosingTime}>
+                  Closing{' '}
+                  <strong>
+                    <ClosedDate countdown date={brief.dates.closing_time} />
+                  </strong>
+                </div>
+              )}
               <ul>
                 {isPublished && (
                   <li>
@@ -197,7 +199,8 @@ class Overview extends Component {
             <li>
               {isPublished ? (
                 <span>
-                  <Tick className={styles.tick} colour="#17788D" />Create and publish request
+                  <Tick className={styles.tick} colour="#17788D" />
+                  Create and publish request
                   <div className={styles.stageStatus}>
                     {invitedSellers > 0 && (
                       <span>
@@ -239,10 +242,9 @@ class Overview extends Component {
                 )}
               </li>
             )}
-            {(flow === 'rfx' || flow === 'specialist') &&
-              (briefResponseCount > 0 || !isPublished || !isClosed) && (
-                <li>{createWorkOrderRender(brief, flow, isPublished, isClosed, oldWorkOrderCreator)}</li>
-              )}
+            {(flow === 'rfx' || flow === 'specialist') && (briefResponseCount > 0 || !isPublished || !isClosed) && (
+              <li>{createWorkOrderRender(brief, flow, isPublished, isClosed, oldWorkOrderCreator)}</li>
+            )}
             {briefResponseCount === 0 && isClosed && <li>No sellers responded</li>}
           </ul>
         </div>
@@ -275,4 +277,7 @@ const mapDispatchToProps = dispatch => ({
   deleteBrief: briefId => dispatch(deleteBrief(briefId))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Overview)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Overview)

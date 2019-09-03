@@ -80,7 +80,7 @@ export class PermissionsTable extends Component {
                             teamMembers[userId].permissions ? teamMembers[userId].permissions.create_drafts : false
                           }
                           className={styles.permissionsTableCheckbox}
-                          id="create-drafts-checkbox"
+                          id={`create-drafts-checkbox-${userId}`}
                           label=""
                           name="permissions"
                           onChange={() => {}}
@@ -99,7 +99,7 @@ export class PermissionsTable extends Component {
                               : false
                           }
                           className={styles.permissionsTableCheckbox}
-                          id="publish-opportunities-checkbox"
+                          id={`publish-opportunities-checkbox-${userId}`}
                           label=""
                           name="permissions"
                           onChange={() => {}}
@@ -118,7 +118,7 @@ export class PermissionsTable extends Component {
                               : false
                           }
                           className={styles.permissionsTableCheckbox}
-                          id="answer-seller-questions-checkbox"
+                          id={`answer-seller-questions-checkbox-${userId}`}
                           label=""
                           name="permissions"
                           onChange={() => {}}
@@ -135,7 +135,7 @@ export class PermissionsTable extends Component {
                             teamMembers[userId].permissions ? teamMembers[userId].permissions.download_responses : false
                           }
                           className={styles.permissionsTableCheckbox}
-                          id="download-responses-checkbox"
+                          id={`download-responses-checkbox-${userId}`}
                           label=""
                           name="permissions"
                           onChange={() => {}}
@@ -169,7 +169,7 @@ export class PermissionsTable extends Component {
                             teamMembers[userId].permissions ? teamMembers[userId].permissions.create_work_orders : false
                           }
                           className={styles.permissionsTableCheckbox}
-                          id="create-work-orders-checkbox"
+                          id={`create-work-orders-checkbox-${userId}`}
                           label=""
                           name="permissions"
                           onChange={() => {}}
@@ -196,4 +196,7 @@ const mapDispatchToProps = (dispatch, props) => ({
   updateTeamMembers: teamMembers => dispatch(actions.change(`${props.model}.teamMembers`, teamMembers))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(PermissionsTable)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PermissionsTable)

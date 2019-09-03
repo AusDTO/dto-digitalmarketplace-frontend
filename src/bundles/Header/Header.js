@@ -10,16 +10,16 @@ class Header extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      accordionOpen: false
+      accordionClosed: true
     }
   }
 
   openAccordion = ( ) => {
-    this.setState({ accordionOpen: true });
+    this.setState({ accordionClosed: false });
   }
 
   closeAccordion = ( ) => {
-    this.setState({ accordionOpen: false });
+    this.setState({ accordionClosed: true });
   }
 
   render() {
@@ -41,7 +41,7 @@ class Header extends React.Component {
       </ul>
 
     const BuyerHeaderActions = () =>
-      <AUaccordion header="Menu" speed={0.2}>
+      <AUaccordion closed header="Menu" speed={0.2}>
         <ul>
           <li>
             <a href="/2/buyer-dashboard">Dashboard</a>
@@ -232,8 +232,8 @@ class Header extends React.Component {
             <div className="col-md-12">
               <div className="au-marketplace-header-mobile-menu">
                 <AUaccordion
-                  header={ this.state.accordionOpen ? "Close menu" : "Open menu" }
-                  open={ this.state.accordionOpen }
+                  header={ this.state.accordionClosed ? "Open menu" : "Close menu" }
+                  closed={ this.state.accordionClosed }
                   onOpen={ () => { this.openAccordion() } }
                   onClose={ () => { this.closeAccordion() } }
                 >

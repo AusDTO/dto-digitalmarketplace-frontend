@@ -38,52 +38,6 @@ test('include weightings checkbox adds the weightings inputs', () => {
   expect(component.find('input#essential_weighting_0').length).toEqual(1)
 })
 
-test('disabling weightings clears the current weighting values', () => {
-  const essentialRequirements = [{ criteria: 'this', weighting: '50' }, { criteria: 'that', weighting: '50' }]
-  const niceToHaveRequirements = []
-  const state = {
-    BuyerSpecialistForm: {
-      essentialRequirements,
-      niceToHaveRequirements
-    }
-  }
-  const store = configureStore(state)
-
-  const component = mount(
-    <Provider store={store}>
-      <BuyerSpecialistEvaluationCriteriaStage
-        model="BuyerSpecialistForm"
-        BuyerSpecialistForm={state.BuyerSpecialistForm}
-        formButtons={<br />}
-      />
-    </Provider>
-  )
-
-  component
-    .find('input#includeWeightingsEssential')
-    .at(0)
-    .simulate('change', { target: { checked: true } })
-    .simulate('click')
-  expect(component.find('input#essential_weighting_0').instance().value).toEqual('50')
-  expect(component.find('input#essential_weighting_1').instance().value).toEqual('50')
-
-  component
-    .find('input#includeWeightingsEssential')
-    .at(0)
-    .simulate('change', { target: { checked: false } })
-    .simulate('click')
-  expect(component.find('input#essential_weighting_0').length).toEqual(0)
-  expect(component.find('input#essential_weighting_1').length).toEqual(0)
-
-  component
-    .find('input#includeWeightingsEssential')
-    .at(0)
-    .simulate('change', { target: { checked: true } })
-    .simulate('click')
-  expect(component.find('input#essential_weighting_0').instance().value).toEqual('')
-  expect(component.find('input#essential_weighting_1').instance().value).toEqual('')
-})
-
 test('removing a criteria', () => {
   const essentialRequirements = [{ criteria: 'this', weighting: '75' }, { criteria: 'that', weighting: '25' }]
   const niceToHaveRequirements = []

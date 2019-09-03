@@ -45,4 +45,7 @@ const mapDispatchToProps = dispatch => ({
   loadTeams: () => dispatch(loadBuyerTeams())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(TeamsOverview)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TeamsOverview)

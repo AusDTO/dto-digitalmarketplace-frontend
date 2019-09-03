@@ -12,7 +12,7 @@ class BuyerDashboardHeader extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      createNewIsOpen: false
+      createNewIsClosed: true
     }
 
     this.handleCreateNewToggle = this.handleCreateNewToggle.bind(this)
@@ -21,7 +21,7 @@ class BuyerDashboardHeader extends Component {
   handleCreateNewToggle() {
     this.setState(curState => {
       const newState = { ...curState }
-      newState.createNewIsOpen = !curState.createNewIsOpen
+      newState.createNewIsClosed = !curState.createNewIsClosed
       return newState
     })
   }
@@ -40,7 +40,7 @@ class BuyerDashboardHeader extends Component {
             >
               <AUaccordion
                 header="Create new request"
-                open={this.state.createNewIsOpen}
+                closed={this.state.createNewIsClosed}
                 onOpen={this.handleCreateNewToggle}
                 onClose={this.handleCreateNewToggle}
               >

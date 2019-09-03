@@ -84,7 +84,7 @@ export class Header extends Component {
               <div className="au-marketplace-header-mobile-menu">
                 <AUaccordion
                   header={this.state.accordionOpen ? 'Close menu' : 'Open menu'}
-                  open={this.state.accordionOpen}
+                  closed={!this.state.accordionOpen}
                   onOpen={() => {
                     this.openAccordion()
                   }}

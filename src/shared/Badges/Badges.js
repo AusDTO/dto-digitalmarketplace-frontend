@@ -5,7 +5,9 @@ import get from 'lodash/get';
 import styles from './Badges.css'; // eslint-disable-line no-unused-vars
 
 export const titleMap = {
-  recruitment: 'Recruiter',
+  recruiter_only: 'Recruiter',
+  consultant_only: 'Consultant',
+  recruiter_both: 'Recruiter and Consultant',
   indigenous: 'Indigenous business',
   disability: 'Australian disability enterprise',
   nfp_social_enterprise: 'Not-for-profit',

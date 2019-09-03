@@ -247,8 +247,7 @@ class SellerAssessmentEvidenceStage extends Component {
         {this.props[this.props.model].criteria.length < 1 ? (
           <p>
             Before providing evidence, you must first select which{' '}
-            <Link to="criteria">criteria you are responding to</Link>
-            .
+            <Link to="criteria">criteria you are responding to</Link>.
           </p>
         ) : (
           <React.Fragment>
@@ -450,14 +449,12 @@ class SellerAssessmentEvidenceStage extends Component {
                     return true
                   }}
                 />
-                <p>
-                  Your evidence for the criteria should:
-                  <ul>
-                    <li>Explain the activities you were specifically responsible for, what you did, and why.</li>
-                    <li>Avoid ambiguity e.g. &apos;we have extensive experience in...&apos;.</li>
-                    <li>Describe the result or outcome of your activities.</li>
-                  </ul>
-                </p>
+                <p>Your evidence for the criteria should:</p>
+                <ul>
+                  <li>Explain the activities you were specifically responsible for, what you did, and why.</li>
+                  <li>Avoid ambiguity e.g. &apos;we have extensive experience in...&apos;.</li>
+                  <li>Describe the result or outcome of your activities.</li>
+                </ul>
                 <Textarea
                   key={criteriaId}
                   model={`${this.props.model}.evidence[${criteriaId}].response`}
@@ -507,4 +504,7 @@ const mapDispatchToProps = (dispatch, props) => ({
     dispatch(actions.change(`${props.model}.evidence[${criteriaId}][${fieldName}]`, fieldValue))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SellerAssessmentEvidenceStage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SellerAssessmentEvidenceStage)

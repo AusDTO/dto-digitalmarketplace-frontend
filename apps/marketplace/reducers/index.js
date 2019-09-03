@@ -21,7 +21,8 @@ export const SellerAssessmentFormReducer = {
   domainId: 0,
   maxDailyRate: 0,
   criteria: [],
-  evidence: {}
+  evidence: {},
+  created_at: null
 }
 
 export const SellerAssessmentEvidenceReducer = {
@@ -42,6 +43,7 @@ export const BuyerRFXFormReducer = {
   location: [],
   summary: '',
   industryBriefing: '',
+  internalReference: '',
   sellerCategory: '',
   sellers: {},
   attachments: [],
@@ -69,6 +71,7 @@ export const BuyerATMFormReducer = {
   location: [],
   summary: '',
   industryBriefing: '',
+  internalReference: '',
   sellerCategory: '',
   attachments: [],
   requestMoreInfo: '',

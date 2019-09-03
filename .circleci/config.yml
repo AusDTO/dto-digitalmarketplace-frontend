@@ -13,7 +13,7 @@ references:
         cf -v
   deploy_docker: &deploy_docker
     docker:
-      - image: circleci/node:8-stretch
+      - image: circleci/node:10-stretch
         environment:
           TZ: "/usr/share/zoneinfo/Australia/Sydney"
   required_for_deploy: &required_for_deploy
@@ -79,33 +79,6 @@ jobs:
           name: Slack about to go live
           command: |
             ./scripts/ci-notify-approval.sh
-
-  run_automation_tests:
-    docker:
-      - image: circleci/node:10.15.3-stretch-browsers
-    steps:
-      - attach_workspace:
-          at: .
-      - checkout
-      - run: 
-          name: Run Tests
-          command: |
-            cd fixtures
-            npm install
-            export FRONTEND_ADDRESS=http://dm-dev.apps.y.cld.gov.au
-            export SELLER_EMAIL=$AUTOMATION_SELLER_EMAIL_STAGING
-            export SELLER_PASSWORD=$AUTOMATION_SELLER_PASSWORD_STAGING
-            export BUYER_EMAIL=$AUTOMATION_BUYER_EMAIL_STAGING
-            export BUYER_PASSWORD=$AUTOMATION_BUYER_PASSWORD_STAGING
-            export TYPE_INPUT=false
-            export SHORTEN_TYPED_INPUT=false
-            export USE_CLIPBOARD_FOR_TYPE_INPUT=false
-            export HEADLESS=true
-            export IGNORE_MULTIPLE_LINKS=true
-            export SELLER_CATEGORY=3
-            export SELLER_NAME=auto
-            export SLOW_MO=10
-            npm test
 
   deploy_to_rc:
     <<: *deploy_docker
@@ -242,17 +215,3 @@ workflows:
               only: /[0-9]+(\.[0-9]+)*/
             branches:
               ignore: /.*/
-  automation_test:
-    triggers:
-      - schedule:
-          cron: "0 9 * * 4"
-          filters:
-            branches:
-              only: master
-    jobs:
-      - run_automation_tests:
-          filters:
-            tags:
-              ignore: /.*/
-            branches:
-              only: master

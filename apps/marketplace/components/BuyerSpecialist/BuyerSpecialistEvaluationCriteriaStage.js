@@ -204,7 +204,8 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
                           <div className={styles.weightingRemaining}>
                             {BuyerSpecialistEvaluationCriteriaStage.getRemainingWeighting(
                               this.props[this.props.model].essentialRequirements
-                            )}% remaining
+                            )}
+                            % remaining
                           </div>
                         )}
                       </div>
@@ -294,7 +295,8 @@ class BuyerSpecialistEvaluationCriteriaStage extends Component {
                           <div className={styles.weightingRemaining}>
                             {BuyerSpecialistEvaluationCriteriaStage.getRemainingWeighting(
                               this.props[this.props.model].niceToHaveRequirements
-                            )}% remaining
+                            )}
+                            % remaining
                           </div>
                         )}
                       </div>
@@ -390,4 +392,7 @@ const mapDispatchToProps = (dispatch, props) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerSpecialistEvaluationCriteriaStage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BuyerSpecialistEvaluationCriteriaStage)

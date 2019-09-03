@@ -9,9 +9,9 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import ClosingDateControl from 'marketplace/components/BuyerBriefFlow/ClosingDateControl'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
-import styles from './BuyerRFXClosingStage.scss'
+import styles from './BuyerRFXAdditionalInformationStage.scss'
 
-class BuyerRFXClosingStage extends Component {
+class BuyerRFXAdditionalInformationStage extends Component {
   constructor(props) {
     super(props)
 
@@ -40,7 +40,7 @@ class BuyerRFXClosingStage extends Component {
         validateOn="submit"
       >
         <AUheading level="1" size="xl">
-          Closing date
+          Additional information
         </AUheading>
         <ErrorAlert
           title="An error occurred"
@@ -94,18 +94,30 @@ class BuyerRFXClosingStage extends Component {
             messages={{}}
           />
         </p>
+        <Textfield
+          model={`${this.props.model}.internalReference`}
+          label="Internal reference (optional)"
+          description="For example, business unit or internal procurement ID number. This will not be visible to anyone outside your organisation."
+          name="internalReference"
+          id="internalReference"
+          htmlFor="internalReference"
+          defaultValue={this.props[this.props.model].internalReference}
+          maxLength={100}
+          showMaxLength
+          validators={{}}
+        />
         {this.props.formButtons}
       </Form>
     )
   }
 }
 
-BuyerRFXClosingStage.defaultProps = {
+BuyerRFXAdditionalInformationStage.defaultProps = {
   onSubmit: () => {},
   onSubmitFailed: () => {}
 }
 
-BuyerRFXClosingStage.propTypes = {
+BuyerRFXAdditionalInformationStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   onSubmit: PropTypes.func,
@@ -120,4 +132,7 @@ const mapDispatchToProps = (dispatch, props) => ({
   setDate: date => dispatch(actions.change(`${props.model}.closedAt`, date))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyerRFXClosingStage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BuyerRFXAdditionalInformationStage)
