@@ -159,6 +159,7 @@ export const mapLot = lot => {
     case 'specialist':
       return 'Specialist'
     case 'training':
+    case 'training2':
       return 'Training'
     default:
       return lot

@@ -15,7 +15,7 @@ class BuyerBriefOverviewPage extends Component {
     }
   }
   componentDidMount() {
-    if (!['rfx', 'atm', 'specialist'].includes(this.props.match.params.flow)) {
+    if (!['rfx', 'training2', 'atm', 'specialist'].includes(this.props.match.params.flow)) {
       this.props.setError('Unsupported flow.')
     }
     if (this.props.match.params.briefId) {

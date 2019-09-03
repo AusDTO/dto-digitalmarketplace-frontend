@@ -15,7 +15,7 @@ import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingInd
 const model = 'askAQuestionForm'
 
 const getOpportunityUrl = brief =>
-  brief.lot === 'rfx' || brief.lot === 'atm' || brief.lot === 'specialist'
+  ['rfx', 'training2', 'atm', 'specialist'].includes(brief.lot)
     ? `${rootPath}/digital-marketplace/opportunities/${brief.id}`
     : `/digital-marketplace/opportunities/${brief.id}`
 

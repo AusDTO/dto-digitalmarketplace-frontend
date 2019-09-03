@@ -52,7 +52,7 @@ export class BriefDownloadWorkOrder extends Component {
             </p>
           </React.Fragment>
         )}
-        {brief.lotSlug === 'rfx' && (
+        {['rfx', 'training2'].includes(brief.lotSlug) && (
           <React.Fragment>
             {brief.comprehensiveTerms ? (
               <React.Fragment>

@@ -10,18 +10,27 @@ import { required } from 'marketplace/components/validators'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import locations from 'marketplace/components/BuyerBriefFlow/Locations'
-import styles from './BuyerRFXAboutStage.scss'
+import styles from './BuyerTrainingAboutStage.scss'
 
-const BuyerRFXAboutStage = props => (
+const requiredTitle = formValues => required(formValues.title)
+const requiredOrg = formValues => required(formValues.organisation)
+const requiredSummary = formValues => required(formValues.summary)
+const requiredWorkingArrangements = formValues => required(formValues.workingArrangements)
+const atLeastOneLocation = formValues => formValues.location && formValues.location.length > 0
+
+export const done = v =>
+  requiredTitle(v) && requiredOrg(v) && requiredSummary(v) && requiredWorkingArrangements(v) && atLeastOneLocation(v)
+
+const BuyerTrainingAboutStage = props => (
   <Form
     model={props.model}
     validators={{
       '': {
-        requiredTitle: formValues => required(formValues.title),
-        requiredOrg: formValues => required(formValues.organisation),
-        requiredSummary: formValues => required(formValues.summary),
-        requiredWorkingArrangements: formValues => required(formValues.workingArrangements),
-        atLeastOneLocation: formValues => formValues.location && formValues.location.length > 0
+        requiredTitle,
+        requiredOrg,
+        requiredSummary,
+        requiredWorkingArrangements,
+        atLeastOneLocation
       }
     }}
     onSubmit={props.onSubmit}
@@ -84,7 +93,7 @@ const BuyerRFXAboutStage = props => (
         required
       }}
       messages={{
-        limitWords: 'Your summary has exceeded the 150 word limit'
+        limitWords: 'Your summary has exceeded the 200 word limit'
       }}
     />
     <AUheading level="2" size="sm">
@@ -118,7 +127,7 @@ const BuyerRFXAboutStage = props => (
         required
       }}
       messages={{
-        limitWords: 'Your working arrangements has exceeded the 150 word limit'
+        limitWords: 'Your working arrangements have exceeded the 150 word limit'
       }}
     />
     <Textfield
@@ -136,12 +145,12 @@ const BuyerRFXAboutStage = props => (
   </Form>
 )
 
-BuyerRFXAboutStage.defaultProps = {
+BuyerTrainingAboutStage.defaultProps = {
   onSubmit: () => {},
   onSubmitFailed: () => {}
 }
 
-BuyerRFXAboutStage.propTypes = {
+BuyerTrainingAboutStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   onSubmit: PropTypes.func,
@@ -152,4 +161,4 @@ const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)
 })
 
-export default connect(mapStateToProps)(BuyerRFXAboutStage)
+export default connect(mapStateToProps)(BuyerTrainingAboutStage)

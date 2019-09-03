@@ -5,6 +5,7 @@ import {
   BRIEF_RESPONSE_SUCCESS,
   BRIEF_SAVE_SUCCESS,
   BRIEF_RFX_CREATE_SUCCESS,
+  BRIEF_TRAINING_CREATE_SUCCESS,
   BRIEF_ATM_CREATE_SUCCESS,
   BRIEF_SPECIALIST_CREATE_SUCCESS,
   DELETE_BRIEF_SUCCESS,
@@ -143,6 +144,11 @@ export const handleCreateRFXBriefSuccess = response => ({
   brief: response.data
 })
 
+export const handleCreateTrainingBriefSuccess = response => ({
+  type: BRIEF_TRAINING_CREATE_SUCCESS,
+  brief: response.data
+})
+
 export const handleCreateATMBriefSuccess = response => ({
   type: BRIEF_ATM_CREATE_SUCCESS,
   brief: response.data
@@ -167,6 +173,26 @@ export const createRFXBrief = () => (dispatch, getState) => {
       dispatch(handleErrorFailure(response))
     } else {
       dispatch(handleCreateRFXBriefSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
+
+export const createTrainingBrief = () => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: '/brief/training',
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleCreateTrainingBriefSuccess(response))
     }
     dispatch(sendingRequest(false))
     return response
