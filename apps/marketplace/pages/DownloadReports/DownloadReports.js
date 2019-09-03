@@ -204,7 +204,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  setDate: (prop, date) => dispatch(actions.change(`${model}.${prop}`, date)),
+  setDate: (prop, date) => dispatch(actions.change(`${model}.${prop}`, date))
 })
 
 export default connect(
