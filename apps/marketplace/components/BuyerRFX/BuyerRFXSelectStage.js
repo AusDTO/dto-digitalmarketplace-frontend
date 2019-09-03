@@ -73,7 +73,6 @@ export class BuyerRFXSelectStage extends Component {
           Who can respond?
         </AUheading>
         <ErrorAlert
-          title="An error occurred"
           model={this.props.model}
           messages={{
             requiredCategory: 'You must select at least one panel category',

@@ -110,7 +110,6 @@ export class BuyerSpecialistRequirementsStage extends Component {
           view your contact number or internal reference.
         </AUcallout>
         <ErrorAlert
-          title="An error occurred"
           model={model}
           messages={{
             requiredContactNumber: 'Contact number is required',

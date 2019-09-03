@@ -26,7 +26,6 @@ const BuyerRFXTimeframesAndBudgetStage = props => (
       Timeframes and budget
     </AUheadings>
     <ErrorAlert
-      title="An error occurred"
       model={props.model}
       messages={{
         startDateRequired: 'You must add an estimated start date',

@@ -37,7 +37,6 @@ const SellerAssessmentRateStage = props => (
       Maximum daily rate
     </AUheadings>
     <ErrorAlert
-      title="An error occurred"
       model={props.model}
       messages={{
         greaterThanZero: 'The maximum daily rate must be greater than zero',

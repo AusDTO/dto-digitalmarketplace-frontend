@@ -80,7 +80,6 @@ class BuyerRFXEvaluationCriteriaStage extends Component {
           Evaluation criteria
         </AUheadings>
         <ErrorAlert
-          title="An error occurred"
           model={this.props.model}
           messages={{
             noEmptyWeightings: 'You must not have any empty weighting.',

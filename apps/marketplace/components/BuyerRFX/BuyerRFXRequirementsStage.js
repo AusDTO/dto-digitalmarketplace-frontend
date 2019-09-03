@@ -96,7 +96,6 @@ export class BuyerRFXRequirementsStage extends Component {
           </strong>
         </AUcallout>
         <ErrorAlert
-          title="An error occurred"
           model={model}
           messages={{
             requiredRequirementsDocument: 'You must upload a requirements document',
