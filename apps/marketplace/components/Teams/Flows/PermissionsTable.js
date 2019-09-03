@@ -152,7 +152,7 @@ export class PermissionsTable extends Component {
                             teamMembers[userId].permissions ? teamMembers[userId].permissions.download_reports : false
                           }
                           className={styles.permissionsTableCheckbox}
-                          id="download-reports-checkbox"
+                          id={`download-reports-checkbox-${userId}`}
                           label=""
                           name="permissions"
                           onChange={() => {}}
