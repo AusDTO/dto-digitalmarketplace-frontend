@@ -49,7 +49,6 @@ class BuyerSpecialistTimeframesAndBudgetStage extends Component {
           Timeframes
         </AUheadings>
         <ErrorAlert
-          title="An error occurred"
           model={model}
           messages={{
             startDateRequired: 'Enter an estimated start date for the opportunity',

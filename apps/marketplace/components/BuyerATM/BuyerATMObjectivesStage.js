@@ -64,7 +64,6 @@ export class BuyerATMRequirementsStage extends Component {
           Objectives
         </AUheadings>
         <ErrorAlert
-          title="An error occurred"
           model={model}
           messages={{
             requiredBackgroundInformation: 'Enter the reason the work is being done',

@@ -102,7 +102,6 @@ class SellerAssessmentCriteriaStage extends Component {
           Assessment criteria
         </AUheadings>
         <ErrorAlert
-          title="An error occurred"
           model={this.props.model}
           messages={{
             requiredMinimal: `You must submit evidence for at least ${criteriaNeeded} ${
