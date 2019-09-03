@@ -37,6 +37,16 @@ const BuyerATMStages = [
       formValues.location.length > 0
   },
   {
+    slug: 'criteria',
+    title: 'Response criteria',
+    component: BuyerATMEvaluationCriteriaStage,
+    isDone: formValues =>
+      formValues.evaluationCriteria.length > 0 &&
+      noEmptyCriteria(formValues) &&
+      noEmptyWeightings(formValues) &&
+      weightingsAddUpTo100(formValues)
+  },
+  {
     slug: 'formats',
     title: 'Response formats',
     component: BuyerATMResponseFormatsStage,
@@ -57,16 +67,6 @@ const BuyerATMStages = [
     title: 'Timeframes',
     component: BuyerATMTimeframesAndBudgetStage,
     isDone: formValues => formValues.startDate.length > 0
-  },
-  {
-    slug: 'criteria',
-    title: 'Response criteria',
-    component: BuyerATMEvaluationCriteriaStage,
-    isDone: formValues =>
-      formValues.evaluationCriteria.length > 0 &&
-      noEmptyCriteria(formValues) &&
-      noEmptyWeightings(formValues) &&
-      weightingsAddUpTo100(formValues)
   },
   {
     slug: 'additional',

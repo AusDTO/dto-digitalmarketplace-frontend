@@ -4,6 +4,7 @@ import {
   BRIEF_RESPONSE_SUCCESS,
   BRIEF_SAVE_SUCCESS,
   BRIEF_RFX_CREATE_SUCCESS,
+  BRIEF_TRAINING_CREATE_SUCCESS,
   BRIEF_ATM_CREATE_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NAME_SPLIT,
@@ -124,6 +125,11 @@ const briefReducer = (state = defaultBriefState, action) => {
         brief: action.brief
       }
 
+    case BRIEF_TRAINING_CREATE_SUCCESS:
+      return {
+        ...state,
+        brief: action.brief
+      }
     case BRIEF_ATM_CREATE_SUCCESS:
       return {
         ...state,
