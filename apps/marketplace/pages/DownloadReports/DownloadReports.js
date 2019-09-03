@@ -13,7 +13,6 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { hasPermission } from 'marketplace/components/helpers'
 import { rootPath } from 'marketplace/routes'
-import { submitDownloadReportsRequest } from 'marketplace/actions/downloadReportsActions'
 import { required, validDate, startDateIsBeforeEndDate } from 'marketplace/components/validators'
 
 import styles from '../../main.scss'
@@ -206,7 +205,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   setDate: (prop, date) => dispatch(actions.change(`${model}.${prop}`, date)),
-  submitDownloadReportsRequest: values => dispatch(submitDownloadReportsRequest(values))
 })
 
 export default connect(
