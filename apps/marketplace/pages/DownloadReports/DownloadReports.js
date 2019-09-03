@@ -26,9 +26,7 @@ const startAndEndIsValid = v =>
   (v.reportType === 'sellersCatalogue' || startDateIsBeforeEndDate(v.startDate, v.endDate))
 
 const handleSubmit = values => {
-  const url = `/api/2/buyer/download/reports?reportType=${values.reportType}&startDate=${values.startDate}&endDate=${
-    values.endDate
-  }`
+  const url = `/api/2/buyer/download/reports?reportType=${values.reportType}&startDate=${values.startDate}&endDate=${values.endDate}`
   window.location.href = url
 }
 
@@ -211,4 +209,7 @@ const mapDispatchToProps = dispatch => ({
   submitDownloadReportsRequest: values => dispatch(submitDownloadReportsRequest(values))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(DownloadReports)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DownloadReports)
