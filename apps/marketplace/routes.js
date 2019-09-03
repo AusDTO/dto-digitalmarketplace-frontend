@@ -17,6 +17,9 @@ import OpportunitiesPage from './pages/OpportunitiesPage'
 import BuyerRFXCreatePage from './pages/BuyerRFXCreatePage'
 import BuyerRFXCompletedPage from './pages/BuyerRFXCompletedPage'
 import BuyerRFXFlowPage from './pages/BuyerRFXFlowPage'
+import BuyerTrainingCreatePage from './pages/BuyerTrainingCreatePage'
+import BuyerTrainingCompletedPage from './pages/BuyerTrainingCompletedPage'
+import BuyerTrainingFlowPage from './pages/BuyerTrainingFlowPage'
 import BuyerBriefOverviewPage from './pages/BuyerBriefOverviewPage'
 import BuyerATMCreatePage from './pages/BuyerATMCreatePage'
 import BuyerATMCompletedPage from './pages/BuyerATMCompletedPage'
@@ -82,11 +85,26 @@ export const Routes = () => (
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/create`} component={BuyerRFXCreatePage} />
     <PrivateRoute
       restrictedTo="buyer"
+      path={`${rootPath}/buyer-training2/create`}
+      component={BuyerTrainingCreatePage}
+    />
+    <PrivateRoute
+      restrictedTo="buyer"
       path={`${rootPath}/buyer-rfx/:briefId/completed`}
       component={BuyerRFXCompletedPage}
     />
+    <PrivateRoute
+      restrictedTo="buyer"
+      path={`${rootPath}/buyer-training2/:briefId/completed`}
+      component={BuyerTrainingCompletedPage}
+    />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-award/:briefId`} component={BuyerAwardSellerPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/:briefId/:stage?`} component={BuyerRFXFlowPage} />
+    <PrivateRoute
+      restrictedTo="buyer"
+      path={`${rootPath}/buyer-training2/:briefId/:stage?`}
+      component={BuyerTrainingFlowPage}
+    />
     <PrivateRoute
       restrictedTo="buyer"
       path={`${rootPath}/buyer-atm/:briefId/completed`}

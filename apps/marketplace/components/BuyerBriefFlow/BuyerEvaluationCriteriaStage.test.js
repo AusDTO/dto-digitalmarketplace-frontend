@@ -4,9 +4,7 @@ import Adapter from 'enzyme-adapter-react-16'
 import configureStore from 'marketplace/store'
 import { Provider } from 'react-redux'
 import { actions } from 'react-redux-form'
-import BuyerSpecialistEvaluationCriteriaStage, {
-  weightingsAddUpTo100Essential
-} from './BuyerSpecialistEvaluationCriteriaStage'
+import BuyerEvaluationCriteriaStage, { weightingsAddUpTo100Essential } from './BuyerEvaluationCriteriaStage'
 
 Enzyme.configure({ adapter: new Adapter() })
 
@@ -23,7 +21,7 @@ test('include weightings checkbox adds the weightings inputs', () => {
 
   const component = mount(
     <Provider store={store}>
-      <BuyerSpecialistEvaluationCriteriaStage
+      <BuyerEvaluationCriteriaStage
         model="BuyerSpecialistForm"
         BuyerSpecialistForm={state.BuyerSpecialistForm}
         formButtons={<br />}
@@ -38,15 +36,57 @@ test('include weightings checkbox adds the weightings inputs', () => {
   expect(component.find('input#essential_weighting_0').length).toEqual(1)
 })
 
-test('removing a criteria', () => {
-  const essentialRequirements = [{ criteria: 'this', weighting: '75' }, { criteria: 'that', weighting: '25' }]
-  const niceToHaveRequirements = []
+test('disabling weightings clears the current weighting values', () => {
+  const essentialRequirements = [{ criteria: 'this', weighting: '50' }, { criteria: 'that', weighting: '50' }]
   const state = {
     BuyerSpecialistForm: {
       essentialRequirements,
-      includeWeightingsEssential: true,
-      niceToHaveRequirements,
-      includeWeightingsNiceToHave: true
+      niceToHaveRequirements: []
+    }
+  }
+  const store = configureStore(state)
+
+  const component = mount(
+    <Provider store={store}>
+      <BuyerEvaluationCriteriaStage
+        model="BuyerSpecialistForm"
+        BuyerSpecialistForm={state.BuyerSpecialistForm}
+        formButtons={<br />}
+      />
+    </Provider>
+  )
+
+  component
+    .find('input#includeWeightingsEssential')
+    .at(0)
+    .simulate('change', { target: { checked: true } })
+    .simulate('click')
+  expect(component.find('input#essential_weighting_0').instance().value).toEqual('50')
+  expect(component.find('input#essential_weighting_1').instance().value).toEqual('50')
+
+  component
+    .find('input#includeWeightingsEssential')
+    .at(0)
+    .simulate('change', { target: { checked: false } })
+    .simulate('click')
+  expect(component.find('input#essential_weighting_0').length).toEqual(0)
+  expect(component.find('input#essential_weighting_1').length).toEqual(0)
+
+  component
+    .find('input#includeWeightingsEssential')
+    .at(0)
+    .simulate('change', { target: { checked: true } })
+    .simulate('click')
+  expect(component.find('input#essential_weighting_0').instance().value).toEqual('')
+  expect(component.find('input#essential_weighting_1').instance().value).toEqual('')
+})
+
+test('removing a criteria', () => {
+  const essentialRequirements = [{ criteria: 'this', weighting: '75' }, { criteria: 'that', weighting: '25' }]
+  const state = {
+    BuyerSpecialistForm: {
+      essentialRequirements,
+      includeWeightingsEssential: true
     }
   }
   const store = configureStore()
@@ -62,7 +102,7 @@ test('removing a criteria', () => {
 
   const component = mount(
     <Provider store={store}>
-      <BuyerSpecialistEvaluationCriteriaStage
+      <BuyerEvaluationCriteriaStage
         model="BuyerSpecialistForm"
         BuyerSpecialistForm={state.BuyerSpecialistForm}
         formButtons={<br />}
@@ -81,13 +121,10 @@ test('removing a criteria', () => {
 
 test('adding a criteria', () => {
   const essentialRequirements = [{ criteria: 'this', weighting: '75' }, { criteria: 'that', weighting: '25' }]
-  const niceToHaveRequirements = []
   const state = {
     BuyerSpecialistForm: {
       essentialRequirements,
-      includeWeightingsEssential: true,
-      niceToHaveRequirements,
-      includeWeightingsNiceToHave: true
+      includeWeightingsEssential: true
     }
   }
   const store = configureStore()
@@ -103,7 +140,7 @@ test('adding a criteria', () => {
 
   const component = mount(
     <Provider store={store}>
-      <BuyerSpecialistEvaluationCriteriaStage
+      <BuyerEvaluationCriteriaStage
         model="BuyerSpecialistForm"
         BuyerSpecialistForm={state.BuyerSpecialistForm}
         formButtons={<br />}
@@ -125,18 +162,12 @@ test('weightingsAddUpTo100 correctly determines whether the weightings add up to
     includeWeightingsEssential: true,
     essentialRequirements: [{ weighting: 25 }, { weighting: 75 }]
   }
-  const badWeightings1 = {
-    includeWeightingsEssential: true,
-    essentialRequirements: [{ weighting: 90 }]
-  }
+  const badWeightings1 = { includeWeightingsEssential: true, essentialRequirements: [{ weighting: 90 }] }
   const badWeightings2 = {
     includeWeightingsEssential: true,
     essentialRequirements: [{ weighting: 50 }, { weighting: 51 }]
   }
-  const noWeightings = {
-    includeWeightingsEssential: false,
-    essentialRequirements: []
-  }
+  const noWeightings = { includeWeightingsEssential: false, essentialRequirements: [] }
 
   expect(weightingsAddUpTo100Essential(goodWeightings)).toBeTruthy()
   expect(weightingsAddUpTo100Essential(badWeightings1)).toBeFalsy()
