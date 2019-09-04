@@ -38,7 +38,7 @@ class SubmitConfirmation extends React.Component {
                             <b> {format(new Date(closingDate), 'Do MMMM YYYY')}</b>.
                         </p>
 
-                        {!['rfx', 'atm'].includes(briefLot) && (
+                        {!['rfx', 'training2', 'atm'].includes(briefLot) && (
                             <React.Fragment>
                                 <p>While you wait, you can prepare your response by downloading the template.</p>
                                 <p styleName="footer-link">

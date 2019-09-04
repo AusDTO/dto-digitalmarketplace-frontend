@@ -11,6 +11,7 @@ const mapOpenTo = (val, lot) => {
       value = 'all'
       break
     case 'rfx':
+    case 'training2':
       value = 'selected'
       break
     default:
@@ -27,6 +28,7 @@ const mapOpenToStyles = (val, lot) => {
       value = styles.green
       break
     case 'rfx':
+    case 'training2':
       value = styles.blue
       break
     default:
@@ -111,7 +113,7 @@ const Opportunities = props => (
                     {item.id}
                   </div>
                   <div className={`col-md-4 col-sm-4 ${styles.cell}`} role="cell" aria-labelledby="header_name">
-                    {item.lot === 'rfx' || item.lot === 'atm' || item.lot === 'specialist' ? (
+                    {['rfx', 'training2', 'atm', 'specialist'].includes(item.lot) ? (
                       <a href={`${rootPath}/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
                     ) : (
                       <a href={`/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
@@ -147,7 +149,7 @@ const Opportunities = props => (
                     open to {mapOpenTo(item.openTo)}
                   </div>
                   <div className={styles.mobileName}>
-                    {item.lot === 'rfx' || item.lot === 'atm' ? (
+                    {['rfx', 'training2', 'atm'].includes(item.lot) ? (
                       <a href={`${rootPath}/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>
                     ) : (
                       <a href={`/digital-marketplace/opportunities/${item.id}`}>{item.name}</a>

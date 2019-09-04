@@ -6,7 +6,7 @@ import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
-import styles from './BuyerRFXResponseFormatsStage.scss'
+import styles from './BuyerTrainingResponseFormatsStage.scss'
 
 const atleastOneFormat = v =>
   v.evaluationType && (v.evaluationType.includes('Written proposal') || v.evaluationType.includes('Response template'))
@@ -21,7 +21,7 @@ const onlyProposalOrTemplate = v =>
 
 export const done = v => atleastOneFormat(v) && atleastOneProposal(v) && onlyProposalOrTemplate(v)
 
-const BuyerRFXResponseFormatsStage = props => (
+const BuyerTrainingResponseFormatsStage = props => (
   <Form
     model={props.model}
     validators={{
@@ -39,6 +39,7 @@ const BuyerRFXResponseFormatsStage = props => (
       Response formats
     </AUheading>
     <ErrorAlert
+      title="An error occurred"
       model={props.model}
       messages={{
         atleastOneFormat: 'You must choose what you would like sellers to provide through the Marketplace',
@@ -160,12 +161,12 @@ const BuyerRFXResponseFormatsStage = props => (
   </Form>
 )
 
-BuyerRFXResponseFormatsStage.defaultProps = {
+BuyerTrainingResponseFormatsStage.defaultProps = {
   onSubmit: () => {},
   onSubmitFailed: () => {}
 }
 
-BuyerRFXResponseFormatsStage.propTypes = {
+BuyerTrainingResponseFormatsStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   onSubmit: PropTypes.func,
@@ -176,4 +177,4 @@ const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)
 })
 
-export default connect(mapStateToProps)(BuyerRFXResponseFormatsStage)
+export default connect(mapStateToProps)(BuyerTrainingResponseFormatsStage)
