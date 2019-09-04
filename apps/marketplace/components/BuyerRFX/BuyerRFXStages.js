@@ -5,13 +5,9 @@ import BuyerRFXSelectStage from './BuyerRFXSelectStage'
 import BuyerRFXRequirementsStage from './BuyerRFXRequirementsStage'
 import BuyerRFXReviewStage from './BuyerRFXReviewStage'
 import BuyerRFXAdditionalInformationStage from './BuyerRFXAdditionalInformationStage'
-import BuyerRFXResponseFormatsStage, { atleastOneFormat, atleastOneProposal } from './BuyerRFXResponseFormatsStage'
+import BuyerRFXResponseFormatsStage, { done as responseFormatDone } from './BuyerRFXResponseFormatsStage'
 import BuyerRFXTimeframesAndBudgetStage from './BuyerRFXTimeframesAndBudgetStage'
-import BuyerRFXEvaluationCriteriaStage, {
-  weightingsAddUpTo100,
-  noEmptyWeightings,
-  noEmptyCriteria
-} from './BuyerRFXEvaluationCriteriaStage'
+import BuyerEvaluationCriteriaStage, { done as evaluationDone } from '../BuyerBriefFlow/BuyerEvaluationCriteriaStage'
 
 const BuyerRFXStages = [
   {
@@ -38,10 +34,16 @@ const BuyerRFXStages = [
       formValues.workingArrangements.length > 0
   },
   {
+    slug: 'criteria',
+    title: 'Evaluation criteria',
+    component: BuyerEvaluationCriteriaStage,
+    isDone: evaluationDone
+  },
+  {
     slug: 'formats',
     title: 'Response formats',
     component: BuyerRFXResponseFormatsStage,
-    isDone: formValues => atleastOneFormat(formValues) && atleastOneProposal(formValues)
+    isDone: responseFormatDone
   },
   {
     slug: 'requirements',
@@ -58,16 +60,6 @@ const BuyerRFXStages = [
     title: 'Timeframes and budget',
     component: BuyerRFXTimeframesAndBudgetStage,
     isDone: formValues => formValues.startDate.length > 0 && formValues.contractLength.length > 0
-  },
-  {
-    slug: 'criteria',
-    title: 'Evaluation criteria',
-    component: BuyerRFXEvaluationCriteriaStage,
-    isDone: formValues =>
-      formValues.evaluationCriteria.length > 0 &&
-      noEmptyCriteria(formValues) &&
-      noEmptyWeightings(formValues) &&
-      weightingsAddUpTo100(formValues)
   },
   {
     slug: 'additional',

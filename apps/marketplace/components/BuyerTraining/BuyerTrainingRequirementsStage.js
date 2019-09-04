@@ -10,7 +10,7 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import range from 'lodash/range'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
-import styles from './BuyerRFXRequirementsStage.scss'
+import styles from './BuyerTrainingRequirementsStage.scss'
 
 const RequirementsTemplateHint = (
   <span>
@@ -32,7 +32,21 @@ const ResponseTemplateHint = (
   </span>
 )
 
-export class BuyerRFXRequirementsStage extends Component {
+const requiredRequirementsDocument = formValues =>
+  formValues.requirementsDocument &&
+  formValues.requirementsDocument.length > 0 &&
+  formValues.requirementsDocument.every(val => val)
+
+const requiredResponseTemplate = formValues =>
+  !formValues.evaluationType.includes('Response template') ||
+  (formValues.evaluationType.includes('Response template') &&
+    formValues.responseTemplate &&
+    formValues.responseTemplate.length > 0 &&
+    formValues.responseTemplate.every(val => val))
+
+export const done = v => requiredRequirementsDocument(v) && requiredResponseTemplate(v)
+
+export class BuyerTrainingRequirementsStage extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -71,16 +85,8 @@ export class BuyerRFXRequirementsStage extends Component {
         model={model}
         validators={{
           '': {
-            requiredRequirementsDocument: formValues =>
-              formValues.requirementsDocument &&
-              formValues.requirementsDocument.length > 0 &&
-              formValues.requirementsDocument.every(val => val),
-            requiredResponseTemplate: formValues =>
-              !formValues.evaluationType.includes('Response template') ||
-              (formValues.evaluationType.includes('Response template') &&
-                formValues.responseTemplate &&
-                formValues.responseTemplate.length > 0 &&
-                formValues.responseTemplate.every(val => val))
+            requiredRequirementsDocument,
+            requiredResponseTemplate
           }
         }}
         onSubmit={this.props.onSubmit}
@@ -192,11 +198,11 @@ export class BuyerRFXRequirementsStage extends Component {
   }
 }
 
-BuyerRFXRequirementsStage.defaultProps = {
+BuyerTrainingRequirementsStage.defaultProps = {
   onSubmit: () => {}
 }
 
-BuyerRFXRequirementsStage.propTypes = {
+BuyerTrainingRequirementsStage.propTypes = {
   model: PropTypes.string.isRequired,
   saveModel: PropTypes.func.isRequired,
   formButtons: PropTypes.node.isRequired,
@@ -207,4 +213,4 @@ const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)
 })
 
-export default connect(mapStateToProps)(BuyerRFXRequirementsStage)
+export default connect(mapStateToProps)(BuyerTrainingRequirementsStage)
