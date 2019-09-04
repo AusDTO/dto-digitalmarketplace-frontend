@@ -83,7 +83,7 @@ const getQuestionsCloseDate = brief => {
     return getBriefLastQuestionDate(new Date(getClosingTime(brief)))
   }
 
-  return false
+  return null
 }
 
 const showATMObjectives = (lotSlug, isBuyer, canRespond) => {
