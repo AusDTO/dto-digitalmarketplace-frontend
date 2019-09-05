@@ -182,26 +182,29 @@ const Opportunity = props => {
               <div className="col-xs-12 col-sm-4">
                 <strong>Deadline for asking questions</strong>
               </div>
-              <div className="col-xs-12 col-sm-8">
-                {getQuestionsCloseDate(brief) &&
-                  `${format(getQuestionsCloseDate(brief), 'dddd D MMMM YYYY')} at 6PM (in Canberra)`}
-              </div>
+              {getQuestionsCloseDate(brief) && (
+                <div className="col-xs-12 col-sm-8">
+                  {`${format(getQuestionsCloseDate(brief), 'dddd D MMMM YYYY')} at 6PM (in Canberra)`}
+                </div>
+              )}
             </div>
             <div className="row">
               <div className="col-xs-12 col-sm-4">
                 <strong>Application closing date</strong>
               </div>
-              <div className="col-xs-12 col-sm-8">
-                {getClosingTime(brief) && `${format(getClosingTime(brief), 'dddd D MMMM YYYY')} at 6PM (in Canberra)`}
-              </div>
+              {getClosingTime(brief) && (
+                <div className="col-xs-12 col-sm-8">
+                  {`${format(getClosingTime(brief), 'dddd D MMMM YYYY')} at 6PM (in Canberra)`}
+                </div>
+              )}
             </div>
             <div className="row">
               <div className="col-xs-12 col-sm-4">
                 <strong>Published</strong>
               </div>
-              <div className="col-xs-12 col-sm-8">
-                {brief.dates.published_date && format(brief.dates.published_date, 'dddd D MMMM YYYY')}
-              </div>
+              {brief.dates.published_date && (
+                <div className="col-xs-12 col-sm-8">{format(brief.dates.published_date, 'dddd D MMMM YYYY')}</div>
+              )}
             </div>
             {category && (
               <div className="row">
