@@ -74,6 +74,14 @@ const getBriefCategory = (domains, briefCategory) => {
   return category ? category.name : null
 }
 
+const getStartDate = brief => {
+  if (brief.lotSlug === 'specialist' && brief.startDate) {
+    return format(brief.startDate, 'D-MM-YYYY')
+  }
+
+  return brief.startDate ? brief.startDate : null
+}
+
 const getQuestionsCloseDate = brief => {
   if (brief.dates.questions_close) {
     return new Date(brief.dates.questions_close)
@@ -222,11 +230,7 @@ const Opportunity = props => {
               <div className="col-xs-12 col-sm-4">
                 <strong>Estimated start date</strong>
               </div>
-              <div className="col-xs-12 col-sm-8">
-                {brief.lotSlug === 'specialist' && brief.startDate
-                  ? format(brief.startDate, 'D-MM-YYYY')
-                  : brief.startDate}
-              </div>
+              {getStartDate(brief) && <div className="col-xs-12 col-sm-8">{getStartDate(brief)}</div>}
             </div>
             {brief.lotSlug === 'specialist' && brief.maxRate && (
               <div className="row">
