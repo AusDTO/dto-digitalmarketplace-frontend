@@ -6,10 +6,15 @@ import Textfield from 'shared/form/Textfield'
 import Textarea from 'shared/form/Textarea'
 import formProps from 'shared/form/formPropsSelector'
 import { required } from 'marketplace/components/validators'
-import AUheading from '@gov.au/headings/lib/js/react.js'
+import AUheadings from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 
-const BuyerRFXTimeframesAndBudgetStage = props => (
+const startDateRequired = formValues => required(formValues.startDate)
+const contractLengthRequired = formValues => required(formValues.contractLength)
+
+export const done = v => startDateRequired(v) && contractLengthRequired(v)
+
+const BuyerTrainingTimeframesAndBudgetStage = props => (
   <Form
     model={props.model}
     onSubmit={props.onSubmit}
@@ -17,14 +22,14 @@ const BuyerRFXTimeframesAndBudgetStage = props => (
     validateOn="submit"
     validators={{
       '': {
-        startDateRequired: formValues => required(formValues.startDate),
-        contractLengthRequired: formValues => required(formValues.contractLength)
+        startDateRequired,
+        contractLengthRequired
       }
     }}
   >
-    <AUheading level="1" size="xl">
+    <AUheadings level="1" size="xl">
       Timeframes and budget
-    </AUheading>
+    </AUheadings>
     <ErrorAlert
       title="An error occurred"
       model={props.model}
@@ -84,12 +89,12 @@ const BuyerRFXTimeframesAndBudgetStage = props => (
   </Form>
 )
 
-BuyerRFXTimeframesAndBudgetStage.defaultProps = {
+BuyerTrainingTimeframesAndBudgetStage.defaultProps = {
   onSubmit: () => {},
   onSubmitFailed: () => {}
 }
 
-BuyerRFXTimeframesAndBudgetStage.propTypes = {
+BuyerTrainingTimeframesAndBudgetStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   onSubmit: PropTypes.func,
@@ -100,4 +105,4 @@ const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)
 })
 
-export default connect(mapStateToProps)(BuyerRFXTimeframesAndBudgetStage)
+export default connect(mapStateToProps)(BuyerTrainingTimeframesAndBudgetStage)

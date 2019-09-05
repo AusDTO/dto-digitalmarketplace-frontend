@@ -130,7 +130,8 @@ class Overview extends Component {
           : 0
 
       const briefResponseCount = briefResponses && briefResponses.length > 0 ? briefResponses.length : 0
-      const flowName = flow !== 'specialist' ? flow.toUpperCase() : 'specialist'
+      let flowName = flow !== 'specialist' ? flow.toUpperCase() : 'specialist'
+      flowName = flow === 'training2' ? 'training' : flowName
 
       return (
         <div>
@@ -151,7 +152,7 @@ class Overview extends Component {
                   </strong>
                 </div>
               )}
-              <ul>
+              <ul className={styles.menuList}>
                 {isPublished && (
                   <li>
                     <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>View opportunity</a>
@@ -242,9 +243,10 @@ class Overview extends Component {
                 )}
               </li>
             )}
-            {(flow === 'rfx' || flow === 'specialist') && (briefResponseCount > 0 || !isPublished || !isClosed) && (
-              <li>{createWorkOrderRender(brief, flow, isPublished, isClosed, oldWorkOrderCreator)}</li>
-            )}
+            {['rfx', 'training2', 'specialist'].includes(flow) &&
+              (briefResponseCount > 0 || !isPublished || !isClosed) && (
+                <li>{createWorkOrderRender(brief, flow, isPublished, isClosed, oldWorkOrderCreator)}</li>
+              )}
             {briefResponseCount === 0 && isClosed && <li>No sellers responded</li>}
           </ul>
         </div>

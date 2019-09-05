@@ -1,16 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
-import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 
 const BuyerRFXIntroductionStage = props => (
   <Form model={props.model} onSubmit={props.onSubmit}>
-    <AUheadings level="1" size="xl">
+    <AUheading level="1" size="xl">
       Seek proposals and quotes
-    </AUheadings>
-    <AUheadings level="2" size="lg">
+    </AUheading>
+    <AUheading level="2" size="lg">
       Before you start
-    </AUheadings>
+    </AUheading>
     <ul>
       <li>
         You can{' '}
@@ -35,9 +35,9 @@ const BuyerRFXIntroductionStage = props => (
         you select.
       </li>
     </ul>
-    <AUheadings level="2" size="lg">
+    <AUheading level="2" size="lg">
       Publishing your requirements
-    </AUheadings>
+    </AUheading>
     <ul>
       <li>
         You must upload a requirements document. You can use your version or the{' '}
@@ -55,9 +55,9 @@ const BuyerRFXIntroductionStage = props => (
       </li>
       <li>Documents must be in DOC, XLS, PPT or PDF format.</li>
     </ul>
-    <AUheadings level="2" size="lg">
+    <AUheading level="2" size="lg">
       Getting help
-    </AUheadings>
+    </AUheading>
     <p>
       <a
         href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000579716"

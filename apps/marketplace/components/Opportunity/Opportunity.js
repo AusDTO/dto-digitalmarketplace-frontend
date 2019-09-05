@@ -255,7 +255,7 @@ const Opportunity = props => {
                 <div className="col-xs-12 col-sm-8">{brief.budgetRange}</div>
               </div>
             )}
-            {brief.lotSlug === 'rfx' && brief.budgetRange && (
+            {['rfx', 'training2'].includes(brief.lotSlug) && brief.budgetRange && (
               <div className="row">
                 <div className="col-xs-12 col-sm-4">
                   <strong>Budget range</strong>
@@ -276,7 +276,7 @@ const Opportunity = props => {
                 ))}
               </div>
             </div>
-            {brief.lotSlug === 'rfx' && (
+            {['rfx', 'training2'].includes(brief.lotSlug) && (
               <div className="row">
                 <div className="col-xs-12 col-sm-4">
                   <strong>Working arrangements</strong>
@@ -284,25 +284,23 @@ const Opportunity = props => {
                 <div className="col-xs-12 col-sm-8">{brief.workingArrangements}</div>
               </div>
             )}
-            {brief.lotSlug === 'rfx' ||
-              (brief.lotSlug === 'specialist' && (
-                <div className="row">
-                  <div className="col-xs-12 col-sm-4">
-                    <strong>Length of contract</strong>
-                  </div>
-                  <div className="col-xs-12 col-sm-8">{brief.contractLength}</div>
+            {['rfx', 'training2', 'specialist'].includes(brief.lotSlug) && (
+              <div className="row">
+                <div className="col-xs-12 col-sm-4">
+                  <strong>Length of contract</strong>
                 </div>
-              ))}
-            {brief.lotSlug === 'rfx' ||
-              (brief.lotSlug === 'specialist' && brief.contractExtensions && (
-                <div className="row">
-                  <div className="col-xs-12 col-sm-4">
-                    <strong>Contract extensions</strong>
-                  </div>
-                  <div className="col-xs-12 col-sm-8">{brief.contractExtensions}</div>
+                <div className="col-xs-12 col-sm-8">{brief.contractLength}</div>
+              </div>
+            )}
+            {['rfx', 'training2', 'specialist'].includes(brief.lotSlug) && brief.contractExtensions && (
+              <div className="row">
+                <div className="col-xs-12 col-sm-4">
+                  <strong>Contract extensions</strong>
                 </div>
-              ))}
-            {brief.lotSlug === 'rfx' && brief.securityClearance && (
+                <div className="col-xs-12 col-sm-8">{brief.contractExtensions}</div>
+              </div>
+            )}
+            {['rfx', 'training2'].includes(brief.lotSlug) && brief.securityClearance && (
               <div className="row">
                 <div className="col-xs-12 col-sm-4">
                   <strong>Security clearance</strong>
@@ -461,10 +459,12 @@ const Opportunity = props => {
                 </AUheading>
               )}
               {(brief.evaluationType.includes('Demonstration') ||
+                brief.evaluationType.includes('Interview') ||
                 brief.evaluationType.includes('Presentation') ||
                 brief.evaluationType.includes('Prototype')) && (
                 <ul>
                   {brief.evaluationType.includes('Demonstration') && <li>Demonstration</li>}
+                  {brief.evaluationType.includes('Interview') && <li>Interview</li>}
                   {brief.evaluationType.includes('Presentation') && <li>Presentation</li>}
                   {brief.evaluationType.includes('Prototype') && <li>Prototype</li>}
                 </ul>
@@ -479,39 +479,37 @@ const Opportunity = props => {
               )}
             </div>
           )}
-          {brief.lotSlug !== 'specialist' && (
+          {brief.evaluationCriteria && brief.evaluationCriteria.length > 0 ? (
             <EvaluationCriteria
               title={brief.lotSlug === 'atm' ? 'Response criteria' : 'Evaluation criteria'}
               evaluationCriteria={brief.evaluationCriteria}
               showWeightings={brief.includeWeightings}
             />
-          )}
-          {brief.lotSlug === 'specialist' && (
-            <AUheading level="2" size="lg">
-              Selection criteria
-            </AUheading>
-          )}
-          {brief.lotSlug === 'specialist' && (
-            <EvaluationCriteria
-              title={'Essential criteria'}
-              titleLevel="3"
-              titleSize="sm"
-              evaluationCriteria={brief.essentialRequirements}
-              showWeightings={brief.includeWeightingsEssential}
-            />
-          )}
-          {brief.lotSlug === 'specialist' &&
-            brief.niceToHaveRequirements &&
-            brief.niceToHaveRequirements.length > 0 &&
-            brief.niceToHaveRequirements[0].criteria && (
+          ) : (
+            <React.Fragment>
+              <AUheading level="2" size="lg">
+                {brief.lotSlug === 'specialist' ? 'Selection' : 'Evaluation'} criteria
+              </AUheading>
               <EvaluationCriteria
-                title={'Desirable criteria'}
+                title={'Essential criteria'}
                 titleLevel="3"
                 titleSize="sm"
-                evaluationCriteria={brief.niceToHaveRequirements}
-                showWeightings={brief.includeWeightingsNiceToHave}
+                evaluationCriteria={brief.essentialRequirements}
+                showWeightings={brief.includeWeightingsEssential}
               />
-            )}
+              {brief.niceToHaveRequirements &&
+                brief.niceToHaveRequirements.length > 0 &&
+                brief.niceToHaveRequirements[0].criteria && (
+                  <EvaluationCriteria
+                    title={'Desirable criteria'}
+                    titleLevel="3"
+                    titleSize="sm"
+                    evaluationCriteria={brief.niceToHaveRequirements}
+                    showWeightings={brief.includeWeightingsNiceToHave}
+                  />
+                )}
+            </React.Fragment>
+          )}
           {brief.lotSlug === 'specialist' && (
             <React.Fragment>
               <AUheading level="2" size="lg">
