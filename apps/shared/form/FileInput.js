@@ -80,6 +80,7 @@ class FileInput extends React.Component {
                 onChange={this.onChange}
                 className={styles.hidden_input}
                 validators={validators}
+                tabIndex={-1}
                 title={title || ''}
                 getRef={ref => {
                   this.uploadInput = ref
