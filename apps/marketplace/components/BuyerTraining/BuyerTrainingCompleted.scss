@@ -1,0 +1,9 @@
+p.buttons a {
+  margin-right: 1.5rem;
+}
+
+@media (max-width: 416px) {
+  p.buttons a:last-child {
+    margin-top: 1.5rem;
+  }
+}
