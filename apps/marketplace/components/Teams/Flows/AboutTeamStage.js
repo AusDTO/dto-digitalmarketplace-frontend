@@ -40,7 +40,6 @@ const AboutTeamStage = props => {
         Name and email
       </AUheading>
       <ErrorAlert
-        title="An error occurred"
         model={model}
         messages={{
           requiredName: requiredNameMessage,

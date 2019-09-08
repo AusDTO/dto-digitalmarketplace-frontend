@@ -252,7 +252,6 @@ class SellerAssessmentEvidenceStage extends Component {
         ) : (
           <React.Fragment>
             <ErrorAlert
-              title="An error occurred"
               model={this.props.model}
               messages={{
                 requiredClient: 'You must provide a client for each criteria response',

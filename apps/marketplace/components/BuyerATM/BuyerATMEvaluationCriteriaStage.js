@@ -86,7 +86,6 @@ class BuyerATMEvaluationCriteriaStage extends Component {
           You must list each criteria separately so that sellers can respond to each one through the Marketplace.
         </AUcallout>
         <ErrorAlert
-          title="An error occurred"
           model={this.props.model}
           messages={{
             noEmptyWeightings: 'You must not have any empty weighting.',
