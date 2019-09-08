@@ -152,7 +152,7 @@ class Overview extends Component {
                   </strong>
                 </div>
               )}
-              <ul>
+              <ul className={styles.menuList}>
                 {isPublished && (
                   <li>
                     <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>View opportunity</a>
