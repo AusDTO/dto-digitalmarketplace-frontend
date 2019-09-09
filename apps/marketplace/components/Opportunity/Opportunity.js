@@ -259,7 +259,7 @@ const Opportunity = props => {
                 <div className="col-xs-12 col-sm-4">
                   <strong>Budget information</strong>
                 </div>
-                <div className="col-xs-12 col-sm-8">{brief.budgetRange}</div>
+                <div className={`col-xs-12 col-sm-8 ${styles.newLines}`}>{brief.budgetRange}</div>
               </div>
             )}
             {['rfx', 'training2'].includes(brief.lotSlug) && brief.budgetRange && (
@@ -267,7 +267,7 @@ const Opportunity = props => {
                 <div className="col-xs-12 col-sm-4">
                   <strong>Budget range</strong>
                 </div>
-                <div className="col-xs-12 col-sm-8">{brief.budgetRange}</div>
+                <div className={`col-xs-12 col-sm-8 ${styles.newLines}`}>{brief.budgetRange}</div>
               </div>
             )}
             <div className="row">
@@ -288,7 +288,7 @@ const Opportunity = props => {
                 <div className="col-xs-12 col-sm-4">
                   <strong>Working arrangements</strong>
                 </div>
-                <div className="col-xs-12 col-sm-8">{brief.workingArrangements}</div>
+                <div className={`col-xs-12 col-sm-8 ${styles.newLines}`}>{brief.workingArrangements}</div>
               </div>
             )}
             {['rfx', 'training2', 'specialist'].includes(brief.lotSlug) && (
