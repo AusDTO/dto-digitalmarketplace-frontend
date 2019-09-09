@@ -124,7 +124,7 @@ export class DownloadReports extends Component {
             <React.Fragment>
               <div>
                 <AUcheckbox
-                  className={styles['space-top-bottom-2x']}
+                  className={`${styles['space-top-2x']} ${styles['space-bottom-2x']}`}
                   id="cb-declaration1"
                   name="procurementAccessCB"
                   checked={this.state.acceptEnabled}
@@ -168,7 +168,7 @@ export class DownloadReports extends Component {
                 }}
               />
               <AUcheckbox
-                className={styles['space-top-bottom-2x']}
+                className={`${styles['space-top-2x']} ${styles['space-bottom-2x']}`}
                 checked={this.state.acceptEnabled}
                 id="cb-declaration"
                 name="procurementAccessCB"
