@@ -25,7 +25,6 @@ const BuyerATMTimeframesAndBudgetStage = props => (
       Timeframes
     </AUheadings>
     <ErrorAlert
-      title="An error occurred"
       model={props.model}
       messages={{
         startDateRequired: 'Enter an estimated start date for the brief',

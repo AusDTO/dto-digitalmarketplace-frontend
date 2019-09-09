@@ -4,12 +4,15 @@ import PropTypes from 'prop-types'
 import { Route, Router, Link, withRouter, Redirect } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import { connect } from 'react-redux'
+import { actions } from 'react-redux-form'
+
 import AUaccordion from '@gov.au/accordion/lib/js/react.js'
 import formProps from 'shared/form/formPropsSelector'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import ProgressNav from 'marketplace/components/ProgressFlow/ProgressNav'
 import ProgressContent from 'marketplace/components/ProgressFlow/ProgressContent'
 import ProgressButtons from 'marketplace/components/ProgressFlow/ProgressButtons'
+
 import styles from './ProgressFlow.scss'
 
 const handleFormSubmitFailed = () => {
@@ -173,6 +176,10 @@ export class ProgressFlow extends Component {
     })
   }
 
+  handleSaveAndContinue = () => {
+    this.props.resetFormValidity()
+  }
+
   handleConfirmationClick(checked) {
     this.setState({
       confirmationChecked: checked
@@ -272,6 +279,7 @@ export class ProgressFlow extends Component {
                               onPublish={this.handlePublish}
                               onPreview={this.handlePreview}
                               onReturn={this.handleReturn}
+                              onSaveAndContinue={this.handleSaveAndContinue}
                               onConfirmationClick={this.handleConfirmationClick}
                               showReturnButton={this.props.showReturnButton}
                               showReviewButton={this.props.showReviewButton}
@@ -336,4 +344,13 @@ const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)
 })
 
-export default withRouter(connect(mapStateToProps)(ProgressFlow))
+const mapDispatchToProps = (dispatch, props) => ({
+  resetFormValidity: () => dispatch(actions.resetValidity(props.model))
+})
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ProgressFlow)
+)

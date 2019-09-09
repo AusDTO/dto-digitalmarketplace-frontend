@@ -35,7 +35,6 @@ const BuyerATMResponseFormatsStage = props => (
       If you need proposals now, switch to <a href={`${rootPath}/outcome-choice`}>seek proposals and quotes</a>.
     </AUcallout>
     <ErrorAlert
-      title="An error occurred"
       model={props.model}
       messages={{
         requiredChoice: 'You must specify if you need sellers to supply any other information',

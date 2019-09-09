@@ -6,6 +6,8 @@ import { limitWords, minimumWords } from 'shared/validators'
 import StatefulError from './StatefulError'
 import TextareaComponent from './Textarea/Textarea'
 
+import mainStyles from '../main.scss'
+
 const Textarea = props => {
   const {
     name,
@@ -42,7 +44,7 @@ const Textarea = props => {
   }
   return (
     <div className="field">
-      <label id={`${id}-label`} className="question-heading au-text-input__label" htmlFor={id}>
+      <label id={`${id}-label`} className={`question-heading au-text-input__label ${mainStyles.newLines}`} htmlFor={id}>
         {label}
       </label>
       {description && (
