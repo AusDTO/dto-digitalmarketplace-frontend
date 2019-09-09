@@ -64,9 +64,9 @@ export const dateIs2DaysInFuture = val => {
 }
 
 export const startDateIsBeforeEndDate = (start, end) => {
-  // if (!validDate(start) || !validDate(end)) {
-  //   return false
-  // }
+  if (!validDate(start) || !validDate(end)) {
+    return true
+  }
   if (!isBefore(start, end)) {
     return false
   }
