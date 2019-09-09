@@ -81,110 +81,87 @@ export class DownloadReports extends Component {
             startAndEndIsValid: 'Please ensure that the start date is before the end date.'
           }}
         />
-        <div className="col-sm-8 col-xs-12">
-          <RadioList
-            className={styles['space-top-2x']}
-            model={`${model}.reportType`}
-            name="reportType"
-            id="reportType"
-            label="Choose the type of report you would like to download for your agency."
-            onChange={() => {
-              this.setState({
-                acceptEnabled: false
-              })
-            }}
-            options={[
-              {
-                value: 'sellersCatalogue',
-                label: 'Current approved sellers catalogue'
-              },
-              {
-                value: 'sellerResponses',
-                label: 'Seller responses to your opportunities'
-              },
-              {
-                value: 'specialist',
-                label: 'Digital specialist opportunities'
-              },
-              {
-                value: 'atm',
-                label: 'Ask the market opportunities'
-              },
-              {
-                value: 'rfx',
-                label: 'RFx opportunities'
-              },
-              {
-                value: 'training',
-                label: 'Training opportunities'
-              }
-            ]}
-          />
-          {this.props[model].reportType === 'sellersCatalogue' && (
-            <React.Fragment>
-              <div>
-                <AUcheckbox
-                  className={`${styles['space-top-2x']} ${styles['space-bottom-2x']}`}
-                  id="cb-declaration1"
-                  name="procurementAccessCB"
-                  checked={this.state.acceptEnabled}
-                  onClick={e => {
-                    this.setState({
-                      acceptEnabled: e.target.checked
-                    })
-                  }}
-                  label="I am authorised to access procurement reporting documents across my organisation and I will store, transmit and use the report in line with my agency's privacy and data policies."
-                />
-                <AUbutton type="submit" disabled={!this.state.acceptEnabled}>
-                  Download reports
-                </AUbutton>
-              </div>
-            </React.Fragment>
-          )}
-          {this.props[model].reportType !== 'sellersCatalogue' && (
-            <React.Fragment>
-              <DateControl
-                className={styles['space-top']}
-                id="startDate"
-                model={`${model}.startDate`}
-                onDateChange={date => this.handleDateChange('startDate', date)}
-                defaultValue={this.props[model].startDate}
-                label="Start Date"
-                description=""
-                validators={{
-                  required
-                }}
-              />
-              <DateControl
-                className={styles['space-top']}
-                id="endDate"
-                model={`${model}.endDate`}
-                onDateChange={date => this.handleDateChange('endDate', date)}
-                defaultValue={this.props[model].endDate}
-                label="End Date"
-                description=""
-                validators={{
-                  required
-                }}
-              />
-              <AUcheckbox
-                className={`${styles['space-top-2x']} ${styles['space-bottom-2x']}`}
-                checked={this.state.acceptEnabled}
-                id="cb-declaration"
-                name="procurementAccessCB"
-                onClick={e => {
-                  this.setState({
-                    acceptEnabled: e.target.checked
-                  })
-                }}
-                label="I am authorised to access procurement reporting documents across my organisation and I will store, transmit and use the report in line with my agency's privacy and data policies."
-              />
-              <AUbutton type="submit" disabled={!this.state.acceptEnabled}>
-                Download reports
-              </AUbutton>
-            </React.Fragment>
-          )}
-        </div>
+        <RadioList
+          className={styles['space-top-2x']}
+          model={`${model}.reportType`}
+          name="reportType"
+          id="reportType"
+          label="Choose the type of report you would like to download for your agency."
+          onChange={() => {
+            this.setState({
+              acceptEnabled: false
+            })
+          }}
+          options={[
+            {
+              value: 'sellersCatalogue',
+              label: 'Current approved sellers catalogue'
+            },
+            {
+              value: 'sellerResponses',
+              label: 'Seller responses to your opportunities'
+            },
+            {
+              value: 'specialist',
+              label: 'Digital specialist opportunities'
+            },
+            {
+              value: 'atm',
+              label: 'Ask the market opportunities'
+            },
+            {
+              value: 'rfx',
+              label: 'RFx opportunities'
+            },
+            {
+              value: 'training',
+              label: 'Training opportunities'
+            }
+          ]}
+        />
+        {this.props[model].reportType !== 'sellersCatalogue' && (
+          <React.Fragment>
+            <DateControl
+              className={styles['space-top']}
+              id="startDate"
+              model={`${model}.startDate`}
+              onDateChange={date => this.handleDateChange('startDate', date)}
+              defaultValue={this.props[model].startDate}
+              label="Start Date"
+              description=""
+              validators={{
+                required
+              }}
+            />
+            <DateControl
+              className={`${styles['space-top-2x']} ${styles['space-bottom-3x']}`}
+              id="endDate"
+              model={`${model}.endDate`}
+              onDateChange={date => this.handleDateChange('endDate', date)}
+              defaultValue={this.props[model].endDate}
+              label="End Date"
+              description=""
+              validators={{
+                required
+              }}
+            />
+          </React.Fragment>
+        )}
+        <AUcheckbox
+          className={`${styles['space-bottom-2x']}`}
+          id="cb-declaration1"
+          name="procurementAccessCB"
+          checked={this.state.acceptEnabled}
+          onClick={e => {
+            this.setState({
+              acceptEnabled: e.target.checked
+            })
+          }}
+          label="I am authorised to access procurement reporting documents across my organisation and I will store, transmit and use the report in line with my agency's privacy and data policies."
+        />
+        <AUbutton type="submit" disabled={!this.state.acceptEnabled}>
+          Download reports
+        </AUbutton>
       </Form>
     )
   }
