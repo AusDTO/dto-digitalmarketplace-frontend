@@ -74,6 +74,26 @@ const getBriefCategory = (domains, briefCategory) => {
   return category ? category.name : null
 }
 
+const getStartDate = brief => {
+  if (brief.lotSlug === 'specialist' && brief.startDate) {
+    return format(brief.startDate, 'D-MM-YYYY')
+  }
+
+  return brief.startDate ? brief.startDate : null
+}
+
+const getQuestionsCloseDate = brief => {
+  if (brief.dates.questions_close) {
+    return new Date(brief.dates.questions_close)
+  }
+
+  if (getClosingTime(brief)) {
+    return getBriefLastQuestionDate(new Date(getClosingTime(brief)))
+  }
+
+  return null
+}
+
 const showATMObjectives = (lotSlug, isBuyer, canRespond) => {
   if (lotSlug === 'atm' && (isBuyer || canRespond)) {
     return true
@@ -162,31 +182,29 @@ const Opportunity = props => {
               <div className="col-xs-12 col-sm-4">
                 <strong>Deadline for asking questions</strong>
               </div>
-              <div className="col-xs-12 col-sm-8">
-                {format(
-                  brief.dates.questions_close
-                    ? new Date(brief.dates.questions_close)
-                    : getBriefLastQuestionDate(new Date(getClosingTime(brief) || new Date())),
-                  'dddd D MMMM YYYY'
-                )}{' '}
-                at 6PM (in Canberra)
-              </div>
+              {getQuestionsCloseDate(brief) && (
+                <div className="col-xs-12 col-sm-8">
+                  {`${format(getQuestionsCloseDate(brief), 'dddd D MMMM YYYY')} at 6PM (in Canberra)`}
+                </div>
+              )}
             </div>
             <div className="row">
               <div className="col-xs-12 col-sm-4">
                 <strong>Application closing date</strong>
               </div>
-              <div className="col-xs-12 col-sm-8">
-                {format(getClosingTime(brief) || new Date(), 'dddd D MMMM YYYY')} at 6PM (in Canberra)
-              </div>
+              {getClosingTime(brief) && (
+                <div className="col-xs-12 col-sm-8">
+                  {`${format(getClosingTime(brief), 'dddd D MMMM YYYY')} at 6PM (in Canberra)`}
+                </div>
+              )}
             </div>
             <div className="row">
               <div className="col-xs-12 col-sm-4">
                 <strong>Published</strong>
               </div>
-              <div className="col-xs-12 col-sm-8">
-                {format(brief.dates.published_date ? brief.dates.published_date : new Date(), 'dddd D MMMM YYYY')}
-              </div>
+              {brief.dates.published_date && (
+                <div className="col-xs-12 col-sm-8">{format(brief.dates.published_date, 'dddd D MMMM YYYY')}</div>
+              )}
             </div>
             {category && (
               <div className="row">
@@ -215,9 +233,7 @@ const Opportunity = props => {
               <div className="col-xs-12 col-sm-4">
                 <strong>Estimated start date</strong>
               </div>
-              <div className="col-xs-12 col-sm-8">
-                {brief.lotSlug === 'specialist' ? format(brief.startDate, 'D-MM-YYYY') : brief.startDate}
-              </div>
+              {getStartDate(brief) && <div className="col-xs-12 col-sm-8">{getStartDate(brief)}</div>}
             </div>
             {brief.lotSlug === 'specialist' && brief.maxRate && (
               <div className="row">
@@ -246,12 +262,12 @@ const Opportunity = props => {
                 <div className="col-xs-12 col-sm-8">{brief.budgetRange}</div>
               </div>
             )}
-            {['rfx', 'training2'].includes(brief.lotSlug) && (
+            {['rfx', 'training2'].includes(brief.lotSlug) && brief.budgetRange && (
               <div className="row">
                 <div className="col-xs-12 col-sm-4">
                   <strong>Budget range</strong>
                 </div>
-                <div className="col-xs-12 col-sm-8">{brief.budgetRange || 'None specified'}</div>
+                <div className="col-xs-12 col-sm-8">{brief.budgetRange}</div>
               </div>
             )}
             <div className="row">

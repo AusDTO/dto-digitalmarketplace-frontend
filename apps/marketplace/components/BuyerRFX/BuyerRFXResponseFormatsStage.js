@@ -39,7 +39,6 @@ const BuyerRFXResponseFormatsStage = props => (
       Response formats
     </AUheading>
     <ErrorAlert
-      title="An error occurred"
       model={props.model}
       messages={{
         atleastOneFormat: 'You must choose what you would like sellers to provide through the Marketplace',

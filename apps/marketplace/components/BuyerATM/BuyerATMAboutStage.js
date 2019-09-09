@@ -31,7 +31,6 @@ const BuyerATMAboutStage = props => (
       About
     </AUheadings>
     <ErrorAlert
-      title="An error occurred"
       model={props.model}
       messages={{
         requiredTitle: 'Enter the title for your brief',

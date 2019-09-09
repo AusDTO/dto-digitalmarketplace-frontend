@@ -41,7 +41,6 @@ class BuyerATMAdditionalInformationStage extends Component {
           Additional information
         </AUheading>
         <ErrorAlert
-          title="An error occurred"
           model={model}
           messages={{
             closingDateIsValid: 'You must add a closing date at least 2 days from now',

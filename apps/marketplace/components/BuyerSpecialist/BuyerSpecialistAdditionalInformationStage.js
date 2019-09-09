@@ -110,7 +110,6 @@ export class BuyerSpecialistRequirementsStage extends Component {
           view your contact number or internal reference.
         </AUcallout>
         <ErrorAlert
-          title="An error occurred"
           model={model}
           messages={{
             requiredContactNumber: 'Contact number is required',
@@ -124,7 +123,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
         <AUheadings level="2" size="sm">
           Attach a document (optional)
         </AUheadings>
-        <p>Documents must be in .DOC .XLS .PPT or .PDF format.</p>
+        <p className={styles.removeTopMargin}>Documents must be in .DOC .XLS .PPT or .PDF format.</p>
         {range(this.state.fileCount).map(i => (
           <FilesInput
             key={i}

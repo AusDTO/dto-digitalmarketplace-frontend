@@ -36,7 +36,6 @@ const SellerEditRepresentativeStage = props => (
       Authorised representative
     </AUheadings>
     <ErrorAlert
-      title="An error occurred"
       model={props.model}
       messages={{
         requiredName: 'Name is required',

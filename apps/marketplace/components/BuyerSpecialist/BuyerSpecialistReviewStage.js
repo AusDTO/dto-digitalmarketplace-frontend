@@ -17,7 +17,7 @@ const BuyerSpecialistReviewStage = props => (
       <AUheading level="1" size="xl">
         Review and publish
       </AUheading>
-      <ErrorAlert title="An error occurred" model={props.model} messages={{}} />
+      <ErrorAlert model={props.model} messages={{}} />
       <AUheading level="2" size="sm">
         If you publish today, you must be aware of the following dates:
       </AUheading>
