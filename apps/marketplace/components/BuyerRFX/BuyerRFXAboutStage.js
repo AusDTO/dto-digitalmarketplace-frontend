@@ -32,7 +32,6 @@ const BuyerRFXAboutStage = props => (
       About
     </AUheading>
     <ErrorAlert
-      title="An error occurred"
       model={props.model}
       messages={{
         requiredTitle: 'You must add a title',

@@ -135,7 +135,6 @@ class BuyerEvaluationCriteriaStage extends Component {
           Evaluation criteria
         </AUheading>
         <ErrorAlert
-          title="An error occurred"
           model={this.props.model}
           messages={{
             noEmptyWeightingsEssential: 'You cannot have blank essential weightings.',

@@ -55,7 +55,6 @@ export class BuyerATMSelectStage extends Component {
           Who can respond?
         </AUheading>
         <ErrorAlert
-          title="An error occurred"
           model={this.props.model}
           messages={{
             requiredChoice: 'You must select who can respond',

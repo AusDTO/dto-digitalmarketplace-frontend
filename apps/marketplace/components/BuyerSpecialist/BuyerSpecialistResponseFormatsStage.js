@@ -115,7 +115,6 @@ const BuyerSpecialistResponseFormatsStage = props => (
       Seller responses
     </AUheadings>
     <ErrorAlert
-      title="An error occurred"
       model={props.model}
       messages={{
         isNumberMaxRate: `Maximum ${
