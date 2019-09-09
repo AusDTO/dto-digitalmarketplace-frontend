@@ -1,8 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Control } from 'react-redux-form'
-import styles from './scss/Textfield.scss'
+
 import StatefulError from './StatefulError'
+import TextfieldComponent from './Textfield/Textfield'
+
+import styles from './scss/Textfield.scss'
 
 const Textfield = props => {
   const {
@@ -42,6 +45,7 @@ const Textfield = props => {
       <div className={styles.table}>
         {prefix && <span className={styles.prefix}>{prefix}</span>}
         <Control.input
+          component={TextfieldComponent}
           model={model}
           name={name}
           id={id}
