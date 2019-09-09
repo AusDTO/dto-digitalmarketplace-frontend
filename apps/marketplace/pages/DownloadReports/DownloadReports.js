@@ -100,7 +100,7 @@ export class DownloadReports extends Component {
               },
               {
                 value: 'sellerResponses',
-                label: 'Seller responses to your briefs'
+                label: 'Seller responses to your opportunities'
               },
               {
                 value: 'specialist',
