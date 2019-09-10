@@ -110,7 +110,7 @@ class BuyerTrainingAdditionalInformationStage extends Component {
           htmlFor="internalReference"
           defaultValue={this.props[this.props.model].internalReference}
           maxLength={100}
-          showMaxLength
+          showCharacterCounter
           validators={{}}
         />
         {this.props.formButtons}

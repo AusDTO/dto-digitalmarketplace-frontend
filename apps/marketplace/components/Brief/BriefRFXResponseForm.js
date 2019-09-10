@@ -184,7 +184,7 @@ export class BriefRFXResponseForm extends Component {
                     description="All communication about your application will be sent to this address."
                     defaultValue={app.emailAddress}
                     maxLength={100}
-                    showMaxLength
+                    showCharacterCounter
                     validators={{
                       required,
                       validEmail
@@ -201,7 +201,7 @@ export class BriefRFXResponseForm extends Component {
                     htmlFor="respondToPhone"
                     label="Phone number"
                     maxLength={100}
-                    showMaxLength
+                    showCharacterCounter
                     validators={{
                       required,
                       validPhoneNumber
