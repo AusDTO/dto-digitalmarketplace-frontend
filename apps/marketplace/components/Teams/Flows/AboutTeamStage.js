@@ -10,11 +10,10 @@ import Textfield from 'shared/form/Textfield'
 import { required, validEmail, validGovernmentEmail } from 'marketplace/components/validators'
 
 const AboutTeamStage = props => {
-  const { currentUserEmailAddress, formButtons, model, onSubmit, onSubmitFailed } = props
-  const userDomain = currentUserEmailAddress.split('@')[1]
+  const { agencyDomains, formButtons, model, onSubmit, onSubmitFailed } = props
 
-  const governmentEmail = team => validGovernmentEmail(team.emailAddress, currentUserEmailAddress)
-  const governmentEmailMessage = `You must use an email address ending in @${userDomain}.`
+  const governmentEmail = team => validGovernmentEmail(team.emailAddress, agencyDomains)
+  const governmentEmailMessage = `You must use an email address ending in @${agencyDomains.join(', @')}.`
 
   const requiredName = team => required(team.name)
   const requiredNameMessage = 'A team name is required.'
@@ -74,7 +73,7 @@ const AboutTeamStage = props => {
         placeholder=""
         validators={{
           validEmail,
-          governmentEmail: teamEmailAddress => validGovernmentEmail(teamEmailAddress, currentUserEmailAddress)
+          governmentEmail: teamEmailAddress => validGovernmentEmail(teamEmailAddress, agencyDomains)
         }}
         messages={{
           validEmail: validTeamEmailMessage,
@@ -100,7 +99,8 @@ AboutTeamStage.propTypes = {
 
 const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model),
-  currentUserEmailAddress: state.app.emailAddress
+  currentUserEmailAddress: state.app.emailAddress,
+  agencyDomains: state.app.agencyDomains
 })
 
 export default connect(mapStateToProps)(AboutTeamStage)
