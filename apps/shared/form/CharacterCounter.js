@@ -7,7 +7,7 @@ const CharacterCounter = props => {
   const remaining = value ? limit - value.length : limit
 
   return (
-    <span className={styles['text-field-limit']}>
+    <span className={`${styles['right-aligned-block']} ${styles['sub-text']}`}>
       {remaining} character{remaining === 1 ? '' : 's'} left
     </span>
   )
