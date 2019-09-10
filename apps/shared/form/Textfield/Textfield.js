@@ -1,7 +1,7 @@
 import React from 'react'
 
 const TextfieldComponent = props => {
-  const { className, disabled, id, name, maxLength, minLength, pattern, placeholder, readOnly, value } = props
+  const { className, disabled, id, name, maxLength, minLength, onChange, pattern, placeholder, readOnly, value } = props
 
   return (
     <div>
@@ -12,6 +12,7 @@ const TextfieldComponent = props => {
         maxLength={maxLength}
         minLength={minLength}
         name={name}
+        onChange={onChange}
         pattern={pattern}
         placeholder={placeholder}
         readOnly={readOnly}
