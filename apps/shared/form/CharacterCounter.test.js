@@ -20,4 +20,9 @@ describe('CharacterCounter', () => {
     const wrapper = mount(<CharacterCounter limit={10} value={''} />)
     expect(wrapper.text()).toEqual('10 characters left')
   })
+
+  test('shows multiple number of characters remaining', () => {
+    const wrapper = mount(<CharacterCounter limit={20} value={'test with spaces'} />)
+    expect(wrapper.text()).toEqual('4 characters left')
+  })
 })
