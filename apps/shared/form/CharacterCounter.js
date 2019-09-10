@@ -4,7 +4,9 @@ import styles from '../../marketplace/main.scss'
 
 const CharacterCounter = props => {
   const { limit, value } = props
-  const remaining = value ? limit - value.length : limit
+
+  let remaining = value ? limit - value.length : limit
+  remaining = remaining >= 0 ? remaining : 0
 
   return (
     <span className={`${styles['right-aligned-block']} ${styles['sub-text']}`}>

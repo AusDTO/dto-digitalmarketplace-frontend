@@ -35,4 +35,9 @@ describe('CharacterCounter', () => {
     const wrapper = mount(<CharacterCounter limit={13} value={'hit the limit'} />)
     expect(wrapper.text()).toEqual('0 characters left')
   })
+
+  test('shows no characters remaining', () => {
+    const wrapper = mount(<CharacterCounter limit={5} value={'over the limit'} />)
+    expect(wrapper.text()).toEqual('0 characters left')
+  })
 })
