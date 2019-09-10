@@ -1,7 +1,22 @@
 import React from 'react'
 
+import CharacterCounter from '../CharacterCounter'
+
 const TextfieldComponent = props => {
-  const { className, disabled, id, name, maxLength, minLength, onChange, pattern, placeholder, readOnly, value } = props
+  const {
+    className,
+    disabled,
+    id,
+    name,
+    maxLength,
+    minLength,
+    onChange,
+    pattern,
+    placeholder,
+    readOnly,
+    showCharacterCounter,
+    value
+  } = props
 
   return (
     <div>
@@ -19,6 +34,7 @@ const TextfieldComponent = props => {
         type="text"
         value={value}
       />
+      {showCharacterCounter && maxLength && <CharacterCounter limit={maxLength} value={value} />}
     </div>
   )
 }

@@ -19,7 +19,6 @@ const Textfield = props => {
     description,
     pattern,
     maxLength,
-    showMaxLength,
     disabled,
     readOnly,
     type,
@@ -29,7 +28,8 @@ const Textfield = props => {
     className,
     prefix,
     postfix,
-    onChange
+    onChange,
+    showCharacterCounter
   } = props
   return (
     <div className={`field ${className}`}>
@@ -64,13 +64,13 @@ const Textfield = props => {
           readOnly={readOnly}
           defaultValue={defaultValue}
           placeholder={placeholder}
+          showCharacterCounter={showCharacterCounter}
           step={step}
           onChange={onChange}
         />
         {postfix && <span className={styles.postfix}>{postfix}</span>}
       </div>
       {messages && <StatefulError model={model} messages={messages} showMessagesDuringFocus="false" id={id} />}
-      {showMaxLength && maxLength && <span className={styles.maxLength}>{maxLength} characters maximum</span>}
     </div>
   )
 }
@@ -85,7 +85,7 @@ Textfield.defaultProps = {
   pattern: null,
   disabled: false,
   readOnly: false,
-  showMaxLength: false,
+  showCharacterCounter: false,
   placeholder: '',
   step: null,
   className: '',
@@ -101,7 +101,7 @@ Textfield.propTypes = {
   htmlFor: PropTypes.string.isRequired,
   label: PropTypes.oneOfType([PropTypes.object.isRequired, PropTypes.string.isRequired]),
   model: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
-  showMaxLength: PropTypes.bool,
+  showCharacterCounter: PropTypes.bool,
   validators: PropTypes.object,
   messages: PropTypes.object,
   description: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
