@@ -11,6 +11,11 @@ describe('CharacterCounter', () => {
     expect(wrapper.text()).toEqual('10 characters left')
   })
 
+  test('shows the limit when value is undefined', () => {
+    const wrapper = mount(<CharacterCounter limit={10} value={undefined} />)
+    expect(wrapper.text()).toEqual('10 characters left')
+  })
+
   test('shows the limit when value is empty', () => {
     const wrapper = mount(<CharacterCounter limit={10} value={''} />)
     expect(wrapper.text()).toEqual('10 characters left')
