@@ -81,24 +81,24 @@ const Textfield = props => {
 }
 
 Textfield.defaultProps = {
-  type: 'text',
-  label: '',
+  className: '',
   defaultValue: '',
-  validators: null,
-  messages: null,
   description: '',
-  pattern: null,
   disabled: false,
+  label: '',
+  max: 0,
+  messages: null,
+  min: 0,
+  onChange: () => {},
+  pattern: null,
+  placeholder: '',
+  postfix: null,
+  prefix: null,
   readOnly: false,
   showCharacterCounter: false,
-  placeholder: '',
-  className: '',
-  prefix: null,
-  postfix: null,
-  onChange: () => {},
   topRightComponent: null,
-  max: 0,
-  min: 0
+  type: 'text',
+  validators: null
 }
 
 Textfield.propTypes = {
