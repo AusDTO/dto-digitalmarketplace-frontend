@@ -26,7 +26,6 @@ const Textfield = props => {
     type,
     defaultValue,
     placeholder,
-    step,
     className,
     prefix,
     postfix,
@@ -72,7 +71,6 @@ const Textfield = props => {
           defaultValue={defaultValue}
           placeholder={placeholder}
           showCharacterCounter={showCharacterCounter}
-          step={step}
           onChange={onChange}
         />
         {postfix && <span className={styles.postfix}>{postfix}</span>}
@@ -94,7 +92,6 @@ Textfield.defaultProps = {
   readOnly: false,
   showCharacterCounter: false,
   placeholder: '',
-  step: null,
   className: '',
   prefix: null,
   postfix: null,
@@ -120,7 +117,6 @@ Textfield.propTypes = {
   type: PropTypes.string,
   defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   placeholder: PropTypes.string,
-  step: PropTypes.string,
   className: PropTypes.string,
   prefix: PropTypes.string,
   postfix: PropTypes.string,
