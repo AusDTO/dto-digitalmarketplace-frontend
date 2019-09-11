@@ -15,6 +15,7 @@ const TextfieldComponent = props => {
     placeholder,
     readOnly,
     showCharacterCounter,
+    type,
     value
   } = props
 
@@ -31,7 +32,7 @@ const TextfieldComponent = props => {
         pattern={pattern}
         placeholder={placeholder}
         readOnly={readOnly}
-        type="text"
+        type={type}
         value={value}
       />
       {showCharacterCounter && maxLength && <CharacterCounter limit={maxLength} value={value} />}
