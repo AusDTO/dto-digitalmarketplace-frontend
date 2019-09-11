@@ -20,6 +20,7 @@ const Textfield = props => {
     maxLength,
     messages,
     min,
+    minLength,
     model,
     name,
     onChange,
@@ -66,6 +67,7 @@ const Textfield = props => {
           max={type === 'number' ? max : null}
           maxLength={maxLength}
           min={type === 'number' ? min : null}
+          minLength={minLength}
           disabled={disabled}
           readOnly={readOnly}
           defaultValue={defaultValue}
@@ -89,6 +91,7 @@ Textfield.defaultProps = {
   max: 0,
   messages: null,
   min: 0,
+  minLength: 0,
   onChange: () => {},
   pattern: null,
   placeholder: '',
@@ -112,6 +115,7 @@ Textfield.propTypes = {
   max: PropTypes.number,
   messages: PropTypes.object,
   min: PropTypes.number,
+  minLength: PropTypes.number,
   model: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
