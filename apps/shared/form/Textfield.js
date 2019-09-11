@@ -46,6 +46,9 @@ const Textfield = props => {
         {prefix && <span className={styles.prefix}>{prefix}</span>}
         <Control.input
           component={TextfieldComponent}
+          controlProps={{
+            describedBy: description ? `${id}-hint` : `${id}-label`
+          }}
           model={model}
           name={name}
           id={id}

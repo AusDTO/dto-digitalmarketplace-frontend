@@ -5,6 +5,7 @@ import CharacterCounter from '../CharacterCounter'
 const TextfieldComponent = props => {
   const {
     className,
+    describedBy,
     disabled,
     id,
     name,
@@ -22,6 +23,7 @@ const TextfieldComponent = props => {
   return (
     <div>
       <input
+        aria-describedby={describedBy}
         className={className}
         disabled={disabled}
         id={id}
