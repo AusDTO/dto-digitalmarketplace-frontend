@@ -22,7 +22,7 @@ CharacterCounter.defaultProps = {
 }
 
 CharacterCounter.propTypes = {
-  limit: PropTypes.number,
+  limit: PropTypes.number.isRequired,
   value: PropTypes.string
 }
 
