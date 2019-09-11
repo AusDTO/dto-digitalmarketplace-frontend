@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import styles from '../../marketplace/main.scss'
 
@@ -13,6 +14,16 @@ const CharacterCounter = props => {
       {remaining} character{remaining === 1 ? '' : 's'} left
     </span>
   )
+}
+
+CharacterCounter.defaultProps = {
+  limit: 100,
+  value: ''
+}
+
+CharacterCounter.propTypes = {
+  limit: PropTypes.number,
+  value: PropTypes.string
 }
 
 export default CharacterCounter
