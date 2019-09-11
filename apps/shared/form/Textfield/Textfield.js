@@ -10,7 +10,9 @@ const TextfieldComponent = props => {
     disabled,
     id,
     name,
+    max,
     maxLength,
+    min,
     minLength,
     onChange,
     pattern,
@@ -29,7 +31,9 @@ const TextfieldComponent = props => {
         defaultValue={defaultValue}
         disabled={disabled}
         id={id}
+        max={max}
         maxLength={maxLength}
+        min={min}
         minLength={minLength}
         name={name}
         onChange={onChange}

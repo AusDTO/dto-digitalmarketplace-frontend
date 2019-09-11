@@ -18,7 +18,9 @@ const Textfield = props => {
     messages,
     description,
     pattern,
+    max,
     maxLength,
+    min,
     disabled,
     readOnly,
     type,
@@ -62,7 +64,9 @@ const Textfield = props => {
           }}
           validators={validators}
           pattern={pattern}
+          max={type === 'number' ? max : null}
           maxLength={maxLength}
+          min={type === 'number' ? min : null}
           disabled={disabled}
           readOnly={readOnly}
           defaultValue={defaultValue}
@@ -95,7 +99,9 @@ Textfield.defaultProps = {
   prefix: null,
   postfix: null,
   onChange: () => {},
-  topRightComponent: null
+  topRightComponent: null,
+  max: 0,
+  min: 0
 }
 
 Textfield.propTypes = {
@@ -119,7 +125,9 @@ Textfield.propTypes = {
   prefix: PropTypes.string,
   postfix: PropTypes.string,
   onChange: PropTypes.func,
-  topRightComponent: PropTypes.object
+  topRightComponent: PropTypes.object,
+  max: PropTypes.number,
+  min: PropTypes.number
 }
 
 export default Textfield
