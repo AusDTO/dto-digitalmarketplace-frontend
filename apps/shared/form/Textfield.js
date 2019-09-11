@@ -9,28 +9,28 @@ import styles from './scss/Textfield.scss'
 
 const Textfield = props => {
   const {
-    name,
-    id,
-    htmlFor,
-    label,
-    model,
-    validators,
-    messages,
+    className,
+    defaultValue,
     description,
-    pattern,
+    disabled,
+    htmlFor,
+    id,
+    label,
     max,
     maxLength,
+    messages,
     min,
-    disabled,
-    readOnly,
-    type,
-    defaultValue,
-    placeholder,
-    className,
-    prefix,
-    postfix,
+    model,
+    name,
     onChange,
-    showCharacterCounter
+    pattern,
+    placeholder,
+    postfix,
+    prefix,
+    readOnly,
+    showCharacterCounter,
+    type,
+    validators
   } = props
   return (
     <div className={`field ${className}`}>
