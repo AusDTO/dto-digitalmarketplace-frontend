@@ -45,23 +45,23 @@ exports[`Test suite for CreateUserPage page Because snaphots 1`] = `
             <div
               className="table"
             >
-              <input
-                aria-describedby="password-label"
-                className="au-text-input au-text-input--block"
-                disabled={false}
-                id="password"
-                name="password"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                onKeyPress={[Function]}
-                pattern={null}
-                placeholder=""
-                readOnly={false}
-                step={null}
-                type="password"
-                value=""
-              />
+              <div>
+                <input
+                  aria-describedby="password-hint"
+                  className="au-text-input au-text-input--block"
+                  disabled={false}
+                  id="password"
+                  max={null}
+                  min={null}
+                  name="password"
+                  onChange={[Function]}
+                  pattern={null}
+                  placeholder=""
+                  readOnly={false}
+                  type="password"
+                  value=""
+                />
+              </div>
             </div>
           </div>
           <label
