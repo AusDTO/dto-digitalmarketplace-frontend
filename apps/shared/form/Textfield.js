@@ -102,28 +102,28 @@ Textfield.defaultProps = {
 }
 
 Textfield.propTypes = {
-  name: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  htmlFor: PropTypes.string.isRequired,
-  label: PropTypes.oneOfType([PropTypes.object.isRequired, PropTypes.string.isRequired]),
-  model: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
-  showCharacterCounter: PropTypes.bool,
-  validators: PropTypes.object,
-  messages: PropTypes.object,
-  description: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  pattern: PropTypes.string,
-  disabled: PropTypes.bool,
-  readOnly: PropTypes.bool,
-  type: PropTypes.string,
-  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  placeholder: PropTypes.string,
   className: PropTypes.string,
-  prefix: PropTypes.string,
-  postfix: PropTypes.string,
-  onChange: PropTypes.func,
-  topRightComponent: PropTypes.object,
+  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  description: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  disabled: PropTypes.bool,
+  htmlFor: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  label: PropTypes.oneOfType([PropTypes.object.isRequired, PropTypes.string.isRequired]),
   max: PropTypes.number,
-  min: PropTypes.number
+  messages: PropTypes.object,
+  min: PropTypes.number,
+  model: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  pattern: PropTypes.string,
+  placeholder: PropTypes.string,
+  postfix: PropTypes.string,
+  prefix: PropTypes.string,
+  readOnly: PropTypes.bool,
+  showCharacterCounter: PropTypes.bool,
+  topRightComponent: PropTypes.object,
+  type: PropTypes.string,
+  validators: PropTypes.object
 }
 
 export default Textfield
