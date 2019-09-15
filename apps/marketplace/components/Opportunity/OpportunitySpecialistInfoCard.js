@@ -45,13 +45,13 @@ const OpportunitySpecialistInfoCard = props => (
           </p>
         ) : (
           <React.Fragment>
-            {props.numberOfSuppliers === 1 ? (
+            {props.numberOfSuppliers > 1 ? (
               <span>
-                Sellers can submit <b>{props.numberOfSuppliers} candidate</b> for this role.
+                Sellers can submit up to <b>{props.numberOfSuppliers} candidates</b> for this role.
               </span>
             ) : (
               <span>
-                Sellers can submit up to <b>{props.numberOfSuppliers} candidates</b> for this role.
+                Sellers can submit <b>{props.numberOfSuppliers} candidate</b> for this role.
               </span>
             )}
           </React.Fragment>
