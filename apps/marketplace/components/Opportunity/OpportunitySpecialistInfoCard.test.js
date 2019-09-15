@@ -5,6 +5,29 @@ import OpportunitySpecialistInfoCard from './OpportunitySpecialistInfoCard'
 Enzyme.configure({ adapter: new Adapter() })
 jest.mock('shared/Icon/_getIcons')
 
+test('shows single candidate can be submitted', () => {
+  expect(
+    mount(
+      OpportunitySpecialistInfoCard({
+        id: 'test-1',
+        closingDate: '',
+        briefId: '1',
+        briefLot: 'specialist',
+        briefStatus: 'not draft',
+        loggedIn: false,
+        isOpen: false,
+        category: 'software',
+        sellerCategory: 'software',
+        numberOfSuppliers: 1,
+        sellersInvited: 1,
+        sellersApplied: 1
+      })
+    ).text()
+  ).toEqual(
+    '1seller invited1candidate appliedSellers can submit 1 candidate for this role.This opportunity has closed.'
+  )
+})
+
 test('shows seller opportunity closed', () => {
   expect(
     mount(
