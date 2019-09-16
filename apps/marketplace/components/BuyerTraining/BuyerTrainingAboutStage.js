@@ -61,7 +61,6 @@ const BuyerTrainingAboutStage = props => (
       htmlFor="title"
       defaultValue={props[props.model].title}
       maxLength={100}
-      showCharacterCounter
       validators={{
         required
       }}
@@ -76,7 +75,6 @@ const BuyerTrainingAboutStage = props => (
       htmlFor="organisation"
       defaultValue={props[props.model].organisation}
       maxLength={150}
-      showCharacterCounter
       validators={{
         required
       }}
@@ -139,7 +137,6 @@ const BuyerTrainingAboutStage = props => (
       htmlFor="clearance"
       defaultValue={props[props.model].securityClearance}
       maxLength={100}
-      showCharacterCounter
     />
     {props.formButtons}
   </Form>

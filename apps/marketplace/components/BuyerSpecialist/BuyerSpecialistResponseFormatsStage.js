@@ -259,7 +259,6 @@ const BuyerSpecialistResponseFormatsStage = props => (
       defaultValue={props[props.model].budgetRange}
       maxLength={100}
       validators={{}}
-      showCharacterCounter
     />
     <RadioList
       id="securityClearance"

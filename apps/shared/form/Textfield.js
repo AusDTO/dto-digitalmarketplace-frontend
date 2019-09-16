@@ -99,7 +99,7 @@ Textfield.defaultProps = {
   postfix: null,
   prefix: null,
   readOnly: false,
-  showCharacterCounter: false,
+  showCharacterCounter: true,
   topRightComponent: null,
   type: 'text',
   validators: null

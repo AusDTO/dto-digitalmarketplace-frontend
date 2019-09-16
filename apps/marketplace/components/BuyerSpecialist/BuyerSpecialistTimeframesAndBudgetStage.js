@@ -75,7 +75,6 @@ class BuyerSpecialistTimeframesAndBudgetStage extends Component {
           htmlFor="contractLength"
           defaultValue={this.props[model].contractLength}
           maxLength={100}
-          showCharacterCounter
           validators={{
             required
           }}
@@ -88,7 +87,6 @@ class BuyerSpecialistTimeframesAndBudgetStage extends Component {
           htmlFor="contractExtensions"
           defaultValue={this.props[model].contractExtensions}
           maxLength={100}
-          showCharacterCounter
         />
         {formButtons}
       </Form>

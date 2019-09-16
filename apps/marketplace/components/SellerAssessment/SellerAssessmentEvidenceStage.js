@@ -317,7 +317,6 @@ class SellerAssessmentEvidenceStage extends Component {
                   id={`client_${criteriaId}`}
                   htmlFor={`client_${criteriaId}`}
                   maxLength={100}
-                  showCharacterCounter
                   validators={{
                     required
                   }}
@@ -338,7 +337,6 @@ class SellerAssessmentEvidenceStage extends Component {
                   id={`referee_name_${criteriaId}`}
                   htmlFor={`referee_name_${criteriaId}`}
                   maxLength={100}
-                  showCharacterCounter
                   validators={{
                     required
                   }}
@@ -359,7 +357,6 @@ class SellerAssessmentEvidenceStage extends Component {
                   id={`referee_number_${criteriaId}`}
                   htmlFor={`referee_number_${criteriaId}`}
                   maxLength={100}
-                  showCharacterCounter
                   validators={{
                     required,
                     validPhoneNumber

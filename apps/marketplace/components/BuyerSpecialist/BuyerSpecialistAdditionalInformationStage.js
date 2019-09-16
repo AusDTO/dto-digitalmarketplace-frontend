@@ -184,7 +184,6 @@ export class BuyerSpecialistRequirementsStage extends Component {
           htmlFor="contactNumber"
           defaultValue={this.props[this.props.model].contactNumber}
           maxLength={100}
-          showCharacterCounter
           validators={{
             required
           }}
@@ -198,7 +197,6 @@ export class BuyerSpecialistRequirementsStage extends Component {
           htmlFor="internalReference"
           defaultValue={this.props[this.props.model].internalReference}
           maxLength={100}
-          showCharacterCounter
           validators={{}}
         />
         <DateControl

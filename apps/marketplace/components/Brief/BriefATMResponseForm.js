@@ -200,7 +200,6 @@ export class BriefATMResponseForm extends Component {
                     description="All communication about your application will be sent to this email."
                     defaultValue={app.emailAddress}
                     maxLength={100}
-                    showCharacterCounter
                     validators={{
                       required,
                       validEmail
@@ -217,7 +216,6 @@ export class BriefATMResponseForm extends Component {
                     htmlFor="respondToPhone"
                     label="Phone number"
                     maxLength={100}
-                    showCharacterCounter
                     validators={{
                       required,
                       validPhoneNumber

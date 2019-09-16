@@ -50,7 +50,6 @@ const BuyerATMAboutStage = props => (
       htmlFor="title"
       defaultValue={props[props.model].title}
       maxLength={100}
-      showCharacterCounter
       validators={{
         required
       }}
@@ -65,7 +64,6 @@ const BuyerATMAboutStage = props => (
       htmlFor="organisation"
       defaultValue={props[props.model].organisation}
       maxLength={150}
-      showCharacterCounter
       validators={{
         required
       }}
