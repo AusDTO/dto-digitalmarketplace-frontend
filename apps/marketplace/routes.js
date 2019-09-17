@@ -42,6 +42,7 @@ import AskQuestionPage from './pages/AskQuestionPage'
 import QuestionPage from './pages/QuestionPage'
 import PublishAnswerPage from './pages/PublishAnswerPage'
 import RequestAccessPage from './pages/RequestAccessPage'
+import DownloadReports from './pages/DownloadReports/DownloadReports'
 
 export const rootPath = '/2'
 
@@ -115,6 +116,7 @@ export const Routes = () => (
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/create`} component={CreateTeamPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/edit/:teamId/:stage?`} component={EditTeamFlowPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/:teamId/:stage?`} component={CreateTeamFlowPage} />
+    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/download-reports`} component={DownloadReports} />
     <PrivateRoute
       restrictedTo="buyer"
       path={`${rootPath}/buyer-specialist/create`}
