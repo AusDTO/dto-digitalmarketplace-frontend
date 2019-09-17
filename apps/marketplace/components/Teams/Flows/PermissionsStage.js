@@ -44,6 +44,7 @@ export class PermissionsStage extends Component {
           create_drafts: true,
           create_work_orders: true,
           download_responses: true,
+          download_reports: true,
           publish_opportunities: true
         }
       : {
@@ -51,6 +52,7 @@ export class PermissionsStage extends Component {
           create_drafts: false,
           create_work_orders: false,
           download_responses: false,
+          download_reports: false,
           publish_opportunities: false
         }
 
