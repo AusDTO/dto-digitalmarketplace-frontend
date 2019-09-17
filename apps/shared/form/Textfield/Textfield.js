@@ -25,7 +25,7 @@ const TextfieldComponent = props => {
   } = props
 
   return (
-    <div>
+    <React.Fragment>
       <input
         aria-describedby={describedBy}
         className={className}
@@ -45,7 +45,7 @@ const TextfieldComponent = props => {
         value={value}
       />
       {showCharacterCounter && maxLength > 0 && <CharacterCounter limit={maxLength} value={value} />}
-    </div>
+    </React.Fragment>
   )
 }
 
