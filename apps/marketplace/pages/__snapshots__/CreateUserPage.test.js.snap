@@ -64,7 +64,6 @@ exports[`Test suite for CreateUserPage page Because snaphots 1`] = `
                   type="password"
                   value=""
                 />
-                0
               </div>
             </div>
           </div>
