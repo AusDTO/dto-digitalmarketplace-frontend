@@ -34,10 +34,7 @@ class BuyerDashboardHeader extends Component {
           organisation={organisation}
           title="Dashboard"
           actions={[
-            <div
-              key="create-opportunity"
-              className={`${styles.dashActions} ${styles.createNew} buyer-dashboard-actions`}
-            >
+            <div key="create-opportunity" className={`${styles.createNew} buyer-dashboard-actions`}>
               <AUaccordion
                 header="Create new request"
                 closed={this.state.createNewIsClosed}
