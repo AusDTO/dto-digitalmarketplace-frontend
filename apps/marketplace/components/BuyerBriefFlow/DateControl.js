@@ -108,7 +108,7 @@ export class DateComponent extends Component {
               value={this.state.year}
               onChange={this.handleChange}
               onBlur={this.handleBlur}
-              min="2019"
+              min="2016"
               max="2099"
               placeholder="YYYY"
             />
