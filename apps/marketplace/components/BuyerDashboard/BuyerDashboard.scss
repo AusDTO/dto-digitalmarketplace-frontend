@@ -15,15 +15,6 @@ nav.dashNav {
   display: block;
 }
 
-.dashActions {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.dashActions > * {
-  flex: 1;
-}
-
 .createNew ul {
   list-style-type: none;
   padding: 0;

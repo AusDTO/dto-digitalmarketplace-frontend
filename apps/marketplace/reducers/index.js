@@ -212,6 +212,11 @@ export default combineReducers({
       respondToPhone: '',
       attachedDocumentURL: []
     },
+    downloadReports: {
+      startDate: '',
+      endDate: '',
+      reportType: 'sellersCatalogue'
+    },
     resetPasswordEmailForm: {
       email_address: '',
       password: '',
