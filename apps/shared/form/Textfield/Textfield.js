@@ -44,7 +44,7 @@ const TextfieldComponent = props => {
         type={type}
         value={value}
       />
-      {showCharacterCounter && maxLength > 0 && <CharacterCounter limit={maxLength} value={value} />}
+      {showCharacterCounter && type === 'text' && maxLength > 0 && <CharacterCounter limit={maxLength} value={value} />}
     </React.Fragment>
   )
 }
