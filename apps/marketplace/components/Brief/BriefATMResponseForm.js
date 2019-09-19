@@ -174,6 +174,7 @@ export class BriefATMResponseForm extends Component {
                         url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
                         api={dmapi}
                         fileId={index}
+                        uploading={uploading}
                         accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
                       />
                     )
