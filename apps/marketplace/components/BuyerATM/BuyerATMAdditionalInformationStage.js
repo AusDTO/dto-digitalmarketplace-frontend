@@ -78,7 +78,6 @@ class BuyerATMAdditionalInformationStage extends Component {
           htmlFor="internalReference"
           defaultValue={this.props[this.props.model].internalReference}
           maxLength={100}
-          showMaxLength
           validators={{}}
         />
         {this.props.formButtons}
