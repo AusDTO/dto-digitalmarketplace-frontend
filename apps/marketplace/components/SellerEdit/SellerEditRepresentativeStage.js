@@ -58,7 +58,6 @@ const SellerEditRepresentativeStage = props => (
       htmlFor="representative"
       defaultValue={props[props.model].supplier.data.representative}
       maxLength={100}
-      showMaxLength
       validators={{
         required
       }}

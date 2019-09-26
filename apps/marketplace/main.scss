@@ -1,16 +1,13 @@
-.wrapper {
-  position: relative;
-  box-sizing: border-box;
-  max-width: 75em;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0px 1.6em;
+.margin-bottom {
+  margin-bottom: 1rem;
 }
 
-.wrapper::after {
-  clear: both;
-  content: "";
-  display: table;
+.margin-bottom-2x {
+  margin-bottom: 2rem;
+}
+
+.margin-bottom-3x {
+  margin-bottom: 3rem;
 }
 
 .margin-right {
@@ -29,14 +26,26 @@
   margin-top: 3rem;
 }
 
-.margin-bottom {
-  margin-bottom: 1rem;
+.right-aligned-block {
+  display: block;
+  text-align: right;
 }
 
-.margin-bottom-2x {
-  margin-bottom: 2rem;
+.sub-text {
+  color: #717171;
 }
 
-.margin-bottom-3x {
-  margin-bottom: 3rem;
+.wrapper {
+  position: relative;
+  box-sizing: border-box;
+  max-width: 75em;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 1.6em;
+}
+
+.wrapper::after {
+  clear: both;
+  content: "";
+  display: table;
 }

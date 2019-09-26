@@ -1,32 +1,37 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Control } from 'react-redux-form'
-import styles from './scss/Textfield.scss'
+
 import StatefulError from './StatefulError'
+import TextfieldComponent from './Textfield/Textfield'
+
+import styles from './scss/Textfield.scss'
 
 const Textfield = props => {
   const {
-    name,
-    id,
-    htmlFor,
-    label,
-    model,
-    validators,
-    messages,
-    description,
-    pattern,
-    maxLength,
-    showMaxLength,
-    disabled,
-    readOnly,
-    type,
-    defaultValue,
-    placeholder,
-    step,
     className,
-    prefix,
+    defaultValue,
+    description,
+    disabled,
+    htmlFor,
+    id,
+    label,
+    max,
+    maxLength,
+    messages,
+    min,
+    minLength,
+    model,
+    name,
+    onChange,
+    pattern,
+    placeholder,
     postfix,
-    onChange
+    prefix,
+    readOnly,
+    showCharacterCounter,
+    type,
+    validators
   } = props
   return (
     <div className={`field ${className}`}>
@@ -42,6 +47,10 @@ const Textfield = props => {
       <div className={styles.table}>
         {prefix && <span className={styles.prefix}>{prefix}</span>}
         <Control.input
+          component={TextfieldComponent}
+          controlProps={{
+            describedBy: description ? `${id}-hint` : `${id}-label`
+          }}
           model={model}
           name={name}
           id={id}
@@ -55,64 +64,72 @@ const Textfield = props => {
           }}
           validators={validators}
           pattern={pattern}
+          max={type === 'number' ? max : null}
           maxLength={maxLength}
+          min={type === 'number' ? min : null}
+          minLength={minLength}
           disabled={disabled}
           readOnly={readOnly}
           defaultValue={defaultValue}
           placeholder={placeholder}
-          step={step}
+          showCharacterCounter={showCharacterCounter}
           onChange={onChange}
         />
         {postfix && <span className={styles.postfix}>{postfix}</span>}
       </div>
       {messages && <StatefulError model={model} messages={messages} showMessagesDuringFocus="false" id={id} />}
-      {showMaxLength && maxLength && <span className={styles.maxLength}>{maxLength} characters maximum</span>}
     </div>
   )
 }
 
 Textfield.defaultProps = {
-  type: 'text',
-  label: '',
-  defaultValue: '',
-  validators: null,
-  messages: null,
-  description: '',
-  pattern: null,
-  disabled: false,
-  readOnly: false,
-  showMaxLength: false,
-  placeholder: '',
-  step: null,
   className: '',
-  prefix: null,
-  postfix: null,
+  defaultValue: '',
+  description: '',
+  disabled: false,
+  label: '',
+  max: 0,
+  maxLength: 0,
+  messages: null,
+  min: 0,
+  minLength: 0,
   onChange: () => {},
-  topRightComponent: null
+  pattern: null,
+  placeholder: '',
+  postfix: null,
+  prefix: null,
+  readOnly: false,
+  showCharacterCounter: true,
+  topRightComponent: null,
+  type: 'text',
+  validators: null
 }
 
 Textfield.propTypes = {
-  name: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  htmlFor: PropTypes.string.isRequired,
-  label: PropTypes.oneOfType([PropTypes.object.isRequired, PropTypes.string.isRequired]),
-  model: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
-  showMaxLength: PropTypes.bool,
-  validators: PropTypes.object,
-  messages: PropTypes.object,
-  description: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  pattern: PropTypes.string,
-  disabled: PropTypes.bool,
-  readOnly: PropTypes.bool,
-  type: PropTypes.string,
-  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  placeholder: PropTypes.string,
-  step: PropTypes.string,
   className: PropTypes.string,
-  prefix: PropTypes.string,
-  postfix: PropTypes.string,
+  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  description: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  disabled: PropTypes.bool,
+  htmlFor: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  label: PropTypes.oneOfType([PropTypes.object.isRequired, PropTypes.string.isRequired]),
+  max: PropTypes.number,
+  maxLength: PropTypes.number,
+  messages: PropTypes.object,
+  min: PropTypes.number,
+  minLength: PropTypes.number,
+  model: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
+  name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
-  topRightComponent: PropTypes.object
+  pattern: PropTypes.string,
+  placeholder: PropTypes.string,
+  postfix: PropTypes.string,
+  prefix: PropTypes.string,
+  readOnly: PropTypes.bool,
+  showCharacterCounter: PropTypes.bool,
+  topRightComponent: PropTypes.object,
+  type: PropTypes.string,
+  validators: PropTypes.object
 }
 
 export default Textfield
