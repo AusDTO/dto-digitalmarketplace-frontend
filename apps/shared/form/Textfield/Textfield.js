@@ -11,6 +11,7 @@ const TextfieldComponent = props => {
     disabled,
     id,
     max,
+    maxLength,
     min,
     minLength,
     name,
@@ -24,8 +25,8 @@ const TextfieldComponent = props => {
   } = props
 
   const props2 = {}
-  if (props.maxLength > 0) {
-    props2.maxLength = props.maxLength
+  if (maxLength > 0) {
+    props2.maxLength = maxLength
   }
 
   return (
@@ -48,9 +49,7 @@ const TextfieldComponent = props => {
         value={value}
         {...props2}
       />
-      {showCharacterCounter && type === 'text' && props.maxLength > 0 && (
-        <CharacterCounter limit={props.maxLength} value={value} />
-      )}
+      {showCharacterCounter && type === 'text' && maxLength > 0 && <CharacterCounter limit={maxLength} value={value} />}
     </div>
   )
 }
