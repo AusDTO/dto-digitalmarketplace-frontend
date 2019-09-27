@@ -24,6 +24,11 @@ const TextfieldComponent = props => {
     value
   } = props
 
+  const props2 = {}
+  if (maxLength > 0) {
+    props2.maxLength = maxLength
+  }
+
   return (
     <div>
       <input
@@ -33,7 +38,6 @@ const TextfieldComponent = props => {
         disabled={disabled}
         id={id}
         max={max}
-        maxLength={maxLength}
         min={min}
         minLength={minLength}
         name={name}
@@ -43,6 +47,7 @@ const TextfieldComponent = props => {
         readOnly={readOnly}
         type={type}
         value={value}
+        {...props2}
       />
       {showCharacterCounter && type === 'text' && maxLength > 0 && <CharacterCounter limit={maxLength} value={value} />}
     </div>

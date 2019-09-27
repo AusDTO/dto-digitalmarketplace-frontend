@@ -53,7 +53,6 @@ exports[`Test suite for CreateUserPage page Because snaphots 1`] = `
                   disabled={false}
                   id="password"
                   max={null}
-                  maxLength={0}
                   min={null}
                   minLength={0}
                   name="password"
