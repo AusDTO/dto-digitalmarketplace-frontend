@@ -15,7 +15,9 @@ const TextfieldComponent = props => {
     min,
     minLength,
     name,
+    onBlur,
     onChange,
+    onFocus,
     pattern,
     placeholder,
     readOnly,
@@ -41,7 +43,9 @@ const TextfieldComponent = props => {
         min={min}
         minLength={minLength}
         name={name}
+        onBlur={onBlur}
         onChange={onChange}
+        onFocus={onFocus}
         pattern={pattern}
         placeholder={placeholder}
         readOnly={readOnly}
@@ -65,7 +69,9 @@ TextfieldComponent.defaultProps = {
   min: 0,
   minLength: 0,
   name: '',
+  onBlur: () => {},
   onChange: () => {},
+  onFocus: () => {},
   pattern: null,
   placeholder: '',
   readOnly: false,
@@ -85,7 +91,9 @@ TextfieldComponent.propTypes = {
   min: PropTypes.number,
   minLength: PropTypes.number,
   name: PropTypes.string.isRequired,
+  onBlur: PropTypes.func,
   onChange: PropTypes.func,
+  onFocus: PropTypes.func,
   pattern: PropTypes.string,
   placeholder: PropTypes.string,
   readOnly: PropTypes.bool,
