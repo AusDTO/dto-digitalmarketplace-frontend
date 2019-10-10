@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import Chart from 'chart.js/dist/Chart.bundle.min.js'
 
-export class NumberOfSellersPerCategory extends Component {
+export class TopSellers extends Component {
   constructor(props) {
     super(props)
     this.chartRef = React.createRef()
@@ -13,44 +13,33 @@ export class NumberOfSellersPerCategory extends Component {
     if (!this.chartRef.current || !this.props.insightData) {
       return
     }
-    const counts = this.props.insightData.supplierData.numberOfSuppliersPerCategory
+    const counts = this.props.insightData.austenderData.topSuppliersThisFinancialYear
     const chart = new Chart(this.chartRef.current, {
-      type: 'bar',
+      type: 'horizontalBar',
       data: {
         datasets: [
           {
-            data: counts.map(a => a.count),
-            backgroundColor: [
-              '#7D4F73',
-              '#00857A',
-              '#374649',
-              '#FEA19E',
-              '#BE4A47',
-              '#018A80',
-              '#F5D33F',
-              '#7F312F',
-              '#BF714D',
-              '#5F6B6D',
-              '#A1DDEF',
-              '#FEAB85',
-              '#A15E9A',
-              '#27809B',
-              '#DFBFBF'
-            ]
+            label: 'SME',
+            data: counts.map(a => (a.contractSupplierMarketplaceSMEStatus === 'SME' ? a.count : 0)),
+            backgroundColor: '#065688'
+          },
+          {
+            label: 'Non SME',
+            data: counts.map(a => (a.contractSupplierMarketplaceSMEStatus === 'Non SME' ? a.count : 0)),
+            backgroundColor: '#757575'
           }
         ],
-        labels: counts.map(a => a.name)
+        labels: counts.map(a => a.contractSupplierMarketplaceName)
       },
       options: {
         legend: {
-          display: false
+          display: true,
+          position: 'right'
+        },
+        tooltips: {
+          filter: t => t.value !== '0'
         },
         scales: {
-          tooltips: {
-            mode: 'index',
-            intersect: false
-          },
-          responsive: true,
           xAxes: [
             {
               stacked: true,
@@ -59,7 +48,7 @@ export class NumberOfSellersPerCategory extends Component {
               },
               scaleLabel: {
                 display: true,
-                labelString: 'Daily rates incl GST'
+                labelString: 'Contracts Awarded'
               }
             }
           ],
@@ -80,7 +69,7 @@ export class NumberOfSellersPerCategory extends Component {
         <div className="row">
           <div className="col-xs-12 col-md-12">
             <AUheading size="lg" level="1">
-              Number of sellers per category
+              Top sellers awarded contracts this financial year *
             </AUheading>
           </div>
         </div>
@@ -94,12 +83,12 @@ export class NumberOfSellersPerCategory extends Component {
   }
 }
 
-NumberOfSellersPerCategory.defaultProps = {
+TopSellers.defaultProps = {
   insightData: {}
 }
 
-NumberOfSellersPerCategory.propTypes = {
+TopSellers.propTypes = {
   insightData: PropTypes.object
 }
 
-export default NumberOfSellersPerCategory
+export default TopSellers

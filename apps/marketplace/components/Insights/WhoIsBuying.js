@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-//import format from 'date-fns/format'
-//import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-//import { loadAnswers } from 'marketplace/actions/questionActions'
-//import styles from './Questions.scss'
+import AUheading from '@gov.au/headings/lib/js/react.js'
+import Chart from 'chart.js/dist/Chart.bundle.min.js'
 
 export class WhoIsBuying extends Component {
   constructor(props) {
@@ -16,8 +13,8 @@ export class WhoIsBuying extends Component {
     if (!this.chartRef.current || !this.props.insightData) {
       return
     }
-    var counts = this.props.insightData.agencyData.agencyTypeCounts
-    var chart = new Chart(this.chartRef.current, {
+    const counts = this.props.insightData.agencyData.agencyTypeCounts
+    const chart = new Chart(this.chartRef.current, {
       type: 'doughnut',
       data: {
         datasets: [
@@ -38,18 +35,27 @@ export class WhoIsBuying extends Component {
   }
 
   render() {
-    var totalEntities = this.props.insightData.agencyData.agencyTypeCounts.reduce((t, a) => t + a.count, 0)
+    const totalEntities = this.props.insightData.agencyData.agencyTypeCounts.reduce((t, a) => t + a.count, 0)
     return (
-      <div className="row">
-        <div className="col-xs-12 col-md-9">
-          <canvas ref={this.chartRef}></canvas>
+      <React.Fragment>
+        <div className="row">
+          <div className="col-xs-12 col-md-12">
+            <AUheading size="lg" level="1">
+              Who is buying?
+            </AUheading>
+          </div>
         </div>
-        <div className="col-xs-12 col-md-3">
-          {`${totalEntities} entities have registered, ${Math.round(
-            this.props.insightData.agencyData.commonwealthPercent
-          )}% of which are Commonwealth government`}
+        <div className="row">
+          <div className="col-xs-12 col-md-9">
+            <canvas ref={this.chartRef} />
+          </div>
+          <div className="col-xs-12 col-md-3">
+            {`${totalEntities} entities have registered, ${Math.round(
+              this.props.insightData.agencyData.commonwealthPercent
+            )}% of which are Commonwealth government`}
+          </div>
         </div>
-      </div>
+      </React.Fragment>
     )
   }
 }

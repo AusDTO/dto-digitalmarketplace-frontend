@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-//import format from 'date-fns/format'
-//import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-//import { loadAnswers } from 'marketplace/actions/questionActions'
-//import styles from './Questions.scss'
+import AUheading from '@gov.au/headings/lib/js/react.js'
+import Chart from 'chart.js/dist/Chart.bundle.min.js'
 
 export class DailyRates extends Component {
   constructor(props) {
@@ -16,20 +13,24 @@ export class DailyRates extends Component {
     if (!this.chartRef.current || !this.props.insightData) {
       return
     }
-    var counts = this.props.insightData.briefResponseData.dailyRates
-    var chart = new Chart(this.chartRef.current, {
+    const counts = this.props.insightData.briefResponseData.dailyRates
+    const chart = new Chart(this.chartRef.current, {
       type: 'horizontalBar',
       data: {
-        datasets: [{
-          data: counts.map(a => a.briefResponseDayRate25PC),
-          backgroundColor: '#C2D2FF'
-        }, {
-          data: counts.map(a => a.briefResponseDayRate50PC),
-          backgroundColor: '#37AFF7',
-        }, {
-          data: counts.map(a => a.briefResponseDayRate75PC),
-          backgroundColor: '#065688'
-        }],
+        datasets: [
+          {
+            data: counts.map(a => a.briefResponseDayRate25PC),
+            backgroundColor: '#C2D2FF'
+          },
+          {
+            data: counts.map(a => a.briefResponseDayRate50PC),
+            backgroundColor: '#37AFF7'
+          },
+          {
+            data: counts.map(a => a.briefResponseDayRate75PC),
+            backgroundColor: '#065688'
+          }
+        ],
         labels: counts.map(a => a.briefCategory)
       },
       options: {
@@ -37,24 +38,28 @@ export class DailyRates extends Component {
           display: false
         },
         scales: {
-					tooltips: {
-						mode: 'index',
-						intersect: false
-					},
-					responsive: true,
-          xAxes: [{
-            stacked: true,
-            ticks: {
-              beginAtZero: true
-            },
-            scaleLabel: {
-              display: true,
-              labelString: 'Daily rates incl GST'
+          tooltips: {
+            mode: 'index',
+            intersect: false
+          },
+          responsive: true,
+          xAxes: [
+            {
+              stacked: true,
+              ticks: {
+                beginAtZero: true
+              },
+              scaleLabel: {
+                display: true,
+                labelString: 'Daily rates incl GST'
+              }
             }
-          }],
-          yAxes: [{
-            stacked: true
-          }]
+          ],
+          yAxes: [
+            {
+              stacked: true
+            }
+          ]
         }
       }
     })
@@ -62,7 +67,22 @@ export class DailyRates extends Component {
   }
 
   render() {
-    return <canvas ref={this.chartRef}></canvas>
+    return (
+      <React.Fragment>
+        <div className="row">
+          <div className="col-xs-12 col-md-12">
+            <AUheading size="lg" level="1">
+              Daily rates sellers have bid for specialist roles
+            </AUheading>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-xs-12 col-md-9">
+            <canvas ref={this.chartRef} />
+          </div>
+        </div>
+      </React.Fragment>
+    )
   }
 }
 

@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-//import format from 'date-fns/format'
-//import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-//import { loadAnswers } from 'marketplace/actions/questionActions'
-//import styles from './Questions.scss'
+import Chart from 'chart.js/dist/Chart.bundle.min.js'
 
 export class SpecialistPercent extends Component {
   constructor(props) {
@@ -16,14 +12,16 @@ export class SpecialistPercent extends Component {
     if (!this.chartRef.current || !this.props.insightData) {
       return
     }
-    var specialistCounts = this.props.insightData.briefData.specialistBrief
-    var chart = new Chart(this.chartRef.current, {
+    const specialistCounts = this.props.insightData.briefData.specialistBrief
+    const chart = new Chart(this.chartRef.current, {
       type: 'doughnut',
       data: {
-        datasets: [{
-          data: specialistCounts.map(a => a.count),
-          backgroundColor: ['#065688', '#37AFF7']
-        }],
+        datasets: [
+          {
+            data: specialistCounts.map(a => a.count),
+            backgroundColor: ['#065688', '#37AFF7']
+          }
+        ],
         labels: specialistCounts.map(a => a.name)
       },
       options: {
@@ -39,7 +37,7 @@ export class SpecialistPercent extends Component {
     return (
       <div className="row">
         <div className="col-xs-12 col-md-9">
-          <canvas ref={this.chartRef}></canvas>
+          <canvas ref={this.chartRef} />
         </div>
         <div className="col-xs-12 col-md-3">
           {`${Math.round(
