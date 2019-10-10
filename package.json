@@ -87,6 +87,7 @@
     "async": "^2.6.0",
     "axios": "^0.16.2",
     "body-parser": "^1.18.2",
+    "chart.js": "^2.8.0",
     "classnames": "2.2.5",
     "compression": "^1.7.1",
     "css-loader": "^0.28.7",
