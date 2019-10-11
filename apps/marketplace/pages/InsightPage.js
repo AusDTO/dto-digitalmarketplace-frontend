@@ -76,7 +76,7 @@ class InsightPage extends Component {
             </div>
           </div>
 
-          <div className={`row ${styles['margin-bottom-5x']}`}>
+          <div className={`row ${styles['margin-bottom-2x']}`}>
             <div className="col-xs-12">
               <TopCategories insightData={this.state.insightData} />
             </div>

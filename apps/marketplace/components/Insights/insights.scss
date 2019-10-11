@@ -1,0 +1,16 @@
+.blue-box {
+    background-color: rgba(167, 219, 251, 0.8);
+    border-color: #666666cc;
+    border-width: 2px;
+    border-style: solid;
+    text-align: center;
+    height: 200px;
+    width: 400px;
+    margin: 1rem 0rem;
+    padding: 2rem;
+}
+.blue-box > .big-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #0985D1;
+}
