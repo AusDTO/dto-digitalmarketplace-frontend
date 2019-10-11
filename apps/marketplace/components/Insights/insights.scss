@@ -5,7 +5,7 @@
     border-style: solid;
     text-align: center;
     height: 200px;
-    width: 400px;
+    width: 100%;
     margin: 1rem 0rem;
     padding: 2rem;
 }
@@ -13,4 +13,64 @@
     font-size: 2rem;
     font-weight: bold;
     color: #0985D1;
+}
+
+.chart-md-height-1x {
+    position: relative;
+    height: 12rem;
+}
+
+.chart-md-height-2x {
+    position: relative;
+    height: 14rem;
+}
+
+.chart-md-height-3x {
+    position: relative;
+    height: 16rem;
+}
+
+.chart-md-height-4x {
+    position: relative;
+    height: 18rem;;
+}
+
+.chart-md-height-5x {
+    position: relative;
+    height: 20rem;
+}
+
+.chart-md-height-6x {
+    position: relative;
+    height: 22rem;
+}
+
+.chart-md-height-7x {
+    position: relative;
+    height: 24rem;
+}
+
+.chart-md-height-8x {
+    position: relative;
+    height: 26rem;
+}
+
+.chart-md-height-9x {
+    position: relative;
+    height: 28rem;
+}
+
+.chart-md-height-10x {
+    position: relative;
+    height: 30rem;
+}
+
+.chart-md-height-11x {
+    position: relative;
+    height: 32rem;
+}
+
+.chart-md-height-12x {
+    position: relative;
+    height: 34rem;
 }

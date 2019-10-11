@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Chart from 'chart.js/dist/Chart.bundle.min.js'
+import Chart from 'chart.js'
+import numeral from 'numeral'
+
+import insightStyles from './insights.scss'
 
 export class OpenToAllPercent extends Component {
   constructor(props) {
@@ -25,8 +28,14 @@ export class OpenToAllPercent extends Component {
         labels: openToAllCounts.map(a => a.name)
       },
       options: {
+        plugins: {
+          labels: {
+            render: 'label',
+            fontColor: '#ffffff'
+          }
+        },
         legend: {
-          position: 'right'
+          display: false
         }
       }
     })
@@ -36,13 +45,14 @@ export class OpenToAllPercent extends Component {
   render() {
     return (
       <div className="row">
-        <div className="col-xs-12 col-md-9">
-          <canvas ref={this.chartRef} />
+        <div className="col-xs-12 col-md-6">
+          <div className={insightStyles['chart-md-height-1x']}>
+            <canvas ref={this.chartRef} />
+          </div>
         </div>
         <div className="col-xs-12 col-md-3">
-          {`${Math.round(
-            this.props.insightData.briefData.openToAllBriefPercentage
-          )}% of all opportunities have been open to all`}
+          {numeral(this.props.insightData.briefData.openToAllBriefPercentage).format('(0%)')} of all opportunities have
+          been open to all
         </div>
       </div>
     )

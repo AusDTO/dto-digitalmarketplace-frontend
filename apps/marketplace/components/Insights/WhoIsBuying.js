@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import Chart from 'chart.js/dist/Chart.bundle.min.js'
+import Chart from 'chart.js'
+import numeral from 'numeral'
 
 import styles from '../../main.scss'
+import insightStyles from './insights.scss'
 
 export class WhoIsBuying extends Component {
   constructor(props) {
@@ -28,6 +30,12 @@ export class WhoIsBuying extends Component {
         labels: counts.map(a => a.name)
       },
       options: {
+        plugins: {
+          labels: {
+            render: 'value',
+            fontColor: '#ffffff'
+          }
+        },
         legend: {
           position: 'right'
         }
@@ -48,13 +56,15 @@ export class WhoIsBuying extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-xs-12 col-md-9">
-            <canvas ref={this.chartRef} />
+          <div className="col-xs-12 col-md-7">
+            <div className={insightStyles['chart-md-height-2x']}>
+              <canvas ref={this.chartRef} />
+            </div>
           </div>
           <div className="col-xs-12 col-md-3">
-            {`${totalEntities} entities have registered, ${Math.round(
-              this.props.insightData.agencyData.commonwealthPercent
-            )}% of which are Commonwealth government`}
+            {totalEntities} entities have registered,{' '}
+            {numeral(this.props.insightData.agencyData.commonwealthPercent).format('(0%)')} of which are Commonwealth
+            government
           </div>
         </div>
       </React.Fragment>

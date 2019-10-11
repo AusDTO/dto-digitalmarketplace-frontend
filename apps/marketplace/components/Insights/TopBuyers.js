@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import Chart from 'chart.js/dist/Chart.bundle.min.js'
+import Chart from 'chart.js'
 
 import styles from '../../main.scss'
+import insightStyles from './insights.scss'
 
 export class TopBuyers extends Component {
   constructor(props) {
@@ -55,13 +56,15 @@ export class TopBuyers extends Component {
         <div className={`row ${styles['margin-bottom']}`}>
           <div className="col-xs-12 col-md-12">
             <AUheading size="lg" level="1">
-              Top buyers: September 2019
+              Top buyers for {this.props.insightData.thisMonth}
             </AUheading>
           </div>
         </div>
         <div className="row">
           <div className="col-xs-12 col-md-9">
-            <canvas ref={this.chartRef} />
+            <div className={insightStyles['chart-md-height-2x']}>
+              <canvas ref={this.chartRef} />
+            </div>
           </div>
         </div>
       </React.Fragment>

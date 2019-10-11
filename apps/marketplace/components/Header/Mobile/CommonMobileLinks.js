@@ -9,7 +9,7 @@ const CommonMobileLinks = () => (
       <a href="/search/sellers">Seller Catalogue</a>
     </div>
     <div className="au-marketplace-header_mobile-link">
-      <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000141616">Insights</a>
+      <a href="/2/insights">Insights</a>
     </div>
     <div className="au-marketplace-header_mobile-link">
       <a href="https://marketplace1.zendesk.com/hc/en-gb">Support</a>

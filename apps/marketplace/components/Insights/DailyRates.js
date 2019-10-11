@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import Chart from 'chart.js/dist/Chart.bundle.min.js'
+import Chart from 'chart.js'
 
 import styles from '../../main.scss'
+import insightStyles from './insights.scss'
 
 export class DailyRates extends Component {
   constructor(props) {
@@ -80,7 +81,9 @@ export class DailyRates extends Component {
         </div>
         <div className="row">
           <div className="col-xs-12 col-md-9">
-            <canvas ref={this.chartRef} />
+            <div className={insightStyles['chart-md-height-4x']}>
+              <canvas ref={this.chartRef} />
+            </div>
           </div>
         </div>
       </React.Fragment>

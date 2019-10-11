@@ -18,6 +18,8 @@ import NumberOfSellersPerCategory from '../components/Insights/NumberOfSellersPe
 import ResponsesPerOpportunity from '../components/Insights/ResponsesPerOpportunity'
 import TopSellers from '../components/Insights/TopSellers'
 import AustenderFigures from '../components/Insights/AustenderFigures'
+import Chart from 'chart.js'
+import chartjsPluginLabels from 'chartjs-plugin-labels'
 
 import styles from '../main.scss'
 
@@ -28,6 +30,12 @@ class InsightPage extends Component {
       insightData: null,
       loading: true
     }
+    Chart.defaults.global.plugins.labels = {
+      render: 'value',
+      showZero: true,
+      arc: true
+    }
+    Chart.defaults.global.maintainAspectRatio = false
   }
 
   componentDidMount() {
@@ -106,7 +114,7 @@ class InsightPage extends Component {
             </div>
           </div>
 
-          <div className={`row ${styles['margin-bottom-5x']}`}>
+          <div className={`row ${styles['margin-bottom-2x']}`}>
             <div className="col-xs-12">
               <TopSellers insightData={this.state.insightData} />
             </div>
@@ -115,6 +123,13 @@ class InsightPage extends Component {
           <div className={`row ${styles['margin-bottom-5x']}`}>
             <div className="col-xs-12">
               <AustenderFigures insightData={this.state.insightData} />
+            </div>
+          </div>
+
+          <div className={`row ${styles['margin-bottom-5x']}`}>
+            <div className="col-xs-12">
+              * Contract information is sourced from AusTender. It excludes contracts awarded by entities that don't
+              report through AusTender and contracts under $10,000. Contracts may take up to 42 days to be published.
             </div>
           </div>
         </div>
