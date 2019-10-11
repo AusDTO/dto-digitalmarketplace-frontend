@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import Chart from 'chart.js/dist/Chart.bundle.min.js'
 
+import styles from '../../main.scss'
+
 export class DailyRates extends Component {
   constructor(props) {
     super(props)
@@ -69,7 +71,7 @@ export class DailyRates extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="row">
+        <div className={`row ${styles['margin-bottom']}`}>
           <div className="col-xs-12 col-md-12">
             <AUheading size="lg" level="1">
               Daily rates sellers have bid for specialist roles

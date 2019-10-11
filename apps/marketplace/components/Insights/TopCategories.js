@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import Chart from 'chart.js/dist/Chart.bundle.min.js'
 
+import styles from '../../main.scss'
+
 export class TopCategories extends Component {
   constructor(props) {
     super(props)
@@ -50,7 +52,7 @@ export class TopCategories extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="row">
+        <div className={`row ${styles['margin-bottom']}`}>
           <div className="col-xs-12 col-md-12">
             <AUheading size="lg" level="1">
               Top categories for opportunities posted since 29 August 2016

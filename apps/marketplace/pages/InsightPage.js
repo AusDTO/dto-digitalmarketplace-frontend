@@ -19,7 +19,7 @@ import ResponsesPerOpportunity from '../components/Insights/ResponsesPerOpportun
 import TopSellers from '../components/Insights/TopSellers'
 import AustenderFigures from '../components/Insights/AustenderFigures'
 
-const colours = ['#8537BF', '#FF89C4', '#37AFF7', '#F2A16A', '#6EA846']
+import styles from '../main.scss'
 
 class InsightPage extends Component {
   constructor(props) {
@@ -47,19 +47,19 @@ class InsightPage extends Component {
     return (
       <DocumentTitle title="Insights">
         <div className="au-grid">
-          <div className="row">
+          <div className={`row ${styles['margin-bottom-5x']}`}>
             <div className="col-xs-12">
-              <WhoIsBuying insightData={this.state.insightData} colours={colours} />
+              <WhoIsBuying insightData={this.state.insightData} />
             </div>
           </div>
 
-          <div className="row">
+          <div className={`row ${styles['margin-bottom-5x']}`}>
             <div className="col-xs-12">
               <TopBuyers insightData={this.state.insightData} />
             </div>
           </div>
 
-          <div className="row">
+          <div className={`row ${styles['margin-bottom']}`}>
             <div className="col-xs-12">
               <AUheading size="lg" level="1">
                 How are we encouraging competition?
@@ -67,52 +67,52 @@ class InsightPage extends Component {
             </div>
           </div>
 
-          <div className="row">
+          <div className={`row ${styles['margin-bottom-5x']}`}>
             <div className="col-xs-12 col-md-6">
-              <OpenToAllPercent insightData={this.state.insightData} colours={colours} />
+              <OpenToAllPercent insightData={this.state.insightData} />
             </div>
             <div className="col-xs-12 col-md-6">
-              <SpecialistPercent insightData={this.state.insightData} colours={colours} />
+              <SpecialistPercent insightData={this.state.insightData} />
             </div>
           </div>
 
-          <div className="row">
+          <div className={`row ${styles['margin-bottom-5x']}`}>
             <div className="col-xs-12">
               <TopCategories insightData={this.state.insightData} />
             </div>
           </div>
 
-          <div className="row">
+          <div className={`row ${styles['margin-bottom-5x']}`}>
             <div className="col-xs-12">
               <Figures insightData={this.state.insightData} />
             </div>
           </div>
 
-          <div className="row">
+          <div className={`row ${styles['margin-bottom-5x']}`}>
             <div className="col-xs-12">
               <DailyRates insightData={this.state.insightData} />
             </div>
           </div>
 
-          <div className="row">
+          <div className={`row ${styles['margin-bottom-5x']}`}>
             <div className="col-xs-12">
               <NumberOfSellersPerCategory insightData={this.state.insightData} />
             </div>
           </div>
 
-          <div className="row">
+          <div className={`row ${styles['margin-bottom-5x']}`}>
             <div className="col-xs-12">
               <ResponsesPerOpportunity insightData={this.state.insightData} />
             </div>
           </div>
 
-          <div className="row">
+          <div className={`row ${styles['margin-bottom-5x']}`}>
             <div className="col-xs-12">
               <TopSellers insightData={this.state.insightData} />
             </div>
           </div>
 
-          <div className="row">
+          <div className={`row ${styles['margin-bottom-5x']}`}>
             <div className="col-xs-12">
               <AustenderFigures insightData={this.state.insightData} />
             </div>

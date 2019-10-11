@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import Chart from 'chart.js/dist/Chart.bundle.min.js'
 
+import styles from '../../main.scss'
+
 export class WhoIsBuying extends Component {
   constructor(props) {
     super(props)
@@ -20,7 +22,7 @@ export class WhoIsBuying extends Component {
         datasets: [
           {
             data: counts.map(a => a.count),
-            backgroundColor: this.props.colours
+            backgroundColor: ['#8537BF', '#FF89C4', '#37AFF7', '#F2A16A', '#6EA846']
           }
         ],
         labels: counts.map(a => a.name)
@@ -38,7 +40,7 @@ export class WhoIsBuying extends Component {
     const totalEntities = this.props.insightData.agencyData.agencyTypeCounts.reduce((t, a) => t + a.count, 0)
     return (
       <React.Fragment>
-        <div className="row">
+        <div className={`row ${styles['margin-bottom']}`}>
           <div className="col-xs-12 col-md-12">
             <AUheading size="lg" level="1">
               Who is buying?
