@@ -80,7 +80,7 @@ export class DailyRates extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-xs-12 col-md-9">
+          <div className="col-xs-12">
             <div className={insightStyles['chart-md-height-4x']}>
               <canvas ref={this.chartRef} />
             </div>
