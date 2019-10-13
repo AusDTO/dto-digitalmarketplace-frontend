@@ -112,7 +112,7 @@ class SellerAssessmentCriteriaStage extends Component {
         />
         <p>
           <strong>
-            For this assessment, you must submit evidence between {criteriaNeeded} to {criteriaAllowed} criteria.
+            For this assessment, you must submit at least {criteriaNeeded} criteria.
           </strong>
         </p>
         <div className={styles.criteria}>
