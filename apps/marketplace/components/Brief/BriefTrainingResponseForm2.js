@@ -158,6 +158,7 @@ export class BriefTrainingResponseForm2 extends Component {
                           url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
                           api={dmapi}
                           fileId={index}
+                          uploading={uploading}
                           accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
                         />
                       )
@@ -184,7 +185,6 @@ export class BriefTrainingResponseForm2 extends Component {
                     description="All communication about your application will be sent to this address."
                     defaultValue={app.emailAddress}
                     maxLength={100}
-                    showMaxLength
                     validators={{
                       required,
                       validEmail
@@ -201,7 +201,6 @@ export class BriefTrainingResponseForm2 extends Component {
                     htmlFor="respondToPhone"
                     label="Phone number"
                     maxLength={100}
-                    showMaxLength
                     validators={{
                       required,
                       validPhoneNumber

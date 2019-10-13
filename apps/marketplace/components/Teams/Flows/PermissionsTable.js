@@ -22,6 +22,7 @@ export class PermissionsTable extends Component {
       create_drafts: false,
       create_work_orders: false,
       download_responses: false,
+      download_reports: false,
       publish_opportunities: false
     }
 
@@ -56,6 +57,9 @@ export class PermissionsTable extends Component {
               </th>
               <th className={styles.permissionsColumn} scope="col">
                 Download responses
+              </th>
+              <th className={styles.permissionsColumn} scope="col">
+                Download reports
               </th>
               <th className={styles.permissionsColumn} scope="col">
                 Create work orders
@@ -137,6 +141,23 @@ export class PermissionsTable extends Component {
                           onChange={() => {}}
                           onClick={e => {
                             this.handlePermissionClick(e.target.checked, userId, 'download_responses')
+                          }}
+                        />
+                      </div>
+                    </td>
+                    <td align="center">
+                      <div>
+                        <AUcheckbox
+                          checked={
+                            teamMembers[userId].permissions ? teamMembers[userId].permissions.download_reports : false
+                          }
+                          className={styles.permissionsTableCheckbox}
+                          id={`download-reports-checkbox-${userId}`}
+                          label=""
+                          name="permissions"
+                          onChange={() => {}}
+                          onClick={e => {
+                            this.handlePermissionClick(e.target.checked, userId, 'download_reports')
                           }}
                         />
                       </div>

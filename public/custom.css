@@ -331,6 +331,10 @@ label.text-box-number-label {
   border: none;
 }
 
+.buyer-dashboard-actions .au-accordion {
+  right: 0;
+}
+
 .opportunities-page .au-accordion__title {
   background: white;
   padding: 6px 16px 9px 16px;

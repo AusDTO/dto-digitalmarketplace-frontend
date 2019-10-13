@@ -1,3 +1,40 @@
+.margin-bottom {
+  margin-bottom: 1rem;
+}
+
+.margin-bottom-2x {
+  margin-bottom: 2rem;
+}
+
+.margin-bottom-3x {
+  margin-bottom: 3rem;
+}
+
+.margin-right {
+  margin-right: 1rem;
+}
+
+.margin-top {
+  margin-top: 1rem;
+}
+
+.margin-top-2x {
+  margin-top: 2rem;
+}
+
+.margin-top-3x {
+  margin-top: 3rem;
+}
+
+.right-aligned-block {
+  display: block;
+  text-align: right;
+}
+
+.sub-text {
+  color: #717171;
+}
+
 .wrapper {
   position: relative;
   box-sizing: border-box;
@@ -11,8 +48,4 @@
   clear: both;
   content: "";
   display: table;
-}
-
-.space-right {
-  margin-right: 1rem;
 }
