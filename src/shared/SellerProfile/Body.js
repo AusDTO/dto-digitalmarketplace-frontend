@@ -275,7 +275,7 @@ const Body = (props) => {
           {signed_agreements && signed_agreements.map((sa, i) => (
             <React.Fragment key={i}>
               {sa['agreement'] && <div>
-                <a href={sa['agreement']['url']}>Master Agreement</a>{' '}
+                <a href={sa['agreement']['htmlUrl'] ? sa['agreement']['htmlUrl'] : sa['agreement']['pdfUrl']}>Master Agreement</a>{' '}
                 signed on{' '}
                 {
                   sa['agreement']['signed_at'] ? format(new Date(sa['agreement']['signed_at']), 'DD/MM/YYYY') :
