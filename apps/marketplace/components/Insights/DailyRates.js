@@ -33,7 +33,9 @@ export class DailyRates extends Component {
           },
           {
             label: '75th percentile',
-            data: counts.map(a => parseInt(a.briefResponseDayRate75PC + a.briefResponseDayRate50PC + a.briefResponseDayRate25PC, 10)),
+            data: counts.map(a =>
+              parseInt(a.briefResponseDayRate75PC + a.briefResponseDayRate50PC + a.briefResponseDayRate25PC, 10)
+            ),
             backgroundColor: '#065688'
           }
         ],
@@ -48,18 +50,22 @@ export class DailyRates extends Component {
             mode: 'index',
             intersect: false
           },
-          xAxes: [{
-            ticks: {
-              beginAtZero: true
-            },
-            scaleLabel: {
-              display: true,
-              labelString: 'Daily rates incl GST'
+          xAxes: [
+            {
+              ticks: {
+                beginAtZero: true
+              },
+              scaleLabel: {
+                display: true,
+                labelString: 'Daily rates incl GST'
+              }
             }
-          }],
-          yAxes: [{
-            stacked: true
-          }]
+          ],
+          yAxes: [
+            {
+              stacked: true
+            }
+          ]
         }
       }
     })
