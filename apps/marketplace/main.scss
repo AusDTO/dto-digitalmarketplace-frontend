@@ -34,15 +34,13 @@
   margin-top: 3rem;
 }
 
-@media screen { 
-  .no-screen, .no-screen * {
-    display: none !important;
-  }
-}
-
 @media print { 
   .no-print, .no-print * {
     display: none !important;
+  }
+
+  .no-print-container {
+    width: 100% !important;
   }
 }
 

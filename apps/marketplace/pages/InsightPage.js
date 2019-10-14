@@ -37,6 +37,11 @@ class InsightPage extends Component {
       arc: true
     }
     Chart.defaults.global.maintainAspectRatio = false
+    window.addEventListener("beforeprint", () => {
+      for (var id in Chart.instances) {
+          Chart.instances[id].resize();
+      }
+    })
   }
 
   componentDidMount() {
