@@ -125,7 +125,7 @@ const BuyerSpecialistResponseFormatsStage = props => (
         } rate must be greater than zero`,
         requiredNumberOfSuppliers: 'You must specify how many candidates each seller can submit.',
         validNumberOfSuppliers: 'Number of candidates is an invalid number',
-        rangeNumberOfSuppliers: 'Number of candidates must be from 1 to 6.',
+        rangeNumberOfSuppliers: 'Number of candidates must be from 1 to 100.',
         requiredSecurityClearance: 'You must define the security clearance requirements',
         requiredSecurityClearanceObtain: 'You must select a type of security clearance.',
         requiredSecurityClearanceCurrent: 'You must select a type of security clearance.',
