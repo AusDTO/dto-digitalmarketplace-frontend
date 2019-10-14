@@ -90,7 +90,8 @@ export class NumberOfSellersPerCategory extends Component {
         <div className="row">
           <div className="col-xs-12">
             <div className={insightStyles['chart-md-height-12x']}>
-              <canvas ref={this.chartRef} />
+              {/* eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role */}
+              <canvas ref={this.chartRef} aria-label="Number of sellers per category" role="img" />
             </div>
           </div>
         </div>

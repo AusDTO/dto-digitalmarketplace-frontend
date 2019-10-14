@@ -63,7 +63,12 @@ export class TopCategories extends Component {
         <div className="row">
           <div className="col-xs-12">
             <div className={insightStyles['chart-md-height-2x']}>
-              <canvas ref={this.chartRef} />
+              <canvas
+                ref={this.chartRef}
+                aria-label="Top categories for opportunities posted since 29 August 2016"
+                /* eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role */
+                role="img"
+              />
             </div>
           </div>
         </div>

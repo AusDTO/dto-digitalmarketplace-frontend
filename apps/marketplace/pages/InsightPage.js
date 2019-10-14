@@ -6,6 +6,7 @@ import AUheading from '@gov.au/headings'
 import AUbutton from '@gov.au/buttons'
 import Chart from 'chart.js'
 import 'chartjs-plugin-labels'
+import { parse } from 'qs'
 import { loadInsights } from 'marketplace/actions/insightActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import WhoIsBuying from '../components/Insights/WhoIsBuying'
@@ -45,7 +46,8 @@ class InsightPage extends Component {
   }
 
   componentDidMount() {
-    this.props.loadInsights(this.props.match.params.insightId).then(response => {
+    const parsed = parse(this.props.location.search.substr(1))
+    this.props.loadInsights(parsed.now).then(response => {
       this.setState({
         insightData: response.data,
         loading: false
@@ -178,7 +180,7 @@ class InsightPage extends Component {
 }
 
 const mapResetDispatchToProps = dispatch => ({
-  loadInsights: id => dispatch(loadInsights(id))
+  loadInsights: now => dispatch(loadInsights(now))
 })
 
 export default withRouter(
