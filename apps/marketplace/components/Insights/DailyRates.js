@@ -23,17 +23,17 @@ export class DailyRates extends Component {
         datasets: [
           {
             label: '25th percentile',
-            data: counts.map(a => a.briefResponseDayRate25PC),
+            data: counts.map(a => parseInt(a.briefResponseDayRate25PC, 10)),
             backgroundColor: '#C2D2FF'
           },
           {
-            label: 'median',
-            data: counts.map(a => a.briefResponseDayRate50PC),
+            label: 'Median',
+            data: counts.map(a => parseInt(a.briefResponseDayRate50PC + a.briefResponseDayRate25PC, 10)),
             backgroundColor: '#37AFF7'
           },
           {
             label: '75th percentile',
-            data: counts.map(a => a.briefResponseDayRate75PC),
+            data: counts.map(a => parseInt(a.briefResponseDayRate75PC + a.briefResponseDayRate50PC + a.briefResponseDayRate25PC, 10)),
             backgroundColor: '#065688'
           }
         ],
@@ -48,24 +48,18 @@ export class DailyRates extends Component {
             mode: 'index',
             intersect: false
           },
-          responsive: true,
-          xAxes: [
-            {
-              stacked: true,
-              ticks: {
-                beginAtZero: true
-              },
-              scaleLabel: {
-                display: true,
-                labelString: 'Daily rates incl GST'
-              }
+          xAxes: [{
+            ticks: {
+              beginAtZero: true
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'Daily rates incl GST'
             }
-          ],
-          yAxes: [
-            {
-              stacked: true
-            }
-          ]
+          }],
+          yAxes: [{
+            stacked: true
+          }]
         }
       }
     })
@@ -84,7 +78,7 @@ export class DailyRates extends Component {
         </div>
         <div className="row">
           <div className="col-xs-12">
-            <div className={insightStyles['chart-md-height-4x']}>
+            <div className={insightStyles['chart-md-height-12x']}>
               {/* eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role */}
               <canvas ref={this.chartRef} aria-label="Daily rates sellers have bid for specialist roles" role="img" />
             </div>
