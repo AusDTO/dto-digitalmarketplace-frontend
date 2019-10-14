@@ -37,15 +37,15 @@ class InsightPage extends Component {
       arc: true
     }
     Chart.defaults.global.maintainAspectRatio = false
-    window.addEventListener("beforeprint", () => {
-      for (var id in Chart.instances) {
-          Chart.instances[id].resize();
-      }
+    window.addEventListener('beforeprint', () => {
+      Object.keys(Chart.instances, k => {
+        Chart.instances[k].resize()
+      })
     })
   }
 
   componentDidMount() {
-    this.props.loadInsights().then(response => {
+    this.props.loadInsights(this.props.match.params.insightId).then(response => {
       this.setState({
         insightData: response.data,
         loading: false
@@ -178,7 +178,7 @@ class InsightPage extends Component {
 }
 
 const mapResetDispatchToProps = dispatch => ({
-  loadInsights: () => dispatch(loadInsights())
+  loadInsights: id => dispatch(loadInsights(id))
 })
 
 export default withRouter(

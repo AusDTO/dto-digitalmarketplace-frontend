@@ -74,6 +74,7 @@ export const Routes = () => (
     <PrivateRoute path={`${rootPath}/brief/:briefId`} component={BriefPage} />
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
     <Route path={`${rootPath}/login`} component={LoginPage} />
+    <Route path={`${rootPath}/insights/:insightId`} component={InsightPage} />
     <Route path={`${rootPath}/insights`} component={InsightPage} />
     <Route path={`${rootPath}/seller-dashboard`} component={SellerDashboardPage} />
     <PrivateRoute
