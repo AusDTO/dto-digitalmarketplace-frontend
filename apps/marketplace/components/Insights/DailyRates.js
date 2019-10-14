@@ -22,14 +22,17 @@ export class DailyRates extends Component {
       data: {
         datasets: [
           {
+            label: '25th percentile',
             data: counts.map(a => a.briefResponseDayRate25PC),
             backgroundColor: '#C2D2FF'
           },
           {
+            label: 'median',
             data: counts.map(a => a.briefResponseDayRate50PC),
             backgroundColor: '#37AFF7'
           },
           {
+            label: '75th percentile',
             data: counts.map(a => a.briefResponseDayRate75PC),
             backgroundColor: '#065688'
           }
@@ -38,7 +41,7 @@ export class DailyRates extends Component {
       },
       options: {
         legend: {
-          display: false
+          display: true
         },
         scales: {
           tooltips: {
@@ -74,7 +77,7 @@ export class DailyRates extends Component {
       <React.Fragment>
         <div className={`row ${styles['margin-bottom']}`}>
           <div className="col-xs-12 col-md-12">
-            <AUheading size="lg" level="1">
+            <AUheading size="lg" level="2">
               Daily rates sellers have bid for specialist roles
             </AUheading>
           </div>

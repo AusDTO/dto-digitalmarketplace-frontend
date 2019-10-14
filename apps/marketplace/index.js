@@ -11,7 +11,7 @@ import configureStore from './store'
 import RootContainer from './routes'
 import { fetchAuth } from './actions/appActions'
 
-import './main.scss'
+import styles from './main.scss'
 
 const store = configureStore()
 store.dispatch(fetchAuth())
@@ -21,7 +21,7 @@ const App = () => (
     <BrowserRouter>
       <div id="Application">
         <SkipToLinks />
-        <header role="banner">
+        <header role="banner" className={styles['no-print']}>
           <Header />
         </header>
         <main id="content" role="region" aria-live="polite">

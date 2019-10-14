@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import DocumentTitle from 'react-document-title'
-import AUheading from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings'
+import AUbutton from '@gov.au/buttons'
 import Chart from 'chart.js'
 import 'chartjs-plugin-labels'
 import { loadInsights } from 'marketplace/actions/insightActions'
@@ -20,6 +21,8 @@ import TopSellers from '../components/Insights/TopSellers'
 import AustenderFigures from '../components/Insights/AustenderFigures'
 
 import styles from '../main.scss'
+
+const handlePrintClick = () => window.print()
 
 class InsightPage extends Component {
   constructor(props) {
@@ -51,8 +54,40 @@ class InsightPage extends Component {
     }
 
     return (
-      <DocumentTitle title="Insights">
+      <DocumentTitle title="Digital Marketplace - Insights">
         <div className="au-grid">
+          <div className={`row ${styles['margin-bottom-2x']}`}>
+            <div className="col-xs-12">
+              <AUheading size="xxl" level="1">
+                Digital Marketplace Insights: {this.state.insightData.thisMonth}
+              </AUheading>
+            </div>
+          </div>
+
+          <div className={`row ${styles['margin-bottom-2x']} ${styles['no-print']}`}>
+            <div className="col-xs-12">
+              <AUbutton onClick={handlePrintClick} as="secondary">
+                Print this page
+              </AUbutton>
+            </div>
+          </div>
+
+          <div className={`row ${styles['margin-bottom']}`}>
+            <div className="col-xs-12">
+              <AUheading size="lg" level="2">
+                Who are we?
+              </AUheading>
+            </div>
+          </div>
+
+          <div className={`row ${styles['margin-bottom-5x']}`}>
+            <div className="col-xs-12">
+              The Digital Marketplace is a simple and fast way to buy and sell with government.{' '}
+              <b>It breaks down the barriers of entry for SMEs</b> (a small to medium enterprise with less than 200
+              employees) and makes it <b>easier to compete for the Australian Government’s annual ICT spend</b>.
+            </div>
+          </div>
+
           <div className={`row ${styles['margin-bottom-5x']}`}>
             <div className="col-xs-12">
               <WhoIsBuying insightData={this.state.insightData} />
@@ -67,7 +102,7 @@ class InsightPage extends Component {
 
           <div className={`row ${styles['margin-bottom']}`}>
             <div className="col-xs-12">
-              <AUheading size="lg" level="1">
+              <AUheading size="lg" level="2">
                 How are we encouraging competition?
               </AUheading>
             </div>

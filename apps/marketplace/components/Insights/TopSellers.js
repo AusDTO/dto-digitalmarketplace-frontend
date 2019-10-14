@@ -71,7 +71,7 @@ export class TopSellers extends Component {
       <React.Fragment>
         <div className={`row ${styles['margin-bottom']}`}>
           <div className="col-xs-12 col-md-12">
-            <AUheading size="lg" level="1">
+            <AUheading size="lg" level="2">
               Top sellers awarded contracts this financial year *
             </AUheading>
           </div>

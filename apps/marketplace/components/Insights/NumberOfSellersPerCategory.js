@@ -82,7 +82,7 @@ export class NumberOfSellersPerCategory extends Component {
       <React.Fragment>
         <div className={`row ${styles['margin-bottom']}`}>
           <div className="col-xs-12 col-md-12">
-            <AUheading size="lg" level="1">
+            <AUheading size="lg" level="2">
               Number of sellers per category
             </AUheading>
           </div>
