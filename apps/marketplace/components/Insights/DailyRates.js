@@ -54,27 +54,7 @@ export class DailyRates extends Component {
           }
         },
         tooltips: {
-          filter: (item, data) => {
-            if (data.datasets[item.datasetIndex].label === '') {
-              return false
-            }
-            return true
-          },
-          callbacks: {
-            label: (item, data) => {
-              const label = data.datasets[item.datasetIndex].label
-              const pc25 = counts.map(a => parseInt(a.briefResponseDayRate25PC, 10))
-              if (label === '25th percentile to median') {
-                return `${label}: $${pc25[item.index]} to $${pc25[item.index] + item.xLabel}`
-              } else if (label === 'Median to 75th percentile') {
-                const pc50 = counts.map(a => parseInt(a.briefResponseDayRate50PC, 10))
-                const pc50Total = pc25[item.index] + pc50[item.index]
-                return `${label}: $${pc50Total} to $${pc50Total + item.xLabel}`
-              }
-
-              return ''
-            }
-          }
+          enabled: false
         },
         scales: {
           tooltips: {
@@ -110,7 +90,7 @@ export class DailyRates extends Component {
         <div className={`row ${styles['margin-bottom']}`}>
           <div className="col-xs-12 col-md-12">
             <AUheading size="lg" level="2">
-              Daily rates sellers have bid for specialist roles
+              Range of daily rates submitted for specialist roles (includes GST)
             </AUheading>
           </div>
         </div>
@@ -118,7 +98,11 @@ export class DailyRates extends Component {
           <div className="col-xs-12">
             <div className={insightStyles['chart-md-height-8x']}>
               {/* eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role */}
-              <canvas ref={this.chartRef} aria-label="Daily rates sellers have bid for specialist roles" role="img" />
+              <canvas
+                ref={this.chartRef}
+                aria-label="Range of daily rates submitted for specialist roles (includes GST)"
+                role="img"
+              />
             </div>
           </div>
         </div>
