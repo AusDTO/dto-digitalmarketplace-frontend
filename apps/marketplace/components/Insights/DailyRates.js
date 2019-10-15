@@ -30,12 +30,16 @@ export class DailyRates extends Component {
           {
             label: '25th percentile to median',
             data: counts.map(a => parseInt(a.briefResponseDayRate50PC, 10)),
-            backgroundColor: '#37AFF7'
+            backgroundColor: '#065688',
+            borderColor: '#FFFFFF',
+            borderWidth: { right: 2 }
           },
           {
             label: 'Median to 75th percentile',
             data: counts.map(a => parseInt(a.briefResponseDayRate75PC, 10)),
-            backgroundColor: '#065688'
+            backgroundColor: '#065688',
+            borderColor: '#FFFFFF',
+            borderWidth: { left: 2 }
           }
         ],
         labels: counts.map(a => a.briefCategory)
@@ -103,15 +107,6 @@ export class DailyRates extends Component {
               />
             </div>
           </div>
-        </div>
-        <div className="row">
-          <div className={`col-xs-5 col-md-offset-3 col-md-2 ${styles['text-align-right']}`}>25th percentile</div>
-          <div className={`col-xs-1 col-md-1 ${insightStyles['chart-blue']}`}>&nbsp;</div>
-          <div className={`col-xs-1 col-md-1 ${insightStyles['chart-dark-blue']}`}>&nbsp;</div>
-          <div className="col-xs-5 col-md-2">75th percentile</div>
-        </div>
-        <div className="row">
-          <div className={`col-xs-12 col-md-offset-5 col-md-2 ${styles['text-align-center']}`}>Median</div>
         </div>
       </React.Fragment>
     )
