@@ -42,16 +42,7 @@ export class DailyRates extends Component {
       },
       options: {
         legend: {
-          display: true,
-          onClick: () => {},
-          labels: {
-            filter: item => {
-              if (item.text === '') {
-                return false
-              }
-              return true
-            }
-          }
+          display: false
         },
         tooltips: {
           enabled: false
@@ -101,7 +92,7 @@ export class DailyRates extends Component {
             </AUheading>
           </div>
         </div>
-        <div className="row">
+        <div className={`row ${styles['margin-bottom']}`}>
           <div className="col-xs-12">
             <div className={insightStyles['chart-md-height-8x']}>
               <canvas
@@ -112,6 +103,15 @@ export class DailyRates extends Component {
               />
             </div>
           </div>
+        </div>
+        <div className="row">
+          <div className={`col-xs-5 col-md-offset-3 col-md-2 ${styles['text-align-right']}`}>25th percentile</div>
+          <div className={`col-xs-1 col-md-1 ${insightStyles['chart-blue']}`}>&nbsp;</div>
+          <div className={`col-xs-1 col-md-1 ${insightStyles['chart-dark-blue']}`}>&nbsp;</div>
+          <div className="col-xs-5 col-md-2">75th percentile</div>
+        </div>
+        <div className="row">
+          <div className={`col-xs-12 col-md-offset-5 col-md-2 ${styles['text-align-center']}`}>Median</div>
         </div>
       </React.Fragment>
     )
