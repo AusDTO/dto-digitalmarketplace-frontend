@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import DocumentTitle from 'react-document-title'
+import AUpageAlert from '@gov.au/page-alerts'
 import AUheading from '@gov.au/headings'
 import AUbutton from '@gov.au/buttons'
 import Chart from 'chart.js'
@@ -30,7 +31,8 @@ class InsightPage extends Component {
     super(props)
     this.state = {
       insightData: null,
-      loading: true
+      loading: true,
+      error: false
     }
     Chart.defaults.global.plugins.labels = {
       render: 'value',
@@ -48,14 +50,35 @@ class InsightPage extends Component {
   componentDidMount() {
     const parsed = parse(this.props.location.search.substr(1))
     this.props.loadInsights(parsed.now).then(response => {
-      this.setState({
-        insightData: response.data,
-        loading: false
-      })
+      if (response.status !== 200) {
+        this.setState({
+          loading: false,
+          error: true
+        })
+      } else {
+        this.setState({
+          insightData: response.data,
+          loading: false,
+          error: false
+        })
+      }
     })
   }
 
   render() {
+    if (this.state.error) {
+      return (
+        <AUpageAlert as="error">
+          <AUheading level="1" size="md">
+            An error has occured while loading insights.
+          </AUheading>
+          <p>
+            Try reloading this page. If the problem persists, please <a href="/contact-us">contact us</a>.
+          </p>
+        </AUpageAlert>
+      )
+    }
+
     if (this.state.loading || !this.state.insightData) {
       return <LoadingIndicatorFullPage />
     }
