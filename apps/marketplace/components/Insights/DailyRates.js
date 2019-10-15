@@ -16,26 +16,25 @@ export class DailyRates extends Component {
     if (!this.chartRef.current || !this.props.insightData) {
       return
     }
-    const counts = this.props.insightData.briefResponseData.dailyRates
+    let counts = this.props.insightData.briefResponseData.dailyRates
+    counts = counts.filter(v => !['Not Specified', 'Emerging technologies'].includes(v.briefCategory))
     const chart = new Chart(this.chartRef.current, {
       type: 'horizontalBar',
       data: {
         datasets: [
           {
-            label: '25th percentile',
+            label: '',
             data: counts.map(a => parseInt(a.briefResponseDayRate25PC, 10)),
-            backgroundColor: '#C2D2FF'
+            backgroundColor: 'rgb(0,0,0,0)'
           },
           {
-            label: 'Median',
-            data: counts.map(a => parseInt(a.briefResponseDayRate50PC + a.briefResponseDayRate25PC, 10)),
+            label: '25th percentile to median',
+            data: counts.map(a => parseInt(a.briefResponseDayRate50PC, 10)),
             backgroundColor: '#37AFF7'
           },
           {
-            label: '75th percentile',
-            data: counts.map(a =>
-              parseInt(a.briefResponseDayRate75PC + a.briefResponseDayRate50PC + a.briefResponseDayRate25PC, 10)
-            ),
+            label: 'Median to 75th percentile',
+            data: counts.map(a => parseInt(a.briefResponseDayRate75PC, 10)),
             backgroundColor: '#065688'
           }
         ],
@@ -43,7 +42,39 @@ export class DailyRates extends Component {
       },
       options: {
         legend: {
-          display: true
+          display: true,
+          onClick: () => {},
+          labels: {
+            filter: item => {
+              if (item.text === '') {
+                return false
+              }
+              return true
+            }
+          }
+        },
+        tooltips: {
+          filter: (item, data) => {
+            if (data.datasets[item.datasetIndex].label === '') {
+              return false
+            }
+            return true
+          },
+          callbacks: {
+            label: (item, data) => {
+              const label = data.datasets[item.datasetIndex].label
+              const pc25 = counts.map(a => parseInt(a.briefResponseDayRate25PC, 10))
+              if (label === '25th percentile to median') {
+                return `${label}: $${pc25[item.index]} to $${pc25[item.index] + item.xLabel}`
+              } else if (label === 'Median to 75th percentile') {
+                const pc50 = counts.map(a => parseInt(a.briefResponseDayRate50PC, 10))
+                const pc50Total = pc25[item.index] + pc50[item.index]
+                return `${label}: $${pc50Total} to $${pc50Total + item.xLabel}`
+              }
+
+              return ''
+            }
+          }
         },
         scales: {
           tooltips: {
@@ -52,6 +83,7 @@ export class DailyRates extends Component {
           },
           xAxes: [
             {
+              stacked: true,
               ticks: {
                 beginAtZero: true
               },
@@ -84,7 +116,7 @@ export class DailyRates extends Component {
         </div>
         <div className="row">
           <div className="col-xs-12">
-            <div className={insightStyles['chart-md-height-12x']}>
+            <div className={insightStyles['chart-md-height-8x']}>
               {/* eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role */}
               <canvas ref={this.chartRef} aria-label="Daily rates sellers have bid for specialist roles" role="img" />
             </div>
