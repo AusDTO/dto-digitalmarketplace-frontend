@@ -65,7 +65,8 @@ export class DailyRates extends Component {
             {
               stacked: true,
               ticks: {
-                beginAtZero: true
+                beginAtZero: true,
+                callback: v => `$${v}`
               },
               scaleLabel: {
                 display: true,
