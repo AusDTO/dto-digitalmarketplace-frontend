@@ -23,9 +23,9 @@ export class DailyRates extends Component {
       data: {
         datasets: [
           {
+            yAxisID: 'no-show',
             label: '',
-            data: counts.map(a => parseInt(a.briefResponseDayRate25PC, 10)),
-            backgroundColor: 'rgb(0,0,0,0)'
+            data: counts.map(a => parseInt(a.briefResponseDayRate25PC, 10))
           },
           {
             label: '25th percentile to median',
@@ -77,6 +77,12 @@ export class DailyRates extends Component {
           yAxes: [
             {
               stacked: true
+            },
+            {
+              id: 'no-show',
+              stacked: true,
+              barPercentage: 0,
+              display: false
             }
           ]
         }
@@ -98,10 +104,10 @@ export class DailyRates extends Component {
         <div className="row">
           <div className="col-xs-12">
             <div className={insightStyles['chart-md-height-8x']}>
-              {/* eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role */}
               <canvas
                 ref={this.chartRef}
                 aria-label="Range of daily rates submitted for specialist roles (includes GST)"
+                /* eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role */
                 role="img"
               />
             </div>
