@@ -33,8 +33,11 @@ class QuestionsHeader extends Component {
           <div className="col-xs-12 col-md-12">
             <p>
               You must publish answers to all relevant questions asked by sellers before{' '}
-              <b>{format(new Date(brief.closedAt), 'DD/MM/YYYY')}</b>. These will be publicly visible on the
-              opportunity.
+              <b>{format(new Date(brief.closedAt), 'DD/MM/YYYY')}</b>.{' '}
+              {brief.isOpenToAll ?
+                'These will be publicly visible on the opportunity.' :
+                'Only invited sellers and other buyers are able to view these answers on the opportunity page.'
+              }
             </p>
             <p>
               If the question you want to answer does not appear, you can{' '}
