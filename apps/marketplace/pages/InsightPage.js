@@ -49,7 +49,7 @@ class InsightPage extends Component {
 
   componentDidMount() {
     const parsed = parse(this.props.location.search.substr(1))
-    this.props.loadInsights(parsed.now).then(response => {
+    this.props.loadInsights(parsed.monthEnding).then(response => {
       if (response.status !== 200) {
         this.setState({
           loading: false,
