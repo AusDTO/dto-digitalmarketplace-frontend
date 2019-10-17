@@ -53,7 +53,7 @@ export class OpenToAllPercent extends Component {
         </div>
         <div className="col-xs-12 col-md-3">
           {numeral(this.props.insightData.briefData.openToAllBriefPercentage).format('(0%)')} of all opportunities have
-          been open to all
+          been open to all since 29 August 2016
         </div>
       </div>
     )
