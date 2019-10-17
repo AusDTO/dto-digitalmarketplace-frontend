@@ -62,7 +62,7 @@ export class TopBuyers extends Component {
         </div>
         <div className="row">
           <div className="col-xs-12">
-            <div className={insightStyles['chart-md-height-2x']}>
+            <div className={insightStyles['chart-md-height-4x']}>
               <canvas
                 ref={this.chartRef}
                 aria-label={`Top buyers for ${this.props.insightData.thisMonth}`}
