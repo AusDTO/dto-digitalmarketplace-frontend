@@ -130,10 +130,9 @@ class PublishAnswerPage extends Component {
                       <h1 className="au-display-xl">{`Answer a seller question`}</h1>
                       <p>
                         You must publish answers to all relevant questions asked by sellers.{' '}
-                        {brief.isOpenToAll ?
-                          'These will be publicly visible on the opportunity.' :
-                          'Only invited sellers and other buyers are able to view these answers on the opportunity page.'
-                        }
+                        {brief.isOpenToAll
+                          ? 'These will be publicly visible on the opportunity.'
+                          : 'Only invited sellers and other buyers are able to view these answers on the opportunity page.'}
                       </p>
                       <p>
                         Questions about this opportunity must be answered before{' '}
