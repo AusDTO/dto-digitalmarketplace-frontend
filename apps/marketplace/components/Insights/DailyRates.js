@@ -62,10 +62,6 @@ export class DailyRates extends Component {
               ticks: {
                 beginAtZero: true,
                 callback: v => `$${v}`
-              },
-              scaleLabel: {
-                display: true,
-                labelString: 'Daily rates incl GST'
               }
             }
           ],
@@ -106,6 +102,28 @@ export class DailyRates extends Component {
                 role="img"
               />
             </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className={`col-xs-12 col-md-offset-3 col-md-6 ${styles['text-align-center']}`}>Median</div>
+        </div>
+        <div className="row">
+          <div className={`col-xs-5 col-md-offset-3 col-md-2 ${styles['text-align-right']}`}>25%</div>
+          <div
+            className={`col-xs-1 col-md-1 ${insightStyles['chart-dark-blue']} ${insightStyles['legend-border-right']}`}
+          >
+            &nbsp;
+          </div>
+          <div
+            className={`col-xs-1 col-md-1 ${insightStyles['chart-dark-blue']} ${insightStyles['legend-border-left']}`}
+          >
+            &nbsp;
+          </div>
+          <div className="col-xs-5 col-md-2">75%</div>
+        </div>
+        <div className="row">
+          <div className={`col-xs-12 col-md-offset-3 col-md-6 ${styles['text-align-center']}`}>
+            percentage of rates submitted
           </div>
         </div>
       </React.Fragment>
