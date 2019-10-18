@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Chart from 'chart.js'
 import numeral from 'numeral'
 
+import styles from '../../main.scss'
 import insightStyles from './insights.scss'
 
 export class SpecialistPercent extends Component {
@@ -45,15 +46,15 @@ export class SpecialistPercent extends Component {
   render() {
     return (
       <div className="row">
-        <div className="col-xs-12 col-md-6">
+        <div className={`col-xs-12 col-md-6 ${styles['margin-bottom']}`}>
           <div className={insightStyles['chart-md-height-1x']}>
             {/* eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role */}
             <canvas ref={this.chartRef} aria-label="Specialist opportunity percentage" role="img" />
           </div>
         </div>
         <div className="col-xs-12 col-md-6">
-          {numeral(this.props.insightData.briefData.specialistBriefPercentage).format('(0%)')} of all opportunities have
-          been for digital specialists since 29 August 2016
+          {numeral(this.props.insightData.briefData.specialistBriefPercentage).format('(0%)')} of all opportunities are
+          for digital specialists since 29 August 2016
         </div>
       </div>
     )

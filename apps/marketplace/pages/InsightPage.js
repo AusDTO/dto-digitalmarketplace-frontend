@@ -139,7 +139,7 @@ class InsightPage extends Component {
           </div>
 
           <div className={`row ${styles['margin-bottom-5x']}`}>
-            <div className="col-xs-12 col-md-6">
+            <div className={`col-xs-12 col-md-6 ${styles['margin-bottom']}`}>
               <OpenToAllPercent insightData={this.state.insightData} />
             </div>
             <div className="col-xs-12 col-md-6">

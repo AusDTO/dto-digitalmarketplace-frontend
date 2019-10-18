@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Chart from 'chart.js'
 import numeral from 'numeral'
 
+import styles from '../../main.scss'
 import insightStyles from './insights.scss'
 
 export class OpenToAllPercent extends Component {
@@ -45,15 +46,15 @@ export class OpenToAllPercent extends Component {
   render() {
     return (
       <div className="row">
-        <div className="col-xs-12 col-md-6">
+        <div className={`col-xs-12 col-md-6 ${styles['margin-bottom']}`}>
           <div className={insightStyles['chart-md-height-1x']}>
             {/* eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role */}
             <canvas ref={this.chartRef} aria-label="Open to all opportunities percentage" role="img" />
           </div>
         </div>
         <div className="col-xs-12 col-md-6">
-          {numeral(this.props.insightData.briefData.openToAllBriefPercentage).format('(0%)')} of all opportunities have
-          been open to all since 29 August 2016
+          {numeral(this.props.insightData.briefData.openToAllBriefPercentage).format('(0%)')} of all opportunities are
+          open to all since 29 August 2016
         </div>
       </div>
     )

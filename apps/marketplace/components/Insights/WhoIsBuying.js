@@ -56,7 +56,7 @@ export class WhoIsBuying extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-xs-12 col-md-7">
+          <div className={`col-xs-12 col-md-7 ${styles['margin-bottom']}`}>
             <div className={insightStyles['chart-md-height-2x']}>
               {/* eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role */}
               <canvas ref={this.chartRef} aria-label="Who is buying?" role="img" />
