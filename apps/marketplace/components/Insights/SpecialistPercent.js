@@ -51,7 +51,7 @@ export class SpecialistPercent extends Component {
             <canvas ref={this.chartRef} aria-label="Specialist opportunity percentage" role="img" />
           </div>
         </div>
-        <div className="col-xs-12 col-md-3">
+        <div className="col-xs-12 col-md-6">
           {numeral(this.props.insightData.briefData.specialistBriefPercentage).format('(0%)')} of all opportunities have
           been for digital specialists since 29 August 2016
         </div>

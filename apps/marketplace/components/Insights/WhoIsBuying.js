@@ -37,7 +37,7 @@ export class WhoIsBuying extends Component {
           }
         },
         legend: {
-          position: 'right'
+          position: 'bottom'
         }
       }
     })

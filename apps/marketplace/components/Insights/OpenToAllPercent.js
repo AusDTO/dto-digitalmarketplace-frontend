@@ -51,7 +51,7 @@ export class OpenToAllPercent extends Component {
             <canvas ref={this.chartRef} aria-label="Open to all opportunities percentage" role="img" />
           </div>
         </div>
-        <div className="col-xs-12 col-md-3">
+        <div className="col-xs-12 col-md-6">
           {numeral(this.props.insightData.briefData.openToAllBriefPercentage).format('(0%)')} of all opportunities have
           been open to all since 29 August 2016
         </div>
