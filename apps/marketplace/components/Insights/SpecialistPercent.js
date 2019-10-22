@@ -66,7 +66,7 @@ SpecialistPercent.defaultProps = {
 }
 
 SpecialistPercent.propTypes = {
-  insightData: PropTypes.object
+  insightData: PropTypes.object.isRequired
 }
 
 export default SpecialistPercent

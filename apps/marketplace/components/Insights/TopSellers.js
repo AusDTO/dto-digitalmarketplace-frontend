@@ -94,7 +94,7 @@ TopSellers.defaultProps = {
 }
 
 TopSellers.propTypes = {
-  insightData: PropTypes.object
+  insightData: PropTypes.object.isRequired
 }
 
 export default TopSellers

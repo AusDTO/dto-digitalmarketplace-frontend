@@ -82,7 +82,7 @@ TopCategories.defaultProps = {
 }
 
 TopCategories.propTypes = {
-  insightData: PropTypes.object
+  insightData: PropTypes.object.isRequired
 }
 
 export default TopCategories

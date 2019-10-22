@@ -105,7 +105,7 @@ NumberOfSellersPerCategory.defaultProps = {
 }
 
 NumberOfSellersPerCategory.propTypes = {
-  insightData: PropTypes.object
+  insightData: PropTypes.object.isRequired
 }
 
 export default NumberOfSellersPerCategory

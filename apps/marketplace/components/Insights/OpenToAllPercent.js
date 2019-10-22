@@ -66,7 +66,7 @@ OpenToAllPercent.defaultProps = {
 }
 
 OpenToAllPercent.propTypes = {
-  insightData: PropTypes.object
+  insightData: PropTypes.object.isRequired
 }
 
 export default OpenToAllPercent
