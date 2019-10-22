@@ -19,7 +19,7 @@ export class ProgressContent extends Component {
   render() {
     const StageComponent = this.props.component
     return (
-      <div ref={this.element} className={styles.container}>
+      <div tabIndex="0" ref={this.element} className={styles.container}>
         <StageComponent
           model={this.props.model}
           meta={this.props.meta}

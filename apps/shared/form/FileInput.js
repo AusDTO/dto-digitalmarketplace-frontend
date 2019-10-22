@@ -7,16 +7,10 @@ import StatefulError from './StatefulError'
 import styles from './scss/FileInput.scss'
 
 class FileInput extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      uploading: undefined,
-      file: undefined,
-      errors: undefined
-    }
-
-    this.uploadInput = null
+  state = {
+    uploading: undefined,
+    file: undefined,
+    errors: undefined
   }
 
   onReset = e => {
@@ -52,11 +46,6 @@ class FileInput extends React.Component {
       uploading(false)
     })
   }
-
-  onUploadClick = () => {
-    this.uploadInput.click()
-  }
-
   render() {
     const { url, form, name, id, model, validators, messages, fieldLabel, title, accept } = this.props
     const fileField = `${id}`
@@ -80,16 +69,10 @@ class FileInput extends React.Component {
                 onChange={this.onChange}
                 className={styles.hidden_input}
                 validators={validators}
-                tabIndex={-1}
                 title={title || ''}
-                getRef={ref => {
-                  this.uploadInput = ref
-                }}
               />
               <label htmlFor={`file_${fileField}`} id={`label_${id}`} className={styles.custom_input}>
-                <button className="au-btn au-btn--secondary" onClick={this.onUploadClick} type="button">
-                  {fieldLabel}
-                </button>
+                <div className="au-btn au-btn--secondary">{fieldLabel}</div>
               </label>
               {messages && (
                 <StatefulError
