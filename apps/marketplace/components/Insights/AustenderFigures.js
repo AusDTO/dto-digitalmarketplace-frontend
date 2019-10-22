@@ -30,7 +30,7 @@ AustenderFigures.defaultProps = {
 }
 
 AustenderFigures.propTypes = {
-  insightData: PropTypes.object
+  insightData: PropTypes.object.isRequired
 }
 
 export default AustenderFigures
