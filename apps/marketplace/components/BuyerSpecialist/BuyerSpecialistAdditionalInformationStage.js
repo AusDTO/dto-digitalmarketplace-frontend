@@ -113,7 +113,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
           model={model}
           messages={{
             requiredContactNumber: 'Contact number is required',
-            contactNumberFormat: 'Contact number must be a phone number',
+            contactNumberFormat: 'Contact number must be a valid phone number, including an area code',
             closedAtIsValid: 'You must enter a valid closing date',
             closedAtIs2DaysInFuture: 'You must enter a closing date at least 2 days from now',
             requiredClosedAt: 'You must enter the closing date for this opportunity',
