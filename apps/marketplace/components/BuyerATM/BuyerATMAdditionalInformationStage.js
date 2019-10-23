@@ -59,14 +59,14 @@ class BuyerATMAdditionalInformationStage extends Component {
         <Textfield
           model={`${this.props.model}.contactNumber`}
           label="Contact number for Marketplace support"
-          description="This number will not be visible on the Digital Marketplace. It will only be used by the Marketplace operations team in case they need to contact you.
-          Please include the area code for landline numbers."
+          description="This number will not be visible on the Digital Marketplace. It will only be used by the Marketplace operations team in case they need to contact you."
           name="contactNumber"
           id="contactNumber"
           htmlFor="contactNumber"
           defaultValue={this.props[this.props.model].contactNumber}
           maxLength={100}
           validators={{
+            required
           }}
         />
         <Textfield
