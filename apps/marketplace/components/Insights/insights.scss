@@ -1,0 +1,97 @@
+.blue-box {
+    background-color: rgba(167, 219, 251, 0.8);
+    border-color: #666666;
+    border-width: 2px;
+    border-style: solid;
+    text-align: center;
+    height: 200px;
+    width: 100%;
+    margin: 1rem 0rem;
+    padding: 2rem;
+}
+
+.blue-box > .big-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #0985D1;
+}
+
+.chart-md-height-1x {
+    position: relative;
+    height: 12rem;
+}
+
+.chart-md-height-2x {
+    position: relative;
+    height: 14rem;
+}
+
+.chart-md-height-3x {
+    position: relative;
+    height: 16rem;
+}
+
+.chart-md-height-4x {
+    position: relative;
+    height: 18rem;;
+}
+
+.chart-md-height-5x {
+    position: relative;
+    height: 20rem;
+}
+
+.chart-md-height-6x {
+    position: relative;
+    height: 22rem;
+}
+
+.chart-md-height-7x {
+    position: relative;
+    height: 24rem;
+}
+
+.chart-md-height-8x {
+    position: relative;
+    height: 26rem;
+}
+
+.chart-md-height-9x {
+    position: relative;
+    height: 28rem;
+}
+
+.chart-md-height-10x {
+    position: relative;
+    height: 30rem;
+}
+
+.chart-md-height-11x {
+    position: relative;
+    height: 32rem;
+}
+
+.chart-md-height-12x {
+    position: relative;
+    height: 34rem;
+}
+
+.chart-blue {
+    background-color: #37AFF7;
+}
+
+.chart-dark-blue {
+    background-color: #065688;
+}
+
+.legend-border-left {
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: #ffffff;
+}
+
+.legend-border-right {
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: #ffffff;
+}
