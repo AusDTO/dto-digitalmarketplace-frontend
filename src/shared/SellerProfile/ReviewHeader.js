@@ -110,7 +110,7 @@ const ReviewHeader = (props) => {
           {public_profile === false && (
             <article className="col-xs-12 col-sm-3 col-sm-push-1">
               <div className="seller-profile__tile" styleName="tile">
-                <p><b>Update the services you offer</b></p>
+                <p><b>Update your company details</b></p>
                 <a href="/sellers/edit" className="button" styleName="external-link white external-link-hover">Update profile</a>
               </div>  
             </article>
