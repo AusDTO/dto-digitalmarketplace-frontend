@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
+import styles from './SellerAssessmentIntroductionStage.scss'
 
 const SellerAssessmentIntroductionStage = props => (
   <Form model={props.model} onSubmit={props.onSubmit}>
@@ -22,11 +23,9 @@ const SellerAssessmentIntroductionStage = props => (
     <ul>
       <li>
         your maximum daily rate for your services in {props.meta.domain.name}. Use{' '}
-        <a
-          href="https://www.sfia-online.org/en/framework/sfia-7/busskills/level-5"
-          rel="external" >
-          SFIA level 5
-        </a>{' '}
+        <div className={styles.icon}>
+        <a href="https://www.sfia-online.org/en/framework/sfia-7/busskills/level-5"rel="external" >SFIA level 5</a>
+          {' '}
         and the{' '}
         <a
           href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476"
@@ -36,6 +35,7 @@ const SellerAssessmentIntroductionStage = props => (
           panel categories and rates
         </a>{' '}
         as a guide.
+        </div>  
       </li>
       <li>which criteria you are requesting assessment in.</li>
       <li>evidence of your expertise in the criteria.</li>
