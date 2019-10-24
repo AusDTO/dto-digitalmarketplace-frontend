@@ -80,7 +80,7 @@ const ProgressButtons = props => (
 
 ProgressButtons.defaultProps = {
   startText: 'Start now',
-  confirmationText: 'I understand that this opportunity will be publicly visble published on the Digital Marketplace',
+  confirmationText: 'I understand that this opportunity will be publicly visble on the Digital Marketplace',
   continueText: 'Save and continue',
   previewText: 'Review',
   publishText: 'Publish',
