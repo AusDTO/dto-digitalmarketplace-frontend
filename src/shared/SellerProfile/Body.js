@@ -276,11 +276,7 @@ const Body = (props) => {
             <React.Fragment key={i}>
               {sa['agreement'] && <div>
                 <a href={sa['agreement']['htmlUrl'] ? sa['agreement']['htmlUrl'] : sa['agreement']['pdfUrl']}>Master Agreement</a>{' '}
-                signed on{' '}
-                {
-                  sa['agreement']['signed_at'] ? format(new Date(sa['agreement']['signed_at']), 'DD/MM/YYYY') :
-                  sa['signed_at'] && format(new Date(sa['signed_at']), 'DD/MM/YYYY')
-                }
+                signed on {format(new Date(sa['signedAt']), 'DD/MM/YYYY')}
               </div>}
             </React.Fragment> 
           ))}
