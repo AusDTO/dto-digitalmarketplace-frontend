@@ -1,0 +1,84 @@
+.tick {
+  margin-right: 0.5rem;
+}
+
+table.resultListing {
+  border-collapse: collapse;
+  margin-top: 2.5rem;
+}
+
+table.resultListing tr {
+  border-bottom: solid 1px #bebebe;
+  color: #313131;
+}
+
+table.resultListing tr:nth-child(2n) {
+  background-color: #fafafa;
+}
+
+table.resultListing .colName {
+  width: 650px;
+}
+
+table.resultListing .colNumber {
+  width: 250px;
+}
+
+table.resultListing .colEmail {
+  width: 180px;
+  white-space: nowrap;
+}
+
+table.resultListing .colApplied {
+  width: 180px;
+  white-space: nowrap;
+}
+
+table.resultListing td, table.resultListing th {
+  text-align: left;
+  padding: 20px 40px 20px 0px;
+  box-sizing: content-box;
+}
+
+.showSmall {
+  display: none;
+}
+
+@media (max-width: 1195px) and (min-width: 900px) {
+  table.resultListing td, table.resultListing th {
+    padding: 20px 30px 20px 0px;
+  }
+}
+
+@media (max-width: 899px) {
+  .header, table.resultListing {
+    margin-bottom: 20px;
+  }
+
+  .showSmall {
+    display: inline-block;
+  }
+
+  table.resultListing thead, table.resultListing .empty, .hideSmall {
+    display: none;
+  }
+
+  table.resultListing .colName {
+    padding-left: 5px;
+    max-width: 650px;
+  }
+
+  table.resultListing tr {
+    display: block;
+    padding: 15px 0px;
+  }
+
+  table.resultListing td {
+    display: block;
+    padding: 5px;
+  }
+
+  table.resultListing .colName, table.resultListing .colEmail {
+    width: auto;
+  }
+}
