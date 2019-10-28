@@ -10,6 +10,14 @@
   margin-bottom: 3rem;
 }
 
+.margin-bottom-4x {
+  margin-bottom: 4rem;
+}
+
+.margin-bottom-5x {
+  margin-bottom: 5rem;
+}
+
 .margin-right {
   margin-right: 1rem;
 }
@@ -26,6 +34,16 @@
   margin-top: 3rem;
 }
 
+@media print { 
+  .no-print, .no-print * {
+    display: none !important;
+  }
+
+  .no-print-container {
+    width: 100% !important;
+  }
+}
+
 .right-aligned-block {
   display: block;
   text-align: right;
@@ -33,6 +51,18 @@
 
 .sub-text {
   color: #717171;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.text-align-right {
+  text-align: right;
 }
 
 .wrapper {

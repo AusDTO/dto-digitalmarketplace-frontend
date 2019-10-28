@@ -18,7 +18,7 @@ const validNumberOfSuppliers = v =>
 const rangeNumberOfSuppliers = v =>
   !requiredNumberOfSuppliers(v) ||
   !validNumberOfSuppliers(v) ||
-  (parseInt(v.numberOfSuppliers, 10) > 0 && parseInt(v.numberOfSuppliers, 10) <= 6)
+  (parseInt(v.numberOfSuppliers, 10) > 0 && parseInt(v.numberOfSuppliers, 10) <= 100)
 const isNumberMaxRate = v => !v.maxRate || (v.maxRate && parseFloat(v.maxRate))
 const isNumberGreaterThanZero = v => !v.maxRate || !isNumberMaxRate(v) || parseFloat(v.maxRate) > 0
 const requiredSecurityClearance = v => v.securityClearance
@@ -125,7 +125,7 @@ const BuyerSpecialistResponseFormatsStage = props => (
         } rate must be greater than zero`,
         requiredNumberOfSuppliers: 'You must specify how many candidates each seller can submit.',
         validNumberOfSuppliers: 'Number of candidates is an invalid number',
-        rangeNumberOfSuppliers: 'Number of candidates must be from 1 to 6.',
+        rangeNumberOfSuppliers: 'Number of candidates must be from 1 to 100.',
         requiredSecurityClearance: 'You must define the security clearance requirements',
         requiredSecurityClearanceObtain: 'You must select a type of security clearance.',
         requiredSecurityClearanceCurrent: 'You must select a type of security clearance.',
@@ -135,7 +135,7 @@ const BuyerSpecialistResponseFormatsStage = props => (
     <Textfield
       model={`${props.model}.numberOfSuppliers`}
       label="How many candidates can each seller submit?"
-      description="You can request a maximum of 6 candidates"
+      description="We recommend requesting a maximum of 6 candidates from each seller"
       name="numberOfSuppliers"
       id="numberOfSuppliers"
       htmlFor="numberOfSuppliers"

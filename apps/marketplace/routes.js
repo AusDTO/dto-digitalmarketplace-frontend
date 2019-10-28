@@ -43,6 +43,7 @@ import QuestionPage from './pages/QuestionPage'
 import PublishAnswerPage from './pages/PublishAnswerPage'
 import RequestAccessPage from './pages/RequestAccessPage'
 import DownloadReports from './pages/DownloadReports/DownloadReports'
+import InsightPage from './pages/InsightPage'
 
 export const rootPath = '/2'
 
@@ -73,6 +74,7 @@ export const Routes = () => (
     <PrivateRoute path={`${rootPath}/brief/:briefId`} component={BriefPage} />
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
     <Route path={`${rootPath}/login`} component={LoginPage} />
+    <Route path={`${rootPath}/insights`} component={InsightPage} />
     <Route path={`${rootPath}/seller-dashboard`} component={SellerDashboardPage} />
     <PrivateRoute
       restrictedTo="supplier"

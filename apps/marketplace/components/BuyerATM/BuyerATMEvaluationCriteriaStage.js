@@ -80,7 +80,7 @@ class BuyerATMEvaluationCriteriaStage extends Component {
         <AUheadings level="1" size="xl">
           Response criteria
         </AUheadings>
-        <AUcallout description="" className={styles.noticeBar}>
+        <AUcallout title="" description="" className={styles.noticeBar}>
           <strong>Sellers can only respond to each criteria you list here.</strong>
           <br />
           You must list each criteria separately so that sellers can respond to each one through the Marketplace.
@@ -140,6 +140,8 @@ class BuyerATMEvaluationCriteriaStage extends Component {
                           htmlFor={`weighting_${i}`}
                           defaultValue={evaluationCriteria.weighting}
                           maxLength={3}
+                          min={1}
+                          max={100}
                           type="number"
                         />
                         {i === this.props[this.props.model].evaluationCriteria.length - 1 && (
