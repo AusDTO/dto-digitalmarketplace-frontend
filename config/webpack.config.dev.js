@@ -90,7 +90,7 @@ var loaders = [
         }
       },
       {
-        test: /^external-link--aqua\.svg&\.svg$/,
+        test: /\.svg$/,
         loader: 'svg-inline-loader'
       }
     ]
