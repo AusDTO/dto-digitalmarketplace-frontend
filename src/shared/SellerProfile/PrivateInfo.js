@@ -72,9 +72,9 @@ const PrivateInfo = (props) => {
             </Row>
             <Row title="Master Agreement" show={!isEmpty(signed_agreements)}>
                 {signed_agreements.map((sa, i) => {
-                    const { signed_at } = sa;
-                    return (<div key={i}><a href={sa['agreement']['htmlUrl'] ? sa['agreement']['htmlUrl'] : sa['agreement']['pdfUrl']}>Master Agreement</a> signed
-                        at {format(new Date(signed_at), 'YYYY-MM-DD HH:mm')}
+                    const { agreement, signedAt, user } = sa;
+                    return (<div key={i}><a href={agreement.htmlUrl ? agreement.htmlUrl : agreement.pdfUrl}>Master Agreement</a> signed
+                        at {format(new Date(signedAt), 'YYYY-MM-DD HH:mm')} by {user.name} ({user.emailAddress})
                         <hr/>
                     </div>)
                 })}
