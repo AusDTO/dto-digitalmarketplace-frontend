@@ -948,3 +948,8 @@ article.content-main header h1 {
 article.content-main h2 {
   font-size: 1.5rem;
 }
+
+a[rel~='external'] {
+  color: red;
+  background-image: url('src/shared/icons/external-link--aqua.png');
+}
