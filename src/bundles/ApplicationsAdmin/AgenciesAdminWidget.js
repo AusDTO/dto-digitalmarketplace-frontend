@@ -6,6 +6,7 @@ import RegisterComponent from '../../RegisterComponent'
 import createStore from './redux/create'
 
 import Agency from './components/Agency'
+import AgencyList from './components/AgencyList'
 
 
 const AgenciesAdminWidget = (props) => {
@@ -15,6 +16,7 @@ const AgenciesAdminWidget = (props) => {
     <Provider store={store} >
       <Switch>
         <Route exact path="/admin/agency/:id" component={Agency} />
+        <Route exact path="/admin/agency" component={AgencyList} />
       </Switch>
     </Provider>
   )

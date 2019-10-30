@@ -18,3 +18,12 @@ export const saveAgency = data => {
     })
   }
 };
+
+export const loadAgencies = () => {
+  return (dispatch, getState, api) => {
+    const state = getState();
+    return api(state.meta.url_agency_data, {
+      method: 'GET'
+    })
+  }
+};

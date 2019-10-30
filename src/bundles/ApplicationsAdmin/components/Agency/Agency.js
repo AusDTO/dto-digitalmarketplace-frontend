@@ -79,6 +79,7 @@ class Agency extends React.Component {
       return (
         <form onSubmit={this.handleSubmit}>
           <h1 className="au-display-xl">Agency edit</h1>
+          <a href="/admin/agency">Back to agency list</a>
           <p>
             <label htmlFor="name">Name</label>
             <AUtextInput
