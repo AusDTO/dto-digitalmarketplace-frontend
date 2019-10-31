@@ -6,7 +6,6 @@ import { Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import SellerAssessmentStages from './SellerAssessmentStages'
-import styles from './SellerAssessmentReviewStage.scss'
 import { getCriteriaName } from './SellerAssessmentEvidenceStage'
 
 const SellerAssessmentReviewStage = props => (
