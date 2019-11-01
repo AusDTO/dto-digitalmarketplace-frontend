@@ -113,7 +113,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
           model={model}
           messages={{
             requiredContactNumber: 'Contact number is required',
-            contactNumberFormat: 'Contact number must be a phone number',
+            contactNumberFormat: 'Contact number must be a valid phone number, including an area code',
             closedAtIsValid: 'You must enter a valid closing date',
             closedAtIs2DaysInFuture: 'You must enter a closing date at least 2 days from now',
             requiredClosedAt: 'You must enter the closing date for this opportunity',
@@ -178,7 +178,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
         <Textfield
           model={`${this.props.model}.contactNumber`}
           label="Contact number for Marketplace support"
-          description="This number will not be visible on the Digital Marketplace. It will only be used by the Marketplace operations team in case they need to contact you."
+          description="This number will not be visible on the Digital Marketplace. It will only be used by the Marketplace operations team in case they need to contact you. Please include the area code."
           name="contactNumber"
           id="contactNumber"
           htmlFor="contactNumber"

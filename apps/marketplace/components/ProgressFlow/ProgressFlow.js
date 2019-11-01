@@ -312,7 +312,7 @@ ProgressFlow.defaultProps = {
   previewPath: '',
   publishText: 'Publish',
   startText: 'Start now',
-  confirmationText: 'I understand that this opportunity will be published on the Digital Marketplace',
+  confirmationText: 'I understand that this opportunity will be publicly visible on the Digital Marketplace',
   showReturnButton: true,
   showReviewButton: true,
   showConfirmationCheckbox: true,

@@ -67,7 +67,7 @@ export class Header extends Component {
                     <a href="/search/sellers">Seller Catalogue</a>
                   </li>
                   <li className="au-marketplace-header-link-list">
-                    <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000141616">Insights</a>
+                    <a href="/2/insights">Insights</a>
                   </li>
                   <li className="au-marketplace-header-link-list">
                     <a href="https://marketplace1.zendesk.com/hc/en-gb">Support</a>
