@@ -88,11 +88,7 @@ var loaders = [
           limit: 10000,
           name: 'static/media/[name].[hash:8].[ext]'
         }
-      },
-      // {
-      //   test: /\.svg$/,
-      //   loader: 'svg-inline-loader'
-      // }
+      }
     ]
 
 // This is the development configuration.
