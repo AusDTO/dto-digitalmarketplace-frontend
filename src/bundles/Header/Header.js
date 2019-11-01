@@ -99,7 +99,7 @@ class Header extends React.Component {
           </a>
         </div>
         <div className="au-marketplace-header_mobile-link">
-          <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000141616">
+          <a href="/2/insights">
             Insights
           </a>
         </div>
@@ -207,7 +207,7 @@ class Header extends React.Component {
                     </a>
                   </li>
                   <li className="au-marketplace-header-link-list">
-                    <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000141616">
+                    <a href="/2/insights">
                       Insights
                     </a>
                   </li>

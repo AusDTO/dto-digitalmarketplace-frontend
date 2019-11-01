@@ -569,12 +569,14 @@ const Opportunity = props => {
               )}
             </React.Fragment>
           )}
-          <QuestionAnswer
-            questions={brief.clarificationQuestions}
-            clarificationQuestionsAreClosed={brief.clarificationQuestionsAreClosed}
-            briefId={brief.id}
-            showAskQuestionInfo={canRespond || isInvited}
-          />
+          {(isInvited || isBuyer) && (
+            <QuestionAnswer
+              questions={brief.clarificationQuestions}
+              clarificationQuestionsAreClosed={brief.clarificationQuestionsAreClosed}
+              briefId={brief.id}
+              showAskQuestionInfo={canRespond || isInvited}
+            />
+          )}
         </div>
         <div className="col-xs-12 col-md-4">
           {brief.lotSlug === 'specialist' ? (

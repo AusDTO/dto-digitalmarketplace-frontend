@@ -3,8 +3,10 @@ import React from 'react'
 import logoDTA from './dta_logo.svg'
 import logoNISA from './NISA_logo.svg'
 
+import styles from './PageFooter.scss'
+
 const AUFooter = () => (
-  <footer className="au-footer footer au-body au-body--dark au-footer--dark " role="contentinfo">
+  <footer className={`au-footer footer au-body au-body--dark au-footer--dark ${styles['no-print']}`} role="contentinfo">
     <div className="wrapper">
       <div className="row">
         <div className="col-md-offset-1 col-md-8 col-md-push-3">
