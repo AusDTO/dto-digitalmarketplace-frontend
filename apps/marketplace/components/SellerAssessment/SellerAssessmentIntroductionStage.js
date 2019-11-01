@@ -22,8 +22,9 @@ const SellerAssessmentIntroductionStage = props => (
     <ul>
       <li>
         your maximum daily rate for your services in {props.meta.domain.name}. Use{' '}
-        <a href="https://www.sfia-online.org/en/framework/sfia-7/busskills/level-5" rel="external">SFIA level 5</a>
-          {' '}
+        <a href="https://www.sfia-online.org/en/framework/sfia-7/busskills/level-5" rel="external">
+          SFIA level 5
+        </a>{' '}
         and the{' '}
         <a
           href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476"
