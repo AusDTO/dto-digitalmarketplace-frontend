@@ -45,6 +45,14 @@ const InvitedSellers = props => (
                     <span>
                       <Tick className={`${styles.tick} ${styles.hideSmall}`} colour="#17788D" />
                       Yes
+                      {props.sellers[id].response_count > 0 &&
+                        props.brief.lot === 'specialist' &&
+                        props.brief.numberOfSuppliers > 0 && (
+                          <span>
+                            &nbsp;({props.sellers[id].response_count} of {props.brief.numberOfSuppliers} candidates
+                            submitted)
+                          </span>
+                        )}
                     </span>
                   ) : (
                     'No'
@@ -62,7 +70,8 @@ const InvitedSellers = props => (
 InvitedSellers.defaultProps = {}
 
 InvitedSellers.propTypes = {
-  sellers: PropTypes.object.isRequired
+  sellers: PropTypes.object.isRequired,
+  brief: PropTypes.object.isRequired
 }
 
 export default connect()(InvitedSellers)

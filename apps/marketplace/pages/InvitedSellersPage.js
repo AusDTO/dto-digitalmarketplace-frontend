@@ -64,7 +64,7 @@ class InvitedSellerPage extends Component {
     }
 
     if (this.props.brief && this.props.brief.sellers) {
-      return <InvitedSellers sellers={this.props.brief.sellers} />
+      return <InvitedSellers sellers={this.props.brief.sellers} brief={this.props.brief} />
     }
 
     return null
