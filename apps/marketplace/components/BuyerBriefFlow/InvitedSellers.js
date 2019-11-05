@@ -6,7 +6,7 @@ import Tick from 'marketplace/components/Icons/Tick/Tick'
 import styles from './InvitedSellers.scss'
 
 const InvitedSellers = props => (
-  <div>
+  <React.Fragment>
     <AUheading size="xl" level="1">
       Invited sellers
     </AUheading>
