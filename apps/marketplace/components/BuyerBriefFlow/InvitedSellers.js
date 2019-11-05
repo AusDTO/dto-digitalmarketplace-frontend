@@ -64,7 +64,7 @@ const InvitedSellers = props => (
         </table>
       </div>
     </div>
-  </div>
+  </React.Fragment>
 )
 
 InvitedSellers.defaultProps = {}
