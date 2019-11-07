@@ -22,15 +22,17 @@ class AgencyList extends React.Component {
         if (r.status === 200) {
           return r.json()
         }
-        this.setState({
-          loading: false
-        })
         return Promise.reject()
       })
       .then(r => {
         this.setState({
           loading: false,
           agencies: r
+        })
+      }, () => {
+        this.setState({
+          loading: false,
+          agencies: []
         })
       })
   }
