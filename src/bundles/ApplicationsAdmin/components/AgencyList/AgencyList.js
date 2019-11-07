@@ -68,8 +68,8 @@ class AgencyList extends React.Component {
                   <td>{a.category}</td>
                   <td>{a.state}</td>
                   <td>{a.body_type}</td>
-                  <td>{a.whitelisted}</td>
-                  <td>{a.reports}</td>
+                  <td>{a.whitelisted ? 'yes' : 'no'}</td>
+                  <td>{a.reports ? 'yes' : 'no'}</td>
                   <td>{a.domains.map(a => a.domain).join(', ')}</td>
                 </tr>
               )
