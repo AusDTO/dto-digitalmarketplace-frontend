@@ -50,16 +50,18 @@ class Agency extends React.Component {
       if (r.status === 200) {
         return r.json()
       }
-      this.setState({
-        loading: false
-      })
       return Promise.reject()
     })
     .then(r => {
       this.setState({
         loading: false,
         agency: r,
-        saved: new Date()
+        saved: format(new Date(), 'DD-MM-YYYY HH:mm:ss')
+      })
+    }, () => {
+      this.setState({
+        loading: false,
+        saved: 'Error has occured'
       })
     })
   }
@@ -170,7 +172,7 @@ class Agency extends React.Component {
             <p>Loading</p> :
             <p>
               <input type="submit" value="Save" />
-              {saved && `Last saved: ${format(saved, 'DD-MM-YYYY HH:mm:ss')}`}
+              {saved && `Last saved: ${saved}`}
             </p>
           }
         </form>
