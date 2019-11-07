@@ -40,7 +40,7 @@ class Agency extends React.Component {
     } else {
       data.whitelisted = false
     }
-     data.domains = data.domains.split('\n')
+    data.domains = data.domains.split('\n')
 
     this.setState({
       loading: true
