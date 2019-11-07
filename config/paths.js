@@ -65,6 +65,7 @@ var config = {
     'profile-edit': [resolveApp('src/bundles/SellerRegistration/ProfileEditWidget')],
     'enterpassword': [resolveApp('src/bundles/SellerRegistration/EnterPasswordWidget')],
     'signup': [resolveApp('src/bundles/SellerRegistration/SignupWidget')],
+    'agencies-admin': [resolveApp('src/bundles/ApplicationsAdmin/AgenciesAdminWidget')],
     'applications-admin': [resolveApp('src/bundles/ApplicationsAdmin/ApplicationsAdminWidget')],
     'brief-admin': [resolveApp('src/bundles/ApplicationsAdmin/BriefAdminWidget')],
     'assessments-admin': [resolveApp('src/bundles/ApplicationsAdmin/AssessmentsAdminWidget')],
