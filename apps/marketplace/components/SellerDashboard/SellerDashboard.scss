@@ -46,6 +46,11 @@ table.resultListing .colMessage {
   padding-left: 20px;
 }
 
+table.resultListing .colId {
+  width: 2rem;
+  text-align: center;
+}
+
 table.resultListing .colAction {
   width: 200px;
 }

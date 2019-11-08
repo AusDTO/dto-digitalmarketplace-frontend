@@ -65,10 +65,7 @@ export class Opportunities extends Component {
             <table className={`${styles.resultListing} col-xs-12`}>
               <thead>
                 <tr className={styles.headingRow}>
-                  <th
-                    scope="col"
-                    className={`${mainStyles['table-column-width-1x']} ${mainStyles['text-align-center']}`}
-                  >
+                  <th scope="col" className={`${styles.colId}`}>
                     Id
                   </th>
                   <th scope="col" className={mainStyles['table-column-width-7x']}>
@@ -88,9 +85,7 @@ export class Opportunities extends Component {
               <tbody>
                 {items.map(opportunity => (
                   <tr key={`opportunity.${opportunity.briefId}`}>
-                    <td className={`${mainStyles['table-column-width-1x']} ${mainStyles['text-align-center']}`}>
-                      {opportunity.briefId}
-                    </td>
+                    <td className={`${styles.colId}`}>{opportunity.briefId}</td>
                     <td className={mainStyles['table-column-width-7x']}>
                       {getOpportunityLink(opportunity)}
                       <br />
