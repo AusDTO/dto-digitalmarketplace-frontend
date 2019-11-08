@@ -79,3 +79,59 @@
   content: "";
   display: table;
 }
+
+.table-column-width-1x {
+  width: 2rem;
+}
+
+.table-column-width-2x {
+  width: 4rem;
+}
+
+.table-column-width-3x {
+  width: 6rem;
+}
+
+.table-column-width-4x {
+  width: 8rem;
+}
+
+.table-column-width-5x {
+  width: 10rem;
+}
+
+.table-column-width-6x {
+  width: 12rem;
+}
+
+.table-column-width-7x {
+  width: 14rem;
+}
+
+.table-column-width-8x {
+  width: 16rem;
+}
+
+.badge {
+  border-radius: 3px;
+  border: solid 3px #244A60;
+  color: #244A60;
+  padding: 2px 5px;
+  margin: 5px 2px;
+  width: max-content;
+}
+
+.badge.ready-for-action {
+  border: solid 3px #00AC78;
+  color: #00AC78;
+}
+
+.badge.in-progress {
+  border: solid 3px #FFBF47;
+  color: #000000;
+}
+
+.badge.completed {
+  border: solid 3px #1976CC;
+  color: #1976CC;
+}

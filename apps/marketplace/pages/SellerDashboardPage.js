@@ -7,6 +7,7 @@ import Header from 'marketplace/components/SellerDashboard/Header'
 import Messages from 'marketplace/components/SellerDashboard/Messages'
 import Team from 'marketplace/components/SellerDashboard/Team'
 import Categories from 'marketplace/components/SellerDashboard/Categories'
+import Opportunities from 'marketplace/components/SellerDashboard/Opportunities'
 import { loadSellerDashboard, removeUser } from 'marketplace/actions/sellerDashboardActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
@@ -141,7 +142,8 @@ class SellerDashboardPage extends Component {
             )}
             {!supplier.is_recruiter_only && (
               <React.Fragment>
-                <Route exact path="(/|/categories)" render={() => <Categories {...this.props} />} />
+                <Route exact path="(/|/opportunities)" render={() => <Opportunities {...this.props} />} />
+                <Route exact path="(/categories)" render={() => <Categories {...this.props} />} />
                 <Route path="/team" render={() => <Team {...this.props} removeClicked={this.handleRemoveClick} />} />
                 <Route path="/notifications" render={() => <Messages {...this.props} />} />
               </React.Fragment>
