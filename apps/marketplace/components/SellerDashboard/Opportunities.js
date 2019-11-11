@@ -16,10 +16,15 @@ const getOpportunityLink = (o, text) => (
 )
 const getStatusBadge = o => (
   <React.Fragment>
-    {o.numberOfSuppliers && o.responseCount && (
-      <div className={`${styles.badge} ${styles.completed}`}>{o.responseCount} submitted</div>
+    {!withdrawn(o) && !closed(o) && o.responseCount && (
+      <React.Fragment>
+        {o.numberOfSuppliers && (
+          <div className={`${styles.badge} ${styles.lightBlue}`}>{o.responseCount} Submitted</div>
+        )}
+        {!o.numberOfSuppliers && <div className={`${styles.badge} ${styles.lightBlue}`}>Submitted</div>}
+      </React.Fragment>
     )}
-    {!o.numberOfSuppliers && o.responseCount && <div className={`${styles.badge} ${styles.lightBlue}`}>Submitted</div>}
+
     {invited(o) && <div className={`${styles.badge} ${styles.green}`}>Invited</div>}
     {withdrawn(o) && <div className={`${styles.badge} ${styles.lightGrey}`}>Withdrawn</div>}
     {closed(o) && <div className={`${styles.badge}`}>Closed</div>}
@@ -70,14 +75,11 @@ export class Opportunities extends Component {
                   <th scope="col" className={`${styles.tableColumnWidth7} ${styles.textAlignLeft}`}>
                     Name
                   </th>
-                  <th scope="col" className={`${styles.tableColumnWidth3} ${styles.textAlignLeft}`}>
+                  <th scope="col" className={`${styles.tableColumnWidth5} ${styles.textAlignLeft}`}>
                     Canberra closing time
                   </th>
                   <th scope="col" className={`${styles.tableColumnWidth1} ${styles.textAlignLeft}`}>
                     Status
-                  </th>
-                  <th scope="col" className={`${styles.tableColumnWidth1} ${styles.textAlignLeft}`}>
-                    Actions
                   </th>
                 </tr>
               </thead>
@@ -90,15 +92,10 @@ export class Opportunities extends Component {
                       <br />
                       {opportunity.lotName}
                     </td>
-                    <td className={styles.tableColumnWidth3}>
-                      {!withdrawn(opportunity) && format(opportunity.closed_at, 'DD/MM/YYYY h:mmA')}
+                    <td className={styles.tableColumnWidth5}>
+                      {!withdrawn(opportunity) && format(opportunity.closed_at, 'dddd Do MMMM YYYY h:mmA')}
                     </td>
-                    <td className={styles.tableColumnWidth1}>
-                      {getStatusBadge(opportunity)}
-                    </td>
-                    <td className={styles.tableColumnWidth1}>
-                      {invited(opportunity) && getOpportunityLink(opportunity, 'View opportunity')}
-                    </td>
+                    <td className={styles.tableColumnWidth1}>{getStatusBadge(opportunity)}</td>
                   </tr>
                 ))}
               </tbody>
