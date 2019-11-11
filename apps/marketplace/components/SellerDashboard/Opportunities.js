@@ -8,8 +8,9 @@ import { loadOpportunities } from 'marketplace/actions/sellerDashboardActions'
 import { rootPath } from 'marketplace/routes'
 import styles from '../../main.scss'
 
-const closed = o => differenceInSeconds(new Date(), o.closed_at) > 0
-const invited = o => !closed(o) && !o.responseCount
+const withdrawn = o => o.withdrawn_at && differenceInSeconds(new Date(), o.withdrawn_at) > 0
+const closed = o => !withdrawn(o) && differenceInSeconds(new Date(), o.closed_at) > 0
+const invited = o => !withdrawn(o) && !closed(o) && !o.responseCount
 const getOpportunityLink = (o, text) => (
   <a href={`${rootPath}/digital-marketplace/opportunities/${o.briefId}`}>{text || o.name}</a>
 )
@@ -20,6 +21,7 @@ const getStatusBadge = o => (
     )}
     {!o.numberOfSuppliers && o.responseCount && <div className={`${styles.badge} ${styles.completed}`}>Submitted</div>}
     {invited(o) && <div className={`${styles.badge} ${styles.readyForAction}`}>Invited</div>}
+    {withdrawn(o) && <div className={`${styles.badge}`}>Withdrawn</div>}
     {closed(o) && <div className={`${styles.badge}`}>Closed</div>}
   </React.Fragment>
 )
