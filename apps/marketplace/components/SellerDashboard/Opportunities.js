@@ -19,9 +19,9 @@ const getStatusBadge = o => (
     {o.numberOfSuppliers && o.responseCount && (
       <div className={`${styles.badge} ${styles.completed}`}>{o.responseCount} submitted</div>
     )}
-    {!o.numberOfSuppliers && o.responseCount && <div className={`${styles.badge} ${styles.completed}`}>Submitted</div>}
-    {invited(o) && <div className={`${styles.badge} ${styles.readyForAction}`}>Invited</div>}
-    {withdrawn(o) && <div className={`${styles.badge}`}>Withdrawn</div>}
+    {!o.numberOfSuppliers && o.responseCount && <div className={`${styles.badge} ${styles.lightBlue}`}>Submitted</div>}
+    {invited(o) && <div className={`${styles.badge} ${styles.green}`}>Invited</div>}
+    {withdrawn(o) && <div className={`${styles.badge} ${styles.lightGrey}`}>Withdrawn</div>}
     {closed(o) && <div className={`${styles.badge}`}>Closed</div>}
   </React.Fragment>
 )
@@ -91,7 +91,7 @@ export class Opportunities extends Component {
                       {opportunity.lotName}
                     </td>
                     <td className={`${styles.tableColumnWidth3} ${styles.textAlignCenter}`}>
-                      {format(opportunity.closed_at, 'DD/MM/YYYY h:mmA')}
+                      {!withdrawn(opportunity) && format(opportunity.closed_at, 'DD/MM/YYYY h:mmA')}
                     </td>
                     <td className={`${styles.tableColumnWidth1} ${styles.textAlignCenter}`}>
                       {getStatusBadge(opportunity)}

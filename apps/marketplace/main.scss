@@ -210,7 +210,7 @@ table.defaultStyle td, table.defaultStyle th {
   width: max-content;
 }
 
-.badge.readyForAction {
+.badge.green {
   border: solid 3px #00AC78;
   color: #00AC78;
 }
@@ -220,7 +220,13 @@ table.defaultStyle td, table.defaultStyle th {
   color: #000000;
 }
 
-.badge.completed {
+.badge.lightBlue {
   border: solid 3px #1976CC;
   color: #1976CC;
 }
+
+.badge.lightGrey {
+  border: solid 3px #E6E6E6;
+  color: #000000;
+}
+
