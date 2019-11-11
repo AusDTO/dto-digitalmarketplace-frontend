@@ -7,8 +7,6 @@ import ErrorBox from 'shared/form/ErrorBox'
 import NotFound from 'marketplace/components/NotFound'
 import formProps from 'shared/form/formPropsSelector'
 import BriefResponseForm from 'marketplace/components/Brief/BriefResponseForm'
-import BriefSpecialistResponseForm from 'marketplace/components/Brief/BriefSpecialistResponseForm'
-import BriefSpecialistResponseForm2 from 'marketplace/components/Brief/BriefSpecialistResponseForm2'
 import BriefTrainingResponseForm from 'marketplace/components/Brief/BriefTrainingResponseForm'
 import BriefTrainingResponseSubmitted from 'marketplace/components/Brief/BriefTrainingResponseSubmitted'
 import BriefRFXResponseForm from 'marketplace/components/Brief/BriefRFXResponseForm'
@@ -28,8 +26,6 @@ import {
   handleSpecialistNumberSubmit
 } from 'marketplace/actions/briefActions'
 import { handleFeedbackSubmit } from 'marketplace/actions/appActions'
-import BriefSpecialistResponseSubmitted from 'marketplace/components/Brief/BriefSpecialistResponseSubmitted'
-import BriefSpecialistResponseSubmitted2 from 'marketplace/components/Brief/BriefSpecialistResponseSubmitted2'
 import BriefSubmitted from 'marketplace/components/Brief/BriefSubmitted'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import BriefResponseSubmitted from 'marketplace/components/Brief/BriefResponseSubmitted'
@@ -61,6 +57,8 @@ class BriefPage extends Component {
 
   onSpecialistSubmitClicked = () => this.props.changeModel(`${this.props.model}.addAnother`, false)
 
+  onSaveClicked = () => this.props.changeModel(`${this.props.model}.addAnother`, false)
+
   handleFeedbackSubmit(values) {
     this.props.handleFeedbackSubmit({
       timeToComplete: this.state.submitClicked ? this.state.submitClicked - this.props.loadedAt : null,
@@ -74,54 +72,6 @@ class BriefPage extends Component {
   handleBriefResponseSubmit(values) {
     const { brief } = this.props
     this.props.handleBriefResponseSubmit(brief.id, values)
-    window.scrollTo(0, 0)
-  }
-
-  handleSpecialistBriefResponseSubmit(values) {
-    const { model } = this.props
-    const submitData = {
-      attachedDocumentURL: values.attachedDocumentURL ? values.attachedDocumentURL : null,
-      availability: values.availability ? values.availability : null,
-      specialistName: values.specialistName ? values.specialistName : null,
-      specialistGivenNames: values.specialistGivenNames ? values.specialistGivenNames : null,
-      specialistSurname: values.specialistSurname ? values.specialistSurname : null,
-      dayRate: values.dayRate ? values.dayRate : null,
-      dayRateExcludingGST: values.dayRateExcludingGST ? values.dayRateExcludingGST : null,
-      hourRate: values.hourRate ? values.hourRate : null,
-      hourRateExcludingGST: values.hourRateExcludingGST ? values.hourRateExcludingGST : null,
-      essentialRequirements: values.essentialRequirements,
-      niceToHaveRequirements: values.niceToHaveRequirements ? values.niceToHaveRequirements : null,
-      respondToEmailAddress: values.respondToEmailAddress ? values.respondToEmailAddress : null,
-      visaStatus: values.visaStatus ? values.visaStatus : null,
-      securityClearance: values.securityClearance ? values.securityClearance : null,
-      previouslyWorked: values.previouslyWorked ? values.previouslyWorked : null
-    }
-    if (values.addAnother) {
-      if (values.specialistName) {
-        this.props.handleBriefNameSubmit('')
-      } else if (values.specialistSurname && values.specialistGivenNames) {
-        this.props.handleBriefNameSplitSubmit('', '')
-      }
-
-      this.props.handleSpecialistNumberSubmit(1)
-    }
-
-    const { brief } = this.props
-    this.props.addAnotherSpecialistSubmit(values.addAnother)
-    this.props.handleBriefResponseSubmit(brief.id, submitData)
-    this.props.clearModel(model)
-    window.scrollTo(0, 0)
-  }
-
-  handleBriefNameSubmit = name => {
-    this.props.handleBriefNameSubmit(name)
-    this.props.setInitial(this.props.model)
-    window.scrollTo(0, 0)
-  }
-
-  handleBriefNameSplitSubmit = (givenNames, surname) => {
-    this.props.handleBriefNameSplitSubmit(givenNames, surname)
-    this.props.setInitial(this.props.model)
     window.scrollTo(0, 0)
   }
 
@@ -164,28 +114,6 @@ class BriefPage extends Component {
               )}
             />
             <Route
-              path={`${match.url}/specialist/respond/submitted`}
-              render={() => (
-                <BriefSpecialistResponseSubmitted
-                  setFocus={setFocus}
-                  submitClicked={this.state.submitClicked}
-                  handleSubmit={values => this.handleFeedbackSubmit(values)}
-                  {...this.props}
-                />
-              )}
-            />
-            <Route
-              path={`${match.url}/specialist2/respond/submitted`}
-              render={() => (
-                <BriefSpecialistResponseSubmitted2
-                  setFocus={setFocus}
-                  submitClicked={this.state.submitClicked}
-                  handleSubmit={values => this.handleFeedbackSubmit(values)}
-                  {...this.props}
-                />
-              )}
-            />
-            <Route
               path={`${match.url}/respond/submitted`}
               render={() => (
                 <BriefResponseSubmitted
@@ -208,63 +136,6 @@ class BriefPage extends Component {
                       {...this.props}
                       loadingText={this.state.loadingText}
                       uploading={uploading => this.setState({ loadingText: uploading ? 'Uploading' : null })}
-                    />
-                  ) : (
-                    errorScreen
-                  )}{' '}
-                </span>
-              )}
-            />
-            <Route
-              path={`${match.url}/specialist/respond`}
-              render={() => (
-                <span>
-                  {loadBriefSuccess ? (
-                    <BriefSpecialistResponseForm
-                      submitClicked={this.onSpecialistSubmitClicked}
-                      addAnotherClicked={this.onAddAnotherClicked}
-                      handleNameSubmit={name => this.handleBriefNameSubmit(name)}
-                      handleSubmit={values => this.handleSpecialistBriefResponseSubmit(values)}
-                      setFocus={setFocus}
-                      loadingText={this.state.loadingText}
-                      uploading={uploading => this.setState({ loadingText: uploading ? 'Uploading' : null })}
-                      {...this.props}
-                    />
-                  ) : (
-                    errorScreen
-                  )}{' '}
-                </span>
-              )}
-            />
-            <Route
-              path={`${match.url}/specialist2/respond`}
-              render={() => (
-                <span>
-                  {loadBriefSuccess ? (
-                    <BriefSpecialistResponseForm2
-                      submitClicked={this.onSpecialistSubmitClicked}
-                      addAnotherClicked={this.onAddAnotherClicked}
-                      handleNameSubmit={(givenNames, surname) => this.handleBriefNameSplitSubmit(givenNames, surname)}
-                      handleSubmit={values => this.handleSpecialistBriefResponseSubmit(values)}
-                      setFocus={setFocus}
-                      loadingText={this.state.loadingText}
-                      uploading={uploading => this.setState({ loadingText: uploading ? 'Uploading' : null })}
-                      onRateChange={(field, value) => {
-                        let withGst = parseFloat(value * 1.1).toFixed(2)
-                        if (isNaN(withGst)) {
-                          withGst = ''
-                        }
-                        this.props.changeModel(`${this.props.model}.${field}`, `${withGst}`)
-                      }}
-                      fileCount={this.state.otherDocumentFileCount}
-                      addOtherDocument={() => {
-                        this.setState(curState => {
-                          const newState = { ...curState }
-                          newState.otherDocumentFileCount += 1
-                          return newState
-                        })
-                      }}
-                      {...this.props}
                     />
                   ) : (
                     errorScreen

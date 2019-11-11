@@ -7,6 +7,8 @@ import CreateTeamPage from './pages/Teams/CreateTeamPage'
 import CreateUserPage from './pages/CreateUserPage'
 import SendInvitePage from './pages/SendInvitePage'
 import BriefPage from './pages/BriefPage'
+import BriefResponseCreatePage from './pages/BriefResponseCreatePage'
+import BriefResponsePage from './pages/BriefResponsePage'
 import LoginPage from './pages/LoginPage'
 import NotFound from './components/NotFound'
 import SellerDashboardPage from './pages/SellerDashboardPage'
@@ -70,6 +72,16 @@ export const Routes = () => (
       restrictedTo="supplier"
       path={`${rootPath}/brief/:briefId/ask-a-question`}
       component={AskQuestionPage}
+    />
+    <PrivateRoute
+      restrictedTo="supplier"
+      path={`${rootPath}/brief/:briefId/:briefResponseType/respond/:briefResponseId`}
+      component={BriefResponsePage}
+    />
+    <PrivateRoute
+      restrictedTo="supplier"
+      path={`${rootPath}/brief/:briefId/:briefResponseType/respond`}
+      component={BriefResponseCreatePage}
     />
     <PrivateRoute path={`${rootPath}/brief/:briefId`} component={BriefPage} />
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />

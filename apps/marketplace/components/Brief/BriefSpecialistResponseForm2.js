@@ -5,7 +5,6 @@ import { Redirect } from 'react-router-dom'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
 import DocumentTitle from 'react-document-title'
-
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import range from 'lodash/range'
@@ -28,16 +27,18 @@ const BriefSpecialistResponseForm2 = ({
   briefResponseSuccess,
   app,
   submitClicked,
+  saveClicked,
   currentlySending,
   handleSubmit,
   setFocus,
-  match,
+  briefResponseId,
   handleNameSubmit,
   specialistGivenNames,
   specialistSurname,
   specialistNumber,
   addAnotherClicked,
   addAnotherSpecialist,
+  savedBriefResponse,
   uploading,
   loadingText,
   onRateChange,
@@ -48,8 +49,9 @@ const BriefSpecialistResponseForm2 = ({
     <DocumentTitle title="Brief Response - Digital Marketplace">
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
         <article role="main">
+          {briefResponseSuccess && savedBriefResponse && <Redirect to={`${briefResponseId}/saved`} />}
           {(briefResponseSuccess && !addAnotherSpecialist) || briefResponses.length >= brief.numberOfSuppliers ? (
-            <Redirect to={`${match.url}/specialist2/respond/submitted`} />
+            <Redirect to={`${briefResponseId}/submitted`} />
           ) : (
             ''
           )}
@@ -429,6 +431,14 @@ const BriefSpecialistResponseForm2 = ({
                         }}
                       />
                     )}
+                    <input
+                      className="au-btn au-btn--tertiary"
+                      type="submit"
+                      value="Save and return later"
+                      onClick={e => {
+                        saveClicked(e)
+                      }}
+                    />
                   </span>
                 )}
               </Form>
@@ -447,11 +457,12 @@ BriefSpecialistResponseForm2.defaultProps = {
   briefResponseSuccess: false,
   app: {},
   addAnotherSpecialist: false,
+  savedBriefResponse: false,
   specialistGivenNames: null,
   specialistSurname: null,
   setFocus: null,
-  match: null,
-  submitClicked: null,
+  submitClicked: () => {},
+  saveClicked: () => {},
   handleSubmit: null,
   handleNameSubmit: null,
   specialistNumber: null,
@@ -470,8 +481,8 @@ BriefSpecialistResponseForm2.propTypes = {
   briefResponseSuccess: PropTypes.bool,
   app: PropTypes.object.isRequired,
   setFocus: PropTypes.func,
-  match: PropTypes.object,
   submitClicked: PropTypes.func,
+  saveClicked: PropTypes.func,
   handleSubmit: PropTypes.func,
   handleNameSubmit: PropTypes.func,
   specialistGivenNames: PropTypes.string,
@@ -479,6 +490,7 @@ BriefSpecialistResponseForm2.propTypes = {
   specialistNumber: PropTypes.number,
   addAnotherClicked: PropTypes.func,
   addAnotherSpecialist: PropTypes.bool.isRequired,
+  savedBriefResponse: PropTypes.bool,
   uploading: PropTypes.func,
   loadingText: PropTypes.string,
   onRateChange: PropTypes.func,

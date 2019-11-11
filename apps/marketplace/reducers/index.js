@@ -210,7 +210,8 @@ export default combineReducers({
       dayRate: '',
       respondToEmailAddress: '',
       respondToPhone: '',
-      attachedDocumentURL: []
+      attachedDocumentURL: [],
+      submit: false
     },
     downloadReports: {
       startDate: '',

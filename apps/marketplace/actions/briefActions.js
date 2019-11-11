@@ -3,6 +3,8 @@ import {
   BRIEF_PUBLIC_INFO_FETCH_DATA_SUCCESS,
   BRIEF_OVERVIEW_SUCCESS,
   BRIEF_RESPONSE_SUCCESS,
+  BRIEF_RESPONSE_CREATE_SUCCESS,
+  BRIEF_RESPONSE_SAVE_SUCCESS,
   BRIEF_SAVE_SUCCESS,
   BRIEF_RFX_CREATE_SUCCESS,
   BRIEF_TRAINING_CREATE_SUCCESS,
@@ -312,6 +314,58 @@ export const handleBriefResponseSubmit = (briefId, model) => (dispatch, getState
       dispatch(handleErrorFailure(response))
     } else {
       dispatch(handleBriefResponseSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+  })
+}
+
+export const handleCreateBriefResponseSuccess = response => ({
+  type: BRIEF_RESPONSE_CREATE_SUCCESS,
+  createdBriefResponse: response.data
+})
+
+export const createBriefResponse = briefId => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: `/brief/${briefId}/respond`,
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleCreateBriefResponseSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
+
+export const handleSaveBriefResponseSuccess = () => ({
+  type: BRIEF_RESPONSE_SAVE_SUCCESS
+})
+
+export const saveBriefResponse = (briefId, briefResponseId, model) => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  dmapi({
+    url: `/brief/${briefId}/respond/${briefResponseId}`,
+    method: 'PATCH',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify(model)
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleBriefResponseSuccess(response))
+      if (!model.submit) {
+        dispatch(handleSaveBriefResponseSuccess(response))
+      }
     }
     dispatch(sendingRequest(false))
   })
