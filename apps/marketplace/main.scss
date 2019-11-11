@@ -215,18 +215,23 @@ table.defaultStyle td, table.defaultStyle th {
   color: #00855d;
 }
 
-.badge.in-progress {
+.badge.yellow {
   border: solid 3px #FFBF47;
   color: #000000;
 }
 
 .badge.lightBlue {
   border: solid 3px #1976CC;
-  color: #166ab8;
+  color: #166AB8;
 }
 
 .badge.lightGrey {
   border: solid 3px #C4C4C4;
   color: #000000;
+}
+
+.badge.red {
+  border: solid 3px #FF0000;
+  color: #FF0000;
 }
 

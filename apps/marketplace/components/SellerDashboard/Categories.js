@@ -6,6 +6,7 @@ import { loadCategories } from 'marketplace/actions/sellerDashboardActions'
 import { rootPath } from 'marketplace/routes'
 import { categoryIdToHash } from 'marketplace/components/helpers'
 import styles from './SellerDashboard.scss'
+import mainStyles from '../../main.scss'
 
 export class Categories extends Component {
   componentDidMount() {
@@ -18,15 +19,15 @@ export class Categories extends Component {
         return <div className={`${styles.unassessed}`}>-</div>
       case 'draft':
         if (category.previous_evidence_id) {
-          return <div className={`${styles.badge} ${styles.rejected}`}>Unsuccessful</div>
+          return <div className={`${mainStyles.badge} ${styles.red}`}>Unsuccessful</div>
         }
-        return <div className={`${styles.badge} ${styles.submitted}`}>In draft</div>
+        return <div className={`${mainStyles.badge} ${mainStyles.yellow}`}>In draft</div>
       case 'submitted':
-        return <div className={`${styles.badge} ${styles.submitted}`}>Submitted</div>
+        return <div className={`${mainStyles.badge} ${mainStyles.lightBlue}`}>Submitted</div>
       case 'assessed':
-        return <div className={`${styles.badge} ${styles.approved}`}>Approved</div>
+        return <div className={`${mainStyles.badge} ${mainStyles.green}`}>Approved</div>
       case 'rejected':
-        return <div className={`${styles.badge} ${styles.rejected}`}>Unsuccessful</div>
+        return <div className={`${mainStyles.badge} ${mainStyles.red}`}>Unsuccessful</div>
       default:
         return ''
     }
