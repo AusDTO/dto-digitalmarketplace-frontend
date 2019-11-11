@@ -70,13 +70,13 @@ export class Opportunities extends Component {
                   <th scope="col" className={`${styles.tableColumnWidth7} ${styles.textAlignLeft}`}>
                     Name
                   </th>
-                  <th scope="col" className={styles.tableColumnWidth3}>
+                  <th scope="col" className={`${styles.tableColumnWidth3} ${styles.textAlignLeft}`}>
                     Canberra closing time
                   </th>
-                  <th scope="col" className={styles.tableColumnWidth1}>
+                  <th scope="col" className={`${styles.tableColumnWidth1} ${styles.textAlignLeft}`}>
                     Status
                   </th>
-                  <th scope="col" className={styles.tableColumnWidth1}>
+                  <th scope="col" className={`${styles.tableColumnWidth1} ${styles.textAlignLeft}`}>
                     Actions
                   </th>
                 </tr>
@@ -90,13 +90,13 @@ export class Opportunities extends Component {
                       <br />
                       {opportunity.lotName}
                     </td>
-                    <td className={`${styles.tableColumnWidth3} ${styles.textAlignCenter}`}>
+                    <td className={styles.tableColumnWidth3}>
                       {!withdrawn(opportunity) && format(opportunity.closed_at, 'DD/MM/YYYY h:mmA')}
                     </td>
-                    <td className={`${styles.tableColumnWidth1} ${styles.textAlignCenter}`}>
+                    <td className={styles.tableColumnWidth1}>
                       {getStatusBadge(opportunity)}
                     </td>
-                    <td className={`${styles.tableColumnWidth1} ${styles.textAlignCenter}`}>
+                    <td className={styles.tableColumnWidth1}>
                       {invited(opportunity) && getOpportunityLink(opportunity, 'View opportunity')}
                     </td>
                   </tr>
