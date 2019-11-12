@@ -145,7 +145,7 @@ class Overview extends Component {
           flowName = 'specialist'
           break
         default:
-          flowNmae = 'unknown'
+          flowName = 'unknown'
           break
       }
 
