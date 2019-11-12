@@ -130,8 +130,21 @@ class Overview extends Component {
           : 0
 
       const briefResponseCount = briefResponses && briefResponses.length > 0 ? briefResponses.length : 0
-      let flowName = flow !== 'specialist' ? flow.toUpperCase() : 'specialist'
-      flowName = flow === 'training2' ? 'training' : flowName
+      let flowName = 'unknown'
+      switch (flow) {
+        case 'atm':
+          flowName = 'ask the market'
+          break
+        case 'rfx':
+          flowName = 'seek proposals and quotes'
+          break
+        case 'training2':
+          flowName = 'training'
+          break
+        case 'specialist':
+            flowName = 'specialist'
+            break
+      }
 
       return (
         <div>
