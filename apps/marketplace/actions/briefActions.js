@@ -2,6 +2,7 @@ import {
   BRIEF_INFO_FETCH_DATA_SUCCESS,
   BRIEF_PUBLIC_INFO_FETCH_DATA_SUCCESS,
   BRIEF_OVERVIEW_SUCCESS,
+  BRIEF_RESPONSE_LOAD_SUCCESS,
   BRIEF_RESPONSE_SUCCESS,
   BRIEF_RESPONSE_SUCCESS_RESET,
   BRIEF_RESPONSE_CREATE_SUCCESS,
@@ -289,6 +290,24 @@ export const loadPublicBrief = briefId => dispatch => {
       dispatch(handleErrorFailure(response))
     } else {
       dispatch(handlePublicBriefInfoSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
+
+export const handleLoadBriefResponse = response => ({
+  type: BRIEF_RESPONSE_LOAD_SUCCESS,
+  briefResponse: response.data
+})
+
+export const loadBriefResponse = briefResponseId => dispatch => {
+  dispatch(sendingRequest(true))
+  return dmapi({ url: `/brief-response/${briefResponseId}` }).then(response => {
+    if (!response || response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleLoadBriefResponse(response))
     }
     dispatch(sendingRequest(false))
     return response

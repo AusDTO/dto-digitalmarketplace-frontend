@@ -154,6 +154,25 @@ export const BuyerSpecialistFormReducer = {
   comprehensiveTerms: false
 }
 
+export const BriefResponseSpecialistReducer = {
+  submit: false,
+  attachedDocumentURL: null,
+  availability: null,
+  specialistName: null,
+  specialistGivenNames: null,
+  specialistSurname: null,
+  dayRate: null,
+  dayRateExcludingGST: null,
+  hourRate: null,
+  hourRateExcludingGST: null,
+  essentialRequirements: null,
+  niceToHaveRequirements: null,
+  respondToEmailAddress: null,
+  visaStatus: null,
+  securityClearance: null,
+  previouslyWorked: null
+}
+
 export const SellerEditFormReducer = {
   supplier: {
     name: '',

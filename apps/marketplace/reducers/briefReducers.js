@@ -1,6 +1,7 @@
 import {
   BRIEF_INFO_FETCH_DATA_SUCCESS,
   BRIEF_PUBLIC_INFO_FETCH_DATA_SUCCESS,
+  BRIEF_RESPONSE_LOAD_SUCCESS,
   BRIEF_RESPONSE_SUCCESS,
   BRIEF_RESPONSE_SUCCESS_RESET,
   BRIEF_RESPONSE_SAVE,
@@ -22,6 +23,7 @@ const defaultBriefState = {
   briefResponseSuccess: null,
   isDuplicate: null,
   brief: {},
+  briefResponse: {},
   briefResponses: [],
   specialistName: '',
   specialistGivenNames: '',
@@ -137,6 +139,12 @@ const briefReducer = (state = defaultBriefState, action) => {
       return {
         ...state,
         brief: action.brief
+      }
+
+    case BRIEF_RESPONSE_LOAD_SUCCESS:
+      return {
+        ...state,
+        briefResponse: action.briefResponse
       }
 
     case BRIEF_RESPONSE_SUCCESS:

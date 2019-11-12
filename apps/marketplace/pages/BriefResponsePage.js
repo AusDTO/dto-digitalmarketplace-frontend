@@ -11,6 +11,7 @@ import {
   loadBrief,
   handleBriefResponseSubmit,
   resetBriefResponseSuccess,
+  loadBriefResponse,
   handleSaveBriefResponse,
   saveBriefResponse,
   handleFeedbackSubmit,
@@ -19,7 +20,11 @@ import {
   addAnotherSpecialistSubmit,
   handleSpecialistNumberSubmit
 } from 'marketplace/actions/briefActions'
+import { setErrorMessage } from 'marketplace/actions/appActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
+import { BriefResponseSpecialistReducer } from 'marketplace/reducers'
+
+const model = 'briefResponseForm'
 
 class BriefResponsePage extends Component {
   constructor(props) {
@@ -33,11 +38,29 @@ class BriefResponsePage extends Component {
 
   componentDidMount() {
     const briefId = this.props.match.params.briefId
-    if (briefId) {
+    const briefResponseId = this.props.match.params.briefResponseId
+    if (briefId && briefResponseId) {
       this.resetForm()
-      this.props.loadInitialData(briefId).then(() => {
-        this.setState({ loading: false })
-      })
+      this.props.loadInitialData(briefId).then(
+        this.props.loadBriefResponse(briefResponseId).then(response => {
+          const data = { ...BriefResponseSpecialistReducer }
+          if (response.data) {
+            Object.keys(response.data).map(property => {
+              if (Object.keys(BriefResponseSpecialistReducer).includes(property)) {
+                data[property] = response.data[property]
+              }
+              return true
+            })
+
+            if (response.data.status === 'withdrawn') {
+              this.props.setError("You can't edit withdrawn brief responses.")
+            }
+
+            this.props.changeFormModel(data)
+          }
+          this.setState({ loading: false })
+        })
+      )
     }
   }
 
@@ -212,9 +235,10 @@ class BriefResponsePage extends Component {
 }
 
 const mapStateToProps = state => ({
-  ...formProps(state, 'briefResponseForm'),
+  ...formProps(state, model),
   brief: state.brief.brief,
   briefResponses: state.brief.briefResponses,
+  briefResponse: state.brief.briefResponse,
   briefResponseDownloaded: state.brief.briefResponseDownloaded,
   loadedAt: state.brief.loadedAt,
   app: state.app,
@@ -235,6 +259,7 @@ const mapDispatchToProps = dispatch => ({
   handleBriefResponseSubmit: (briefId, model) => dispatch(handleBriefResponseSubmit(briefId, model)),
   handleSaveBriefResponse: () => dispatch(handleSaveBriefResponse()),
   resetBriefResponseSuccess: () => dispatch(resetBriefResponseSuccess()),
+  loadBriefResponse: briefResponseId => dispatch(loadBriefResponse(briefResponseId)),
   saveBriefResponse: (briefId, briefResponseId, model) => dispatch(saveBriefResponse(briefId, briefResponseId, model)),
   loadInitialData: briefId => dispatch(loadBrief(briefId)),
   handleBriefNameSubmit: name => dispatch(handleBriefNameSubmit(name)),
@@ -243,7 +268,9 @@ const mapDispatchToProps = dispatch => ({
   addAnotherSpecialistSubmit: bool => dispatch(addAnotherSpecialistSubmit(bool)),
   clearModel: model => dispatch(actions.reset(model)),
   changeModel: (model, value) => dispatch(actions.change(model, value)),
-  setInitial: model => dispatch(actions.setInitial(model))
+  changeFormModel: data => dispatch(actions.merge(model, data)),
+  setInitial: model => dispatch(actions.setInitial(model)),
+  setError: message => dispatch(setErrorMessage(message))
 })
 
 export default withRouter(
