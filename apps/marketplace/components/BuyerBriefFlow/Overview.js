@@ -130,7 +130,7 @@ class Overview extends Component {
           : 0
 
       const briefResponseCount = briefResponses && briefResponses.length > 0 ? briefResponses.length : 0
-      let flowName = 'unknown'
+      let flowName
       switch (flow) {
         case 'atm':
           flowName = 'ask the market'
@@ -143,6 +143,9 @@ class Overview extends Component {
           break
         case 'specialist':
           flowName = 'specialist'
+          break
+        default:
+          flowNmae = 'unknown'
           break
       }
 
