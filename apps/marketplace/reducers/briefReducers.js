@@ -2,7 +2,8 @@ import {
   BRIEF_INFO_FETCH_DATA_SUCCESS,
   BRIEF_PUBLIC_INFO_FETCH_DATA_SUCCESS,
   BRIEF_RESPONSE_SUCCESS,
-  BRIEF_RESPONSE_SAVE_SUCCESS,
+  BRIEF_RESPONSE_SUCCESS_RESET,
+  BRIEF_RESPONSE_SAVE,
   BRIEF_SAVE_SUCCESS,
   BRIEF_RFX_CREATE_SUCCESS,
   BRIEF_TRAINING_CREATE_SUCCESS,
@@ -27,7 +28,7 @@ const defaultBriefState = {
   specialistSurname: '',
   specialistNumber: 1,
   addAnotherSpecialist: false,
-  savedBriefResponse: false,
+  briefResponseSave: false,
   overview: {
     sections: [],
     status: '',
@@ -145,10 +146,16 @@ const briefReducer = (state = defaultBriefState, action) => {
         briefResponses: [...state.briefResponses, action.briefResponse]
       }
 
-    case BRIEF_RESPONSE_SAVE_SUCCESS:
+    case BRIEF_RESPONSE_SUCCESS_RESET:
       return {
         ...state,
-        savedBriefResponse: true
+        briefResponseSuccess: null
+      }
+
+    case BRIEF_RESPONSE_SAVE:
+      return {
+        ...state,
+        briefResponseSave: true
       }
 
     case DELETE_BRIEF_SUCCESS:

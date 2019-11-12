@@ -10,6 +10,8 @@ import BriefResponseSupplierError from 'marketplace/components/Brief/BriefRespon
 import {
   loadBrief,
   handleBriefResponseSubmit,
+  resetBriefResponseSuccess,
+  handleSaveBriefResponse,
   saveBriefResponse,
   handleFeedbackSubmit,
   handleBriefNameSubmit,
@@ -32,6 +34,7 @@ class BriefResponsePage extends Component {
   componentDidMount() {
     const briefId = this.props.match.params.briefId
     if (briefId) {
+      this.resetForm()
       this.props.loadInitialData(briefId).then(() => {
         this.setState({ loading: false })
       })
@@ -95,6 +98,9 @@ class BriefResponsePage extends Component {
 
     const { brief } = this.props
     this.props.addAnotherSpecialistSubmit(values.addAnother)
+    if (!values.submit) {
+      this.props.handleSaveBriefResponse()
+    }
     this.props.saveBriefResponse(brief.id, this.props.match.params.briefResponseId, submitData)
     this.props.clearModel(model)
     window.scrollTo(0, 0)
@@ -112,8 +118,13 @@ class BriefResponsePage extends Component {
     window.scrollTo(0, 0)
   }
 
+  resetForm() {
+    this.props.addAnotherSpecialistSubmit(false)
+    this.props.resetBriefResponseSuccess()
+  }
+
   render() {
-    const { loadBriefSuccess, savedBriefResponse, match, app } = this.props
+    const { loadBriefSuccess, briefResponseSave, match, app } = this.props
     const baseURL = match.url
       .split('/')
       .splice(0, 4)
@@ -161,7 +172,7 @@ class BriefResponsePage extends Component {
               <span>
                 {loadBriefSuccess ? (
                   <BriefSpecialistResponseForm2
-                    savedBriefResponse={savedBriefResponse}
+                    briefResponseSave={briefResponseSave}
                     briefResponseId={briefResponseId}
                     submitClicked={this.onSpecialistSubmitClicked}
                     saveClicked={this.onSaveClicked}
@@ -216,12 +227,14 @@ const mapStateToProps = state => ({
   specialistName: state.brief.specialistName,
   specialistNumber: state.brief.specialistNumber,
   addAnotherSpecialist: state.brief.addAnotherSpecialist,
-  savedBriefResponse: state.brief.savedBriefResponse
+  briefResponseSave: state.brief.briefResponseSave
 })
 
 const mapDispatchToProps = dispatch => ({
   handleFeedbackSubmit: model => dispatch(handleFeedbackSubmit(model)),
   handleBriefResponseSubmit: (briefId, model) => dispatch(handleBriefResponseSubmit(briefId, model)),
+  handleSaveBriefResponse: () => dispatch(handleSaveBriefResponse()),
+  resetBriefResponseSuccess: () => dispatch(resetBriefResponseSuccess()),
   saveBriefResponse: (briefId, briefResponseId, model) => dispatch(saveBriefResponse(briefId, briefResponseId, model)),
   loadInitialData: briefId => dispatch(loadBrief(briefId)),
   handleBriefNameSubmit: name => dispatch(handleBriefNameSubmit(name)),

@@ -3,8 +3,9 @@ import {
   BRIEF_PUBLIC_INFO_FETCH_DATA_SUCCESS,
   BRIEF_OVERVIEW_SUCCESS,
   BRIEF_RESPONSE_SUCCESS,
+  BRIEF_RESPONSE_SUCCESS_RESET,
   BRIEF_RESPONSE_CREATE_SUCCESS,
-  BRIEF_RESPONSE_SAVE_SUCCESS,
+  BRIEF_RESPONSE_SAVE,
   BRIEF_SAVE_SUCCESS,
   BRIEF_RFX_CREATE_SUCCESS,
   BRIEF_TRAINING_CREATE_SUCCESS,
@@ -299,6 +300,10 @@ export const handleBriefResponseSuccess = response => ({
   briefResponse: response.data.briefResponses
 })
 
+export const resetBriefResponseSuccess = () => ({
+  type: BRIEF_RESPONSE_SUCCESS_RESET
+})
+
 export const handleBriefResponseSubmit = (briefId, model) => (dispatch, getState) => {
   dispatch(sendingRequest(true))
   dmapi({
@@ -344,8 +349,8 @@ export const createBriefResponse = briefId => (dispatch, getState) => {
   })
 }
 
-export const handleSaveBriefResponseSuccess = () => ({
-  type: BRIEF_RESPONSE_SAVE_SUCCESS
+export const handleSaveBriefResponse = () => ({
+  type: BRIEF_RESPONSE_SAVE
 })
 
 export const saveBriefResponse = (briefId, briefResponseId, model) => (dispatch, getState) => {
@@ -363,9 +368,6 @@ export const saveBriefResponse = (briefId, briefResponseId, model) => (dispatch,
       dispatch(handleErrorFailure(response))
     } else {
       dispatch(handleBriefResponseSuccess(response))
-      if (!model.submit) {
-        dispatch(handleSaveBriefResponseSuccess(response))
-      }
     }
     dispatch(sendingRequest(false))
   })

@@ -16,6 +16,7 @@ import Textarea from 'shared/form/Textarea'
 import RadioList from 'shared/form/RadioList'
 import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import dmapi from 'marketplace/services/apiClient'
+import { rootPath } from 'marketplace/routes'
 import { escapeQuote } from '../helpers'
 
 import styles from './BriefSpecialistResponseForm2.scss'
@@ -38,7 +39,7 @@ const BriefSpecialistResponseForm2 = ({
   specialistNumber,
   addAnotherClicked,
   addAnotherSpecialist,
-  savedBriefResponse,
+  briefResponseSave,
   uploading,
   loadingText,
   onRateChange,
@@ -49,11 +50,15 @@ const BriefSpecialistResponseForm2 = ({
     <DocumentTitle title="Brief Response - Digital Marketplace">
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
         <article role="main">
-          {briefResponseSuccess && savedBriefResponse && <Redirect to={`${briefResponseId}/saved`} />}
-          {(briefResponseSuccess && !addAnotherSpecialist) || briefResponses.length >= brief.numberOfSuppliers ? (
+          {briefResponseSuccess && addAnotherSpecialist && !briefResponseSave && (
+            <Redirect to={`${rootPath}/brief/${brief.id}/specialist2/respond`} />
+          )}
+          {briefResponseSuccess && !addAnotherSpecialist && briefResponseSave && (
+            <Redirect to={`${briefResponseId}/saved`} />
+          )}
+          {((briefResponseSuccess && !addAnotherSpecialist && !briefResponseSave) ||
+            (!briefResponseSave && briefResponses.length >= brief.numberOfSuppliers)) && (
             <Redirect to={`${briefResponseId}/submitted`} />
-          ) : (
-            ''
           )}
           {!briefResponseSuccess && (
             <ErrorBox
@@ -457,7 +462,7 @@ BriefSpecialistResponseForm2.defaultProps = {
   briefResponseSuccess: false,
   app: {},
   addAnotherSpecialist: false,
-  savedBriefResponse: false,
+  briefResponseSave: false,
   specialistGivenNames: null,
   specialistSurname: null,
   setFocus: null,
@@ -490,7 +495,7 @@ BriefSpecialistResponseForm2.propTypes = {
   specialistNumber: PropTypes.number,
   addAnotherClicked: PropTypes.func,
   addAnotherSpecialist: PropTypes.bool.isRequired,
-  savedBriefResponse: PropTypes.bool,
+  briefResponseSave: PropTypes.bool,
   uploading: PropTypes.func,
   loadingText: PropTypes.string,
   onRateChange: PropTypes.func,
