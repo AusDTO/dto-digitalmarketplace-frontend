@@ -26,7 +26,6 @@ const getStatusBadge = o => (
     )}
 
     {invited(o) && <div className={`${styles.badge} ${styles.green}`}>Invited</div>}
-    {withdrawn(o) && <div className={`${styles.badge} ${styles.lightGrey}`}>Withdrawn</div>}
     {closed(o) && <div className={`${styles.badge}`}>Closed</div>}
   </React.Fragment>
 )
@@ -72,7 +71,7 @@ export class Opportunities extends Component {
                   <th scope="col" className={`${styles.tableColumnWidth1} ${styles.textAlignCenter}`}>
                     Id
                   </th>
-                  <th scope="col" className={`${styles.tableColumnWidth7} ${styles.textAlignLeft}`}>
+                  <th scope="col" className={`${styles.tableColumnWidth8} ${styles.textAlignLeft}`}>
                     Name
                   </th>
                   <th scope="col" className={`${styles.tableColumnWidth5} ${styles.textAlignLeft}`}>
@@ -87,13 +86,17 @@ export class Opportunities extends Component {
                 {items.map(opportunity => (
                   <tr key={`opportunity.${opportunity.briefId}`}>
                     <td className={`${styles.tableColumnWidth1} ${styles.textAlignCenter}`}>{opportunity.briefId}</td>
-                    <td className={styles.tableColumnWidth7}>
+                    <td className={styles.tableColumnWidth8}>
                       {getOpportunityLink(opportunity)}
                       <br />
                       {opportunity.lotName}
                     </td>
                     <td className={styles.tableColumnWidth5}>
-                      {!withdrawn(opportunity) && format(opportunity.closed_at, 'dddd Do MMMM YYYY h:mmA')}
+                      {withdrawn(opportunity) ? (
+                        <span className={styles.subText}>The buyer has withdrawn this opportunity</span>
+                      ) : (
+                        format(opportunity.closed_at, 'dddd Do MMMM YYYY h:mmA')
+                      )}
                     </td>
                     <td className={styles.tableColumnWidth1}>{getStatusBadge(opportunity)}</td>
                   </tr>
