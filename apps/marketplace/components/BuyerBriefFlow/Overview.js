@@ -142,8 +142,8 @@ class Overview extends Component {
           flowName = 'training'
           break
         case 'specialist':
-            flowName = 'specialist'
-            break
+          flowName = 'specialist'
+          break
       }
 
       return (
