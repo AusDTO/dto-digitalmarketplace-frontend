@@ -89,7 +89,7 @@ export class Opportunities extends Component {
                     </td>
                     <td className={styles.tableColumnWidth5}>
                       {withdrawn(opportunity) ? (
-                        <span className={styles.subText}>The buyer has withdrawn this opportunity</span>
+                        <span className={styles.darkGrayText}>The buyer has withdrawn this opportunity</span>
                       ) : (
                         format(opportunity.closed_at, 'dddd Do MMMM YYYY h:mmA')
                       )}

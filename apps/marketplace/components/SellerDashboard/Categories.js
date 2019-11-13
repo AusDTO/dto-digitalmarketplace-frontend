@@ -5,8 +5,7 @@ import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import { loadCategories } from 'marketplace/actions/sellerDashboardActions'
 import { rootPath } from 'marketplace/routes'
 import { categoryIdToHash } from 'marketplace/components/helpers'
-import styles from './SellerDashboard.scss'
-import mainStyles from '../../main.scss'
+import styles from '../../main.scss'
 
 export class Categories extends Component {
   componentDidMount() {
@@ -16,18 +15,18 @@ export class Categories extends Component {
   getStatusBadge = category => {
     switch (category.status) {
       case 'unassessed':
-        return <div className={`${styles.unassessed}`}>-</div>
+        return <div className={`${styles.darkGrayText}`}>-</div>
       case 'draft':
         if (category.previous_evidence_id) {
-          return <div className={`${mainStyles.badge} ${mainStyles.red}`}>Unsuccessful</div>
+          return <div className={`${styles.badge} ${styles.red}`}>Unsuccessful</div>
         }
-        return <div className={`${mainStyles.badge} ${mainStyles.yellow}`}>In draft</div>
+        return <div className={`${styles.badge} ${styles.yellow}`}>In draft</div>
       case 'submitted':
-        return <div className={`${mainStyles.badge} ${mainStyles.lightBlue}`}>Submitted</div>
+        return <div className={`${styles.badge} ${styles.lightBlue}`}>Submitted</div>
       case 'assessed':
-        return <div className={`${mainStyles.badge} ${mainStyles.green}`}>Approved</div>
+        return <div className={`${styles.badge} ${styles.green}`}>Approved</div>
       case 'rejected':
-        return <div className={`${mainStyles.badge} ${mainStyles.red}`}>Unsuccessful</div>
+        return <div className={`${styles.badge} ${styles.red}`}>Unsuccessful</div>
       default:
         return ''
     }
@@ -41,6 +40,7 @@ export class Categories extends Component {
         href={`https://marketplace1.zendesk.com/hc/en-gb/articles/333757011655-Assessment-criteria${categoryIdToHash(
           categoryId
         )}`}
+        className={styles.marginRight1}
       >
         View criteria
       </a>
@@ -48,6 +48,7 @@ export class Categories extends Component {
         target="_blank"
         rel="external noopener noreferrer"
         href={`https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476${categoryIdToHash(categoryId)}`}
+        className={styles.marginRight1}
       >
         View rates
       </a>
@@ -66,7 +67,7 @@ export class Categories extends Component {
       case 'draft':
         return (
           <React.Fragment>
-            <a href={`${rootPath}/seller-assessment/${category.evidence_id}/introduction`}>Continue editing</a>
+            <a href={`${rootPath}/seller-assessment/${category.evidence_id}/introduction`} className={styles.marginRight1}>Continue editing</a>
             {category.previous_evidence_id && (
               <a href={`${rootPath}/seller-assessment/${category.previous_evidence_id}/feedback`}>View feedback</a>
             )}
@@ -89,7 +90,7 @@ export class Categories extends Component {
       case 'rejected':
         return (
           <React.Fragment>
-            <a href={`${rootPath}/seller-assessment/${category.evidence_id}/feedback`}>View feedback</a>
+            <a href={`${rootPath}/seller-assessment/${category.evidence_id}/feedback`} className={styles.marginRight1}>View feedback</a>
             <a href={`${rootPath}/seller-assessment/create/${category.id}`}>Resubmit</a>
           </React.Fragment>
         )
@@ -120,19 +121,19 @@ export class Categories extends Component {
 
     return (
       <div>
-        <div className={`${styles.tableMargin} row`}>
+        <div className={`${styles.marginTop2} row`}>
           <div className="col-xs-12">
             {categories && categories.length > 0 ? (
-              <table className={`${styles.resultListing} col-xs-12`}>
+              <table className={`${styles.defaultStyle} ${styles.marginBottom3}  col-xs-12`}>
                 <thead>
                   <tr className={styles.headingRow}>
-                    <th scope="col" className={styles.colService}>
+                    <th scope="col" className={`${styles.tableColumnWidth7} ${styles.textAlignLeft}`}>
                       Category
                     </th>
-                    <th scope="col" className={styles.colStatus}>
+                    <th scope="col" className={`${styles.tableColumnWidth2} ${styles.textAlignLeft}`}>
                       Status
                     </th>
-                    <th scope="col" className={styles.colAssessmentAction}>
+                    <th scope="col" className={`${styles.tableColumnWidth10} ${styles.textAlignLeft}`}>
                       Action
                     </th>
                   </tr>
@@ -140,9 +141,9 @@ export class Categories extends Component {
                 <tbody>
                   {categories.map(category => (
                     <tr key={`service.${category.id}`}>
-                      <td className={styles.colService}>{category.name}</td>
-                      <td className={styles.colStatus}>{this.getStatusBadge(category)}</td>
-                      <td className={styles.colAssessmentAction}>{this.getActionsLinks(category)}</td>
+                      <td className={styles.tableColumnWidth7}>{category.name}</td>
+                      <td className={styles.tableColumnWidth2}>{this.getStatusBadge(category)}</td>
+                      <td className={styles.tableColumnWidth10}>{this.getActionsLinks(category)}</td>
                     </tr>
                   ))}
                 </tbody>
