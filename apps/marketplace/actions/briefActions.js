@@ -7,6 +7,7 @@ import {
   BRIEF_RESPONSE_SUCCESS_RESET,
   BRIEF_RESPONSE_CREATE_SUCCESS,
   BRIEF_RESPONSE_SAVE,
+  BRIEF_RESPONSE_SAVE_RESET,
   BRIEF_SAVE_SUCCESS,
   BRIEF_RFX_CREATE_SUCCESS,
   BRIEF_TRAINING_CREATE_SUCCESS,
@@ -370,6 +371,10 @@ export const createBriefResponse = briefId => (dispatch, getState) => {
 
 export const handleSaveBriefResponse = () => ({
   type: BRIEF_RESPONSE_SAVE
+})
+
+export const resetBriefResponseSave = () => ({
+  type: BRIEF_RESPONSE_SAVE_RESET
 })
 
 export const saveBriefResponse = (briefId, briefResponseId, model) => (dispatch, getState) => {

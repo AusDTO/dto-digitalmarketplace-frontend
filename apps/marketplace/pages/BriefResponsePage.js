@@ -14,6 +14,7 @@ import {
   loadBriefResponse,
   handleSaveBriefResponse,
   saveBriefResponse,
+  resetBriefResponseSave,
   handleFeedbackSubmit,
   handleBriefNameSubmit,
   handleBriefNameSplitSubmit,
@@ -62,6 +63,12 @@ class BriefResponsePage extends Component {
             }
 
             this.props.replaceModel(data)
+
+            if (data.attachedDocumentURL.length > 0) {
+              this.setState({
+                otherDocumentFileCount: data.attachedDocumentURL.length
+              })
+            }
           }
           this.setState({ loading: false })
         })
@@ -80,9 +87,15 @@ class BriefResponsePage extends Component {
   }
 
   onSaveClicked = () => {
-    this.props.changeModel(`${this.props.model}.submit`, false)
-    this.props.changeModel(`${this.props.model}.addAnother`, false)
-    this.handleSpecialistBriefResponseSubmit(this.props[this.props.model])
+    switch (this.props.match.params.briefResponseType) {
+      case 'specialist2':
+        this.props.changeModel(`${this.props.model}.submit`, false)
+        this.props.changeModel(`${this.props.model}.addAnother`, false)
+        this.handleSpecialistBriefResponseSubmit(this.props[this.props.model])
+        break
+      default:
+        break
+    }
   }
 
   handleFeedbackSubmit(values) {
@@ -149,6 +162,7 @@ class BriefResponsePage extends Component {
   resetForm() {
     this.props.addAnotherSpecialistSubmit(false)
     this.props.resetBriefResponseSuccess()
+    this.props.resetBriefResponseSave()
   }
 
   render() {
@@ -264,6 +278,7 @@ const mapDispatchToProps = dispatch => ({
   handleBriefResponseSubmit: (briefId, data) => dispatch(handleBriefResponseSubmit(briefId, data)),
   handleSaveBriefResponse: () => dispatch(handleSaveBriefResponse()),
   resetBriefResponseSuccess: () => dispatch(resetBriefResponseSuccess()),
+  resetBriefResponseSave: () => dispatch(resetBriefResponseSave()),
   loadBriefResponse: briefResponseId => dispatch(loadBriefResponse(briefResponseId)),
   saveBriefResponse: (briefId, briefResponseId, data) => dispatch(saveBriefResponse(briefId, briefResponseId, data)),
   loadInitialData: briefId => dispatch(loadBrief(briefId)),

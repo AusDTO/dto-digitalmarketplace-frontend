@@ -156,21 +156,21 @@ export const BuyerSpecialistFormReducer = {
 
 export const BriefResponseSpecialistReducer = {
   submit: false,
-  attachedDocumentURL: null,
-  availability: null,
-  specialistName: null,
-  specialistGivenNames: null,
-  specialistSurname: null,
-  dayRate: null,
-  dayRateExcludingGST: null,
-  hourRate: null,
-  hourRateExcludingGST: null,
+  attachedDocumentURL: [],
+  availability: '',
+  specialistName: '',
+  specialistGivenNames: '',
+  specialistSurname: '',
+  dayRate: '',
+  dayRateExcludingGST: '',
+  hourRate: '',
+  hourRateExcludingGST: '',
   essentialRequirements: {},
   niceToHaveRequirements: {},
-  respondToEmailAddress: null,
-  visaStatus: null,
-  securityClearance: null,
-  previouslyWorked: null
+  respondToEmailAddress: '',
+  visaStatus: '',
+  securityClearance: '',
+  previouslyWorked: ''
 }
 
 export const SellerEditFormReducer = {

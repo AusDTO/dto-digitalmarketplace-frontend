@@ -55,11 +55,11 @@ const BriefSpecialistResponseForm2 = ({
             <Redirect to={`${rootPath}/brief/${brief.id}/specialist2/respond`} />
           )}
           {briefResponseSuccess && !addAnotherSpecialist && briefResponseSave && (
-            <Redirect to={`${briefResponseId}/saved`} />
+            <Redirect to={`${rootPath}/brief/${brief.id}/specialist2/respond/${briefResponseId}/saved`} />
           )}
           {((briefResponseSuccess && !addAnotherSpecialist && !briefResponseSave) ||
             (!briefResponseSave && briefResponses.length >= brief.numberOfSuppliers)) && (
-            <Redirect to={`${briefResponseId}/submitted`} />
+            <Redirect to={`${rootPath}/brief/${brief.id}/specialist2/respond/${briefResponseId}/submitted`} />
           )}
           {!briefResponseSuccess && (
             <ErrorBox
@@ -412,7 +412,9 @@ const BriefSpecialistResponseForm2 = ({
                   htmlFor="respondToEmailAddress"
                   label="Contact email"
                   description="All communication about your application will be sent to this address."
-                  defaultValue={app.emailAddress}
+                  defaultValue={
+                    briefResponseForm.respondToEmailAddress ? briefResponseForm.respondToEmailAddress : app.emailAddress
+                  }
                   validators={{
                     required,
                     validEmail

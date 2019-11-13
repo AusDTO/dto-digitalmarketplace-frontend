@@ -5,6 +5,7 @@ import {
   BRIEF_RESPONSE_SUCCESS,
   BRIEF_RESPONSE_SUCCESS_RESET,
   BRIEF_RESPONSE_SAVE,
+  BRIEF_RESPONSE_SAVE_RESET,
   BRIEF_SAVE_SUCCESS,
   BRIEF_RFX_CREATE_SUCCESS,
   BRIEF_TRAINING_CREATE_SUCCESS,
@@ -164,6 +165,12 @@ const briefReducer = (state = defaultBriefState, action) => {
       return {
         ...state,
         briefResponseSave: true
+      }
+
+    case BRIEF_RESPONSE_SAVE_RESET:
+      return {
+        ...state,
+        briefResponseSave: false
       }
 
     case DELETE_BRIEF_SUCCESS:
