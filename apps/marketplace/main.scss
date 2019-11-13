@@ -56,10 +56,10 @@
 @media (max-width: 899px) {
   .textAlignCenterSm {
     text-align: center;
-  }
 
-  .textAlignCenterSm div {
-    display: inline-block;
+    & div {
+      display: inline-block;
+    }
   }
 
   .textAlignLeftSm {
@@ -74,10 +74,10 @@
 @media (min-width: 900px) {
   .textAlignCenter {
     text-align: center;
-  }
 
-  .textAlignCenter div {
-    display: inline-block;
+    & div {
+      display: inline-block;
+    }
   }
 
   .textAlignLeft {

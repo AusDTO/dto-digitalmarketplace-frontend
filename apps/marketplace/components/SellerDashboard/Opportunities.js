@@ -17,18 +17,10 @@ const getOpportunityLink = (o, text) => (
 const getStatusBadge = o => (
   <React.Fragment>
     {!withdrawn(o) && !closed(o) && o.responseCount && (
-      <React.Fragment>
-        {o.numberOfSuppliers && (
-          <div className={`${styles.badge} ${styles.lightBlue}`}>{o.responseCount} Submitted</div>
-        )}
-        {!o.numberOfSuppliers && <div className={`${styles.badge} ${styles.lightBlue}`}>Submitted</div>}
-      <React.Fragment>
-        <div className={`${styles.badge} ${styles.lightBlue}`}>
-          {o.numberOfSuppliers ? o.responseCount + ' ' : ''}Submitted
-        </div>
-      </React.Fragment>
+      <div className={`${styles.badge} ${styles.lightBlue}`}>
+        {o.numberOfSuppliers ? `${o.responseCount} ` : ''}Submitted
+      </div>
     )}
-
     {invited(o) && <div className={`${styles.badge} ${styles.green}`}>Invited</div>}
     {closed(o) && <div className={`${styles.badge}`}>Closed</div>}
   </React.Fragment>
