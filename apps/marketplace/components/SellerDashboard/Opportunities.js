@@ -62,16 +62,16 @@ export class Opportunities extends Component {
     }
 
     return (
-      <div className={`${styles.marginTop1} row`}>
+      <div className={`${styles.marginTop2} row`}>
         <div className="col-xs-12">
           {items && items.length > 0 ? (
-            <table className={`${styles.defaultStyle} col-xs-12`}>
+            <table className={`${styles.defaultStyle} ${styles.marginBottom3} col-xs-12`}>
               <thead>
                 <tr className={styles.headingRow}>
                   <th scope="col" className={`${styles.tableColumnWidth1} ${styles.textAlignCenter}`}>
                     Id
                   </th>
-                  <th scope="col" className={`${styles.tableColumnWidth8} ${styles.textAlignLeft}`}>
+                  <th scope="col" className={`${styles.tableColumnWidth10} ${styles.textAlignLeft}`}>
                     Name
                   </th>
                   <th scope="col" className={`${styles.tableColumnWidth5} ${styles.textAlignLeft}`}>
@@ -86,7 +86,7 @@ export class Opportunities extends Component {
                 {items.map(opportunity => (
                   <tr key={`opportunity.${opportunity.briefId}`}>
                     <td className={`${styles.tableColumnWidth1} ${styles.textAlignCenter}`}>{opportunity.briefId}</td>
-                    <td className={styles.tableColumnWidth8}>
+                    <td className={styles.tableColumnWidth10}>
                       {getOpportunityLink(opportunity)}
                       <br />
                       {opportunity.lotName}

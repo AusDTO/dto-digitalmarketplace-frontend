@@ -107,98 +107,108 @@
 
 table.defaultStyle {
   border-collapse: collapse;
-  margin-bottom: 40px;
-}
 
-table.defaultStyle tr {
-  border-bottom: solid 1px #bebebe;
-  color: #313131;
-}
-
-table.defaultStyle tr:nth-child(2n) {
-  background-color: #fafafa;
-}
-
-table.defaultStyle td, table.defaultStyle th {
-  padding: 20px 40px 20px 0px;
-  box-sizing: content-box;
-}
-
-.headingRow {
-  font-weight: bold;
-  color: #202751;
-  border-bottom: solid 3px #202751;
-  padding-bottom: 7px;
-}
-
-@media (max-width: 1195px) and (min-width: 900px) {
-  table.defaultStyle td, table.defaultStyle th {
-    padding: 20px 30px 20px 0px;
-  }
-}
-
-@media (max-width: 899px) {
-  table.defaultStyle .headingRow {
-    display: none;
+  & tr {
+    border-bottom: solid 1px #bebebe;
+    color: #313131;
   }
 
-  table.defaultStyle tr {
-    display: block;
-    padding: 15px 0px;
+  & tr:nth-child(2n) {
+    background-color: #fafafa;
   }
 
-  table.defaultStyle td {
-    display: block;
-    padding: 5px;
+  & td, & th {
+    padding: 20px 20px 20px 20px;
+    box-sizing: content-box;
   }
 
-  table.defaultStyle .tableColumnWidth1,
-  table.defaultStyle .tableColumnWidth2,
-  table.defaultStyle .tableColumnWidth3,
-  table.defaultStyle .tableColumnWidth4,
-  table.defaultStyle .tableColumnWidth5,
-  table.defaultStyle .tableColumnWidth6,
-  table.defaultStyle .tableColumnWidth7,
-  table.defaultStyle .tableColumnWidth8,
-  table.defaultStyle .tableColumnWidth9,
-  table.defaultStyle .tableColumnWidth10,
-  table.defaultStyle .tableColumnWidth11,
-  table.defaultStyle .tableColumnWidth12 {
-    width: auto;
-    padding-left: 5px;
+  & tr.headingRow {
+    font-weight: bold;
+    color: #202751;
+    border-bottom: solid 3px #202751;
   }
-}
 
-.tableColumnWidth1 {
-  width: 2rem;
-}
+  & td.tableColumnWidth1 {
+    width: 2rem;
+  }
 
-.tableColumnWidth2 {
-  width: 4rem;
-}
+  & td.tableColumnWidth2 {
+    width: 4rem;
+  }
 
-.tableColumnWidth3 {
-  width: 6rem;
-}
+  & td.tableColumnWidth3 {
+    width: 6rem;
+  }
 
-.tableColumnWidth4 {
-  width: 8rem;
-}
+  & td.tableColumnWidth4 {
+    width: 8rem;
+  }
 
-.tableColumnWidth5 {
-  width: 10rem;
-}
+  & td.tableColumnWidth5 {
+    width: 10rem;
+  }
 
-.tableColumnWidth6 {
-  width: 12rem;
-}
+  & td.tableColumnWidth6 {
+    width: 12rem;
+  }
 
-.tableColumnWidth7 {
-  width: 14rem;
-}
+  & td.tableColumnWidth7 {
+    width: 14rem;
+  }
 
-.tableColumnWidth8 {
-  width: 16rem;
+  & td.tableColumnWidth8 {
+    width: 16rem;
+  }
+
+  & td.tableColumnWidth9 {
+    width: 18rem;
+  }
+
+  & td.tableColumnWidth10 {
+    width: 20rem;
+  }
+
+  & td.tableColumnWidth11 {
+    width: 22rem;
+  }
+
+  & td.tableColumnWidth12 {
+    width: 24rem;
+  }
+
+  @media (max-width: 899px) {
+    & {
+      & tr.headingRow {
+        display: none;
+      }
+
+      & tr {
+        display: block;
+        padding: 15px 0px;
+      }
+
+      & td {
+        display: block;
+        padding: 5px;
+      }
+
+      & td.tableColumnWidth1,
+      & td.tableColumnWidth2,
+      & td.tableColumnWidth3,
+      & td.tableColumnWidth4,
+      & td.tableColumnWidth5,
+      & td.tableColumnWidth6,
+      & td.tableColumnWidth7,
+      & td.tableColumnWidth8,
+      & td.tableColumnWidth9,
+      & td.tableColumnWidth10,
+      & td.tableColumnWidth11,
+      & td.tableColumnWidth12 {
+        width: auto;
+        padding-left: 5px;
+      }
+    } 
+  }
 }
 
 .badge {
@@ -208,30 +218,30 @@ table.defaultStyle td, table.defaultStyle th {
   padding: 2px 5px;
   margin: 5px 2px;
   width: max-content;
-}
 
-.badge.green {
-  border: solid 3px #00AC78;
-  color: #00855d;
-}
+  &.green {
+    border: solid 3px #00AC78;
+    color: #00855d;
+  }
 
-.badge.yellow {
-  border: solid 3px #FFBF47;
-  color: #000000;
-}
+  &.yellow {
+    border: solid 3px #FFBF47;
+    color: #000000;
+  }
 
-.badge.lightBlue {
-  border: solid 3px #1976CC;
-  color: #166AB8;
-}
+  &.lightBlue {
+    border: solid 3px #1976CC;
+    color: #166AB8;
+  }
 
-.badge.lightGrey {
-  border: solid 3px #C4C4C4;
-  color: #000000;
-}
+  &.lightGrey {
+    border: solid 3px #C4C4C4;
+    color: #000000;
+  }
 
-.badge.red {
-  border: solid 3px #FF0000;
-  color: #FF0000;
+  &.red {
+    border: solid 3px #FF0000;
+    color: #FF0000;
+  }
 }
 
