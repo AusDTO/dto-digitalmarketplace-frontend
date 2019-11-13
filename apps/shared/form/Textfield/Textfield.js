@@ -77,7 +77,7 @@ TextfieldComponent.defaultProps = {
   readOnly: false,
   showCharacterCounter: false,
   type: 'text',
-  value: null
+  value: ''
 }
 
 TextfieldComponent.propTypes = {

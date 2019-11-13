@@ -22,6 +22,7 @@ import { escapeQuote } from '../helpers'
 import styles from './BriefSpecialistResponseForm2.scss'
 
 const BriefSpecialistResponseForm2 = ({
+  briefResponseForm,
   model,
   brief,
   briefResponses,
@@ -96,6 +97,7 @@ const BriefSpecialistResponseForm2 = ({
                   model={`${model}.specialistGivenNames`}
                   name="specialistGivenNames"
                   id="specialistGivenNames"
+                  defaultValue={briefResponseForm.specialistGivenNames}
                   htmlFor="specialistGivenNames"
                   label="Given name(s)"
                   validators={{
@@ -109,6 +111,7 @@ const BriefSpecialistResponseForm2 = ({
                   model={`${model}.specialistSurname`}
                   name="specialistSurname"
                   id="specialistSurname"
+                  defaultValue={briefResponseForm.specialistSurname}
                   htmlFor="specialistSurname"
                   label="Surname"
                   validators={{
@@ -137,6 +140,7 @@ const BriefSpecialistResponseForm2 = ({
                   model={`${model}.availability`}
                   name="availability"
                   id="availability"
+                  defaultValue={briefResponseForm.availability}
                   htmlFor="availability"
                   label={`Earliest date ${specialistGivenNames} ${specialistSurname} can start`}
                   maxLength={100}
@@ -155,6 +159,7 @@ const BriefSpecialistResponseForm2 = ({
                         model={`${model}.dayRateExcludingGST`}
                         name="dayRateExcludingGST"
                         id="dayRateExcludingGST"
+                        defaultValue={briefResponseForm.dayRateExcludingGST}
                         htmlFor="dayRateExcludingGST"
                         label="Day rate (excluding GST)"
                         validators={{
@@ -174,6 +179,7 @@ const BriefSpecialistResponseForm2 = ({
                         model={`${model}.dayRate`}
                         name="dayRate"
                         id="dayRate"
+                        defaultValue={briefResponseForm.dayRate}
                         htmlFor="dayRate"
                         label="Day rate (including GST)"
                         className={styles.readOnly}
@@ -190,6 +196,7 @@ const BriefSpecialistResponseForm2 = ({
                         model={`${model}.hourRateExcludingGST`}
                         name="hourRateExcludingGST"
                         id="hourRateExcludingGST"
+                        defaultValue={briefResponseForm.hourRateExcludingGST}
                         htmlFor="hourRateExcludingGST"
                         label="Hourly rate (excluding GST)"
                         validators={{
@@ -209,6 +216,7 @@ const BriefSpecialistResponseForm2 = ({
                         model={`${model}.hourRate`}
                         name="hourRate"
                         id="hourRate"
+                        defaultValue={briefResponseForm.hourRate}
                         htmlFor="hourRate"
                         label="Hourly rate (including GST)"
                         className={styles.readOnly}
@@ -438,7 +446,7 @@ const BriefSpecialistResponseForm2 = ({
                     )}
                     <input
                       className="au-btn au-btn--tertiary"
-                      type="submit"
+                      type="button"
                       value="Save and return later"
                       onClick={e => {
                         saveClicked(e)

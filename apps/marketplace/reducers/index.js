@@ -165,8 +165,8 @@ export const BriefResponseSpecialistReducer = {
   dayRateExcludingGST: null,
   hourRate: null,
   hourRateExcludingGST: null,
-  essentialRequirements: null,
-  niceToHaveRequirements: null,
+  essentialRequirements: {},
+  niceToHaveRequirements: {},
   respondToEmailAddress: null,
   visaStatus: null,
   securityClearance: null,
@@ -224,14 +224,7 @@ export default combineReducers({
     briefAwardSeller: {
       awardedSupplierCode: ''
     },
-    briefResponseForm: {
-      availability: '',
-      dayRate: '',
-      respondToEmailAddress: '',
-      respondToPhone: '',
-      attachedDocumentURL: [],
-      submit: false
-    },
+    briefResponseForm: BriefResponseSpecialistReducer,
     downloadReports: {
       startDate: '',
       endDate: '',

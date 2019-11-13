@@ -26,6 +26,10 @@ import { BriefResponseSpecialistReducer } from 'marketplace/reducers'
 
 const model = 'briefResponseForm'
 
+const mapResponseTypeToReducer = {
+  specialist2: BriefResponseSpecialistReducer
+}
+
 class BriefResponsePage extends Component {
   constructor(props) {
     super(props)
@@ -39,14 +43,15 @@ class BriefResponsePage extends Component {
   componentDidMount() {
     const briefId = this.props.match.params.briefId
     const briefResponseId = this.props.match.params.briefResponseId
+    const briefResponseType = this.props.match.params.briefResponseType
     if (briefId && briefResponseId) {
       this.resetForm()
       this.props.loadInitialData(briefId).then(
         this.props.loadBriefResponse(briefResponseId).then(response => {
-          const data = { ...BriefResponseSpecialistReducer }
+          const data = { ...mapResponseTypeToReducer[briefResponseType] }
           if (response.data) {
             Object.keys(response.data).map(property => {
-              if (Object.keys(BriefResponseSpecialistReducer).includes(property)) {
+              if (Object.keys(mapResponseTypeToReducer[briefResponseType]).includes(property)) {
                 data[property] = response.data[property]
               }
               return true
@@ -56,7 +61,7 @@ class BriefResponsePage extends Component {
               this.props.setError("You can't edit withdrawn brief responses.")
             }
 
-            this.props.changeFormModel(data)
+            this.props.replaceModel(data)
           }
           this.setState({ loading: false })
         })
@@ -77,6 +82,7 @@ class BriefResponsePage extends Component {
   onSaveClicked = () => {
     this.props.changeModel(`${this.props.model}.submit`, false)
     this.props.changeModel(`${this.props.model}.addAnother`, false)
+    this.handleSpecialistBriefResponseSubmit(this.props[this.props.model])
   }
 
   handleFeedbackSubmit(values) {
@@ -90,7 +96,6 @@ class BriefResponsePage extends Component {
   }
 
   handleSpecialistBriefResponseSubmit(values) {
-    const { model } = this.props
     const submitData = {
       submit: values.submit,
       attachedDocumentURL: values.attachedDocumentURL ? values.attachedDocumentURL : null,
@@ -255,21 +260,21 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  handleFeedbackSubmit: model => dispatch(handleFeedbackSubmit(model)),
-  handleBriefResponseSubmit: (briefId, model) => dispatch(handleBriefResponseSubmit(briefId, model)),
+  handleFeedbackSubmit: data => dispatch(handleFeedbackSubmit(data)),
+  handleBriefResponseSubmit: (briefId, data) => dispatch(handleBriefResponseSubmit(briefId, data)),
   handleSaveBriefResponse: () => dispatch(handleSaveBriefResponse()),
   resetBriefResponseSuccess: () => dispatch(resetBriefResponseSuccess()),
   loadBriefResponse: briefResponseId => dispatch(loadBriefResponse(briefResponseId)),
-  saveBriefResponse: (briefId, briefResponseId, model) => dispatch(saveBriefResponse(briefId, briefResponseId, model)),
+  saveBriefResponse: (briefId, briefResponseId, data) => dispatch(saveBriefResponse(briefId, briefResponseId, data)),
   loadInitialData: briefId => dispatch(loadBrief(briefId)),
   handleBriefNameSubmit: name => dispatch(handleBriefNameSubmit(name)),
   handleBriefNameSplitSubmit: (givenNames, surname) => dispatch(handleBriefNameSplitSubmit(givenNames, surname)),
   handleSpecialistNumberSubmit: number => dispatch(handleSpecialistNumberSubmit(number)),
   addAnotherSpecialistSubmit: bool => dispatch(addAnotherSpecialistSubmit(bool)),
-  clearModel: model => dispatch(actions.reset(model)),
-  changeModel: (model, value) => dispatch(actions.change(model, value)),
-  changeFormModel: data => dispatch(actions.merge(model, data)),
-  setInitial: model => dispatch(actions.setInitial(model)),
+  clearModel: data => dispatch(actions.reset(data)),
+  changeModel: (data, value) => dispatch(actions.change(data, value)),
+  replaceModel: data => dispatch(actions.merge(model, data)),
+  setInitial: data => dispatch(actions.setInitial(data)),
   setError: message => dispatch(setErrorMessage(message))
 })
 
