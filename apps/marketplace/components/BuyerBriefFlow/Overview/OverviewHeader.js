@@ -2,9 +2,9 @@ import React from 'react'
 
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import ClosedDate from 'shared/ClosedDate'
-import { rootPath } from 'marketplace/routes'
 
 import OverviewHeaderDraftActionsList from './OverviewHeaderDraftActionsList'
+import OverviewHeaderClosedActionsList from './OverviewHeaderClosedActionsList'
 
 import styles from '../Overview.scss'
 
@@ -38,13 +38,7 @@ const OverviewHeader = props => {
             </strong>
           </div>
         )}
-        <ul className={styles.menuList}>
-          {isPublished && (
-            <li>
-              <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>View opportunity</a>
-            </li>
-          )}
-        </ul>
+        {isPublished && isClosed && <OverviewHeaderClosedActionsList brief={brief} />}
       </div>
     </div>
   )
