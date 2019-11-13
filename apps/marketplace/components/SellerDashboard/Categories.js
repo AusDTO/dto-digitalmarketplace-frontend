@@ -67,7 +67,12 @@ export class Categories extends Component {
       case 'draft':
         return (
           <React.Fragment>
-            <a href={`${rootPath}/seller-assessment/${category.evidence_id}/introduction`} className={styles.marginRight1}>Continue editing</a>
+            <a
+              href={`${rootPath}/seller-assessment/${category.evidence_id}/introduction`}
+              className={styles.marginRight1}
+            >
+              Continue editing
+            </a>
             {category.previous_evidence_id && (
               <a href={`${rootPath}/seller-assessment/${category.previous_evidence_id}/feedback`}>View feedback</a>
             )}
@@ -90,7 +95,9 @@ export class Categories extends Component {
       case 'rejected':
         return (
           <React.Fragment>
-            <a href={`${rootPath}/seller-assessment/${category.evidence_id}/feedback`} className={styles.marginRight1}>View feedback</a>
+            <a href={`${rootPath}/seller-assessment/${category.evidence_id}/feedback`} className={styles.marginRight1}>
+              View feedback
+            </a>
             <a href={`${rootPath}/seller-assessment/create/${category.id}`}>Resubmit</a>
           </React.Fragment>
         )
