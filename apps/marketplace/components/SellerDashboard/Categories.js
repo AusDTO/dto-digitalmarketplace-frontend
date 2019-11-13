@@ -19,7 +19,7 @@ export class Categories extends Component {
         return <div className={`${styles.unassessed}`}>-</div>
       case 'draft':
         if (category.previous_evidence_id) {
-          return <div className={`${mainStyles.badge} ${styles.red}`}>Unsuccessful</div>
+          return <div className={`${mainStyles.badge} ${mainStyles.red}`}>Unsuccessful</div>
         }
         return <div className={`${mainStyles.badge} ${mainStyles.yellow}`}>In draft</div>
       case 'submitted':
