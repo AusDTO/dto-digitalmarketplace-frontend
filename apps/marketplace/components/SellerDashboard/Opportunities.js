@@ -22,6 +22,10 @@ const getStatusBadge = o => (
           <div className={`${styles.badge} ${styles.lightBlue}`}>{o.responseCount} Submitted</div>
         )}
         {!o.numberOfSuppliers && <div className={`${styles.badge} ${styles.lightBlue}`}>Submitted</div>}
+      <React.Fragment>
+        <div className={`${styles.badge} ${styles.lightBlue}`}>
+          {o.numberOfSuppliers ? o.responseCount + ' ' : ''}Submitted
+        </div>
       </React.Fragment>
     )}
 
