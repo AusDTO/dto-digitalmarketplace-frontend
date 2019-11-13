@@ -2,9 +2,9 @@ import React from 'react'
 
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import ClosedDate from 'shared/ClosedDate'
-
-import { hasPermission } from 'marketplace/components/helpers'
 import { rootPath } from 'marketplace/routes'
+
+import OverviewHeaderDraftActionsList from './OverviewHeaderDraftActionsList'
 
 import styles from '../Overview.scss'
 
@@ -21,6 +21,15 @@ const OverviewHeader = props => {
         Overview
       </AUheading>
       <div className={styles.headerMenu}>
+        {!isPublished && (
+          <OverviewHeaderDraftActionsList
+            brief={brief}
+            handleDeleteClick={handleDeleteClick}
+            isPartOfTeam={isPartOfTeam}
+            isTeamLead={isTeamLead}
+            teams={teams}
+          />
+        )}
         {isPublished && !isClosed && (
           <div className={styles.headerMenuClosingTime}>
             Closing{' '}
@@ -34,30 +43,6 @@ const OverviewHeader = props => {
             <li>
               <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>View opportunity</a>
             </li>
-          )}
-          {!isPublished && (
-            <div>
-              <li>
-                {hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') ||
-                hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') ? (
-                  <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>Preview</a>
-                ) : (
-                  <a href={`${rootPath}/request-access/create_drafts`}>Preview</a>
-                )}
-              </li>
-              <li>
-                {hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') ||
-                hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') ? (
-                  <a href="#delete" onClick={handleDeleteClick} className={styles.headerMenuDelete}>
-                    Delete draft
-                  </a>
-                ) : (
-                  <a href={`${rootPath}/request-access/create_drafts`} className={styles.headerMenuDelete}>
-                    Delete draft
-                  </a>
-                )}
-              </li>
-            </div>
           )}
         </ul>
       </div>
