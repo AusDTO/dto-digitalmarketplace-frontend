@@ -1,9 +1,9 @@
 import React from 'react'
 
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import ClosedDate from 'shared/ClosedDate'
 
 import OverviewHeaderDraftActionsList from './OverviewHeaderDraftActionsList'
+import OverviewHeaderPublishedActionsList from './OverviewHeaderPublishedActionsList'
 import OverviewHeaderClosedActionsList from './OverviewHeaderClosedActionsList'
 
 import styles from '../Overview.scss'
@@ -30,14 +30,7 @@ const OverviewHeader = props => {
             teams={teams}
           />
         )}
-        {isPublished && !isClosed && (
-          <div className={styles.headerMenuClosingTime}>
-            Closing{' '}
-            <strong>
-              <ClosedDate countdown date={brief.dates.closing_time} />
-            </strong>
-          </div>
-        )}
+        {isPublished && !isClosed && <OverviewHeaderPublishedActionsList brief={brief} />}
         {isPublished && isClosed && <OverviewHeaderClosedActionsList brief={brief} />}
       </div>
     </div>
