@@ -9,6 +9,7 @@ import SendInvitePage from './pages/SendInvitePage'
 import BriefPage from './pages/BriefPage'
 import BriefResponseCreatePage from './pages/BriefResponseCreatePage'
 import BriefResponsePage from './pages/BriefResponsePage'
+import BriefResponsesPage from './pages/BriefResponsesPage'
 import LoginPage from './pages/LoginPage'
 import NotFound from './components/NotFound'
 import SellerDashboardPage from './pages/SellerDashboardPage'
@@ -72,6 +73,11 @@ export const Routes = () => (
       restrictedTo="supplier"
       path={`${rootPath}/brief/:briefId/ask-a-question`}
       component={AskQuestionPage}
+    />
+    <PrivateRoute
+      restrictedTo="supplier"
+      path={`${rootPath}/brief/:briefId/responses`}
+      component={BriefResponsesPage}
     />
     <PrivateRoute
       restrictedTo="supplier"

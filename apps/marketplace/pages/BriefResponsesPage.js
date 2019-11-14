@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
-import { withRouter, Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { createBriefResponse } from 'marketplace/actions/briefActions'
+import BriefResponses from 'marketplace/components/Brief/BriefResponses'
+import { loadBrief } from 'marketplace/actions/briefActions'
+import { setErrorMessage } from 'marketplace/actions/appActions'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 
-class BriefResponseCreatePage extends Component {
+class BriefResponsesPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      briefResponseId: null,
       loading: true
     }
   }
@@ -17,12 +18,17 @@ class BriefResponseCreatePage extends Component {
   componentDidMount() {
     const briefId = this.props.match.params.briefId
     if (briefId) {
-      this.props.createBriefResponse(briefId).then(response => {
+      this.props.loadInitialData(briefId).then(response => {
         if (response.status === 200) {
           this.setState({
-            briefResponseId: parseInt(response.data.id, 10),
             loading: false
           })
+          if (response.data.brief.lot !== 'specialist') {
+            this.props.setError('Only specialist briefs allow you to edit or add candidates')
+          }
+          if (response.data.briefResponses.length === 0) {
+            this.props.setError('You have not yet created a response for this opportunity')
+          }
         }
       })
     }
@@ -39,7 +45,7 @@ class BriefResponseCreatePage extends Component {
       }
       return (
         <ErrorBoxComponent
-          title="A problem occurred when loading the brief details"
+          title="A problem occurred"
           errorMessage={this.props.errorMessage}
           setFocus={setFocus}
           form={{}}
@@ -48,8 +54,8 @@ class BriefResponseCreatePage extends Component {
       )
     }
 
-    if (this.state.briefResponseId) {
-      return <Redirect to={`respond/${this.state.briefResponseId}`} />
+    if (!this.state.loading && this.props.briefResponses && this.props.brief) {
+      return <BriefResponses brief={this.props.brief} responses={this.props.briefResponses} />
     }
 
     return <LoadingIndicatorFullPage />
@@ -57,16 +63,19 @@ class BriefResponseCreatePage extends Component {
 }
 
 const mapStateToProps = state => ({
-  errorMessage: state.app.errorMessage
+  errorMessage: state.app.errorMessage,
+  briefResponses: state.brief.briefResponses,
+  brief: state.brief.brief
 })
 
 const mapDispatchToProps = dispatch => ({
-  createBriefResponse: briefId => dispatch(createBriefResponse(briefId))
+  loadInitialData: briefId => dispatch(loadBrief(briefId)),
+  setError: message => dispatch(setErrorMessage(message))
 })
 
 export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(BriefResponseCreatePage)
+  )(BriefResponsesPage)
 )

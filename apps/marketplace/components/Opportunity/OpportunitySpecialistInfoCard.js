@@ -235,7 +235,7 @@ const OpportunitySpecialistInfoCard = props => (
                 </div>
               ) : (
                 <React.Fragment>
-                  {!props.hasResponded && (
+                  {!props.hasResponded && props.sellerResponses === 0 && (
                     <p>
                       <a
                         href={`${rootPath}/brief/${props.briefId}/${
@@ -244,6 +244,13 @@ const OpportunitySpecialistInfoCard = props => (
                         className={`${styles.button} au-btn`}
                       >
                         Apply for opportunity
+                      </a>
+                    </p>
+                  )}
+                  {props.sellerResponses > 0 && (
+                    <p>
+                      <a href={`${rootPath}/brief/${props.briefId}/responses`} className={`${styles.button} au-btn`}>
+                        Edit or add candidates
                       </a>
                     </p>
                   )}

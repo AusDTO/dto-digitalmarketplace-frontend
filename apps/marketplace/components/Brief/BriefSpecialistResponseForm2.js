@@ -21,10 +21,24 @@ import { escapeQuote } from '../helpers'
 
 import styles from './BriefSpecialistResponseForm2.scss'
 
+const getSubmittedResponses = responses => responses.filter(response => response.status === 'submitted')
+
+const getCandidateIndex = (responses, briefResponseId) => {
+  let index = 1
+  responses.map((response, i) => {
+    if (response.id === parseInt(briefResponseId, 10)) {
+      index = i + 1
+    }
+    return true
+  })
+  return index
+}
+
 const BriefSpecialistResponseForm2 = ({
   briefResponseForm,
   model,
   brief,
+  briefResponse,
   briefResponses,
   briefResponseSuccess,
   app,
@@ -55,10 +69,10 @@ const BriefSpecialistResponseForm2 = ({
             <Redirect to={`${rootPath}/brief/${brief.id}/specialist2/respond`} />
           )}
           {briefResponseSuccess && !addAnotherSpecialist && briefResponseSave && (
-            <Redirect to={`${rootPath}/brief/${brief.id}/specialist2/respond/${briefResponseId}/saved`} />
+            <Redirect to={`${rootPath}/brief/${brief.id}/responses`} />
           )}
           {((briefResponseSuccess && !addAnotherSpecialist && !briefResponseSave) ||
-            (!briefResponseSave && briefResponses.length >= brief.numberOfSuppliers)) && (
+            (!briefResponseSave && getSubmittedResponses(briefResponses).length >= brief.numberOfSuppliers)) && (
             <Redirect to={`${rootPath}/brief/${brief.id}/specialist2/respond/${briefResponseId}/submitted`} />
           )}
           {!briefResponseSuccess && (
@@ -83,7 +97,7 @@ const BriefSpecialistResponseForm2 = ({
                 </div>
               )}
               <div className="au-display-lg">
-                <strong>Candidate {specialistNumber}</strong>
+                <strong>Candidate {getCandidateIndex(briefResponses, briefResponseId)}</strong>
               </div>
               <span>
                 {"Enter the candidate's full legal name as it appears on their driver's licence or passport."}
@@ -131,7 +145,7 @@ const BriefSpecialistResponseForm2 = ({
           ) : (
             <div>
               <div className={styles.stepTitle}>
-                Specialist {specialistNumber} of {brief.numberOfSuppliers}
+                Specialist {getCandidateIndex(briefResponses, briefResponseId)} of {brief.numberOfSuppliers}
               </div>
               <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
                 <h1 className="au-display-xl">{`${specialistGivenNames} ${specialistSurname}`}</h1>
@@ -431,7 +445,7 @@ const BriefSpecialistResponseForm2 = ({
                     <input
                       className="au-btn right-button-margin"
                       type="submit"
-                      value="Submit specialist"
+                      value={briefResponse.status === 'submitted' ? 'Update candidate' : 'Submit specialist'}
                       onClick={e => {
                         submitClicked(e)
                       }}

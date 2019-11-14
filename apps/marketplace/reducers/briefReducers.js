@@ -79,7 +79,7 @@ const briefReducer = (state = defaultBriefState, action) => {
         brief: action.brief,
         loadBriefSuccess: true,
         briefResponses: action.briefResponses,
-        specialistNumber: action.briefResponses.length + 1,
+        specialistNumber: action.briefResponses.length > 0 ? action.briefResponses.length : 1,
         loadedAt: new Date().valueOf(),
         oldWorkOrderCreator: action.oldWorkOrderCreator,
         questionsAsked: action.questionsAsked,
