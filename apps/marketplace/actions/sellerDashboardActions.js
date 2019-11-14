@@ -3,7 +3,8 @@ import {
   SELLER_DASHBOARD_SUCCESS,
   SELLER_DASHBOARD_TEAM_LOAD,
   SELLER_DASHBOARD_CATEGORIES_LOAD,
-  SELLER_DASHBOARD_REMOVE_USER_SUCCESS
+  SELLER_DASHBOARD_REMOVE_USER_SUCCESS,
+  SELLER_DASHBOARD_OPPORTUNITIES_LOAD
 } from '../constants/constants'
 import { GENERAL_ERROR } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
@@ -86,6 +87,32 @@ export const loadMessages = () => dispatch => {
       dispatch(
         load(SELLER_DASHBOARD_MESSAGES_LOAD, {
           items: response.data.messages.items
+        })
+      )
+    }
+    dispatch(sendingRequest(false))
+  })
+}
+
+export const loadOpportunities = () => dispatch => {
+  dispatch(sendingRequest(true))
+  dispatch(
+    load(SELLER_DASHBOARD_OPPORTUNITIES_LOAD, {
+      loading: true
+    })
+  )
+  dmapi({ url: `/supplier/dashboard/opportunities` }).then(response => {
+    if (!response || response.error) {
+      dispatch(setErrorMessage(GENERAL_ERROR))
+      dispatch(
+        load(SELLER_DASHBOARD_OPPORTUNITIES_LOAD, {
+          errors: true
+        })
+      )
+    } else {
+      dispatch(
+        load(SELLER_DASHBOARD_OPPORTUNITIES_LOAD, {
+          items: response.data.opportunities.items
         })
       )
     }
