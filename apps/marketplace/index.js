@@ -21,11 +21,11 @@ const App = () => (
     <BrowserRouter>
       <div id="Application">
         <SkipToLinks />
-        <header role="banner" className={styles.noPrint}>
+        <header role="banner" className={styles['no-print']}>
           <Header />
         </header>
         <main id="content" role="region" aria-live="polite">
-          <div className={`container ${styles.noPrintContainer}`}>
+          <div className={`container ${styles['no-print-container']}`}>
             <div className="row">
               <div className="col-xs-12">
                 <RootContainer />

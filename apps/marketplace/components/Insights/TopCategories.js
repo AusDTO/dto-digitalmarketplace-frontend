@@ -53,7 +53,7 @@ export class TopCategories extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className={`row ${styles.marginBottom1}`}>
+        <div className={`row ${styles['margin-bottom']}`}>
           <div className="col-xs-12 col-md-12">
             <AUheading size="lg" level="2">
               Top categories for opportunities posted since 29 August 2016

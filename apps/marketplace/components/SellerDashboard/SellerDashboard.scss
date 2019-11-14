@@ -1,3 +1,143 @@
+.container {
+  margin-bottom: 100px;
+}
+
+.noRecords {
+  margin-top: 24px;
+  margin-bottom: 48px;
+}
+
+.tableMargin {
+  margin-top: 2.5rem;
+}
+
+.confirmDelete {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.confirmDeleteButton {
+  margin-right: 10px;
+}
+
+.headingRow {
+  font-weight: bold;
+  color: #202751;
+  border-bottom: solid 3px #202751;
+  padding-bottom: 7px;
+}
+
+table.resultListing {
+  border-collapse: collapse;
+  margin-bottom: 40px;
+}
+
+table.resultListing tr {
+  border-bottom: solid 1px #bebebe;
+  color: #313131;
+}
+
+table.resultListing tr:nth-child(2n) {
+  background-color: #fafafa;
+}
+
+table.resultListing .colMessage {
+  width: 600px;
+  padding-left: 20px;
+}
+
+table.resultListing .colAction {
+  width: 200px;
+}
+
+table.resultListing .colAction a {
+  margin-right: 15px;
+  white-space: nowrap;
+}
+
+table.resultListing .colName {
+  width: 200px;
+  padding-left: 20px;
+}
+
+table.resultListing .colEmail {
+  width: 500px;
+  padding-left: 20px;
+}
+
+table.resultListing .colService {
+  width: 400px;
+  padding-left: 20px;
+}
+
+table.resultListing .colStatus {
+  width: 150px;
+}
+
+table.resultListing .colAssessmentAction {
+  width: 550px;
+}
+
+table.resultListing .colAssessmentAction a {
+  margin-right: 15px;
+  white-space: nowrap;
+}
+
+table.resultListing td, table.resultListing th {
+  text-align: left;
+  padding: 20px 40px 20px 0px;
+  box-sizing: content-box;
+}
+
+@media (max-width: 1195px) and (min-width: 900px) {
+  table.resultListing .colAction {
+    width: 140px;
+  }
+
+  table.resultListing td, table.resultListing th {
+    padding: 20px 30px 20px 0px;
+  }
+
+  table.resultListing .colAction a::after {
+    content: "\a";
+    white-space: pre;
+  }
+}
+
+@media (max-width: 899px) {
+  .header, table.resultListing {
+    margin-bottom: 20px;
+  }
+
+  table.resultListing thead, table.resultListing .empty, table.resultListing .colAuthor, .hideSmall {
+    display: none !important;
+  }
+
+  table.resultListing .colName {
+    padding-left: 5px;
+    max-width: 400px;
+  }
+
+  table.resultListing tr {
+    display: block;
+    padding: 15px 0px;
+  }
+
+  table.resultListing td {
+    display: block;
+    padding: 5px;
+  }
+
+  table.resultListing .colName, table.resultListing .colService, table.resultListing .colEmail, table.resultListing .colMessage, table.resultListing .colAction, table.resultListing .colStatus {
+    width: auto;
+    padding-left: 5px;
+  }
+
+  table.resultListing .colAction a::after {
+    content: "";
+  }
+}
+
 .notification {
   margin-left: 2px;
   border-radius: 50%;
@@ -9,9 +149,60 @@
   text-align: center;
 }
 
+.badge {
+  border-radius: 3px;
+  border: solid 3px #0A6FB6;
+  color: #0A6FB6;
+  padding: 2px 5px;
+  width: fit-content;
+  display: inline-block;
+}
+
+.badge.approved {
+  border: solid 3px rgba(0, 128, 0, 1);
+  color: rgba(0, 128, 0, 1);
+}
+
+.badge.rejected {
+  border: solid 3px #FF0000;
+  color: #FF0000;
+}
+
+.badge.submitted {
+  border: solid 3px rgba(54, 108, 148, 1);
+  color: black;
+}
+
+.badge.authorisedrepresentative {
+  position: relative;
+  display: inline;
+  margin-left: 0.5rem;
+}
+
+.unassessed {
+  color: #999999;
+}
+
+.disclaimer {
+  margin-top: 1em;
+}
+
+.lightText {
+  color: #6f6f6f;
+}
+
 nav.dashNav {
   border-bottom: 8px solid #f5f5f5;
   display: block;
+}
+
+.dashActions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dashActions > * {
+  flex: 1;
 }
 
 ul.menu {
@@ -45,4 +236,20 @@ ul.menu li a.active:hover {
 
 ul.menu li a.active {
   border-bottom: solid 8px #00698f;
+}
+
+@media (max-width: 991px) {
+  .profileActionRow {
+    margin-top: 2.5rem;
+  }
+
+  .profileActionRow a {
+    margin-top: 0.5rem;
+  }
+
+  .badge.authorisedrepresentative {
+    display: block;
+    margin-left: 0rem;
+    margin-top: 0.1rem;
+  }
 }

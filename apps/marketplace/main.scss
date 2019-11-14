@@ -1,100 +1,68 @@
-.marginBottom1 {
+.margin-bottom {
   margin-bottom: 1rem;
 }
 
-.marginBottom2 {
+.margin-bottom-2x {
   margin-bottom: 2rem;
 }
 
-.marginBottom3 {
+.margin-bottom-3x {
   margin-bottom: 3rem;
 }
 
-.marginBottom4 {
+.margin-bottom-4x {
   margin-bottom: 4rem;
 }
 
-.marginBottom5 {
+.margin-bottom-5x {
   margin-bottom: 5rem;
 }
 
-.marginLeft1 {
-  margin-left: 1rem;
-}
-
-.marginLeft2 {
-  margin-left: 2rem;
-}
-
-.marginRight1 {
+.margin-right {
   margin-right: 1rem;
 }
 
-.marginTop1 {
+.margin-top {
   margin-top: 1rem;
 }
 
-.marginTop2 {
+.margin-top-2x {
   margin-top: 2rem;
 }
 
-.marginTop3 {
+.margin-top-3x {
   margin-top: 3rem;
 }
 
 @media print { 
-  .noPrint, .noPrint * {
+  .no-print, .no-print * {
     display: none !important;
   }
 
-  .noPrintContainer {
+  .no-print-container {
     width: 100% !important;
   }
 }
 
-.rightAlignedBlock {
+.right-aligned-block {
   display: block;
   text-align: right;
 }
 
-.darkGrayText {
+.sub-text {
   color: #717171;
 }
 
-@media (max-width: 899px) {
-  .textAlignCenterSm {
-    text-align: center;
-
-    & div {
-      display: inline-block;
-    }
-  }
-
-  .textAlignLeftSm {
-    text-align: left;
-  }
-
-  .textAlignRightSm {
-    text-align: right;
-  }
+.text-align-center {
+  text-align: center;
 }
 
-@media (min-width: 900px) {
-  .textAlignCenter {
-    text-align: center;
+.text-align-left {
+  text-align: left;
+}
 
-    & div {
-      display: inline-block;
-    }
-  }
-
-  .textAlignLeft {
-    text-align: left;
-  }
-
-  .textAlignRight {
-    text-align: right;
-  }
+.text-align-right {
+  text-align: right;
 }
 
 .wrapper {
@@ -111,158 +79,3 @@
   content: "";
   display: table;
 }
-
-
-table.defaultStyle {
-  border-collapse: collapse;
-
-  & tr {
-    border-bottom: solid 1px #bebebe;
-    color: #313131;
-  }
-
-  & tr:nth-child(2n) {
-    background-color: #fafafa;
-  }
-
-  & td, & th {
-    padding: 20px 20px 20px 20px;
-    box-sizing: content-box;
-  }
-
-  & tr.headingRow {
-    font-weight: bold;
-    color: #202751;
-    border-bottom: solid 3px #202751;
-  }
-
-  & td.tableColumnWidth1 {
-    width: 2rem;
-  }
-
-  & td.tableColumnWidth2 {
-    width: 4rem;
-  }
-
-  & td.tableColumnWidth3 {
-    width: 6rem;
-  }
-
-  & td.tableColumnWidth4 {
-    width: 8rem;
-  }
-
-  & td.tableColumnWidth5 {
-    width: 10rem;
-  }
-
-  & td.tableColumnWidth6 {
-    width: 12rem;
-  }
-
-  & td.tableColumnWidth7 {
-    width: 14rem;
-  }
-
-  & td.tableColumnWidth8 {
-    width: 16rem;
-  }
-
-  & td.tableColumnWidth9 {
-    width: 18rem;
-  }
-
-  & td.tableColumnWidth10 {
-    width: 20rem;
-  }
-
-  & td.tableColumnWidth11 {
-    width: 22rem;
-  }
-
-  & td.tableColumnWidth12 {
-    width: 24rem;
-  }
-
-  @media (max-width: 899px) {
-    & {
-      & tr.headingRow {
-        display: none;
-      }
-
-      & tr {
-        display: block;
-        padding: 15px 0px;
-      }
-
-      & td {
-        display: block;
-        padding: 5px;
-      }
-
-      & td.tableColumnWidth1,
-      & td.tableColumnWidth2,
-      & td.tableColumnWidth3,
-      & td.tableColumnWidth4,
-      & td.tableColumnWidth5,
-      & td.tableColumnWidth6,
-      & td.tableColumnWidth7,
-      & td.tableColumnWidth8,
-      & td.tableColumnWidth9,
-      & td.tableColumnWidth10,
-      & td.tableColumnWidth11,
-      & td.tableColumnWidth12 {
-        width: auto;
-        padding-left: 5px;
-      }
-    } 
-  }
-}
-
-.badge {
-  border-radius: 3px;
-  border: solid 3px #244A60;
-  color: #244A60;
-  padding: 2px 5px;
-  width: max-content;
-  white-space: nowrap;
-
-  &.green {
-    border: solid 3px #00AC78;
-    color: #00855d;
-  }
-
-  &.yellow {
-    border: solid 3px #FFBF47;
-    color: #000000;
-  }
-
-  &.lightBlue {
-    border: solid 3px #1976CC;
-    color: #166AB8;
-  }
-
-  &.lightGrey {
-    border: solid 3px #C4C4C4;
-    color: #000000;
-  }
-
-  &.red {
-    border: solid 3px #FF0000;
-    color: #FF0000;
-  }
-
-  &.inline {
-    position: relative;
-    display: inline;
-  }
-  
-  @media (max-width: 899px) {
-    & {
-      &.inline {
-        display: inherit;
-      }
-    }
-  }
-}
-
