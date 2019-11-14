@@ -70,7 +70,7 @@ export class Opportunities extends Component {
                   <th scope="col" className={`${styles.tableColumnWidth10} ${styles.textAlignLeft}`}>
                     Name
                   </th>
-                  <th scope="col" className={`${styles.tableColumnWidth5} ${styles.textAlignLeft}`}>
+                  <th scope="col" className={`${styles.tableColumnWidth6} ${styles.textAlignLeft}`}>
                     Canberra closing time
                   </th>
                   <th scope="col" className={`${styles.tableColumnWidth1} ${styles.textAlignLeft}`}>
@@ -87,7 +87,7 @@ export class Opportunities extends Component {
                       <br />
                       {opportunity.lotName}
                     </td>
-                    <td className={styles.tableColumnWidth5}>
+                    <td className={styles.tableColumnWidth6}>
                       {withdrawn(opportunity) ? (
                         <span className={styles.darkGrayText}>The buyer has withdrawn this opportunity</span>
                       ) : (
