@@ -273,7 +273,7 @@ const Body = (props) => {
         </Row>
         <Row title="Signed agreement" show={true}>
           {signed_agreements && signed_agreements.map((sa, i) => {
-            const { htmlUrl, pdfUrl, signedAt } = sa['agreement']
+            const { htmlUrl, pdfUrl, signedAt } = sa
             return (
               <React.Fragment key={i}>
                 <div>
