@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { statusConvert } from 'marketplace/components/helpers'
 import BuyerDashboardBriefTable from './BuyerDashboardBriefTable'
 import styles from './BuyerDashboard.scss'
+import mainStyles from '../../main.scss'
 
 const BuyerDashboardAllBriefs = props => (
   <BuyerDashboardBriefTable
@@ -16,11 +17,10 @@ const BuyerDashboardAllBriefs = props => (
         item => (
           <td key={item.id} className={styles.colStatus}>
             <div
-              className={`${styles.badge}
-                ${(item.status === 'withdrawn' && styles.badgeGrey) ||
-                  (item.status === 'live' && styles.badgeBlue) ||
-                  (item.status === 'closed' && styles.badgeYellow) ||
-                  styles.badgeGrey}`}
+              className={`${mainStyles.badge}
+                ${(item.status === 'withdrawn' && mainStyles.lightGrey) ||
+                  (item.status === 'live' && mainStyles.lightBlue) ||
+                  (item.status === 'draft' && mainStyles.yellow)}`}
             >
               {statusConvert(item.status)}
             </div>
