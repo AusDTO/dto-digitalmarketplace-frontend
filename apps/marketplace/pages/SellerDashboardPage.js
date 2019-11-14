@@ -12,7 +12,7 @@ import { loadSellerDashboard, removeUser } from 'marketplace/actions/sellerDashb
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import { rootPath } from 'marketplace/routes'
-import styles from '../components/SellerDashboard/SellerDashboard.scss'
+import styles from '../main.scss'
 
 class SellerDashboardPage extends Component {
   constructor(props) {
@@ -91,7 +91,7 @@ class SellerDashboardPage extends Component {
           </div>
           {this.state.showRemoveAlert && (
             <div className="row">
-              <div className={`${styles.confirmDelete} col-xs-12 col-sm-7`}>
+              <div className={`${styles.marginTop1} col-xs-12 col-sm-7`}>
                 <AUpageAlert as="warning">
                   <p
                     ref={ref => {
@@ -100,12 +100,11 @@ class SellerDashboardPage extends Component {
                   >
                     {`Are you sure you want to remove ${this.state.toRemoveUser.name}?`}
                   </p>
-                  <br />
-                  <button className={`${styles.confirmDeleteButton} au-btn`} onClick={this.handleYesClick}>
+                  <button className={`${styles.marginRight1} ${styles.marginTop1} au-btn`} onClick={this.handleYesClick}>
                     Yes, remove
                   </button>
                   <button
-                    className={`au-btn au-btn--secondary`}
+                    className={`${styles.marginTop1} au-btn au-btn--secondary`}
                     onClick={this.handleNoClicked}
                     ref={ref => {
                       this.doNotRemove = ref
@@ -117,7 +116,7 @@ class SellerDashboardPage extends Component {
               </div>
             </div>
           )}
-          <div className={`${styles.profileActionRow} row`}>
+          <div className={`${styles.marginTop1} row`}>
             <div className="col-md-8" />
             <div className="col-xs-12 col-md-4">
               <a href={`/supplier/${supplier.code}`} className="au-btn right-button-margin">

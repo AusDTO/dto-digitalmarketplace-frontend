@@ -18,6 +18,14 @@
   margin-bottom: 5rem;
 }
 
+.marginLeft1 {
+  margin-left: 1rem;
+}
+
+.marginLeft2 {
+  margin-left: 2rem;
+}
+
 .marginRight1 {
   margin-right: 1rem;
 }
@@ -216,8 +224,8 @@ table.defaultStyle {
   border: solid 3px #244A60;
   color: #244A60;
   padding: 2px 5px;
-  margin: 5px 2px;
   width: max-content;
+  white-space: nowrap;
 
   &.green {
     border: solid 3px #00AC78;
@@ -242,6 +250,19 @@ table.defaultStyle {
   &.red {
     border: solid 3px #FF0000;
     color: #FF0000;
+  }
+
+  &.inline {
+    position: relative;
+    display: inline;
+  }
+  
+  @media (max-width: 899px) {
+    & {
+      &.inline {
+        display: inherit;
+      }
+    }
   }
 }
 
