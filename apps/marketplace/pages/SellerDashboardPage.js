@@ -100,7 +100,10 @@ class SellerDashboardPage extends Component {
                   >
                     {`Are you sure you want to remove ${this.state.toRemoveUser.name}?`}
                   </p>
-                  <button className={`${styles.marginRight1} ${styles.marginTop1} au-btn`} onClick={this.handleYesClick}>
+                  <button
+                    className={`${styles.marginRight1} ${styles.marginTop1} au-btn`}
+                    onClick={this.handleYesClick}
+                  >
                     Yes, remove
                   </button>
                   <button
