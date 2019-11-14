@@ -10,7 +10,7 @@ const CharacterCounter = props => {
   remaining = remaining >= 0 ? remaining : 0
 
   return (
-    <span className={`${styles.rightAlignedBlock} ${styles.darkGrayText}`}>
+    <span className={`${styles['right-aligned-block']} ${styles['sub-text']}`}>
       {remaining} character{remaining === 1 ? '' : 's'} left
     </span>
   )

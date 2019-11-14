@@ -48,7 +48,7 @@ export class WhoIsBuying extends Component {
     const totalEntities = this.props.insightData.agencyData.agencyTypeCounts.reduce((t, a) => t + a.count, 0)
     return (
       <React.Fragment>
-        <div className={`row ${styles.marginBottom1}`}>
+        <div className={`row ${styles['margin-bottom']}`}>
           <div className="col-xs-12 col-md-12">
             <AUheading size="lg" level="2">
               Who is buying?
@@ -56,7 +56,7 @@ export class WhoIsBuying extends Component {
           </div>
         </div>
         <div className="row">
-          <div className={`col-xs-12 col-md-7 ${styles.marginBottom1}`}>
+          <div className={`col-xs-12 col-md-7 ${styles['margin-bottom']}`}>
             <div className={insightStyles['chart-md-height-2x']}>
               {/* eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role */}
               <canvas ref={this.chartRef} aria-label="Who is buying?" role="img" />

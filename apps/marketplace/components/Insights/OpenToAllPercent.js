@@ -46,7 +46,7 @@ export class OpenToAllPercent extends Component {
   render() {
     return (
       <div className="row">
-        <div className={`col-xs-12 col-md-6 ${styles.marginBottom1}`}>
+        <div className={`col-xs-12 col-md-6 ${styles['margin-bottom']}`}>
           <div className={insightStyles['chart-md-height-1x']}>
             {/* eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role */}
             <canvas ref={this.chartRef} aria-label="Open to all opportunities percentage" role="img" />
