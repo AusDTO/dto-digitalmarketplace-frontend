@@ -7,6 +7,7 @@ import {
   BRIEF_RESPONSE_SUCCESS_RESET,
   BRIEF_RESPONSE_CREATE_SUCCESS,
   BRIEF_RESPONSE_SAVE,
+  BRIEF_RESPONSE_DELETE,
   BRIEF_RESPONSE_SAVE_RESET,
   BRIEF_SAVE_SUCCESS,
   BRIEF_RFX_CREATE_SUCCESS,
@@ -392,6 +393,29 @@ export const saveBriefResponse = (briefId, briefResponseId, model) => (dispatch,
       dispatch(handleErrorFailure(response))
     } else {
       dispatch(handleBriefResponseSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+  })
+}
+
+export const handleDeleteBriefResponse = () => ({
+  type: BRIEF_RESPONSE_DELETE
+})
+
+export const deleteBriefResponse = briefResponseId => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: `/brief-response/${briefResponseId}/withdraw`,
+    method: 'PUT',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleDeleteBriefResponse())
     }
     dispatch(sendingRequest(false))
   })
