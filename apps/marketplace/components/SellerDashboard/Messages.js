@@ -4,7 +4,7 @@ import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingInd
 import differenceInSeconds from 'date-fns/difference_in_seconds'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import { loadMessages } from 'marketplace/actions/sellerDashboardActions'
-import styles from './SellerDashboard.scss'
+import styles from '../../main.scss'
 
 export class Messages extends Component {
   componentDidMount() {
@@ -107,16 +107,16 @@ export class Messages extends Component {
     }
 
     return (
-      <div className={`${styles.tableMargin} row`}>
+      <div className={`${styles.marginTop2} row`}>
         <div className="col-xs-12">
           {items && items.length > 0 ? (
-            <table className={`${styles.resultListing} col-xs-12`}>
+            <table className={`${styles.defaultStyle} ${styles.marginBottom3} col-xs-12`}>
               <thead>
                 <tr className={styles.headingRow}>
-                  <th scope="col" className={styles.colMessage}>
+                  <th scope="col" className={`${styles.tableColumnWidth10} ${styles.textAlignLeft}`}>
                     Notification
                   </th>
-                  <th scope="col" className={styles.colAction}>
+                  <th scope="col" className={`${styles.tableColumnWidth2} ${styles.textAlignLeft}`}>
                     Actions
                   </th>
                 </tr>
@@ -124,14 +124,14 @@ export class Messages extends Component {
               <tbody>
                 {items.map((message, i) => (
                   <tr key={`message.${message.message}`}>
-                    <td className={styles.colMessage}>{this.formatMessage(message, i)}</td>
-                    <td className={styles.colAction}>{this.messageIdToAction(message, i)}</td>
+                    <td className={styles.tableColumnWidth10}>{this.formatMessage(message, i)}</td>
+                    <td className={styles.tableColumnWidth2}>{this.messageIdToAction(message, i)}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           ) : (
-            <div className={styles.noRecords}>No notifications</div>
+            <div className={`${styles.marginTop3} ${styles.marginBottom3}`}>No notifications</div>
           )}
         </div>
       </div>

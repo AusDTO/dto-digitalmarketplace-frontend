@@ -272,14 +272,17 @@ const Body = (props) => {
           </ul>
         </Row>
         <Row title="Signed agreement" show={true}>
-          {signed_agreements && signed_agreements.map((sa, i) => (
-            <React.Fragment key={i}>
-              {sa['agreement'] && <div>
-                <a href={sa['agreement']['htmlUrl'] ? sa['agreement']['htmlUrl'] : sa['agreement']['pdfUrl']}>Master Agreement</a>{' '}
-                signed on {format(new Date(sa['signedAt']), 'DD/MM/YYYY')}
-              </div>}
-            </React.Fragment> 
-          ))}
+          {signed_agreements && signed_agreements.map((sa, i) => {
+            const { htmlUrl, pdfUrl, signedAt } = sa
+            return (
+              <React.Fragment key={i}>
+                <div>
+                  <a href={htmlUrl ? htmlUrl : pdfUrl}>Master Agreement</a>{' '}
+                  signed on {format(new Date(signedAt), 'DD/MM/YYYY')}
+                </div>
+              </React.Fragment>
+            )
+          })}
         </Row>
         <Row title="Documents provided to the Marketplace" show={!isEmpty(documents)}>
           <table className="content-table" styleName="content-table">

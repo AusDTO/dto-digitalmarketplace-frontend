@@ -10,27 +10,23 @@ const Header = props => (
         <div className="col-xs-12 col-md-12">
           <nav className={styles.dashNav}>
             <ul className={styles.menu}>
+              <li>
+                <NavLink id="opportunities-link" to="/" activeClassName={styles.active} exact>
+                  Opportunities
+                </NavLink>
+              </li>
               {props.showCategoriesTab && (
-                <React.Fragment>
-                  <li>
-                    <NavLink id="team-link" to="/" activeClassName={styles.active} exact>
-                      Categories
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink id="team-link" to="/team" activeClassName={styles.active} exact>
-                      Team
-                    </NavLink>
-                  </li>
-                </React.Fragment>
-              )}
-              {!props.showCategoriesTab && (
                 <li>
-                  <NavLink id="team-link" to="/" activeClassName={styles.active} exact>
-                    Team
+                  <NavLink id="categories-link" to="/categories" activeClassName={styles.active} exact>
+                    Categories
                   </NavLink>
                 </li>
               )}
+              <li>
+                <NavLink id="team-link" to="/team" activeClassName={styles.active} exact>
+                  Team
+                </NavLink>
+              </li>
               <li>
                 <NavLink id="notifications-link" to="/notifications" activeClassName={styles.active} exact>
                   Notifications
