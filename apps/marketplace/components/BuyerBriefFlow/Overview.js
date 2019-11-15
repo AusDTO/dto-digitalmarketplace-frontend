@@ -131,7 +131,7 @@ class Overview extends Component {
           : 0
 
       const briefResponseCount = briefResponses && briefResponses.length > 0 ? briefResponses.length : 0
-      let flowName = mapLot(flow).toLowerCase()
+      const flowName = mapLot(flow).toLowerCase()
 
       return (
         <div>
