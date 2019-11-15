@@ -132,12 +132,12 @@ class BriefResponses extends Component {
                   </tbody>
                 </table>
               )}
-              {this.props.responses.length === 0 && <p>You do not have any responses for this brief.</p>}
+              {this.props.responses.length === 0 && <p>You do not have any candidates for this brief.</p>}
             </article>
           </div>
         </div>
         <div className="row">
-          <div className="col-xs-12">
+          <div className={`${styles.bottomButtons} col-xs-12`}>
             {this.props.brief.numberOfSuppliers &&
               this.props.responses.length < parseInt(this.props.brief.numberOfSuppliers, 10) && (
                 <a href={`${rootPath}/brief/${this.props.brief.id}/specialist2/respond`} className="au-btn">

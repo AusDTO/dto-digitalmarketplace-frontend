@@ -18,7 +18,6 @@ div.deleteAlert {
 table.resultListing {
   border-collapse: collapse;
   margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
 }
 
 table.resultListing tr {
@@ -91,4 +90,8 @@ table.resultListing td, table.resultListing th {
   table.resultListing .colName, table.resultListing .colAction {
     width: auto;
   }
+}
+
+.bottomButtons {
+  margin-top: 2.5rem;
 }
