@@ -169,7 +169,6 @@ class PublishAnswerPage extends Component {
                         }}
                       />
                       <input className="au-btn right-button-margin" type="submit" value="Publish answer" />
-                      <a href={`${rootPath}/buyer-dashboard`}>Return to dashboard</a>
                     </Form>
                   </article>
                 </div>
