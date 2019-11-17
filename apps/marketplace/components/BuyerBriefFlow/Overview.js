@@ -12,6 +12,7 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import ClosedDate from 'shared/ClosedDate'
 import styles from './Overview.scss'
+import { mapLot } from '../helpers'
 
 const createWorkOrderRender = (brief, flow, isPublished, isClosed, oldWorkOrderCreator) => {
   if (isPublished && isClosed) {
@@ -130,8 +131,7 @@ class Overview extends Component {
           : 0
 
       const briefResponseCount = briefResponses && briefResponses.length > 0 ? briefResponses.length : 0
-      let flowName = flow !== 'specialist' ? flow.toUpperCase() : 'specialist'
-      flowName = flow === 'training2' ? 'training' : flowName
+      const flowName = mapLot(flow).toLowerCase()
 
       return (
         <div>
