@@ -31,6 +31,8 @@ const mapResponseTypeToReducer = {
   specialist2: BriefResponseSpecialistReducer
 }
 
+const getSubmittedResponses = responses => responses.filter(response => response.status === 'submitted')
+
 class BriefResponsePage extends Component {
   constructor(props) {
     super(props)
@@ -202,6 +204,7 @@ class BriefResponsePage extends Component {
             render={() => (
               <BriefSpecialistResponseSubmitted2
                 setFocus={setFocus}
+                getSubmittedResponses={getSubmittedResponses}
                 submitClicked={this.state.submitClicked}
                 handleSubmit={values => this.handleFeedbackSubmit(values)}
                 {...this.props}
@@ -214,6 +217,7 @@ class BriefResponsePage extends Component {
               <span>
                 {loadBriefSuccess ? (
                   <BriefSpecialistResponseForm2
+                    getSubmittedResponses={getSubmittedResponses}
                     briefResponseSave={briefResponseSave}
                     briefResponseId={briefResponseId}
                     submitClicked={this.onSpecialistSubmitClicked}

@@ -7,7 +7,15 @@ import PropTypes from 'prop-types'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import BriefResponseSubmittedSummary2 from './BriefResponseSubmittedSummary2'
 
-const BriefSpecialistResponseSubmitted2 = ({ setFocus, briefResponses, brief, match, app, handleSubmit }) => (
+const BriefSpecialistResponseSubmitted2 = ({
+  setFocus,
+  getSubmittedResponses,
+  briefResponses,
+  brief,
+  match,
+  app,
+  handleSubmit
+}) => (
   <div className="row">
     <DocumentTitle title="Brief Response Submitted - Digital Marketplace">
       <div className="col-sm-push-2 col-sm-8 col-xs-12" role="region" aria-live="polite">
@@ -15,21 +23,21 @@ const BriefSpecialistResponseSubmitted2 = ({ setFocus, briefResponses, brief, ma
           <AUpageAlert as="success" setFocus={setFocus}>
             <h1 className="au-display-lg">
               <strong>
-                You have submitted {briefResponses.length} specialist{briefResponses.length === 1 ? '' : 's'} for this
-                opportunity.
+                You have submitted {getSubmittedResponses(briefResponses).length} specialist
+                {getSubmittedResponses(briefResponses).length === 1 ? '' : 's'} for this opportunity.
               </strong>
             </h1>
             <p>
-              {briefResponses.length < parseInt(brief.numberOfSuppliers, 10)
+              {getSubmittedResponses(briefResponses).length < parseInt(brief.numberOfSuppliers, 10)
                 ? `You can submit ${parseInt(brief.numberOfSuppliers, 10) -
-                    briefResponses.length} more before the closing date (${format(
+                    getSubmittedResponses(briefResponses).length} more before the closing date (${format(
                     new Date(brief.applicationsClosedAt),
                     'MMMM Do, YYYY'
                   )})`
                 : `This opportunity closes on ${format(new Date(brief.applicationsClosedAt), 'MMMM Do, YYYY')}`}
             </p>
           </AUpageAlert>
-          {briefResponses.length < parseInt(brief.numberOfSuppliers, 10) && (
+          {getSubmittedResponses(briefResponses).length < parseInt(brief.numberOfSuppliers, 10) && (
             <p>
               <a className="au-btn right-button-margin" href={`/2/brief/${match.params.briefId}/specialist2/respond`}>
                 Add another specialist

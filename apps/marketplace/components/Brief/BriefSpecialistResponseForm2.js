@@ -21,8 +21,6 @@ import { escapeQuote } from '../helpers'
 
 import styles from './BriefSpecialistResponseForm2.scss'
 
-const getSubmittedResponses = responses => responses.filter(response => response.status === 'submitted')
-
 const getCandidateIndex = (responses, briefResponseId) => {
   let index = 1
   responses.map((response, i) => {
@@ -41,6 +39,7 @@ const BriefSpecialistResponseForm2 = ({
   briefResponse,
   briefResponses,
   briefResponseSuccess,
+  getSubmittedResponses,
   app,
   submitClicked,
   saveClicked,
@@ -450,7 +449,12 @@ const BriefSpecialistResponseForm2 = ({
                         submitClicked(e)
                       }}
                     />
-                    {specialistNumber < brief.numberOfSuppliers && (
+                    {briefResponse.status === 'submitted' && (
+                      <a className="au-btn au-btn--tertiary" href={`${rootPath}/brief/${brief.id}/responses`}>
+                        Cancel all updates
+                      </a>
+                    )}
+                    {specialistNumber < brief.numberOfSuppliers && briefResponse.status === 'draft' && (
                       <input
                         className="au-btn au-btn--secondary"
                         type="submit"
@@ -460,14 +464,16 @@ const BriefSpecialistResponseForm2 = ({
                         }}
                       />
                     )}
-                    <input
-                      className="au-btn au-btn--tertiary"
-                      type="button"
-                      value="Save and return later"
-                      onClick={e => {
-                        saveClicked(e)
-                      }}
-                    />
+                    {briefResponse.status === 'draft' && (
+                      <input
+                        className="au-btn au-btn--tertiary"
+                        type="button"
+                        value="Save and return later"
+                        onClick={e => {
+                          saveClicked(e)
+                        }}
+                      />
+                    )}
                   </span>
                 )}
               </Form>
