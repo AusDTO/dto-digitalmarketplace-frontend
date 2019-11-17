@@ -100,7 +100,12 @@ export class Opportunities extends Component {
               </tbody>
             </table>
           ) : (
-            <div className={`${styles.marginTop3} ${styles.marginBottom3}`}>Apply for opportunities</div>
+            <div className={`${styles.marginTop1} ${styles.marginBottom3} ${styles.marginLeft1}`}>
+              <p>Your submitted responses will appear here.</p>
+              <p>
+                <a href="/2/opportunities">View and apply for opportunities</a>
+              </p>
+            </div>
           )}
         </div>
       </div>
