@@ -10,7 +10,7 @@ export const GENERAL_ERROR = 'The Digital Marketplace encountered an error.'
 export const ACCOUNT_TAKEN =
   'An account with this email domain already exists. Someone in your team may have already created an account with the Marketplace.'
 export const UNABLE_TO_RESET = 'The Digital Marketplace encountered an error trying to reset your password.'
-export const UNABLE_TO_SEND = 'The Digital Marketplace encountered an error trying to the reset password email.'
+export const UNABLE_TO_SEND = 'The Digital Marketplace encountered an error trying to send the reset password email.'
 export const LOGIN_FAILED =
   "Make sure you've entered the right email address and password. Accounts are locked after 5 failed attempts."
 export const EMAIL_NOT_WHITELISTED =
