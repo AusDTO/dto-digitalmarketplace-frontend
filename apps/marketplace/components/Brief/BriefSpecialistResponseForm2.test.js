@@ -7,6 +7,8 @@ import BriefSpecialistResponseForm2 from './BriefSpecialistResponseForm2'
 
 Enzyme.configure({ adapter: new Adapter() })
 
+jest.mock('shared/Icon/_getIcons')
+
 const store = configureStore()
 
 describe('BriefSpecialistResponseForm2', () => {
@@ -16,6 +18,23 @@ describe('BriefSpecialistResponseForm2', () => {
         <BriefSpecialistResponseForm2
           brief={{ title: 'test brief', applicationsClosedAt: '1/15/2018', numberOfSuppliers: '3' }}
           specialistNumber={1}
+          briefResponseForm={{
+            attachedDocumentURL: [],
+            availability: '',
+            specialistName: '',
+            specialistGivenNames: '',
+            specialistSurname: '',
+            dayRate: '',
+            dayRateExcludingGST: '',
+            hourRate: '',
+            hourRateExcludingGST: '',
+            essentialRequirements: {},
+            niceToHaveRequirements: {},
+            respondToEmailAddress: '',
+            visaStatus: '',
+            securityClearance: '',
+            previouslyWorked: ''
+          }}
         />
       </Provider>
     )
@@ -43,6 +62,23 @@ describe('BriefSpecialistResponseForm2', () => {
         <BriefSpecialistResponseForm2
           brief={{ title: 'test brief', applicationsClosedAt: '1/15/2018', numberOfSuppliers: '1' }}
           specialistNumber={1}
+          briefResponseForm={{
+            attachedDocumentURL: [],
+            availability: '',
+            specialistName: '',
+            specialistGivenNames: '',
+            specialistSurname: '',
+            dayRate: '',
+            dayRateExcludingGST: '',
+            hourRate: '',
+            hourRateExcludingGST: '',
+            essentialRequirements: {},
+            niceToHaveRequirements: {},
+            respondToEmailAddress: '',
+            visaStatus: '',
+            securityClearance: '',
+            previouslyWorked: ''
+          }}
         />
       </Provider>
     )
@@ -67,7 +103,26 @@ describe('BriefSpecialistResponseForm2', () => {
   test('displays progress when responses added', () => {
     const tree = mount(
       <Provider store={store}>
-        <BriefSpecialistResponseForm2 briefResponses={[{}]} />
+        <BriefSpecialistResponseForm2
+          briefResponses={[{}]}
+          briefResponseForm={{
+            attachedDocumentURL: [],
+            availability: '',
+            specialistName: '',
+            specialistGivenNames: '',
+            specialistSurname: '',
+            dayRate: '',
+            dayRateExcludingGST: '',
+            hourRate: '',
+            hourRateExcludingGST: '',
+            essentialRequirements: {},
+            niceToHaveRequirements: {},
+            respondToEmailAddress: '',
+            visaStatus: '',
+            securityClearance: '',
+            previouslyWorked: ''
+          }}
+        />
       </Provider>
     )
     expect(
@@ -87,6 +142,24 @@ describe('BriefSpecialistResponseForm2', () => {
           specialistNumber={1}
           app={{ supplierCode: 1 }}
           brief={{ numberOfSuppliers: '3' }}
+          briefResponse={{ status: 'submitted' }}
+          briefResponseForm={{
+            attachedDocumentURL: [],
+            availability: '',
+            specialistName: '',
+            specialistGivenNames: '',
+            specialistSurname: '',
+            dayRate: '',
+            dayRateExcludingGST: '',
+            hourRate: '',
+            hourRateExcludingGST: '',
+            essentialRequirements: {},
+            niceToHaveRequirements: {},
+            respondToEmailAddress: '',
+            visaStatus: '',
+            securityClearance: '',
+            previouslyWorked: ''
+          }}
         />
       </Provider>
     )
@@ -108,13 +181,13 @@ describe('BriefSpecialistResponseForm2', () => {
         .find('input.au-btn')
         .first()
         .props().value
-    ).toEqual('Submit specialist')
+    ).toEqual('Update candidate')
     expect(
       tree
-        .find('input.au-btn')
-        .at(1)
-        .props().value
-    ).toEqual('Submit and add another')
+        .find('a.au-btn')
+        .first()
+        .text()
+    ).toEqual('Cancel all updates')
   })
 
   test('does not display add another button on last specialist', () => {
@@ -126,6 +199,24 @@ describe('BriefSpecialistResponseForm2', () => {
           specialistNumber={3}
           app={{ supplierCode: 1 }}
           brief={{ numberOfSuppliers: '3' }}
+          briefResponse={{ status: 'submitted', id: 1 }}
+          briefResponseForm={{
+            attachedDocumentURL: [],
+            availability: '',
+            specialistName: '',
+            specialistGivenNames: '',
+            specialistSurname: '',
+            dayRate: '',
+            dayRateExcludingGST: '',
+            hourRate: '',
+            hourRateExcludingGST: '',
+            essentialRequirements: {},
+            niceToHaveRequirements: {},
+            respondToEmailAddress: '',
+            visaStatus: '',
+            securityClearance: '',
+            previouslyWorked: ''
+          }}
         />
       </Provider>
     )
@@ -135,13 +226,13 @@ describe('BriefSpecialistResponseForm2', () => {
         .find('div.stepTitle')
         .first()
         .text()
-    ).toEqual('Specialist 3 of 3')
+    ).toEqual('Specialist 1 of 3')
     expect(tree.find('input.au-btn').length).toEqual(1)
     expect(
       tree
         .find('input.au-btn')
         .first()
         .props().value
-    ).toEqual('Submit specialist')
+    ).toEqual('Update candidate')
   })
 })

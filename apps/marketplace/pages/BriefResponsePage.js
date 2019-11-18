@@ -30,8 +30,6 @@ const mapResponseTypeToReducer = {
   specialist2: BriefResponseSpecialistReducer
 }
 
-const getSubmittedResponses = responses => responses.filter(response => response.status === 'submitted')
-
 class BriefResponsePage extends Component {
   constructor(props) {
     super(props)
@@ -200,7 +198,6 @@ class BriefResponsePage extends Component {
               <BriefSpecialistResponseSubmitted2
                 setFocus={setFocus}
                 briefResponseStatus={this.props.briefResponse.status}
-                getSubmittedResponses={getSubmittedResponses}
                 submitClicked={this.state.submitClicked}
                 handleSubmit={values => this.handleFeedbackSubmit(values)}
                 {...this.props}

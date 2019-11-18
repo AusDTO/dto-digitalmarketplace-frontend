@@ -172,7 +172,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates appliedYou have submitted 1 candidate. You can submit 5 more before the opportunity closes.Apply for opportunity'
+      'candidates appliedYou have submitted 1 candidate. You can submit 5 more before the opportunity closes.Edit or add candidates'
     )
   })
 
@@ -200,7 +200,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates appliedYou have submitted 3 candidates. You can submit 3 more before the opportunity closes.Apply for opportunity'
+      'candidates appliedYou have submitted 3 candidates. You can submit 3 more before the opportunity closes.Edit or add candidates'
     )
   })
 
@@ -254,7 +254,7 @@ describe('OpportunitySpecialistInfoCard', () => {
           hasSignedCurrentAgreement: true
         })
       ).text()
-    ).toEqual('candidates appliedSellers can submit up to 6 candidates for this role.')
+    ).toEqual('candidates appliedSellers can submit up to 6 candidates for this role.Edit or add candidates')
   })
 
   test('not able to apply because seller is applicant', () => {

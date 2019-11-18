@@ -18,7 +18,7 @@ class BriefResponseCreatePage extends Component {
     const briefId = this.props.match.params.briefId
     if (briefId) {
       this.props.createBriefResponse(briefId).then(response => {
-        if (response.status === 200) {
+        if (response.status === 201) {
           this.setState({
             briefResponseId: parseInt(response.data.id, 10),
             loading: false

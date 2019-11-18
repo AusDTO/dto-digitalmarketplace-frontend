@@ -7,9 +7,10 @@ import PropTypes from 'prop-types'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import BriefResponseSubmittedSummary2 from './BriefResponseSubmittedSummary2'
 
+const getSubmittedResponses = responses => responses.filter(response => response.status === 'submitted')
+
 const BriefSpecialistResponseSubmitted2 = ({
   setFocus,
-  getSubmittedResponses,
   briefResponses,
   briefResponseStatus,
   specialistGivenNames,
