@@ -9,7 +9,17 @@ import OverviewHeaderClosedActionsList from './OverviewHeaderClosedActionsList'
 import styles from '../Overview.scss'
 
 const OverviewHeader = props => {
-  const { brief, flowName, handleDeleteClick, isClosed, isPublished, isPartOfTeam, isTeamLead, teams } = props
+  const {
+    brief,
+    briefResponses,
+    flowName,
+    handleDeleteClick,
+    isClosed,
+    isPublished,
+    isPartOfTeam,
+    isTeamLead,
+    teams
+  } = props
 
   return (
     <div className={styles.header}>
@@ -30,7 +40,9 @@ const OverviewHeader = props => {
             teams={teams}
           />
         )}
-        {isPublished && !isClosed && <OverviewHeaderPublishedActionsList brief={brief} />}
+        {isPublished && !isClosed && (
+          <OverviewHeaderPublishedActionsList brief={brief} briefResponses={briefResponses} />
+        )}
         {isPublished && isClosed && <OverviewHeaderClosedActionsList brief={brief} />}
       </div>
     </div>

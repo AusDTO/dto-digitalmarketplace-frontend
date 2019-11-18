@@ -137,6 +137,7 @@ class Overview extends Component {
         <div>
           <OverviewHeader
             brief={brief}
+            briefResponses={briefResponses}
             flowName={flowName}
             handleDeleteClick={this.handleDeleteClick}
             isClosed={isClosed}
