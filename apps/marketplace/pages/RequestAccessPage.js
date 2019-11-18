@@ -94,7 +94,7 @@ class RequestAccessPage extends Component {
                     from the team lead to view it.
                   </p>
                   <br />
-                  <AUbutton as="primary" className={styles['margin-right']} onClick={e => this.onRequestAccessClick(e)}>
+                  <AUbutton as="primary" className={styles.marginRight1} onClick={e => this.onRequestAccessClick(e)}>
                     Request access
                   </AUbutton>
                   <a href={`${rootPath}/buyer-dashboard`}>Return to dashboard</a>
