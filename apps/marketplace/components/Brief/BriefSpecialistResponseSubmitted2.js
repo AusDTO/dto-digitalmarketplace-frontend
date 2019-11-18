@@ -11,6 +11,9 @@ const BriefSpecialistResponseSubmitted2 = ({
   setFocus,
   getSubmittedResponses,
   briefResponses,
+  briefResponseStatus,
+  specialistGivenNames,
+  specialistSurname,
   brief,
   match,
   app,
@@ -21,12 +24,21 @@ const BriefSpecialistResponseSubmitted2 = ({
       <div className="col-sm-push-2 col-sm-8 col-xs-12" role="region" aria-live="polite">
         <article role="main">
           <AUpageAlert as="success" setFocus={setFocus}>
-            <h1 className="au-display-lg">
-              <strong>
-                You have submitted {getSubmittedResponses(briefResponses).length} specialist
-                {getSubmittedResponses(briefResponses).length === 1 ? '' : 's'} for this opportunity.
-              </strong>
-            </h1>
+            {specialistGivenNames && specialistSurname && briefResponseStatus && (
+              <h1 className="au-display-lg">
+                {briefResponseStatus === 'draft' && (
+                  <span>
+                    You have submitted {getSubmittedResponses(briefResponses).length} specialist
+                    {getSubmittedResponses(briefResponses).length === 1 ? '' : 's'} for this opportunity.
+                  </span>
+                )}
+                {briefResponseStatus === 'submitted' && (
+                  <span>
+                    You have successfully updated {specialistGivenNames} {specialistSurname}&apos;s response
+                  </span>
+                )}
+              </h1>
+            )}
             <p>
               {getSubmittedResponses(briefResponses).length < parseInt(brief.numberOfSuppliers, 10)
                 ? `You can submit ${parseInt(brief.numberOfSuppliers, 10) -
@@ -65,6 +77,9 @@ const BriefSpecialistResponseSubmitted2 = ({
 BriefSpecialistResponseSubmitted2.defaultProps = {
   setFocus: () => {},
   briefResponses: [],
+  briefResponseStatus: '',
+  specialistGivenNames: '',
+  specialistSurname: '',
   brief: {},
   app: {},
   handleSubmit: () => {},
@@ -75,6 +90,9 @@ BriefSpecialistResponseSubmitted2.propTypes = {
   setFocus: PropTypes.func.isRequired,
   brief: PropTypes.object.isRequired,
   briefResponses: PropTypes.array.isRequired,
+  briefResponseStatus: PropTypes.string,
+  specialistGivenNames: PropTypes.string,
+  specialistSurname: PropTypes.string,
   app: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   match: PropTypes.object.isRequired

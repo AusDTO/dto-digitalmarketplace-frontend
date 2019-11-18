@@ -39,7 +39,6 @@ const BriefSpecialistResponseForm2 = ({
   briefResponse,
   briefResponses,
   briefResponseSuccess,
-  getSubmittedResponses,
   app,
   submitClicked,
   saveClicked,
@@ -70,8 +69,7 @@ const BriefSpecialistResponseForm2 = ({
           {briefResponseSuccess && !addAnotherSpecialist && briefResponseSave && (
             <Redirect to={`${rootPath}/brief/${brief.id}/responses`} />
           )}
-          {((briefResponseSuccess && !addAnotherSpecialist && !briefResponseSave) ||
-            (!briefResponseSave && getSubmittedResponses(briefResponses).length >= brief.numberOfSuppliers)) && (
+          {briefResponseSuccess && !addAnotherSpecialist && !briefResponseSave && (
             <Redirect to={`${rootPath}/brief/${brief.id}/specialist2/respond/${briefResponseId}/submitted`} />
           )}
           {!briefResponseSuccess && (

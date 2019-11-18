@@ -151,7 +151,8 @@ const briefReducer = (state = defaultBriefState, action) => {
     case BRIEF_RESPONSE_SUCCESS:
       return {
         ...state,
-        briefResponseSuccess: true
+        briefResponseSuccess: true,
+        briefResponses: [...state.briefResponses.filter(r => r.id !== action.briefResponse.id), action.briefResponse]
       }
 
     case BRIEF_RESPONSE_SUCCESS_RESET:

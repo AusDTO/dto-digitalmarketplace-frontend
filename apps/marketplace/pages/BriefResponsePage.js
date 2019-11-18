@@ -15,13 +15,12 @@ import {
   handleSaveBriefResponse,
   saveBriefResponse,
   resetBriefResponseSave,
-  handleFeedbackSubmit,
   handleBriefNameSubmit,
   handleBriefNameSplitSubmit,
   addAnotherSpecialistSubmit,
   handleSpecialistNumberSubmit
 } from 'marketplace/actions/briefActions'
-import { setErrorMessage } from 'marketplace/actions/appActions'
+import { setErrorMessage, handleFeedbackSubmit } from 'marketplace/actions/appActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { BriefResponseSpecialistReducer } from 'marketplace/reducers'
 
@@ -196,14 +195,11 @@ class BriefResponsePage extends Component {
       <div className="brief-page">
         <Switch>
           <Route
-            path={`${baseURL}/:briefResponseType/respond/${briefResponseId}/saved`}
-            render={() => <span>Saved!</span>}
-          />
-          <Route
             path={`${baseURL}/specialist2/respond/${briefResponseId}/submitted`}
             render={() => (
               <BriefSpecialistResponseSubmitted2
                 setFocus={setFocus}
+                briefResponseStatus={this.props.briefResponse.status}
                 getSubmittedResponses={getSubmittedResponses}
                 submitClicked={this.state.submitClicked}
                 handleSubmit={values => this.handleFeedbackSubmit(values)}
@@ -217,7 +213,6 @@ class BriefResponsePage extends Component {
               <span>
                 {loadBriefSuccess ? (
                   <BriefSpecialistResponseForm2
-                    getSubmittedResponses={getSubmittedResponses}
                     briefResponseSave={briefResponseSave}
                     briefResponseId={briefResponseId}
                     submitClicked={this.onSpecialistSubmitClicked}
