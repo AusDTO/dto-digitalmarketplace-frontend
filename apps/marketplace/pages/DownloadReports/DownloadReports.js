@@ -82,7 +82,7 @@ export class DownloadReports extends Component {
           }}
         />
         <RadioList
-          className={styles['margin-top-2x']}
+          className={styles.marginTop2}
           model={`${model}.reportType`}
           name="reportType"
           id="reportType"
@@ -122,7 +122,7 @@ export class DownloadReports extends Component {
         {this.props[model].reportType !== 'sellersCatalogue' && (
           <React.Fragment>
             <DateControl
-              className={styles['margin-top']}
+              className={styles.marginTop1}
               id="startDate"
               model={`${model}.startDate`}
               onDateChange={date => this.handleDateChange('startDate', date)}
@@ -134,7 +134,7 @@ export class DownloadReports extends Component {
               }}
             />
             <DateControl
-              className={`${styles['margin-top-2x']} ${styles['margin-bottom-3x']}`}
+              className={`${styles.marginTop2} ${styles.marginBottom3}`}
               id="endDate"
               model={`${model}.endDate`}
               onDateChange={date => this.handleDateChange('endDate', date)}
@@ -148,7 +148,7 @@ export class DownloadReports extends Component {
           </React.Fragment>
         )}
         <AUcheckbox
-          className={`${styles['margin-bottom-2x']}`}
+          className={`${styles.marginBottom2}`}
           id="cb-declaration1"
           name="procurementAccessCB"
           checked={this.state.acceptEnabled}

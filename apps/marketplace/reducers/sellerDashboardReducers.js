@@ -2,14 +2,16 @@ import {
   SELLER_DASHBOARD_SUCCESS,
   SELLER_DASHBOARD_MESSAGES_LOAD,
   SELLER_DASHBOARD_CATEGORIES_LOAD,
-  SELLER_DASHBOARD_TEAM_LOAD
+  SELLER_DASHBOARD_TEAM_LOAD,
+  SELLER_DASHBOARD_OPPORTUNITIES_LOAD
 } from '../constants/constants'
 
 const defaultUserState = {
   supplier: { supplier: null, loading: false, errors: false, loadedAt: null },
   messages: { items: [], loading: false, errors: false, loadedAt: null },
   team: { items: [], loading: false, errors: false, loadedAt: null },
-  categories: { items: [], loading: false, errors: false, loadedAt: null }
+  categories: { items: [], loading: false, errors: false, loadedAt: null },
+  opportunities: { items: [], loading: false, errors: false, loadedAt: null }
 }
 
 const sellerDashboardReducer = (state = defaultUserState, action) => {
@@ -33,6 +35,11 @@ const sellerDashboardReducer = (state = defaultUserState, action) => {
       return {
         ...state,
         team: action.data
+      }
+    case SELLER_DASHBOARD_OPPORTUNITIES_LOAD:
+      return {
+        ...state,
+        opportunities: action.data
       }
 
     default:
