@@ -29,7 +29,9 @@ const CloseOpportunity = props => {
       </ul>
       <div className={styles.marginTop2}>
         <AUbutton>Close opportunity</AUbutton>
-        <AUbutton as="tertiary">Cancel request</AUbutton>
+        <AUbutton as="tertiary" link={`${rootPath}/brief/${brief.id}/overview/${brief.lot}`}>
+          Cancel request
+        </AUbutton>
       </div>
     </React.Fragment>
   )
