@@ -41,7 +41,13 @@ const OverviewHeader = props => {
           />
         )}
         {isPublished && !isClosed && (
-          <OverviewHeaderPublishedActionsList brief={brief} briefResponses={briefResponses} />
+          <OverviewHeaderPublishedActionsList
+            brief={brief}
+            briefResponses={briefResponses}
+            isPartOfTeam={isPartOfTeam}
+            isTeamLead={isTeamLead}
+            teams={teams}
+          />
         )}
         {isPublished && isClosed && <OverviewHeaderClosedActionsList brief={brief} />}
       </div>
