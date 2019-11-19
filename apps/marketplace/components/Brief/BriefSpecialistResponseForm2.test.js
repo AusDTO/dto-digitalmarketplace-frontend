@@ -142,7 +142,7 @@ describe('BriefSpecialistResponseForm2', () => {
           specialistNumber={1}
           app={{ supplierCode: 1 }}
           brief={{ numberOfSuppliers: '3' }}
-          briefResponseStatus='submitted'
+          briefResponseStatus="submitted"
           briefResponseForm={{
             attachedDocumentURL: [],
             availability: '',
@@ -199,7 +199,7 @@ describe('BriefSpecialistResponseForm2', () => {
           specialistNumber={3}
           app={{ supplierCode: 1 }}
           brief={{ numberOfSuppliers: '3' }}
-          briefResponseStatus='submitted'
+          briefResponseStatus="submitted"
           briefResponseForm={{
             attachedDocumentURL: [],
             availability: '',
