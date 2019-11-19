@@ -12,7 +12,10 @@ const OverviewHeaderPublishedActionsList = props => {
   let respondedSellerCode = null
   let showCloseLink = false
 
-  if (brief.sellerSelector === 'oneSeller') {
+  if (
+    ['rfx', 'specialist', 'training2'].includes(brief.lot) &&
+    ['oneSeller', 'someSellers'].includes(brief.sellerSelector)
+  ) {
     const invitedSellerCodes = Object.keys(brief.sellers)
 
     if (invitedSellerCodes.length === 1) {
