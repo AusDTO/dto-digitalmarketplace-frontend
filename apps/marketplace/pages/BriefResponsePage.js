@@ -6,10 +6,11 @@ import formProps from 'shared/form/formPropsSelector'
 import ErrorBox from 'shared/form/ErrorBox'
 import BriefSpecialistResponseForm2 from 'marketplace/components/Brief/BriefSpecialistResponseForm2'
 import BriefSpecialistResponseSubmitted2 from 'marketplace/components/Brief/BriefSpecialistResponseSubmitted2'
+import BriefRFXResponseForm from 'marketplace/components/Brief/BriefRFXResponseForm'
+import BriefRFXResponseSubmitted from 'marketplace/components/Brief/BriefRFXResponseSubmitted'
 import BriefResponseSupplierError from 'marketplace/components/Brief/BriefResponseSupplierError'
 import {
   loadBrief,
-  handleBriefResponseSubmit,
   resetBriefResponseSuccess,
   loadBriefResponse,
   handleSaveBriefResponse,
@@ -22,12 +23,13 @@ import {
 } from 'marketplace/actions/briefActions'
 import { setErrorMessage, handleFeedbackSubmit } from 'marketplace/actions/appActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { BriefResponseSpecialistReducer } from 'marketplace/reducers'
+import { BriefResponseSpecialistReducer, BriefResponseRFXReducer } from 'marketplace/reducers'
 
 const model = 'briefResponseForm'
 
 const mapResponseTypeToReducer = {
-  specialist2: BriefResponseSpecialistReducer
+  specialist2: BriefResponseSpecialistReducer,
+  rfx: BriefResponseRFXReducer
 }
 
 class BriefResponsePage extends Component {
@@ -36,7 +38,8 @@ class BriefResponsePage extends Component {
     this.state = {
       loadingText: null,
       otherDocumentFileCount: 2,
-      loading: true
+      loading: true,
+      submitClicked: null
     }
   }
 
@@ -75,6 +78,13 @@ class BriefResponsePage extends Component {
     }
   }
 
+  onSubmitClicked = () => {
+    this.setState({
+      submitClicked: new Date().valueOf()
+    })
+    this.props.changeModel(`${this.props.model}.submit`, true)
+  }
+
   onAddAnotherClicked = () => {
     this.props.changeModel(`${this.props.model}.submit`, true)
     this.props.changeModel(`${this.props.model}.addAnother`, true)
@@ -91,6 +101,10 @@ class BriefResponsePage extends Component {
         this.props.changeModel(`${this.props.model}.submit`, false)
         this.props.changeModel(`${this.props.model}.addAnother`, false)
         this.handleSpecialistBriefResponseSubmit(this.props[this.props.model])
+        break
+      case 'rfx':
+        this.props.changeModel(`${this.props.model}.submit`, false)
+        this.handleBriefResponseSubmit(this.props[this.props.model])
         break
       default:
         break
@@ -158,6 +172,23 @@ class BriefResponsePage extends Component {
     window.scrollTo(0, 0)
   }
 
+  handleBriefResponseSubmit(values) {
+    const { brief, match } = this.props
+    const briefResponseType = this.props.match.params.briefResponseType
+    const submitData = { ...mapResponseTypeToReducer[briefResponseType] }
+    Object.keys(values).map(property => {
+      if (Object.keys(mapResponseTypeToReducer[briefResponseType]).includes(property)) {
+        submitData[property] = values[property]
+      }
+      return true
+    })
+    if (!values.submit) {
+      this.props.handleSaveBriefResponse()
+    }
+    this.props.saveBriefResponse(brief.id, match.params.briefResponseId, submitData)
+    window.scrollTo(0, 0)
+  }
+
   resetForm() {
     this.props.addAnotherSpecialistSubmit(false)
     this.props.resetBriefResponseSuccess()
@@ -165,7 +196,7 @@ class BriefResponsePage extends Component {
   }
 
   render() {
-    const { loadBriefSuccess, briefResponseSave, match, app } = this.props
+    const { loadBriefSuccess, briefResponseSave, briefResponse, match, app } = this.props
     const baseURL = match.url
       .split('/')
       .splice(0, 4)
@@ -207,11 +238,12 @@ class BriefResponsePage extends Component {
           <Route
             path={`${baseURL}/specialist2/respond/${briefResponseId}`}
             render={() => (
-              <span>
+              <React.Fragment>
                 {loadBriefSuccess ? (
                   <BriefSpecialistResponseForm2
                     briefResponseSave={briefResponseSave}
                     briefResponseId={briefResponseId}
+                    briefResponseStatus={briefResponse.status}
                     submitClicked={this.onSpecialistSubmitClicked}
                     saveClicked={this.onSaveClicked}
                     addAnotherClicked={this.onAddAnotherClicked}
@@ -240,7 +272,42 @@ class BriefResponsePage extends Component {
                 ) : (
                   errorScreen
                 )}{' '}
-              </span>
+              </React.Fragment>
+            )}
+          />
+          <Route
+            path={`${baseURL}/rfx/respond/${briefResponseId}/submitted`}
+            render={() => (
+              <BriefRFXResponseSubmitted
+                setFocus={setFocus}
+                briefResponseStatus={this.props.briefResponse.status}
+                submitClicked={this.state.submitClicked}
+                handleSubmit={values => this.handleFeedbackSubmit(values)}
+                {...this.props}
+              />
+            )}
+          />
+          <Route
+            path={`${baseURL}/rfx/respond/${briefResponseId}`}
+            render={() => (
+              <React.Fragment>
+                {loadBriefSuccess ? (
+                  <BriefRFXResponseForm
+                    submitClicked={this.onSubmitClicked}
+                    saveClicked={this.onSaveClicked}
+                    briefResponseSave={briefResponseSave}
+                    briefResponseId={briefResponseId}
+                    briefResponseStatus={briefResponse.status}
+                    handleSubmit={values => this.handleBriefResponseSubmit(values)}
+                    setFocus={setFocus}
+                    {...this.props}
+                    loadingText={this.state.loadingText}
+                    uploading={uploading => this.setState({ loadingText: uploading ? 'Uploading' : null })}
+                  />
+                ) : (
+                  errorScreen
+                )}
+              </React.Fragment>
             )}
           />
         </Switch>
@@ -271,7 +338,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   handleFeedbackSubmit: data => dispatch(handleFeedbackSubmit(data)),
-  handleBriefResponseSubmit: (briefId, data) => dispatch(handleBriefResponseSubmit(briefId, data)),
   handleSaveBriefResponse: () => dispatch(handleSaveBriefResponse()),
   resetBriefResponseSuccess: () => dispatch(resetBriefResponseSuccess()),
   resetBriefResponseSave: () => dispatch(resetBriefResponseSave()),

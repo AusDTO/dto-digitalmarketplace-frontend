@@ -173,6 +173,13 @@ export const BriefResponseSpecialistReducer = {
   previouslyWorked: ''
 }
 
+export const BriefResponseRFXReducer = {
+  submit: false,
+  attachedDocumentURL: [],
+  respondToEmailAddress: '',
+  respondToPhone: ''
+}
+
 export const SellerEditFormReducer = {
   supplier: {
     name: '',

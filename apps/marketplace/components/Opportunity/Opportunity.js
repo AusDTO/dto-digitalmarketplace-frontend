@@ -106,6 +106,8 @@ const Opportunity = props => {
     briefResponseCount,
     invitedSellerCount,
     supplierBriefResponseCount,
+    supplierBriefResponseId,
+    supplierBriefResponseIsDraft,
     canRespond,
     isAssessedForCategory,
     isAssessedForAnyCategory,
@@ -619,6 +621,8 @@ const Opportunity = props => {
             />
           ) : (
             <OpportunityInfoCard
+              supplierBriefResponseId={supplierBriefResponseId}
+              supplierBriefResponseIsDraft={supplierBriefResponseIsDraft}
               sellersInvited={invitedSellerCount}
               sellersApplied={briefResponseCount}
               isOpen={brief.status === 'live'}
@@ -664,6 +668,8 @@ Opportunity.defaultProps = {
   briefResponseCount: 0,
   invitedSellerCount: 0,
   supplierBriefResponseCount: 0,
+  supplierBriefResponseId: 0,
+  supplierBriefResponseIsDraft: false,
   canRespond: false,
   isInvited: false,
   isAssessedForCategory: false,
@@ -738,6 +744,8 @@ Opportunity.propTypes = {
   briefResponseCount: PropTypes.number,
   invitedSellerCount: PropTypes.number,
   supplierBriefResponseCount: PropTypes.number,
+  supplierBriefResponseId: PropTypes.number,
+  supplierBriefResponseIsDraft: PropTypes.bool,
   canRespond: PropTypes.bool,
   isInvited: PropTypes.bool,
   isAssessedForCategory: PropTypes.bool,

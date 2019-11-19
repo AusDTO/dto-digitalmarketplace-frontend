@@ -9,8 +9,6 @@ import formProps from 'shared/form/formPropsSelector'
 import BriefResponseForm from 'marketplace/components/Brief/BriefResponseForm'
 import BriefTrainingResponseForm from 'marketplace/components/Brief/BriefTrainingResponseForm'
 import BriefTrainingResponseSubmitted from 'marketplace/components/Brief/BriefTrainingResponseSubmitted'
-import BriefRFXResponseForm from 'marketplace/components/Brief/BriefRFXResponseForm'
-import BriefRFXResponseSubmitted from 'marketplace/components/Brief/BriefRFXResponseSubmitted'
 import BriefTrainingResponseForm2 from 'marketplace/components/Brief/BriefTrainingResponseForm2'
 import BriefTrainingResponseSubmitted2 from 'marketplace/components/Brief/BriefTrainingResponseSubmitted2'
 import BriefATMResponseForm from 'marketplace/components/Brief/BriefATMResponseForm'
@@ -191,36 +189,6 @@ class BriefPage extends Component {
                 <span>
                   {loadBriefSuccess ? (
                     <BriefTrainingResponseForm2
-                      submitClicked={this.onSubmitClicked}
-                      handleSubmit={values => this.handleBriefResponseSubmit(values)}
-                      setFocus={setFocus}
-                      {...this.props}
-                      loadingText={this.state.loadingText}
-                      uploading={uploading => this.setState({ loadingText: uploading ? 'Uploading' : null })}
-                    />
-                  ) : (
-                    errorScreen
-                  )}{' '}
-                </span>
-              )}
-            />
-            <Route
-              path={`${match.url}/rfx/respond/submitted`}
-              render={() => (
-                <BriefRFXResponseSubmitted
-                  setFocus={setFocus}
-                  submitClicked={this.state.submitClicked}
-                  handleSubmit={values => this.handleFeedbackSubmit(values)}
-                  {...this.props}
-                />
-              )}
-            />
-            <Route
-              path={`${match.url}/rfx/respond`}
-              render={() => (
-                <span>
-                  {loadBriefSuccess ? (
-                    <BriefRFXResponseForm
                       submitClicked={this.onSubmitClicked}
                       handleSubmit={values => this.handleBriefResponseSubmit(values)}
                       setFocus={setFocus}

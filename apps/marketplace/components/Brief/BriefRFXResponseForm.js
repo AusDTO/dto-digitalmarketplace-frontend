@@ -13,6 +13,7 @@ import FilesInput from 'shared/form/FilesInput'
 import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import range from 'lodash/range'
 import dmapi from 'marketplace/services/apiClient'
+import { rootPath } from 'marketplace/routes'
 import styles from './BriefRFXResponseForm.scss'
 
 export class BriefRFXResponseForm extends Component {
@@ -39,9 +40,11 @@ export class BriefRFXResponseForm extends Component {
   }
 
   updateRequiredFileCount() {
-    this.setState({
-      fileCount: this.getBriefEvaluationTypesForUpload().length + 1
-    })
+    let fileCount = this.getBriefEvaluationTypesForUpload().length + 1
+    if (this.props.briefResponseForm.attachedDocumentURL.length > fileCount) {
+      fileCount = this.props.briefResponseForm.attachedDocumentURL.length
+    }
+    this.setState({ fileCount })
   }
 
   addFileField() {
@@ -62,9 +65,12 @@ export class BriefRFXResponseForm extends Component {
       submitClicked,
       handleSubmit,
       setFocus,
-      match,
       uploading,
-      loadingText
+      loadingText,
+      briefResponseStatus,
+      saveClicked,
+      briefResponseForm,
+      briefResponseId
     } = this.props
 
     return (
@@ -72,7 +78,9 @@ export class BriefRFXResponseForm extends Component {
         <DocumentTitle title="Brief Response - Digital Marketplace">
           <div className="col-sm-push-2 col-sm-8 col-xs-12">
             <article role="main">
-              {briefResponseSuccess && <Redirect to={`${match.url}/rfx/respond/submitted`} />}
+              {briefResponseSuccess && (
+                <Redirect to={`${rootPath}/brief/${brief.id}/rfx/respond/${briefResponseId}/submitted`} />
+              )}
               {!briefResponseSuccess && (
                 <ErrorBox
                   title="There was a problem submitting your response"
@@ -183,7 +191,11 @@ export class BriefRFXResponseForm extends Component {
                     htmlFor="respondToEmailAddress"
                     label="Email"
                     description="All communication about your application will be sent to this address."
-                    defaultValue={app.emailAddress}
+                    defaultValue={
+                      briefResponseForm.respondToEmailAddress
+                        ? briefResponseForm.respondToEmailAddress
+                        : app.emailAddress
+                    }
                     maxLength={100}
                     validators={{
                       required,
@@ -199,6 +211,7 @@ export class BriefRFXResponseForm extends Component {
                     name="respondToPhone"
                     id="respondToPhone"
                     htmlFor="respondToPhone"
+                    defaultValue={briefResponseForm.respondToPhone}
                     label="Phone number"
                     maxLength={100}
                     validators={{
@@ -214,9 +227,7 @@ export class BriefRFXResponseForm extends Component {
                     Once you submit this application
                   </AUheading>
                   <ul>
-                    <li>
-                      You <strong>cannot</strong> edit your application after submitting.
-                    </li>
+                    <li>You can edit your application after submitting.</li>
                     <li>
                       The buyer will receive your response once the opportunity has closed on{' '}
                       {format(new Date(brief.applicationsClosedAt), 'dddd D MMMM YYYY')}.
@@ -226,7 +237,30 @@ export class BriefRFXResponseForm extends Component {
                     <LoadingButton text={loadingText || 'Loading'} />
                   ) : (
                     <p>
-                      <input className="au-btn" type="submit" value="Submit application" onClick={submitClicked} />
+                      {briefResponseStatus === 'submitted' && (
+                        <input className="au-btn" type="submit" value="Update application" onClick={submitClicked} />
+                      )}
+                      {briefResponseStatus === 'submitted' && (
+                        <a
+                          className="au-btn au-btn--tertiary"
+                          href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}
+                        >
+                          Cancel all updates
+                        </a>
+                      )}
+                      {briefResponseStatus === 'draft' && (
+                        <input className="au-btn" type="submit" value="Submit application" onClick={submitClicked} />
+                      )}
+                      {briefResponseStatus === 'draft' && (
+                        <input
+                          className="au-btn au-btn--tertiary"
+                          type="button"
+                          value="Save and return later"
+                          onClick={e => {
+                            saveClicked(e)
+                          }}
+                        />
+                      )}
                     </p>
                   )}
                 </Form>
@@ -249,7 +283,9 @@ export class BriefRFXResponseForm extends Component {
 BriefRFXResponseForm.defaultProps = {
   submitClicked: null,
   handleSubmit: null,
-  loadingText: null
+  loadingText: null,
+  briefResponseStatus: '',
+  briefResponseId: ''
 }
 
 BriefRFXResponseForm.propTypes = {
@@ -259,7 +295,9 @@ BriefRFXResponseForm.propTypes = {
   model: PropTypes.string.isRequired,
   submitClicked: PropTypes.func,
   handleSubmit: PropTypes.func,
-  loadingText: PropTypes.string
+  loadingText: PropTypes.string,
+  briefResponseStatus: PropTypes.string,
+  briefResponseId: PropTypes.string
 }
 
 export default BriefRFXResponseForm

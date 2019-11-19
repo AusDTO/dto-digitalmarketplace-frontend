@@ -36,7 +36,7 @@ const BriefSpecialistResponseForm2 = ({
   briefResponseForm,
   model,
   brief,
-  briefResponse,
+  briefResponseStatus,
   briefResponses,
   briefResponseSuccess,
   app,
@@ -442,17 +442,17 @@ const BriefSpecialistResponseForm2 = ({
                     <input
                       className="au-btn right-button-margin"
                       type="submit"
-                      value={briefResponse.status === 'submitted' ? 'Update candidate' : 'Submit specialist'}
+                      value={briefResponseStatus === 'submitted' ? 'Update candidate' : 'Submit specialist'}
                       onClick={e => {
                         submitClicked(e)
                       }}
                     />
-                    {briefResponse.status === 'submitted' && (
+                    {briefResponseStatus === 'submitted' && (
                       <a className="au-btn au-btn--tertiary" href={`${rootPath}/brief/${brief.id}/responses`}>
                         Cancel all updates
                       </a>
                     )}
-                    {specialistNumber < brief.numberOfSuppliers && briefResponse.status === 'draft' && (
+                    {specialistNumber < brief.numberOfSuppliers && briefResponseStatus === 'draft' && (
                       <input
                         className="au-btn au-btn--secondary"
                         type="submit"
@@ -462,7 +462,7 @@ const BriefSpecialistResponseForm2 = ({
                         }}
                       />
                     )}
-                    {briefResponse.status === 'draft' && (
+                    {briefResponseStatus === 'draft' && (
                       <input
                         className="au-btn au-btn--tertiary"
                         type="button"
@@ -488,6 +488,7 @@ BriefSpecialistResponseForm2.defaultProps = {
   brief: {},
   briefResponses: [],
   briefResponseSuccess: false,
+  briefResponseStatus: '',
   app: {},
   addAnotherSpecialist: false,
   briefResponseSave: false,
@@ -512,6 +513,7 @@ BriefSpecialistResponseForm2.propTypes = {
   brief: PropTypes.object.isRequired,
   briefResponses: PropTypes.array.isRequired,
   briefResponseSuccess: PropTypes.bool,
+  briefResponseStatus: PropTypes.string,
   app: PropTypes.object.isRequired,
   setFocus: PropTypes.func,
   submitClicked: PropTypes.func,
