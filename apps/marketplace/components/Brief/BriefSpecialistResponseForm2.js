@@ -40,8 +40,8 @@ const BriefSpecialistResponseForm2 = ({
   briefResponses,
   briefResponseSuccess,
   app,
-  submitClicked,
-  saveClicked,
+  onSubmitClicked,
+  onSaveClicked,
   currentlySending,
   handleSubmit,
   setFocus,
@@ -50,7 +50,7 @@ const BriefSpecialistResponseForm2 = ({
   specialistGivenNames,
   specialistSurname,
   specialistNumber,
-  addAnotherClicked,
+  onAddAnotherClicked,
   addAnotherSpecialist,
   briefResponseSave,
   uploading,
@@ -76,7 +76,7 @@ const BriefSpecialistResponseForm2 = ({
             <ErrorBox
               title="There was a problem submitting your response"
               model={model}
-              submitClicked={submitClicked}
+              submitClicked={onSubmitClicked}
               setFocus={setFocus}
             />
           )}
@@ -444,7 +444,7 @@ const BriefSpecialistResponseForm2 = ({
                       type="submit"
                       value={briefResponseStatus === 'submitted' ? 'Update candidate' : 'Submit specialist'}
                       onClick={e => {
-                        submitClicked(e)
+                        onSubmitClicked(e)
                       }}
                     />
                     {briefResponseStatus === 'submitted' && (
@@ -458,7 +458,7 @@ const BriefSpecialistResponseForm2 = ({
                         type="submit"
                         value="Submit and add another"
                         onClick={e => {
-                          addAnotherClicked(e)
+                          onAddAnotherClicked(e)
                         }}
                       />
                     )}
@@ -468,7 +468,7 @@ const BriefSpecialistResponseForm2 = ({
                         type="button"
                         value="Save and return later"
                         onClick={e => {
-                          saveClicked(e)
+                          onSaveClicked(e)
                         }}
                       />
                     )}
@@ -495,12 +495,12 @@ BriefSpecialistResponseForm2.defaultProps = {
   specialistGivenNames: null,
   specialistSurname: null,
   setFocus: null,
-  submitClicked: () => {},
-  saveClicked: () => {},
+  onSubmitClicked: () => {},
+  onSaveClicked: () => {},
   handleSubmit: null,
   handleNameSubmit: null,
   specialistNumber: null,
-  addAnotherClicked: null,
+  onAddAnotherClicked: null,
   uploading: () => null,
   loadingText: null,
   onRateChange: () => null,
@@ -516,14 +516,14 @@ BriefSpecialistResponseForm2.propTypes = {
   briefResponseStatus: PropTypes.string,
   app: PropTypes.object.isRequired,
   setFocus: PropTypes.func,
-  submitClicked: PropTypes.func,
-  saveClicked: PropTypes.func,
+  onSubmitClicked: PropTypes.func,
+  onSaveClicked: PropTypes.func,
   handleSubmit: PropTypes.func,
   handleNameSubmit: PropTypes.func,
   specialistGivenNames: PropTypes.string,
   specialistSurname: PropTypes.string,
   specialistNumber: PropTypes.number,
-  addAnotherClicked: PropTypes.func,
+  onAddAnotherClicked: PropTypes.func,
   addAnotherSpecialist: PropTypes.bool.isRequired,
   briefResponseSave: PropTypes.bool,
   uploading: PropTypes.func,

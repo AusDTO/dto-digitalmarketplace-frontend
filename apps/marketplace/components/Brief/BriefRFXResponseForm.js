@@ -81,13 +81,13 @@ export class BriefRFXResponseForm extends Component {
       briefResponseSave,
       app,
       currentlySending,
-      submitClicked,
+      onSubmitClicked,
       handleSubmit,
       setFocus,
       uploading,
       loadingText,
       briefResponseStatus,
-      saveClicked,
+      onSaveClicked,
       briefResponseForm,
       briefResponseId
     } = this.props
@@ -105,7 +105,7 @@ export class BriefRFXResponseForm extends Component {
                 <ErrorBox
                   title="There was a problem submitting your response"
                   model={model}
-                  submitClicked={submitClicked}
+                  onSubmitClicked={onSubmitClicked}
                   setFocus={setFocus}
                 />
               )}
@@ -284,7 +284,7 @@ export class BriefRFXResponseForm extends Component {
                   ) : (
                     <p>
                       {briefResponseStatus === 'submitted' && (
-                        <input className="au-btn" type="submit" value="Update application" onClick={submitClicked} />
+                        <input className="au-btn" type="submit" value="Update application" onClick={onSubmitClicked} />
                       )}
                       {briefResponseStatus === 'submitted' && (
                         <a className="au-btn au-btn--tertiary" href={`${rootPath}/seller-dashboard`}>
@@ -292,7 +292,7 @@ export class BriefRFXResponseForm extends Component {
                         </a>
                       )}
                       {briefResponseStatus === 'draft' && (
-                        <input className="au-btn" type="submit" value="Submit application" onClick={submitClicked} />
+                        <input className="au-btn" type="submit" value="Submit application" onClick={onSubmitClicked} />
                       )}
                       {briefResponseStatus === 'draft' && (
                         <input
@@ -300,7 +300,7 @@ export class BriefRFXResponseForm extends Component {
                           type="button"
                           value="Save and return later"
                           onClick={e => {
-                            saveClicked(e)
+                            onSaveClicked(e)
                           }}
                         />
                       )}
@@ -324,12 +324,13 @@ export class BriefRFXResponseForm extends Component {
 }
 
 BriefRFXResponseForm.defaultProps = {
-  submitClicked: null,
+  onSubmitClicked: null,
   handleSubmit: null,
   loadingText: null,
   briefResponseStatus: '',
   briefResponseId: '',
-  onBriefResponseDelete: () => {}
+  onBriefResponseDelete: () => {},
+  onSaveClicked: () => {}
 }
 
 BriefRFXResponseForm.propTypes = {
@@ -337,12 +338,13 @@ BriefRFXResponseForm.propTypes = {
     briefResponseSuccess: PropTypes.bool
   }).isRequired,
   model: PropTypes.string.isRequired,
-  submitClicked: PropTypes.func,
+  onSubmitClicked: PropTypes.func,
   handleSubmit: PropTypes.func,
   loadingText: PropTypes.string,
   briefResponseStatus: PropTypes.string,
   briefResponseId: PropTypes.string,
-  onBriefResponseDelete: PropTypes.func
+  onBriefResponseDelete: PropTypes.func,
+  onSaveClicked: PropTypes.func
 }
 
 export default BriefRFXResponseForm

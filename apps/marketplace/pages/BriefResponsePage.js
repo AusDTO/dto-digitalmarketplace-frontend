@@ -280,9 +280,9 @@ class BriefResponsePage extends Component {
                     briefResponseSave={briefResponseSave}
                     briefResponseId={briefResponseId}
                     briefResponseStatus={briefResponse.status}
-                    submitClicked={this.handleSpecialistSubmitClicked}
-                    saveClicked={this.handleSaveClicked}
-                    addAnotherClicked={this.handleAddAnotherClicked}
+                    onSubmitClicked={this.handleSpecialistSubmitClicked}
+                    onSaveClicked={this.handleSaveClicked}
+                    onAddAnotherClicked={this.handleAddAnotherClicked}
                     handleNameSubmit={(givenNames, surname) => this.handleBriefNameSplitSubmit(givenNames, surname)}
                     handleSubmit={values => this.handleSpecialistBriefResponseSubmit(values)}
                     setFocus={setFocus}
@@ -332,8 +332,8 @@ class BriefResponsePage extends Component {
                 {loadBriefSuccess ? (
                   <BriefRFXResponseForm
                     onBriefResponseDelete={this.handleBriefResponseDelete}
-                    submitClicked={this.handleSubmitClicked}
-                    saveClicked={this.handleSaveClicked}
+                    onSubmitClicked={this.handleSubmitClicked}
+                    onSaveClicked={this.handleSaveClicked}
                     briefResponseSave={briefResponseSave}
                     briefResponseId={briefResponseId}
                     briefResponseStatus={briefResponse.status}
