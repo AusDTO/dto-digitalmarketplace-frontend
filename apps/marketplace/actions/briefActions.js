@@ -159,6 +159,26 @@ export const handleCreateSpecialistBriefSuccess = response => ({
   brief: response.data
 })
 
+export const closeOpportunity = briefId => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: `/brief/${briefId}/close`,
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleCreateSpecialistBriefSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
+
 export const createRFXBrief = () => (dispatch, getState) => {
   dispatch(sendingRequest(true))
   return dmapi({
