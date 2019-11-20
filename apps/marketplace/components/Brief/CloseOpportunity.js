@@ -7,7 +7,7 @@ import { rootPath } from 'marketplace/routes'
 import styles from '../../main.scss'
 
 const CloseOpportunity = props => {
-  const { brief } = props
+  const { brief, onCloseOpportunity } = props
   let seller = {}
 
   if (brief.sellers) {
@@ -28,7 +28,7 @@ const CloseOpportunity = props => {
         </li>
       </ul>
       <div className={styles.marginTop2}>
-        <AUbutton>Close opportunity</AUbutton>
+        <AUbutton onClick={onCloseOpportunity}>Close opportunity</AUbutton>
         <AUbutton as="tertiary" link={`${rootPath}/brief/${brief.id}/overview/${brief.lot}`}>
           Cancel request
         </AUbutton>

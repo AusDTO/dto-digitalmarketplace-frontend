@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { loadBrief } from 'marketplace/actions/briefActions'
+import { closeOpportunity, loadBrief } from 'marketplace/actions/briefActions'
 import { setErrorMessage } from 'marketplace/actions/appActions'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import CloseOpportunity from 'marketplace/components/Brief/CloseOpportunity'
@@ -12,7 +12,8 @@ class CloseBriefPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      loading: false
+      loading: false,
+      opportunityClosed: false
     }
   }
 
@@ -31,6 +32,21 @@ class CloseBriefPage extends Component {
       if (response.status === 200) {
         this.setState({
           loading: false
+        })
+      }
+    })
+  }
+
+  handleCloseOpportunity = () => {
+    this.setState({
+      loading: true
+    })
+
+    this.props.closeOpportunity(this.props.match.params.briefId).then(response => {
+      if (response.status === 200) {
+        this.setState({
+          loading: false,
+          opportunityClosed: true
         })
       }
     })
@@ -78,7 +94,7 @@ class CloseBriefPage extends Component {
     }
 
     if (brief && brief.sellerSelector === 'oneSeller') {
-      return <CloseOpportunity brief={brief} />
+      return <CloseOpportunity brief={brief} onCloseOpportunity={this.handleCloseOpportunity} />
     }
 
     return null
@@ -91,6 +107,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+  closeOpportunity: briefId => dispatch(closeOpportunity(briefId)),
   loadData: briefId => dispatch(loadBrief(briefId)),
   setError: message => dispatch(setErrorMessage(message))
 })
