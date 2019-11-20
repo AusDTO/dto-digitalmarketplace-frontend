@@ -954,7 +954,7 @@ a[target~='_blank'] {
   color: #313131;
   display: inline;
   position: relative;
-  margin-right: 1.6em;
+  /* margin-right: 1.6em; */
   background-size: 0.9em auto;
   text-decoration: none;
   outline: none;
@@ -968,14 +968,14 @@ a[target~='_blank']::after {
   background-image: url('static/media/external-link--aqua.png');
   background-image: url('static/media/external-link--aqua.svg'), linear-gradient(transparent, transparent);
   background-size: 0.9em auto;
-  margin: 0;
+  /* margin: 0; */
   content: '';
-  position: absolute;
-  display: inline;
+  /* position: absolute; */
+  display: inline-block;
   width: 1.2em;
   height: 1.2em;
   background-repeat: no-repeat;
-  background-position: right 0.4em;
-  border-bottom: 1px solid transparent;
+  background-position: center 140%;
+  border-bottom: 0px solid transparent;
   box-sizing: inherit;
 }
