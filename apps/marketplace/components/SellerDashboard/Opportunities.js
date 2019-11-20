@@ -6,6 +6,7 @@ import format from 'date-fns/format'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import { loadOpportunities } from 'marketplace/actions/sellerDashboardActions'
 import { rootPath } from 'marketplace/routes'
+import { mapLot } from '../helpers'
 import styles from '../../main.scss'
 
 const withdrawn = o => o.withdrawn_at && differenceInSeconds(new Date(), o.withdrawn_at) > 0
@@ -85,7 +86,7 @@ export class Opportunities extends Component {
                     <td className={styles.tableColumnWidth10}>
                       {getOpportunityLink(opportunity)}
                       <br />
-                      {opportunity.lotName}
+                      {mapLot(opportunity.lot)}
                     </td>
                     <td className={styles.tableColumnWidth6}>
                       {withdrawn(opportunity) ? (
