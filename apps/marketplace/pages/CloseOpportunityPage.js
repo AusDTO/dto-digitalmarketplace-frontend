@@ -6,7 +6,7 @@ import { closeOpportunity, loadBrief } from 'marketplace/actions/briefActions'
 import { setErrorMessage } from 'marketplace/actions/appActions'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import CloseOpportunity from 'marketplace/components/Brief/CloseOpportunity'
-import { mapLot } from 'marketplace/components/helpers'
+import { canCloseOpportunity, mapLot } from 'marketplace/components/helpers'
 
 class CloseOpportunityPage extends Component {
   constructor(props) {
@@ -53,7 +53,7 @@ class CloseOpportunityPage extends Component {
   }
 
   render = () => {
-    const { brief, errorMessage } = this.props
+    const { brief, briefResponses, errorMessage } = this.props
 
     let hasFocused = false
     const setFocus = e => {
@@ -80,7 +80,9 @@ class CloseOpportunityPage extends Component {
       return <LoadingIndicatorFullPage />
     }
 
-    if (brief && brief.sellerSelector !== 'oneSeller') {
+    const canClose = canCloseOpportunity(brief, briefResponses)
+
+    if (!canClose) {
       hasFocused = false
       return (
         <ErrorBoxComponent
@@ -93,7 +95,7 @@ class CloseOpportunityPage extends Component {
       )
     }
 
-    if (brief && brief.sellerSelector === 'oneSeller') {
+    if (canClose) {
       return <CloseOpportunity brief={brief} onCloseOpportunity={this.handleCloseOpportunity} />
     }
 
@@ -103,6 +105,7 @@ class CloseOpportunityPage extends Component {
 
 const mapStateToProps = state => ({
   brief: state.brief.brief,
+  briefResponses: state.brief.briefResponses,
   errorMessage: state.app.errorMessage
 })
 

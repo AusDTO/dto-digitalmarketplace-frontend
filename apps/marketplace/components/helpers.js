@@ -15,6 +15,28 @@ export const statusConvert = (status = '') => {
   return `${newStatus.charAt(0).toUpperCase()}${newStatus.slice(1)}`
 }
 
+export const canCloseOpportunity = (brief, briefResponses) => {
+  let invitedSellerCode = null
+  let respondedSellerCode = null
+
+  if (
+    (['rfx', 'training2'].includes(brief.lot) && brief.sellerSelector === 'oneSeller') ||
+    (brief.lot === 'specialist' && brief.sellerSelector === 'someSellers')
+  ) {
+    const invitedSellerCodes = Object.keys(brief.sellers)
+
+    if (invitedSellerCodes.length === 1) {
+      invitedSellerCode = parseInt(invitedSellerCodes.pop(), 10)
+    }
+
+    if (briefResponses.length === 1) {
+      respondedSellerCode = briefResponses[0].supplier_code
+    }
+  }
+
+  return invitedSellerCode && respondedSellerCode && invitedSellerCode === respondedSellerCode
+}
+
 export const categoryIdToHash = domainId => {
   let result = ''
   switch (domainId) {

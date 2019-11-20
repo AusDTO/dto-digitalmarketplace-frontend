@@ -2,32 +2,13 @@ import React from 'react'
 
 import ClosedDate from 'shared/ClosedDate'
 import { rootPath } from 'marketplace/routes'
-import { hasPermission } from 'marketplace/components/helpers'
+import { canCloseOpportunity, hasPermission } from 'marketplace/components/helpers'
 
 import styles from '../Overview.scss'
 
 const OverviewHeaderPublishedActionsList = props => {
   const { brief, briefResponses, isPartOfTeam, isTeamLead, teams } = props
-  let invitedSellerCode = null
-  let respondedSellerCode = null
-  let showCloseLink = false
-
-  if (
-    ['rfx', 'specialist', 'training2'].includes(brief.lot) &&
-    ['oneSeller', 'someSellers'].includes(brief.sellerSelector)
-  ) {
-    const invitedSellerCodes = Object.keys(brief.sellers)
-
-    if (invitedSellerCodes.length === 1) {
-      invitedSellerCode = parseInt(invitedSellerCodes.pop(), 10)
-    }
-
-    if (briefResponses.length === 1) {
-      respondedSellerCode = briefResponses[0].supplier_code
-    }
-
-    showCloseLink = invitedSellerCode && respondedSellerCode && invitedSellerCode === respondedSellerCode
-  }
+  const showCloseLink = canCloseOpportunity(brief, briefResponses)
 
   return (
     <ul className={styles.menuList}>
