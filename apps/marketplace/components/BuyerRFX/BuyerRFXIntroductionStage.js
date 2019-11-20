@@ -21,7 +21,7 @@ const BuyerRFXIntroductionStage = props => (
       </li>
       <li>
         Any{' '}
-         <a href="/search/sellers" rel="noopener noreferrer" target="_blank">
+        <a href="/search/sellers" rel="noopener noreferrer" target="_blank">
           sellers
         </a>{' '}
         you invite must be approved in the{' '}
