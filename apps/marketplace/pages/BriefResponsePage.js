@@ -281,6 +281,8 @@ class BriefResponsePage extends Component {
               <BriefRFXResponseSubmitted
                 setFocus={setFocus}
                 briefResponseStatus={this.props.briefResponse.status}
+                briefResponseId={briefResponseId}
+                briefId={this.props.brief.id}
                 submitClicked={this.state.submitClicked}
                 handleSubmit={values => this.handleFeedbackSubmit(values)}
                 {...this.props}
