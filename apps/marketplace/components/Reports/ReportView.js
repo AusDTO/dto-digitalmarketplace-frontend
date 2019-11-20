@@ -18,7 +18,7 @@ const ReportView = props => {
               {title} <span className={styles.reportViewDate}>{date}</span>
             </h1>
             <a
-              rel="external"
+              rel="noopener noreferrer"
               target="_blank"
               href="/static/media/documents/Digital Marketplace - February 2018 Insights.pdf"
             >
