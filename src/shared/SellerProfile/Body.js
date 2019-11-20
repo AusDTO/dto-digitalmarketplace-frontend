@@ -202,7 +202,7 @@ const Body = (props) => {
             <div>
               <p styleName="bold-noMargin">ABN</p>
               <p>
-                <a href={`https://abr.business.gov.au/SearchByAbn.aspx?SearchText=${abn}`} rel="external"
+                <a href={`https://abr.business.gov.au/SearchByAbn.aspx?SearchText=${abn}`} rel="external noopener noreferrer"
                   target="_blank">{abn}</a>
               </p>
             </div>
