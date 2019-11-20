@@ -6,6 +6,7 @@ import format from 'date-fns/format'
 import DocumentTitle from 'react-document-title'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import { requiredFile, required, validEmail, validPhoneNumber } from 'marketplace/components/validators'
 import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
@@ -20,8 +21,12 @@ export class BriefRFXResponseForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      fileCount: 1
+      fileCount: 1,
+      showDeleteAlert: false
     }
+
+    this.handleDeleteClick = this.handleDeleteClick.bind(this)
+    this.toggleDeleteAlert = this.toggleDeleteAlert.bind(this)
   }
 
   componentDidMount() {
@@ -55,11 +60,25 @@ export class BriefRFXResponseForm extends Component {
     })
   }
 
+  handleDeleteClick(e) {
+    e.preventDefault()
+    this.setState({
+      showDeleteAlert: true
+    })
+  }
+
+  toggleDeleteAlert() {
+    this.setState(prevState => ({
+      showDeleteAlert: !prevState.showDeleteAlert
+    }))
+  }
+
   render() {
     const {
       model,
       brief,
       briefResponseSuccess,
+      briefResponseSave,
       app,
       currentlySending,
       submitClicked,
@@ -78,9 +97,10 @@ export class BriefRFXResponseForm extends Component {
         <DocumentTitle title="Brief Response - Digital Marketplace">
           <div className="col-sm-push-2 col-sm-8 col-xs-12">
             <article role="main">
-              {briefResponseSuccess && (
+              {briefResponseSuccess && !briefResponseSave && (
                 <Redirect to={`${rootPath}/brief/${brief.id}/rfx/respond/${briefResponseId}/submitted`} />
               )}
+              {briefResponseSuccess && briefResponseSave && <Redirect to={`${rootPath}/seller-dashboard`} />}
               {!briefResponseSuccess && (
                 <ErrorBox
                   title="There was a problem submitting your response"
@@ -89,9 +109,35 @@ export class BriefRFXResponseForm extends Component {
                   setFocus={setFocus}
                 />
               )}
-              <AUheading level="1" size="xl">
-                Apply for &apos;{brief.title}&apos;
-              </AUheading>
+              {this.state.showDeleteAlert && (
+                <div className={styles.deleteAlert}>
+                  <AUpageAlert as="warning">
+                    <AUheading level="2" size="md">
+                      Are you sure?
+                    </AUheading>
+                    <p>If you withdraw this application, it will be permanently deleted.</p>
+                    <AUbutton onClick={() => this.props.onBriefResponseDelete(briefResponseId)}>
+                      Yes, withdraw application
+                    </AUbutton>
+                    <AUbutton as="secondary" onClick={this.toggleDeleteAlert}>
+                      Do not withdraw application
+                    </AUbutton>
+                  </AUpageAlert>
+                </div>
+              )}
+              <div className={styles.headingArea}>
+                <AUheading level="1" size="xl">
+                  Apply for &apos;{brief.title}&apos;
+                </AUheading>
+                {briefResponseStatus === 'submitted' && (
+                  <input
+                    type="button"
+                    className={`${styles.withdrawButton} au-btn`}
+                    onClick={this.handleDeleteClick}
+                    value="Withdraw application"
+                  />
+                )}
+              </div>
               <p>Attachments must be .DOC, .XLS, .PPT or .PDF format and no more than 20MB</p>
               {app.supplierCode ? (
                 <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
@@ -241,10 +287,7 @@ export class BriefRFXResponseForm extends Component {
                         <input className="au-btn" type="submit" value="Update application" onClick={submitClicked} />
                       )}
                       {briefResponseStatus === 'submitted' && (
-                        <a
-                          className="au-btn au-btn--tertiary"
-                          href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}
-                        >
+                        <a className="au-btn au-btn--tertiary" href={`${rootPath}/seller-dashboard`}>
                           Cancel all updates
                         </a>
                       )}
@@ -285,7 +328,8 @@ BriefRFXResponseForm.defaultProps = {
   handleSubmit: null,
   loadingText: null,
   briefResponseStatus: '',
-  briefResponseId: ''
+  briefResponseId: '',
+  onBriefResponseDelete: () => {}
 }
 
 BriefRFXResponseForm.propTypes = {
@@ -297,7 +341,8 @@ BriefRFXResponseForm.propTypes = {
   handleSubmit: PropTypes.func,
   loadingText: PropTypes.string,
   briefResponseStatus: PropTypes.string,
-  briefResponseId: PropTypes.string
+  briefResponseId: PropTypes.string,
+  onBriefResponseDelete: PropTypes.func
 }
 
 export default BriefRFXResponseForm

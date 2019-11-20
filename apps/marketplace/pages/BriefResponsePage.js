@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { actions } from 'react-redux-form'
 import { withRouter, Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import formProps from 'shared/form/formPropsSelector'
 import ErrorBox from 'shared/form/ErrorBox'
 import BriefSpecialistResponseForm2 from 'marketplace/components/Brief/BriefSpecialistResponseForm2'
@@ -19,11 +20,13 @@ import {
   handleBriefNameSubmit,
   handleBriefNameSplitSubmit,
   addAnotherSpecialistSubmit,
-  handleSpecialistNumberSubmit
+  handleSpecialistNumberSubmit,
+  deleteBriefResponse
 } from 'marketplace/actions/briefActions'
 import { setErrorMessage, handleFeedbackSubmit } from 'marketplace/actions/appActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { BriefResponseSpecialistReducer, BriefResponseRFXReducer } from 'marketplace/reducers'
+import { rootPath } from 'marketplace/routes'
 
 const model = 'briefResponseForm'
 
@@ -39,8 +42,11 @@ class BriefResponsePage extends Component {
       loadingText: null,
       otherDocumentFileCount: 2,
       loading: true,
-      submitClicked: null
+      submitClicked: null,
+      responseDeleted: false
     }
+
+    this.handleBriefResponseDelete = this.handleBriefResponseDelete.bind(this)
   }
 
   componentDidMount() {
@@ -78,24 +84,24 @@ class BriefResponsePage extends Component {
     }
   }
 
-  onSubmitClicked = () => {
+  handleSubmitClicked = () => {
     this.setState({
       submitClicked: new Date().valueOf()
     })
     this.props.changeModel(`${this.props.model}.submit`, true)
   }
 
-  onAddAnotherClicked = () => {
+  handleAddAnotherClicked = () => {
     this.props.changeModel(`${this.props.model}.submit`, true)
     this.props.changeModel(`${this.props.model}.addAnother`, true)
   }
 
-  onSpecialistSubmitClicked = () => {
+  handleSpecialistSubmitClicked = () => {
     this.props.changeModel(`${this.props.model}.submit`, true)
     this.props.changeModel(`${this.props.model}.addAnother`, false)
   }
 
-  onSaveClicked = () => {
+  handleSaveClicked = () => {
     switch (this.props.match.params.briefResponseType) {
       case 'specialist2':
         this.props.changeModel(`${this.props.model}.submit`, false)
@@ -109,6 +115,20 @@ class BriefResponsePage extends Component {
       default:
         break
     }
+  }
+
+  handleBriefResponseDelete(id) {
+    this.setState({
+      loading: true
+    })
+    this.props.deleteBriefResponse(id).then(response => {
+      if (response.status === 200) {
+        this.setState({
+          loading: false,
+          responseDeleted: true
+        })
+      }
+    })
   }
 
   handleFeedbackSubmit(values) {
@@ -220,6 +240,22 @@ class BriefResponsePage extends Component {
       return <LoadingIndicatorFullPage />
     }
 
+    if (this.state.responseDeleted) {
+      return (
+        <React.Fragment>
+          <AUheading level="1" size="xl">
+            Application withdrawn
+          </AUheading>
+          <p>You have successfully withdrawn your application.</p>
+          <p>
+            <a href={`${rootPath}/seller-dashboard`} className="au-btn">
+              Return to dashboard
+            </a>
+          </p>
+        </React.Fragment>
+      )
+    }
+
     return (
       <div className="brief-page">
         <Switch>
@@ -244,9 +280,9 @@ class BriefResponsePage extends Component {
                     briefResponseSave={briefResponseSave}
                     briefResponseId={briefResponseId}
                     briefResponseStatus={briefResponse.status}
-                    submitClicked={this.onSpecialistSubmitClicked}
-                    saveClicked={this.onSaveClicked}
-                    addAnotherClicked={this.onAddAnotherClicked}
+                    submitClicked={this.handleSpecialistSubmitClicked}
+                    saveClicked={this.handleSaveClicked}
+                    addAnotherClicked={this.handleAddAnotherClicked}
                     handleNameSubmit={(givenNames, surname) => this.handleBriefNameSplitSubmit(givenNames, surname)}
                     handleSubmit={values => this.handleSpecialistBriefResponseSubmit(values)}
                     setFocus={setFocus}
@@ -295,8 +331,9 @@ class BriefResponsePage extends Component {
               <React.Fragment>
                 {loadBriefSuccess ? (
                   <BriefRFXResponseForm
-                    submitClicked={this.onSubmitClicked}
-                    saveClicked={this.onSaveClicked}
+                    onBriefResponseDelete={this.handleBriefResponseDelete}
+                    submitClicked={this.handleSubmitClicked}
+                    saveClicked={this.handleSaveClicked}
                     briefResponseSave={briefResponseSave}
                     briefResponseId={briefResponseId}
                     briefResponseStatus={briefResponse.status}
@@ -341,6 +378,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   handleFeedbackSubmit: data => dispatch(handleFeedbackSubmit(data)),
   handleSaveBriefResponse: () => dispatch(handleSaveBriefResponse()),
+  deleteBriefResponse: briefResponseId => dispatch(deleteBriefResponse(briefResponseId)),
   resetBriefResponseSuccess: () => dispatch(resetBriefResponseSuccess()),
   resetBriefResponseSave: () => dispatch(resetBriefResponseSave()),
   loadBriefResponse: briefResponseId => dispatch(loadBriefResponse(briefResponseId)),

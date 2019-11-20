@@ -420,6 +420,7 @@ export const deleteBriefResponse = briefResponseId => (dispatch, getState) => {
       dispatch(handleDeleteBriefResponse())
     }
     dispatch(sendingRequest(false))
+    return response
   })
 }
 
