@@ -39,7 +39,7 @@ const getAction = o => (
     {!closed(o) && (o.draftResponseCount || o.responseCount) && o.lotSlug === 'specialist' && (
       <a href={`${rootPath}/brief/${o.briefId}/responses`}>Edit candidates</a>
     )}
-    {invited(o) && <a href={`${rootPath}/digital-marketplace/${o.briefId}`}>View opportunity</a>}
+    {invited(o) && <a href={`${rootPath}/digital-marketplace/opportunities/${o.briefId}`}>View opportunity</a>}
   </React.Fragment>
 )
 
