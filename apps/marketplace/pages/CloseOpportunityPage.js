@@ -8,7 +8,7 @@ import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import CloseOpportunity from 'marketplace/components/Brief/CloseOpportunity'
 import { mapLot } from 'marketplace/components/helpers'
 
-class CloseBriefPage extends Component {
+class CloseOpportunityPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -116,5 +116,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(CloseBriefPage)
+  )(CloseOpportunityPage)
 )
