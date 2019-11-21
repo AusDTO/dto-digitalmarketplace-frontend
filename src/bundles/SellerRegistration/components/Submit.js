@@ -109,8 +109,8 @@ class SubmitStepForm extends BaseForm {
                     <p>Only the authorised representative, <strong>{representative}</strong>, can accept the Master Agreement terms on behalf of <strong>{name}</strong>.</p>
                     <p>Would you like us to send an email now to <strong>{email}</strong> so they can complete the last step?</p>
 
-                  <a href={agreementPdfUrl} rel="external noopener noreferrer" target="_blank">Download Master Agreement (PDF 229KB)</a><br/><br/>
-                  <a href={agreementHtmlUrl} target="_blank" rel="external noopener noreferrer">View Master Agreement in HTML</a><br/><br/>
+                  <a href={agreementPdfUrl} rel="noopener noreferrer" target="_blank">Download Master Agreement (PDF 229KB)</a><br/><br/>
+                  <a href={agreementHtmlUrl} target="_blank" rel="noopener noreferrer">View Master Agreement in HTML</a><br/><br/>
 
                 </div>
             )
