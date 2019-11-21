@@ -20,8 +20,9 @@ export const canCloseOpportunity = (brief, briefResponses) => {
   let respondedSellerCode = null
 
   if (
-    (['rfx', 'training2'].includes(brief.lot) && brief.sellerSelector === 'oneSeller') ||
-    (brief.lot === 'specialist' && brief.sellerSelector === 'someSellers')
+    ((['rfx', 'training2'].includes(brief.lot) && brief.sellerSelector === 'oneSeller') ||
+      (brief.lot === 'specialist' && brief.sellerSelector === 'someSellers')) &&
+    brief.status === 'live'
   ) {
     const invitedSellerCodes = Object.keys(brief.sellers)
 
