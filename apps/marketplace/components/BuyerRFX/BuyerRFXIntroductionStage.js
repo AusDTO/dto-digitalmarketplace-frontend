@@ -27,7 +27,7 @@ const BuyerRFXIntroductionStage = props => (
         you invite must be approved in the{' '}
         <a
           href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476-Panel-categories-and-rates"
-          rel="external noopener noreferrer"
+          rel="noopener noreferrer"
           target="_blank"
         >
           panel category
@@ -61,7 +61,7 @@ const BuyerRFXIntroductionStage = props => (
     <p>
       <a
         href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000579716"
-        rel="external noopener noreferrer"
+        rel="noopener noreferrer"
         target="_blank"
       >
         View support article

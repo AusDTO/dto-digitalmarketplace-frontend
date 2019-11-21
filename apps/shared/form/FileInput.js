@@ -88,7 +88,7 @@ class FileInput extends React.Component {
         {!isEmpty(doc) && typeof doc === 'string' && (
           <div className={styles.bordered_list__item}>
             <div className="col-xs-9">
-              <a href={`/api/2${url}/${doc}`} target="_blank" rel="external noopener noreferrer">
+              <a href={`/api/2${url}/${doc}`} target="_blank" rel="noopener noreferrer">
                 {doc}
               </a>
             </div>

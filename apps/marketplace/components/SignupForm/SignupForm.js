@@ -64,7 +64,7 @@ const SignupForm = props => {
                       <p>
                         If they don’t receive the email within the next 5 minutes or so, check to see if it’s been
                         classified as spam or
-                        <a href="/contact-us" target="_blank" rel="external">
+                        <a href="/contact-us" target="_blank" rel="noopener noreferrer">
                           {' '}
                           contact us{' '}
                         </a>{' '}
@@ -80,7 +80,7 @@ const SignupForm = props => {
                       <p>
                         If you don’t receive the email within the next 5 minutes or so, check to see if it’s been
                         classified as spam or
-                        <a href="/contact-us" target="_blank" rel="external">
+                        <a href="/contact-us" target="_blank" rel="noopener noreferrer">
                           {' '}
                           contact us{' '}
                         </a>{' '}
@@ -254,7 +254,7 @@ const SignupForm = props => {
                     <p>
                       <small>
                         By creating an account you confirm your acceptance of our{' '}
-                        <a href="/terms-of-use" target="_blank" rel="external">
+                        <a href="/terms-of-use" target="_blank" rel="noopener noreferrer">
                           Terms of Use
                         </a>
                       </small>

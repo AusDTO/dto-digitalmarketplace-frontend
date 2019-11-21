@@ -25,7 +25,7 @@ const BuyerSpecialistIntroductionStage = props => (
     <p className={styles.textSpacing}>
       <a
         href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000583195-Hire-a-digital-specialist"
-        rel="external noopener noreferrer"
+        rel="noopener noreferrer"
         target="_blank"
       >
         View support article

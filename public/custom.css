@@ -950,7 +950,7 @@ article.content-main h2 {
 }
 
 
-a[target~='_blank'] {
+a[rel~='external'] {
   color: #313131;
   display: inline;
   position: relative;
@@ -963,7 +963,7 @@ a[target~='_blank'] {
   transition-property: background-color, border-color, color;   
 }
 
-a[target~='_blank']::after {
+a[rel~='external']::after {
   background-image: url('static/media/external-link--aqua.png');
   background-image: url('static/media/external-link--aqua.svg'), linear-gradient(transparent, transparent);
   background-size: 0.9em auto;
