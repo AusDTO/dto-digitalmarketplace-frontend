@@ -23,8 +23,8 @@ const CloseOpportunity = props => {
       <ul>
         <li>{seller.name} will no longer be able to edit their submission</li>
         <li>
-          you will be able to download {seller.name.endsWith('s') ? `${seller.name}'` : `${seller.name}'s`} response
-          straight away
+          you will be able to download{' '}
+          {seller.name.toLowerCase().endsWith('s') ? `${seller.name}'` : `${seller.name}'s`} response straight away
         </li>
       </ul>
       <div className={styles.marginTop2}>
