@@ -128,7 +128,7 @@ class BusinessDetailsForm extends BaseForm {
                           label="ABN"
                           description={isNumber(supplierCode) ? "You need an Australian Business Number to do business in Australia." :
                               (<span>You need an Australian Business Number to do business in Australia.&nbsp;
-                              <a href='https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/' target="_blank" rel="external">Apply for an ABN here.</a>
+                              <a href='https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/' target="_blank" rel="external noopener noreferrer">Apply for an ABN here.</a>
                           </span>)}
                           readOnly={isNumber(supplierCode)}
                           disabled={isNumber(supplierCode)}
