@@ -3,9 +3,10 @@ import { connect } from 'react-redux'
 import { withRouter, Redirect } from 'react-router-dom'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { closeOpportunity, loadBrief } from 'marketplace/actions/briefActions'
-import { setErrorMessage } from 'marketplace/actions/appActions'
+import { handleFeedbackSubmit, setErrorMessage } from 'marketplace/actions/appActions'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import CloseOpportunity from 'marketplace/components/Brief/CloseOpportunity'
+import ClosedOpportunity from 'marketplace/components/Brief/ClosedOpportunity'
 import { canCloseOpportunity, mapLot } from 'marketplace/components/helpers'
 
 class CloseOpportunityPage extends Component {
@@ -52,8 +53,19 @@ class CloseOpportunityPage extends Component {
     })
   }
 
+  handleFeedbackSubmit = values => {
+    const { app, brief } = this.props
+
+    this.props.handleFeedbackSubmit({
+      object_id: brief.id,
+      object_type: 'Brief',
+      userType: app.userType,
+      ...values
+    })
+  }
+
   render = () => {
-    const { brief, briefResponses, errorMessage } = this.props
+    const { app, brief, briefResponses, errorMessage } = this.props
 
     let hasFocused = false
     const setFocus = e => {
@@ -80,6 +92,10 @@ class CloseOpportunityPage extends Component {
       return <LoadingIndicatorFullPage />
     }
 
+    if (this.state.opportunityClosed) {
+      return <ClosedOpportunity app={app} handleSubmit={this.handleFeedbackSubmit} setFocus={setFocus} />
+    }
+
     const canClose = canCloseOpportunity(brief, briefResponses)
 
     if (!canClose) {
@@ -104,6 +120,7 @@ class CloseOpportunityPage extends Component {
 }
 
 const mapStateToProps = state => ({
+  app: state.app,
   brief: state.brief.brief,
   briefResponses: state.brief.briefResponses,
   errorMessage: state.app.errorMessage
@@ -111,6 +128,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   closeOpportunity: briefId => dispatch(closeOpportunity(briefId)),
+  handleFeedbackSubmit: model => dispatch(handleFeedbackSubmit(model)),
   loadData: briefId => dispatch(loadBrief(briefId)),
   setError: message => dispatch(setErrorMessage(message))
 })
