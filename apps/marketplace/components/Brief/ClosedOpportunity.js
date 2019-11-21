@@ -14,7 +14,7 @@ const ClosedOpportunity = props => {
     <React.Fragment>
       <AUpageAlert as="success" setFocus={setFocus}>
         <h1 className="au-display-lg">
-          <strong>Your opportunity is now closed</strong>
+          <strong>Your opportunity has been closed</strong>
         </h1>
         <div className={styles.marginTop2}>
           <AUbutton>Download seller responses</AUbutton>
