@@ -11,6 +11,8 @@ import BriefRFXResponseForm from 'marketplace/components/Brief/BriefRFXResponseF
 import BriefRFXResponseSubmitted from 'marketplace/components/Brief/BriefRFXResponseSubmitted'
 import BriefATMResponseForm from 'marketplace/components/Brief/BriefATMResponseForm'
 import BriefATMResponseSubmitted from 'marketplace/components/Brief/BriefATMResponseSubmitted'
+import BriefTrainingResponseForm2 from 'marketplace/components/Brief/BriefTrainingResponseForm2'
+import BriefTrainingResponseSubmitted2 from 'marketplace/components/Brief/BriefTrainingResponseSubmitted2'
 import BriefResponseSupplierError from 'marketplace/components/Brief/BriefResponseSupplierError'
 import {
   loadBrief,
@@ -35,6 +37,7 @@ const model = 'briefResponseForm'
 const mapResponseTypeToReducer = {
   specialist2: BriefResponseSpecialistReducer,
   rfx: BriefResponseRFXReducer,
+  training2: BriefResponseRFXReducer,
   atm: BriefResponseATMReducer
 }
 
@@ -112,6 +115,7 @@ class BriefResponsePage extends Component {
         this.handleSpecialistBriefResponseSubmit(this.props[this.props.model])
         break
       case 'rfx':
+      case 'training2':
       case 'atm':
         this.props.changeModel(`${this.props.model}.submit`, false)
         this.handleBriefResponseSubmit(this.props[this.props.model])
@@ -373,6 +377,44 @@ class BriefResponsePage extends Component {
               <span>
                 {loadBriefSuccess ? (
                   <BriefATMResponseForm
+                    onBriefResponseDelete={this.handleBriefResponseDelete}
+                    onSubmitClicked={this.handleSubmitClicked}
+                    onSaveClicked={this.handleSaveClicked}
+                    briefResponseSave={briefResponseSave}
+                    briefResponseId={briefResponseId}
+                    briefResponseStatus={briefResponse.status}
+                    handleSubmit={values => this.handleBriefResponseSubmit(values)}
+                    setFocus={setFocus}
+                    {...this.props}
+                    loadingText={this.state.loadingText}
+                    uploading={uploading => this.setState({ loadingText: uploading ? 'Uploading' : null })}
+                  />
+                ) : (
+                  errorScreen
+                )}{' '}
+              </span>
+            )}
+          />
+          <Route
+            path={`${baseURL}/training2/respond/${briefResponseId}/submitted`}
+            render={() => (
+              <BriefTrainingResponseSubmitted2
+                setFocus={setFocus}
+                briefResponseStatus={this.props.briefResponse.status}
+                briefResponseId={briefResponseId}
+                briefId={this.props.brief.id}
+                submitClicked={this.state.submitClicked}
+                handleSubmit={values => this.handleFeedbackSubmit(values)}
+                {...this.props}
+              />
+            )}
+          />
+          <Route
+            path={`${baseURL}/training2/respond/${briefResponseId}`}
+            render={() => (
+              <span>
+                {loadBriefSuccess ? (
+                  <BriefTrainingResponseForm2
                     onBriefResponseDelete={this.handleBriefResponseDelete}
                     onSubmitClicked={this.handleSubmitClicked}
                     onSaveClicked={this.handleSaveClicked}

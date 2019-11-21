@@ -43,6 +43,22 @@ export class BriefATMResponseForm extends Component {
     this.toggleDeleteAlert = this.toggleDeleteAlert.bind(this)
   }
 
+  componentDidMount() {
+    this.updateRequiredFileCount()
+  }
+
+  updateRequiredFileCount() {
+    this.setState(curState => {
+      const newState = { ...curState }
+      let fileCount = curState.fileCount
+      if (this.props.briefResponseForm.attachedDocumentURL.length > fileCount) {
+        fileCount = this.props.briefResponseForm.attachedDocumentURL.length
+      }
+      newState.fileCount = fileCount
+      return newState
+    })
+  }
+
   addFileField() {
     this.setState(curState => {
       const newState = { ...curState }

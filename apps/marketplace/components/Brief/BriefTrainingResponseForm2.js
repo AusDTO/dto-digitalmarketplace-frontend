@@ -6,6 +6,7 @@ import format from 'date-fns/format'
 import DocumentTitle from 'react-document-title'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import { requiredFile, required, validEmail, validPhoneNumber } from 'marketplace/components/validators'
 import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
@@ -13,14 +14,19 @@ import FilesInput from 'shared/form/FilesInput'
 import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import range from 'lodash/range'
 import dmapi from 'marketplace/services/apiClient'
+import { rootPath } from 'marketplace/routes'
 import styles from './BriefTrainingResponseForm2.scss'
 
 export class BriefTrainingResponseForm2 extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      fileCount: 1
+      fileCount: 1,
+      showDeleteAlert: false
     }
+
+    this.handleDeleteClick = this.handleDeleteClick.bind(this)
+    this.toggleDeleteAlert = this.toggleDeleteAlert.bind(this)
   }
 
   componentDidMount() {
@@ -39,9 +45,11 @@ export class BriefTrainingResponseForm2 extends Component {
   }
 
   updateRequiredFileCount() {
-    this.setState({
-      fileCount: this.getBriefEvaluationTypesForUpload().length + 1
-    })
+    let fileCount = this.getBriefEvaluationTypesForUpload().length + 1
+    if (this.props.briefResponseForm.attachedDocumentURL.length > fileCount) {
+      fileCount = this.props.briefResponseForm.attachedDocumentURL.length
+    }
+    this.setState({ fileCount })
   }
 
   addFileField() {
@@ -52,19 +60,36 @@ export class BriefTrainingResponseForm2 extends Component {
     })
   }
 
+  handleDeleteClick(e) {
+    e.preventDefault()
+    this.setState({
+      showDeleteAlert: true
+    })
+  }
+
+  toggleDeleteAlert() {
+    this.setState(prevState => ({
+      showDeleteAlert: !prevState.showDeleteAlert
+    }))
+  }
+
   render() {
     const {
       model,
       brief,
       briefResponseSuccess,
+      briefResponseSave,
       app,
       currentlySending,
-      submitClicked,
+      onSubmitClicked,
       handleSubmit,
       setFocus,
-      match,
       uploading,
-      loadingText
+      loadingText,
+      briefResponseStatus,
+      onSaveClicked,
+      briefResponseForm,
+      briefResponseId
     } = this.props
 
     return (
@@ -72,18 +97,47 @@ export class BriefTrainingResponseForm2 extends Component {
         <DocumentTitle title="Brief Response - Digital Marketplace">
           <div className="col-sm-push-2 col-sm-8 col-xs-12">
             <article role="main">
-              {briefResponseSuccess && <Redirect to={`${match.url}/training2/respond/submitted`} />}
+              {briefResponseSuccess && !briefResponseSave && (
+                <Redirect to={`${rootPath}/brief/${brief.id}/training2/respond/${briefResponseId}/submitted`} />
+              )}
+              {briefResponseSuccess && briefResponseSave && <Redirect to={`${rootPath}/seller-dashboard`} />}
               {!briefResponseSuccess && (
                 <ErrorBox
                   title="There was a problem submitting your response"
                   model={model}
-                  submitClicked={submitClicked}
+                  submitClicked={onSubmitClicked}
                   setFocus={setFocus}
                 />
               )}
-              <AUheading level="1" size="xl">
-                Apply for &apos;{brief.title}&apos;
-              </AUheading>
+              {this.state.showDeleteAlert && (
+                <div className={styles.deleteAlert}>
+                  <AUpageAlert as="warning">
+                    <AUheading level="2" size="md">
+                      Are you sure?
+                    </AUheading>
+                    <p>If you withdraw this application, it will be permanently deleted.</p>
+                    <AUbutton onClick={() => this.props.onBriefResponseDelete(briefResponseId)}>
+                      Yes, withdraw application
+                    </AUbutton>
+                    <AUbutton as="secondary" onClick={this.toggleDeleteAlert}>
+                      Do not withdraw application
+                    </AUbutton>
+                  </AUpageAlert>
+                </div>
+              )}
+              <div className={styles.headingArea}>
+                <AUheading level="1" size="xl">
+                  Apply for &apos;{brief.title}&apos;
+                </AUheading>
+                {briefResponseStatus === 'submitted' && (
+                  <input
+                    type="button"
+                    className={`${styles.withdrawButton} au-btn`}
+                    onClick={this.handleDeleteClick}
+                    value="Withdraw application"
+                  />
+                )}
+              </div>
               <p>Attachments must be .DOC, .XLS, .PPT or .PDF format and no more than 20MB</p>
               {app.supplierCode ? (
                 <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
@@ -183,7 +237,11 @@ export class BriefTrainingResponseForm2 extends Component {
                     htmlFor="respondToEmailAddress"
                     label="Email"
                     description="All communication about your application will be sent to this address."
-                    defaultValue={app.emailAddress}
+                    defaultValue={
+                      briefResponseForm.respondToEmailAddress
+                        ? briefResponseForm.respondToEmailAddress
+                        : app.emailAddress
+                    }
                     maxLength={100}
                     validators={{
                       required,
@@ -199,6 +257,7 @@ export class BriefTrainingResponseForm2 extends Component {
                     name="respondToPhone"
                     id="respondToPhone"
                     htmlFor="respondToPhone"
+                    defaultValue={briefResponseForm.respondToPhone}
                     label="Phone number"
                     maxLength={100}
                     validators={{
@@ -226,7 +285,25 @@ export class BriefTrainingResponseForm2 extends Component {
                     <LoadingButton text={loadingText || 'Loading'} />
                   ) : (
                     <p>
-                      <input className="au-btn" type="submit" value="Submit application" onClick={submitClicked} />
+                      {briefResponseStatus === 'submitted' && (
+                        <input className="au-btn" type="submit" value="Update application" onClick={onSubmitClicked} />
+                      )}
+                      {briefResponseStatus === 'submitted' && (
+                        <a className="au-btn au-btn--tertiary" href={`${rootPath}/seller-dashboard`}>
+                          Cancel all updates
+                        </a>
+                      )}
+                      {briefResponseStatus === 'draft' && (
+                        <input className="au-btn" type="submit" value="Submit application" onClick={onSubmitClicked} />
+                      )}
+                      {briefResponseStatus === 'draft' && (
+                        <input
+                          className="au-btn au-btn--tertiary"
+                          type="button"
+                          value="Save and return later"
+                          onClick={onSaveClicked}
+                        />
+                      )}
                     </p>
                   )}
                 </Form>
@@ -247,9 +324,13 @@ export class BriefTrainingResponseForm2 extends Component {
 }
 
 BriefTrainingResponseForm2.defaultProps = {
-  submitClicked: null,
+  onSubmitClicked: () => {},
   handleSubmit: null,
-  loadingText: null
+  loadingText: null,
+  briefResponseStatus: '',
+  briefResponseId: '',
+  onBriefResponseDelete: () => {},
+  onSaveClicked: () => {}
 }
 
 BriefTrainingResponseForm2.propTypes = {
@@ -257,9 +338,13 @@ BriefTrainingResponseForm2.propTypes = {
     briefResponseSuccess: PropTypes.bool
   }).isRequired,
   model: PropTypes.string.isRequired,
-  submitClicked: PropTypes.func,
+  onSubmitClicked: PropTypes.func,
   handleSubmit: PropTypes.func,
-  loadingText: PropTypes.string
+  loadingText: PropTypes.string,
+  briefResponseStatus: PropTypes.string,
+  briefResponseId: PropTypes.string,
+  onBriefResponseDelete: PropTypes.func,
+  onSaveClicked: PropTypes.func
 }
 
 export default BriefTrainingResponseForm2

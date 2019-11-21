@@ -9,8 +9,6 @@ import formProps from 'shared/form/formPropsSelector'
 import BriefResponseForm from 'marketplace/components/Brief/BriefResponseForm'
 import BriefTrainingResponseForm from 'marketplace/components/Brief/BriefTrainingResponseForm'
 import BriefTrainingResponseSubmitted from 'marketplace/components/Brief/BriefTrainingResponseSubmitted'
-import BriefTrainingResponseForm2 from 'marketplace/components/Brief/BriefTrainingResponseForm2'
-import BriefTrainingResponseSubmitted2 from 'marketplace/components/Brief/BriefTrainingResponseSubmitted2'
 import BriefDownloadResponses from 'marketplace/components/Brief/BriefDownloadResponses'
 import BriefDownloadWorkOrder from 'marketplace/components/Brief/BriefDownloadWorkOrder'
 import {
@@ -160,36 +158,6 @@ class BriefPage extends Component {
                       handleSubmit={values => this.handleBriefResponseSubmit(values)}
                       setFocus={setFocus}
                       showTrainerResumes={this.showTrainingResumesFileUpload()}
-                      {...this.props}
-                      loadingText={this.state.loadingText}
-                      uploading={uploading => this.setState({ loadingText: uploading ? 'Uploading' : null })}
-                    />
-                  ) : (
-                    errorScreen
-                  )}{' '}
-                </span>
-              )}
-            />
-            <Route
-              path={`${match.url}/training2/respond/submitted`}
-              render={() => (
-                <BriefTrainingResponseSubmitted2
-                  setFocus={setFocus}
-                  submitClicked={this.state.submitClicked}
-                  handleSubmit={values => this.handleFeedbackSubmit(values)}
-                  {...this.props}
-                />
-              )}
-            />
-            <Route
-              path={`${match.url}/training2/respond`}
-              render={() => (
-                <span>
-                  {loadBriefSuccess ? (
-                    <BriefTrainingResponseForm2
-                      submitClicked={this.onSubmitClicked}
-                      handleSubmit={values => this.handleBriefResponseSubmit(values)}
-                      setFocus={setFocus}
                       {...this.props}
                       loadingText={this.state.loadingText}
                       uploading={uploading => this.setState({ loadingText: uploading ? 'Uploading' : null })}
