@@ -68,7 +68,11 @@ const PageFooter = () => (
             </h2>
             <ul className="au-link-list">
               <li>
-                <a rel="external noopener noreferrer" target="_blank" href="https://www.dta.gov.au/tags/digital-marketplace/">
+                <a
+                  rel="external noopener noreferrer"
+                  target="_blank"
+                  href="https://www.dta.gov.au/tags/digital-marketplace/"
+                >
                   DTA blog
                 </a>
               </li>
@@ -100,7 +104,8 @@ const PageFooter = () => (
               </li>
               <li>
                 <a
-                  rel="noopener noreferrer" target="_blank"
+                  rel="noopener noreferrer"
+                  target="_blank"
                   href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000189856-Digital-Sourcing"
                 >
                   DTA digital sourcing
