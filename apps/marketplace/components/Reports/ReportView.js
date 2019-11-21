@@ -46,7 +46,7 @@ const ReportView = props => {
           )}
           <span className={styles.caveat}>
             * Contract information is sourced from{' '}
-            <a href="http://tenders.gov.au" rel="noopener noreferrer external" target="_blank">
+            <a href="http://tenders.gov.au" rel="external noopener noreferrer" target="_blank">
               Austender
             </a>
             . It excludes contracts awarded by entities that don&apos;t report through Austender and contracts under

@@ -62,23 +62,23 @@ const PageFooter = () => (
           <div className="col-md-3 col-sm-6">
             <h2 className="au-display-sm">
               Digital Marketplace brought to you by the{' '}
-              <a rel="external" href="https://www.dta.gov.au/">
+              <a rel="external noopener noreferrer" target="_blank" href="https://www.dta.gov.au/">
                 DTA
               </a>
             </h2>
             <ul className="au-link-list">
               <li>
-                <a rel="external" href="https://www.dta.gov.au/tags/digital-marketplace/">
+                <a rel="external noopener noreferrer" target="_blank" href="https://www.dta.gov.au/tags/digital-marketplace/">
                   DTA blog
                 </a>
               </li>
               <li>
-                <a rel="external" href="https://twitter.com/DTA">
+                <a rel="external noopener noreferrer" target="_blank" href="https://twitter.com/DTA">
                   DTA twitter
                 </a>
               </li>
               <li>
-                <a rel="external" href="https://github.com/AusDTO">
+                <a rel="external noopener noreferrer" target="_blank" href="https://github.com/AusDTO">
                   DTA github
                 </a>
               </li>
@@ -89,18 +89,18 @@ const PageFooter = () => (
             <h2 className="au-display-sm">DTA resources</h2>
             <ul className="au-link-list">
               <li>
-                <a rel="external" href="https://www.dta.gov.au/our-work/">
+                <a rel="external noopener noreferrer" target="_blank" href="https://www.dta.gov.au/our-work/">
                   Our work
                 </a>
               </li>
               <li>
-                <a rel="external" href="https://www.dta.gov.au/standard/">
+                <a rel="external noopener noreferrer" target="_blank" href="https://www.dta.gov.au/standard/">
                   Our standard
                 </a>
               </li>
               <li>
                 <a
-                  rel="external"
+                  rel="noopener noreferrer" target="_blank"
                   href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000189856-Digital-Sourcing"
                 >
                   DTA digital sourcing
