@@ -57,7 +57,8 @@ export class BriefATMResponseForm extends Component {
       setFocus,
       match,
       uploading,
-      loadingText
+      loadingText,
+      supplierContact
     } = this.props
 
     return (
@@ -199,7 +200,7 @@ export class BriefATMResponseForm extends Component {
                     htmlFor="respondToEmailAddress"
                     label="Email"
                     description="All communication about your application will be sent to this email."
-                    defaultValue={app.emailAddress}
+                    defaultValue={supplierContact.email}
                     maxLength={100}
                     validators={{
                       required,
@@ -216,6 +217,7 @@ export class BriefATMResponseForm extends Component {
                     id="respondToPhone"
                     htmlFor="respondToPhone"
                     label="Phone number"
+                    defaultValue={supplierContact.phone}
                     maxLength={100}
                     validators={{
                       required,
@@ -271,6 +273,10 @@ BriefATMResponseForm.defaultProps = {
 BriefATMResponseForm.propTypes = {
   brief: PropTypes.shape({
     briefResponseSuccess: PropTypes.bool
+  }).isRequired,
+  supplierContact: PropTypes.shape({
+    email: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired
   }).isRequired,
   model: PropTypes.string.isRequired,
   submitClicked: PropTypes.func,

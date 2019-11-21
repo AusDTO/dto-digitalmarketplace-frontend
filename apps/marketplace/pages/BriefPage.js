@@ -453,6 +453,7 @@ const mapResetStateToProps = state => ({
   brief: state.brief.brief,
   briefResponses: state.brief.briefResponses,
   briefResponseDownloaded: state.brief.briefResponseDownloaded,
+  supplierContact: state.brief.supplierContact,
   loadedAt: state.brief.loadedAt,
   app: state.app,
   supplierCode: state.app.supplierCode,
