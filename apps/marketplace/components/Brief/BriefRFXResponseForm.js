@@ -105,7 +105,7 @@ export class BriefRFXResponseForm extends Component {
                 <ErrorBox
                   title="There was a problem submitting your response"
                   model={model}
-                  onSubmitClicked={onSubmitClicked}
+                  submitClicked={onSubmitClicked}
                   setFocus={setFocus}
                 />
               )}
@@ -299,9 +299,7 @@ export class BriefRFXResponseForm extends Component {
                           className="au-btn au-btn--tertiary"
                           type="button"
                           value="Save and return later"
-                          onClick={e => {
-                            onSaveClicked(e)
-                          }}
+                          onClick={onSaveClicked}
                         />
                       )}
                     </p>
@@ -324,7 +322,7 @@ export class BriefRFXResponseForm extends Component {
 }
 
 BriefRFXResponseForm.defaultProps = {
-  onSubmitClicked: null,
+  onSubmitClicked: () => {},
   handleSubmit: null,
   loadingText: null,
   briefResponseStatus: '',

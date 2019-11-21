@@ -180,6 +180,15 @@ export const BriefResponseRFXReducer = {
   respondToPhone: ''
 }
 
+export const BriefResponseATMReducer = {
+  submit: false,
+  availability: '',
+  criteria: {},
+  attachedDocumentURL: [],
+  respondToEmailAddress: '',
+  respondToPhone: ''
+}
+
 export const SellerEditFormReducer = {
   supplier: {
     name: '',

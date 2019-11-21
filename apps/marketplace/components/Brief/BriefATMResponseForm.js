@@ -6,6 +6,7 @@ import format from 'date-fns/format'
 import DocumentTitle from 'react-document-title'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import { requiredFile, required, validEmail, validPhoneNumber } from 'marketplace/components/validators'
 import ErrorBox from 'shared/form/ErrorBox'
 import FilesInput from 'shared/form/FilesInput'
@@ -14,6 +15,7 @@ import Textarea from 'shared/form/Textarea'
 import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import range from 'lodash/range'
 import dmapi from 'marketplace/services/apiClient'
+import { rootPath } from 'marketplace/routes'
 import styles from './BriefATMResponseForm.scss'
 import { escapeQuote } from '../helpers'
 
@@ -33,8 +35,12 @@ export class BriefATMResponseForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      fileCount: 1
+      fileCount: 1,
+      showDeleteAlert: false
     }
+
+    this.handleDeleteClick = this.handleDeleteClick.bind(this)
+    this.toggleDeleteAlert = this.toggleDeleteAlert.bind(this)
   }
 
   addFileField() {
@@ -45,19 +51,36 @@ export class BriefATMResponseForm extends Component {
     })
   }
 
+  handleDeleteClick(e) {
+    e.preventDefault()
+    this.setState({
+      showDeleteAlert: true
+    })
+  }
+
+  toggleDeleteAlert() {
+    this.setState(prevState => ({
+      showDeleteAlert: !prevState.showDeleteAlert
+    }))
+  }
+
   render() {
     const {
       model,
       brief,
       briefResponseSuccess,
+      briefResponseSave,
       app,
       currentlySending,
-      submitClicked,
+      onSubmitClicked,
       handleSubmit,
       setFocus,
-      match,
       uploading,
-      loadingText
+      loadingText,
+      briefResponseStatus,
+      onSaveClicked,
+      briefResponseForm,
+      briefResponseId
     } = this.props
 
     return (
@@ -65,18 +88,47 @@ export class BriefATMResponseForm extends Component {
         <DocumentTitle title="Brief Response - Digital Marketplace">
           <div className="col-sm-push-2 col-sm-8 col-xs-12">
             <article role="main">
-              {briefResponseSuccess && <Redirect to={`${match.url}/atm/respond/submitted`} />}
+              {briefResponseSuccess && !briefResponseSave && (
+                <Redirect to={`${rootPath}/brief/${brief.id}/atm/respond/${briefResponseId}/submitted`} />
+              )}
+              {briefResponseSuccess && briefResponseSave && <Redirect to={`${rootPath}/seller-dashboard`} />}
               {!briefResponseSuccess && (
                 <ErrorBox
                   title="There was a problem submitting your response"
                   model={model}
-                  submitClicked={submitClicked}
+                  onSubmitClicked={onSubmitClicked}
                   setFocus={setFocus}
                 />
               )}
-              <AUheading level="1" size="xl">
-                Apply for &apos;{brief.title}&apos;
-              </AUheading>
+              {this.state.showDeleteAlert && (
+                <div className={styles.deleteAlert}>
+                  <AUpageAlert as="warning">
+                    <AUheading level="2" size="md">
+                      Are you sure?
+                    </AUheading>
+                    <p>If you withdraw this application, it will be permanently deleted.</p>
+                    <AUbutton onClick={() => this.props.onBriefResponseDelete(briefResponseId)}>
+                      Yes, withdraw application
+                    </AUbutton>
+                    <AUbutton as="secondary" onClick={this.toggleDeleteAlert}>
+                      Do not withdraw application
+                    </AUbutton>
+                  </AUpageAlert>
+                </div>
+              )}
+              <div className={styles.headingArea}>
+                <AUheading level="1" size="xl">
+                  Apply for &apos;{brief.title}&apos;
+                </AUheading>
+                {briefResponseStatus === 'submitted' && (
+                  <input
+                    type="button"
+                    className={`${styles.withdrawButton} au-btn`}
+                    onClick={this.handleDeleteClick}
+                    value="Withdraw application"
+                  />
+                )}
+              </div>
               {app.supplierCode ? (
                 <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
                   <Textfield
@@ -84,6 +136,7 @@ export class BriefATMResponseForm extends Component {
                     name="availability"
                     id="availability"
                     htmlFor="availability"
+                    defaultValue={briefResponseForm.availability}
                     label="When can you start?"
                     maxLength={100}
                     description={
@@ -199,7 +252,11 @@ export class BriefATMResponseForm extends Component {
                     htmlFor="respondToEmailAddress"
                     label="Email"
                     description="All communication about your application will be sent to this email."
-                    defaultValue={app.emailAddress}
+                    defaultValue={
+                      briefResponseForm.respondToEmailAddress
+                        ? briefResponseForm.respondToEmailAddress
+                        : app.emailAddress
+                    }
                     maxLength={100}
                     validators={{
                       required,
@@ -215,6 +272,7 @@ export class BriefATMResponseForm extends Component {
                     name="respondToPhone"
                     id="respondToPhone"
                     htmlFor="respondToPhone"
+                    defaultValue={briefResponseForm.respondToPhone}
                     label="Phone number"
                     maxLength={100}
                     validators={{
@@ -242,7 +300,25 @@ export class BriefATMResponseForm extends Component {
                     <LoadingButton text={loadingText || 'Loading'} />
                   ) : (
                     <p>
-                      <input className="au-btn" type="submit" value="Submit application" onClick={submitClicked} />
+                      {briefResponseStatus === 'submitted' && (
+                        <input className="au-btn" type="submit" value="Update application" onClick={onSubmitClicked} />
+                      )}
+                      {briefResponseStatus === 'submitted' && (
+                        <a className="au-btn au-btn--tertiary" href={`${rootPath}/seller-dashboard`}>
+                          Cancel all updates
+                        </a>
+                      )}
+                      {briefResponseStatus === 'draft' && (
+                        <input className="au-btn" type="submit" value="Submit application" onClick={onSubmitClicked} />
+                      )}
+                      {briefResponseStatus === 'draft' && (
+                        <input
+                          className="au-btn au-btn--tertiary"
+                          type="button"
+                          value="Save and return later"
+                          onClick={onSaveClicked}
+                        />
+                      )}
                     </p>
                   )}
                 </Form>
@@ -251,7 +327,7 @@ export class BriefATMResponseForm extends Component {
                   <AUheading level="2" size="md">
                     There was a problem loading your details
                   </AUheading>
-                  <p>Only logged in sellers can respond to briefs</p>
+                  <p>Only logged in sellers can respond to opportunities</p>
                 </AUpageAlert>
               )}
             </article>
@@ -263,9 +339,13 @@ export class BriefATMResponseForm extends Component {
 }
 
 BriefATMResponseForm.defaultProps = {
-  submitClicked: null,
+  onSubmitClicked: () => {},
+  onBriefResponseDelete: () => {},
+  onSaveClicked: () => {},
   handleSubmit: null,
-  loadingText: null
+  loadingText: null,
+  briefResponseStatus: '',
+  briefResponseId: ''
 }
 
 BriefATMResponseForm.propTypes = {
@@ -273,9 +353,13 @@ BriefATMResponseForm.propTypes = {
     briefResponseSuccess: PropTypes.bool
   }).isRequired,
   model: PropTypes.string.isRequired,
-  submitClicked: PropTypes.func,
+  onSubmitClicked: PropTypes.func,
   handleSubmit: PropTypes.func,
-  loadingText: PropTypes.string
+  loadingText: PropTypes.string,
+  briefResponseStatus: PropTypes.string,
+  briefResponseId: PropTypes.string,
+  onBriefResponseDelete: PropTypes.func,
+  onSaveClicked: PropTypes.func
 }
 
 export default BriefATMResponseForm

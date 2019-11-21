@@ -9,6 +9,8 @@ import BriefSpecialistResponseForm2 from 'marketplace/components/Brief/BriefSpec
 import BriefSpecialistResponseSubmitted2 from 'marketplace/components/Brief/BriefSpecialistResponseSubmitted2'
 import BriefRFXResponseForm from 'marketplace/components/Brief/BriefRFXResponseForm'
 import BriefRFXResponseSubmitted from 'marketplace/components/Brief/BriefRFXResponseSubmitted'
+import BriefATMResponseForm from 'marketplace/components/Brief/BriefATMResponseForm'
+import BriefATMResponseSubmitted from 'marketplace/components/Brief/BriefATMResponseSubmitted'
 import BriefResponseSupplierError from 'marketplace/components/Brief/BriefResponseSupplierError'
 import {
   loadBrief,
@@ -25,14 +27,15 @@ import {
 } from 'marketplace/actions/briefActions'
 import { setErrorMessage, handleFeedbackSubmit } from 'marketplace/actions/appActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { BriefResponseSpecialistReducer, BriefResponseRFXReducer } from 'marketplace/reducers'
+import { BriefResponseSpecialistReducer, BriefResponseRFXReducer, BriefResponseATMReducer } from 'marketplace/reducers'
 import { rootPath } from 'marketplace/routes'
 
 const model = 'briefResponseForm'
 
 const mapResponseTypeToReducer = {
   specialist2: BriefResponseSpecialistReducer,
-  rfx: BriefResponseRFXReducer
+  rfx: BriefResponseRFXReducer,
+  atm: BriefResponseATMReducer
 }
 
 class BriefResponsePage extends Component {
@@ -109,6 +112,7 @@ class BriefResponsePage extends Component {
         this.handleSpecialistBriefResponseSubmit(this.props[this.props.model])
         break
       case 'rfx':
+      case 'atm':
         this.props.changeModel(`${this.props.model}.submit`, false)
         this.handleBriefResponseSubmit(this.props[this.props.model])
         break
@@ -347,6 +351,44 @@ class BriefResponsePage extends Component {
                   errorScreen
                 )}
               </React.Fragment>
+            )}
+          />
+          <Route
+            path={`${baseURL}/atm/respond/${briefResponseId}/submitted`}
+            render={() => (
+              <BriefATMResponseSubmitted
+                setFocus={setFocus}
+                briefResponseStatus={this.props.briefResponse.status}
+                briefResponseId={briefResponseId}
+                briefId={this.props.brief.id}
+                submitClicked={this.state.submitClicked}
+                handleSubmit={values => this.handleFeedbackSubmit(values)}
+                {...this.props}
+              />
+            )}
+          />
+          <Route
+            path={`${baseURL}/atm/respond/${briefResponseId}`}
+            render={() => (
+              <span>
+                {loadBriefSuccess ? (
+                  <BriefATMResponseForm
+                    onBriefResponseDelete={this.handleBriefResponseDelete}
+                    onSubmitClicked={this.handleSubmitClicked}
+                    onSaveClicked={this.handleSaveClicked}
+                    briefResponseSave={briefResponseSave}
+                    briefResponseId={briefResponseId}
+                    briefResponseStatus={briefResponse.status}
+                    handleSubmit={values => this.handleBriefResponseSubmit(values)}
+                    setFocus={setFocus}
+                    {...this.props}
+                    loadingText={this.state.loadingText}
+                    uploading={uploading => this.setState({ loadingText: uploading ? 'Uploading' : null })}
+                  />
+                ) : (
+                  errorScreen
+                )}{' '}
+              </span>
             )}
           />
         </Switch>
