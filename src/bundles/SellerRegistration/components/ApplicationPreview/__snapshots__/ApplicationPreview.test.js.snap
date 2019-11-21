@@ -57,7 +57,7 @@ exports[`ApplicationPreview renders with props 1`] = `
             >
               <p>
                 <a
-                  rel="noopener noreferrer"
+                  rel="external noopener noreferrer"
                   styleName="external-link"
                   target="_blank"
                 />
