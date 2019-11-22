@@ -11,7 +11,8 @@ describe('OverviewHeader', () => {
   test('shows the correct actions for a draft opportunity', () => {
     const brief = {
       id: 123,
-      lot: 'atm'
+      lot: 'atm',
+      status: 'draft'
     }
 
     const component = mount(<OverviewHeader brief={brief} isClosed={false} isPublished={false} />)
@@ -33,7 +34,8 @@ describe('OverviewHeader', () => {
       sellerSelector: 'oneSeller',
       sellers: {
         1: {}
-      }
+      },
+      status: 'live'
     }
 
     const briefResponses = [{ supplier_code: 1 }]
@@ -58,7 +60,8 @@ describe('OverviewHeader', () => {
       sellerSelector: 'oneSeller',
       sellers: {
         1: {}
-      }
+      },
+      status: 'live'
     }
 
     const briefResponses = []
@@ -83,7 +86,8 @@ describe('OverviewHeader', () => {
       sellers: {
         1: {},
         2: {}
-      }
+      },
+      status: 'live'
     }
 
     const briefResponses = [{ supplier_code: 1 }, { supplier_code: 2 }]
@@ -108,7 +112,8 @@ describe('OverviewHeader', () => {
       sellers: {
         1: {},
         2: {}
-      }
+      },
+      status: 'live'
     }
 
     const briefResponses = []
@@ -132,7 +137,8 @@ describe('OverviewHeader', () => {
       sellerSelector: 'oneSeller',
       sellers: {
         1: {}
-      }
+      },
+      status: 'live'
     }
 
     const briefResponses = [{ supplier_code: 1 }]
@@ -157,7 +163,8 @@ describe('OverviewHeader', () => {
       sellerSelector: 'oneSeller',
       sellers: {
         1: {}
-      }
+      },
+      status: 'live'
     }
 
     const briefResponses = []
@@ -182,7 +189,8 @@ describe('OverviewHeader', () => {
       sellers: {
         1: {},
         2: {}
-      }
+      },
+      status: 'live'
     }
 
     const briefResponses = [{ supplier_code: 1 }, { supplier_code: 2 }]
@@ -207,7 +215,8 @@ describe('OverviewHeader', () => {
       sellers: {
         1: {},
         2: {}
-      }
+      },
+      status: 'live'
     }
 
     const briefResponses = []
@@ -232,7 +241,8 @@ describe('OverviewHeader', () => {
       sellers: {
         1: {},
         2: {}
-      }
+      },
+      status: 'live'
     }
 
     const briefResponses = [{ supplier_code: 1 }, { supplier_code: 2 }]
@@ -257,7 +267,8 @@ describe('OverviewHeader', () => {
       sellers: {
         1: {},
         2: {}
-      }
+      },
+      status: 'live'
     }
 
     const briefResponses = []
@@ -278,7 +289,8 @@ describe('OverviewHeader', () => {
       },
       id: 123,
       lot: 'atm',
-      sellerSelector: 'allSellers'
+      sellerSelector: 'allSellers',
+      status: 'live'
     }
 
     const component = mount(<OverviewHeader brief={brief} isClosed={false} isPublished />)
@@ -296,7 +308,8 @@ describe('OverviewHeader', () => {
       },
       id: 123,
       lot: 'specialist',
-      sellerSelector: 'allSellers'
+      sellerSelector: 'allSellers',
+      status: 'live'
     }
 
     const component = mount(<OverviewHeader brief={brief} isClosed={false} isPublished />)
@@ -309,7 +322,8 @@ describe('OverviewHeader', () => {
   test('shows the correct actions for a closed opportunity', () => {
     const brief = {
       id: 123,
-      lot: 'atm'
+      lot: 'atm',
+      status: 'closed'
     }
 
     const component = mount(<OverviewHeader brief={brief} isClosed isPublished />)
