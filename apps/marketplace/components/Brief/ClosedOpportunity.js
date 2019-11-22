@@ -4,11 +4,12 @@ import PropTypes from 'prop-types'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import Feedback from 'marketplace/components/Feedback/Feedback'
+import { rootPath } from 'marketplace/routes'
 
 import styles from '../../main.scss'
 
 const ClosedOpportunity = props => {
-  const { app, handleSubmit, setFocus } = props
+  const { app, brief, handleSubmit, setFocus } = props
 
   return (
     <React.Fragment>
@@ -17,7 +18,7 @@ const ClosedOpportunity = props => {
           <strong>Your opportunity has been closed</strong>
         </h1>
         <div className={styles.marginTop2}>
-          <AUbutton>Download seller responses</AUbutton>
+          <AUbutton link={`${rootPath}/brief/${brief.id}/download-responses`}>Download seller responses</AUbutton>
         </div>
       </AUpageAlert>
       <br />
