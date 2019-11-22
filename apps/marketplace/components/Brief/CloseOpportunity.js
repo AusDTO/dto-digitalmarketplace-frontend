@@ -9,7 +9,9 @@ import styles from '../../main.scss'
 
 const CloseOpportunity = props => {
   const { brief, onCloseOpportunity } = props
-  let seller = {}
+  let seller = {
+    name: ''
+  }
 
   if (brief.sellers) {
     seller = Object.values(brief.sellers).pop()
