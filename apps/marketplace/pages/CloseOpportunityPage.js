@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter, Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { closeOpportunity, loadBrief } from 'marketplace/actions/briefActions'
 import { handleFeedbackSubmit, setErrorMessage } from 'marketplace/actions/appActions'
