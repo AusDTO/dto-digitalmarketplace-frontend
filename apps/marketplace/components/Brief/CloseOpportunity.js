@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
@@ -35,6 +36,16 @@ const CloseOpportunity = props => {
       </div>
     </React.Fragment>
   )
+}
+
+CloseOpportunity.defaultProps = {
+  brief: {},
+  onCloseOpportunity: () => {}
+}
+
+CloseOpportunity.propTypes = {
+  brief: PropTypes.object.isRequired,
+  onCloseOpportunity: PropTypes.func.isRequired
 }
 
 export default CloseOpportunity
