@@ -207,8 +207,8 @@ export class BriefATMResponseForm extends Component {
                       <FilesInput
                         label=""
                         fieldLabel="Upload document"
-                        name="attachedDocumentURL"
-                        model={`${model}.attachedDocumentURL.0`}
+                        name="writtenProposal"
+                        model={`${model}.writtenProposal.0`}
                         formFields={1}
                         url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
                         api={dmapi}
@@ -230,24 +230,21 @@ export class BriefATMResponseForm extends Component {
                   <small className={styles.smallText}>
                     If requested by the buyer, you can upload additional documents
                   </small>
-                  {range(this.state.fileCount).map(i => {
-                    const index = briefRequiresDocumentUpload(brief) ? i + 1 : i
-                    return (
-                      <FilesInput
-                        key={index}
-                        title="Additional documents"
-                        fieldLabel="Upload document"
-                        name="attachedDocumentURL"
-                        model={`${model}.attachedDocumentURL.${index}`}
-                        formFields={1}
-                        url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                        api={dmapi}
-                        fileId={index}
-                        uploading={uploading}
-                        accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                      />
-                    )
-                  })}
+                  {range(this.state.fileCount).map(index => (
+                    <FilesInput
+                      key={index}
+                      title="Additional documents"
+                      fieldLabel="Upload document"
+                      name="attachedDocumentURL"
+                      model={`${model}.attachedDocumentURL.${index}`}
+                      formFields={1}
+                      url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                      api={dmapi}
+                      fileId={index}
+                      uploading={uploading}
+                      accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                    />
+                  ))}
                   {this.state.fileCount < 10 && (
                     <p>
                       <a

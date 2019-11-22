@@ -241,8 +241,9 @@ const BriefSpecialistResponseForm2 = ({
                   <FilesInput
                     label="Résumé"
                     hint="Attachments must be PDF or ODT format and a maximum of 5MB"
-                    name="attachedDocumentURL"
-                    model={`${model}.attachedDocumentURL.0`}
+                    name="resume"
+                    model={`${model}.resume.0`}
+                    fileId={0}
                     formFields={1}
                     fieldLabel="Upload résumé"
                     url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
@@ -386,7 +387,7 @@ const BriefSpecialistResponseForm2 = ({
                   in DOC, DOCX, ODT, PDF, PPT, PPTX, XLS or XLSX format and a maximum size of 5MB.
                 </p>
                 {app.supplierCode &&
-                  range(1, fileCount).map(i => (
+                  range(fileCount + 1).map(i => (
                     <FilesInput
                       key={i}
                       fileId={i}

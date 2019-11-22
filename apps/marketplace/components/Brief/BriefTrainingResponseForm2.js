@@ -21,7 +21,7 @@ export class BriefTrainingResponseForm2 extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      fileCount: 1,
+      fileCount: 0,
       showDeleteAlert: false
     }
 
@@ -30,7 +30,7 @@ export class BriefTrainingResponseForm2 extends Component {
   }
 
   componentDidMount() {
-    this.updateRequiredFileCount()
+    this.updateAttachedFileCount()
   }
 
   // returns the types of evaluations in the brief that require a file upload response
@@ -44,12 +44,8 @@ export class BriefTrainingResponseForm2 extends Component {
     return types
   }
 
-  updateRequiredFileCount() {
-    let fileCount = this.getBriefEvaluationTypesForUpload().length + 1
-    if (this.props.briefResponseForm.attachedDocumentURL.length > fileCount) {
-      fileCount = this.props.briefResponseForm.attachedDocumentURL.length
-    }
-    this.setState({ fileCount })
+  updateAttachedFileCount() {
+    this.setState({ fileCount: this.props.briefResponseForm.attachedDocumentURL.length })
   }
 
   addFileField() {
@@ -141,7 +137,7 @@ export class BriefTrainingResponseForm2 extends Component {
               <p>Attachments must be .DOC, .XLS, .PPT or .PDF format and no more than 20MB</p>
               {app.supplierCode ? (
                 <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
-                  {this.getBriefEvaluationTypesForUpload().map((evaluationType, index) => {
+                  {this.getBriefEvaluationTypesForUpload().map(evaluationType => {
                     if (evaluationType === 'Written proposal') {
                       return (
                         <FilesInput
@@ -151,12 +147,12 @@ export class BriefTrainingResponseForm2 extends Component {
                             .map(type => type.toLowerCase())
                             .join(', ')}`}
                           fieldLabel="Upload written proposal"
-                          name="attachedDocumentURL"
-                          model={`${model}.attachedDocumentURL.${index}`}
+                          name="writtenProposal"
+                          model={`${model}.writtenProposal.0`}
                           formFields={1}
                           url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
                           api={dmapi}
-                          fileId={index}
+                          fileId={0}
                           validators={{
                             requiredFile
                           }}
@@ -173,12 +169,12 @@ export class BriefTrainingResponseForm2 extends Component {
                           key={evaluationType}
                           label="Completed response template"
                           fieldLabel="Upload response"
-                          name="attachedDocumentURL"
-                          model={`${model}.attachedDocumentURL.${index}`}
+                          name="responseTemplate"
+                          model={`${model}.responseTemplate.0`}
                           formFields={1}
                           url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
                           api={dmapi}
-                          fileId={index}
+                          fileId={0}
                           validators={{
                             requiredFile
                           }}
@@ -198,25 +194,21 @@ export class BriefTrainingResponseForm2 extends Component {
                   <small className={styles.smallText}>
                     If requested by the buyer, you can upload additional documents
                   </small>
-                  {this.state.fileCount > 0 &&
-                    range(this.state.fileCount - this.getBriefEvaluationTypesForUpload().length).map(i => {
-                      const index = this.getBriefEvaluationTypesForUpload().length + i
-                      return (
-                        <FilesInput
-                          key={index}
-                          title="Additional documents"
-                          fieldLabel="Upload document"
-                          name="attachedDocumentURL"
-                          model={`${model}.attachedDocumentURL.${index}`}
-                          formFields={1}
-                          url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                          api={dmapi}
-                          fileId={index}
-                          uploading={uploading}
-                          accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                        />
-                      )
-                    })}
+                  {range(this.state.fileCount + 1).map(index => (
+                    <FilesInput
+                      key={index}
+                      title="Additional documents"
+                      fieldLabel="Upload document"
+                      name="attachedDocumentURL"
+                      model={`${model}.attachedDocumentURL.${index}`}
+                      formFields={1}
+                      url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                      api={dmapi}
+                      fileId={index}
+                      uploading={uploading}
+                      accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                    />
+                  ))}
                   {this.state.fileCount < 10 && (
                     <p>
                       <a

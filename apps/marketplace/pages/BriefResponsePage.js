@@ -46,7 +46,7 @@ class BriefResponsePage extends Component {
     super(props)
     this.state = {
       loadingText: null,
-      otherDocumentFileCount: 2,
+      otherDocumentFileCount: 0,
       loading: true,
       submitClicked: null,
       responseDeleted: false
@@ -150,24 +150,15 @@ class BriefResponsePage extends Component {
   }
 
   handleSpecialistBriefResponseSubmit(values) {
-    const submitData = {
-      submit: values.submit,
-      attachedDocumentURL: values.attachedDocumentURL ? values.attachedDocumentURL : null,
-      availability: values.availability ? values.availability : null,
-      specialistName: values.specialistName ? values.specialistName : null,
-      specialistGivenNames: values.specialistGivenNames ? values.specialistGivenNames : null,
-      specialistSurname: values.specialistSurname ? values.specialistSurname : null,
-      dayRate: values.dayRate ? values.dayRate : null,
-      dayRateExcludingGST: values.dayRateExcludingGST ? values.dayRateExcludingGST : null,
-      hourRate: values.hourRate ? values.hourRate : null,
-      hourRateExcludingGST: values.hourRateExcludingGST ? values.hourRateExcludingGST : null,
-      essentialRequirements: values.essentialRequirements,
-      niceToHaveRequirements: values.niceToHaveRequirements ? values.niceToHaveRequirements : null,
-      respondToEmailAddress: values.respondToEmailAddress ? values.respondToEmailAddress : null,
-      visaStatus: values.visaStatus ? values.visaStatus : null,
-      securityClearance: values.securityClearance ? values.securityClearance : null,
-      previouslyWorked: values.previouslyWorked ? values.previouslyWorked : null
-    }
+    const { brief, match } = this.props
+    const briefResponseType = match.params.briefResponseType
+    const submitData = { ...mapResponseTypeToReducer[briefResponseType] }
+    Object.keys(values).map(property => {
+      if (Object.keys(mapResponseTypeToReducer[briefResponseType]).includes(property)) {
+        submitData[property] = values[property]
+      }
+      return true
+    })
     if (values.addAnother) {
       if (values.specialistName) {
         this.props.handleBriefNameSubmit('')
@@ -178,12 +169,11 @@ class BriefResponsePage extends Component {
       this.props.handleSpecialistNumberSubmit(1)
     }
 
-    const { brief } = this.props
     this.props.addAnotherSpecialistSubmit(values.addAnother)
     if (!values.submit) {
       this.props.handleSaveBriefResponse()
     }
-    this.props.saveBriefResponse(brief.id, this.props.match.params.briefResponseId, submitData)
+    this.props.saveBriefResponse(brief.id, match.params.briefResponseId, submitData)
     this.props.clearModel(model)
     window.scrollTo(0, 0)
   }
@@ -202,7 +192,7 @@ class BriefResponsePage extends Component {
 
   handleBriefResponseSubmit(values) {
     const { brief, match } = this.props
-    const briefResponseType = this.props.match.params.briefResponseType
+    const briefResponseType = match.params.briefResponseType
     const submitData = { ...mapResponseTypeToReducer[briefResponseType] }
     Object.keys(values).map(property => {
       if (Object.keys(mapResponseTypeToReducer[briefResponseType]).includes(property)) {

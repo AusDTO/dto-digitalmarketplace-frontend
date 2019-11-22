@@ -156,6 +156,7 @@ export const BuyerSpecialistFormReducer = {
 
 export const BriefResponseSpecialistReducer = {
   submit: false,
+  resume: [],
   attachedDocumentURL: [],
   availability: '',
   specialistName: '',
@@ -175,6 +176,8 @@ export const BriefResponseSpecialistReducer = {
 
 export const BriefResponseRFXReducer = {
   submit: false,
+  responseTemplate: [],
+  writtenProposal: [],
   attachedDocumentURL: [],
   respondToEmailAddress: '',
   respondToPhone: ''
@@ -184,6 +187,7 @@ export const BriefResponseATMReducer = {
   submit: false,
   availability: '',
   criteria: {},
+  writtenProposal: [],
   attachedDocumentURL: [],
   respondToEmailAddress: '',
   respondToPhone: ''
