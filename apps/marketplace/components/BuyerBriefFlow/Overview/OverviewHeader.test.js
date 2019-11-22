@@ -46,7 +46,6 @@ describe('OverviewHeader', () => {
     const links = component.children().find('a')
     expect(links).toHaveLength(1)
     expect(links.at(0).text()).toEqual('Close opportunity now')
-    // expect(links.at(1).text()).toEqual('Withdraw opportunity')
   })
 
   test('shows the correct actions for a published RFX opportunity with one invited seller that has not responded', () => {
@@ -70,8 +69,7 @@ describe('OverviewHeader', () => {
     )
 
     const links = component.children().find('a')
-    // expect(links).toHaveLength(1)
-    // expect(links.at(1).text()).toEqual('Withdraw opportunity')
+    expect(links).toHaveLength(0)
   })
 
   test('shows the correct actions for a published RFX opportunity with multiple invited sellers that have responded', () => {
@@ -96,8 +94,7 @@ describe('OverviewHeader', () => {
     )
 
     const links = component.children().find('a')
-    // expect(links).toHaveLength(1)
-    // expect(links.at(1).text()).toEqual('Withdraw opportunity')
+    expect(links).toHaveLength(0)
   })
 
   test('shows the correct actions for a published RFX opportunity with multiple invited sellers that have not responded', () => {
@@ -122,8 +119,7 @@ describe('OverviewHeader', () => {
     )
 
     const links = component.children().find('a')
-    // expect(links).toHaveLength(1)
-    // expect(links.at(1).text()).toEqual('Withdraw opportunity')
+    expect(links).toHaveLength(0)
   })
 
   test('shows the correct actions for a published training opportunity with one invited seller that has responded', () => {
@@ -149,7 +145,6 @@ describe('OverviewHeader', () => {
     const links = component.children().find('a')
     expect(links).toHaveLength(1)
     expect(links.at(0).text()).toEqual('Close opportunity now')
-    // expect(links.at(1).text()).toEqual('Withdraw opportunity')
   })
 
   test('shows the correct actions for a published training opportunity with one invited seller that has not responded', () => {
@@ -173,8 +168,7 @@ describe('OverviewHeader', () => {
     )
 
     const links = component.children().find('a')
-    // expect(links).toHaveLength(1)
-    // expect(links.at(1).text()).toEqual('Withdraw opportunity')
+    expect(links).toHaveLength(0)
   })
 
   test('shows the correct actions for a published training opportunity with multiple invited sellers that have responded', () => {
@@ -199,8 +193,7 @@ describe('OverviewHeader', () => {
     )
 
     const links = component.children().find('a')
-    // expect(links).toHaveLength(1)
-    // expect(links.at(1).text()).toEqual('Withdraw opportunity')
+    expect(links).toHaveLength(0)
   })
 
   test('shows the correct actions for a published training opportunity with multiple invited sellers that have not responded', () => {
@@ -225,8 +218,7 @@ describe('OverviewHeader', () => {
     )
 
     const links = component.children().find('a')
-    // expect(links).toHaveLength(1)
-    // expect(links.at(1).text()).toEqual('Withdraw opportunity')
+    expect(links).toHaveLength(0)
   })
 
   test('shows the correct actions for a published specialist opportunity with multiple invited sellers that have responded', () => {
@@ -251,8 +243,7 @@ describe('OverviewHeader', () => {
     )
 
     const links = component.children().find('a')
-    // expect(links).toHaveLength(1)
-    // expect(links.at(1).text()).toEqual('Withdraw opportunity')
+    expect(links).toHaveLength(0)
   })
 
   test('shows the correct actions for a published specialist opportunity with multiple invited sellers that have not responded', () => {
@@ -277,8 +268,7 @@ describe('OverviewHeader', () => {
     )
 
     const links = component.children().find('a')
-    // expect(links).toHaveLength(1)
-    // expect(links.at(1).text()).toEqual('Withdraw opportunity')
+    expect(links).toHaveLength(0)
   })
 
   test('shows the correct actions for a published ATM opportunity', () => {
@@ -296,8 +286,7 @@ describe('OverviewHeader', () => {
     const component = mount(<OverviewHeader brief={brief} isClosed={false} isPublished />)
 
     const links = component.children().find('a')
-    // expect(links).toHaveLength(1)
-    // expect(links.at(1).text()).toEqual('Withdraw opportunity')
+    expect(links).toHaveLength(0)
   })
 
   test('shows the correct actions for a published specialist opportunity open to all', () => {
@@ -315,8 +304,7 @@ describe('OverviewHeader', () => {
     const component = mount(<OverviewHeader brief={brief} isClosed={false} isPublished />)
 
     const links = component.children().find('a')
-    // expect(links).toHaveLength(1)
-    // expect(links.at(1).text()).toEqual('Withdraw opportunity')
+    expect(links).toHaveLength(0)
   })
 
   test('shows the correct actions for a closed opportunity', () => {
