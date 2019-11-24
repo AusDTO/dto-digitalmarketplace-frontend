@@ -7,7 +7,7 @@ import { handleFeedbackSubmit, setErrorMessage } from 'marketplace/actions/appAc
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import CloseOpportunity from 'marketplace/components/Brief/CloseOpportunity'
 import ClosedOpportunity from 'marketplace/components/Brief/ClosedOpportunity'
-import { canCloseOpportunity, mapLot } from 'marketplace/components/helpers'
+import { mapLot } from 'marketplace/components/helpers'
 
 class CloseOpportunityPage extends Component {
   constructor(props) {
@@ -65,7 +65,7 @@ class CloseOpportunityPage extends Component {
   }
 
   render = () => {
-    const { app, brief, briefResponses, errorMessage } = this.props
+    const { app, brief, canCloseOpportunity, errorMessage } = this.props
 
     let hasFocused = false
     const setFocus = e => {
@@ -108,9 +108,7 @@ class CloseOpportunityPage extends Component {
       return <ClosedOpportunity app={app} brief={brief} handleSubmit={this.handleFeedbackSubmit} setFocus={setFocus} />
     }
 
-    const canClose = canCloseOpportunity(brief, briefResponses)
-
-    if (!canClose) {
+    if (!canCloseOpportunity) {
       hasFocused = false
       return (
         <ErrorBoxComponent
@@ -123,7 +121,7 @@ class CloseOpportunityPage extends Component {
       )
     }
 
-    if (canClose) {
+    if (canCloseOpportunity) {
       return <CloseOpportunity brief={brief} onCloseOpportunity={this.handleCloseOpportunity} />
     }
 
@@ -135,6 +133,7 @@ const mapStateToProps = state => ({
   app: state.app,
   brief: state.brief.brief,
   briefResponses: state.brief.briefResponses,
+  canCloseOpportunity: state.brief.canCloseOpportunity,
   errorMessage: state.app.errorMessage
 })
 

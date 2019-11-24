@@ -108,6 +108,7 @@ class Overview extends Component {
     const {
       brief,
       briefResponses,
+      canCloseOpportunity,
       flow,
       oldWorkOrderCreator,
       questionsAsked,
@@ -137,7 +138,7 @@ class Overview extends Component {
         <div>
           <OverviewHeader
             brief={brief}
-            briefResponses={briefResponses}
+            canCloseOpportunity={canCloseOpportunity}
             flowName={flowName}
             handleDeleteClick={this.handleDeleteClick}
             isClosed={isClosed}
@@ -230,6 +231,7 @@ Overview.propTypes = {
 }
 
 const mapStateToProps = state => ({
+  canCloseOpportunity: state.brief.canCloseOpportunity,
   deleteBriefSuccess: state.brief.deleteBriefSuccess,
   teams: state.app.teams,
   isTeamLead: state.app.isTeamLead,

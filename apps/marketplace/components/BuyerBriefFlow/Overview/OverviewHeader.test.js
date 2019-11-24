@@ -15,7 +15,9 @@ describe('OverviewHeader', () => {
       status: 'draft'
     }
 
-    const component = mount(<OverviewHeader brief={brief} isClosed={false} isPublished={false} />)
+    const component = mount(
+      <OverviewHeader brief={brief} canCloseOpportunity={false} isClosed={false} isPublished={false} />
+    )
 
     const links = component.children().find('a')
     expect(links).toHaveLength(2)
@@ -38,10 +40,7 @@ describe('OverviewHeader', () => {
       status: 'live'
     }
 
-    const briefResponses = [{ supplier_code: 1 }]
-    const component = mount(
-      <OverviewHeader brief={brief} briefResponses={briefResponses} isClosed={false} isPublished />
-    )
+    const component = mount(<OverviewHeader brief={brief} canCloseOpportunity isClosed={false} isPublished />)
 
     const links = component.children().find('a')
     expect(links).toHaveLength(1)
@@ -63,10 +62,7 @@ describe('OverviewHeader', () => {
       status: 'live'
     }
 
-    const briefResponses = []
-    const component = mount(
-      <OverviewHeader brief={brief} briefResponses={briefResponses} isClosed={false} isPublished />
-    )
+    const component = mount(<OverviewHeader brief={brief} canCloseOpportunity={false} isClosed={false} isPublished />)
 
     const links = component.children().find('a')
     expect(links).toHaveLength(0)
@@ -88,10 +84,7 @@ describe('OverviewHeader', () => {
       status: 'live'
     }
 
-    const briefResponses = [{ supplier_code: 1 }, { supplier_code: 2 }]
-    const component = mount(
-      <OverviewHeader brief={brief} briefResponses={briefResponses} isClosed={false} isPublished />
-    )
+    const component = mount(<OverviewHeader brief={brief} canCloseOpportunity={false} isClosed={false} isPublished />)
 
     const links = component.children().find('a')
     expect(links).toHaveLength(0)
@@ -113,10 +106,7 @@ describe('OverviewHeader', () => {
       status: 'live'
     }
 
-    const briefResponses = []
-    const component = mount(
-      <OverviewHeader brief={brief} briefResponses={briefResponses} isClosed={false} isPublished />
-    )
+    const component = mount(<OverviewHeader brief={brief} canCloseOpportunity={false} isClosed={false} isPublished />)
 
     const links = component.children().find('a')
     expect(links).toHaveLength(0)
@@ -137,10 +127,7 @@ describe('OverviewHeader', () => {
       status: 'live'
     }
 
-    const briefResponses = [{ supplier_code: 1 }]
-    const component = mount(
-      <OverviewHeader brief={brief} briefResponses={briefResponses} isClosed={false} isPublished />
-    )
+    const component = mount(<OverviewHeader brief={brief} canCloseOpportunity isClosed={false} isPublished />)
 
     const links = component.children().find('a')
     expect(links).toHaveLength(1)
@@ -162,10 +149,7 @@ describe('OverviewHeader', () => {
       status: 'live'
     }
 
-    const briefResponses = []
-    const component = mount(
-      <OverviewHeader brief={brief} briefResponses={briefResponses} isClosed={false} isPublished />
-    )
+    const component = mount(<OverviewHeader brief={brief} canCloseOpportunity={false} isClosed={false} isPublished />)
 
     const links = component.children().find('a')
     expect(links).toHaveLength(0)
@@ -187,10 +171,7 @@ describe('OverviewHeader', () => {
       status: 'live'
     }
 
-    const briefResponses = [{ supplier_code: 1 }, { supplier_code: 2 }]
-    const component = mount(
-      <OverviewHeader brief={brief} briefResponses={briefResponses} isClosed={false} isPublished />
-    )
+    const component = mount(<OverviewHeader brief={brief} canCloseOpportunity={false} isClosed={false} isPublished />)
 
     const links = component.children().find('a')
     expect(links).toHaveLength(0)
@@ -212,10 +193,7 @@ describe('OverviewHeader', () => {
       status: 'live'
     }
 
-    const briefResponses = []
-    const component = mount(
-      <OverviewHeader brief={brief} briefResponses={briefResponses} isClosed={false} isPublished />
-    )
+    const component = mount(<OverviewHeader brief={brief} canCloseOpportunity={false} isClosed={false} isPublished />)
 
     const links = component.children().find('a')
     expect(links).toHaveLength(0)
@@ -237,10 +215,7 @@ describe('OverviewHeader', () => {
       status: 'live'
     }
 
-    const briefResponses = [{ supplier_code: 1 }, { supplier_code: 2 }]
-    const component = mount(
-      <OverviewHeader brief={brief} briefResponses={briefResponses} isClosed={false} isPublished />
-    )
+    const component = mount(<OverviewHeader brief={brief} canCloseOpportunity={false} isClosed={false} isPublished />)
 
     const links = component.children().find('a')
     expect(links).toHaveLength(0)
@@ -262,10 +237,7 @@ describe('OverviewHeader', () => {
       status: 'live'
     }
 
-    const briefResponses = []
-    const component = mount(
-      <OverviewHeader brief={brief} briefResponses={briefResponses} isClosed={false} isPublished />
-    )
+    const component = mount(<OverviewHeader brief={brief} canCloseOpportunity={false} isClosed={false} isPublished />)
 
     const links = component.children().find('a')
     expect(links).toHaveLength(0)
@@ -283,7 +255,7 @@ describe('OverviewHeader', () => {
       status: 'live'
     }
 
-    const component = mount(<OverviewHeader brief={brief} isClosed={false} isPublished />)
+    const component = mount(<OverviewHeader brief={brief} canCloseOpportunity={false} isClosed={false} isPublished />)
 
     const links = component.children().find('a')
     expect(links).toHaveLength(0)
@@ -301,7 +273,7 @@ describe('OverviewHeader', () => {
       status: 'live'
     }
 
-    const component = mount(<OverviewHeader brief={brief} isClosed={false} isPublished />)
+    const component = mount(<OverviewHeader brief={brief} canCloseOpportunity={false} isClosed={false} isPublished />)
 
     const links = component.children().find('a')
     expect(links).toHaveLength(0)
@@ -314,7 +286,7 @@ describe('OverviewHeader', () => {
       status: 'closed'
     }
 
-    const component = mount(<OverviewHeader brief={brief} isClosed isPublished />)
+    const component = mount(<OverviewHeader brief={brief} canCloseOpportunity={false} isClosed isPublished />)
 
     const links = component.children().find('a')
     expect(links).toHaveLength(1)

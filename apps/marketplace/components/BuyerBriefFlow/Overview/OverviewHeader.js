@@ -11,7 +11,7 @@ import styles from '../Overview.scss'
 const OverviewHeader = props => {
   const {
     brief,
-    briefResponses,
+    canCloseOpportunity,
     flowName,
     handleDeleteClick,
     isClosed,
@@ -43,7 +43,7 @@ const OverviewHeader = props => {
         {isPublished && !isClosed && (
           <OverviewHeaderPublishedActionsList
             brief={brief}
-            briefResponses={briefResponses}
+            canCloseOpportunity={canCloseOpportunity}
             isPartOfTeam={isPartOfTeam}
             isTeamLead={isTeamLead}
             teams={teams}
