@@ -19,7 +19,7 @@ const getStatusBadge = o => (
   <React.Fragment>
     {o.draftResponseCount && (
       <div className={`${styles.badge} ${styles.yellow} ${styles.first}`}>
-        {o.lotSlug === 'specialist' && `${o.draftResponseCount} in `}Draft
+        {o.lot === 'specialist' && `${o.draftResponseCount} in `}Draft
       </div>
     )}
     {!withdrawn(o) && !closed(o) && o.responseCount && (
@@ -34,10 +34,10 @@ const getStatusBadge = o => (
 
 const getAction = o => (
   <React.Fragment>
-    {!closed(o) && (o.draftResponseCount || o.responseCount) && o.briefResponseId && o.lotSlug !== 'specialist' && (
-      <a href={`${rootPath}/brief/${o.briefId}/${o.lotSlug}/respond/${o.briefResponseId}`}>Edit response</a>
+    {!closed(o) && (o.draftResponseCount || o.responseCount) && o.briefResponseId && o.lot !== 'specialist' && (
+      <a href={`${rootPath}/brief/${o.briefId}/${o.lot}/respond/${o.briefResponseId}`}>Edit response</a>
     )}
-    {!closed(o) && (o.draftResponseCount || o.responseCount) && o.lotSlug === 'specialist' && (
+    {!closed(o) && (o.draftResponseCount || o.responseCount) && o.lot === 'specialist' && (
       <a href={`${rootPath}/brief/${o.briefId}/responses`}>Edit candidates</a>
     )}
     {invited(o) && <a href={`${rootPath}/digital-marketplace/opportunities/${o.briefId}`}>View opportunity</a>}
