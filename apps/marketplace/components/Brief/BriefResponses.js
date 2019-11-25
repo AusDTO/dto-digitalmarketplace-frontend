@@ -94,7 +94,7 @@ class BriefResponses extends Component {
                 </div>
               )}
               <AUheadings level="1" size="xl">
-                Edit or add candidates
+                Edit or submit candidates
               </AUheadings>
               {this.props.responses.length > 0 && (
                 <table className={`${styles.resultListing} col-xs-12`}>

@@ -52,8 +52,8 @@ const BriefSpecialistResponseSubmitted2 = ({
           </AUpageAlert>
           {getSubmittedResponses(briefResponses).length < parseInt(brief.numberOfSuppliers, 10) && (
             <p>
-              <a className="au-btn right-button-margin" href={`/2/brief/${match.params.briefId}/specialist2/respond`}>
-                Add another specialist
+              <a className="au-btn right-button-margin" href={`/2/brief/${match.params.briefId}/responses`}>
+                Edit or submit candidates
               </a>
             </p>
           )}

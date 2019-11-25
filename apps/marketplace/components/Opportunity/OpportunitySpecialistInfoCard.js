@@ -250,7 +250,7 @@ const OpportunitySpecialistInfoCard = props => (
                   {props.sellerResponses > 0 && (
                     <p>
                       <a href={`${rootPath}/brief/${props.briefId}/responses`} className={`${styles.button} au-btn`}>
-                        Edit or add candidates
+                        Edit or submit candidates
                       </a>
                     </p>
                   )}
