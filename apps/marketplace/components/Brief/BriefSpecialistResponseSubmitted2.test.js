@@ -32,7 +32,7 @@ describe('BriefSpecialistResponseSubmitted', () => {
         .find('a.au-btn')
         .first()
         .text()
-    ).toEqual('Add another specialist')
+    ).toEqual('Edit or submit candidates')
   })
 
   test('does not shows button when 3 submitted responses', () => {
