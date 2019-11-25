@@ -6,34 +6,68 @@ import { rootPath } from 'marketplace/routes'
 import styles from './OpportunitySpecialistInfoCard.scss'
 
 const OpportunitySpecialistInfoCard = props => {
-  const { originalClosedAt } = props
-  const closedEarly = isBefore(parse(props.closingDate), parse(originalClosedAt))
+  const {
+    briefId,
+    briefLot,
+    briefStatus,
+    buyerEmail,
+    canRespond,
+    category,
+    closingDate,
+    draftEvidenceId,
+    hasEvidenceInDraftForCategory,
+    hasLatestEvidenceRejectedForCategory,
+    hasResponded,
+    hasSignedCurrentAgreement,
+    hasSupplierErrors,
+    isApplicant,
+    isApprovedSeller,
+    isAssessedForCategory,
+    isAwaitingApplicationAssessment,
+    isAwaitingDomainAssessment,
+    isBriefOwner,
+    isBuyer,
+    isInvited,
+    isOpen,
+    isOpenToAll,
+    isRecruiterOnly,
+    loggedIn,
+    numberOfSuppliers,
+    originalClosedAt,
+    rejectedEvidenceId,
+    sellerCategory,
+    sellerResponses,
+    sellersApplied,
+    sellersInvited,
+    supplierCode
+  } = props
+  const closedEarly = isBefore(parse(closingDate), parse(originalClosedAt))
 
   return (
     <div className={styles.container}>
       <div className="row">
-        {!props.isOpenToAll && (
+        {!isOpenToAll && (
           <div className="col-xs-6">
-            <strong className={styles.stat}>{props.sellersInvited}</strong>
+            <strong className={styles.stat}>{sellersInvited}</strong>
             <br />
-            seller{props.sellersInvited === 1 ? '' : 's'} invited
+            seller{sellersInvited === 1 ? '' : 's'} invited
           </div>
         )}
         <div className="col-xs-6">
-          <strong className={styles.stat}>{props.sellersApplied}</strong>
+          <strong className={styles.stat}>{sellersApplied}</strong>
           <br />
-          candidate{props.sellersApplied === 1 ? '' : 's'}
+          candidate{sellersApplied === 1 ? '' : 's'}
           {' applied'}
         </div>
       </div>
       <div className="row">
         <div className="col-xs-12">
-          {props.isOpen && props.closingDate && (
+          {isOpen && closingDate && (
             <div>
               <span>Closes in</span>
               <br />
               <strong className={styles.stat}>
-                <ClosedDate countdown date={props.closingDate} />
+                <ClosedDate countdown date={closingDate} />
               </strong>
             </div>
           )}
@@ -41,22 +75,22 @@ const OpportunitySpecialistInfoCard = props => {
       </div>
       <div className="row">
         <div className="col-xs-12">
-          {props.isApprovedSeller && props.isInvited && props.isAssessedForCategory && !props.hasResponded ? (
+          {isApprovedSeller && isInvited && isAssessedForCategory && !hasResponded ? (
             <p>
-              {props.sellerResponses === 0
+              {sellerResponses === 0
                 ? `You have not submitted any candidates. `
-                : `You have submitted ${props.sellerResponses} candidate${props.sellerResponses > 1 ? 's' : ''}. `}
-              {`You can submit ${props.numberOfSuppliers - props.sellerResponses} more before the opportunity closes.`}
+                : `You have submitted ${sellerResponses} candidate${sellerResponses > 1 ? 's' : ''}. `}
+              {`You can submit ${numberOfSuppliers - sellerResponses} more before the opportunity closes.`}
             </p>
           ) : (
             <React.Fragment>
-              {props.numberOfSuppliers > 1 ? (
+              {numberOfSuppliers > 1 ? (
                 <React.Fragment>
-                  Sellers can submit up to <b>{props.numberOfSuppliers} candidates</b> for this role.
+                  Sellers can submit up to <b>{numberOfSuppliers} candidates</b> for this role.
                 </React.Fragment>
               ) : (
                 <React.Fragment>
-                  Sellers can submit <b>{props.numberOfSuppliers} candidate</b> for this role.
+                  Sellers can submit <b>{numberOfSuppliers} candidate</b> for this role.
                 </React.Fragment>
               )}
             </React.Fragment>
@@ -65,19 +99,19 @@ const OpportunitySpecialistInfoCard = props => {
       </div>
       <div className="row">
         <div className="col-xs-12">
-          {!props.isOpen && props.briefStatus !== 'draft' && closedEarly && (
+          {!isOpen && briefStatus !== 'draft' && closedEarly && (
             <p className={styles.invitedStatus}>
               This opportunity has closed early as the invited seller has already submitted their response.
             </p>
           )}
-          {!props.isOpen && props.briefStatus !== 'draft' && !closedEarly && (
+          {!isOpen && briefStatus !== 'draft' && !closedEarly && (
             <p className={styles.invitedStatus}>This opportunity has closed.</p>
           )}
-          {props.isOpen && !props.loggedIn && (
+          {isOpen && !loggedIn && (
             <span>
-              {props.isOpenToAll ? (
+              {isOpenToAll ? (
                 <span>
-                  <p>You must be signed in and approved in {props.category} to respond</p>
+                  <p>You must be signed in and approved in {category} to respond</p>
                   <p>
                     <a
                       href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000634456-Responding-to-an-opportunity"
@@ -87,7 +121,7 @@ const OpportunitySpecialistInfoCard = props => {
                     </a>
                     <a
                       href={`/login?next=${encodeURIComponent(
-                        `${rootPath}/digital-marketplace/opportunities/${props.briefId}`
+                        `${rootPath}/digital-marketplace/opportunities/${briefId}`
                       )}`}
                       className="au-btn au-btn--secondary au-btn--block"
                     >
@@ -101,7 +135,7 @@ const OpportunitySpecialistInfoCard = props => {
                   <p>
                     <a
                       href={`/login?next=${encodeURIComponent(
-                        `${rootPath}/digital-marketplace/opportunities/${props.briefId}`
+                        `${rootPath}/digital-marketplace/opportunities/${briefId}`
                       )}`}
                       className="au-btn au-btn--block"
                     >
@@ -112,18 +146,18 @@ const OpportunitySpecialistInfoCard = props => {
               )}
             </span>
           )}
-          {props.isBuyer && !props.isBriefOwner && (
-            <a href={`mailto:${props.buyerEmail}`} className="au-btn au-btn--secondary au-btn--block">
+          {isBuyer && !isBriefOwner && (
+            <a href={`mailto:${buyerEmail}`} className="au-btn au-btn--secondary au-btn--block">
               Contact the buyer
             </a>
           )}
-          {props.isOpen && props.loggedIn && props.isApplicant && (
+          {isOpen && loggedIn && isApplicant && (
             <span>
               <p className={styles.invitedStatus}>
-                You must complete your profile and be approved in {props.category} to respond.
-                {props.isAwaitingApplicationAssessment && <span> Your application is currently being assessed.</span>}
+                You must complete your profile and be approved in {category} to respond.
+                {isAwaitingApplicationAssessment && <span> Your application is currently being assessed.</span>}
               </p>
-              {!props.isAwaitingApplicationAssessment && (
+              {!isAwaitingApplicationAssessment && (
                 <p>
                   <a href="/sellers/application" className="au-btn au-btn--block">
                     Continue application
@@ -132,109 +166,83 @@ const OpportunitySpecialistInfoCard = props => {
               )}
             </span>
           )}
-          {props.isOpen &&
-            props.loggedIn &&
-            props.isApprovedSeller &&
-            !props.hasSignedCurrentAgreement &&
-            !props.hasResponded && (
-              <span>
-                <p className={styles.invitedStatus}>
-                  You must accept the new Master agreement before you can apply for an opportunity.
-                </p>
+          {isOpen && loggedIn && isApprovedSeller && !hasSignedCurrentAgreement && !hasResponded && (
+            <span>
+              <p className={styles.invitedStatus}>
+                You must accept the new Master agreement before you can apply for an opportunity.
+              </p>
+              <p>
+                <a href={`/2/seller-edit/${supplierCode}/representative`} className="au-btn au-btn--block">
+                  View Master Agreement
+                </a>
+              </p>
+            </span>
+          )}
+          {isOpen && loggedIn && isApprovedSeller && hasSignedCurrentAgreement && !isOpenToAll && !isInvited && (
+            <div className={styles.invitedStatus}>
+              <p>Only invited sellers can apply.</p>
+            </div>
+          )}
+          {isOpen && loggedIn && isApprovedSeller && hasSignedCurrentAgreement && isInvited && !isAssessedForCategory && (
+            <span>
+              <p className={styles.invitedStatus}>
+                Only sellers assessed and approved by the Marketplace in &quot;{category}&quot; can apply.
+                {isRecruiterOnly && !isAwaitingDomainAssessment && (
+                  <span>
+                    {' '}
+                    You must <a href="/sellers/edit">edit your profile</a> to add this category before you can apply.
+                  </span>
+                )}
+                {isRecruiterOnly && isAwaitingApplicationAssessment && (
+                  <span> Your application is currently being assessed.</span>
+                )}
+                {isAwaitingDomainAssessment && (
+                  <span> Your application for this category is currently being assessed.</span>
+                )}
+                {!isAwaitingDomainAssessment && hasEvidenceInDraftForCategory && !isRecruiterOnly && draftEvidenceId && (
+                  <span>
+                    {' '}
+                    You currently have a{' '}
+                    <a href={`${rootPath}/seller-assessment/${draftEvidenceId}/introduction`}>draft submission</a> for
+                    assessment in this category.
+                  </span>
+                )}
+                {!isAwaitingDomainAssessment && hasLatestEvidenceRejectedForCategory && rejectedEvidenceId && (
+                  <span> Your submitted assessment has been reviewed by the Marketplace and was not successful.</span>
+                )}
+              </p>
+              {!isAwaitingDomainAssessment &&
+                !hasEvidenceInDraftForCategory &&
+                !hasLatestEvidenceRejectedForCategory &&
+                !isRecruiterOnly && (
+                  <p>
+                    <a
+                      href={`${rootPath}/seller-assessment/create/${sellerCategory}/${briefId}`}
+                      className={`au-btn au-btn--block ${styles.redBtn}`}
+                    >
+                      Request assessment
+                    </a>
+                  </p>
+                )}
+              {!isAwaitingDomainAssessment && hasLatestEvidenceRejectedForCategory && rejectedEvidenceId && (
                 <p>
-                  <a href={`/2/seller-edit/${props.supplierCode}/representative`} className="au-btn au-btn--block">
-                    View Master Agreement
+                  <a
+                    href={`${rootPath}/seller-assessment/${rejectedEvidenceId}/feedback`}
+                    className={`au-btn au-btn--block ${styles.redBtn}`}
+                  >
+                    View assessment feedback
                   </a>
                 </p>
-              </span>
-            )}
-          {props.isOpen &&
-            props.loggedIn &&
-            props.isApprovedSeller &&
-            props.hasSignedCurrentAgreement &&
-            !props.isOpenToAll &&
-            !props.isInvited && (
-              <div className={styles.invitedStatus}>
-                <p>Only invited sellers can apply.</p>
-              </div>
-            )}
-          {props.isOpen &&
-            props.loggedIn &&
-            props.isApprovedSeller &&
-            props.hasSignedCurrentAgreement &&
-            props.isInvited &&
-            !props.isAssessedForCategory && (
-              <span>
-                <p className={styles.invitedStatus}>
-                  Only sellers assessed and approved by the Marketplace in &quot;{props.category}&quot; can apply.
-                  {props.isRecruiterOnly && !props.isAwaitingDomainAssessment && (
-                    <span>
-                      {' '}
-                      You must <a href="/sellers/edit">edit your profile</a> to add this category before you can apply.
-                    </span>
-                  )}
-                  {props.isRecruiterOnly && props.isAwaitingApplicationAssessment && (
-                    <span> Your application is currently being assessed.</span>
-                  )}
-                  {props.isAwaitingDomainAssessment && (
-                    <span> Your application for this category is currently being assessed.</span>
-                  )}
-                  {!props.isAwaitingDomainAssessment &&
-                    props.hasEvidenceInDraftForCategory &&
-                    !props.isRecruiterOnly &&
-                    props.draftEvidenceId && (
-                      <span>
-                        {' '}
-                        You currently have a{' '}
-                        <a href={`${rootPath}/seller-assessment/${props.draftEvidenceId}/introduction`}>
-                          draft submission
-                        </a>{' '}
-                        for assessment in this category.
-                      </span>
-                    )}
-                  {!props.isAwaitingDomainAssessment &&
-                    props.hasLatestEvidenceRejectedForCategory &&
-                    props.rejectedEvidenceId && (
-                      <span>
-                        {' '}
-                        Your submitted assessment has been reviewed by the Marketplace and was not successful.
-                      </span>
-                    )}
-                </p>
-                {!props.isAwaitingDomainAssessment &&
-                  !props.hasEvidenceInDraftForCategory &&
-                  !props.hasLatestEvidenceRejectedForCategory &&
-                  !props.isRecruiterOnly && (
-                    <p>
-                      <a
-                        href={`${rootPath}/seller-assessment/create/${props.sellerCategory}/${props.briefId}`}
-                        className={`au-btn au-btn--block ${styles.redBtn}`}
-                      >
-                        Request assessment
-                      </a>
-                    </p>
-                  )}
-                {!props.isAwaitingDomainAssessment &&
-                  props.hasLatestEvidenceRejectedForCategory &&
-                  props.rejectedEvidenceId && (
-                    <p>
-                      <a
-                        href={`${rootPath}/seller-assessment/${props.rejectedEvidenceId}/feedback`}
-                        className={`au-btn au-btn--block ${styles.redBtn}`}
-                      >
-                        View assessment feedback
-                      </a>
-                    </p>
-                  )}
-              </span>
-            )}
-          {props.isOpen &&
-            props.isApprovedSeller &&
-            props.isAssessedForCategory &&
-            (props.hasSignedCurrentAgreement || (!props.hasSignedCurrentAgreement && props.hasResponded)) &&
-            props.canRespond && (
+              )}
+            </span>
+          )}
+          {isOpen &&
+            isApprovedSeller &&
+            isAssessedForCategory &&
+            (hasSignedCurrentAgreement || (!hasSignedCurrentAgreement && hasResponded)) &&
+            canRespond && (
               <div>
-                {props.hasSupplierErrors ? (
+                {hasSupplierErrors ? (
                   <div>
                     <p className={styles.invitedStatus}>
                       There is at least one error in your profile. You must update your profile before you can apply for
@@ -248,11 +256,11 @@ const OpportunitySpecialistInfoCard = props => {
                   </div>
                 ) : (
                   <React.Fragment>
-                    {!props.hasResponded && (
+                    {!hasResponded && (
                       <p>
                         <a
-                          href={`${rootPath}/brief/${props.briefId}/${
-                            props.briefLot === 'specialist' ? `${props.briefLot}2` : props.briefLot
+                          href={`${rootPath}/brief/${briefId}/${
+                            briefLot === 'specialist' ? `${briefLot}2` : briefLot
                           }/respond`}
                           className={`${styles.button} au-btn`}
                         >
