@@ -134,8 +134,11 @@ const Opportunity = props => {
     isTeamLead,
     teams
   } = props
+
   const brief = { ...defaultBriefProps, ...props.brief }
   const category = getBriefCategory(domains, brief.sellerCategory)
+  const originalClosedAt = brief.originalClosedAt ? brief.originalClosedAt : null
+
   if (brief.status === 'draft') {
     if (
       !(
@@ -616,6 +619,7 @@ const Opportunity = props => {
               hasSupplierErrors={hasSupplierErrors}
               hasSignedCurrentAgreement={hasSignedCurrentAgreement}
               supplierCode={supplierCode}
+              originalClosedAt={originalClosedAt}
             />
           ) : (
             <OpportunityInfoCard
@@ -650,6 +654,7 @@ const Opportunity = props => {
               sellerCategory={brief.sellerCategory}
               hasSignedCurrentAgreement={hasSignedCurrentAgreement}
               supplierCode={supplierCode}
+              originalClosedAt={originalClosedAt}
             />
           )}
         </div>
@@ -732,7 +737,8 @@ Opportunity.propTypes = {
     essentialRequirements: PropTypes.array,
     includeWeightingsNiceToHave: PropTypes.bool,
     niceToHaveRequirements: PropTypes.array,
-    numberOfSuppliers: PropTypes.string
+    numberOfSuppliers: PropTypes.string,
+    originalClosedAt: PropTypes.string
   }),
   domains: PropTypes.array,
   briefResponseCount: PropTypes.number,
