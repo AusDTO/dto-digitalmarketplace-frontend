@@ -42,9 +42,25 @@ describe('OverviewHeader', () => {
 
     const component = mount(<OverviewHeader brief={brief} canCloseOpportunity isClosed={false} isPublished />)
 
-    const links = component.children().find('a')
-    expect(links).toHaveLength(1)
-    expect(links.at(0).text()).toEqual('Close opportunity now')
+    expect(component.children().exists('li.hideMobile a')).toEqual(true)
+
+    expect(
+      component
+        .children()
+        .find('li.hideMobile a')
+        .first()
+        .text()
+    ).toEqual('Close opportunity now')
+
+    expect(component.children().exists('li.hideDesktop a')).toEqual(true)
+
+    expect(
+      component
+        .children()
+        .find('li.hideDesktop a')
+        .first()
+        .text()
+    ).toEqual('Close now')
   })
 
   test('shows the correct actions for a published opportunity that can not be closed', () => {
