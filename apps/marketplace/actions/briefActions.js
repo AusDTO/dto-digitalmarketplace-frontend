@@ -8,6 +8,7 @@ import {
   BRIEF_TRAINING_CREATE_SUCCESS,
   BRIEF_ATM_CREATE_SUCCESS,
   BRIEF_SPECIALIST_CREATE_SUCCESS,
+  CLOSE_OPPORTUNITY_SUCCESS,
   DELETE_BRIEF_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NAME_SPLIT,
@@ -160,6 +161,11 @@ export const handleCreateSpecialistBriefSuccess = response => ({
   brief: response.data
 })
 
+export const handleCloseOpportunitySuccess = response => ({
+  type: CLOSE_OPPORTUNITY_SUCCESS,
+  brief: response.data
+})
+
 export const closeOpportunity = briefId => (dispatch, getState) => {
   dispatch(sendingRequest(true))
   return dmapi({
@@ -173,7 +179,7 @@ export const closeOpportunity = briefId => (dispatch, getState) => {
     if (response.error) {
       dispatch(handleErrorFailure(response))
     } else {
-      dispatch(handleCreateSpecialistBriefSuccess(response))
+      dispatch(handleCloseOpportunitySuccess(response))
     }
     dispatch(sendingRequest(false))
     return response
