@@ -281,7 +281,6 @@ class BriefResponsePage extends Component {
                     onSubmitClicked={this.handleSpecialistSubmitClicked}
                     onSaveClicked={this.handleSaveClicked}
                     onAddAnotherClicked={this.handleAddAnotherClicked}
-                    handleNameSubmit={(givenNames, surname) => this.handleBriefNameSplitSubmit(givenNames, surname)}
                     handleSubmit={values => this.handleSpecialistBriefResponseSubmit(values)}
                     setFocus={setFocus}
                     loadingText={this.state.loadingText}
