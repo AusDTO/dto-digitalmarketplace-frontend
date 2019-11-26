@@ -35,7 +35,6 @@ div.header {
     }
 
     li + li:before {
-      content: "|";
       padding: 0 5px;
     }
   }
@@ -78,13 +77,37 @@ ul.overviewList {
 @media (max-width: 480px) {
   .headerMenu {
     position: relative;
-
-    .menuList {
-      margin-top: 0.25rem;
-    }
   }
 
   .stageStatus {
     float: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .headerMenu {
+    li {
+      margin-right: 1rem;
+    }
+
+    .hideMobile {
+      display: none;
+    }
+
+    .menuList {
+      margin-top: 2rem;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .headerMenu {
+    li + li:before {
+      content: "|";
+    }
+
+    .hideDesktop {
+      display: none;
+    }
   }
 }

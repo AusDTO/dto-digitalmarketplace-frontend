@@ -11,7 +11,7 @@ const OverviewHeaderPublishedActionsList = props => {
 
   return (
     <ul className={styles.menuList}>
-      <li>
+      <li className={styles.hideMobile}>
         <div className={styles.headerMenuClosingTime}>
           Closing{' '}
           <strong>
@@ -20,13 +20,23 @@ const OverviewHeaderPublishedActionsList = props => {
         </div>
       </li>
       {canCloseOpportunity && hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
-        <li>
+        <li className={styles.hideMobile}>
           <a href={`${rootPath}/brief/${brief.id}/close`}>Close opportunity now</a>
         </li>
       )}
       {canCloseOpportunity && !hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
-        <li>
+        <li className={styles.hideMobile}>
           <a href={`${rootPath}/request-access/publish_opportunities`}>Close opportunity now</a>
+        </li>
+      )}
+      {canCloseOpportunity && hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
+        <li className={styles.hideDesktop}>
+          <a href={`${rootPath}/brief/${brief.id}/close`}>Close now</a>
+        </li>
+      )}
+      {canCloseOpportunity && !hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
+        <li className={styles.hideDesktop}>
+          <a href={`${rootPath}/request-access/publish_opportunities`}>Close now</a>
         </li>
       )}
     </ul>
