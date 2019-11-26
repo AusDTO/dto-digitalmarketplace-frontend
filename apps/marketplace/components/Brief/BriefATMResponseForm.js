@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
 import { Redirect } from 'react-router-dom'
-import format from 'date-fns/format'
 import DocumentTitle from 'react-document-title'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
@@ -297,18 +296,6 @@ export class BriefATMResponseForm extends Component {
                       validPhoneNumber: 'You must add a valid phone number'
                     }}
                   />
-                  <AUheading level="2" size="lg">
-                    Once you submit this application
-                  </AUheading>
-                  <ul>
-                    <li>
-                      You <strong>cannot</strong> edit your application after submitting.
-                    </li>
-                    <li>
-                      The buyer will receive your response once the brief has closed on{' '}
-                      {format(new Date(brief.applicationsClosedAt), 'dddd D MMMM YYYY')}.
-                    </li>
-                  </ul>
                   {currentlySending || loadingText ? (
                     <LoadingButton text={loadingText || 'Loading'} />
                   ) : (
