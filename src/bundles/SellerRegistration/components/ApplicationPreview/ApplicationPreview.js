@@ -181,8 +181,6 @@ const mapStateToProps = (state, {documentsUrl, onClick, ...rest}) => {
       digital_marketplace_panel,
       dsp_panel,
       signed_agreements,
-      // services,
-      // pricing,
       recruiter,
       name,
       ...body
@@ -196,8 +194,6 @@ const mapStateToProps = (state, {documentsUrl, onClick, ...rest}) => {
         other_panels,
         disclosures,
         signed_agreements,
-        // recruiter_info,
-        // pricing,
         all_domains
     } : {}),
     onClick,
