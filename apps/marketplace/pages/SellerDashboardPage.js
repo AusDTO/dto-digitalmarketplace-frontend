@@ -132,24 +132,12 @@ class SellerDashboardPage extends Component {
           </div>
           <Header {...this.props} showCategoriesTab={!supplier.is_recruiter_only} />
           <Switch>
-            {supplier.is_recruiter_only && (
-              <React.Fragment>
-                <Route
-                  exact
-                  path="(/|/team)"
-                  render={() => <Team {...this.props} removeClicked={this.handleRemoveClick} />}
-                />
-                <Route path="/notifications" render={() => <Messages {...this.props} />} />
-              </React.Fragment>
-            )}
+            <Route exact path="(/|/opportunities)" render={() => <Opportunities {...this.props} />} />
             {!supplier.is_recruiter_only && (
-              <React.Fragment>
-                <Route exact path="(/|/opportunities)" render={() => <Opportunities {...this.props} />} />
-                <Route exact path="(/categories)" render={() => <Categories {...this.props} />} />
-                <Route path="/team" render={() => <Team {...this.props} removeClicked={this.handleRemoveClick} />} />
-                <Route path="/notifications" render={() => <Messages {...this.props} />} />
-              </React.Fragment>
+              <Route exact path="/categories" render={() => <Categories {...this.props} />} />
             )}
+            <Route path="/team" render={() => <Team {...this.props} removeClicked={this.handleRemoveClick} />} />
+            <Route path="/notifications" render={() => <Messages {...this.props} />} />
           </Switch>
         </div>
       </BrowserRouter>
