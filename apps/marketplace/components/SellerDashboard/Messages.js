@@ -67,11 +67,11 @@ export class Messages extends Component {
         return <a href={`/sellers/edit/?step=${item.step}`}>Update business details</a>
       case 'S002':
         return <a href={`/sellers/edit/?step=${item.step}`}>Update pricing</a>
-      case 'S003':
-        return <a href={`/sellers/edit/?step=case-study`}>Update your case study</a>
-      case 'S004':
-      case 'S005':
-        return <a href={`/sellers/edit/?step=${item.step}`}>Update your case study</a>
+      // case 'S003':
+      //   return <a href={`/sellers/edit/?step=case-study`}>Update your case study</a>
+      // case 'S004':
+      // case 'S005':
+      //   return <a href={`/sellers/edit/?step=${item.step}`}>Update your case study</a>
       case 'S006':
       case 'S007':
       case 'S008':
