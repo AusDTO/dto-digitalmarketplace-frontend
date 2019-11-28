@@ -89,7 +89,6 @@ test.skip('elementProps onClick', () => {
     dispatch,
     store,
     forms: {
-      // domainSelectorForm: {},
       businessDetailsForm: {},
       yourInfoForm: {}
     }
@@ -130,7 +129,6 @@ test.skip('elementProps onSubmit', () => {
     dispatch,
     store,
     forms: {
-      // domainSelectorForm: {},
       businessDetailsForm: {},
       yourInfoForm: {}
     }
@@ -166,7 +164,6 @@ test.skip('elementProps onSubmit with no event', () => {
     dispatch,
     store,
     forms: {
-      // domainSelectorForm: {},
       businessDetailsForm: {},
       yourInfoForm: {}
     }
@@ -205,7 +202,6 @@ test.skip('elementProps onSubmit with no steps left', () => {
     dispatch,
     store,
     forms: {
-      // domainSelectorForm: {},
       businessDetailsForm: {},
       yourInfoForm: {}
     }
@@ -229,7 +225,6 @@ test.skip('without filterSteps', () => {
   const YourInfoForm = require('../../../SellerRegistration/components/YourInfoForm').default;
   const BusinessDetailsForm = require('../../../SellerRegistration/components/BusinessDetailsForm').default;
   const BusinessInfoForm = require('../../../SellerRegistration/components/BusinessInfoForm').default;
-  // const DomainSelector = require('../../../SellerRegistration/components/DomainSelector').default;
   const DomainList = require('../../../CaseStudy/components/DomainList').default;
   const DocumentsForm = require('../../../SellerRegistration/components/DocumentsForm').default;
   const AwardsForm = require('../../../SellerRegistration/components/AwardsForm').default;
@@ -268,7 +263,6 @@ test.skip('without filterSteps', () => {
     dispatch: () => {},
     store,
     forms: {
-      // domainSelectorForm: {},
       businessDetailsForm: {},
       yourInfoForm: {}
     },
@@ -292,7 +286,6 @@ test.skip('filterSteps', () => {
   const YourInfoForm = require('../../../SellerRegistration/components/YourInfoForm').default;
   const BusinessDetailsForm = require('../../../SellerRegistration/components/BusinessDetailsForm').default;
   const BusinessInfoForm = require('../../../SellerRegistration/components/BusinessInfoForm').default;
-  // const DomainSelector = require('../../../SellerRegistration/components/DomainSelector').default;
   const DocumentsForm = require('../../../SellerRegistration/components/DocumentsForm').default;
   const AwardsForm = require('../../../SellerRegistration/components/AwardsForm').default;
   const ToolsForm = require('../../../SellerRegistration/components/ToolsForm').default;
@@ -327,7 +320,6 @@ test.skip('filterSteps', () => {
     dispatch: () => {},
     store,
     forms: {
-      // domainSelectorForm: {},
       businessDetailsForm: {},
       yourInfoForm: {}
     }
