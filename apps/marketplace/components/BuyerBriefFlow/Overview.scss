@@ -86,6 +86,10 @@ ul.overviewList {
 
 @media screen and (max-width: 767px) {
   .headerMenu {
+    a {
+      font-size: 1.25rem;
+    }
+
     li {
       margin-right: 1rem;
     }
