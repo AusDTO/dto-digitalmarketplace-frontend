@@ -129,28 +129,6 @@ exports[`Signup renders 1`] = `
             onClick={[Function]}
           >
             <span>
-              Services
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/candidates"
-            onClick={[Function]}
-          >
-            <span>
-              Candidates
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/products"
-            onClick={[Function]}
-          >
-            <span>
               Products
             </span>
           </a>
