@@ -965,7 +965,6 @@ a[rel~='external'] {
 
 a[rel~='external']::after {
   background-image: url('static/media/external-link--aqua.png');
-  /* /src/shared/icons/external-link--aqua.svg */
   background-image: url('/static/images/icons/external-link--aqua.svg'), linear-gradient(transparent, transparent);
   background-size: 0.9em auto;
   content: '';
