@@ -5,7 +5,6 @@ import { Redirect } from 'react-router-dom'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
 import DocumentTitle from 'react-document-title'
-import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import range from 'lodash/range'
 import { required, requiredFile, validEmail, validPercentage } from 'marketplace/components/validators'
@@ -28,6 +27,9 @@ const getCandidateName = formModel => {
   }
   return name
 }
+
+const showResumeField = (formModel, briefResponseStatus) =>
+  formModel.resume.length > 0 || (formModel.resume.length === 0 && briefResponseStatus === 'draft')
 
 const BriefSpecialistResponseForm2 = ({
   briefResponseForm,
@@ -197,7 +199,7 @@ const BriefSpecialistResponseForm2 = ({
                   </div>
                 </div>
               )}
-              {app.supplierCode ? (
+              {showResumeField(briefResponseForm, briefResponseStatus) && (
                 <FilesInput
                   label="Résumé"
                   hint="Attachments must be PDF or ODT format and a maximum of 5MB"
@@ -217,11 +219,6 @@ const BriefSpecialistResponseForm2 = ({
                   }}
                   uploading={uploading}
                 />
-              ) : (
-                <AUpageAlert as="warning" setFocus={setFocus}>
-                  <h3 className="au-display-sm">There was a problem loading your details</h3>
-                  <p>Only logged in sellers can respond to briefs</p>
-                </AUpageAlert>
               )}
               <RadioList
                 id="visaStatus"
@@ -342,7 +339,7 @@ const BriefSpecialistResponseForm2 = ({
                 </React.Fragment>
               )}
               <AUheadings level="2" size="sm">
-                Other documents (optional)
+                {showResumeField(briefResponseForm, briefResponseStatus) ? 'Other documents (optional)' : 'Attachments'}
               </AUheadings>
               <p>
                 If requested by the buyer, you can upload additional documents for this candidate. Attachments must be
