@@ -309,7 +309,6 @@ test.skip('filterSteps', () => {
       { id: 'documents', label: 'Documents', component: DocumentsForm, pattern: '/documents', formKey: 'documentsForm' },
       { id: 'tools', label: 'Methods', component: ToolsForm, pattern: '/tools', formKey: 'toolsForm' },
       { id: 'awards', label: 'Recognition', component: AwardsForm, pattern: '/awards', formKey: 'awardsForm' },
-      { id: 'digital', label: 'Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
       { id: 'products', label: 'Products', component: ProductsForm, pattern: '/products', formKey: 'productForm' },
       { id: 'disclosures', label: 'Disclosures', component: DisclosuresForm, pattern: '/disclosures' },
   ];
