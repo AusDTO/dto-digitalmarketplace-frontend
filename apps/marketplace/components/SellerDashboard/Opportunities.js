@@ -6,6 +6,7 @@ import format from 'date-fns/format'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import { loadOpportunities } from 'marketplace/actions/sellerDashboardActions'
 import { rootPath } from 'marketplace/routes'
+import { mapLot } from '../helpers'
 import styles from '../../main.scss'
 
 const withdrawn = o => o.withdrawn_at && differenceInSeconds(new Date(), o.withdrawn_at) > 0
@@ -85,13 +86,13 @@ export class Opportunities extends Component {
                     <td className={styles.tableColumnWidth10}>
                       {getOpportunityLink(opportunity)}
                       <br />
-                      {opportunity.lotName}
+                      {mapLot(opportunity.lot)}
                     </td>
                     <td className={styles.tableColumnWidth6}>
                       {withdrawn(opportunity) ? (
                         <span className={styles.darkGrayText}>The buyer has withdrawn this opportunity</span>
                       ) : (
-                        format(opportunity.closed_at, 'dddd Do MMMM YYYY h:mmA')
+                        format(opportunity.closed_at, 'hA, dddd Do MMMM YYYY')
                       )}
                     </td>
                     <td className={styles.tableColumnWidth1}>{getStatusBadge(opportunity)}</td>
@@ -100,7 +101,12 @@ export class Opportunities extends Component {
               </tbody>
             </table>
           ) : (
-            <div className={`${styles.marginTop3} ${styles.marginBottom3}`}>Apply for opportunities</div>
+            <div className={`${styles.marginTop1} ${styles.marginBottom3} ${styles.marginLeft1}`}>
+              <p>Your submitted responses will appear here.</p>
+              <p>
+                <a href="/2/opportunities">View and apply for opportunities</a>
+              </p>
+            </div>
           )}
         </div>
       </div>
