@@ -21,6 +21,7 @@ describe('BriefSpecialistResponseForm2', () => {
           specialistNumber={1}
           briefResponseForm={{
             attachedDocumentURL: [],
+            resume: [],
             availability: '',
             specialistName: '',
             specialistGivenNames: '',
@@ -62,6 +63,7 @@ describe('BriefSpecialistResponseForm2', () => {
           specialistNumber={1}
           briefResponseForm={{
             attachedDocumentURL: [],
+            resume: [],
             availability: '',
             specialistName: '',
             specialistGivenNames: '',
@@ -106,6 +108,7 @@ describe('BriefSpecialistResponseForm2', () => {
           briefResponseStatus="submitted"
           briefResponseForm={{
             attachedDocumentURL: [],
+            resume: [],
             availability: '',
             specialistName: '',
             specialistGivenNames: '',
