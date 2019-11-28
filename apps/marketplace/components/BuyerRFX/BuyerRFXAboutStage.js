@@ -81,7 +81,7 @@ const BuyerRFXAboutStage = props => (
         required
       }}
       messages={{
-        limitWords: 'Your summary has exceeded the 150 word limit'
+        limitWords: 'Your summary has exceeded the 200 word limit'
       }}
     />
     <AUheading level="2" size="sm">

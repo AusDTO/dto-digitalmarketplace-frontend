@@ -48,6 +48,11 @@ export class NumberOfSellersPerCategory extends Component {
         legend: {
           display: false
         },
+        layout: {
+          padding: {
+            top: 20
+          }
+        },
         scales: {
           tooltips: {
             mode: 'index',
@@ -80,7 +85,7 @@ export class NumberOfSellersPerCategory extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className={`row ${styles['margin-bottom']}`}>
+        <div className={`row ${styles.marginBottom1}`}>
           <div className="col-xs-12 col-md-12">
             <AUheading size="lg" level="2">
               Number of sellers per category
@@ -89,7 +94,7 @@ export class NumberOfSellersPerCategory extends Component {
         </div>
         <div className="row">
           <div className="col-xs-12">
-            <div className={insightStyles['chart-md-height-12x']}>
+            <div className={insightStyles['chart-md-height-14x']}>
               {/* eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role */}
               <canvas ref={this.chartRef} aria-label="Number of sellers per category" role="img" />
             </div>

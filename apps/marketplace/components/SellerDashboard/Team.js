@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import { loadTeam } from 'marketplace/actions/sellerDashboardActions'
-import styles from './SellerDashboard.scss'
+import styles from '../../main.scss'
 
 export class Team extends Component {
   componentDidMount() {
@@ -39,19 +39,19 @@ export class Team extends Component {
 
     return (
       <div>
-        <div className={`${styles.tableMargin} row`}>
+        <div className={`${styles.marginTop2} row`}>
           <div className="col-xs-12">
             {items.length > 0 ? (
-              <table className={`${styles.resultListing} col-xs-12`}>
+              <table className={`${styles.defaultStyle} ${styles.marginBottom3} col-xs-12`}>
                 <thead>
                   <tr className={styles.headingRow}>
-                    <th scope="col" className={styles.colName}>
+                    <th scope="col" className={`${styles.tableColumnWidth3} ${styles.textAlignLeft}`}>
                       Name
                     </th>
-                    <th scope="col" className={styles.colEmail}>
+                    <th scope="col" className={`${styles.tableColumnWidth4} ${styles.textAlignLeft}`}>
                       Email
                     </th>
-                    <th scope="col" className={styles.colAction}>
+                    <th scope="col" className={`${styles.tableColumnWidth4} ${styles.textAlignLeft}`}>
                       Action
                     </th>
                   </tr>
@@ -59,18 +59,18 @@ export class Team extends Component {
                 <tbody>
                   {items.map(item => (
                     <tr key={`team.${item.email}`}>
-                      <td className={styles.colName}>{item.name}</td>
-                      <td className={styles.colEmail}>
-                        {item.email}
+                      <td className={styles.tableColumnWidth3}>{item.name}</td>
+                      <td className={styles.tableColumnWidth4}>
+                        <span className={styles.marginRight1}>{item.email}</span>
                         {item.type === 'ar' ? (
-                          <div className={`${styles.badge} ${styles.authorisedrepresentative}`}>
+                          <div className={`${styles.badge} ${styles.lightBlue} ${styles.inline}`}>
                             Authorised representative
                           </div>
                         ) : (
                           ''
                         )}
                       </td>
-                      <td className={styles.colAction}>
+                      <td className={styles.tableColumnWidth4}>
                         {item.type === 'ar' ? (
                           <a href={`/2/seller-edit/${supplier.code}/representative`}>Change representative</a>
                         ) : (
@@ -84,7 +84,7 @@ export class Team extends Component {
                 </tbody>
               </table>
             ) : (
-              <div className={styles.noRecords}>No team members</div>
+              <div className={`${styles.marginTop3} ${styles.marginBottom3}`}>No team members</div>
             )}
           </div>
         </div>

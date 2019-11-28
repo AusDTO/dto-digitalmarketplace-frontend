@@ -7,11 +7,12 @@ import Header from 'marketplace/components/SellerDashboard/Header'
 import Messages from 'marketplace/components/SellerDashboard/Messages'
 import Team from 'marketplace/components/SellerDashboard/Team'
 import Categories from 'marketplace/components/SellerDashboard/Categories'
+import Opportunities from 'marketplace/components/SellerDashboard/Opportunities'
 import { loadSellerDashboard, removeUser } from 'marketplace/actions/sellerDashboardActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import { rootPath } from 'marketplace/routes'
-import styles from '../components/SellerDashboard/SellerDashboard.scss'
+import styles from '../main.scss'
 
 class SellerDashboardPage extends Component {
   constructor(props) {
@@ -90,7 +91,7 @@ class SellerDashboardPage extends Component {
           </div>
           {this.state.showRemoveAlert && (
             <div className="row">
-              <div className={`${styles.confirmDelete} col-xs-12 col-sm-7`}>
+              <div className={`${styles.marginTop1} col-xs-12 col-sm-7`}>
                 <AUpageAlert as="warning">
                   <p
                     ref={ref => {
@@ -99,12 +100,14 @@ class SellerDashboardPage extends Component {
                   >
                     {`Are you sure you want to remove ${this.state.toRemoveUser.name}?`}
                   </p>
-                  <br />
-                  <button className={`${styles.confirmDeleteButton} au-btn`} onClick={this.handleYesClick}>
+                  <button
+                    className={`${styles.marginRight1} ${styles.marginTop1} au-btn`}
+                    onClick={this.handleYesClick}
+                  >
                     Yes, remove
                   </button>
                   <button
-                    className={`au-btn au-btn--secondary`}
+                    className={`${styles.marginTop1} au-btn au-btn--secondary`}
                     onClick={this.handleNoClicked}
                     ref={ref => {
                       this.doNotRemove = ref
@@ -116,7 +119,7 @@ class SellerDashboardPage extends Component {
               </div>
             </div>
           )}
-          <div className={`${styles.profileActionRow} row`}>
+          <div className={`${styles.marginTop1} row`}>
             <div className="col-md-8" />
             <div className="col-xs-12 col-md-4">
               <a href={`/supplier/${supplier.code}`} className="au-btn right-button-margin">
@@ -129,23 +132,12 @@ class SellerDashboardPage extends Component {
           </div>
           <Header {...this.props} showCategoriesTab={!supplier.is_recruiter_only} />
           <Switch>
-            {supplier.is_recruiter_only && (
-              <React.Fragment>
-                <Route
-                  exact
-                  path="(/|/team)"
-                  render={() => <Team {...this.props} removeClicked={this.handleRemoveClick} />}
-                />
-                <Route path="/notifications" render={() => <Messages {...this.props} />} />
-              </React.Fragment>
-            )}
+            <Route exact path="(/|/opportunities)" render={() => <Opportunities {...this.props} />} />
             {!supplier.is_recruiter_only && (
-              <React.Fragment>
-                <Route exact path="(/|/categories)" render={() => <Categories {...this.props} />} />
-                <Route path="/team" render={() => <Team {...this.props} removeClicked={this.handleRemoveClick} />} />
-                <Route path="/notifications" render={() => <Messages {...this.props} />} />
-              </React.Fragment>
+              <Route exact path="/categories" render={() => <Categories {...this.props} />} />
             )}
+            <Route path="/team" render={() => <Team {...this.props} removeClicked={this.handleRemoveClick} />} />
+            <Route path="/notifications" render={() => <Messages {...this.props} />} />
           </Switch>
         </div>
       </BrowserRouter>
