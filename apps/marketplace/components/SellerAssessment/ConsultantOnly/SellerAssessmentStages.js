@@ -1,4 +1,5 @@
 import SellerAssessmentIntroductionStage from './SellerAssessmentIntroductionStage'
+import SellerAssessmentMaximumRate, { done as maximumratesDone } from '../SellerAssessmentMaximumRate'
 import SellerAssessmentRateStage, { done as ratesDone } from './SellerAssessmentRateStage'
 import SellerAssessmentReviewStage from './SellerAssessmentReviewStage'
 import SellerAssessmentCriteriaStage, { done as criteriaDone } from './SellerAssessmentCriteriaStage'
@@ -16,6 +17,12 @@ const SellerAssessmentStages = [
     title: 'Rate',
     component: SellerAssessmentRateStage,
     isDone: ratesDone
+  },
+  {
+    slug: 'maximumRate',
+    title: 'Rate',
+    component: SellerAssessmentMaximumRate,
+    isDone: maximumratesDone
   },
   {
     slug: 'criteria',
