@@ -47,8 +47,8 @@ const SellerAssessmentRateStage = props => (
     <Textfield
       model={`${props.model}.maxDailyRate`}
       prefix={'$'}
-      postfix={'(including GST)'}
       label="Maximum daily rate (excluding mark-up)"
+      // description={`The threshold for ${props.meta.domain.name} is $${props.meta.domain.priceMaximum}. If you nominate a price above this threshold, you will be asked to match more criteria to prove you offer value for money.`}
       description={ `This rate must be based on a person who demonstrates skills equivalent to`
         // <a href ="https://www.sfia-online.org/en/framework/sfia-7/busskills/level-5" 
         //   rel="noopener noreferrer" 
@@ -70,7 +70,7 @@ const SellerAssessmentRateStage = props => (
     />
     <Textfield
       model={`${props.model}.maxDailyRate`}
-      postfix={'%'}
+      prefix={'$'}
       label="Maximum daily rate (excluding mark-up)"
       description={ `The percentage of on-costs to thge day rate, including: your commission, workers compensation, payroll tax`
       }
@@ -78,17 +78,6 @@ const SellerAssessmentRateStage = props => (
       id="maxDailyRate"
       htmlFor="maxDailyRate"
       defaultValue={props[props.model].maxDailyRate}
-    />
-     <Textfield
-      model={`${props.model}.maxDailyRate2`}
-      prefix={'$'}
-      label="Total maximum rate"
-      description={ `The threshold for is. If yoiur total maximum rate is above this threshold, you will be asked to meet more criteria to prove you offer value for money.`
-      }
-      name="maxDailyRate2"
-      id="maxDailyRate2"
-      htmlFor="maxDailyRate2"
-      defaultValue={props[props.model].maxDailyRate2}
     />
     {parseInt(props[props.model].maxDailyRate, 10) > parseInt(props.meta.domain.priceMaximum, 10) && (
       <AUpageAlert as="info">
@@ -100,7 +89,6 @@ const SellerAssessmentRateStage = props => (
     )}
     {props.formButtons}
   </Form>
-  
 )
 
 SellerAssessmentRateStage.defaultProps = {
