@@ -93,6 +93,7 @@ const mapStateToProps = (state, {documentsUrl, onClick, ...rest}) => {
     signed_agreements,
     recruiter,
     recruiter_info,
+    labourHire,
     digital_marketplace_panel,
     dsp_panel,
     pricing,
@@ -197,6 +198,7 @@ const mapStateToProps = (state, {documentsUrl, onClick, ...rest}) => {
         disclosures,
         signed_agreements,
         recruiter_info,
+        labourHire,
         pricing,
         all_domains
     } : {}),

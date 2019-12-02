@@ -1,26 +1,67 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
-import {Form, Control} from 'react-redux-form';
+import { Form, Control, actions } from 'react-redux-form';
 
 import Layout from '../../../../shared/Layout';
 
-import BaseForm     from '../../../../shared/form/BaseForm';
-import SubmitForm   from '../../../../shared/form/SubmitForm';
-import ErrorBox     from '../../../../shared/form/ErrorBox';
-import formProps    from '../../../../shared/reduxModules/formPropsSelector';
-import StepNav      from '../StepNav';
+import BaseForm      from '../../../../shared/form/BaseForm';
+import SubmitForm    from '../../../../shared/form/SubmitForm';
+import ErrorBox      from '../../../../shared/form/ErrorBox';
+import Textfield     from '../../../../shared/form/Textfield';
+import Datefield     from '../../../../shared/form/Datefield';
+import formProps     from '../../../../shared/reduxModules/formPropsSelector';
+import StatefulError from '../../../../shared/form/StatefulError';
+import StepNav       from '../StepNav';
+
+import { validDate } from '../../../../validators';
 
 import ValidationSummary from '../ValidationSummary';
 import '../SellerRegistration.css';
 
-class RecruiterForm extends BaseForm {
+const states = ['qld', 'sa', 'vic']
 
+class RecruiterForm extends BaseForm {
     static propTypes = {
         action: PropTypes.string,
         csrf_token: PropTypes.string,
         form: PropTypes.object.isRequired,
         returnLink: PropTypes.string
+    }
+    
+    state = {
+        recruiter: this.props[this.props.model].recruiter
+    }
+
+    validExpiryDate(v, state) {
+        const {model} = this.props;
+        
+        if (this.state.recruiter === 'no') {
+            return true
+        }
+        if (v) {
+            if (this.props[model].labourHire[state].licenceNumber) {
+                return validDate(v)
+            }
+        }
+        return true;
+    }
+
+    onChangeState(e) {
+        const { model, setValid, updateProperty} = this.props;
+
+        this.setState({
+            recruiter: e.target.value
+        })
+
+        if (e.target.value === 'no') {
+            states.forEach(s => {
+                let property = `${model}.labourHire.${s}.expiry`
+                let valid = this.validExpiryDate(this.props[property], s)
+                setValid(property, valid)
+            })
+            //this.props[model]['labourHire'] = {}
+        }
     }
 
     render() {
@@ -32,6 +73,8 @@ class RecruiterForm extends BaseForm {
             e.focus()
           }
         }
+        // const states = ['act', 'nsw', 'nt', 'qld', 'sa', 'tas', 'wa', 'vic']
+        
         return (
             <Layout>
                 <header>
@@ -59,6 +102,7 @@ class RecruiterForm extends BaseForm {
                                     Examples include temporary and contract recruitment.</p>
                                 <Control.radio
                                     model={`${model}.recruiter`}
+                                    onClick={this.onChangeState.bind(this)}
                                     name="recruiter"
                                     id="yes"
                                     value="yes"/>
@@ -66,6 +110,7 @@ class RecruiterForm extends BaseForm {
 
                                 <Control.radio
                                     model={`${model}.recruiter`}
+                                    onClick={this.onChangeState.bind(this)}
                                     name="recruiter"
                                     id="no"
                                     value="no"/>
@@ -73,11 +118,58 @@ class RecruiterForm extends BaseForm {
 
                                 <Control.radio
                                     model={`${model}.recruiter`}
+                                    onClick={this.onChangeState.bind(this)}
                                     name="recruiter"
                                     id="both"
                                     value="both"/>
                                 <label htmlFor="both">My business does both recruitment and consultancy</label>
                             </fieldset>
+                            {this.props[model].recruiter && this.props[model].recruiter !== 'no' && (
+                                <fieldset>
+                                    <legend>
+                                        <h2 className="au-display-lg" tabIndex="-1">Labour hire license</h2>
+                                    </legend>
+                                    <p>Under the Labour Hire Licensing Act, all labour hire providers must be licensed. Please provide your license number for each state.</p>
+                                    
+                                    {states.map(s => (
+                                        <React.Fragment key={s}>
+                                            <h3 className="au-display-md" tabIndex="-1">{s.toUpperCase()}</h3>
+                                            <StatefulError
+                                                model={`${model}.labourHire.${s}.expiry`}
+                                                id={`${s}Expiry`}
+                                                messages={{
+                                                    validDate: `Expiry date is required for ${s.toUpperCase()} and must be in the future.`
+                                                }}
+                                            />
+                                            <Textfield
+                                                model={`${model}.labourHire.${s}.licenceNumber`}
+                                                name={`${s}LicenceNumber`}
+                                                id={`${s}LicenceNumber`}
+                                                htmlFor={`${s}LicenceNumber`}
+                                                label="Licence number"
+                                                description=""
+                                            />
+                                            <Control
+                                                model={`${model}.labourHire.${s}.expiry`}
+                                                component={Datefield}
+                                                name={`${s}Expiry`}
+                                                id={`${s}Expiry`}
+                                                label="Expiry date"
+                                                updateOn="change"
+                                                validators={{
+                                                    validDate: v => this.validExpiryDate(v, s)
+                                                }}
+                                                controlProps={{
+                                                    id: `${s}Expiry`,
+                                                    model: `${model}.labourHire.${s}.expiry`,
+                                                    htmlFor: `${s}Expiry`,
+                                                    label: `Enter the expiry date of ${s}`
+                                                }}
+                                            />
+                                        </React.Fragment>
+                                    ))}
+                                </fieldset>
+                            )}
                             {children}
                         </div>
                         <StepNav buttonText="Save and continue" to={nextRoute}/>
@@ -99,9 +191,17 @@ const mapStateToProps = (state) => {
     }
 }
 
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setValid: (p, v) => dispatch(actions.setValidity(p, v)),
+        updateProperty: (p, v) => dispatch(actions.change(p, v))
+    }
+}
+
 export {
     mapStateToProps,
     RecruiterForm as Form
 }
 
-export default connect(mapStateToProps)(RecruiterForm);
+export default connect(mapStateToProps, mapDispatchToProps)(RecruiterForm);

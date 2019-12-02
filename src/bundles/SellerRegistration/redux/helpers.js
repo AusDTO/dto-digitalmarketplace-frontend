@@ -40,6 +40,7 @@ export const pruneModel = (model) => {
     pricing,
     products,
     recruiter_info,
+    labourHire
   } = model;
 
   let newModel = model;
@@ -78,6 +79,12 @@ export const pruneModel = (model) => {
     delete newModel['recruiter_info'];
     let recruiter_information = model['recruiter'] === 'no' ? {} : pruneObject(recruiter_info)
     newModel = { ...newModel, recruiter_info: recruiter_information }
+  }
+
+  if (labourHire) {
+    delete newModel['labourHire'];
+    let labourHire_info = model['recruiter'] === 'no' ? {} : pruneObject(labourHire)
+    newModel = { ...newModel, labourHire: labourHire_info }
   }
 
   return newModel;
