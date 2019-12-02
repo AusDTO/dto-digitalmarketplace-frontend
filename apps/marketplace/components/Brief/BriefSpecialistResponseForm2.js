@@ -342,8 +342,10 @@ const BriefSpecialistResponseForm2 = ({
                 {showResumeField(briefResponseForm, briefResponseStatus) ? 'Other documents (optional)' : 'Attachments'}
               </AUheadings>
               <p>
-                If requested by the buyer, you can upload additional documents for this candidate. Attachments must be
-                in DOC, DOCX, ODT, PDF, PPT, PPTX, XLS or XLSX format and a maximum size of 5MB.
+                {showResumeField(briefResponseForm, briefResponseStatus) && (
+                  <span>If requested by the buyer, you can upload additional documents for this candidate. </span>
+                )}
+                Attachments must be in DOC, DOCX, ODT, PDF, PPT, PPTX, XLS or XLSX format and a maximum size of 5MB.
               </p>
               {app.supplierCode &&
                 range(fileCount + 1).map(i => (

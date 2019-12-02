@@ -18,18 +18,6 @@ import { rootPath } from 'marketplace/routes'
 import styles from './BriefATMResponseForm.scss'
 import { escapeQuote } from '../helpers'
 
-const briefRequiresDocumentUpload = brief => {
-  let mustUpload = false
-  if (
-    brief.evaluationType.includes('Case study') ||
-    brief.evaluationType.includes('References') ||
-    brief.evaluationType.includes('Résumés')
-  ) {
-    mustUpload = true
-  }
-  return mustUpload
-}
-
 export class BriefATMResponseForm extends Component {
   constructor(props) {
     super(props)
@@ -64,6 +52,29 @@ export class BriefATMResponseForm extends Component {
       newState.fileCount += 1
       return newState
     })
+  }
+
+  briefRequiresDocumentUpload() {
+    let mustUpload = false
+    if (
+      this.props.brief.evaluationType.includes('Case study') ||
+      this.props.brief.evaluationType.includes('References') ||
+      this.props.brief.evaluationType.includes('Résumés')
+    ) {
+      mustUpload = true
+    }
+    return mustUpload
+  }
+
+  showRequiredUploadField() {
+    let show = false
+    if (
+      this.props.briefResponseForm.writtenProposal.length > 0 ||
+      (this.props.briefResponseForm.writtenProposal.length === 0 && this.props.briefResponseStatus === 'draft')
+    ) {
+      show = true
+    }
+    return show
   }
 
   handleDeleteClick(e) {
@@ -185,7 +196,7 @@ export class BriefATMResponseForm extends Component {
                       }}
                     />
                   ))}
-                  {briefRequiresDocumentUpload(brief) && (
+                  {this.showRequiredUploadField() && this.briefRequiresDocumentUpload(brief) && (
                     <React.Fragment>
                       <AUheading level="2" size="lg">
                         Upload documentation
@@ -224,11 +235,15 @@ export class BriefATMResponseForm extends Component {
                     </React.Fragment>
                   )}
                   <AUheading level="2" size="sm">
-                    Additional documents (optional)
+                    {this.showRequiredUploadField() ? 'Additional documents (optional)' : 'Attachments'}
                   </AUheading>
-                  <small className={styles.smallText}>
-                    If requested by the buyer, you can upload additional documents
-                  </small>
+                  <p>
+                    {this.showRequiredUploadField() && (
+                      <span>If requested by the buyer, you can upload additional documents. </span>
+                    )}
+                    Attachments must be in DOC, DOCX, ODT, PDF, PPT, PPTX, XLS or XLSX format and a maximum size of
+                    50MB.
+                  </p>
                   {range(this.state.fileCount).map(index => (
                     <FilesInput
                       key={index}

@@ -55,6 +55,20 @@ export class BriefRFXResponseForm extends Component {
     })
   }
 
+  showRequiredUploadField() {
+    let show = false
+    if (
+      this.props.briefResponseForm.responseTemplate.length > 0 ||
+      this.props.briefResponseForm.writtenProposal.length > 0 ||
+      (this.props.briefResponseForm.responseTemplate.length === 0 &&
+        this.props.briefResponseForm.writtenProposal.length === 0 &&
+        this.props.briefResponseStatus === 'draft')
+    ) {
+      show = true
+    }
+    return show
+  }
+
   handleDeleteClick(e) {
     e.preventDefault()
     this.setState({
@@ -133,66 +147,71 @@ export class BriefRFXResponseForm extends Component {
                   />
                 )}
               </div>
-              <p>Attachments must be .DOC, .XLS, .PPT or .PDF format and no more than 20MB</p>
               {app.supplierCode ? (
                 <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
-                  {this.getBriefEvaluationTypesForUpload().map(evaluationType => {
-                    if (evaluationType === 'Written proposal') {
-                      return (
-                        <FilesInput
-                          key={evaluationType}
-                          label="Written proposal"
-                          hint={`Your proposal must include: ${brief.proposalType
-                            .map(type => type.toLowerCase())
-                            .join(', ')}`}
-                          fieldLabel="Upload written proposal"
-                          name="writtenProposal"
-                          model={`${model}.writtenProposal.0`}
-                          formFields={1}
-                          url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                          api={dmapi}
-                          fileId={0}
-                          validators={{
-                            requiredFile
-                          }}
-                          messages={{
-                            requiredFile: 'You must upload your written proposal'
-                          }}
-                          uploading={uploading}
-                          accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                        />
-                      )
-                    } else if (evaluationType === 'Response template') {
-                      return (
-                        <FilesInput
-                          key={evaluationType}
-                          label="Completed response template"
-                          fieldLabel="Upload response"
-                          name="responseTemplate"
-                          model={`${model}.responseTemplate.0`}
-                          formFields={1}
-                          url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                          api={dmapi}
-                          fileId={0}
-                          validators={{
-                            requiredFile
-                          }}
-                          messages={{
-                            requiredFile: 'You must upload your completed response template'
-                          }}
-                          uploading={uploading}
-                          accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                        />
-                      )
-                    }
-                    return null
-                  })}
+                  {this.showRequiredUploadField() &&
+                    this.getBriefEvaluationTypesForUpload().map(evaluationType => {
+                      if (evaluationType === 'Written proposal') {
+                        return (
+                          <FilesInput
+                            key={evaluationType}
+                            label="Written proposal"
+                            hint={`Your proposal must include: ${brief.proposalType
+                              .map(type => type.toLowerCase())
+                              .join(', ')}`}
+                            fieldLabel="Upload written proposal"
+                            name="writtenProposal"
+                            model={`${model}.writtenProposal.0`}
+                            formFields={1}
+                            url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                            api={dmapi}
+                            fileId={0}
+                            validators={{
+                              requiredFile
+                            }}
+                            messages={{
+                              requiredFile: 'You must upload your written proposal'
+                            }}
+                            uploading={uploading}
+                            accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                          />
+                        )
+                      } else if (evaluationType === 'Response template') {
+                        return (
+                          <FilesInput
+                            key={evaluationType}
+                            label="Completed response template"
+                            fieldLabel="Upload response"
+                            name="responseTemplate"
+                            model={`${model}.responseTemplate.0`}
+                            formFields={1}
+                            url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                            api={dmapi}
+                            fileId={0}
+                            validators={{
+                              requiredFile
+                            }}
+                            messages={{
+                              requiredFile: 'You must upload your completed response template'
+                            }}
+                            uploading={uploading}
+                            accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                          />
+                        )
+                      }
+                      return null
+                    })}
+                  <span />
                   <AUheading level="2" size="sm">
-                    Additional documents (optional)
+                    {this.showRequiredUploadField() ? 'Additional documents (optional)' : 'Attachments'}
                   </AUheading>
-                  <small className={styles.smallText}>
-                    If requested by the buyer, you can upload additional documents
-                  </small>
+                  <p>
+                    {this.showRequiredUploadField() && (
+                      <span>If requested by the buyer, you can upload additional documents. </span>
+                    )}
+                    Attachments must be in DOC, DOCX, ODT, PDF, PPT, PPTX, XLS or XLSX format and a maximum size of
+                    20MB.
+                  </p>
                   {range(this.state.fileCount + 1).map(index => (
                     <FilesInput
                       key={index}
