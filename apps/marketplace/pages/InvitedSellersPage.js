@@ -30,7 +30,7 @@ class InvitedSellerPage extends Component {
           loading: false
         })
       }
-      if (this.props.brief && !['rfx', 'specialist'].includes(this.props.brief.lotSlug)) {
+      if (this.props.brief && !['rfx', 'specialist', 'training2'].includes(this.props.brief.lotSlug)) {
         this.props.setError('Only RFX and specialist briefs have invited sellers.')
       }
       if (this.props.brief && this.props.brief.sellers && Object.keys(this.props.brief.sellers).length < 1) {
