@@ -279,3 +279,14 @@ h3, h3 a {
 .seller-profile-content p.bold-noMargin + ul {
   margin: 0 0 1.2rem 0;
 }
+
+/* Visibility message */
+.visibility-message {
+  margin-bottom: 1.5rem;
+  color: #00698F;
+}
+
+.visibility-message svg {
+  margin-right: .5rem;
+  vertical-align: middle;
+}
