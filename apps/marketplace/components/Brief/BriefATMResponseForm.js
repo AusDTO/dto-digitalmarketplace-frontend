@@ -196,7 +196,7 @@ export class BriefATMResponseForm extends Component {
                       }}
                     />
                   ))}
-                  {this.showRequiredUploadField() && this.briefRequiresDocumentUpload(brief) && (
+                  {this.showRequiredUploadField() && this.briefRequiresDocumentUpload() && (
                     <React.Fragment>
                       <AUheading level="2" size="lg">
                         Upload documentation
