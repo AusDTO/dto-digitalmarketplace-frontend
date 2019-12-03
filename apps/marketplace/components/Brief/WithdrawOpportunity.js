@@ -34,7 +34,7 @@ export class WithdrawOpportunity extends Component {
   }
 
   render = () => {
-    const { brief, model, onSubmit, onSubmitFailed, onWithdrawOpportunity } = this.props
+    const { brief, model, onSubmitFailed, onWithdrawOpportunity } = this.props
 
     const requiredReasonToWithdraw = formValues => {
       const validReason = required(formValues.reasonToWithdraw)
@@ -61,7 +61,7 @@ export class WithdrawOpportunity extends Component {
     return (
       <Form
         model={model}
-        onSubmit={onSubmit}
+        onSubmit={onWithdrawOpportunity}
         onSubmitFailed={onSubmitFailed}
         validateOn="submit"
         validators={{
@@ -137,18 +137,14 @@ export class WithdrawOpportunity extends Component {
 WithdrawOpportunity.defaultProps = {
   brief: {},
   model: '',
-  onSubmit: () => {},
   onSubmitFailed: () => {},
-  onWithdrawButtonClick: () => {},
   onWithdrawOpportunity: () => {}
 }
 
 WithdrawOpportunity.propTypes = {
   brief: PropTypes.object.isRequired,
   model: PropTypes.string,
-  onSubmit: PropTypes.func,
   onSubmitFailed: PropTypes.func,
-  onWithdrawButtonClick: PropTypes.func,
   onWithdrawOpportunity: PropTypes.func.isRequired
 }
 
