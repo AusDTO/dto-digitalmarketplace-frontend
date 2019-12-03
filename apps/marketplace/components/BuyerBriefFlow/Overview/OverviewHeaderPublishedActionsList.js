@@ -42,22 +42,30 @@ const OverviewHeaderPublishedActionsList = props => {
       )}
       {canCloseOpportunity && hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
         <li className={`${mainStyles.red} ${styles.hideMobile}`}>
-          <a className={mainStyles.red} href={`${rootPath}/brief/${brief.id}/withdraw`}>Withdraw opportunity</a>
+          <a className={mainStyles.red} href={`${rootPath}/brief/${brief.id}/withdraw`}>
+            Withdraw opportunity
+          </a>
         </li>
       )}
       {canCloseOpportunity && !hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
         <li className={`${mainStyles.red} ${styles.hideMobile}`}>
-          <a className={mainStyles.red} href={`${rootPath}/request-access/publish_opportunities`}>Withdraw opportunity</a>
+          <a className={mainStyles.red} href={`${rootPath}/request-access/publish_opportunities`}>
+            Withdraw opportunity
+          </a>
         </li>
       )}
       {canCloseOpportunity && hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
         <li className={`${mainStyles.red} ${styles.hideDesktop}`}>
-          <a className={mainStyles.red} href={`${rootPath}/brief/${brief.id}/withdraw`}>Withdraw</a>
+          <a className={mainStyles.red} href={`${rootPath}/brief/${brief.id}/withdraw`}>
+            Withdraw
+          </a>
         </li>
       )}
       {canCloseOpportunity && !hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
         <li className={`${mainStyles.red} ${styles.hideDesktop}`}>
-          <a className={mainStyles.red} href={`${rootPath}/request-access/publish_opportunities`}>Withdraw</a>
+          <a className={mainStyles.red} href={`${rootPath}/request-access/publish_opportunities`}>
+            Withdraw
+          </a>
         </li>
       )}
     </ul>
