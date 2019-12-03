@@ -109,7 +109,7 @@ class WithdrawOpportunityPage extends Component {
       )
     }
 
-    return <WithdrawOpportunity brief={brief} onCloseOpportunity={this.handleWithdrawOpportunity} />
+    return <WithdrawOpportunity brief={brief} onWithdrawOpportunity={this.handleWithdrawOpportunity} />
   }
 }
 
