@@ -185,6 +185,7 @@ const mapStateToProps = (state, {documentsUrl, onClick, ...rest}) => {
       services,
       pricing,
       recruiter,
+      labourHire,
       name,
       ...body
     },

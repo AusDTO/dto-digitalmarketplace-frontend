@@ -22,6 +22,7 @@ const Body = (props) => {
     abn,
     addresses,
     documents = {},
+    labourHire = {},
     tools,
     methodologies,
     technologies,
@@ -271,6 +272,21 @@ const Body = (props) => {
             ))}
           </ul>
         </Row>
+        <Row title="Labour licence" show={!isEmpty(labourHire)}>
+          {Object.keys(labourHire).map((key, i) => {
+            return (
+              <React.Fragment key={i}>
+                <h4 className="au-display-sm">{key.toUpperCase()}</h4>
+                <div>
+                  Licence number: {labourHire[key]['licenceNumber']}
+                </div>
+                <div>
+                  Expiry: {labourHire[key]['expiry']}
+                </div>
+              </React.Fragment>
+            )
+          })}
+        </Row>
         <Row title="Signed agreement" show={true}>
           {signed_agreements && signed_agreements.map((sa, i) => {
             const { htmlUrl, pdfUrl, signedAt } = sa
@@ -326,6 +342,7 @@ Body.propTypes = {
     case_studies: PropTypes.object,
     signed_agreements: PropTypes.array,
     representative: PropTypes.string,
+    labourHire: PropTypes.object,
     email: PropTypes.string,
     phone: PropTypes.string,
     website: PropTypes.string,

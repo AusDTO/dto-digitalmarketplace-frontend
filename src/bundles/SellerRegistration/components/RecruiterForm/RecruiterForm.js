@@ -48,7 +48,7 @@ class RecruiterForm extends BaseForm {
     }
 
     onChangeState(e) {
-        const { model, setValid, updateProperty} = this.props;
+        const { model, updateProperty } = this.props;
 
         this.setState({
             recruiter: e.target.value
@@ -56,11 +56,11 @@ class RecruiterForm extends BaseForm {
 
         if (e.target.value === 'no') {
             states.forEach(s => {
-                let property = `${model}.labourHire.${s}.expiry`
-                let valid = this.validExpiryDate(this.props[property], s)
-                setValid(property, valid)
+                let expiryProperty = `${model}.labourHire.${s}.expiry`
+                let licenceNumberProperty = `${model}.labourHire.${s}.licenceNumber`
+                updateProperty(expiryProperty, null)
+                updateProperty(licenceNumberProperty, null)
             })
-            //this.props[model]['labourHire'] = {}
         }
     }
 
@@ -73,7 +73,6 @@ class RecruiterForm extends BaseForm {
             e.focus()
           }
         }
-        // const states = ['act', 'nsw', 'nt', 'qld', 'sa', 'tas', 'wa', 'vic']
         
         return (
             <Layout>
