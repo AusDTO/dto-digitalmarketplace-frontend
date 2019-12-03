@@ -25,10 +25,7 @@ export class WithdrawOpportunity extends Component {
   render = () => {
     const { brief, model, onSubmit, onSubmitFailed, onWithdrawOpportunity } = this.props
 
-    const requiredReasonToWithdraw = formValues => {
-      required(formValues.reasonToWithdraw)
-    }
-
+    const requiredReasonToWithdraw = formValues => required(formValues.reasonToWithdraw)
     const requiredAuthorityToWithdraw = () => this.state.hasAuthorityToWithdraw === true
 
     return (
