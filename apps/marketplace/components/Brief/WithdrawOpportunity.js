@@ -29,9 +29,7 @@ export class WithdrawOpportunity extends Component {
       required(formValues.reasonToWithdraw)
     }
 
-    const requiredAuthorityToWithdraw = () => {
-      return this.state.hasAuthorityToWithdraw === true
-    }
+    const requiredAuthorityToWithdraw = () => this.state.hasAuthorityToWithdraw === true
 
     return (
       <Form
