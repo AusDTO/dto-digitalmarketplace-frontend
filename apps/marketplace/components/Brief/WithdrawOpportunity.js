@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Form } from 'react-redux-form'
 
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
+import { AUcheckbox } from '@gov.au/control-input/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
@@ -16,6 +17,9 @@ import styles from '../../main.scss'
 export class WithdrawOpportunity extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      hasAuthorityToWithdraw: false
+    }
   }
 
   render = () => {
@@ -23,6 +27,10 @@ export class WithdrawOpportunity extends Component {
 
     const requiredReasonToWithdraw = formValues => {
       required(formValues.reasonToWithdraw)
+    }
+
+    const requiredAuthorityToWithdraw = () => {
+      return this.state.hasAuthorityToWithdraw === true
     }
 
     return (
@@ -33,7 +41,8 @@ export class WithdrawOpportunity extends Component {
         validateOn="submit"
         validators={{
           '': {
-            requiredReasonToWithdraw
+            requiredReasonToWithdraw,
+            requiredAuthorityToWithdraw
           }
         }}
       >
@@ -43,7 +52,8 @@ export class WithdrawOpportunity extends Component {
         <ErrorAlert
           model={model}
           messages={{
-            requiredReasonToWithdraw: 'You must enter a reason for withdrawal'
+            requiredReasonToWithdraw: 'You must enter a reason for withdrawal',
+            requiredAuthorityToWithdraw: 'Select the checkbox to confirm you have authority to withdraw this opportunity'
           }}
         />
         <p>If you withdraw this opportunity:</p>
@@ -70,11 +80,23 @@ export class WithdrawOpportunity extends Component {
             validators={{ required }}
           />
         </div>
+        <AUcheckbox
+          checked={this.state.hasAuthorityToWithdraw}
+          className={styles.marginTop2}
+          id="authorityToWithdraw"
+          label="I have the authority to withdraw this opportunity and understand once I do so I will be unable to re-open it"
+          name="authorityToWithdraw"
+          onChange={() => {}}
+          onClick={e => {
+            this.setState({
+              hasAuthorityToWithdraw: e.target.checked
+            })
+          }}
+        />
         <div className={styles.marginTop2}>
-          {/* <AUbutton onClick={onWithdrawOpportunity} type="submit">
+          <AUbutton onClick={onWithdrawOpportunity} type="submit">
             Withdraw opportunity
-          </AUbutton> */}
-          <AUbutton type="submit">Withdraw opportunity</AUbutton>
+          </AUbutton>
           <AUbutton as="tertiary" link={`${rootPath}/brief/${brief.id}/overview/${brief.lot}`}>
             Cancel request
           </AUbutton>
