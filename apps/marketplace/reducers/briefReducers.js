@@ -56,7 +56,8 @@ const defaultBriefState = {
   domains: [],
   hasSupplierErrors: false,
   isInvited: false,
-  hasSignedCurrentAgreement: false
+  hasSignedCurrentAgreement: false,
+  reasonToWithdraw: ''
 }
 
 const briefReducer = (state = defaultBriefState, action) => {
