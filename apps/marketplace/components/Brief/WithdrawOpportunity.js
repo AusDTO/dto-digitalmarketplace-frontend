@@ -53,7 +53,8 @@ export class WithdrawOpportunity extends Component {
           model={model}
           messages={{
             requiredReasonToWithdraw: 'You must enter a reason for withdrawal',
-            requiredAuthorityToWithdraw: 'Select the checkbox to confirm you have authority to withdraw this opportunity'
+            requiredAuthorityToWithdraw:
+              'Select the checkbox to confirm you have authority to withdraw this opportunity'
           }}
         />
         <p>If you withdraw this opportunity:</p>
