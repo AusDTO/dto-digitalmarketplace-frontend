@@ -7,7 +7,6 @@ import { handleFeedbackSubmit, setErrorMessage } from 'marketplace/actions/appAc
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import WithdrawOpportunity from 'marketplace/components/Brief/WithdrawOpportunity'
 import WithdrawnOpportunity from 'marketplace/components/Brief/WithdrawnOpportunity'
-import { mapLot } from 'marketplace/components/helpers'
 
 class WithdrawOpportunityPage extends Component {
   constructor(props) {
