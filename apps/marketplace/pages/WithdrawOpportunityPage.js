@@ -65,7 +65,7 @@ class WithdrawOpportunityPage extends Component {
   }
 
   render = () => {
-    const { app, brief, canWithdrawOpportunity, errorMessage } = this.props
+    const { app, brief, errorMessage } = this.props
 
     let hasFocused = false
     const setFocus = e => {
@@ -110,31 +110,13 @@ class WithdrawOpportunityPage extends Component {
       )
     }
 
-    if (!canWithdrawOpportunity) {
-      hasFocused = false
-      return (
-        <ErrorBoxComponent
-          title={`Unable to withdraw ${brief.lot ? mapLot(brief.lot).toLowerCase() : ''} opportunity`}
-          errorMessage={errorMessage}
-          setFocus={setFocus}
-          form={{}}
-          invalidFields={[]}
-        />
-      )
-    }
-
-    if (canWithdrawOpportunity) {
-      return <WithdrawOpportunity brief={brief} onCloseOpportunity={this.handleWithdrawOpportunity} />
-    }
-
-    return null
+    return <WithdrawOpportunity brief={brief} onCloseOpportunity={this.handleWithdrawOpportunity} />
   }
 }
 
 const mapStateToProps = state => ({
   app: state.app,
   brief: state.brief.brief,
-  canWithdrawOpportunity: state.brief.canWithdrawOpportunity,
   errorMessage: state.app.errorMessage
 })
 
