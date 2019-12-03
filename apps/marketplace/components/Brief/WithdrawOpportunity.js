@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Form } from 'react-redux-form'
+import { actions, Form } from 'react-redux-form'
 
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import { AUcheckbox } from '@gov.au/control-input/lib/js/react.js'
@@ -18,15 +18,45 @@ export class WithdrawOpportunity extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      hasAuthorityToWithdraw: false
+      hasAuthorityToWithdraw: false,
+      hasErrors: false
     }
+
+    this.handleWithdrawButtonClick = this.handleWithdrawButtonClick.bind(this)
+  }
+
+  handleWithdrawButtonClick = () => {
+    this.setState({
+      hasErrors: false
+    })
+
+    this.props.resetFormValidity()
   }
 
   render = () => {
     const { brief, model, onSubmit, onSubmitFailed, onWithdrawOpportunity } = this.props
 
-    const requiredReasonToWithdraw = formValues => required(formValues.reasonToWithdraw)
-    const requiredAuthorityToWithdraw = () => this.state.hasAuthorityToWithdraw === true
+    const requiredReasonToWithdraw = formValues => {
+      const validReason = required(formValues.reasonToWithdraw)
+      if (!validReason) {
+        this.setState({
+          hasErrors: true
+        })
+      }
+
+      return validReason
+    }
+
+    const requiredAuthorityToWithdraw = () => {
+      const validAuthority = this.state.hasAuthorityToWithdraw === true
+      if (!validAuthority) {
+        this.setState({
+          hasErrors: true
+        })
+      }
+
+      return validAuthority
+    }
 
     return (
       <Form
@@ -44,14 +74,16 @@ export class WithdrawOpportunity extends Component {
         <AUheading size="xl" level="1">
           Withdraw &apos;{brief.title}&apos;
         </AUheading>
-        <ErrorAlert
-          model={model}
-          messages={{
-            requiredReasonToWithdraw: 'You must enter a reason for withdrawal',
-            requiredAuthorityToWithdraw:
-              'Select the checkbox to confirm you have authority to withdraw this opportunity'
-          }}
-        />
+        {this.state.hasErrors && (
+          <ErrorAlert
+            model={model}
+            messages={{
+              requiredReasonToWithdraw: 'You must enter a reason for withdrawal',
+              requiredAuthorityToWithdraw:
+                'Select the checkbox to confirm you have authority to withdraw this opportunity'
+            }}
+          />
+        )}
         <p>If you withdraw this opportunity:</p>
         <ul>
           <li>the Marketplace will notify all sellers who have been invited to apply</li>
@@ -90,7 +122,7 @@ export class WithdrawOpportunity extends Component {
           }}
         />
         <div className={styles.marginTop2}>
-          <AUbutton onClick={onWithdrawOpportunity} type="submit">
+          <AUbutton onClick={this.handleWithdrawButtonClick} type="submit">
             Withdraw opportunity
           </AUbutton>
           <AUbutton as="tertiary" link={`${rootPath}/brief/${brief.id}/overview/${brief.lot}`}>
@@ -107,6 +139,7 @@ WithdrawOpportunity.defaultProps = {
   model: '',
   onSubmit: () => {},
   onSubmitFailed: () => {},
+  onWithdrawButtonClick: () => {},
   onWithdrawOpportunity: () => {}
 }
 
@@ -115,6 +148,7 @@ WithdrawOpportunity.propTypes = {
   model: PropTypes.string,
   onSubmit: PropTypes.func,
   onSubmitFailed: PropTypes.func,
+  onWithdrawButtonClick: PropTypes.func,
   onWithdrawOpportunity: PropTypes.func.isRequired
 }
 
@@ -122,4 +156,11 @@ const mapStateToProps = state => ({
   brief: state.brief.brief
 })
 
-export default connect(mapStateToProps)(WithdrawOpportunity)
+const mapDispatchToProps = (dispatch, props) => ({
+  resetFormValidity: () => dispatch(actions.resetValidity(props.model))
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(WithdrawOpportunity)
