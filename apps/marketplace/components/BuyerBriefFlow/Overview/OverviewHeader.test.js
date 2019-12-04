@@ -42,8 +42,6 @@ describe('OverviewHeader', () => {
 
     const component = mount(<OverviewHeader brief={brief} canCloseOpportunity isClosed={false} isPublished />)
 
-    expect(component.children().exists('li.hideMobile a')).toEqual(true)
-
     expect(
       component
         .children()
@@ -52,7 +50,13 @@ describe('OverviewHeader', () => {
         .text()
     ).toEqual('Close opportunity now')
 
-    expect(component.children().exists('li.hideDesktop a')).toEqual(true)
+    expect(
+      component
+        .children()
+        .find('li.hideMobile a')
+        .last()
+        .text()
+    ).toEqual('Withdraw opportunity')
 
     expect(
       component
@@ -61,6 +65,14 @@ describe('OverviewHeader', () => {
         .first()
         .text()
     ).toEqual('Close now')
+
+    expect(
+      component
+        .children()
+        .find('li.hideDesktop a')
+        .last()
+        .text()
+    ).toEqual('Withdraw')
   })
 
   test('shows the correct actions for a published opportunity that can not be closed', () => {
@@ -80,8 +92,21 @@ describe('OverviewHeader', () => {
 
     const component = mount(<OverviewHeader brief={brief} canCloseOpportunity={false} isClosed={false} isPublished />)
 
-    const links = component.children().find('a')
-    expect(links).toHaveLength(0)
+    expect(
+      component
+        .children()
+        .find('li.hideMobile a')
+        .first()
+        .text()
+    ).toEqual('Withdraw opportunity')
+
+    expect(
+      component
+        .children()
+        .find('li.hideDesktop a')
+        .first()
+        .text()
+    ).toEqual('Withdraw')
   })
 
   test('shows the correct actions for a closed opportunity', () => {

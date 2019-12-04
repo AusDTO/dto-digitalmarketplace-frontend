@@ -40,28 +40,28 @@ const OverviewHeaderPublishedActionsList = props => {
           <a href={`${rootPath}/request-access/publish_opportunities`}>Close now</a>
         </li>
       )}
-      {hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
+      {brief.status === 'live' && hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
         <li className={`${mainStyles.red} ${styles.hideMobile}`}>
           <a className={mainStyles.red} href={`${rootPath}/brief/${brief.id}/withdraw`}>
             Withdraw opportunity
           </a>
         </li>
       )}
-      {!hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
+      {brief.status === 'live' && !hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
         <li className={`${mainStyles.red} ${styles.hideMobile}`}>
           <a className={mainStyles.red} href={`${rootPath}/request-access/publish_opportunities`}>
             Withdraw opportunity
           </a>
         </li>
       )}
-      {hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
+      {brief.status === 'live' && hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
         <li className={`${mainStyles.red} ${styles.hideDesktop}`}>
           <a className={mainStyles.red} href={`${rootPath}/brief/${brief.id}/withdraw`}>
             Withdraw
           </a>
         </li>
       )}
-      {!hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
+      {brief.status === 'live' && !hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
         <li className={`${mainStyles.red} ${styles.hideDesktop}`}>
           <a className={mainStyles.red} href={`${rootPath}/request-access/publish_opportunities`}>
             Withdraw
