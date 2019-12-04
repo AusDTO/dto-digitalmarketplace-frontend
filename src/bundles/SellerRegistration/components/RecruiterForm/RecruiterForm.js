@@ -126,7 +126,7 @@ class RecruiterForm extends BaseForm {
                             {this.props[model].recruiter && this.props[model].recruiter !== 'no' && (
                                 <fieldset>
                                     <legend>
-                                        <h2 className="au-display-lg" tabIndex="-1">Labour hire license</h2>
+                                        <h2 className="au-display-lg" tabIndex="-1">Labour hire licence</h2>
                                     </legend>
                                     <p>Under the Labour Hire Licensing Act, all labour hire providers must be licensed. Please provide your license number for each state.</p>
                                     
