@@ -134,10 +134,10 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  withdrawOpportunity: briefId => dispatch(withdrawOpportunity(briefId)),
   handleFeedbackSubmit: model => dispatch(handleFeedbackSubmit(model)),
   loadData: briefId => dispatch(loadBrief(briefId)),
-  setError: message => dispatch(setErrorMessage(message))
+  setError: message => dispatch(setErrorMessage(message)),
+  withdrawOpportunity: briefId => dispatch(withdrawOpportunity(briefId))
 })
 
 export default withRouter(
