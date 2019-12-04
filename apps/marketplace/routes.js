@@ -44,6 +44,7 @@ import PublishAnswerPage from './pages/PublishAnswerPage'
 import RequestAccessPage from './pages/RequestAccessPage'
 import DownloadReports from './pages/DownloadReports/DownloadReports'
 import InsightPage from './pages/InsightPage'
+import InvitedSellersPage from './pages/InvitedSellersPage'
 
 export const rootPath = '/2'
 
@@ -71,6 +72,7 @@ export const Routes = () => (
       path={`${rootPath}/brief/:briefId/ask-a-question`}
       component={AskQuestionPage}
     />
+    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/invited`} component={InvitedSellersPage} />
     <PrivateRoute path={`${rootPath}/brief/:briefId`} component={BriefPage} />
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
     <Route path={`${rootPath}/login`} component={LoginPage} />
