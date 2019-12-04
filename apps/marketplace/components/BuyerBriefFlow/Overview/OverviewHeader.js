@@ -34,7 +34,7 @@ const OverviewHeader = props => {
         {!isPublished && (
           <OverviewHeaderDraftActionsList
             brief={brief}
-            handleDeleteClick={handleDeleteClick}
+            onDeleteClick={handleDeleteClick}
             isPartOfTeam={isPartOfTeam}
             isTeamLead={isTeamLead}
             teams={teams}
