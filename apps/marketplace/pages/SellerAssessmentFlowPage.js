@@ -6,6 +6,7 @@ import formProps from 'shared/form/formPropsSelector'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import ProgressFlow from 'marketplace/components/ProgressFlow/ProgressFlow'
 import SellerAssessmentStages from 'marketplace/components/SellerAssessment/SellerAssessmentStages'
+import SellerAssessmentHybridStages from 'marketplace/components/SellerAssessment/Hybrid/SellerAssessmentHybridStages'
 import { rootPath } from 'marketplace/routes'
 import { loadDomainData, loadEvidenceData, saveEvidence } from 'marketplace/actions/supplierActions'
 import { setErrorMessage } from 'marketplace/actions/appActions'
@@ -136,7 +137,22 @@ export class SellerAssessmentFlowPage extends Component {
     if (this.state.flowIsDone) {
       return <Redirect to={`${rootPath}/seller-assessment/${evidenceId}/completed`} push />
     }
-
+    if(this.props.isRecruiterOnly || this.props.recruiter_both){
+      return (
+        <ProgressFlow
+          model={model}
+          meta={{ domain: this.props.domain, evidence: this.props.evidence }}
+          onStageMount={this.handleStageMount}
+          basename={`${rootPath}/seller-assessment/${evidenceId}`}
+          stages={SellerAssessmentHybridStages}
+          saveModel={this.saveEvidence}
+          showReturnButton={false}
+          showReviewButton={false}
+          publishText="Request assessment"
+          showConfirmationCheckbox={false}
+        />
+      )
+    }
     return (
       <ProgressFlow
         model={model}
