@@ -9,7 +9,7 @@ import { rootPath } from 'marketplace/routes'
 import styles from '../../main.scss'
 
 const WithdrawnOpportunity = props => {
-  const { app, brief, handleSubmit, isOpenToAll, setFocus } = props
+  const { app, brief, isOpenToAll, onFeedbackSubmit, setFocus } = props
 
   return (
     <React.Fragment>
@@ -32,7 +32,7 @@ const WithdrawnOpportunity = props => {
       <br />
       <Feedback
         app={app}
-        handleSubmit={handleSubmit}
+        handleSubmit={onFeedbackSubmit}
         difficultyQuestion="How did you find updating your opportunity?"
         commentQuestion="How would you improve this experience?"
         objectAction="closed_opportunity"
@@ -43,15 +43,15 @@ const WithdrawnOpportunity = props => {
 
 WithdrawnOpportunity.defaultProps = {
   app: {},
-  handleSubmit: () => {},
   isOpenToAll: false,
+  onFeedbackSubmit: () => {},
   setFocus: () => {}
 }
 
 WithdrawnOpportunity.propTypes = {
   app: PropTypes.object.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
   isOpenToAll: PropTypes.bool.isRequired,
+  onFeedbackSubmit: PropTypes.func.isRequired,
   setFocus: PropTypes.func.isRequired
 }
 

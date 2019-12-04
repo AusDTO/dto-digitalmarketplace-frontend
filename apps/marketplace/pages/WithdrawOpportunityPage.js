@@ -108,7 +108,7 @@ class WithdrawOpportunityPage extends Component {
         <WithdrawnOpportunity
           app={app}
           brief={brief}
-          handleSubmit={this.handleFeedbackSubmit}
+          onFeedbackSubmit={this.handleFeedbackSubmit}
           isOpenToAll={isOpenToAll}
           setFocus={setFocus}
         />
