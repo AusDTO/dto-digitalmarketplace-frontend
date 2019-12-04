@@ -85,11 +85,11 @@ export class WithdrawOpportunity extends Component {
             }}
           />
         )}
-        <p>If you withdraw this opportunity:</p>
+        <p>Once you select &apos;Withdraw opportunity&apos;:</p>
         <ul>
-          <li>the Marketplace will notify all sellers who have been invited to apply</li>
-          <li>your reason for withdrawing will be published on the (closed) opportunity</li>
-          <li>you may not be able to re-open this opportunity</li>
+          <li>we will notify all sellers that you invited</li>
+          <li>the opportunity page will display your reason for withdrawal</li>
+          <li>you will not be able to reopen the opportunity again</li>
         </ul>
         <div className={styles.marginTop2}>
           <Textarea
@@ -97,9 +97,9 @@ export class WithdrawOpportunity extends Component {
               limit: 25,
               rows: '2'
             }}
-            description="Your reason will be published on the (closed) opportunity"
+            description="The opportunity page will display your reason for withdrawal"
             id="reasonToWithdraw"
-            label="Reason for withdrawing"
+            label="Reason for withdrawal"
             key="reasonToWithdraw"
             messages={{
               required: `You must enter a withdrawal reason`
@@ -113,7 +113,7 @@ export class WithdrawOpportunity extends Component {
           checked={this.state.hasAuthorityToWithdraw}
           className={styles.marginTop2}
           id="authorityToWithdraw"
-          label="I have the authority to withdraw this opportunity and understand once I do so I will be unable to re-open it"
+          label="I am authorised to withdraw this opportunity and understand I cannot reopen it again"
           name="authorityToWithdraw"
           onChange={() => {}}
           onClick={e => {
