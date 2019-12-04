@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { hasPermission } from 'marketplace/components/helpers'
 import { rootPath } from 'marketplace/routes'
@@ -32,6 +33,24 @@ const OverviewHeaderDraftActionsList = props => {
       </li>
     </ul>
   )
+}
+
+OverviewHeaderDraftActionsList.defaultProps = {
+  brief: {},
+  handleDeleteClick: () => {},
+  isPartOfTeam: null,
+  isTeamLead: null,
+  teams: []
+}
+
+OverviewHeaderDraftActionsList.propTypes = {
+  brief: PropTypes.shape({
+    id: PropTypes.number.isRequired
+  }).isRequired,
+  handleDeleteClick: PropTypes.func.isRequired,
+  isPartOfTeam: PropTypes.bool.isRequired,
+  isTeamLead: PropTypes.bool.isRequired,
+  teams: PropTypes.array.isRequired
 }
 
 export default OverviewHeaderDraftActionsList

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import ClosedDate from 'shared/ClosedDate'
 import { rootPath } from 'marketplace/routes'
@@ -41,6 +42,27 @@ const OverviewHeaderPublishedActionsList = props => {
       )}
     </ul>
   )
+}
+
+OverviewHeaderPublishedActionsList.defaultProps = {
+  brief: {},
+  canCloseOpportunity: false,
+  isPartOfTeam: null,
+  isTeamLead: null,
+  teams: []
+}
+
+OverviewHeaderPublishedActionsList.propTypes = {
+  brief: PropTypes.shape({
+    dates: PropTypes.shape({
+      closing_time: PropTypes.string.isRequired
+    }),
+    id: PropTypes.number.isRequired
+  }).isRequired,
+  canCloseOpportunity: PropTypes.bool.isRequired,
+  isPartOfTeam: PropTypes.bool.isRequired,
+  isTeamLead: PropTypes.bool.isRequired,
+  teams: PropTypes.array.isRequired
 }
 
 export default OverviewHeaderPublishedActionsList
