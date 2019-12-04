@@ -134,7 +134,6 @@ class CloseOpportunityPage extends Component {
 const mapStateToProps = state => ({
   app: state.app,
   brief: state.brief.brief,
-  briefResponses: state.brief.briefResponses,
   canCloseOpportunity: state.brief.canCloseOpportunity,
   errorMessage: state.app.errorMessage
 })
