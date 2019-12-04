@@ -64,7 +64,7 @@ class WithdrawOpportunityPage extends Component {
   }
 
   render = () => {
-    const { app, brief, errorMessage } = this.props
+    const { app, brief, errorMessage, isOpenToAll } = this.props
 
     let hasFocused = false
     const setFocus = e => {
@@ -105,13 +105,20 @@ class WithdrawOpportunityPage extends Component {
 
     if (this.state.opportunityWithdrawn) {
       return (
-        <WithdrawnOpportunity app={app} brief={brief} handleSubmit={this.handleFeedbackSubmit} setFocus={setFocus} />
+        <WithdrawnOpportunity
+          app={app}
+          brief={brief}
+          handleSubmit={this.handleFeedbackSubmit}
+          isOpenToAll={isOpenToAll}
+          setFocus={setFocus}
+        />
       )
     }
 
     return (
       <WithdrawOpportunity
         brief={brief}
+        isOpenToAll={isOpenToAll}
         model="withdrawOpportunityForm"
         onWithdrawOpportunity={this.handleWithdrawOpportunity}
       />
@@ -122,7 +129,8 @@ class WithdrawOpportunityPage extends Component {
 const mapStateToProps = state => ({
   app: state.app,
   brief: state.brief.brief,
-  errorMessage: state.app.errorMessage
+  errorMessage: state.app.errorMessage,
+  isOpenToAll: state.brief.isOpenToAll
 })
 
 const mapDispatchToProps = dispatch => ({

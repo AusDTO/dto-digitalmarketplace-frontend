@@ -141,6 +141,7 @@ export class WithdrawOpportunity extends Component {
 
 WithdrawOpportunity.defaultProps = {
   brief: {},
+  isOpenToAll: false,
   model: '',
   onSubmitFailed: () => {},
   onWithdrawOpportunity: () => {}
@@ -148,13 +149,13 @@ WithdrawOpportunity.defaultProps = {
 
 WithdrawOpportunity.propTypes = {
   brief: PropTypes.object.isRequired,
-  model: PropTypes.string,
+  isOpenToAll: PropTypes.bool.isRequired,
+  model: PropTypes.string.isRequired,
   onSubmitFailed: PropTypes.func,
   onWithdrawOpportunity: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state, props) => ({
-  isOpenToAll: state.brief.isOpenToAll,
   ...formProps(state, props.model)
 })
 

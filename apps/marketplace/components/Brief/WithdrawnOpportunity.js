@@ -9,7 +9,7 @@ import { rootPath } from 'marketplace/routes'
 import styles from '../../main.scss'
 
 const WithdrawnOpportunity = props => {
-  const { app, brief, handleSubmit, setFocus } = props
+  const { app, brief, handleSubmit, isOpenToAll, setFocus } = props
 
   return (
     <React.Fragment>
@@ -20,7 +20,13 @@ const WithdrawnOpportunity = props => {
           </strong>
         </h1>
         <div className={styles.marginTop2}>
-          <AUbutton link={`${rootPath}/brief/${brief.id}/download-responses`}>Download seller responses</AUbutton>
+          <p>
+            The reason for withdrawal is now displayed on the opportunity page.{' '}
+            {isOpenToAll
+              ? 'Sellers who have drafted or submitted responses to this opportunity have been notified'
+              : 'Invited sellers have been notified'}
+            .
+          </p>
         </div>
       </AUpageAlert>
       <br />
@@ -38,12 +44,14 @@ const WithdrawnOpportunity = props => {
 WithdrawnOpportunity.defaultProps = {
   app: {},
   handleSubmit: () => {},
+  isOpenToAll: false,
   setFocus: () => {}
 }
 
 WithdrawnOpportunity.propTypes = {
   app: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  isOpenToAll: PropTypes.bool.isRequired,
   setFocus: PropTypes.func.isRequired
 }
 
