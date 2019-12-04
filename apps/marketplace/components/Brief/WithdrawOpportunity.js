@@ -10,6 +10,7 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import { required } from 'marketplace/components/validators'
 import { rootPath } from 'marketplace/routes'
+import formProps from 'shared/form/formPropsSelector'
 import Textarea from 'shared/form/Textarea'
 
 import styles from '../../main.scss'
@@ -148,8 +149,8 @@ WithdrawOpportunity.propTypes = {
   onWithdrawOpportunity: PropTypes.func.isRequired
 }
 
-const mapStateToProps = state => ({
-  brief: state.brief.brief
+const mapStateToProps = (state, props) => ({
+  ...formProps(state, props.model)
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
