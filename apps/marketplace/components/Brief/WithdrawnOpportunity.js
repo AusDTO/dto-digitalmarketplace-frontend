@@ -43,6 +43,7 @@ const WithdrawnOpportunity = props => {
 
 WithdrawnOpportunity.defaultProps = {
   app: {},
+  brief: {},
   isOpenToAll: false,
   onFeedbackSubmit: () => {},
   setFocus: () => {}
@@ -50,6 +51,10 @@ WithdrawnOpportunity.defaultProps = {
 
 WithdrawnOpportunity.propTypes = {
   app: PropTypes.object.isRequired,
+  brief: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired
+  }).isRequired,
   isOpenToAll: PropTypes.bool.isRequired,
   onFeedbackSubmit: PropTypes.func.isRequired,
   setFocus: PropTypes.func.isRequired

@@ -148,7 +148,11 @@ WithdrawOpportunity.defaultProps = {
 }
 
 WithdrawOpportunity.propTypes = {
-  brief: PropTypes.object.isRequired,
+  brief: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    lot: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired
+  }).isRequired,
   isOpenToAll: PropTypes.bool.isRequired,
   model: PropTypes.string.isRequired,
   onSubmitFailed: PropTypes.func,
