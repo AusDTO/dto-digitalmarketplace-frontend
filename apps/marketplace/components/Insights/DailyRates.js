@@ -85,14 +85,14 @@ export class DailyRates extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className={`row ${styles['margin-bottom']}`}>
+        <div className={`row ${styles.marginBottom1}`}>
           <div className="col-xs-12 col-md-12">
             <AUheading size="lg" level="2">
               Range of daily rates submitted for specialist roles (includes GST)
             </AUheading>
           </div>
         </div>
-        <div className={`row ${styles['margin-bottom']}`}>
+        <div className={`row ${styles.marginBottom1}`}>
           <div className="col-xs-12">
             <div className={insightStyles['chart-md-height-8x']}>
               <canvas
@@ -105,10 +105,10 @@ export class DailyRates extends Component {
           </div>
         </div>
         <div className="row">
-          <div className={`col-xs-12 col-md-offset-3 col-md-6 ${styles['text-align-center']}`}>Median</div>
+          <div className={`col-xs-12 col-md-offset-3 col-md-6 ${styles.textAlignCenter}`}>Median</div>
         </div>
         <div className="row">
-          <div className={`col-xs-5 col-md-offset-3 col-md-2 ${styles['text-align-right']}`}>25%</div>
+          <div className={`col-xs-5 col-md-offset-3 col-md-2 ${styles.textAlignRight}`}>25%</div>
           <div
             className={`col-xs-1 col-md-1 ${insightStyles['chart-dark-blue']} ${insightStyles['legend-border-right']}`}
           >
@@ -122,7 +122,7 @@ export class DailyRates extends Component {
           <div className="col-xs-5 col-md-2">75%</div>
         </div>
         <div className="row">
-          <div className={`col-xs-12 col-md-offset-3 col-md-6 ${styles['text-align-center']}`}>
+          <div className={`col-xs-12 col-md-offset-3 col-md-6 ${styles.textAlignCenter}`}>
             percentage of rates submitted
           </div>
         </div>

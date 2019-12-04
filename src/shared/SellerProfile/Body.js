@@ -81,6 +81,12 @@ const Body = (props) => {
         </Row>
 
         <Row title="Case studies" marginBot="true" show={!isEmpty(case_studies)}>
+          <div styleName="visibility-message">
+            <Icon value="notvisible" size={30} />
+            <strong>
+              Case studies are only visible to seller accounts within your organisation. Buyers cannot access case studies.
+            </strong>
+          </div>
           <ul className="list-vertical" styleName="case-study-list">
             {Object.keys(case_studies).map((study, i) => {
               const {title, service, client} = case_studies[study];
@@ -272,18 +278,17 @@ const Body = (props) => {
           </ul>
         </Row>
         <Row title="Signed agreement" show={true}>
-          {signed_agreements && signed_agreements.map((sa, i) => (
-            <React.Fragment key={i}>
-              {sa['agreement'] && <div>
-                <a href={sa['agreement']['url']}>{sa['agreement']['version']}</a>{' '}
-                signed on{' '}
-                {
-                  sa['agreement']['signed_at'] ? format(new Date(sa['agreement']['signed_at']), 'DD/MM/YYYY') :
-                  sa['signed_at'] && format(new Date(sa['signed_at']), 'DD/MM/YYYY')
-                }
-              </div>}
-            </React.Fragment> 
-          ))}
+          {signed_agreements && signed_agreements.map((sa, i) => {
+            const { htmlUrl, pdfUrl, signedAt } = sa
+            return (
+              <React.Fragment key={i}>
+                <div>
+                  <a href={htmlUrl ? htmlUrl : pdfUrl}>Master Agreement</a>{' '}
+                  signed on {format(new Date(signedAt), 'DD/MM/YYYY')}
+                </div>
+              </React.Fragment>
+            )
+          })}
         </Row>
         <Row title="Documents provided to the Marketplace" show={!isEmpty(documents)}>
           <table className="content-table" styleName="content-table">

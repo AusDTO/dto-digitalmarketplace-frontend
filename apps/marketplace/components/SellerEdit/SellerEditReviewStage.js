@@ -26,14 +26,16 @@ export class SellerEditReviewStage extends Component {
 
     return (
       <React.Fragment>
-        {newAgreement ? (
+        {!signed && (
           <React.Fragment>
             {canUserSign ? (
-              <NewMasterAgreement
-                startDate={newAgreement.startDate}
+              <YourDeclaration
                 representative={representative}
-                agreementHtmlUrl={newAgreement.htmlUrl}
-                agreementPdfUrl={newAgreement.pdfUrl}
+                abn={abn}
+                startDate={currentAgreement && currentAgreement.startDate}
+                supplierCode={`${code}`}
+                agreementHtmlUrl={currentAgreement && currentAgreement.htmlUrl}
+                agreementPdfUrl={currentAgreement && currentAgreement.pdfUrl}
               />
             ) : (
               <ShareWithAuthRep
@@ -41,39 +43,30 @@ export class SellerEditReviewStage extends Component {
                 name={name}
                 email={email}
                 supplierCode={`${code}`}
-                agreementHtmlUrl={newAgreement.htmlUrl}
-                agreementPdfUrl={newAgreement.pdfUrl}
+                agreementHtmlUrl={currentAgreement && currentAgreement.htmlUrl}
+                agreementPdfUrl={currentAgreement && currentAgreement.pdfUrl}
               />
             )}
           </React.Fragment>
-        ) : (
-          <React.Fragment>
-            {signed ? (
-              <SignedMasterAgreement />
-            ) : (
-              <React.Fragment>
-                {canUserSign ? (
-                  <YourDeclaration
-                    representative={representative}
-                    abn={abn}
-                    startDate={currentAgreement && currentAgreement.startDate}
-                    supplierCode={`${code}`}
-                    agreementHtmlUrl={currentAgreement && currentAgreement.htmlUrl}
-                    agreementPdfUrl={currentAgreement && currentAgreement.pdfUrl}
-                  />
-                ) : (
-                  <ShareWithAuthRep
-                    representative={representative}
-                    name={name}
-                    email={email}
-                    supplierCode={`${code}`}
-                    agreementHtmlUrl={currentAgreement && currentAgreement.htmlUrl}
-                    agreementPdfUrl={currentAgreement && currentAgreement.pdfUrl}
-                  />
-                )}
-              </React.Fragment>
-            )}
-          </React.Fragment>
+        )}
+        {signed && !newAgreement && <SignedMasterAgreement />}
+        {signed && newAgreement && canUserSign && (
+          <NewMasterAgreement
+            startDate={newAgreement.startDate}
+            representative={representative}
+            agreementHtmlUrl={newAgreement.htmlUrl}
+            agreementPdfUrl={newAgreement.pdfUrl}
+          />
+        )}
+        {signed && newAgreement && !canUserSign && (
+          <ShareWithAuthRep
+            representative={representative}
+            name={name}
+            email={email}
+            supplierCode={`${code}`}
+            agreementHtmlUrl={newAgreement.htmlUrl}
+            agreementPdfUrl={newAgreement.pdfUrl}
+          />
         )}
       </React.Fragment>
     )
