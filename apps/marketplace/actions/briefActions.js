@@ -88,6 +88,7 @@ export const handleBriefInfoSuccess = response => ({
   brief: response.data.brief,
   briefResponses: response.data.briefResponses,
   canCloseOpportunity: response.data.canCloseOpportunity,
+  isOpenToAll: response.data.isOpenToAll,
   oldWorkOrderCreator: response.data.oldWorkOrderCreator,
   questionsAsked: response.data.questionsAsked,
   briefResponseDownloaded: response.data.briefResponseDownloaded

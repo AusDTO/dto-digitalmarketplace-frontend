@@ -35,7 +35,7 @@ export class WithdrawOpportunity extends Component {
   }
 
   render = () => {
-    const { brief, model, onSubmitFailed, onWithdrawOpportunity } = this.props
+    const { brief, isOpenToAll, model, onSubmitFailed, onWithdrawOpportunity } = this.props
 
     const requiredReasonToWithdraw = formValues => {
       const validReason = required(formValues.reasonToWithdraw)
@@ -87,7 +87,11 @@ export class WithdrawOpportunity extends Component {
         )}
         <p>Once you select &apos;Withdraw opportunity&apos;:</p>
         <ul>
-          <li>we will notify all sellers that you invited</li>
+          {isOpenToAll ? (
+            <li>we will notify sellers who have drafted or submitted responses to this opportunity</li>
+          ) : (
+            <li>we will notify all sellers that you invited</li>
+          )}
           <li>the opportunity page will display your reason for withdrawal</li>
           <li>you will not be able to reopen the opportunity again</li>
         </ul>
@@ -150,6 +154,7 @@ WithdrawOpportunity.propTypes = {
 }
 
 const mapStateToProps = (state, props) => ({
+  isOpenToAll: state.brief.isOpenToAll,
   ...formProps(state, props.model)
 })
 
