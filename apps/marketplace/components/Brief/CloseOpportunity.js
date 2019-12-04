@@ -46,7 +46,12 @@ CloseOpportunity.defaultProps = {
 }
 
 CloseOpportunity.propTypes = {
-  brief: PropTypes.object.isRequired,
+  brief: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    lot: PropTypes.string.isRequired,
+    sellers: PropTypes.object.isRequired,
+    title: PropTypes.string.isRequired
+  }).isRequired,
   onCloseOpportunity: PropTypes.func.isRequired
 }
 

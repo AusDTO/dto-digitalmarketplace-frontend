@@ -37,12 +37,17 @@ const ClosedOpportunity = props => {
 
 ClosedOpportunity.defaultProps = {
   app: {},
+  brief: {},
   onFeedbackSubmit: () => {},
   setFocus: () => {}
 }
 
 ClosedOpportunity.propTypes = {
   app: PropTypes.object.isRequired,
+  brief: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired
+  }).isRequired,
   onFeedbackSubmit: PropTypes.func.isRequired,
   setFocus: PropTypes.func.isRequired
 }
