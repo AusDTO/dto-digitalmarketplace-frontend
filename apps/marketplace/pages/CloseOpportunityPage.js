@@ -105,7 +105,9 @@ class CloseOpportunityPage extends Component {
     }
 
     if (this.state.opportunityClosed) {
-      return <ClosedOpportunity app={app} brief={brief} handleSubmit={this.handleFeedbackSubmit} setFocus={setFocus} />
+      return (
+        <ClosedOpportunity app={app} brief={brief} onFeedbackSubmit={this.handleFeedbackSubmit} setFocus={setFocus} />
+      )
     }
 
     if (!canCloseOpportunity) {

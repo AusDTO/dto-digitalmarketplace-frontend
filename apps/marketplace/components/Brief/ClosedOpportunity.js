@@ -9,7 +9,7 @@ import { rootPath } from 'marketplace/routes'
 import styles from '../../main.scss'
 
 const ClosedOpportunity = props => {
-  const { app, brief, handleSubmit, setFocus } = props
+  const { app, brief, onFeedbackSubmit, setFocus } = props
 
   return (
     <React.Fragment>
@@ -26,7 +26,7 @@ const ClosedOpportunity = props => {
       <br />
       <Feedback
         app={app}
-        handleSubmit={handleSubmit}
+        handleSubmit={onFeedbackSubmit}
         difficultyQuestion="How did you find updating your opportunity?"
         commentQuestion="How would you improve this experience?"
         objectAction="closed_opportunity"
@@ -37,13 +37,13 @@ const ClosedOpportunity = props => {
 
 ClosedOpportunity.defaultProps = {
   app: {},
-  handleSubmit: () => {},
+  onFeedbackSubmit: () => {},
   setFocus: () => {}
 }
 
 ClosedOpportunity.propTypes = {
   app: PropTypes.object.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
+  onFeedbackSubmit: PropTypes.func.isRequired,
   setFocus: PropTypes.func.isRequired
 }
 
