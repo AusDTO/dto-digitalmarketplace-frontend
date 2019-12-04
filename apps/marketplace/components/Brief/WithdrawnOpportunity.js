@@ -15,7 +15,9 @@ const WithdrawnOpportunity = props => {
     <React.Fragment>
       <AUpageAlert as="success" setFocus={setFocus}>
         <h1 className="au-display-lg">
-          <strong>Your opportunity has been closed</strong>
+          <strong>
+            {brief.title} ({brief.id}) was withdrawn successfully
+          </strong>
         </h1>
         <div className={styles.marginTop2}>
           <AUbutton link={`${rootPath}/brief/${brief.id}/download-responses`}>Download seller responses</AUbutton>
