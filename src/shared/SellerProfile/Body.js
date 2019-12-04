@@ -82,6 +82,12 @@ const Body = (props) => {
         </Row>
 
         <Row title="Case studies" marginBot="true" show={!isEmpty(case_studies)}>
+          <div styleName="visibility-message">
+            <Icon value="notvisible" size={30} />
+            <strong>
+              Case studies are only visible to seller accounts within your organisation. Buyers cannot access case studies.
+            </strong>
+          </div>
           <ul className="list-vertical" styleName="case-study-list">
             {Object.keys(case_studies).map((study, i) => {
               const {title, service, client} = case_studies[study];
