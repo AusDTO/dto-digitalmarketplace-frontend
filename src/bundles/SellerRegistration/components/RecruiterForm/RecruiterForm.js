@@ -13,6 +13,7 @@ import Datefield     from '../../../../shared/form/Datefield';
 import formProps     from '../../../../shared/reduxModules/formPropsSelector';
 import StatefulError from '../../../../shared/form/StatefulError';
 import StepNav       from '../StepNav';
+import { mapAustraliaState } from '../../../../helpers'
 
 import { validDate } from '../../../../validators';
 
@@ -128,11 +129,19 @@ class RecruiterForm extends BaseForm {
                                     <legend>
                                         <h2 className="au-display-lg" tabIndex="-1">Labour hire licence</h2>
                                     </legend>
-                                    <p>Under the Labour Hire Licensing Act, all labour hire providers must be licensed. Please provide your license number for each state.</p>
+                                    <p>Some states operate under a mandated Labour Hire Licensing Act.</p>
+                                    <p>Please provide your licence details if you plan to submit roles for these states:</p>
                                     
                                     {states.map(s => (
                                         <React.Fragment key={s}>
-                                            <h3 className="au-display-md" tabIndex="-1">{s.toUpperCase()}</h3>
+                                            <h3 className="au-display-md" tabIndex="-1">{mapAustraliaState(s)}</h3>
+                                            <br />
+                                            <p>
+                                                Read the{' '}
+                                                <a href={`/api/2/r/labour-hire-licensing-act-${s}`} rel="external noopener noreferrer" target="_blank">
+                                                    Labour Hire Licensing Act for { mapAustraliaState(s) }
+                                                </a>
+                                            </p>
                                             <StatefulError
                                                 model={`${model}.labourHire.${s}.expiry`}
                                                 id={`${s}Expiry`}
