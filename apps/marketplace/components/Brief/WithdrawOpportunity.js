@@ -72,7 +72,7 @@ export class WithdrawOpportunity extends Component {
         }}
       >
         <AUheading size="xl" level="1">
-          Withdraw &apos;{brief.title}&apos;
+          Withdraw &apos;{brief.title}&apos; ({brief.id})
         </AUheading>
         {this.state.hasErrors && (
           <ErrorAlert
