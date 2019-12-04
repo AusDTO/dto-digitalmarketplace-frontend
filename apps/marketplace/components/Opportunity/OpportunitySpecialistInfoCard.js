@@ -8,17 +8,17 @@ const OpportunitySpecialistInfoCard = props => (
   <div className={styles.container}>
     <div className="row">
       {!props.isOpenToAll && (
-        <div className="col-xs-6">
+        <div className="col-xs-5">
           <strong className={styles.stat}>{props.sellersInvited}</strong>
           <br />
           seller{props.sellersInvited === 1 ? '' : 's'} invited
         </div>
       )}
-      <div className="col-xs-6">
+      <div className="col-xs-7">
         <strong className={styles.stat}>{props.sellersApplied}</strong>
         <br />
         candidate{props.sellersApplied === 1 ? '' : 's'}
-        {' applied'}
+        {' submitted'}
       </div>
     </div>
     <div className="row">
@@ -294,7 +294,7 @@ OpportunitySpecialistInfoCard.defaultProps = {
 }
 
 OpportunitySpecialistInfoCard.propTypes = {
-  buyerEmail: PropTypes.string,
+  buyerEmail: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   sellersInvited: PropTypes.number,
   sellersApplied: PropTypes.number,
   sellerResponses: PropTypes.number,
