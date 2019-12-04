@@ -20,7 +20,7 @@ const CloseOpportunity = props => {
   return (
     <React.Fragment>
       <AUheading size="xl" level="1">
-        Close &apos;{brief.title}&apos;
+        Close &apos;{brief.title}&apos; ({brief.id})
       </AUheading>
       <p>If you close this opportunity now:</p>
       <ul>
