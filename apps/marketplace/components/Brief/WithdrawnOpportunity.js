@@ -35,7 +35,7 @@ const WithdrawnOpportunity = props => {
         handleSubmit={onFeedbackSubmit}
         difficultyQuestion="How did you find updating your opportunity?"
         commentQuestion="How would you improve this experience?"
-        objectAction="closed_opportunity"
+        objectAction="withdrew_opportunity"
       />
     </React.Fragment>
   )
