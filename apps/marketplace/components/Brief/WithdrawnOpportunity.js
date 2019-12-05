@@ -21,7 +21,8 @@ const WithdrawnOpportunity = props => {
         </h1>
         <div className={styles.marginTop2}>
           <p>
-            The reason for withdrawal is now displayed on the opportunity page.{' '}
+            The reason for withdrawal is now displayed on the{' '}
+            <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>opportunity page</a>.{' '}
             {isOpenToAll
               ? 'Sellers who have drafted or submitted responses to this opportunity have been notified'
               : 'Invited sellers have been notified'}
