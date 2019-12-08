@@ -8,6 +8,8 @@ import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import WithdrawOpportunity from 'marketplace/components/Brief/WithdrawOpportunity'
 import WithdrawnOpportunity from 'marketplace/components/Brief/WithdrawnOpportunity'
 
+const model = 'withdrawOpportunityForm'
+
 class WithdrawOpportunityPage extends Component {
   constructor(props) {
     super(props)
@@ -42,7 +44,7 @@ class WithdrawOpportunityPage extends Component {
       loading: true
     })
 
-    this.props.withdrawOpportunity(this.props.match.params.briefId).then(response => {
+    this.props.withdrawOpportunity(this.props.match.params.briefId, this.props[model]).then(response => {
       if (response.status === 200) {
         this.setState({
           loading: false,
@@ -119,7 +121,7 @@ class WithdrawOpportunityPage extends Component {
       <WithdrawOpportunity
         brief={brief}
         isOpenToAll={isOpenToAll}
-        model="withdrawOpportunityForm"
+        model={model}
         onWithdrawOpportunity={this.handleWithdrawOpportunity}
       />
     )
@@ -130,14 +132,15 @@ const mapStateToProps = state => ({
   app: state.app,
   brief: state.brief.brief,
   errorMessage: state.app.errorMessage,
-  isOpenToAll: state.brief.isOpenToAll
+  isOpenToAll: state.brief.isOpenToAll,
+  withdrawOpportunityForm: state.withdrawOpportunityForm
 })
 
 const mapDispatchToProps = dispatch => ({
-  handleFeedbackSubmit: model => dispatch(handleFeedbackSubmit(model)),
+  handleFeedbackSubmit: data => dispatch(handleFeedbackSubmit(data)),
   loadData: briefId => dispatch(loadBrief(briefId)),
   setError: message => dispatch(setErrorMessage(message)),
-  withdrawOpportunity: briefId => dispatch(withdrawOpportunity(briefId))
+  withdrawOpportunity: (briefId, data) => dispatch(withdrawOpportunity(briefId, data))
 })
 
 export default withRouter(

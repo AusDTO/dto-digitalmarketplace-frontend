@@ -193,7 +193,7 @@ export const handleWithdrawOpportunitySuccess = response => ({
   brief: response.data
 })
 
-export const withdrawOpportunity = briefId => (dispatch, getState) => {
+export const withdrawOpportunity = (briefId, data) => (dispatch, getState) => {
   dispatch(sendingRequest(true))
   return dmapi({
     url: `/brief/${briefId}/withdraw`,
@@ -201,7 +201,8 @@ export const withdrawOpportunity = briefId => (dispatch, getState) => {
     headers: {
       'X-CSRFToken': getState().app.csrfToken,
       'Content-Type': 'application/json'
-    }
+    },
+    data: JSON.stringify(data)
   }).then(response => {
     if (response.error) {
       dispatch(handleErrorFailure(response))
