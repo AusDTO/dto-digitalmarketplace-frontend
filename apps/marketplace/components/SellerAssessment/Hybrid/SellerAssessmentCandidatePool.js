@@ -41,9 +41,7 @@ const SellerAssessmentCandidatePool = props => (
   <ErrorAlert
     model={props.model}
     messages={{
-      greaterThanZero: 'The maximum daily rate must be greater than zero',
-      lessThanLimit: `The maximum daily rate must be lower than $${maxDailyRateLimit}`,
-      validWholeNumber: 'The maximum daily rate must be a whole number (e.g. 1200)'
+      validWholeNumber: 'The size of your candidate database must be a whole number (e.g. 1200)'
     }}
   />
   <Textfield
@@ -54,7 +52,6 @@ const SellerAssessmentCandidatePool = props => (
     htmlFor="CandidateSize"
     defaultValue={`0`}
     />
-  
   <Textfield
     model={`${props.model}.candidatesPlacedIn12Months`}
     label={`How many candidates have you placed in ${props.meta.domain.name} roles in the last 12 months?"`}
