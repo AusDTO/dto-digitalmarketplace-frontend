@@ -42,7 +42,8 @@ const BriefSpecialistResponseForm2 = ({
   loadingText,
   onRateChange,
   fileCount,
-  addOtherDocument
+  addOtherDocument,
+  supplierContact
 }) => (
   <div className="row">
     <DocumentTitle title="Brief Response - Digital Marketplace">
@@ -397,7 +398,7 @@ const BriefSpecialistResponseForm2 = ({
                   htmlFor="respondToEmailAddress"
                   label="Contact email"
                   description="All communication about your application will be sent to this address."
-                  defaultValue={app.emailAddress}
+                  defaultValue={supplierContact.email}
                   validators={{
                     required,
                     validEmail
@@ -468,6 +469,9 @@ BriefSpecialistResponseForm2.propTypes = {
   brief: PropTypes.object.isRequired,
   briefResponses: PropTypes.array.isRequired,
   briefResponseSuccess: PropTypes.bool,
+  supplierContact: PropTypes.shape({
+    email: PropTypes.string.isRequired
+  }).isRequired,
   app: PropTypes.object.isRequired,
   setFocus: PropTypes.func,
   match: PropTypes.object,

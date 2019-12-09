@@ -87,6 +87,7 @@ describe('BriefSpecialistResponseForm2', () => {
           specialistNumber={1}
           app={{ supplierCode: 1 }}
           brief={{ numberOfSuppliers: '3' }}
+          supplierContact={{ email: 'jd@foobar.com' }}
         />
       </Provider>
     )
@@ -126,6 +127,7 @@ describe('BriefSpecialistResponseForm2', () => {
           specialistNumber={3}
           app={{ supplierCode: 1 }}
           brief={{ numberOfSuppliers: '3' }}
+          supplierContact={{ email: 'jd@foobar.com' }}
         />
       </Provider>
     )

@@ -87,7 +87,8 @@ export const handleBriefInfoSuccess = response => ({
   briefResponses: response.data.briefResponses,
   oldWorkOrderCreator: response.data.oldWorkOrderCreator,
   questionsAsked: response.data.questionsAsked,
-  briefResponseDownloaded: response.data.briefResponseDownloaded
+  briefResponseDownloaded: response.data.briefResponseDownloaded,
+  supplierContact: response.data.supplierContact
 })
 
 export const handlePublicBriefInfoSuccess = response => ({
