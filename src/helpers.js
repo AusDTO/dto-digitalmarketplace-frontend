@@ -93,7 +93,7 @@ export const getNextKey = obj => {
 export const mapAustraliaState = state => {
     switch(state) {
         case 'act':
-            return 'Australia Capital Territory'
+            return 'Australian Capital Territory'
         case 'nsw':
             return 'New South Wales'
         case 'nt':
