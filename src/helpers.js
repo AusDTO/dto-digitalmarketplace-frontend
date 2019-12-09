@@ -97,7 +97,7 @@ export const mapAustraliaState = state => {
         case 'nsw':
             return 'New South Wales'
         case 'nt':
-            return 'Northen Territory'
+            return 'Northern Territory'
         case 'qld':
             return 'Queensland'
         case 'tas':
