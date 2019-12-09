@@ -34,6 +34,7 @@ const maximumCriteriaAllowed = (v, d) =>
     v.criteria.length &&
     v.criteria.length <= getCriteriaAllowed(d.criteriaNeeded, d.priceMaximum, v.maxDailyRate))
 
+
 export const done = (formValues, meta) =>
   minimumCriteriaMet(formValues, meta.domain) && maximumCriteriaAllowed(formValues, meta.domain)
 
@@ -116,27 +117,57 @@ class SellerAssessmentCriteriaStage extends Component {
        <p>
         <strong>Criteria demonstrated by your organisation:</strong>
        </p>
-
+       <div className={styles.criteria}>
+          {domain.criteria.map(criteria => {
+            if (criteria.is_recruiter_criteria) {
+              return (
+                <CheckboxDetailsField
+                  key={criteria.id}
+                  model={`${this.props.model}.criteria[]`}
+                  id={`criteria_${criteria.id}`}
+                  name={`criteria_${criteria.id}`}
+                  label={criteria.name}
+                  value={criteria.id}
+                  detailsModel={this.props.model}
+                  onClick={this.handleClick}
+                  validators={{}}
+                  messages={{}}
+                />
+               )
+             }
+            else {
+              return null
+            }
+        })}
+       </div>
+      
        <p>
         <strong>Criteria demonstrated by a contractor or consultant you previously placed:</strong>
        </p>
-        <div className={styles.criteria}>
-          
-          {domain.criteria.map(criteria => (
-            <CheckboxDetailsField
-              key={criteria.id}
-              model={`${this.props.model}.criteria[]`}
-              id={`criteria_${criteria.id}`}
-              name={`criteria_${criteria.id}`}
-              label={criteria.name}
-              value={criteria.id}
-              detailsModel={this.props.model}
-              onClick={this.handleClick}
-              validators={{}}
-              messages={{}}
-            />
-          ))}
-        </div>
+       <div className={styles.criteria}>
+          {domain.criteria.map(criteria => {
+            if (!criteria.is_recruiter_criteria) {
+              return (
+                <CheckboxDetailsField
+                  key={criteria.id}
+                  model={`${this.props.model}.criteria[]`}
+                  id={`criteria_${criteria.id}`}
+                  name={`criteria_${criteria.id}`}
+                  label={criteria.name}
+                  value={criteria.id}
+                  detailsModel={this.props.model}
+                  onClick={this.handleClick}
+                  validators={{}}
+                  messages={{}}
+                />
+               )
+             }
+            else {
+              return null
+            }
+        })}
+       </div>
+
         {this.props.formButtons}
       </Form>
     )
@@ -168,3 +199,44 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(SellerAssessmentCriteriaStage)
+
+
+       {/* 
+        <div className={styles.criteria}>
+        <div className={styles.criteria}>
+          {domain.criteria.map(criteria => {
+            if (!criteria.isRecruiterCriteria) {
+              return (
+                <CheckboxDetailsField
+                  key={criteria.id}
+                  model={`${this.props.model}.criteria[]`}
+                  id={`criteria_${criteria.id}`}
+                  name={`criteria_${criteria.id}`}
+                  label={criteria.name}
+                  value={criteria.id}
+                  detailsModel={this.props.model}
+                  onClick={this.handleClick}
+                  validators={{}}
+                  messages={{}}
+                />
+              )
+            } else {
+              return null
+            }
+        })}
+       </div> */}
+          {/* {domain.criteria.map(criteria => (
+            <CheckboxDetailsField
+              key={criteria.id}
+              model={`${this.props.model}.criteria[]`}
+              id={`criteria_${criteria.id}`}
+              name={`criteria_${criteria.id}`}
+              label={criteria.name}
+              value={criteria.id}
+              detailsModel={this.props.model}
+              onClick={this.handleClick}
+              validators={{}}
+              messages={{}}
+            />
+          ))} */}
+        {/* </div> */}
