@@ -1,0 +1,46 @@
+import SellerAssessmentIntroductionStage from './SellerAssessmentIntroductionStage'
+import SellerAssessmentMaximumRate, { done as maximumRatesDone } from './SellerAssessmentMaximumRate'
+import SellerAssessmentCandidatePool, { done as candidatePoolDone } from './SellerAssessmentCandidatePool'
+import SellerAssessmentReviewStage from './SellerAssessmentReviewStage'
+import SellerAssessmentHybridCriteriaStage, { done as hybridcriteriaDone } from './SellerAssessmentHybridCriteriaStage'
+import SellerAssessmentEvidenceStage, { done as evidenceDone } from './SellerAssessmentEvidenceStage'
+
+const SellerAssessmentHybridStages = [
+  {
+    slug: 'introduction',
+    title: 'Introduction',
+    component: SellerAssessmentIntroductionStage,
+    isDone: () => true
+  },
+  {
+    slug: 'maximumRate',
+    title: 'Rate',
+    component: SellerAssessmentMaximumRate,
+    isDone: maximumRatesDone
+  },
+  {
+    slug: 'candidatePool',
+    title: 'Candidate Pool',
+    component: SellerAssessmentCandidatePool,
+    isDone: candidatePoolDone
+  },
+  {
+    slug: 'criteria',
+    title: 'Criteria',
+    component: SellerAssessmentHybridCriteriaStage,
+    isDone: hybridcriteriaDone
+  },
+  {
+    slug: 'evidence',
+    title: 'Evidence',
+    component: SellerAssessmentEvidenceStage,
+    isDone: evidenceDone
+  },
+  {
+    slug: 'review',
+    title: 'Review',
+    component: SellerAssessmentReviewStage
+  }
+]
+
+export default SellerAssessmentHybridStages
