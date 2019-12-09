@@ -35,7 +35,7 @@ class RecruiterForm extends BaseForm {
     }
 
     validExpiryDate(v, state) {
-        const {model} = this.props;
+        const { model } = this.props;
         
         if (this.state.recruiter === 'no') {
             return true
