@@ -156,7 +156,7 @@ const Opportunity = props => {
   return (
     <div>
       <div className="row">
-        <div className={`col-xs-12 ${mainStyles.hideDesktop}`}>
+        <div className={`col-xs-12 ${mainStyles.hideDesktop} ${mainStyles.marginBottom1}`}>
           <WithdrawnOpportunityMessage reason={brief.reasonToWithdraw} />
         </div>
         <div className="col-xs-12 col-md-8">

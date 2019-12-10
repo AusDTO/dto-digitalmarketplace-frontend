@@ -1,3 +1,7 @@
+.greyBorderBottom1 {
+  border-bottom: 1px solid #979797;
+}
+
 .fontSizeMd {
   font-size: 1.25rem;
 }
@@ -48,6 +52,10 @@
 
 .marginTop3 {
   margin-top: 3rem;
+}
+
+.paddingBottom1 {
+  padding-bottom: 1rem;
 }
 
 @media print { 

@@ -26,7 +26,7 @@ const WithdrawnOpportunityMessage = props => {
       <div className={`col-xs-12 ${styles.red} ${styles.hideMobile}`}>
         <WithdrawnOpportunityMessageBody reason={reason} />
       </div>
-      <div className={`${styles.red} ${styles.hideDesktop}`}>
+      <div className={`${styles.paddingBottom1} ${styles.greyBorderBottom1} ${styles.red} ${styles.hideDesktop}`}>
         <WithdrawnOpportunityMessageBody reason={reason} />
       </div>
     </React.Fragment>
