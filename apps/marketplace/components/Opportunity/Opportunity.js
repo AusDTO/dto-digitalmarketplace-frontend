@@ -12,6 +12,8 @@ import EvaluationCriteria from './EvaluationCriteria'
 import QuestionAnswer from './QuestionAnswer'
 import OpportunityInfoCard from './OpportunityInfoCard'
 import OpportunitySpecialistInfoCard from './OpportunitySpecialistInfoCard'
+import WithdrawnOpportunityInfoCard from './WithdrawnOpportunityInfoCard'
+
 import styles from './Opportunity.scss'
 
 // defining default brief data up here so render() has access to it
@@ -582,7 +584,8 @@ const Opportunity = props => {
           )}
         </div>
         <div className="col-xs-12 col-md-4">
-          {brief.lotSlug === 'specialist' ? (
+          {brief.status === 'withdrawn' && <WithdrawnOpportunityInfoCard reason={brief.reasonToWithdraw} />}
+          {brief.status !== 'withdrawn' && brief.lotSlug === 'specialist' && (
             <OpportunitySpecialistInfoCard
               sellersInvited={invitedSellerCount}
               sellersApplied={briefResponseCount}
@@ -621,7 +624,8 @@ const Opportunity = props => {
               supplierCode={supplierCode}
               originalClosedAt={originalClosedAt}
             />
-          ) : (
+          )}
+          {brief.status !== 'withdrawn' && brief.lotSlug !== 'specialist' && (
             <OpportunityInfoCard
               sellersInvited={invitedSellerCount}
               sellersApplied={briefResponseCount}
