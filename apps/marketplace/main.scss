@@ -73,6 +73,18 @@
   color: #FF0000;
 }
 
+@media screen and (max-width: 767px) {
+  .hideMobile {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hideDesktop {
+    display: none;
+  }
+}
+
 @media (max-width: 899px) {
   .textAlignCenterSm {
     text-align: center;
