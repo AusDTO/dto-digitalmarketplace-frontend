@@ -132,7 +132,7 @@ class BriefResponses extends Component {
                   </tbody>
                 </table>
               )}
-              {this.props.responses.length === 0 && <p>You do not have any candidates for this brief.</p>}
+              {this.props.responses.length === 0 && <p>You do not have any candidates for this opportunity.</p>}
             </article>
           </div>
         </div>
