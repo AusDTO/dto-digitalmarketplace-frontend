@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import AUheadings from '@gov.au/headings/lib/js/react.js'
-import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
-import AUbutton from '@gov.au/buttons/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
+import ConfirmActionAlert from 'marketplace/components/Alerts/ConfirmActionAlert'
 import format from 'date-fns/format'
 import { rootPath } from 'marketplace/routes'
 import styles from './BriefResponses.scss'
@@ -79,23 +78,24 @@ class BriefResponses extends Component {
             <article role="main">
               {this.state.showDeleteAlert && this.state.idToDelete > 0 && (
                 <div className={styles.deleteAlert}>
-                  <AUpageAlert as="warning">
-                    <AUheadings level="2" size="md">
-                      Are you sure you want to delete {this.getCandidateNameByResponseId(this.state.idToDelete)}&apos;s
-                      application?
-                    </AUheadings>
-                    <AUbutton onClick={() => this.props.onBriefResponseDelete(this.state.idToDelete)}>
-                      Yes, delete application
-                    </AUbutton>
-                    <AUbutton as="secondary" onClick={this.toggleDeleteAlert}>
-                      Do not delete application
-                    </AUbutton>
-                  </AUpageAlert>
+                  <ConfirmActionAlert
+                    cancelButtonText="Do not withdraw application"
+                    confirmButtonText="Yes, withdraw application"
+                    content={
+                      <AUheading level="2" size="md">
+                        Are you sure you want to delete {this.getCandidateNameByResponseId(this.state.idToDelete)}
+                        &apos;s application?
+                      </AUheading>
+                    }
+                    handleCancelClick={this.toggleDeleteAlert}
+                    handleConfirmClick={() => this.props.onBriefResponseDelete(this.state.idToDelete)}
+                    type="warning"
+                  />
                 </div>
               )}
-              <AUheadings level="1" size="xl">
+              <AUheading level="1" size="xl">
                 Edit or submit candidates
-              </AUheadings>
+              </AUheading>
               {this.props.responses.length > 0 && (
                 <table className={`${styles.resultListing} col-xs-12`}>
                   <thead>
