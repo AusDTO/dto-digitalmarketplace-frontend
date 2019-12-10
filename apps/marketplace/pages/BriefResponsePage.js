@@ -434,6 +434,7 @@ const mapStateToProps = state => ({
   briefResponses: state.brief.briefResponses,
   briefResponse: state.brief.briefResponse,
   briefResponseDownloaded: state.brief.briefResponseDownloaded,
+  supplierContact: state.brief.supplierContact,
   loadedAt: state.brief.loadedAt,
   app: state.app,
   supplierCode: state.app.supplierCode,

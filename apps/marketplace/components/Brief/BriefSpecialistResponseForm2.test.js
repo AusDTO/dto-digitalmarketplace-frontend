@@ -18,6 +18,7 @@ describe('BriefSpecialistResponseForm2', () => {
         <BriefSpecialistResponseForm2
           brief={{ title: 'test brief', applicationsClosedAt: '1/15/2018', numberOfSuppliers: '3' }}
           briefResponseStatus="draft"
+          supplierContact={{ email: 'jd@foobar.com' }}
           specialistNumber={1}
           briefResponseForm={{
             attachedDocumentURL: [],
@@ -60,6 +61,7 @@ describe('BriefSpecialistResponseForm2', () => {
         <BriefSpecialistResponseForm2
           brief={{ title: 'test brief', applicationsClosedAt: '1/15/2018', numberOfSuppliers: '1' }}
           briefResponseStatus="draft"
+          supplierContact={{ email: 'jd@foobar.com' }}
           specialistNumber={1}
           briefResponseForm={{
             attachedDocumentURL: [],
@@ -104,6 +106,7 @@ describe('BriefSpecialistResponseForm2', () => {
           specialistSurname="Doe"
           specialistNumber={3}
           app={{ supplierCode: 1 }}
+          supplierContact={{ email: 'jd@foobar.com' }}
           brief={{ numberOfSuppliers: '3' }}
           briefResponseStatus="submitted"
           briefResponseForm={{

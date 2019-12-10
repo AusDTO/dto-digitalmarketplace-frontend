@@ -85,7 +85,8 @@ const briefReducer = (state = defaultBriefState, action) => {
         loadedAt: new Date().valueOf(),
         oldWorkOrderCreator: action.oldWorkOrderCreator,
         questionsAsked: action.questionsAsked,
-        briefResponseDownloaded: action.briefResponseDownloaded
+        briefResponseDownloaded: action.briefResponseDownloaded,
+        supplierContact: action.supplierContact
       }
 
     case BRIEF_PUBLIC_INFO_FETCH_DATA_SUCCESS:

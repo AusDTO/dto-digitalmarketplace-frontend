@@ -98,7 +98,8 @@ export class BriefRFXResponseForm extends Component {
       briefResponseStatus,
       onSaveClicked,
       briefResponseForm,
-      briefResponseId
+      briefResponseId,
+      supplierContact
     } = this.props
 
     return (
@@ -250,7 +251,7 @@ export class BriefRFXResponseForm extends Component {
                     defaultValue={
                       briefResponseForm.respondToEmailAddress
                         ? briefResponseForm.respondToEmailAddress
-                        : app.emailAddress
+                        : supplierContact.email
                     }
                     maxLength={100}
                     validators={{
@@ -267,7 +268,9 @@ export class BriefRFXResponseForm extends Component {
                     name="respondToPhone"
                     id="respondToPhone"
                     htmlFor="respondToPhone"
-                    defaultValue={briefResponseForm.respondToPhone}
+                    defaultValue={
+                      briefResponseForm.respondToPhone ? briefResponseForm.respondToPhone : supplierContact.phone
+                    }
                     label="Phone number"
                     maxLength={100}
                     validators={{
@@ -334,6 +337,10 @@ BriefRFXResponseForm.defaultProps = {
 BriefRFXResponseForm.propTypes = {
   brief: PropTypes.shape({
     briefResponseSuccess: PropTypes.bool
+  }).isRequired,
+  supplierContact: PropTypes.shape({
+    email: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired
   }).isRequired,
   model: PropTypes.string.isRequired,
   onSubmitClicked: PropTypes.func,
