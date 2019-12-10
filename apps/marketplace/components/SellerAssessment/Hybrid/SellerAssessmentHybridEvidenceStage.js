@@ -33,6 +33,7 @@ const minimumWordRequirement = 100
 
 const minimumEvidenceWords = val => (val.match(/\S+/g) || []).length >= minimumWordRequirement
 
+
 export const requiredClient = formValues =>
   formValues.evidence &&
   Object.keys(formValues.evidence).length > 0 &&
@@ -58,6 +59,25 @@ export const requiredRefereeNumber = formValues =>
         formValues.evidence[criteriaId] &&
         required(formValues.evidence[criteriaId].refereeNumber) &&
         validPhoneNumber(formValues.evidence[criteriaId].refereeNumber)
+    ))
+
+export const requiredCandidateFullName = formValues =>
+  formValues.evidence &&
+  Object.keys(formValues.evidence).length > 0 &&
+  (formValues.criteria.length === 0 ||
+    formValues.criteria.every(
+      criteriaId => formValues.evidence[criteriaId] && required(formValues.evidence[criteriaId].candidateFullName)
+    ))
+
+export const requiredCandidatePhoneNumber = formValues =>
+  formValues.evidence &&
+  Object.keys(formValues.evidence).length > 0 &&
+  (formValues.criteria.length === 0 ||
+    formValues.criteria.every(
+      criteriaId =>
+        formValues.evidence[criteriaId] &&
+        required(formValues.evidence[criteriaId].candidatePhoneNumber) &&
+        validPhoneNumber(formValues.evidence[criteriaId].candidatePhoneNumber)
     ))
 
 export const requiredBackground = formValues =>
@@ -113,6 +133,8 @@ export const requiredEvidence = formValues =>
     ))
 
 export const done = formValues =>
+  requiredCandidateFullName(formValues) &&
+  requiredCandidatePhoneNumber(formValues) &&
   requiredClient(formValues) &&
   requiredRefereeName(formValues) &&
   requiredRefereeNumber(formValues) &&
@@ -227,6 +249,8 @@ class SellerAssessmentHybridEvidenceStage extends Component {
         model={this.props.model}
         validators={{
           '': {
+            requiredCandidateFullName: formValues => requiredCandidateFullName(formValues),
+            requiredCandiatePhoneNumber: formValues => requiredCandidatePhoneNumber(formValues),
             requiredClient: formValues => requiredClient(formValues),
             requiredRefereeName: formValues => requiredRefereeName(formValues),
             requiredRefereeNumber: formValues => requiredRefereeNumber(formValues),
@@ -255,6 +279,8 @@ class SellerAssessmentHybridEvidenceStage extends Component {
               model={this.props.model}
               messages={{
                 requiredClient: 'You must provide a client for each criteria response',
+                requiredCandidateFullName: 'You must provide a candidate full name HEHEfor each criteria response',
+                requiredCandidatePhoneNumber: 'You must provide a valid candidate HEHE phone number for each criteria response',
                 requiredRefereeName: 'You must provide a referee name for each criteria response',
                 requiredRefereeNumber: 'You must provide a valid referee phone number for each criteria response',
                 requiredBackground: 'You must provide background for each criteria response',
@@ -308,6 +334,47 @@ class SellerAssessmentHybridEvidenceStage extends Component {
                     />
                   </p>
                 )}
+                <Textfield
+                  model={`${this.props.model}.evidence[${criteriaId}].candidatePhoneNumber`}
+                  disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                  defaultValue={this.props[this.props.model].evidence[criteriaId].candidatePhoneNumber}
+                  label="Candidate's phone number"
+                  description="Please include the area code for landlines."
+                  name={`candidate_phone_number_${criteriaId}`}
+                  id={`candidate_phone_number_${criteriaId}`}
+                  htmlFor={`candidate_phone_number_${criteriaId}`}
+                  maxLength={100}
+                  validators={{
+                    required,
+                    validPhoneNumber
+                  }}
+                  onChange={e => {
+                    if (index === 0) {
+                      this.updateAllOtherCriteriaFromFirst('candidatePhoneNumber', e.target.value)
+                    }
+                    return true
+                  }}
+                />
+                <Textfield
+                  model={`${this.props.model}.evidence[${criteriaId}].candidateFullName`}
+                  defaultValue={this.props[this.props.model].evidence[criteriaId].candidateFullName}
+                  disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                  label="Candidate's full name"
+                  description="We may contact your chosen candidate to confirm their experiecne with your organisation."
+                  name={`referee_name_${criteriaId}`}
+                  id={`referee_name_${criteriaId}`}
+                  htmlFor={`referee_name_${criteriaId}`}
+                  maxLength={100}
+                  validators={{
+                    required
+                  }}
+                  onChange={e => {
+                    if (index === 0) {
+                      this.updateAllOtherCriteriaFromFirst('refereeName', e.target.value)
+                    }
+                    return true
+                  }}
+                />
                 <Textfield
                   model={`${this.props.model}.evidence[${criteriaId}].client`}
                   defaultValue={this.props[this.props.model].evidence[criteriaId].client}
