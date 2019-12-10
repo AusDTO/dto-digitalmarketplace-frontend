@@ -72,7 +72,7 @@ export class Opportunities extends Component {
                     Name
                   </th>
                   <th scope="col" className={`${styles.tableColumnWidth6} ${styles.textAlignLeft}`}>
-                    Canberra closing time
+                    Closing time
                   </th>
                   <th scope="col" className={`${styles.tableColumnWidth1} ${styles.textAlignLeft}`}>
                     Status
