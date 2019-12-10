@@ -142,8 +142,8 @@ class BriefResponsePage extends Component {
   handleFeedbackSubmit(values) {
     this.props.handleFeedbackSubmit({
       timeToComplete: this.state.submitClicked ? this.state.submitClicked - this.props.loadedAt : null,
-      object_id: this.props.brief.id,
-      object_type: 'Brief',
+      object_id: this.props.match.params.briefResponseId,
+      object_type: 'BriefResponse',
       userType: this.props.app.userType,
       ...values
     })
