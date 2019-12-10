@@ -5,12 +5,12 @@ import { Redirect } from 'react-router-dom'
 import DocumentTitle from 'react-document-title'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import { requiredFile, required, validEmail, validPhoneNumber } from 'marketplace/components/validators'
 import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
 import FilesInput from 'shared/form/FilesInput'
 import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
+import ConfirmActionAlert from 'marketplace/components/Alerts/ConfirmActionAlert'
 import range from 'lodash/range'
 import dmapi from 'marketplace/services/apiClient'
 import { rootPath } from 'marketplace/routes'
@@ -121,18 +121,21 @@ export class BriefTrainingResponseForm2 extends Component {
               )}
               {this.state.showDeleteAlert && (
                 <div className={styles.deleteAlert}>
-                  <AUpageAlert as="warning">
-                    <AUheading level="2" size="md">
-                      Are you sure?
-                    </AUheading>
-                    <p>If you withdraw this application, it will be permanently deleted.</p>
-                    <AUbutton onClick={() => this.props.onBriefResponseDelete(briefResponseId)}>
-                      Yes, withdraw application
-                    </AUbutton>
-                    <AUbutton as="secondary" onClick={this.toggleDeleteAlert}>
-                      Do not withdraw application
-                    </AUbutton>
-                  </AUpageAlert>
+                  <ConfirmActionAlert
+                    cancelButtonText="Do not withdraw application"
+                    confirmButtonText="Yes, withdraw application"
+                    content={
+                      <div>
+                        <AUheading level="2" size="md">
+                          Are you sure?
+                        </AUheading>
+                        <p>If you withdraw this application, it will be permanently deleted.</p>
+                      </div>
+                    }
+                    handleCancelClick={this.toggleDeleteAlert}
+                    handleConfirmClick={() => this.props.onBriefResponseDelete(briefResponseId)}
+                    type="warning"
+                  />
                 </div>
               )}
               <div className={styles.headingArea}>
