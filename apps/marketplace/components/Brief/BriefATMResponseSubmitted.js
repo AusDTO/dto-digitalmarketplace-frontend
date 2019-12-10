@@ -14,7 +14,7 @@ const BriefATMResponseSubmitted = props => (
             <AUpageAlert as="success">
               <AUheading level="4" size="md">
                 {props.briefResponseStatus === 'draft' && <span>Your response has been successfully submitted.</span>}
-                {props.briefResponseStatus === 'submitted' && <span>Your have updated your response.</span>}
+                {props.briefResponseStatus === 'submitted' && <span>You have updated your response.</span>}
               </AUheading>
               <p>
                 The buyer receives all submitted responses after the opportunity closes. You can{' '}
