@@ -64,7 +64,8 @@ export class BriefTrainingResponseForm2 extends Component {
       setFocus,
       match,
       uploading,
-      loadingText
+      loadingText,
+      supplierContact
     } = this.props
 
     return (
@@ -183,7 +184,7 @@ export class BriefTrainingResponseForm2 extends Component {
                     htmlFor="respondToEmailAddress"
                     label="Email"
                     description="All communication about your application will be sent to this address."
-                    defaultValue={app.emailAddress}
+                    defaultValue={supplierContact.email}
                     maxLength={100}
                     validators={{
                       required,
@@ -200,6 +201,7 @@ export class BriefTrainingResponseForm2 extends Component {
                     id="respondToPhone"
                     htmlFor="respondToPhone"
                     label="Phone number"
+                    defaultValue={supplierContact.phone}
                     maxLength={100}
                     validators={{
                       required,
@@ -255,6 +257,10 @@ BriefTrainingResponseForm2.defaultProps = {
 BriefTrainingResponseForm2.propTypes = {
   brief: PropTypes.shape({
     briefResponseSuccess: PropTypes.bool
+  }).isRequired,
+  supplierContact: PropTypes.shape({
+    email: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired
   }).isRequired,
   model: PropTypes.string.isRequired,
   submitClicked: PropTypes.func,
