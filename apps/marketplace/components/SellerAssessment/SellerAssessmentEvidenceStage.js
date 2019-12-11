@@ -49,12 +49,12 @@ export const requiredRefereeName = formValues =>
       criteriaId => formValues.evidence[criteriaId] && required(formValues.evidence[criteriaId].refereeName)
     ))
 
-  export const requiredCandidateFullName = formValues =>
-    formValues.evidence &&
-    Object.keys(formValues.evidence).length > 0 &&
-    (formValues.criteria.length === 0 ||
-      formValues.criteria.every(
-        criteriaId => formValues.evidence[criteriaId] && required(formValues.evidence[criteriaId].candidateFullName)
+export const requiredCandidateFullName = formValues =>
+  formValues.evidence &&
+  Object.keys(formValues.evidence).length > 0 &&
+  (formValues.criteria.length === 0 ||
+    formValues.criteria.every(
+      criteriaId => formValues.evidence[criteriaId] && required(formValues.evidence[criteriaId].candidateFullName)
     ))
 
 export const requiredRefereeNumber = formValues =>
@@ -68,16 +68,16 @@ export const requiredRefereeNumber = formValues =>
         validPhoneNumber(formValues.evidence[criteriaId].refereeNumber)
     ))
 
-  export const requiredCandidatePhoneNumber = formValues =>
-    formValues.evidence &&
-    Object.keys(formValues.evidence).length > 0 &&
-    (formValues.criteria.length === 0 ||
-      formValues.criteria.every(
-        criteriaId =>
-          formValues.evidence[criteriaId] &&
-          required(formValues.evidence[criteriaId].candidatePhoneNumber) &&
-          validPhoneNumber(formValues.evidence[criteriaId].candidatePhoneNumber)
-      ))
+export const requiredCandidatePhoneNumber = formValues =>
+  formValues.evidence &&
+  Object.keys(formValues.evidence).length > 0 &&
+  (formValues.criteria.length === 0 ||
+    formValues.criteria.every(
+      criteriaId =>
+        formValues.evidence[criteriaId] &&
+        required(formValues.evidence[criteriaId].candidatePhoneNumber) &&
+        validPhoneNumber(formValues.evidence[criteriaId].candidatePhoneNumber)
+    ))
 
 export const requiredBackground = formValues =>
   formValues.evidence &&
