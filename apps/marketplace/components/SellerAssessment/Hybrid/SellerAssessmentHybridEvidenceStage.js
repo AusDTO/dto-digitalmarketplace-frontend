@@ -242,6 +242,20 @@ class SellerAssessmentHybridEvidenceStage extends Component {
     })
   }
 
+  isRecruiterCriteria(criteriaId) {
+    let recruiter = false
+
+    this.props.meta.domain.criteria.find(c => {
+      if (c.id === parseInt(criteriaId, 10)) {
+        recruiter = c.is_recruiter_criteria
+        return true
+      }
+      return false
+    })
+
+    return recruiter
+  }
+
   render() {
     const domain = this.props.meta.domain
     const previouslyFailedCriteria = this.getPreviousFailedCriteria()
@@ -323,95 +337,86 @@ class SellerAssessmentHybridEvidenceStage extends Component {
 
                  {/* Borrowing style from critiera */}
                 <div className={style.criteria}>
-                  {domain.criteria.map(criteria => {
-                    if (criteria.is_recruiter_criteria) {
-                      return (
-                        <React.Fragment>
-                          <p className={styles.criteriaText}>{getCriteriaName(criteriaId, this.props.meta.domain.criteria)}</p>
-                          {index !== 0 && (
-                            <p>
-                              <CheckboxDetailsField
-                                model={`${this.props.model}.evidence[${criteriaId}].sameAsFirst`}
-                                id={`client_check_${criteriaId}`}
-                                name={`client_check_${criteriaId}`}
-                                checked={this.props[this.props.model].evidence[criteriaId].sameAsFirst}
-                                onClick={e => this.handleClientDetailsCheck(criteriaId, e)}
-                                label="Client details are the same as the first criteria"
-                                detailsModel={this.props.model}
-                                validators={{}}
-                                messages={{}}
-                              />
-                            </p>
-                          )}
-                              <Textfield
-                                model={`${this.props.model}.evidence[${criteriaId}].candidateFullName`}
-                                defaultValue={this.props[this.props.model].evidence[criteriaId].candidateFullName}
-                                disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
-                                label="Candidate's full name"
-                                description="We may contact your chosen candidate to confirm their experiecne with your organisation."
-                                name={`referee_name_${criteriaId}`}
-                                id={`referee_name_${criteriaId}`}
-                                htmlFor={`referee_name_${criteriaId}`}
-                                maxLength={100}
-                                validators={{
-                                  required
-                                }}
-                                onChange={e => {
-                                  if (index === 0) {
-                                    this.updateAllOtherCriteriaFromFirst('refereeName', e.target.value)
-                                  }
-                                  return true
-                                }}
-                              />
-                              <Textfield
-                                model={`${this.props.model}.evidence[${criteriaId}].candidatePhoneNumber`}
-                                disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
-                                defaultValue={this.props[this.props.model].evidence[criteriaId].candidatePhoneNumber}
-                                label="Candidate's phone number"
-                                description="Please include the area code for landlines."
-                                name={`candidate_phone_number_${criteriaId}`}
-                                id={`candidate_phone_number_${criteriaId}`}
-                                htmlFor={`candidate_phone_number_${criteriaId}`}
-                                maxLength={100}
-                                validators={{
-                                  required,
-                                  validPhoneNumber
-                                }}
-                                onChange={e => {
-                                  if (index === 0) {
-                                    this.updateAllOtherCriteriaFromFirst('candidatePhoneNumber', e.target.value)
-                                  }
-                                  return true
-                                }}
-                              />
-                              <p> The evidence for the criterion must:
-                              <ul>
-                                <li>be demonstrated by your <strong>organisation</strong> </li>
-                                <li>explain the activities <strong> your organisation </strong>  was specifically responsible for</li>
-                                <li>describe the result or outcome of these activities </li> 
-                              </ul>
-                              </p> 
-                              <Textarea
-                                key={criteriaId}
-                                model={`${this.props.model}.evidence[${criteriaId}].response`}
-                                label={`Evidence for '${getCriteriaName(criteriaId, this.props.meta.domain.criteria)}'`}
-                                name={`criteria_${criteriaId}`}
-                                id={`criteria_${criteriaId}`}
-                                htmlFor={`criteria_${criteriaId}`}
-                                controlProps={{ minimum: minimumWordRequirement, rows: '10' }}
-                                validators={{
-                                  required
-                                }}
-                                messages={{
-                                  minimumWords: `Your criteria response has not yet reached the ${minimumWordRequirement} word minimum requirement`
-                                }}
-                              />
-                        </React.Fragment>
-                      )
-                    }
-        
-                  else {
+                  {this.isRecruiterCriteria(criteriaId) && (
                     <React.Fragment>
+                      <p className={styles.criteriaText}>{getCriteriaName(criteriaId, this.props.meta.domain.criteria)}</p>
+                          <Textfield
+                            model={`${this.props.model}.evidence[${criteriaId}].candidateFullName`}
+                            defaultValue={this.props[this.props.model].evidence[criteriaId].candidateFullName}
+                            disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                            label="Candidate's full name"
+                            description="We may contact your chosen candidate to confirm their experiecne with your organisation."
+                            name={`referee_name_${criteriaId}`}
+                            id={`referee_name_${criteriaId}`}
+                            htmlFor={`referee_name_${criteriaId}`}
+                            maxLength={100}
+                            validators={{
+                              required
+                            }}
+                            onChange={e => {
+                              if (index === 0) {
+                                this.updateAllOtherCriteriaFromFirst('refereeName', e.target.value)
+                              }
+                              return true
+                            }}
+                          />
+                          <Textfield
+                            model={`${this.props.model}.evidence[${criteriaId}].candidatePhoneNumber`}
+                            disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                            defaultValue={this.props[this.props.model].evidence[criteriaId].candidatePhoneNumber}
+                            label="Candidate's phone number"
+                            description="Please include the area code for landlines."
+                            name={`candidate_phone_number_${criteriaId}`}
+                            id={`candidate_phone_number_${criteriaId}`}
+                            htmlFor={`candidate_phone_number_${criteriaId}`}
+                            maxLength={100}
+                            validators={{
+                              required,
+                              validPhoneNumber
+                            }}
+                            onChange={e => {
+                              if (index === 0) {
+                                this.updateAllOtherCriteriaFromFirst('candidatePhoneNumber', e.target.value)
+                              }
+                              return true
+                            }}
+                          />
+                          <p> The evidence for the criterion must:
+                          <ul>
+                            <li>be demonstrated by your <strong>organisation</strong> </li>
+                            <li>explain the activities <strong> your organisation </strong>  was specifically responsible for</li>
+                            <li>describe the result or outcome of these activities </li> 
+                          </ul>
+                          </p> 
+                          <Textarea
+                            key={criteriaId}
+                            model={`${this.props.model}.evidence[${criteriaId}].response`}
+                            label={`Evidence for '${getCriteriaName(criteriaId, this.props.meta.domain.criteria)}'`}
+                            name={`criteria_${criteriaId}`}
+                            id={`criteria_${criteriaId}`}
+                            htmlFor={`criteria_${criteriaId}`}
+                            controlProps={{ minimum: minimumWordRequirement, rows: '10' }}
+                            validators={{
+                              required
+                            }}
+                            messages={{
+                              minimumWords: `Your criteria response has not yet reached the ${minimumWordRequirement} word minimum requirement`
+                            }}
+                          />
+                    </React.Fragment>
+                  )}
+                </div> 
+                
+          {/* <div className={style.criteria}>
+            {domain.criteria.map(criteria => {
+              if ( !criteria.is_recruiter_criteria) {
+                console.log("CONSULTANT"+ !criteria.is_recruiter_criteria)
+                return (
+                <React.Fragment>
+                <AUheadings level="2" size="lg">
+                  Criterion consultant:
+                </AUheadings>
+                    
                     <p className={styles.criteriaText}>{getCriteriaName(criteriaId, this.props.meta.domain.criteria)}</p>
                     {index !== 0 && (
                       <p>
@@ -427,6 +432,7 @@ class SellerAssessmentHybridEvidenceStage extends Component {
                           messages={{}}
                         />
                       </p>
+                      
                     )}
                       <Textfield
                         model={`${this.props.model}.evidence[${criteriaId}].client`}
@@ -588,15 +594,15 @@ class SellerAssessmentHybridEvidenceStage extends Component {
                           }}
                         />
                     </React.Fragment>
-                  }
-                  }) 
-                } 
-                </div>
-              </div>
+                  )} //end of if statement
+                }) 
+               } </div>  */}
+            </div> 
+                 
             ))}
              {this.props.formButtons}
-            </React.Fragment>
-            )}
+             </React.Fragment>
+            )} 
       </Form> 
       )
     }
