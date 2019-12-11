@@ -42,22 +42,22 @@ describe('OverviewHeader', () => {
 
     const component = mount(<OverviewHeader brief={brief} canCloseOpportunity isClosed={false} isPublished />)
 
-    expect(component.children().exists('li.hideMobile a')).toEqual(true)
+    expect(component.children().exists('ul.hideMobile')).toEqual(true)
 
     expect(
       component
         .children()
-        .find('li.hideMobile a')
+        .find('ul.hideMobile a')
         .first()
         .text()
     ).toEqual('Close opportunity now')
 
-    expect(component.children().exists('li.hideDesktop a')).toEqual(true)
+    expect(component.children().exists('ul.hideDesktop')).toEqual(true)
 
     expect(
       component
         .children()
-        .find('li.hideDesktop a')
+        .find('ul.hideDesktop a')
         .first()
         .text()
     ).toEqual('Close now')
