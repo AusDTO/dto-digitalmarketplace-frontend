@@ -4,6 +4,7 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import ConfirmActionAlert from 'marketplace/components/Alerts/ConfirmActionAlert'
 import format from 'date-fns/format'
 import { rootPath } from 'marketplace/routes'
+import stylesMain from 'marketplace/main.scss'
 import styles from './BriefResponses.scss'
 
 class BriefResponses extends Component {
@@ -77,36 +78,34 @@ class BriefResponses extends Component {
           <div className="col-xs-12">
             <article role="main">
               {this.state.showDeleteAlert && this.state.idToDelete > 0 && (
-                <div className={styles.deleteAlert}>
-                  <ConfirmActionAlert
-                    cancelButtonText="Do not withdraw application"
-                    confirmButtonText="Yes, withdraw application"
-                    content={
-                      <AUheading level="2" size="md">
-                        Are you sure you want to delete {this.getCandidateNameByResponseId(this.state.idToDelete)}
-                        &apos;s application?
-                      </AUheading>
-                    }
-                    handleCancelClick={this.toggleDeleteAlert}
-                    handleConfirmClick={() => this.props.onBriefResponseDelete(this.state.idToDelete)}
-                    type="warning"
-                  />
-                </div>
+                <ConfirmActionAlert
+                  cancelButtonText="Do not withdraw application"
+                  confirmButtonText="Yes, withdraw application"
+                  content={
+                    <AUheading level="2" size="md">
+                      Are you sure you want to delete {this.getCandidateNameByResponseId(this.state.idToDelete)}
+                      &apos;s application?
+                    </AUheading>
+                  }
+                  handleCancelClick={this.toggleDeleteAlert}
+                  handleConfirmClick={() => this.props.onBriefResponseDelete(this.state.idToDelete)}
+                  type="warning"
+                />
               )}
               <AUheading level="1" size="xl">
                 Edit or submit candidates
               </AUheading>
               {this.props.responses.length > 0 && (
-                <table className={`${styles.resultListing} col-xs-12`}>
+                <table className={`${stylesMain.defaultStyle} col-xs-12`}>
                   <thead>
-                    <tr className={styles.headingRow}>
-                      <th scope="col" className={styles.colName}>
+                    <tr className={stylesMain.headingRow}>
+                      <th scope="col" className={`${stylesMain.tableColumnWidth10} ${stylesMain.textAlignLeft}`}>
                         Candidate
                       </th>
-                      <th scope="col" className={styles.colDate}>
+                      <th scope="col" className={`${stylesMain.tableColumnWidth2} ${stylesMain.textAlignLeft}`}>
                         Date submitted
                       </th>
-                      <th scope="col" className={styles.colAction}>
+                      <th scope="col" className={`${stylesMain.tableColumnWidth2} ${stylesMain.textAlignLeft}`}>
                         Actions
                       </th>
                     </tr>
@@ -115,16 +114,18 @@ class BriefResponses extends Component {
                     {this.props.responses.map(response => (
                       <tr key={`item.${response.id}`}>
                         <td
-                          className={styles.colName}
+                          className={stylesMain.tableColumnWidth10}
                         >{`${response.specialistGivenNames} ${response.specialistSurname}`}</td>
-                        <td className={styles.colDate}>
+                        <td className={`${stylesMain.tableColumnWidth2} ${stylesMain.textAlignLeft}`}>
                           {response.submitted_at ? (
                             format(response.submitted_at, 'D-MM-YYYY')
                           ) : (
                             <span className={styles.notsubmitted}>Not submitted</span>
                           )}
                         </td>
-                        <td className={styles.colAction}>
+                        <td
+                          className={`${stylesMain.tableColumnWidth2} ${stylesMain.textAlignLeft} ${styles.colAction}`}
+                        >
                           {this.getActions(response.status, this.props.brief.id, response.id)}
                         </td>
                       </tr>
@@ -137,7 +138,7 @@ class BriefResponses extends Component {
           </div>
         </div>
         <div className="row">
-          <div className={`${styles.bottomButtons} col-xs-12`}>
+          <div className={`${stylesMain.marginTop2} col-xs-12`}>
             {this.props.brief.numberOfSuppliers &&
               this.props.responses.length < parseInt(this.props.brief.numberOfSuppliers, 10) && (
                 <a href={`${rootPath}/brief/${this.props.brief.id}/specialist2/respond`} className="au-btn">

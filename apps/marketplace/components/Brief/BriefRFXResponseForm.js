@@ -14,6 +14,7 @@ import ConfirmActionAlert from 'marketplace/components/Alerts/ConfirmActionAlert
 import range from 'lodash/range'
 import dmapi from 'marketplace/services/apiClient'
 import { rootPath } from 'marketplace/routes'
+import stylesMain from 'marketplace/main.scss'
 import styles from './BriefRFXResponseForm.scss'
 
 export class BriefRFXResponseForm extends Component {
@@ -120,7 +121,7 @@ export class BriefRFXResponseForm extends Component {
                 />
               )}
               {this.state.showDeleteAlert && (
-                <div className={styles.deleteAlert}>
+                <div className={stylesMain.marginBottom2}>
                   <ConfirmActionAlert
                     cancelButtonText="Do not withdraw application"
                     confirmButtonText="Yes, withdraw application"
