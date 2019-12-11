@@ -92,7 +92,7 @@ export class Opportunities extends Component {
                       {withdrawn(opportunity) ? (
                         <span className={styles.darkGrayText}>The buyer has withdrawn this opportunity</span>
                       ) : (
-                        format(opportunity.closed_at, 'hA, dddd Do MMMM YYYY')
+                        format(opportunity.closed_at, 'ha, dddd D MMMM YYYY')
                       )}
                     </td>
                     <td className={styles.tableColumnWidth1}>{getStatusBadge(opportunity)}</td>
