@@ -411,11 +411,7 @@ class SellerAssessmentHybridEvidenceStage extends Component {
                     }
         
                   else {
-                    return null
-                  }
-                  }) 
-                } 
-                <React.Fragment>
+                    <React.Fragment>
                     <p className={styles.criteriaText}>{getCriteriaName(criteriaId, this.props.meta.domain.criteria)}</p>
                     {index !== 0 && (
                       <p>
@@ -592,6 +588,9 @@ class SellerAssessmentHybridEvidenceStage extends Component {
                           }}
                         />
                     </React.Fragment>
+                  }
+                  }) 
+                } 
                 </div>
               </div>
             ))}
