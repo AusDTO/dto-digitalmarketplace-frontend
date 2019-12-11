@@ -7,12 +7,12 @@ import isValid from 'date-fns/is_valid'
 import { rootPath } from 'marketplace/routes'
 import { hasPermission } from 'marketplace/components/helpers'
 import Tick from 'marketplace/components/Icons/Tick/Tick'
-import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import ClosedDate from 'shared/ClosedDate'
-import styles from './Overview.scss'
 import { mapLot } from '../helpers'
+import ConfirmActionAlert from '../Alerts/ConfirmActionAlert'
+
+import styles from './Overview.scss'
 
 const createWorkOrderRender = (brief, flow, isPublished, isClosed, oldWorkOrderCreator) => {
   if (isPublished && isClosed) {
@@ -187,13 +187,14 @@ class Overview extends Component {
           </div>
           {this.state.showDeleteAlert && (
             <div className={styles.deleteAlert}>
-              <AUpageAlert as="warning">
-                <p>Are you sure you want to delete this opportunity?</p>
-                <AUbutton onClick={() => this.handleDeleteBrief(brief.id)}>Yes, delete opportunity</AUbutton>
-                <AUbutton as="secondary" onClick={this.toggleDeleteAlert}>
-                  Do not delete
-                </AUbutton>
-              </AUpageAlert>
+              <ConfirmActionAlert
+                cancelButtonText="Do not delete"
+                confirmButtonText="Yes, delete opportunity"
+                content={<p>Are you sure you want to delete this opportunity?</p>}
+                handleCancelClick={this.toggleDeleteAlert}
+                handleConfirmClick={() => this.handleDeleteBrief(brief.id)}
+                type="warning"
+              />
             </div>
           )}
           <ul className={styles.overviewList}>
