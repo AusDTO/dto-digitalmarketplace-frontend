@@ -227,6 +227,19 @@ class Overview extends Component {
                 </span>
               )}
             </li>
+            {brief.status === 'live' && isPublished && (
+              <li>
+                {hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') ||
+                hasPermission(isPartOfTeam, isTeamLead, teams, 'edit_opportunities') ? (
+                  <a href={`${rootPath}/brief/${brief.id}/edit`}>Edit live opportunity</a>
+                ) : (
+                  <a href={`${rootPath}/request-access/publish_opportunities`}>Edit live opportunity</a>
+                )}
+                <div className={styles.stageStatus}>
+                  <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>View live opportunity</a>
+                </div>
+              </li>
+            )}
             <li>
               {this.answerSellerQuestionsRender(brief, flow, isPublished, isClosed)}
               <div className={styles.stageStatus}>
