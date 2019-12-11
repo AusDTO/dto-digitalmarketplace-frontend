@@ -407,11 +407,7 @@ class SellerAssessmentHybridEvidenceStage extends Component {
                   )}
                 </div> 
                 
-          {/* <div className={style.criteria}>
-            {domain.criteria.map(criteria => {
-              if ( !criteria.is_recruiter_criteria) {
-                console.log("CONSULTANT"+ !criteria.is_recruiter_criteria)
-                return (
+              {!this.isRecruiterCriteria(criteriaId) && (
                 <React.Fragment>
                 <AUheadings level="2" size="lg">
                   Criterion consultant:
@@ -594,11 +590,8 @@ class SellerAssessmentHybridEvidenceStage extends Component {
                           }}
                         />
                     </React.Fragment>
-                  )} //end of if statement
-                }) 
-               } </div>  */}
-            </div> 
-                 
+                  )} 
+               </div>  
             ))}
              {this.props.formButtons}
              </React.Fragment>
