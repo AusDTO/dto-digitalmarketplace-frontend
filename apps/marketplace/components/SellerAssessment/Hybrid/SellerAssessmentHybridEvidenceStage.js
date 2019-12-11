@@ -14,6 +14,7 @@ import AUheadings from '@gov.au/headings/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import format from 'date-fns/format'
 import styles from './SellerAssessmentHybridEvidenceStage.scss'
+import style from '../Hybrid/SellerAssessmentHybridCriteriaStage.scss'
 
 export const getCriteriaName = (id, criteria) => {
   let name = ''
@@ -242,6 +243,7 @@ class SellerAssessmentHybridEvidenceStage extends Component {
   }
 
   render() {
+    const domain = this.props.meta.domain
     const previouslyFailedCriteria = this.getPreviousFailedCriteria()
 
     return (
@@ -274,7 +276,7 @@ class SellerAssessmentHybridEvidenceStage extends Component {
             <Link to="criteria">criteria you are responding to</Link>.
           </p>
         ) : (
-          <React.Fragment>
+          <React.Fragment> 
             <ErrorAlert
               model={this.props.model}
               messages={{
@@ -293,7 +295,7 @@ class SellerAssessmentHybridEvidenceStage extends Component {
             {this.props[this.props.model].criteria.map((criteriaId, index) => (
               <div
                 key={criteriaId}
-                className={`${styles.criteria} ${
+                className={`${style.criteria} ${
                   previouslyFailedCriteria.includes(criteriaId) ? styles.previouslyFailed : ''
                 }`}
               >
@@ -318,256 +320,315 @@ class SellerAssessmentHybridEvidenceStage extends Component {
                 <AUheadings level="2" size="lg">
                   Criterion:
                 </AUheadings>
-                <p className={styles.criteriaText}>{getCriteriaName(criteriaId, this.props.meta.domain.criteria)}</p>
-                {index !== 0 && (
-                  <p>
-                    <CheckboxDetailsField
-                      model={`${this.props.model}.evidence[${criteriaId}].sameAsFirst`}
-                      id={`client_check_${criteriaId}`}
-                      name={`client_check_${criteriaId}`}
-                      checked={this.props[this.props.model].evidence[criteriaId].sameAsFirst}
-                      onClick={e => this.handleClientDetailsCheck(criteriaId, e)}
-                      label="Client details are the same as the first criteria"
-                      detailsModel={this.props.model}
-                      validators={{}}
-                      messages={{}}
-                    />
-                  </p>
-                )}
-                <Textfield
-                  model={`${this.props.model}.evidence[${criteriaId}].candidatePhoneNumber`}
-                  disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
-                  defaultValue={this.props[this.props.model].evidence[criteriaId].candidatePhoneNumber}
-                  label="Candidate's phone number"
-                  description="Please include the area code for landlines."
-                  name={`candidate_phone_number_${criteriaId}`}
-                  id={`candidate_phone_number_${criteriaId}`}
-                  htmlFor={`candidate_phone_number_${criteriaId}`}
-                  maxLength={100}
-                  validators={{
-                    required,
-                    validPhoneNumber
-                  }}
-                  onChange={e => {
-                    if (index === 0) {
-                      this.updateAllOtherCriteriaFromFirst('candidatePhoneNumber', e.target.value)
+
+                 {/* Borrowing style from critiera */}
+                <div className={style.criteria}>
+                  {domain.criteria.map(criteria => {
+                    if (criteria.is_recruiter_criteria) {
+                      return (
+                        <React.Fragment>
+                          <p className={styles.criteriaText}>{getCriteriaName(criteriaId, this.props.meta.domain.criteria)}</p>
+                          {index !== 0 && (
+                            <p>
+                              <CheckboxDetailsField
+                                model={`${this.props.model}.evidence[${criteriaId}].sameAsFirst`}
+                                id={`client_check_${criteriaId}`}
+                                name={`client_check_${criteriaId}`}
+                                checked={this.props[this.props.model].evidence[criteriaId].sameAsFirst}
+                                onClick={e => this.handleClientDetailsCheck(criteriaId, e)}
+                                label="Client details are the same as the first criteria"
+                                detailsModel={this.props.model}
+                                validators={{}}
+                                messages={{}}
+                              />
+                            </p>
+                          )}
+                              <Textfield
+                                model={`${this.props.model}.evidence[${criteriaId}].candidateFullName`}
+                                defaultValue={this.props[this.props.model].evidence[criteriaId].candidateFullName}
+                                disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                                label="Candidate's full name"
+                                description="We may contact your chosen candidate to confirm their experiecne with your organisation."
+                                name={`referee_name_${criteriaId}`}
+                                id={`referee_name_${criteriaId}`}
+                                htmlFor={`referee_name_${criteriaId}`}
+                                maxLength={100}
+                                validators={{
+                                  required
+                                }}
+                                onChange={e => {
+                                  if (index === 0) {
+                                    this.updateAllOtherCriteriaFromFirst('refereeName', e.target.value)
+                                  }
+                                  return true
+                                }}
+                              />
+                              <Textfield
+                                model={`${this.props.model}.evidence[${criteriaId}].candidatePhoneNumber`}
+                                disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                                defaultValue={this.props[this.props.model].evidence[criteriaId].candidatePhoneNumber}
+                                label="Candidate's phone number"
+                                description="Please include the area code for landlines."
+                                name={`candidate_phone_number_${criteriaId}`}
+                                id={`candidate_phone_number_${criteriaId}`}
+                                htmlFor={`candidate_phone_number_${criteriaId}`}
+                                maxLength={100}
+                                validators={{
+                                  required,
+                                  validPhoneNumber
+                                }}
+                                onChange={e => {
+                                  if (index === 0) {
+                                    this.updateAllOtherCriteriaFromFirst('candidatePhoneNumber', e.target.value)
+                                  }
+                                  return true
+                                }}
+                              />
+                              <p> The evidence for the criterion must:
+                              <ul>
+                                <li>be demonstrated by your <strong>organisation</strong> </li>
+                                <li>explain the activities <strong> your organisation </strong>  was specifically responsible for</li>
+                                <li>describe the result or outcome of these activities </li> 
+                              </ul>
+                              </p> 
+                              <Textarea
+                                key={criteriaId}
+                                model={`${this.props.model}.evidence[${criteriaId}].response`}
+                                label={`Evidence for '${getCriteriaName(criteriaId, this.props.meta.domain.criteria)}'`}
+                                name={`criteria_${criteriaId}`}
+                                id={`criteria_${criteriaId}`}
+                                htmlFor={`criteria_${criteriaId}`}
+                                controlProps={{ minimum: minimumWordRequirement, rows: '10' }}
+                                validators={{
+                                  required
+                                }}
+                                messages={{
+                                  minimumWords: `Your criteria response has not yet reached the ${minimumWordRequirement} word minimum requirement`
+                                }}
+                              />
+                        </React.Fragment>
+                      )
                     }
-                    return true
-                  }}
-                />
-                <Textfield
-                  model={`${this.props.model}.evidence[${criteriaId}].candidateFullName`}
-                  defaultValue={this.props[this.props.model].evidence[criteriaId].candidateFullName}
-                  disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
-                  label="Candidate's full name"
-                  description="We may contact your chosen candidate to confirm their experiecne with your organisation."
-                  name={`referee_name_${criteriaId}`}
-                  id={`referee_name_${criteriaId}`}
-                  htmlFor={`referee_name_${criteriaId}`}
-                  maxLength={100}
-                  validators={{
-                    required
-                  }}
-                  onChange={e => {
-                    if (index === 0) {
-                      this.updateAllOtherCriteriaFromFirst('refereeName', e.target.value)
-                    }
-                    return true
-                  }}
-                />
-                <Textfield
-                  model={`${this.props.model}.evidence[${criteriaId}].client`}
-                  defaultValue={this.props[this.props.model].evidence[criteriaId].client}
-                  disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
-                  label="Client"
-                  name={`client_${criteriaId}`}
-                  id={`client_${criteriaId}`}
-                  htmlFor={`client_${criteriaId}`}
-                  maxLength={100}
-                  validators={{
-                    required
-                  }}
-                  onChange={e => {
-                    if (index === 0) {
-                      this.updateAllOtherCriteriaFromFirst('client', e.target.value)
-                    }
-                    return true
-                  }}
-                />
-                <Textfield
-                  model={`${this.props.model}.evidence[${criteriaId}].refereeName`}
-                  defaultValue={this.props[this.props.model].evidence[criteriaId].refereeName}
-                  disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
-                  label="Referee's full name"
-                  description="We may contact your referee to confirm your involvement in the project."
-                  name={`referee_name_${criteriaId}`}
-                  id={`referee_name_${criteriaId}`}
-                  htmlFor={`referee_name_${criteriaId}`}
-                  maxLength={100}
-                  validators={{
-                    required
-                  }}
-                  onChange={e => {
-                    if (index === 0) {
-                      this.updateAllOtherCriteriaFromFirst('refereeName', e.target.value)
-                    }
-                    return true
-                  }}
-                />
-                <Textfield
-                  model={`${this.props.model}.evidence[${criteriaId}].refereeNumber`}
-                  disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
-                  defaultValue={this.props[this.props.model].evidence[criteriaId].refereeNumber}
-                  label="Referee's phone number"
-                  description="Please include the area code for landlines."
-                  name={`referee_number_${criteriaId}`}
-                  id={`referee_number_${criteriaId}`}
-                  htmlFor={`referee_number_${criteriaId}`}
-                  maxLength={100}
-                  validators={{
-                    required,
-                    validPhoneNumber
-                  }}
-                  onChange={e => {
-                    if (index === 0) {
-                      this.updateAllOtherCriteriaFromFirst('refereeNumber', e.target.value)
-                    }
-                    return true
-                  }}
-                />
-                <div className={styles.evidenceDates}>
-                  <div>
-                    <strong>Start of project</strong>
-                    <Control.select
-                      model={`${this.props.model}.evidence[${criteriaId}].startDate`}
-                      disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
-                      id={`startDate_${criteriaId}`}
-                      name={`startDate_${criteriaId}`}
-                      mapProps={{
-                        className: 'au-select'
-                      }}
-                      onChange={e => {
-                        if (index === 0) {
-                          this.updateAllOtherCriteriaFromFirst('startDate', e.target.value)
-                        }
-                        return true
-                      }}
-                    >
-                      <option value="" key="0">
-                        Select start date
-                      </option>
-                      {getYears().map(year => (
-                        <option value={year} key={year}>
-                          {year}
-                        </option>
-                      ))}
-                    </Control.select>
-                  </div>
-                  <div>
-                    <strong>End of project</strong>
-                    <Control.select
-                      model={`${this.props.model}.evidence[${criteriaId}].endDate`}
-                      disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
-                      id={`endDate_${criteriaId}`}
-                      name={`endDate_${criteriaId}`}
-                      mapProps={{
-                        className: 'au-select'
-                      }}
-                      onChange={e => {
-                        if (index === 0) {
-                          this.updateAllOtherCriteriaFromFirst('endDate', e.target.value)
-                        }
-                        return true
-                      }}
-                    >
-                      <option value="" key="0">
-                        Select end date
-                      </option>
-                      {getYears().map(year => (
-                        <option value={year} key={year}>
-                          {year}
-                        </option>
-                      ))}
-                      <option value="ongoing" key={getYears().length + 1}>
-                        ongoing
-                      </option>
-                    </Control.select>
-                  </div>
+        
+                  else {
+                    return null
+                  }
+                  }) 
+                } 
+                <React.Fragment>
+                    <p className={styles.criteriaText}>{getCriteriaName(criteriaId, this.props.meta.domain.criteria)}</p>
+                    {index !== 0 && (
+                      <p>
+                        <CheckboxDetailsField
+                          model={`${this.props.model}.evidence[${criteriaId}].sameAsFirst`}
+                          id={`client_check_${criteriaId}`}
+                          name={`client_check_${criteriaId}`}
+                          checked={this.props[this.props.model].evidence[criteriaId].sameAsFirst}
+                          onClick={e => this.handleClientDetailsCheck(criteriaId, e)}
+                          label="Client details are the same as the first criteria"
+                          detailsModel={this.props.model}
+                          validators={{}}
+                          messages={{}}
+                        />
+                      </p>
+                    )}
+                      <Textfield
+                        model={`${this.props.model}.evidence[${criteriaId}].client`}
+                        defaultValue={this.props[this.props.model].evidence[criteriaId].client}
+                        disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                        label="Client"
+                        name={`client_${criteriaId}`}
+                        id={`client_${criteriaId}`}
+                        htmlFor={`client_${criteriaId}`}
+                        maxLength={100}
+                        validators={{
+                          required
+                        }}
+                        onChange={e => {
+                          if (index === 0) {
+                            this.updateAllOtherCriteriaFromFirst('client', e.target.value)
+                          }
+                          return true
+                        }}
+                      />
+                      <Textfield
+                        model={`${this.props.model}.evidence[${criteriaId}].refereeName`}
+                        defaultValue={this.props[this.props.model].evidence[criteriaId].refereeName}
+                        disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                        label="Referee's full name"
+                        description="We may contact your referee to confirm your involvement in the project."
+                        name={`referee_name_${criteriaId}`}
+                        id={`referee_name_${criteriaId}`}
+                        htmlFor={`referee_name_${criteriaId}`}
+                        maxLength={100}
+                        validators={{
+                          required
+                        }}
+                        onChange={e => {
+                          if (index === 0) {
+                            this.updateAllOtherCriteriaFromFirst('refereeName', e.target.value)
+                          }
+                          return true
+                        }}
+                      />
+                      <Textfield
+                        model={`${this.props.model}.evidence[${criteriaId}].refereeNumber`}
+                        disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                        defaultValue={this.props[this.props.model].evidence[criteriaId].refereeNumber}
+                        label="Referee's phone number"
+                        description="Please include the area code for landlines."
+                        name={`referee_number_${criteriaId}`}
+                        id={`referee_number_${criteriaId}`}
+                        htmlFor={`referee_number_${criteriaId}`}
+                        maxLength={100}
+                        validators={{
+                          required,
+                          validPhoneNumber
+                        }}
+                        onChange={e => {
+                          if (index === 0) {
+                            this.updateAllOtherCriteriaFromFirst('refereeNumber', e.target.value)
+                          }
+                          return true
+                        }}
+                      />
+                      
+                      <div className={styles.evidenceDates}>
+                        <div>
+                          <strong>Start of project</strong>
+                          <Control.select
+                            model={`${this.props.model}.evidence[${criteriaId}].startDate`}
+                            disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                            id={`startDate_${criteriaId}`}
+                            name={`startDate_${criteriaId}`}
+                            mapProps={{
+                              className: 'au-select'
+                            }}
+                            onChange={e => {
+                              if (index === 0) {
+                                this.updateAllOtherCriteriaFromFirst('startDate', e.target.value)
+                              }
+                              return true
+                            }}
+                          >
+                            <option value="" key="0">
+                              Select start date
+                            </option>
+                            {getYears().map(year => (
+                              <option value={year} key={year}>
+                                {year}
+                              </option>
+                            ))}
+                          </Control.select>
+                        </div>
+                        <div>
+                          <strong>End of project</strong>
+                          <Control.select
+                            model={`${this.props.model}.evidence[${criteriaId}].endDate`}
+                            disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                            id={`endDate_${criteriaId}`}
+                            name={`endDate_${criteriaId}`}
+                            mapProps={{
+                              className: 'au-select'
+                            }}
+                            onChange={e => {
+                              if (index === 0) {
+                                this.updateAllOtherCriteriaFromFirst('endDate', e.target.value)
+                              }
+                              return true
+                            }}
+                          >
+                            <option value="" key="0">
+                              Select end date
+                            </option>
+                            {getYears().map(year => (
+                              <option value={year} key={year}>
+                                {year}
+                              </option>
+                            ))}
+                            <option value="ongoing" key={getYears().length + 1}>
+                              ongoing
+                            </option>
+                          </Control.select>
+                        </div>
+                      </div>
+                        <Textarea
+                          model={`${this.props.model}.evidence[${criteriaId}].background`}
+                          disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                          label="Background"
+                          description="Describe the background of the project you worked on."
+                          name={`background_${criteriaId}`}
+                          id={`background_${criteriaId}`}
+                          htmlFor={`background_${criteriaId}`}
+                          validators={{
+                            required
+                          }}
+                          onCustomChange={value => {
+                            if (index === 0) {
+                              this.updateAllOtherCriteriaFromFirst('background', value)
+                            }
+                            return true
+                          }}
+                        />
+                        <p>Your evidence for the criteria should:</p>
+                        <ul>
+                          <li>Explain the activities you were specifically responsible for, what you did, and why.</li>
+                          <li>Avoid ambiguity e.g. &apos;we have extensive experience in...&apos;.</li>
+                          <li>Describe the result or outcome of your activities.</li>
+                        </ul>
+                        <Textarea
+                          key={criteriaId}
+                          model={`${this.props.model}.evidence[${criteriaId}].response`}
+                          label={`Evidence for '${getCriteriaName(criteriaId, this.props.meta.domain.criteria)}'`}
+                          name={`criteria_${criteriaId}`}
+                          id={`criteria_${criteriaId}`}
+                          htmlFor={`criteria_${criteriaId}`}
+                          controlProps={{ minimum: minimumWordRequirement, rows: '10' }}
+                          validators={{
+                            required
+                          }}
+                          messages={{
+                            minimumWords: `Your criteria response has not yet reached the ${minimumWordRequirement} word minimum requirement`
+                          }}
+                        />
+                    </React.Fragment>
                 </div>
-                <Textarea
-                  model={`${this.props.model}.evidence[${criteriaId}].background`}
-                  disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
-                  label="Background"
-                  description="Describe the background of the project you worked on."
-                  name={`background_${criteriaId}`}
-                  id={`background_${criteriaId}`}
-                  htmlFor={`background_${criteriaId}`}
-                  validators={{
-                    required
-                  }}
-                  onCustomChange={value => {
-                    if (index === 0) {
-                      this.updateAllOtherCriteriaFromFirst('background', value)
-                    }
-                    return true
-                  }}
-                />
-                <p>Your evidence for the criteria should:</p>
-                <ul>
-                  <li>Explain the activities you were specifically responsible for, what you did, and why.</li>
-                  <li>Avoid ambiguity e.g. &apos;we have extensive experience in...&apos;.</li>
-                  <li>Describe the result or outcome of your activities.</li>
-                </ul>
-                <Textarea
-                  key={criteriaId}
-                  model={`${this.props.model}.evidence[${criteriaId}].response`}
-                  label={`Evidence for '${getCriteriaName(criteriaId, this.props.meta.domain.criteria)}'`}
-                  name={`criteria_${criteriaId}`}
-                  id={`criteria_${criteriaId}`}
-                  htmlFor={`criteria_${criteriaId}`}
-                  controlProps={{ minimum: minimumWordRequirement, rows: '10' }}
-                  validators={{
-                    required
-                  }}
-                  messages={{
-                    minimumWords: `Your criteria response has not yet reached the ${minimumWordRequirement} word minimum requirement`
-                  }}
-                />
               </div>
             ))}
-            {this.props.formButtons}
-          </React.Fragment>
-        )}
-      </Form>
-    )
+             {this.props.formButtons}
+            </React.Fragment>
+            )}
+      </Form> 
+      )
+    }
   }
-}
 
-SellerAssessmentHybridEvidenceStage.defaultProps = {
-  onSubmit: () => {},
-  onSubmitFailed: () => {}
-}
-
-SellerAssessmentHybridEvidenceStage.propTypes = {
-  model: PropTypes.string.isRequired,
-  formButtons: PropTypes.node.isRequired,
-  meta: PropTypes.object.isRequired,
-  onSubmit: PropTypes.func,
-  onSubmitFailed: PropTypes.func
-}
-
-const mapStateToProps = (state, props) => ({
-  ...formProps(state, props.model)
-})
-
-const mapDispatchToProps = (dispatch, props) => ({
-  updateCriteriaSameAsFirst: (criteriaId, same) =>
-    dispatch(actions.change(`${props.model}.evidence[${criteriaId}].sameAsFirst`, same)),
-  updateEvidenceFieldValue: (criteriaId, fieldName, fieldValue) =>
-    dispatch(actions.change(`${props.model}.evidence[${criteriaId}][${fieldName}]`, fieldValue))
-})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SellerAssessmentHybridEvidenceStage)
+  SellerAssessmentHybridEvidenceStage.defaultProps = {
+    onSubmit: () => {},
+    onSubmitFailed: () => {}
+  }
+  
+  SellerAssessmentHybridEvidenceStage.propTypes = {
+    model: PropTypes.string.isRequired,
+    formButtons: PropTypes.node.isRequired,
+    meta: PropTypes.object.isRequired,
+    onSubmit: PropTypes.func,
+    onSubmitFailed: PropTypes.func
+  }
+  
+  const mapStateToProps = (state, props) => ({
+    ...formProps(state, props.model)
+  })
+  
+  const mapDispatchToProps = (dispatch, props) => ({
+    updateCriteriaSameAsFirst: (criteriaId, same) =>
+      dispatch(actions.change(`${props.model}.evidence[${criteriaId}].sameAsFirst`, same)),
+    updateEvidenceFieldValue: (criteriaId, fieldName, fieldValue) =>
+      dispatch(actions.change(`${props.model}.evidence[${criteriaId}][${fieldName}]`, fieldValue))
+  })
+  
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(SellerAssessmentHybridEvidenceStage)
+  
