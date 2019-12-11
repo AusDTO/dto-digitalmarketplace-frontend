@@ -230,8 +230,7 @@ class Overview extends Component {
             </li>
             {brief.status === 'live' && isPublished && (
               <li>
-                {hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') ||
-                hasPermission(isPartOfTeam, isTeamLead, teams, 'edit_opportunities') ? (
+                {hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') ? (
                   <a href={`${rootPath}/brief/${brief.id}/edit`}>Edit live opportunity</a>
                 ) : (
                   <a href={`${rootPath}/request-access/publish_opportunities`}>Edit live opportunity</a>
