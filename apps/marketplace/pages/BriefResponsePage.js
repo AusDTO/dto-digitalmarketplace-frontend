@@ -231,7 +231,7 @@ class BriefResponsePage extends Component {
       !loadBriefSuccess && Array.isArray(app.errorMessage) ? (
         <BriefResponseSupplierError setFocus={setFocus} {...this.props} />
       ) : (
-        <ErrorBox title="There was a problem loading the brief details" setFocus={setFocus} />
+        <ErrorBox title="There is a problem" setFocus={setFocus} />
       )
 
     if (this.state.loading) {
