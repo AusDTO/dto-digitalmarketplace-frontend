@@ -254,7 +254,9 @@ describe('OpportunitySpecialistInfoCard', () => {
           hasSignedCurrentAgreement: true
         })
       ).text()
-    ).toEqual('candidates submittedYou can submit up to 6 candidates before the opportunity closes.Edit or submit candidates')
+    ).toEqual(
+      'candidates submittedYou can submit up to 6 candidates before the opportunity closes.Edit or submit candidates'
+    )
   })
 
   test('not able to apply because seller is applicant', () => {
