@@ -73,6 +73,7 @@ const briefReducer = (state = defaultBriefState, action) => {
         brief: action.brief,
         loadBriefSuccess: true,
         briefResponses: action.briefResponses,
+        isOpenToAll: action.isOpenToAll,
         specialistNumber: action.briefResponses.length + 1,
         loadedAt: new Date().valueOf(),
         oldWorkOrderCreator: action.oldWorkOrderCreator,

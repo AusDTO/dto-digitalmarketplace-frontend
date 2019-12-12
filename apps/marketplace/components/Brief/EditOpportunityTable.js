@@ -1,7 +1,7 @@
 import React from 'react'
 
 const EditOpportunityTable = props => {
-  const { brief, location } = props
+  const { brief, isOpenToAll, location } = props
 
   return (
     <table className="col-xs-12">
@@ -13,6 +13,21 @@ const EditOpportunityTable = props => {
             <a href={`${location.pathname}/title`}>Edit title</a>
           </td>
         </tr>
+        {!isOpenToAll && (
+          <tr>
+            <th>Invited sellers</th>
+            <td>
+              <ul>
+                {Object.values(brief.sellers).map(seller => (
+                  <li key={seller.name}>{seller.name}</li>
+                ))}
+              </ul>
+            </td>
+            <td>
+              <a href={`${location.pathname}/sellers`}>Add sellers</a>
+            </td>
+          </tr>
+        )}
       </tbody>
     </table>
   )
