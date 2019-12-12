@@ -3,11 +3,13 @@ import format from 'date-fns/format'
 
 import { getClosingTime } from 'marketplace/components/helpers'
 
+import styles from '../../main.scss'
+
 const EditOpportunityTable = props => {
   const { brief, isOpenToAll, location } = props
 
   return (
-    <table className="col-xs-12">
+    <table className={`col-xs-12 ${styles.defaultStyle} ${styles.textAlignLeft}`}>
       <tbody>
         <tr>
           <th scope="row">Opportunity title</th>
