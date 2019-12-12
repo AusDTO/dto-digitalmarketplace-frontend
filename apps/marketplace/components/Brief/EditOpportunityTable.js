@@ -1,4 +1,7 @@
 import React from 'react'
+import format from 'date-fns/format'
+
+import { getClosingTime } from 'marketplace/components/helpers'
 
 const EditOpportunityTable = props => {
   const { brief, isOpenToAll, location } = props
@@ -48,6 +51,15 @@ const EditOpportunityTable = props => {
           </td>
           <td>
             <a href={`${location.pathname}/documents`}>Edit documents</a>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Closing date</th>
+          <td>
+            <span>{format(getClosingTime(brief), 'dddd DD MMMM YYYY [at] ha')}</span>
+          </td>
+          <td>
+            <a href={`${location.pathname}/closing-date`}>Extend closing date</a>
           </td>
         </tr>
       </tbody>
