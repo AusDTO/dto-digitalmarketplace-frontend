@@ -6,7 +6,7 @@ import EditOpportunityTable from './EditOpportunityTable'
 import styles from '../../main.scss'
 
 const EditOpportunity = props => {
-  const { brief } = props
+  const { brief, location } = props
 
   return (
     <div>
@@ -19,7 +19,7 @@ const EditOpportunity = props => {
         </p>
       </div>
       <div className="row">
-        <EditOpportunityTable brief={brief} />
+        <EditOpportunityTable brief={brief} location={location} />
       </div>
     </div>
   )
