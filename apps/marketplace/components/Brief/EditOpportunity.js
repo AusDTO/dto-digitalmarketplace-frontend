@@ -1,6 +1,8 @@
 import React from 'react'
 
+import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import { rootPath } from 'marketplace/routes'
 import EditOpportunityTable from './EditOpportunityTable'
 
 import styles from '../../main.scss'
@@ -20,6 +22,12 @@ const EditOpportunity = props => {
       </div>
       <div className="row">
         <EditOpportunityTable brief={brief} isOpenToAll={isOpenToAll} location={location} />
+      </div>
+      <div className={`row ${styles.marginTop2}`}>
+        <AUbutton>Submit changes</AUbutton>
+        <AUbutton as="tertiary" link={`${rootPath}/brief/${brief.id}/overview/${brief.lot}`}>
+          Cancel all updates
+        </AUbutton>
       </div>
     </div>
   )
