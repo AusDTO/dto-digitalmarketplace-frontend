@@ -37,6 +37,19 @@ const EditOpportunityTable = props => {
             <a href={`${location.pathname}/summary`}>Edit summary</a>
           </td>
         </tr>
+        <tr>
+          <th scope="row">Documents</th>
+          <td>
+            <ul>
+              {Object.values(brief.attachments).map(attachment => (
+                <li key={attachment}>{attachment}</li>
+              ))}
+            </ul>
+          </td>
+          <td>
+            <a href={`${location.pathname}/documents`}>Edit documents</a>
+          </td>
+        </tr>
       </tbody>
     </table>
   )
