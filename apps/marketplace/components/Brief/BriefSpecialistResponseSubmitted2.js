@@ -9,12 +9,14 @@ import BriefResponseSubmittedSummary2 from './BriefResponseSubmittedSummary2'
 
 const getSubmittedResponses = responses => responses.filter(response => response.status === 'submitted')
 
+const getResponsesLeft = (allowed, briefResponses) =>
+  parseInt(allowed, 10) - getSubmittedResponses(briefResponses).length
+
 const BriefSpecialistResponseSubmitted2 = ({
   setFocus,
+  briefResponse,
   briefResponses,
-  briefResponseStatus,
-  specialistGivenNames,
-  specialistSurname,
+  briefResponsePreviousStatus,
   brief,
   match,
   app,
@@ -25,29 +27,39 @@ const BriefSpecialistResponseSubmitted2 = ({
       <div className="col-sm-push-2 col-sm-8 col-xs-12" role="region" aria-live="polite">
         <article role="main">
           <AUpageAlert as="success" setFocus={setFocus}>
-            {specialistGivenNames && specialistSurname && briefResponseStatus && (
+            {briefResponse.specialistGivenNames && briefResponse.specialistSurname && briefResponsePreviousStatus && (
               <h1 className="au-display-lg">
-                {briefResponseStatus === 'draft' && (
-                  <span>
-                    You have submitted {getSubmittedResponses(briefResponses).length} specialist
-                    {getSubmittedResponses(briefResponses).length === 1 ? '' : 's'} for this opportunity.
-                  </span>
+                {briefResponsePreviousStatus === 'draft' && (
+                  <React.Fragment>
+                    You have successfully submitted {briefResponse.specialistGivenNames}{' '}
+                    {briefResponse.specialistSurname} for this opportunity.
+                  </React.Fragment>
                 )}
-                {briefResponseStatus === 'submitted' && (
-                  <span>
-                    You have successfully updated {specialistGivenNames} {specialistSurname}&apos;s response
-                  </span>
+                {briefResponsePreviousStatus === 'submitted' && (
+                  <React.Fragment>
+                    You have successfully updated {briefResponse.specialistGivenNames} {briefResponse.specialistSurname}
+                    &apos;s response
+                  </React.Fragment>
                 )}
               </h1>
             )}
             <p>
-              {getSubmittedResponses(briefResponses).length < parseInt(brief.numberOfSuppliers, 10)
-                ? `You can submit ${parseInt(brief.numberOfSuppliers, 10) -
-                    getSubmittedResponses(briefResponses).length} more before the closing date (${format(
-                    new Date(brief.applicationsClosedAt),
-                    'MMMM Do, YYYY'
-                  )})`
-                : `This opportunity closes on ${format(new Date(brief.applicationsClosedAt), 'MMMM Do, YYYY')}`}
+              {getSubmittedResponses(briefResponses).length < parseInt(brief.numberOfSuppliers, 10) && (
+                <React.Fragment>
+                  You can{' '}
+                  <a href={`/2/brief/${match.params.briefId}/responses`}>
+                    submit {getResponsesLeft(brief.numberOfSuppliers, briefResponses)} more candidate
+                    {getResponsesLeft(brief.numberOfSuppliers, briefResponses) > 1 && 's'}
+                  </a>{' '}
+                  before the closing date ({format(new Date(brief.applicationsClosedAt), 'MMMM Do, YYYY')})
+                </React.Fragment>
+              )}
+              {getSubmittedResponses(briefResponses).length === parseInt(brief.numberOfSuppliers, 10) && (
+                <React.Fragment>
+                  You can <a href={`/2/brief/${match.params.briefId}/responses`}>edit your candidates</a> before the
+                  closing date ({format(new Date(brief.applicationsClosedAt), 'MMMM Do, YYYY')})
+                </React.Fragment>
+              )}
             </p>
           </AUpageAlert>
           {getSubmittedResponses(briefResponses).length < parseInt(brief.numberOfSuppliers, 10) && (
@@ -78,7 +90,7 @@ const BriefSpecialistResponseSubmitted2 = ({
 BriefSpecialistResponseSubmitted2.defaultProps = {
   setFocus: () => {},
   briefResponses: [],
-  briefResponseStatus: '',
+  briefResponsePreviousStatus: '',
   specialistGivenNames: '',
   specialistSurname: '',
   brief: {},
@@ -91,7 +103,7 @@ BriefSpecialistResponseSubmitted2.propTypes = {
   setFocus: PropTypes.func.isRequired,
   brief: PropTypes.object.isRequired,
   briefResponses: PropTypes.array.isRequired,
-  briefResponseStatus: PropTypes.string,
+  briefResponsePreviousStatus: PropTypes.string,
   specialistGivenNames: PropTypes.string,
   specialistSurname: PropTypes.string,
   app: PropTypes.object.isRequired,

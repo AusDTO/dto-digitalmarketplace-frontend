@@ -323,7 +323,7 @@ export const loadBriefResponse = briefResponseId => dispatch => {
 
 export const handleBriefResponseSuccess = response => ({
   type: BRIEF_RESPONSE_SUCCESS,
-  briefResponse: response.data.briefResponses
+  briefResponse: response.data
 })
 
 export const resetBriefResponseSuccess = () => ({
@@ -398,6 +398,7 @@ export const saveBriefResponse = (briefId, briefResponseId, model) => (dispatch,
       dispatch(handleErrorFailure(response))
     } else {
       dispatch(handleBriefResponseSuccess(response))
+      dispatch(handleLoadBriefResponse(response))
     }
     dispatch(sendingRequest(false))
   })
