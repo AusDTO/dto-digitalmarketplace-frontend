@@ -7,7 +7,7 @@ const EditOpportunityTable = props => {
     <table className="col-xs-12">
       <tbody>
         <tr>
-          <th>Opportunity title</th>
+          <th scope="row">Opportunity title</th>
           <td>{brief.title}</td>
           <td>
             <a href={`${location.pathname}/title`}>Edit title</a>
@@ -15,7 +15,7 @@ const EditOpportunityTable = props => {
         </tr>
         {!isOpenToAll && (
           <tr>
-            <th>Invited sellers</th>
+            <th scope="row">Invited sellers</th>
             <td>
               <ul>
                 {Object.values(brief.sellers).map(seller => (
