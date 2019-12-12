@@ -165,3 +165,12 @@ export const mapLot = lot => {
       return lot
   }
 }
+
+export const getClosingTime = brief => {
+  if (brief.dates.closing_time) {
+    return brief.dates.closing_time
+  } else if (brief.closedAt) {
+    return brief.closedAt
+  }
+  return ''
+}

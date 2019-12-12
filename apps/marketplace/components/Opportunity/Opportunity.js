@@ -6,7 +6,7 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import format from 'date-fns/format'
 import { rootPath } from 'marketplace/routes'
 import NotVisible from 'marketplace/components/Icons/NotVisible/NotVisible'
-import { getBriefLastQuestionDate, hasPermission } from 'marketplace/components/helpers'
+import { getBriefLastQuestionDate, getClosingTime, hasPermission } from 'marketplace/components/helpers'
 import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import EvaluationCriteria from './EvaluationCriteria'
 import QuestionAnswer from './QuestionAnswer'
@@ -49,15 +49,6 @@ const defaultBriefProps = {
   clarificationQuestions: [],
   clarificationQuestionsAreClosed: true,
   contactEmail: ''
-}
-
-const getClosingTime = brief => {
-  if (brief.dates.closing_time) {
-    return brief.dates.closing_time
-  } else if (brief.closedAt) {
-    return brief.closedAt
-  }
-  return ''
 }
 
 const getTrimmedFilename = fileName => {
