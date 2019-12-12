@@ -11,7 +11,7 @@ const EditOpportunity = props => {
   const { brief, isOpenToAll, location } = props
 
   return (
-    <div>
+    <div className="col-xs-12">
       <div className="row">
         <AUheading level="1" size="xl">
           Edit live opportunity
