@@ -144,7 +144,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates submittedYou have not submitted any candidates. You can submit 6 more before the opportunity closes.Apply for opportunity'
+      'candidates submittedYou can submit up to 6 candidates before the opportunity closes.Apply for opportunity'
     )
   })
 
@@ -172,7 +172,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates submittedYou have submitted 1 candidate. You can submit 5 more before the opportunity closes.Edit or submit candidates'
+      'candidates submittedYou can submit up to 6 candidates before the opportunity closes.Edit or submit candidates'
     )
   })
 
@@ -200,7 +200,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates submittedYou have submitted 3 candidates. You can submit 3 more before the opportunity closes.Edit or submit candidates'
+      'candidates submittedYou can submit up to 6 candidates before the opportunity closes.Edit or submit candidates'
     )
   })
 
@@ -254,7 +254,7 @@ describe('OpportunitySpecialistInfoCard', () => {
           hasSignedCurrentAgreement: true
         })
       ).text()
-    ).toEqual('candidates submittedSellers can submit up to 6 candidates for this role.Edit or submit candidates')
+    ).toEqual('candidates submittedYou can submit up to 6 candidates before the opportunity closes.Edit or submit candidates')
   })
 
   test('not able to apply because seller is applicant', () => {
@@ -426,7 +426,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates submittedYou have not submitted any candidates. You can submit 6 more before the opportunity closes.There is at least one error in your profile. You must update your profile before you can apply for this opportunity.Update profile'
+      'candidates submittedYou can submit up to 6 candidates before the opportunity closes.There is at least one error in your profile. You must update your profile before you can apply for this opportunity.Update profile'
     )
   })
 })
