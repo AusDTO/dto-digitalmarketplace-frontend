@@ -18,15 +18,18 @@ describe('BriefSpecialistResponseSubmitted', () => {
         <BriefSpecialistResponseSubmitted2
           specialistGivenNames="a"
           specialistSurname="b"
-          briefResponseStatus="draft"
+          briefResponsePreviousStatus="draft"
+          briefResponse={{
+            specialistGivenNames: 'aaa',
+            specialistSurname: 'bbb'
+          }}
           briefResponses={[{ id: 1, status: 'submitted' }]}
           brief={{ applicationsClosedAt: '3/15/2018', numberOfSuppliers: '3' }}
         />
       </Provider>
     )
 
-    expect(tree.contains(<span>You have submitted 1 specialist for this opportunity.</span>)).toBeTruthy()
-    expect(tree.contains(<p>You can submit 2 more before the closing date (March 15th, 2018)</p>)).toBeTruthy()
+    expect(tree.contains(<span>You have successfully submitted aaa bbb for this opportunity.</span>)).toBeTruthy()
     expect(
       tree
         .find('a.au-btn')
@@ -41,7 +44,11 @@ describe('BriefSpecialistResponseSubmitted', () => {
         <BriefSpecialistResponseSubmitted2
           specialistGivenNames="a"
           specialistSurname="b"
-          briefResponseStatus="draft"
+          briefResponsePreviousStatus="draft"
+          briefResponse={{
+            specialistGivenNames: 'aaa',
+            specialistSurname: 'bbb'
+          }}
           briefResponses={[
             { id: 1, status: 'submitted' },
             { id: 2, status: 'submitted' },
@@ -52,8 +59,7 @@ describe('BriefSpecialistResponseSubmitted', () => {
       </Provider>
     )
 
-    expect(tree.contains(<span>You have submitted 3 specialists for this opportunity.</span>)).toBeTruthy()
-    expect(tree.contains(<p>This opportunity closes on March 15th, 2018</p>)).toBeTruthy()
+    expect(tree.contains(<span>You have successfully submitted aaa bbb for this opportunity.</span>)).toBeTruthy()
     expect(tree.find('a.au-btn').exists()).toBeFalsy()
   })
 })

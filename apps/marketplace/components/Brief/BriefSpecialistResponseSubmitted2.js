@@ -30,16 +30,16 @@ const BriefSpecialistResponseSubmitted2 = ({
             {briefResponse.specialistGivenNames && briefResponse.specialistSurname && briefResponsePreviousStatus && (
               <h1 className="au-display-lg">
                 {briefResponsePreviousStatus === 'draft' && (
-                  <React.Fragment>
+                  <span>
                     You have successfully submitted {briefResponse.specialistGivenNames}{' '}
                     {briefResponse.specialistSurname} for this opportunity.
-                  </React.Fragment>
+                  </span>
                 )}
                 {briefResponsePreviousStatus === 'submitted' && (
-                  <React.Fragment>
+                  <span>
                     You have successfully updated {briefResponse.specialistGivenNames} {briefResponse.specialistSurname}
                     &apos;s response
-                  </React.Fragment>
+                  </span>
                 )}
               </h1>
             )}
