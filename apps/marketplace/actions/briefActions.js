@@ -103,6 +103,8 @@ export const handlePublicBriefInfoSuccess = response => ({
   briefResponseCount: response.data.brief_response_count,
   invitedSellerCount: response.data.invited_seller_count,
   supplierBriefResponseCount: response.data.supplier_brief_response_count,
+  supplierBriefResponseCountSubmitted: response.data.supplier_brief_response_count_submitted,
+  supplierBriefResponseCountDraft: response.data.supplier_brief_response_count_draft,
   supplierBriefResponseId: response.data.supplier_brief_response_id,
   supplierBriefResponseIsDraft: response.data.supplier_brief_response_is_draft,
   canRespond: response.data.can_respond,
