@@ -7,7 +7,7 @@ import { loadBrief } from 'marketplace/actions/briefActions'
 import { setErrorMessage } from 'marketplace/actions/appActions'
 import { rootPath } from 'marketplace/routes'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
-import EditOpportunity from 'marketplace/components/Brief/EditOpportunity'
+import EditOpportunity from 'marketplace/components/Brief/Edit/EditOpportunity'
 
 const model = 'editOpportunityForm'
 

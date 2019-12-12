@@ -5,7 +5,7 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
 import EditOpportunityTable from './EditOpportunityTable'
 
-import styles from '../../main.scss'
+import styles from '../../../main.scss'
 
 const EditOpportunity = props => {
   const { brief, isOpenToAll, location } = props
