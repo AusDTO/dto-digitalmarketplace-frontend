@@ -28,6 +28,15 @@ const EditOpportunityTable = props => {
             </td>
           </tr>
         )}
+        <tr>
+          <th scope="row">Summary</th>
+          <td>
+            <p>{brief.summary}</p>
+          </td>
+          <td>
+            <a href={`${location.pathname}/summary`}>Edit summary</a>
+          </td>
+        </tr>
       </tbody>
     </table>
   )
