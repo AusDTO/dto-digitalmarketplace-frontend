@@ -200,6 +200,10 @@ class BriefResponsePage extends Component {
       )
     }
 
+    if (app.errorMessage) {
+      return errorScreen
+    }
+
     return (
       <div className="brief-page">
         <Switch>
