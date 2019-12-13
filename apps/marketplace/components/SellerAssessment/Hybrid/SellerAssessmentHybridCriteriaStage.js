@@ -34,7 +34,6 @@ const maximumCriteriaAllowed = (v, d) =>
     v.criteria.length &&
     v.criteria.length <= getCriteriaAllowed(d.criteriaNeeded, d.priceMaximum, v.maxDailyRate))
 
-
 export const done = (formValues, meta) =>
   minimumCriteriaMet(formValues, meta.domain) && maximumCriteriaAllowed(formValues, meta.domain)
 
@@ -114,10 +113,10 @@ class SellerAssessmentCriteriaStage extends Component {
             requiredMaximum: `You cannot submit evidence for more than ${criteriaAllowed} criteria.`
           }}
         />
-       <p>
-        <strong>Criteria demonstrated by your organisation:</strong>
-       </p>
-       <div className={styles.criteria}>
+        <p>
+          <strong>Criteria demonstrated by your organisation:</strong>
+        </p>
+        <div className={styles.criteria}>
           {domain.criteria.map(criteria => {
             if (criteria.is_recruiter_criteria) {
               return (
@@ -133,18 +132,17 @@ class SellerAssessmentCriteriaStage extends Component {
                   validators={{}}
                   messages={{}}
                 />
-               )
-             }
-            else {
+              )
+            } else {
               return null
             }
-        })}
-       </div>
-      
-       <p>
-        <strong>Criteria demonstrated by a contractor or consultant you previously placed:</strong>
-       </p>
-       <div className={styles.criteria}>
+          })}
+        </div>
+
+        <p>
+          <strong>Criteria demonstrated by a contractor or consultant you previously placed:</strong>
+        </p>
+        <div className={styles.criteria}>
           {domain.criteria.map(criteria => {
             if (!criteria.is_recruiter_criteria) {
               return (
@@ -160,13 +158,12 @@ class SellerAssessmentCriteriaStage extends Component {
                   validators={{}}
                   messages={{}}
                 />
-               )
-             }
-            else {
+              )
+            } else {
               return null
             }
-        })}
-       </div>
+          })}
+        </div>
 
         {this.props.formButtons}
       </Form>
@@ -200,8 +197,8 @@ export default connect(
   mapDispatchToProps
 )(SellerAssessmentCriteriaStage)
 
-
-       {/* 
+{
+  /* 
         <div className={styles.criteria}>
         <div className={styles.criteria}>
           {domain.criteria.map(criteria => {
@@ -224,8 +221,10 @@ export default connect(
               return null
             }
         })}
-       </div> */}
-          {/* {domain.criteria.map(criteria => (
+       </div> */
+}
+{
+  /* {domain.criteria.map(criteria => (
             <CheckboxDetailsField
               key={criteria.id}
               model={`${this.props.model}.criteria[]`}
@@ -238,5 +237,8 @@ export default connect(
               validators={{}}
               messages={{}}
             />
-          ))} */}
-        {/* </div> */}
+          ))} */
+}
+{
+  /* </div> */
+}
