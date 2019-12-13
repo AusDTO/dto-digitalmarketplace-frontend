@@ -32,11 +32,9 @@ const initialState = {
   csrfToken: '',
   notificationCount: null,
   agencyId: null,
-  agencyDomains: null
-  //I added this
-  // consultant_only: false
+  agencyDomains: null,
+  isRecruiterFlag: false
 }
-//reshma
 
 const appReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -83,9 +81,8 @@ const appReducer = (state = initialState, action) => {
         isTeamLead: action.newState.isTeamLead,
         isPartOfTeam: action.newState.isPartOfTeam,
         agencyId: action.newState.agencyId,
-        agencyDomains: action.newState.agencyDomains
-        // //I added this
-        // consultant_only: action.newState.consultant_only
+        agencyDomains: action.newState.agencyDomains,
+        isRecruiterFlag: action.newState.isRecruiterFlag
       }
     default:
       return state
