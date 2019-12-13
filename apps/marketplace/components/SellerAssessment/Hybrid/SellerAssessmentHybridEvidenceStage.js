@@ -257,7 +257,6 @@ class SellerAssessmentHybridEvidenceStage extends Component {
   }
 
   render() {
-    const domain = this.props.meta.domain
     const previouslyFailedCriteria = this.getPreviousFailedCriteria()
 
     return (
@@ -295,7 +294,7 @@ class SellerAssessmentHybridEvidenceStage extends Component {
               model={this.props.model}
               messages={{
                 requiredClient: 'You must provide a client for each criteria response',
-                requiredCandidateFullName: 'You must provide a candidate full name HEHEfor each criteria response',
+                requiredCandidateFullName: 'You must provide a candidate full name for each criteria response',
                 requiredCandidatePhoneNumber: 'You must provide a valid candidate HEHE phone number for each criteria response',
                 requiredRefereeName: 'You must provide a referee name for each criteria response',
                 requiredRefereeNumber: 'You must provide a valid referee phone number for each criteria response',
@@ -409,10 +408,6 @@ class SellerAssessmentHybridEvidenceStage extends Component {
                 
               {!this.isRecruiterCriteria(criteriaId) && (
                 <React.Fragment>
-                <AUheadings level="2" size="lg">
-                  Criterion consultant:
-                </AUheadings>
-                    
                     <p className={styles.criteriaText}>{getCriteriaName(criteriaId, this.props.meta.domain.criteria)}</p>
                     {index !== 0 && (
                       <p>

@@ -3,7 +3,7 @@ import SellerAssessmentMaximumRate, { done as maximumRatesDone } from './SellerA
 import SellerAssessmentCandidatePool, { done as candidatePoolDone } from './SellerAssessmentCandidatePool'
 import SellerAssessmentReviewStage from './SellerAssessmentReviewStage'
 import SellerAssessmentHybridCriteriaStage, { done as hybridcriteriaDone } from './SellerAssessmentHybridCriteriaStage'
-import SellerAssessmentEvidenceStage, { done as evidenceDone } from './SellerAssessmentEvidenceStage'
+import SellerAssessmentHybridEvidenceStage, { done as hyridevidenceDone } from './SellerAssessmentHybridEvidenceStage'
 
 const SellerAssessmentHybridStages = [
   {
@@ -33,8 +33,8 @@ const SellerAssessmentHybridStages = [
   {
     slug: 'evidence',
     title: 'Evidence',
-    component: SellerAssessmentEvidenceStage,
-    isDone: evidenceDone
+    component: SellerAssessmentHybridEvidenceStage,
+    isDone: hyridevidenceDone
   },
   {
     slug: 'review',
