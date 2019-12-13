@@ -262,7 +262,7 @@ class BriefResponsePage extends Component {
             render={() => (
               <BriefRFXResponseSubmitted
                 setFocus={setFocus}
-                briefResponseStatus={briefResponse.status}
+                briefResponsePreviousStatus={briefResponse.previous_status}
                 briefResponseId={briefResponseId}
                 briefId={this.props.brief.id}
                 submitClicked={this.state.submitClicked}
@@ -300,7 +300,7 @@ class BriefResponsePage extends Component {
             render={() => (
               <BriefATMResponseSubmitted
                 setFocus={setFocus}
-                briefResponseStatus={briefResponse.status}
+                briefResponsePreviousStatus={briefResponse.previous_status}
                 briefResponseId={briefResponseId}
                 briefId={this.props.brief.id}
                 submitClicked={this.state.submitClicked}
@@ -338,7 +338,7 @@ class BriefResponsePage extends Component {
             render={() => (
               <BriefTrainingResponseSubmitted2
                 setFocus={setFocus}
-                briefResponseStatus={briefResponse.status}
+                briefResponsePreviousStatus={briefResponse.previous_status}
                 briefResponseId={briefResponseId}
                 briefId={this.props.brief.id}
                 submitClicked={this.state.submitClicked}
