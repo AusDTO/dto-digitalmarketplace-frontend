@@ -470,7 +470,7 @@ BriefSpecialistResponseForm2.propTypes = {
   briefResponses: PropTypes.array.isRequired,
   briefResponseSuccess: PropTypes.bool,
   supplierContact: PropTypes.shape({
-    email: PropTypes.string.isRequired
+  email: PropTypes.string.isRequired
   }).isRequired,
   app: PropTypes.object.isRequired,
   setFocus: PropTypes.func,
