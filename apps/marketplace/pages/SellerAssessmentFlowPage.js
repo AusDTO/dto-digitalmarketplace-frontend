@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { actions } from 'react-redux-form'
 import { Redirect } from 'react-router-dom'
 import formProps from 'shared/form/formPropsSelector'
-import PropTypes from 'prop-types'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import ProgressFlow from 'marketplace/components/ProgressFlow/ProgressFlow'
 import SellerAssessmentStages from 'marketplace/components/SellerAssessment/SellerAssessmentStages'
@@ -13,7 +12,6 @@ import { loadDomainData, loadEvidenceData, saveEvidence } from 'marketplace/acti
 import { setErrorMessage } from 'marketplace/actions/appActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { SellerAssessmentFormReducer, SellerAssessmentEvidenceReducer } from 'marketplace/reducers'
-
 
 const model = 'SellerAssessmentForm'
 
@@ -44,7 +42,7 @@ export class SellerAssessmentFlowPage extends Component {
       this.props.loadDomainData(domainId).then(() => this.setState({ loading: false }))
     }
   }
-//reshma
+  //reshma
   getEvidenceData() {
     this.setState({
       loading: true
@@ -132,6 +130,7 @@ export class SellerAssessmentFlowPage extends Component {
 
     const evidenceId = this.props.match.params.evidenceId
 
+
     if (this.state.loading) {
       return <LoadingIndicatorFullPage />
     }
@@ -139,26 +138,24 @@ export class SellerAssessmentFlowPage extends Component {
     if (this.state.flowIsDone) {
       return <Redirect to={`${rootPath}/seller-assessment/${evidenceId}/completed`} push />
     }
- 
-    // // if(this.state.isRecruiterOnly || this.state.recruiter_both){
-      //might have to be props.evidence or props.app 
-    if(this.props.isRecruiterOnly || this.props.recruiter_both){
-      return (
-        <ProgressFlow
-          model={model}
-          meta={{ domain: this.props.domain, evidence: this.props.evidence }}
-          onStageMount={this.handleStageMount}
-          basename={`${rootPath}/seller-assessment/${evidenceId}`}
-          stages={SellerAssessmentHybridStages}
-          saveModel={this.saveEvidence}
-          showReturnButton={false}
-          showReviewButton={false}
-          publishText="Request assessment"
-          showConfirmationCheckbox={false}
-        />
-      )
-    }
-    // console.log('BAD FLOW GO AWAY!!!!!!!!');
+
+      if (this.props.isRecruiterFlag) {
+        return (
+          <ProgressFlow
+            model={model}
+            meta={{ domain: this.props.domain, evidence: this.props.evidence }}
+            onStageMount={this.handleStageMount}
+            basename={`${rootPath}/seller-assessment/${evidenceId}`}
+            stages={SellerAssessmentHybridStages}
+            saveModel={this.saveEvidence}
+            showReturnButton={false}
+            showReviewButton={false}
+            publishText="Request assessment"
+            showConfirmationCheckbox={false}
+          />
+        )
+      }
+
     return (
       <ProgressFlow
         model={model}
@@ -174,26 +171,16 @@ export class SellerAssessmentFlowPage extends Component {
       />
     )
   }
-}
+ }
 
 const mapStateToProps = state => ({
   ...formProps(state, model),
   domain: state.domain.domain,
   evidence: state.evidence,
   errorMessage: state.app.errorMessage,
-  //i added this
-  consultant: state.app.consultant
+  isRecruiterFlag: state.app.isRecruiterFlag
 })
 
-// SellerAssessmentFlowPage.defalutProps = {
-//   isRecruiterOnly: false,
-//   recruiter_both: false
-//  }
-
-//  SellerAssessmentFlowPage.PropTypes = {
-//   isRecruiterOnly: PropTypes.bool,
-//   recruiter_both: PropTypes.bool
-//  }
 
 const mapDispatchToProps = dispatch => ({
   changeFormModel: data => dispatch(actions.merge(model, data)),
