@@ -111,11 +111,6 @@ const BriefSpecialistResponseForm2 = ({
                     required: 'Surname is required'
                   }}
                 />
-                <input
-                  className="au-btn"
-                  type="submit"
-                  value={briefResponses.length > 0 ? 'Continue' : 'Start application'}
-                />
                     <div className={styles.stepTitle}>
                       Specialist {specialistNumber} of {brief.numberOfSuppliers}
                     </div>
