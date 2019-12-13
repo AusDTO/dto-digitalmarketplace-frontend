@@ -44,9 +44,6 @@ const BriefSpecialistResponseForm2 = ({
   handleSubmit,
   setFocus,
   briefResponseId,
-  specialistNumber,
-  onAddAnotherClicked,
-  addAnotherSpecialist,
   briefResponseSave,
   uploading,
   loadingText,
@@ -59,13 +56,8 @@ const BriefSpecialistResponseForm2 = ({
     <DocumentTitle title="Brief Response - Digital Marketplace">
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
         <article role="main">
-          {briefResponseSuccess && addAnotherSpecialist && !briefResponseSave && (
-            <Redirect to={`${rootPath}/brief/${brief.id}/specialist2/respond`} />
-          )}
-          {briefResponseSuccess && !addAnotherSpecialist && briefResponseSave && (
-            <Redirect to={`${rootPath}/brief/${brief.id}/responses`} />
-          )}
-          {briefResponseSuccess && !addAnotherSpecialist && !briefResponseSave && (
+          {briefResponseSuccess && briefResponseSave && <Redirect to={`${rootPath}/brief/${brief.id}/responses`} />}
+          {briefResponseSuccess && !briefResponseSave && (
             <Redirect to={`${rootPath}/brief/${brief.id}/specialist2/respond/${briefResponseId}/submitted`} />
           )}
           {!briefResponseSuccess && (
@@ -417,16 +409,6 @@ const BriefSpecialistResponseForm2 = ({
                       Cancel all updates
                     </a>
                   )}
-                  {specialistNumber < brief.numberOfSuppliers && briefResponseStatus === 'draft' && (
-                    <input
-                      className="au-btn au-btn--secondary"
-                      type="submit"
-                      value="Submit and add another"
-                      onClick={e => {
-                        onAddAnotherClicked(e)
-                      }}
-                    />
-                  )}
                   {briefResponseStatus === 'draft' && (
                     <input
                       className="au-btn au-btn--tertiary"
@@ -453,14 +435,11 @@ BriefSpecialistResponseForm2.defaultProps = {
   briefResponseSuccess: false,
   briefResponseStatus: '',
   app: {},
-  addAnotherSpecialist: false,
   briefResponseSave: false,
   setFocus: null,
   onSubmitClicked: () => {},
   onSaveClicked: () => {},
   handleSubmit: null,
-  specialistNumber: null,
-  onAddAnotherClicked: null,
   uploading: () => null,
   loadingText: null,
   onRateChange: () => null,
@@ -481,9 +460,6 @@ BriefSpecialistResponseForm2.propTypes = {
   onSubmitClicked: PropTypes.func,
   onSaveClicked: PropTypes.func,
   handleSubmit: PropTypes.func,
-  specialistNumber: PropTypes.number,
-  onAddAnotherClicked: PropTypes.func,
-  addAnotherSpecialist: PropTypes.bool.isRequired,
   briefResponseSave: PropTypes.bool,
   uploading: PropTypes.func,
   loadingText: PropTypes.string,

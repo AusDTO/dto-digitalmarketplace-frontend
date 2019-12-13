@@ -23,7 +23,6 @@ import {
   resetBriefResponseSave,
   handleBriefNameSubmit,
   handleBriefNameSplitSubmit,
-  addAnotherSpecialistSubmit,
   handleSpecialistNumberSubmit,
   deleteBriefResponse
 } from 'marketplace/actions/briefActions'
@@ -97,32 +96,9 @@ class BriefResponsePage extends Component {
     this.props.changeModel(`${this.props.model}.submit`, true)
   }
 
-  handleAddAnotherClicked = () => {
-    this.props.changeModel(`${this.props.model}.submit`, true)
-    this.props.changeModel(`${this.props.model}.addAnother`, true)
-  }
-
-  handleSpecialistSubmitClicked = () => {
-    this.props.changeModel(`${this.props.model}.submit`, true)
-    this.props.changeModel(`${this.props.model}.addAnother`, false)
-  }
-
   handleSaveClicked = () => {
-    switch (this.props.match.params.briefResponseType) {
-      case 'specialist2':
-        this.props.changeModel(`${this.props.model}.submit`, false)
-        this.props.changeModel(`${this.props.model}.addAnother`, false)
-        this.handleSpecialistBriefResponseSubmit(this.props[this.props.model])
-        break
-      case 'rfx':
-      case 'training2':
-      case 'atm':
-        this.props.changeModel(`${this.props.model}.submit`, false)
-        this.handleBriefResponseSubmit(this.props[this.props.model])
-        break
-      default:
-        break
-    }
+    this.props.changeModel(`${this.props.model}.submit`, false)
+    this.handleBriefResponseSubmit(this.props[this.props.model])
   }
 
   handleBriefResponseDelete(id) {
@@ -147,35 +123,6 @@ class BriefResponsePage extends Component {
       userType: this.props.app.userType,
       ...values
     })
-  }
-
-  handleSpecialistBriefResponseSubmit(values) {
-    const { brief, match } = this.props
-    const briefResponseType = match.params.briefResponseType
-    const submitData = { ...mapResponseTypeToReducer[briefResponseType] }
-    Object.keys(values).map(property => {
-      if (Object.keys(mapResponseTypeToReducer[briefResponseType]).includes(property)) {
-        submitData[property] = values[property]
-      }
-      return true
-    })
-    if (values.addAnother) {
-      if (values.specialistName) {
-        this.props.handleBriefNameSubmit('')
-      } else if (values.specialistSurname && values.specialistGivenNames) {
-        this.props.handleBriefNameSplitSubmit('', '')
-      }
-
-      this.props.handleSpecialistNumberSubmit(1)
-    }
-
-    this.props.addAnotherSpecialistSubmit(values.addAnother)
-    if (!values.submit) {
-      this.props.handleSaveBriefResponse()
-    }
-    this.props.saveBriefResponse(brief.id, match.params.briefResponseId, submitData)
-    this.props.clearModel(model)
-    window.scrollTo(0, 0)
   }
 
   handleBriefNameSubmit = name => {
@@ -208,7 +155,6 @@ class BriefResponsePage extends Component {
   }
 
   resetForm() {
-    this.props.addAnotherSpecialistSubmit(false)
     this.props.resetBriefResponseSuccess()
     this.props.resetBriefResponseSave()
   }
@@ -278,10 +224,9 @@ class BriefResponsePage extends Component {
                     briefResponseSave={briefResponseSave}
                     briefResponseId={briefResponseId}
                     briefResponseStatus={briefResponse.status}
-                    onSubmitClicked={this.handleSpecialistSubmitClicked}
+                    onSubmitClicked={this.handleSubmitClicked}
                     onSaveClicked={this.handleSaveClicked}
-                    onAddAnotherClicked={this.handleAddAnotherClicked}
-                    handleSubmit={values => this.handleSpecialistBriefResponseSubmit(values)}
+                    handleSubmit={values => this.handleBriefResponseSubmit(values)}
                     setFocus={setFocus}
                     loadingText={this.state.loadingText}
                     uploading={uploading => this.setState({ loadingText: uploading ? 'Uploading' : null })}
@@ -445,7 +390,6 @@ const mapStateToProps = state => ({
   specialistSurname: state.brief.specialistSurname,
   specialistName: state.brief.specialistName,
   specialistNumber: state.brief.specialistNumber,
-  addAnotherSpecialist: state.brief.addAnotherSpecialist,
   briefResponseSave: state.brief.briefResponseSave
 })
 
@@ -461,7 +405,6 @@ const mapDispatchToProps = dispatch => ({
   handleBriefNameSubmit: name => dispatch(handleBriefNameSubmit(name)),
   handleBriefNameSplitSubmit: (givenNames, surname) => dispatch(handleBriefNameSplitSubmit(givenNames, surname)),
   handleSpecialistNumberSubmit: number => dispatch(handleSpecialistNumberSubmit(number)),
-  addAnotherSpecialistSubmit: bool => dispatch(addAnotherSpecialistSubmit(bool)),
   clearModel: data => dispatch(actions.reset(data)),
   changeModel: (data, value) => dispatch(actions.change(data, value)),
   replaceModel: data => dispatch(actions.merge(model, data)),

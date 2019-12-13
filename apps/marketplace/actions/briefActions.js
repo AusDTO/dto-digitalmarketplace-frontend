@@ -17,8 +17,7 @@ import {
   DELETE_BRIEF_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NAME_SPLIT,
-  SPECIALIST_NUMBER,
-  ADD_ANOTHER_SPECIALIST
+  SPECIALIST_NUMBER
 } from '../constants/constants'
 
 import {
@@ -442,10 +441,6 @@ export function handleBriefNameSplitSubmit(specialistGivenNames, specialistSurna
 
 export function handleSpecialistNumberSubmit(specialistNumber) {
   return { type: SPECIALIST_NUMBER, specialistNumber }
-}
-
-export function addAnotherSpecialistSubmit(addAnotherSpecialist) {
-  return { type: ADD_ANOTHER_SPECIALIST, addAnotherSpecialist }
 }
 
 export const loadSuppliersResponded = briefId => () =>

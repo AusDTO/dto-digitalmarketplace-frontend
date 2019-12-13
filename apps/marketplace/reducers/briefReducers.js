@@ -13,7 +13,6 @@ import {
   SPECIALIST_NAME,
   SPECIALIST_NAME_SPLIT,
   SPECIALIST_NUMBER,
-  ADD_ANOTHER_SPECIALIST,
   BRIEF_OVERVIEW_SUCCESS,
   DELETE_BRIEF_SUCCESS
 } from '../constants/constants'
@@ -30,7 +29,6 @@ const defaultBriefState = {
   specialistGivenNames: '',
   specialistSurname: '',
   specialistNumber: 1,
-  addAnotherSpecialist: false,
   briefResponseSave: false,
   overview: {
     sections: [],
@@ -204,12 +202,6 @@ const briefReducer = (state = defaultBriefState, action) => {
       return {
         ...state,
         specialistNumber: action.specialistNumber + state.specialistNumber
-      }
-
-    case ADD_ANOTHER_SPECIALIST:
-      return {
-        ...state,
-        addAnotherSpecialist: action.addAnotherSpecialist
       }
 
     default:
