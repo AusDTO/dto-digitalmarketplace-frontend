@@ -8,7 +8,7 @@ import EditOpportunityTable from './EditOpportunityTable'
 import styles from '../../../main.scss'
 
 const EditOpportunity = props => {
-  const { brief, isOpenToAll, location } = props
+  const { brief, edits, isOpenToAll, location } = props
 
   return (
     <div className="col-xs-12">
@@ -21,7 +21,7 @@ const EditOpportunity = props => {
         </p>
       </div>
       <div className="row">
-        <EditOpportunityTable brief={brief} isOpenToAll={isOpenToAll} location={location} />
+        <EditOpportunityTable brief={brief} edits={edits} isOpenToAll={isOpenToAll} location={location} />
       </div>
       <div className={`row ${styles.marginTop2}`}>
         <AUbutton>Submit changes</AUbutton>

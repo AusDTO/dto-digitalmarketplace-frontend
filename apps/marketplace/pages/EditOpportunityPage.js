@@ -8,6 +8,7 @@ import { setErrorMessage } from 'marketplace/actions/appActions'
 import { rootPath } from 'marketplace/routes'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import EditOpportunity from 'marketplace/components/Brief/Edit/EditOpportunity'
+import EditOpportunityTitle from 'marketplace/components/Brief/Edit/EditOpportunityTitle'
 
 const model = 'editOpportunityForm'
 
@@ -40,7 +41,7 @@ class EditOpportunityPage extends Component {
   }
 
   render = () => {
-    const { brief, errorMessage, isOpenToAll, location } = this.props
+    const { brief, edits, errorMessage, isOpenToAll, location } = this.props
 
     let hasFocused = false
     const setFocus = e => {
@@ -83,9 +84,12 @@ class EditOpportunityPage extends Component {
       <BrowserRouter basename={`${rootPath}/brief/${brief.id}/edit`}>
         <div className="col-xs-12">
           <Switch>
+            <Route path="/title" render={() => <EditOpportunityTitle brief={brief} edits={edits} model={model} />} />
             <Route
               path="/"
-              render={() => <EditOpportunity brief={brief} isOpenToAll={isOpenToAll} location={location} />}
+              render={() => (
+                <EditOpportunity brief={brief} edits={edits} isOpenToAll={isOpenToAll} location={location} />
+              )}
             />
           </Switch>
         </div>
@@ -97,6 +101,7 @@ class EditOpportunityPage extends Component {
 const mapStateToProps = state => ({
   app: state.app,
   brief: state.brief.brief,
+  edits: state.editOpportunityForm,
   isOpenToAll: state.brief.isOpenToAll,
   errorMessage: state.app.errorMessage
 })

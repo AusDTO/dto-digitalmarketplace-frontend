@@ -259,6 +259,9 @@ export default combineReducers({
         Remote: false
       }
     },
+    editOpportunityForm: {
+      title: ''
+    },
     BuyerRFXForm: BuyerRFXFormReducer,
     BuyerTrainingForm: BuyerTrainingFormReducer,
     BuyerATMForm: BuyerATMFormReducer,
