@@ -7,7 +7,7 @@ import formProps from 'shared/form/formPropsSelector'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import AUtextInput from '@gov.au/text-inputs'
-
+import { required, requiredFile, validEmail, validPercentage } from 'marketplace/components/validators'
 
 const maxDailyRateLimit = 99999
 
@@ -19,7 +19,6 @@ export const validWholeNumber = formValues => formValues.maxDailyRate && /^[0-9]
 
 export const done = formValues =>
   formValues.maxDailyRate && greaterThanZero(formValues) && lessThanLimit(formValues) && validWholeNumber(formValues)
-
 
 const SellerAssessmentRateStage = props => (
   <Form
@@ -35,69 +34,65 @@ const SellerAssessmentRateStage = props => (
     onSubmitFailed={props.onSubmitFailed}
     validateOn="submit"
   >
-     <AUheadings level="1" size="xl">
+    <AUheadings level="1" size="xl">
       Maximum rate
     </AUheadings>
 
-    {/* <label htmlFor="text-input" >Maximum daily rate (excluding mark-up and margin)</label>
-      <p> The rate must be based on a person who demonstrates skills equivalnet to {' '} */}
-        {/* Might need to add an external icon AND double check on the SFIA link*/}
-        {/* <a
-          href="https://www.sfia-online.org/en/framework/sfia-7/levels-of-responsibility/level-5"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          SFIA Level 5
-        </a>{' '}
-        .</p>
-    <AUtextInput id="text-input" width="sm" /> */} 
-
-    <ErrorAlert
+    {/* <ErrorAlert
       model={props.model}
       messages={{
         greaterThanZero: 'The maximum daily rate must be greater than zero',
         lessThanLimit: `The maximum daily rate must be lower than $${maxDailyRateLimit}`,
         validWholeNumber: 'The maximum daily rate must be a whole number (e.g. 1200)'
       }}
-    />
+    /> */}
     <Textfield
-      model={`${props.model}.maximumDailyRate`}
+      model={`${props.model}.maxDailyRate`}
       prefix={`$`}
       postfix={'including GST'}
       label="Maximum daily rate (excluding mark-up and ma)"
-      description={ `This rate must be based on a person who demonstrates skills equivalnet to  `}
-      name="maximumMarkUp"
+      description={`This rate must be based on a person who demonstrates skills equivalnet to  `}
+      name="maxDailyRate"
       id="maxDailyRate"
       htmlFor="maxDailyRate"
       defaultValue={props[props.model].maxDailyRate}
+      validators={{
+        required
+      }}
+      messages={{
+        required: 'Maximum Daily Rate is required'
+      }}
       // defaultValue={`hi`}
-      />
+    />
     <Textfield
       model={`${props.model}.maximumMarkUp`}
       postfix={'%'}
       label="Maximum mark-up?"
-      description={ `The percentage of on-costs to the day rate, including: your commission, workers compensation, payroll tax`}
+      description={`The percentage of on-costs to the day rate, including: your commission, workers compensation, payroll tax`}
       name="maximumMarkUp"
       id="maxDailyRate"
       htmlFor="maxDailyRate"
       defaultValue={props[props.model].maximumMarkUp}
+      validators={{
+        required
+      }}
+      messages={{
+        required: 'Maximum mark-up is required'
+      }}
       // defaultValue={`hi`}
-      />
-      <Textfield
+    />
+    <Textfield
       model={`${props.model}.totalMaximumRate`}
       label="Total maximum rate"
-      description={ `The threshold for ${props.meta.domain.name} is $${props.meta.domain.priceMaximum}. If your total maximum rate is above this threshold, you will be asked to meet more criteria to prove you offer value for money.`}
-      name="maxDailyRate"
-      id="maxDailyRate"
-      htmlFor="maxDailyRate"
-      defaultValue={(props[props.model].maxDailyRate) * props[props.model].maximumMarkUp}
+      description={`The threshold for ${props.meta.domain.name} is $${props.meta.domain.priceMaximum}. If your total maximum rate is above this threshold, you will be asked to meet more criteria to prove you offer value for money.`}
+      name="totalMaximumRate"
+      id="totalMaximumRate"
+      htmlFor="totalMaximumRate"
+      // onChange={data => onRateChange('maximumMarkUp', data.target.value)}
+      defaultValue={props[props.model].maxDailyRate * (props[props.model].maximumMarkUp/100)}
       disabled={true}
-      
-      />
-{/* 
-    <label htmlFor="text-input" >Total maximum rate</label>
-    <p>The threshold for {props.meta.domain.name} is ${props.meta.domain.priceMaximum}. If your total maximum rate is above this threshold, you will be asked to meet more criteria to prove you offer value for money.</p>
-    <AUtextInput disabled value='dfd' width="sm" /> */}
+    />
+
     {props.formButtons}
   </Form>
 )
