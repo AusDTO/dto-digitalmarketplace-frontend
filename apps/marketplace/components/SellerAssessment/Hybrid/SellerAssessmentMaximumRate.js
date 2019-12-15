@@ -89,7 +89,11 @@ const SellerAssessmentRateStage = props => (
       id="totalMaximumRate"
       htmlFor="totalMaximumRate"
       // onChange={data => onRateChange('maximumMarkUp', data.target.value)}
-      defaultValue={props[props.model].maxDailyRate * (props[props.model].maximumMarkUp/100)}
+      // defaultValue={(props[props.model].maxDailyRate * (props[props.model].maximumMarkUp/100))}
+      defaultValue={ Math.round(
+        (parseInt(props[props.model].maxDailyRate, 10))
+        * (parseInt(props[props.model].maximumMarkUp, 10)/100) 
+        +  (parseInt(props[props.model].maxDailyRate, 10)))}
       disabled={true}
     />
 
