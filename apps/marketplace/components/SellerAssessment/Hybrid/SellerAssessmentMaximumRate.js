@@ -50,7 +50,7 @@ const SellerAssessmentRateStage = props => (
       model={`${props.model}.maxDailyRate`}
       prefix={`$`}
       postfix={'including GST'}
-      label="Maximum daily rate (excluding mark-up and ma)"
+      label="Maximum daily rate (excluding mark-up)"
       description={`This rate must be based on a person who demonstrates skills equivalnet to  `}
       name="maxDailyRate"
       id="maxDailyRate"
