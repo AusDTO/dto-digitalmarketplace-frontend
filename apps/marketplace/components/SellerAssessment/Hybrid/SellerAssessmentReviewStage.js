@@ -36,7 +36,22 @@ const SellerAssessmentReviewStage = props => (
             Change
           </Link>
         </AUheading>
-        <p>${props[props.model].maxDailyRate} (including GST)</p>
+        <br/>
+        <strong>Daily Rate </strong>${props[props.model].maxDailyRate}
+        <br/>
+        <br/>
+        <strong>Mark Up </strong>{props[props.model].markup}%
+        <br/>
+        <br/>
+        <strong>Total </strong>${Math.round((parseInt(props[props.model].maxDailyRate, 10))* (parseInt(props[props.model].markup, 10)/100) +  (parseInt(props[props.model].maxDailyRate, 10)))} (including GST)
+        <div className={styles.spacer} />
+        <AUheading level="2" size="lg">
+          Candidate Pool
+          <Link to="candidatePool" className={styles.change}>
+            Change
+          </Link>
+        </AUheading>
+        <p>{props[props.model].database_size}</p>
         <div className={styles.spacer} />
         <AUheading level="2" size="lg">
           Evidence
