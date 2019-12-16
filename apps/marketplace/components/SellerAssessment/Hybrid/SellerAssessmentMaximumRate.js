@@ -67,7 +67,7 @@ const SellerAssessmentRateStage = props => (
     <Textfield
       model={`${props.model}.markup`}
       postfix={'%'}
-      label="markup"
+      label="Maximum mark-up"
       description={`The percentage of on-costs to the day rate, including: your commission, workers compensation, payroll tax`}
       name="markup"
       id="markup"
