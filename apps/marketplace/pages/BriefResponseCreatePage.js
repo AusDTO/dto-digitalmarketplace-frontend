@@ -39,7 +39,7 @@ class BriefResponseCreatePage extends Component {
       }
       return (
         <ErrorBoxComponent
-          title="A problem occurred when loading the brief details"
+          title="There is a problem"
           errorMessage={this.props.errorMessage}
           setFocus={setFocus}
           form={{}}
