@@ -46,7 +46,7 @@ const SellerAssessmentCandidatePool = props => (
     />
     <Textfield
       model={`${props.model}.placed_candidates`}
-      label={`How many candidates have you placed in ${props.meta.domain.name} roles in the last 12 months?"`}
+      label={`How many candidates have you placed in ${props.meta.domain.name} roles in the last 12 months?`}
       name="placed_candidates"
       id="placed_candidates"
       htmlFor="placed_candidates"

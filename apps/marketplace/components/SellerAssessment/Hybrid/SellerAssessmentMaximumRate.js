@@ -56,12 +56,12 @@ const SellerAssessmentRateStage = props => (
       id="maxDailyRate"
       htmlFor="maxDailyRate"
       defaultValue={props[props.model].maxDailyRate}
-      validators={{
-        required
-      }}
-      messages={{
-        required: 'Maximum Daily Rate is required'
-      }}
+      // validators={{
+      //   required
+      // }}
+      // messages={{
+      //   required: 'Maximum Daily Rate is required'
+      // }}
     />
     <Textfield
       model={`${props.model}.markup`}
@@ -72,12 +72,12 @@ const SellerAssessmentRateStage = props => (
       id="markup"
       htmlFor="markup"
       defaultValue={props[props.model].markup}
-      validators={{
-        required
-      }}
-      messages={{
-        required: 'Maximum mark-up is required'
-      }}
+      // validators={{
+      //   required
+      // }}
+      // messages={{
+      //   required: 'Maximum mark-up is required'
+      // }}
     />
     <Textfield
       model={`${props.model}.totalMaximumRate`}
