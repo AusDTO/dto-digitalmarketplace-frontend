@@ -17,7 +17,7 @@ const getOpportunityLink = (o, text) => (
 )
 const getStatusBadge = o => (
   <React.Fragment>
-    {o.draftResponseCount && (
+    {!closed(o) && o.draftResponseCount && (
       <div className={`${styles.badge} ${styles.yellow} ${styles.first}`}>
         {o.lot === 'specialist' && `${o.draftResponseCount} in `}Draft
       </div>
