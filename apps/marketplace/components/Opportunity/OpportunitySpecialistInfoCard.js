@@ -34,50 +34,53 @@ const OpportunitySpecialistInfoCard = props => (
         )}
       </div>
     </div>
-    <div className="row">
-      <div className="col-xs-12">
-        {props.isApprovedSeller && props.isInvited && props.isAssessedForCategory ? (
-          <p>
-            You can submit up to {props.numberOfSuppliers} candidate{props.numberOfSuppliers > 1 && 's'} before the
-            opportunity closes.
-            {props.supplierBriefResponseCountDraft > 0 && props.supplierBriefResponseCountSubmitted === 0 && (
-              <span>
-                {' '}
-                You have {props.supplierBriefResponseCountDraft} candidate
-                {props.supplierBriefResponseCountDraft > 1 && 's'} in draft.
-              </span>
-            )}
-            {props.supplierBriefResponseCountDraft === 0 && props.supplierBriefResponseCountSubmitted > 0 && (
-              <span>
-                {' '}
-                You submitted {props.supplierBriefResponseCountSubmitted} candidate
-                {props.supplierBriefResponseCountSubmitted > 1 && 's'}.
-              </span>
-            )}
-            {props.supplierBriefResponseCountDraft > 0 && props.supplierBriefResponseCountSubmitted > 0 && (
-              <span>
-                {' '}
-                You submitted {props.supplierBriefResponseCountSubmitted} candidate
-                {props.supplierBriefResponseCountSubmitted > 1 && 's'} and have {props.supplierBriefResponseCountDraft}{' '}
-                candidate{props.supplierBriefResponseCountDraft > 1 && 's'} in draft.
-              </span>
-            )}
-          </p>
-        ) : (
-          <React.Fragment>
-            {props.numberOfSuppliers > 1 ? (
-              <React.Fragment>
-                Sellers can submit up to <b>{props.numberOfSuppliers} candidates</b> for this role.
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                Sellers can submit <b>{props.numberOfSuppliers} candidate</b> for this role.
-              </React.Fragment>
-            )}
-          </React.Fragment>
-        )}
+    {props.isOpen && (
+      <div className="row">
+        <div className="col-xs-12">
+          {props.isApprovedSeller && props.isInvited && props.isAssessedForCategory ? (
+            <p>
+              You can submit up to {props.numberOfSuppliers} candidate{props.numberOfSuppliers > 1 && 's'} before the
+              opportunity closes.
+              {props.supplierBriefResponseCountDraft > 0 && props.supplierBriefResponseCountSubmitted === 0 && (
+                <span>
+                  {' '}
+                  You have {props.supplierBriefResponseCountDraft} candidate
+                  {props.supplierBriefResponseCountDraft > 1 && 's'} in draft.
+                </span>
+              )}
+              {props.supplierBriefResponseCountDraft === 0 && props.supplierBriefResponseCountSubmitted > 0 && (
+                <span>
+                  {' '}
+                  You submitted {props.supplierBriefResponseCountSubmitted} candidate
+                  {props.supplierBriefResponseCountSubmitted > 1 && 's'}.
+                </span>
+              )}
+              {props.supplierBriefResponseCountDraft > 0 && props.supplierBriefResponseCountSubmitted > 0 && (
+                <span>
+                  {' '}
+                  You submitted {props.supplierBriefResponseCountSubmitted} candidate
+                  {props.supplierBriefResponseCountSubmitted > 1 && 's'} and have{' '}
+                  {props.supplierBriefResponseCountDraft} candidate{props.supplierBriefResponseCountDraft > 1 && 's'} in
+                  draft.
+                </span>
+              )}
+            </p>
+          ) : (
+            <React.Fragment>
+              {props.numberOfSuppliers > 1 ? (
+                <React.Fragment>
+                  Sellers can submit up to <b>{props.numberOfSuppliers} candidates</b> for this role.
+                </React.Fragment>
+              ) : (
+                <React.Fragment>
+                  Sellers can submit <b>{props.numberOfSuppliers} candidate</b> for this role.
+                </React.Fragment>
+              )}
+            </React.Fragment>
+          )}
+        </div>
       </div>
-    </div>
+    )}
     <div className="row">
       <div className="col-xs-12">
         {!props.isOpen && props.briefStatus !== 'draft' && (

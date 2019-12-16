@@ -69,9 +69,13 @@ const BriefSpecialistResponseSubmitted2 = ({
               </a>
             </p>
           )}
-          <h2 className="au-display-lg">What happens next?</h2>
-          <br />
-          <BriefResponseSubmittedSummary2 brief={brief} />
+          {briefResponsePreviousStatus === 'draft' && (
+            <React.Fragment>
+              <h2 className="au-display-lg">What happens next?</h2>
+              <br />
+              <BriefResponseSubmittedSummary2 brief={brief} />
+            </React.Fragment>
+          )}
           <h2 className="au-display-lg">How did you find submitting this application?</h2>
           <br />
           <Feedback

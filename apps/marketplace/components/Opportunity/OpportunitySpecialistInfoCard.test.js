@@ -24,9 +24,7 @@ describe('OpportunitySpecialistInfoCard', () => {
           sellersApplied: 1
         })
       ).text()
-    ).toEqual(
-      '1seller invited1candidate submittedSellers can submit 1 candidate for this role.This opportunity has closed.'
-    )
+    ).toEqual('1seller invited1candidate submittedThis opportunity has closed.')
   })
 
   test('shows seller opportunity closed', () => {
@@ -47,9 +45,7 @@ describe('OpportunitySpecialistInfoCard', () => {
           sellersApplied: 0
         })
       ).text()
-    ).toEqual(
-      '10sellers invited0candidates submittedSellers can submit up to 6 candidates for this role.This opportunity has closed.'
-    )
+    ).toEqual('10sellers invited0candidates submittedThis opportunity has closed.')
   })
 
   test('shows seller invited', () => {
