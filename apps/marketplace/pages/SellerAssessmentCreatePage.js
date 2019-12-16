@@ -26,7 +26,7 @@ export class SellerAssessmentCreatePage extends Component {
       })
     }
   }
-//reshma
+  //reshma
   render() {
     if (this.props.errorMessage) {
       let hasFocused = false
