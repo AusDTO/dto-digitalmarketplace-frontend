@@ -7,7 +7,7 @@ import formProps from 'shared/form/formPropsSelector'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import AUtextInput from '@gov.au/text-inputs'
-import { required, requiredFile, validEmail, validPercentage } from 'marketplace/components/validators'
+import { required } from 'marketplace/components/validators'
 
 const maxDailyRateLimit = 99999
 
@@ -38,14 +38,14 @@ const SellerAssessmentRateStage = props => (
       Maximum rate
     </AUheadings>
 
-    {/* <ErrorAlert
+    <ErrorAlert
       model={props.model}
       messages={{
         greaterThanZero: 'The maximum daily rate must be greater than zero',
         lessThanLimit: `The maximum daily rate must be lower than $${maxDailyRateLimit}`,
         validWholeNumber: 'The maximum daily rate must be a whole number (e.g. 1200)'
       }}
-    /> */}
+    />
     <Textfield
       model={`${props.model}.maxDailyRate`}
       prefix={`$`}
@@ -62,7 +62,6 @@ const SellerAssessmentRateStage = props => (
       messages={{
         required: 'Maximum Daily Rate is required'
       }}
-      // defaultValue={`hi`}
     />
     <Textfield
       model={`${props.model}.markup`}
@@ -79,7 +78,6 @@ const SellerAssessmentRateStage = props => (
       messages={{
         required: 'Maximum mark-up is required'
       }}
-      // defaultValue={`hi`}
     />
     <Textfield
       model={`${props.model}.totalMaximumRate`}
@@ -93,7 +91,6 @@ const SellerAssessmentRateStage = props => (
         * (parseInt(props[props.model].markup, 10)/100) 
         +  (parseInt(props[props.model].maxDailyRate, 10)))}
       disabled={true}
-      // readOnly
     />
 
     {props.formButtons}
