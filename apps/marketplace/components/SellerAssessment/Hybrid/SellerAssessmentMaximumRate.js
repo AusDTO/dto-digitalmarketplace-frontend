@@ -65,14 +65,14 @@ const SellerAssessmentRateStage = props => (
       // defaultValue={`hi`}
     />
     <Textfield
-      model={`${props.model}.maximumMarkUp`}
+      model={`${props.model}.markup`}
       postfix={'%'}
-      label="Maximum mark-up?"
+      label="markup"
       description={`The percentage of on-costs to the day rate, including: your commission, workers compensation, payroll tax`}
-      name="maximumMarkUp"
-      id="maxDailyRate"
-      htmlFor="maxDailyRate"
-      defaultValue={props[props.model].maximumMarkUp}
+      name="markup"
+      id="markup"
+      htmlFor="markup"
+      defaultValue={props[props.model].markup}
       validators={{
         required
       }}
@@ -88,13 +88,12 @@ const SellerAssessmentRateStage = props => (
       name="totalMaximumRate"
       id="totalMaximumRate"
       htmlFor="totalMaximumRate"
-      // onChange={data => onRateChange('maximumMarkUp', data.target.value)}
-      // defaultValue={(props[props.model].maxDailyRate * (props[props.model].maximumMarkUp/100))}
       defaultValue={ Math.round(
         (parseInt(props[props.model].maxDailyRate, 10))
-        * (parseInt(props[props.model].maximumMarkUp, 10)/100) 
+        * (parseInt(props[props.model].markup, 10)/100) 
         +  (parseInt(props[props.model].maxDailyRate, 10)))}
       disabled={true}
+      // readOnly
     />
 
     {props.formButtons}

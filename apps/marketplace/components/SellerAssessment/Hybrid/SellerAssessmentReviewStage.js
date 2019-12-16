@@ -7,7 +7,7 @@ import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import SellerAssessmentHybridStages from './SellerAssessmentHybridStages'
 import styles from './SellerAssessmentReviewStage.scss'
-import { getCriteriaName } from './SellerAssessmentEvidenceStage'
+import { getCriteriaName } from '../Hybrid/SellerAssessmentHybridEvidenceStage'
 
 const SellerAssessmentReviewStage = props => (
   <Form model={props.model} onSubmit={props.onSubmit}>

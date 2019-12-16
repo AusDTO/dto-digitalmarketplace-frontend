@@ -20,12 +20,17 @@ export const SellerAssessmentFormReducer = {
   id: 0,
   domainId: 0,
   maxDailyRate: 0,
+  markup: 0,
+  database_size: 0,
+  placed_candidates: 0,
   criteria: [],
   evidence: {},
   created_at: null
 }
 //reshma
 export const SellerAssessmentEvidenceReducer = {
+  candidateFullName: '',
+  candidatePhoneNumber: '',
   client: '',
   refereeName: '',
   refereeNumber: '',

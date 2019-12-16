@@ -7,26 +7,18 @@ import formProps from 'shared/form/formPropsSelector'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 
+export const greaterThanZero = formValues => parseInt(formValues.database_size, 10) > 0
 
-const maxDailyRateLimit = 99999
-
-export const greaterThanZero = formValues => parseInt(formValues.maxDailyRate, 10) > 0
-
-export const lessThanLimit = formValues => parseInt(formValues.maxDailyRate, 10) < maxDailyRateLimit
-
-export const validWholeNumber = formValues => formValues.maxDailyRate && /^[0-9]+$/.test(formValues.maxDailyRate)
+export const validWholeNumber = formValues => formValues.database_size && /^[0-9]+$/.test(formValues.database_size)
 
 export const done = formValues =>
-  formValues.maxDailyRate && greaterThanZero(formValues) && lessThanLimit(formValues) && validWholeNumber(formValues)
-
+  formValues.database_size && greaterThanZero(formValues) && validWholeNumber(formValues)
 
 const SellerAssessmentCandidatePool = props => (
   <Form
     model={props.model}
     validators={{
       '': {
-        greaterThanZero,
-        lessThanLimit,
         validWholeNumber
       }
     }}
@@ -34,34 +26,34 @@ const SellerAssessmentCandidatePool = props => (
     onSubmitFailed={props.onSubmitFailed}
     validateOn="submit"
   >
-  <AUheadings level="1" size="xl">
-    Candidate Pool
-  </AUheadings>
+    <AUheadings level="1" size="xl">
+      Candidate Pool
+    </AUheadings>
 
-  <ErrorAlert
-    model={props.model}
-    messages={{
-      validWholeNumber: 'The size of your candidate database must be a whole number (e.g. 1200)'
-    }}
-  />
-  <Textfield
-    model={`${props.model}.candidateSize`}
-    label="What is the size of your candidate database?"
-    name="candidateSize"
-    id="candidateSize"
-    htmlFor="CandidateSize"
-    defaultValue={`0`}
+    <ErrorAlert
+      model={props.model}
+      messages={{
+        validWholeNumber: 'The size of your candidate database must be a whole number (e.g. 1200)'
+      }}
     />
-  <Textfield
-    model={`${props.model}.candidatesPlacedIn12Months`}
-    label={`How many candidates have you placed in ${props.meta.domain.name} roles in the last 12 months?"`}
-    name="candidatesPlacedIn12Months"
-    id="candidatesPlacedIn12Months"
-    htmlFor="candidatesPlacedIn12Months"
-    defaultValue={`0`}
+    <Textfield
+      model={`${props.model}.database_size`}
+      label="What is the size of your candidate database?"
+      name="database_size"
+      id="database_size"
+      htmlFor="database_size"
+      defaultValue={props[props.model].database_size}
     />
-  {props.formButtons}
-</Form>
+    <Textfield
+      model={`${props.model}.placed_candidates`}
+      label={`How many candidates have you placed in ${props.meta.domain.name} roles in the last 12 months?"`}
+      name="placed_candidates"
+      id="placed_candidates"
+      htmlFor="placed_candidates"
+      defaultValue={props[props.model].placed_candidates}
+    />
+    {props.formButtons}
+  </Form>
 )
 
 SellerAssessmentCandidatePool.defaultProps = {

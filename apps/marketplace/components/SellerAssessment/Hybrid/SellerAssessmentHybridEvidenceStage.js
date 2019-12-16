@@ -134,8 +134,8 @@ export const requiredEvidence = formValues =>
     ))
 
 export const done = formValues =>
-  requiredCandidateFullName(formValues) &&
-  requiredCandidatePhoneNumber(formValues) &&
+  // requiredCandidateFullName(formValues) &&
+  // requiredCandidatePhoneNumber(formValues) &&
   requiredClient(formValues) &&
   requiredRefereeName(formValues) &&
   requiredRefereeNumber(formValues) &&
@@ -264,8 +264,8 @@ class SellerAssessmentHybridEvidenceStage extends Component {
         model={this.props.model}
         validators={{
           '': {
-            requiredCandidateFullName: formValues => requiredCandidateFullName(formValues),
-            requiredCandiatePhoneNumber: formValues => requiredCandidatePhoneNumber(formValues),
+            // requiredCandidateFullName: formValues => requiredCandidateFullName(formValues),
+            // requiredCandiatePhoneNumber: formValues => requiredCandidatePhoneNumber(formValues),
             requiredClient: formValues => requiredClient(formValues),
             requiredRefereeName: formValues => requiredRefereeName(formValues),
             requiredRefereeNumber: formValues => requiredRefereeNumber(formValues),
@@ -293,9 +293,6 @@ class SellerAssessmentHybridEvidenceStage extends Component {
             <ErrorAlert
               model={this.props.model}
               messages={{
-                requiredClient: 'You must provide a client for each criteria response',
-                requiredCandidateFullName: 'You must provide a candidate full name for each criteria response',
-                requiredCandidatePhoneNumber: 'You must provide a valid candidate HEHE phone number for each criteria response',
                 requiredRefereeName: 'You must provide a referee name for each criteria response',
                 requiredRefereeNumber: 'You must provide a valid referee phone number for each criteria response',
                 requiredBackground: 'You must provide background for each criteria response',
