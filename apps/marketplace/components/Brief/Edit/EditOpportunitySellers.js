@@ -20,7 +20,7 @@ class EditOpportunitySellers extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      edited: false,
+      redirectToEditsTable: false,
       searchResults: [],
       sellerName: '',
       sellers: [],
@@ -36,7 +36,7 @@ class EditOpportunitySellers extends Component {
   handleContinueClick = data => {
     this.props.updateSellers(data.sellers)
     this.setState({
-      edited: true
+      redirectToEditsTable: true
     })
   }
 
@@ -98,7 +98,7 @@ class EditOpportunitySellers extends Component {
   render = () => {
     const { brief, model } = this.props
 
-    if (this.state.edited) {
+    if (this.state.redirectToEditsTable) {
       return <Redirect to={`${rootPath}/brief/${brief.id}/edit`} />
     }
 

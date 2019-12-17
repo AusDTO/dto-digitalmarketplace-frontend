@@ -17,7 +17,7 @@ class EditOpportunityTitle extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      edited: false
+      redirectToEditsTable: false
     }
 
     this.handleContinueClick = this.handleContinueClick.bind(this)
@@ -26,14 +26,14 @@ class EditOpportunityTitle extends Component {
   handleContinueClick = data => {
     this.props.setTitle(data.title)
     this.setState({
-      edited: true
+      redirectToEditsTable: true
     })
   }
 
   render = () => {
     const { brief, edits, model } = this.props
 
-    if (this.state.edited) {
+    if (this.state.redirectToEditsTable) {
       return <Redirect to={`${rootPath}/brief/${brief.id}/edit`} />
     }
 
