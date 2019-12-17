@@ -139,7 +139,8 @@ export class SellerAssessmentFlowPage extends Component {
       return <Redirect to={`${rootPath}/seller-assessment/${evidenceId}/completed`} push />
     }
 
-      if (this.props.isRecruiterFlag) {
+    // if(this.props.isHybridFlag){
+      if (this.props.isHybridFlag) {
         return (
           <ProgressFlow
             model={model}
@@ -155,6 +156,23 @@ export class SellerAssessmentFlowPage extends Component {
           />
         )
       }
+
+      // if (this.props.isRecruiterFlag) {
+      //   return (
+      //     <ProgressFlow
+      //       model={model}
+      //       meta={{ domain: this.props.domain, evidence: this.props.evidence }}
+      //       onStageMount={this.handleStageMount}
+      //       basename={`${rootPath}/seller-assessment/${evidenceId}`}
+      //       stages={SellerAssessmentHybridStages}
+      //       saveModel={this.saveEvidence}
+      //       showReturnButton={false}
+      //       showReviewButton={false}
+      //       publishText="Request assessment"
+      //       showConfirmationCheckbox={false}
+      //     />
+      //   )
+      // }
 
     return (
       <ProgressFlow
@@ -178,7 +196,8 @@ const mapStateToProps = state => ({
   domain: state.domain.domain,
   evidence: state.evidence,
   errorMessage: state.app.errorMessage,
-  isRecruiterFlag: state.app.isRecruiterFlag
+  isRecruiterFlag: state.app.isRecruiterFlag,
+  isHybridFlag: state.app.isHybridFlag
 })
 
 

@@ -33,7 +33,8 @@ const initialState = {
   notificationCount: null,
   agencyId: null,
   agencyDomains: null,
-  isRecruiterFlag: false
+  isRecruiterFlag: false,
+  isHybridFlag: false
 }
 
 const appReducer = (state = initialState, action) => {
@@ -82,7 +83,8 @@ const appReducer = (state = initialState, action) => {
         isPartOfTeam: action.newState.isPartOfTeam,
         agencyId: action.newState.agencyId,
         agencyDomains: action.newState.agencyDomains,
-        isRecruiterFlag: action.newState.isRecruiterFlag
+        isRecruiterFlag: action.newState.isRecruiterFlag,
+        isHybridFlag: action.newState.isHybridFlag,
       }
     default:
       return state
