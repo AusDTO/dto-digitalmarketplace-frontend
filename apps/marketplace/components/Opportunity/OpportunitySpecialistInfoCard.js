@@ -21,9 +21,9 @@ const OpportunitySpecialistInfoCard = props => (
         {' submitted'}
       </div>
     </div>
-    <div className="row">
-      <div className="col-xs-12">
-        {props.isOpen && props.closingDate && (
+    {props.isOpen && props.closingDate && (
+      <div className="row">
+        <div className="col-xs-12">
           <div>
             <span>Closes in</span>
             <br />
@@ -31,9 +31,9 @@ const OpportunitySpecialistInfoCard = props => (
               <ClosedDate countdown date={props.closingDate} />
             </strong>
           </div>
-        )}
+        </div>
       </div>
-    </div>
+    )}
     {props.isOpen && (
       <div className="row">
         <div className="col-xs-12">
