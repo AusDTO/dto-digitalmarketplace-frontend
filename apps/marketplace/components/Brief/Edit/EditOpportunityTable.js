@@ -13,6 +13,7 @@ class EditOpportunityTable extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      editSellersClicked: false,
       editTitleClicked: false
     }
   }
@@ -22,6 +23,10 @@ class EditOpportunityTable extends Component {
 
     if (this.state.editTitleClicked) {
       return <Redirect to="/title" />
+    }
+
+    if (this.state.editSellersClicked) {
+      return <Redirect to="/sellers" />
     }
 
     return (
@@ -47,7 +52,9 @@ class EditOpportunityTable extends Component {
                 </ul>
               </td>
               <td>
-                <a href={`${location.pathname}/sellers`}>Add sellers</a>
+                <AUbutton as="tertiary" onClick={() => this.setState({ editSellersClicked: true })}>
+                  Add sellers
+                </AUbutton>
               </td>
             </tr>
           )}

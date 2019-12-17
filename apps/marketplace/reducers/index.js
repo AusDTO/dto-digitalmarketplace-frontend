@@ -260,6 +260,7 @@ export default combineReducers({
       }
     },
     editOpportunityForm: {
+      sellers: {},
       title: ''
     },
     BuyerRFXForm: BuyerRFXFormReducer,

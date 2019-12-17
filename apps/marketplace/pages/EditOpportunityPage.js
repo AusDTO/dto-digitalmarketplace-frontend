@@ -8,6 +8,7 @@ import { setErrorMessage } from 'marketplace/actions/appActions'
 import { rootPath } from 'marketplace/routes'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import EditOpportunity from 'marketplace/components/Brief/Edit/EditOpportunity'
+import EditOpportunitySellers from 'marketplace/components/Brief/Edit/EditOpportunitySellers'
 import EditOpportunityTitle from 'marketplace/components/Brief/Edit/EditOpportunityTitle'
 
 const model = 'editOpportunityForm'
@@ -85,6 +86,7 @@ class EditOpportunityPage extends Component {
         <div className="col-xs-12">
           <Switch>
             <Route path="/title" render={() => <EditOpportunityTitle brief={brief} edits={edits} model={model} />} />
+            <Route path="/sellers" render={() => <EditOpportunitySellers brief={brief} model={model} />} />
             <Route
               path="/"
               render={() => (
