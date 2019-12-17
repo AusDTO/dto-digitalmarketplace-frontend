@@ -98,7 +98,7 @@ class BriefResponsePage extends Component {
 
   handleSaveClicked = () => {
     this.props.changeModel(`${this.props.model}.submit`, false)
-    this.handleBriefResponseSubmit(this.props[this.props.model])
+    this.handleBriefResponseSubmit(this.props[this.props.model], false)
   }
 
   handleBriefResponseDelete(id) {
@@ -137,7 +137,7 @@ class BriefResponsePage extends Component {
     window.scrollTo(0, 0)
   }
 
-  handleBriefResponseSubmit(values) {
+  handleBriefResponseSubmit(values, submit = true) {
     const { brief, match } = this.props
     const briefResponseType = match.params.briefResponseType
     const submitData = { ...mapResponseTypeToReducer[briefResponseType] }
@@ -147,7 +147,8 @@ class BriefResponsePage extends Component {
       }
       return true
     })
-    if (!values.submit) {
+    submitData.submit = submit
+    if (!submit) {
       this.props.handleSaveBriefResponse()
     }
     this.props.saveBriefResponse(brief.id, match.params.briefResponseId, submitData)
