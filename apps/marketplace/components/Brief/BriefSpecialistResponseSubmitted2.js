@@ -81,7 +81,7 @@ const BriefSpecialistResponseSubmitted2 = ({
           <Feedback
             app={app}
             handleSubmit={handleSubmit}
-            difficultyQuestion="How easy or difficult was it for you to respond to this brief?"
+            difficultyQuestion="How easy or difficult was it for you to respond to this opportunity?"
             commentQuestion="How would you improve this experience?"
             objectAction="responded_to"
           />
