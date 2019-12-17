@@ -151,7 +151,7 @@ export class BriefATMResponseForm extends Component {
                 <AUheading level="1" size="xl">
                   Apply for &apos;{brief.title}&apos;
                 </AUheading>
-                {briefResponseStatus === 'submitted' && (
+                {briefResponseStatus === 'submitted' && !this.state.showDeleteAlert && (
                   <input
                     type="button"
                     className={`${styles.withdrawButton} au-btn`}
