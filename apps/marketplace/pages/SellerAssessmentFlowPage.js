@@ -157,22 +157,22 @@ export class SellerAssessmentFlowPage extends Component {
         )
       }
 
-      // if (this.props.isRecruiterFlag) {
-      //   return (
-      //     <ProgressFlow
-      //       model={model}
-      //       meta={{ domain: this.props.domain, evidence: this.props.evidence }}
-      //       onStageMount={this.handleStageMount}
-      //       basename={`${rootPath}/seller-assessment/${evidenceId}`}
-      //       stages={SellerAssessmentHybridStages}
-      //       saveModel={this.saveEvidence}
-      //       showReturnButton={false}
-      //       showReviewButton={false}
-      //       publishText="Request assessment"
-      //       showConfirmationCheckbox={false}
-      //     />
-      //   )
-      // }
+      else if (this.props.isRecruiterFlag) {
+        return (
+          <ProgressFlow
+            model={model}
+            meta={{ domain: this.props.domain, evidence: this.props.evidence }}
+            onStageMount={this.handleStageMount}
+            basename={`${rootPath}/seller-assessment/${evidenceId}`}
+            stages={SellerAssessmentHybridStages}
+            saveModel={this.saveEvidence}
+            showReturnButton={false}
+            showReviewButton={false}
+            publishText="Request assessment"
+            showConfirmationCheckbox={false}
+          />
+        )
+      }
 
     return (
       <ProgressFlow
