@@ -72,7 +72,7 @@ export class Opportunities extends Component {
                     Name
                   </th>
                   <th scope="col" className={`${styles.tableColumnWidth6} ${styles.textAlignLeft}`}>
-                    Canberra closing time
+                    Closing time
                   </th>
                   <th scope="col" className={`${styles.tableColumnWidth1} ${styles.textAlignLeft}`}>
                     Status
@@ -92,7 +92,7 @@ export class Opportunities extends Component {
                       {withdrawn(opportunity) ? (
                         <span className={styles.darkGrayText}>The buyer has withdrawn this opportunity</span>
                       ) : (
-                        format(opportunity.closed_at, 'hA, dddd Do MMMM YYYY')
+                        format(opportunity.closed_at, 'ha, dddd D MMMM YYYY')
                       )}
                     </td>
                     <td className={styles.tableColumnWidth1}>{getStatusBadge(opportunity)}</td>

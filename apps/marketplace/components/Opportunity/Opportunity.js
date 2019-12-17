@@ -184,7 +184,7 @@ const Opportunity = props => {
               </div>
               {getQuestionsCloseDate(brief) && (
                 <div className="col-xs-12 col-sm-8">
-                  {`${format(getQuestionsCloseDate(brief), 'dddd D MMMM YYYY')} at 6PM (in Canberra)`}
+                  {`${format(getQuestionsCloseDate(brief), 'ha, dddd D MMMM YYYY')}`}
                 </div>
               )}
             </div>
@@ -193,9 +193,7 @@ const Opportunity = props => {
                 <strong>Application closing date</strong>
               </div>
               {getClosingTime(brief) && (
-                <div className="col-xs-12 col-sm-8">
-                  {`${format(getClosingTime(brief), 'dddd D MMMM YYYY')} at 6PM (in Canberra)`}
-                </div>
+                <div className="col-xs-12 col-sm-8">{`${format(getClosingTime(brief), 'ha, dddd D MMMM YYYY')}`}</div>
               )}
             </div>
             <div className="row">

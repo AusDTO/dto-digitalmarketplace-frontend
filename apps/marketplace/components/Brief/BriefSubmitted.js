@@ -16,9 +16,7 @@ const BriefSubmitted = props => (
             <p>
               It will be open{' '}
               {props.brief && (
-                <span>
-                  until {format(new Date(props.brief.applicationsClosedAt), 'MMMM Do, YYYY [at] ha [in Canberra]')}
-                </span>
+                <span>until {format(new Date(props.brief.applicationsClosedAt), 'MMMM Do, YYYY [at] ha')}</span>
               )}
             </p>
             <a href={`/${props.brief.frameworkSlug}/opportunities/${props.brief.id}`}>View live opportunity</a>
