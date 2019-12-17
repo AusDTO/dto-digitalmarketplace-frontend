@@ -31,7 +31,8 @@ class EditOpportunityTitle extends Component {
   }
 
   render = () => {
-    const { brief, edits, model } = this.props
+    const { brief, model } = this.props
+    const edits = this.props[model]
 
     if (this.state.redirectToEditsTable) {
       return <Redirect to={`${rootPath}/brief/${brief.id}/edit`} />
@@ -87,7 +88,7 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
-  setTitle: title => dispatch(actions.change(props.edits.title, title))
+  setTitle: title => dispatch(actions.change(`${props.model}.title`, title))
 })
 
 export default connect(

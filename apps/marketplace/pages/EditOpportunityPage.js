@@ -85,7 +85,7 @@ class EditOpportunityPage extends Component {
       <BrowserRouter basename={`${rootPath}/brief/${brief.id}/edit`}>
         <div className="col-xs-12">
           <Switch>
-            <Route path="/title" render={() => <EditOpportunityTitle brief={brief} edits={edits} model={model} />} />
+            <Route path="/title" render={() => <EditOpportunityTitle brief={brief} model={model} />} />
             <Route path="/sellers" render={() => <EditOpportunitySellers brief={brief} model={model} />} />
             <Route
               path="/"
