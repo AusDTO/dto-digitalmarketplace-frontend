@@ -35,7 +35,7 @@ class EditOpportunityTitle extends Component {
     const edits = this.props[model]
 
     if (this.state.redirectToEditsTable) {
-      return <Redirect to={`${rootPath}/brief/${brief.id}/edit`} />
+      return <Redirect to="/" />
     }
 
     return (

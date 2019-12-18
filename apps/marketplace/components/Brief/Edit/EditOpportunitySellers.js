@@ -99,7 +99,7 @@ class EditOpportunitySellers extends Component {
     const { brief, model } = this.props
 
     if (this.state.redirectToEditsTable) {
-      return <Redirect to={`${rootPath}/brief/${brief.id}/edit`} />
+      return <Redirect to="/" />
     }
 
     return (
