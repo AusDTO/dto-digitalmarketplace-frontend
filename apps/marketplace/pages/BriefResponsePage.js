@@ -62,7 +62,7 @@ class BriefResponsePage extends Component {
       this.resetForm()
       this.props.loadInitialData(briefId).then(briefResponse => {
         if (briefResponse.data.brief.status !== 'live') {
-          this.props.setError('This opportunity has closed - you can no longer make edits.')
+          this.props.setError(`Edits can't be made on a ${briefResponse.data.brief.status} opportunity`)
           this.setState({ loading: false })
           return true
         }
