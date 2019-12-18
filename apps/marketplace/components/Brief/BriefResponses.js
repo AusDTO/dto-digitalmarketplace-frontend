@@ -171,8 +171,11 @@ class BriefResponses extends Component {
                   </tbody>
                 </table>
               )}
-              {this.props.responses.length === 0 && (
-                <p className={styles.lighter}>You have no submitted candidates for this opportunity.</p>
+              {this.props.responses.length === 0 && parseInt(this.props.brief.numberOfSuppliers, 10) > 1 && (
+                <p className={styles.lighter}>You can submit up to {this.props.brief.numberOfSuppliers} candidates.</p>
+              )}
+              {this.props.responses.length === 0 && parseInt(this.props.brief.numberOfSuppliers, 10) === 1 && (
+                <p className={styles.lighter}>You can submit 1 candidate.</p>
               )}
             </article>
           </div>

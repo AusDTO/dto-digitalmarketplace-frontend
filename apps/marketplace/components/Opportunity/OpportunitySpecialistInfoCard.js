@@ -260,12 +260,7 @@ const OpportunitySpecialistInfoCard = props => (
                 <React.Fragment>
                   {!props.hasResponded && props.sellerResponses === 0 && (
                     <p>
-                      <a
-                        href={`${rootPath}/brief/${props.briefId}/${
-                          props.briefLot === 'specialist' ? `${props.briefLot}2` : props.briefLot
-                        }/respond`}
-                        className={`${styles.button} au-btn`}
-                      >
+                      <a href={`${rootPath}/brief/${props.briefId}/responses`} className={`${styles.button} au-btn`}>
                         Apply for opportunity
                       </a>
                     </p>
@@ -344,7 +339,6 @@ OpportunitySpecialistInfoCard.propTypes = {
   isBriefOwner: PropTypes.bool,
   closingDate: PropTypes.string.isRequired,
   briefId: PropTypes.number.isRequired,
-  briefLot: PropTypes.string.isRequired,
   briefStatus: PropTypes.string.isRequired,
   category: PropTypes.string,
   sellerCategory: PropTypes.string.isRequired,
