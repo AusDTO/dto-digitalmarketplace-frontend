@@ -31,7 +31,7 @@ class BriefResponsesPage extends Component {
             loading: false
           })
           if (response.data.brief.status !== 'live') {
-            this.props.setError('You can only edit or submit candidates when the opportunity is open')
+            this.props.setError('This opportunity has closed - you can no longer make edits.')
           }
           if (response.data.brief.lot !== 'specialist') {
             this.props.setError('Only specialist opportunities allow you to edit or add candidates')
