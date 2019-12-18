@@ -7,7 +7,6 @@ import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 
 import { required } from 'marketplace/components/validators'
-import { rootPath } from 'marketplace/routes'
 import formProps from 'shared/form/formPropsSelector'
 import Textfield from 'shared/form/Textfield'
 
@@ -17,10 +16,20 @@ class EditOpportunityTitle extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      initialTitle: props[props.model].title ? props[props.model].title : props.brief.title,
       redirectToEditsTable: false
     }
 
+    this.handleCancelClick = this.handleCancelClick.bind(this)
     this.handleContinueClick = this.handleContinueClick.bind(this)
+  }
+
+  handleCancelClick = () => {
+    const { initialTitle } = this.state
+    this.props.resetTitle(initialTitle)
+    this.setState({
+      redirectToEditsTable: true
+    })
   }
 
   handleContinueClick = data => {
@@ -31,10 +40,10 @@ class EditOpportunityTitle extends Component {
   }
 
   render = () => {
-    const { brief, model } = this.props
-    const edits = this.props[model]
+    const { model } = this.props
+    const { initialTitle, redirectToEditsTable } = this.state
 
-    if (this.state.redirectToEditsTable) {
+    if (redirectToEditsTable) {
       return <Redirect to="/" />
     }
 
@@ -62,7 +71,7 @@ class EditOpportunityTitle extends Component {
             name="title"
             id="title"
             htmlFor="title"
-            defaultValue={edits.title ? edits.title : brief.title}
+            defaultValue={initialTitle}
             maxLength={100}
             validators={{
               required
@@ -74,7 +83,7 @@ class EditOpportunityTitle extends Component {
         </div>
         <div className={`row ${styles.marginTop2}`}>
           <AUbutton type="submit">Continue</AUbutton>
-          <AUbutton as="tertiary" link={`${rootPath}/brief/${brief.id}/edit`}>
+          <AUbutton as="tertiary" onClick={this.handleCancelClick}>
             Cancel update
           </AUbutton>
         </div>
@@ -88,6 +97,7 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
+  resetTitle: initialTitle => dispatch(actions.change(`${props.model}.title`, initialTitle)),
   setTitle: title => dispatch(actions.change(`${props.model}.title`, title))
 })
 
