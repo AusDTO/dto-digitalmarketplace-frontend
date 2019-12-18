@@ -42,21 +42,35 @@ class EditOpportunityTable extends Component {
             </td>
           </tr>
           {!isOpenToAll && (
-            <tr>
-              <th scope="row">Invited sellers</th>
-              <td>
-                <ul>
-                  {Object.values(brief.sellers).map(seller => (
-                    <li key={seller.name}>{seller.name}</li>
-                  ))}
-                </ul>
-              </td>
-              <td>
-                <AUbutton as="tertiary" onClick={() => this.setState({ editSellersClicked: true })}>
-                  Add sellers
-                </AUbutton>
-              </td>
-            </tr>
+            <React.Fragment>
+              <tr>
+                <th scope="row">Invited sellers</th>
+                <td>
+                  <ul>
+                    {Object.values(brief.sellers).map(seller => (
+                      <li key={seller.name}>{seller.name}</li>
+                    ))}
+                  </ul>
+                </td>
+                <td>
+                  <AUbutton as="tertiary" onClick={() => this.setState({ editSellersClicked: true })}>
+                    Add sellers
+                  </AUbutton>
+                </td>
+              </tr>
+              {Object.keys(edits.sellers).length > 0 && (
+                <tr>
+                  <th scope="row">Sellers to invite</th>
+                  <td>
+                    <ul>
+                      {Object.values(edits.sellers).map(seller => (
+                        <li key={seller.name}>{seller.name}</li>
+                      ))}
+                    </ul>
+                  </td>
+                </tr>
+              )}
+            </React.Fragment>
           )}
           <tr>
             <th scope="row">Summary</th>
