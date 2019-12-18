@@ -199,7 +199,7 @@ class EvidenceAssessment extends React.Component {
                 <strong>Client:</strong> {evidence.data.evidence[criteriaId].client}
               </p>
               <p>
-                <strong>CandidateName:</strong> {evidence.data.evidence[criteriaId].candidateFullName}: {evidence.data.evidence[criteriaId].candidateFullName}
+                <strong>CandidateName:</strong> {evidence.data.evidence[criteriaId].candidateFullName}: {evidence.data.evidence[criteriaId].candidatePhoneNumber}
               </p>
               <p>
                 <strong>Date:</strong> {evidence.data.evidence[criteriaId].startDate} - {evidence.data.evidence[criteriaId].endDate}
