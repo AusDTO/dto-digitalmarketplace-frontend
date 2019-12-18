@@ -129,12 +129,17 @@ class BriefResponses extends Component {
                   type="warning"
                 />
               )}
-              <AUheading level="1" size="xl">
-                Edit or submit candidates
-              </AUheading>
+              <span className={styles.lighter}>
+                {this.props.brief.title} ({this.props.brief.id})
+              </span>
+              <div>
+                <AUheading level="1" size="xl">
+                  Edit or submit candidates
+                </AUheading>
+              </div>
               <p>Buyers will only be able to view your submitted candidates after the closing date.</p>
               {this.props.responses.length > 0 && (
-                <table className={`${stylesMain.defaultStyle} col-xs-12`}>
+                <table className={`${stylesMain.defaultStyle} ${stylesMain.marginTop1} col-xs-12`}>
                   <thead>
                     <tr className={stylesMain.headingRow}>
                       <th scope="col" className={`${stylesMain.tableColumnWidth11} ${stylesMain.textAlignLeft}`}>
