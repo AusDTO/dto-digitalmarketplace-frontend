@@ -20,6 +20,7 @@ class EditOpportunityTable extends Component {
 
   render = () => {
     const { brief, edits, isOpenToAll, location } = this.props
+    const sellersToInvite = Object.keys(edits.sellers).filter(code => !(code in brief.sellers))
 
     if (this.state.editTitleClicked) {
       return <Redirect to="/title" />
@@ -58,13 +59,13 @@ class EditOpportunityTable extends Component {
                   </AUbutton>
                 </td>
               </tr>
-              {Object.keys(edits.sellers).length > 0 && (
+              {sellersToInvite.length > 0 && (
                 <tr>
                   <th scope="row">Sellers to invite</th>
                   <td>
                     <ul>
-                      {Object.values(edits.sellers).map(seller => (
-                        <li key={seller.name}>{seller.name}</li>
+                      {sellersToInvite.map(code => (
+                        <li key={edits.sellers[code].name}>{edits.sellers[code].name}</li>
                       ))}
                     </ul>
                   </td>
