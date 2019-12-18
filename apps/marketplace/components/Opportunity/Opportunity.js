@@ -106,6 +106,10 @@ const Opportunity = props => {
     briefResponseCount,
     invitedSellerCount,
     supplierBriefResponseCount,
+    supplierBriefResponseCountSubmitted,
+    supplierBriefResponseCountDraft,
+    supplierBriefResponseId,
+    supplierBriefResponseIsDraft,
     canRespond,
     isAssessedForCategory,
     isAssessedForAnyCategory,
@@ -582,6 +586,8 @@ const Opportunity = props => {
               sellersInvited={invitedSellerCount}
               sellersApplied={briefResponseCount}
               sellerResponses={supplierBriefResponseCount}
+              supplierBriefResponseCountSubmitted={supplierBriefResponseCountSubmitted}
+              supplierBriefResponseCountDraft={supplierBriefResponseCountDraft}
               isOpen={brief.status === 'live'}
               closingDate={getClosingTime(brief)}
               canRespond={canRespond}
@@ -617,6 +623,8 @@ const Opportunity = props => {
             />
           ) : (
             <OpportunityInfoCard
+              supplierBriefResponseId={supplierBriefResponseId}
+              supplierBriefResponseIsDraft={supplierBriefResponseIsDraft}
               sellersInvited={invitedSellerCount}
               sellersApplied={briefResponseCount}
               isOpen={brief.status === 'live'}
@@ -662,6 +670,10 @@ Opportunity.defaultProps = {
   briefResponseCount: 0,
   invitedSellerCount: 0,
   supplierBriefResponseCount: 0,
+  supplierBriefResponseCountSubmitted: 0,
+  supplierBriefResponseCountDraft: 0,
+  supplierBriefResponseId: 0,
+  supplierBriefResponseIsDraft: false,
   canRespond: false,
   isInvited: false,
   isAssessedForCategory: false,
@@ -736,6 +748,10 @@ Opportunity.propTypes = {
   briefResponseCount: PropTypes.number,
   invitedSellerCount: PropTypes.number,
   supplierBriefResponseCount: PropTypes.number,
+  supplierBriefResponseCountSubmitted: PropTypes.number,
+  supplierBriefResponseCountDraft: PropTypes.number,
+  supplierBriefResponseId: PropTypes.number,
+  supplierBriefResponseIsDraft: PropTypes.bool,
   canRespond: PropTypes.bool,
   isInvited: PropTypes.bool,
   isAssessedForCategory: PropTypes.bool,

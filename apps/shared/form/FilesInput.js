@@ -10,13 +10,13 @@ import styles from './scss/FilesInput.scss'
 import FileInput from './FileInput'
 
 const FilesInput = props => {
-  const { fileId, label, description, hint, formFields, uploading, accept } = props
+  const { fileId, label, description, hint, formFields, uploading, accept, name } = props
 
   return (
     <div className={label ? 'field' : styles.noLabel}>
       <div className={styles.fileInput}>
         {label && (
-          <label className={`${styles.label} question-heading au-text-input__label`} htmlFor={`file_${fileId}`}>
+          <label className={`${styles.label} question-heading au-text-input__label`} htmlFor={`file_${name}_${fileId}`}>
             {label}
           </label>
         )}
