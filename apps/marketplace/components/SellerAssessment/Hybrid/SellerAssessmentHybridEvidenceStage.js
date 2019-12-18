@@ -134,8 +134,8 @@ export const requiredEvidence = formValues =>
     ))
 
 export const done = formValues =>
-  // requiredCandidateFullName(formValues) &&
-  // requiredCandidatePhoneNumber(formValues) &&
+  requiredCandidateFullName(formValues) &&
+  requiredCandidatePhoneNumber(formValues) &&
   requiredClient(formValues) &&
   requiredRefereeName(formValues) &&
   requiredRefereeNumber(formValues) &&
@@ -156,8 +156,16 @@ class SellerAssessmentHybridEvidenceStage extends Component {
   }
 
   setAllOtherCriteriaFromFirst() {
+
+    // if ('criteria' in this.props[this.props.model] && this.props[this.props.model].criteria.length > 0 && isRecruiterCriteria()) {
+    //   console.log("I AM HERE YOU BLIND PERSON")
+    // }
+
     if ('criteria' in this.props[this.props.model] && this.props[this.props.model].criteria.length > 0) {
       const firstCriteriaId = this.props[this.props.model].criteria[0]
+      // const firstCriteriaId = this.props[this.isRecruiterCriteria(criteriaId)]
+      // {this.isRecruiterCriteria(criteriaId) && (
+      
       this.updateAllOtherCriteriaFromFirst('client', this.props[this.props.model].evidence[firstCriteriaId].client)
       this.updateAllOtherCriteriaFromFirst(
         'refereeName',
@@ -264,8 +272,8 @@ class SellerAssessmentHybridEvidenceStage extends Component {
         model={this.props.model}
         validators={{
           '': {
-            // requiredCandidateFullName: formValues => requiredCandidateFullName(formValues),
-            // requiredCandiatePhoneNumber: formValues => requiredCandidatePhoneNumber(formValues),
+            requiredCandidateFullName: formValues => requiredCandidateFullName(formValues),
+            requiredCandiatePhoneNumber: formValues => requiredCandidatePhoneNumber(formValues),
             requiredClient: formValues => requiredClient(formValues),
             requiredRefereeName: formValues => requiredRefereeName(formValues),
             requiredRefereeNumber: formValues => requiredRefereeNumber(formValues),
@@ -292,15 +300,15 @@ class SellerAssessmentHybridEvidenceStage extends Component {
           <React.Fragment> 
             <ErrorAlert
               model={this.props.model}
-              messages={{
-                requiredRefereeName: 'You must provide a referee name for each criteria response',
-                requiredRefereeNumber: 'You must provide a valid referee phone number for each criteria response',
-                requiredBackground: 'You must provide background for each criteria response',
-                requiredStartDate: 'You must select a start date for each criteria response',
-                requiredEndDate: 'You must select an end date for each criteria response',
-                validDates: 'The start date must be before the end date for each criteria response',
-                requiredEvidence: `The evidence for each criteria must be at least ${minimumWordRequirement} words in length`
-              }}
+              // messages={{
+              //   requiredRefereeName: 'You must provide a referee name for each criteria response',
+              //   requiredRefereeNumber: 'You must provide a valid referee phone number for each criteria response',
+              //   requiredBackground: 'You must provide background for each criteria response',
+              //   requiredStartDate: 'You must select a start date for each criteria response',
+              //   requiredEndDate: 'You must select an end date for each criteria response',
+              //   validDates: 'The start date must be before the end date for each criteria response',
+              //   requiredEvidence: `The evidence for each criteria must be at least ${minimumWordRequirement} words in length`
+              // }}
             />
             {this.props[this.props.model].criteria.map((criteriaId, index) => (
               <div
@@ -339,7 +347,7 @@ class SellerAssessmentHybridEvidenceStage extends Component {
                           <Textfield
                             model={`${this.props.model}.evidence[${criteriaId}].candidateFullName`}
                             defaultValue={this.props[this.props.model].evidence[criteriaId].candidateFullName}
-                            disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                            // disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
                             label="Candidate's full name"
                             description="We may contact your chosen candidate to confirm their experiecne with your organisation."
                             name={`referee_name_${criteriaId}`}
@@ -358,7 +366,7 @@ class SellerAssessmentHybridEvidenceStage extends Component {
                           />
                           <Textfield
                             model={`${this.props.model}.evidence[${criteriaId}].candidatePhoneNumber`}
-                            disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                            // disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
                             defaultValue={this.props[this.props.model].evidence[criteriaId].candidatePhoneNumber}
                             label="Candidate's phone number"
                             description="Please include the area code for landlines."
