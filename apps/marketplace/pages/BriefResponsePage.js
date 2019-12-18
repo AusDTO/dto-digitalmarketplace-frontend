@@ -60,8 +60,13 @@ class BriefResponsePage extends Component {
     const briefResponseType = this.props.match.params.briefResponseType
     if (briefId && briefResponseId) {
       this.resetForm()
-      this.props.loadInitialData(briefId).then(
-        this.props.loadBriefResponse(briefResponseId).then(response => {
+      this.props.loadInitialData(briefId).then(briefResponse => {
+        if (briefResponse.data.brief.status !== 'live') {
+          this.props.setError('You can only edit or submit a response when the opportunity is open')
+          this.setState({ loading: false })
+          return true
+        }
+        return this.props.loadBriefResponse(briefResponseId).then(response => {
           const data = { ...mapResponseTypeToReducer[briefResponseType] }
           if (response.data) {
             Object.keys(response.data).map(property => {
@@ -72,7 +77,7 @@ class BriefResponsePage extends Component {
             })
 
             if (response.data.status === 'withdrawn') {
-              this.props.setError("You can't edit withdrawn brief responses.")
+              this.props.setError("You can't edit withdrawn responses.")
             }
 
             this.props.replaceModel(data)
@@ -85,7 +90,7 @@ class BriefResponsePage extends Component {
           }
           this.setState({ loading: false })
         })
-      )
+      })
     }
   }
 
@@ -118,8 +123,8 @@ class BriefResponsePage extends Component {
   handleFeedbackSubmit(values) {
     this.props.handleFeedbackSubmit({
       timeToComplete: this.state.submitClicked ? this.state.submitClicked - this.props.loadedAt : null,
-      object_id: this.props.match.params.briefResponseId,
-      object_type: 'BriefResponse',
+      object_id: this.props.match.params.briefId,
+      object_type: 'Brief',
       userType: this.props.app.userType,
       ...values
     })
