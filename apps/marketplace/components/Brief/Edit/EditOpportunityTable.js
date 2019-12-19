@@ -55,7 +55,7 @@ class EditOpportunityTable extends Component {
                 </td>
                 <td>
                   <AUbutton as="tertiary" onClick={() => this.setState({ editSellersClicked: true })}>
-                    Add sellers
+                    {sellersToInvite.length > 0 ? 'Edit' : 'Add'} sellers
                   </AUbutton>
                 </td>
               </tr>
