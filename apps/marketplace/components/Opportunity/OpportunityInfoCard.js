@@ -37,6 +37,8 @@ const OpportunityInfoCard = props => {
     sellerCategory,
     sellersApplied,
     sellersInvited,
+    supplierBriefResponseId,
+    supplierBriefResponseIsDraft,
     supplierCode
   } = props
   const closedEarly = isBefore(parse(closingDate), parse(originalClosedAt))
@@ -259,7 +261,6 @@ const OpportunityInfoCard = props => {
                 </p>
               </span>
             )}
-
           {isOpen &&
             loggedIn &&
             isApprovedSeller &&
@@ -281,9 +282,35 @@ const OpportunityInfoCard = props => {
               (['rfx', 'training2'].includes(briefLot) && isAssessedForCategory)) &&
             canRespond && (
               <div>
-                {hasResponded ? (
-                  <p className={styles.invitedStatus}>You have already applied for this opportunity.</p>
-                ) : (
+                {hasResponded && (
+                  <React.Fragment>
+                    <p className={styles.invitedStatus}>You have already submitted a response.</p>
+                    {supplierBriefResponseId && (
+                      <p>
+                        <a
+                          href={`${rootPath}/brief/${briefId}/${briefLot}/respond/${supplierBriefResponseId}`}
+                          className={`${styles.button} au-btn`}
+                        >
+                          Edit submission
+                        </a>
+                      </p>
+                    )}
+                  </React.Fragment>
+                )}
+                {!hasResponded && supplierBriefResponseIsDraft && supplierBriefResponseId && (
+                  <React.Fragment>
+                    <p className={styles.invitedStatus}>You have started your submission.</p>
+                    <p>
+                      <a
+                        href={`${rootPath}/brief/${briefId}/${briefLot}/respond/${supplierBriefResponseId}`}
+                        className={`${styles.button} au-btn`}
+                      >
+                        Edit draft submission
+                      </a>
+                    </p>
+                  </React.Fragment>
+                )}
+                {!hasResponded && !supplierBriefResponseIsDraft && (
                   <div>
                     <a href={`${rootPath}/brief/${briefId}/${briefLot}/respond`} className={`${styles.button} au-btn`}>
                       Apply for opportunity
@@ -324,7 +351,8 @@ OpportunityInfoCard.defaultProps = {
   isBriefOwner: false,
   hasSignedCurrentAgreement: false,
   supplierCode: null,
-  originalClosedAt: ''
+  originalClosedAt: '',
+  supplierBriefResponseId: 0
 }
 
 OpportunityInfoCard.propTypes = {
@@ -358,7 +386,8 @@ OpportunityInfoCard.propTypes = {
   sellerCategory: PropTypes.string.isRequired,
   hasSignedCurrentAgreement: PropTypes.bool,
   supplierCode: PropTypes.number,
-  originalClosedAt: PropTypes.string
+  originalClosedAt: PropTypes.string,
+  supplierBriefResponseId: PropTypes.number
 }
 
 export default OpportunityInfoCard

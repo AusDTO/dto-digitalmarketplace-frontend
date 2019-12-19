@@ -239,6 +239,10 @@ table.defaultStyle {
   width: max-content;
   white-space: nowrap;
 
+  &.first {
+    margin-bottom: 0.5rem;
+  }
+
   &.green {
     border: solid 3px #00AC78;
     color: #00855d;

@@ -167,7 +167,9 @@ class Overview extends Component {
                   <div className={styles.stageStatus}>
                     {invitedSellers > 0 && (
                       <span>
-                        {invitedSellers} seller{invitedSellers > 1 && `s`} invited
+                        <a href={`${rootPath}/brief/${brief.id}/invited`}>
+                          {invitedSellers} seller{invitedSellers > 1 && `s`} invited
+                        </a>
                       </span>
                     )}
                   </div>
