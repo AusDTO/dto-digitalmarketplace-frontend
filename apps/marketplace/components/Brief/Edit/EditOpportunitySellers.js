@@ -79,7 +79,7 @@ class EditOpportunitySellers extends Component {
     this.setState({
       timeoutId: setTimeout(() => {
         if (this.state.sellerName && this.state.sellerName.length >= 2) {
-          findSuppliers(this.state.sellerName, brief.sellerCategory, false)
+          findSuppliers(this.state.sellerName, brief.sellerCategory, false, Object.keys(brief.sellers))
             .then(data => {
               this.setState({
                 searchResults: data.sellers
@@ -158,7 +158,8 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
-  findSellers: (keyword, category, allSellers) => dispatch(findSuppliers(keyword, category, allSellers)),
+  findSellers: (keyword, category, allSellers, exclude) =>
+    dispatch(findSuppliers(keyword, category, allSellers, exclude)),
   updateSellers: sellers => dispatch(actions.change(`${props.model}.sellers`, sellers))
 })
 
