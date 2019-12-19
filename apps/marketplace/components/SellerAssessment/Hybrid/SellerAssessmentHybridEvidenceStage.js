@@ -54,83 +54,83 @@ export const requiredClient = (formValues, meta) =>
       criteriaId => formValues.evidence[criteriaId] && (isRecruiterCriteria(criteriaId, meta.domain.criteria) || required(formValues.evidence[criteriaId].client))
     ))
 
-export const requiredRefereeName = formValues =>
+export const requiredRefereeName = (formValues, meta) =>
   formValues.evidence &&
   Object.keys(formValues.evidence).length > 0 &&
   (formValues.criteria.length === 0 ||
     formValues.criteria.every(
-      criteriaId => formValues.evidence[criteriaId] && required(formValues.evidence[criteriaId].refereeName)
+      criteriaId => formValues.evidence[criteriaId] && (isRecruiterCriteria(criteriaId, meta.domain.criteria) || required(formValues.evidence[criteriaId].refereeName))
     ))
 
-export const requiredRefereeNumber = formValues =>
-  formValues.evidence &&
-  Object.keys(formValues.evidence).length > 0 &&
-  (formValues.criteria.length === 0 ||
-    formValues.criteria.every(
-      criteriaId =>
-        formValues.evidence[criteriaId] &&
-        required(formValues.evidence[criteriaId].refereeNumber) &&
-        validPhoneNumber(formValues.evidence[criteriaId].refereeNumber)
-    ))
-
-export const requiredCandidateFullName = formValues =>
-  formValues.evidence &&
-  Object.keys(formValues.evidence).length > 0 &&
-  (formValues.criteria.length === 0 ||
-    formValues.criteria.every(
-      criteriaId => formValues.evidence[criteriaId] && required(formValues.evidence[criteriaId].candidateFullName)
-    ))
-
-export const requiredCandidatePhoneNumber = formValues =>
+export const requiredRefereeNumber = (formValues, meta) =>
   formValues.evidence &&
   Object.keys(formValues.evidence).length > 0 &&
   (formValues.criteria.length === 0 ||
     formValues.criteria.every(
       criteriaId =>
         formValues.evidence[criteriaId] &&
-        required(formValues.evidence[criteriaId].candidatePhoneNumber) &&
-        validPhoneNumber(formValues.evidence[criteriaId].candidatePhoneNumber)
+        (isRecruiterCriteria(criteriaId, meta.domain.criteria) || required(formValues.evidence[criteriaId].refereeNumber)) &&
+        (isRecruiterCriteria(criteriaId, meta.domain.criteria) || validPhoneNumber(formValues.evidence[criteriaId].refereeNumber))
     ))
 
-export const requiredBackground = formValues =>
+export const requiredCandidateFullName = (formValues, meta) =>
   formValues.evidence &&
   Object.keys(formValues.evidence).length > 0 &&
   (formValues.criteria.length === 0 ||
     formValues.criteria.every(
-      criteriaId => formValues.evidence[criteriaId] && required(formValues.evidence[criteriaId].background)
+      criteriaId => formValues.evidence[criteriaId] && (!isRecruiterCriteria(criteriaId, meta.domain.criteria) || required(formValues.evidence[criteriaId].candidateFullName))
     ))
 
-export const requiredStartDate = formValues =>
+export const requiredCandidatePhoneNumber = (formValues, meta) =>
   formValues.evidence &&
   Object.keys(formValues.evidence).length > 0 &&
   (formValues.criteria.length === 0 ||
     formValues.criteria.every(
-      criteriaId => formValues.evidence[criteriaId] && required(formValues.evidence[criteriaId].startDate)
+      criteriaId =>
+        formValues.evidence[criteriaId] &&
+        (!isRecruiterCriteria(criteriaId, meta.domain.criteria) || required(formValues.evidence[criteriaId].candidatePhoneNumber)) &&
+        (!isRecruiterCriteria(criteriaId, meta.domain.criteria) || validPhoneNumber(formValues.evidence[criteriaId].candidatePhoneNumber))
     ))
 
-export const requiredEndDate = formValues =>
+export const requiredBackground = (formValues, meta) =>
   formValues.evidence &&
   Object.keys(formValues.evidence).length > 0 &&
   (formValues.criteria.length === 0 ||
     formValues.criteria.every(
-      criteriaId => formValues.evidence[criteriaId] && required(formValues.evidence[criteriaId].endDate)
+      criteriaId => formValues.evidence[criteriaId] && (isRecruiterCriteria(criteriaId, meta.domain.criteria) || required(formValues.evidence[criteriaId].background))
     ))
 
-export const validDates = formValues =>
+export const requiredStartDate = (formValues, meta) =>
+  formValues.evidence &&
+  Object.keys(formValues.evidence).length > 0 &&
+  (formValues.criteria.length === 0 ||
+    formValues.criteria.every(
+      criteriaId => formValues.evidence[criteriaId] && (isRecruiterCriteria(criteriaId, meta.domain.criteria) || required(formValues.evidence[criteriaId].startDate))
+    ))
+
+export const requiredEndDate = (formValues, meta) =>
+  formValues.evidence &&
+  Object.keys(formValues.evidence).length > 0 &&
+  (formValues.criteria.length === 0 ||
+    formValues.criteria.every(
+      criteriaId => formValues.evidence[criteriaId] && (isRecruiterCriteria(criteriaId, meta.domain.criteria) || required(formValues.evidence[criteriaId].endDate))
+    ))
+
+export const validDates = (formValues, meta) =>
   formValues.evidence &&
   Object.keys(formValues.evidence).length > 0 &&
   (formValues.criteria.length === 0 ||
     formValues.criteria.some(
       criteriaId =>
         formValues.evidence[criteriaId] &&
-        (!formValues.evidence[criteriaId].startDate || !formValues.evidence[criteriaId].endDate)
+        (isRecruiterCriteria(criteriaId, meta.domain.criteria) || (!formValues.evidence[criteriaId].startDate || !formValues.evidence[criteriaId].endDate))
     ) ||
     formValues.criteria.every(
       criteriaId =>
         formValues.evidence[criteriaId] &&
-        (formValues.evidence[criteriaId].endDate === 'ongoing' ||
+        (isRecruiterCriteria(criteriaId, meta.domain.criteria) || (formValues.evidence[criteriaId].endDate === 'ongoing' ||
           parseInt(formValues.evidence[criteriaId].startDate, 10) <=
-            parseInt(formValues.evidence[criteriaId].endDate, 10))
+            parseInt(formValues.evidence[criteriaId].endDate, 10)))
     ))
 
 export const requiredEvidence = formValues =>
@@ -145,15 +145,15 @@ export const requiredEvidence = formValues =>
     ))
 
 export const done = (formValues, meta) =>
-  requiredCandidateFullName(formValues) &&
-  requiredCandidatePhoneNumber(formValues) &&
+  requiredCandidateFullName(formValues, meta) &&
+  requiredCandidatePhoneNumber(formValues, meta) &&
   requiredClient(formValues, meta) &&
-  requiredRefereeName(formValues) &&
-  requiredRefereeNumber(formValues) &&
-  requiredBackground(formValues) &&
-  requiredStartDate(formValues) &&
-  requiredEndDate(formValues) &&
-  validDates(formValues) &&
+  requiredRefereeName(formValues, meta) &&
+  requiredRefereeNumber(formValues, meta) &&
+  requiredBackground(formValues, meta) &&
+  requiredStartDate(formValues, meta) &&
+  requiredEndDate(formValues, meta) &&
+  validDates(formValues, meta) &&
   requiredEvidence(formValues)
 
 class SellerAssessmentHybridEvidenceStage extends Component {
