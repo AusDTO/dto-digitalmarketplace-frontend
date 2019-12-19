@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 import { Redirect } from 'react-router-dom'
+import differenceInDays from 'date-fns/difference_in_days'
 
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 
 import { findSuppliers } from 'marketplace/actions/supplierActions'
 import { required } from 'marketplace/components/validators'
@@ -20,11 +22,20 @@ class EditOpportunitySellers extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      daysUntilOpportunityCloses: differenceInDays(props.brief.dates.closing_date, new Date()),
       redirectToEditsTable: false,
       searchResults: [],
       sellerName: '',
       sellers: [],
+      showClosingDateWarning: false,
       timeoutId: null
+    }
+
+    if (
+      this.state.daysUntilOpportunityCloses <= 2 ||
+      this.state.daysUntilOpportunityCloses <= Math.round(this.state.daysUntilOpportunityCloses / 2)
+    ) {
+      this.state.showClosingDateWarning = true
     }
 
     this.handleContinueClick = this.handleContinueClick.bind(this)
@@ -97,6 +108,7 @@ class EditOpportunitySellers extends Component {
 
   render = () => {
     const { brief, model } = this.props
+    const { daysUntilOpportunityCloses, showClosingDateWarning } = this.state
 
     if (this.state.redirectToEditsTable) {
       return <Redirect to="/" />
@@ -142,6 +154,19 @@ class EditOpportunitySellers extends Component {
             validators={{}}
           />
         </div>
+        {showClosingDateWarning && (
+          <div className={`row ${styles.marginTop1}`}>
+            <AUpageAlert as="warning">
+              <AUheading level="2" size="lg">
+                Opportunity closing in {daysUntilOpportunityCloses} day{`${daysUntilOpportunityCloses > 1 ? 's' : ''}`}!
+              </AUheading>
+              <p>
+                We recommend you extend the closing date to allow invited sellers you added enough time to prepare and
+                submit their responses.
+              </p>
+            </AUpageAlert>
+          </div>
+        )}
         <div className={`row ${styles.marginTop2}`}>
           <AUbutton type="submit">Continue</AUbutton>
           <AUbutton as="tertiary" link={`${rootPath}/brief/${brief.id}/edit`}>
