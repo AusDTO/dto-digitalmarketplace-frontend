@@ -23,6 +23,7 @@ class EditOpportunitySellers extends Component {
     super(props)
     this.state = {
       daysUntilOpportunityCloses: differenceInDays(props.brief.dates.closing_date, new Date()),
+      initialSellers: props[props.model].sellers ? props[props.model].sellers : [],
       redirectToEditsTable: false,
       searchResults: [],
       sellerName: '',
@@ -38,10 +39,19 @@ class EditOpportunitySellers extends Component {
       this.state.showClosingDateWarning = true
     }
 
+    this.handleCancelClick = this.handleCancelClick.bind(this)
     this.handleContinueClick = this.handleContinueClick.bind(this)
     this.handleRemoveSellerClick = this.handleRemoveSellerClick.bind(this)
     this.handleSellerClick = this.handleSellerClick.bind(this)
     this.handleSellerSearchChange = this.handleSellerSearchChange.bind(this)
+  }
+
+  handleCancelClick = () => {
+    const { initialSellers } = this.state
+    this.props.resetSellers(initialSellers)
+    this.setState({
+      redirectToEditsTable: true
+    })
   }
 
   handleContinueClick = data => {
@@ -169,7 +179,7 @@ class EditOpportunitySellers extends Component {
         )}
         <div className={`row ${styles.marginTop2}`}>
           <AUbutton type="submit">Continue</AUbutton>
-          <AUbutton as="tertiary" link={`${rootPath}/brief/${brief.id}/edit`}>
+          <AUbutton as="tertiary" onClick={this.handleCancelClick}>
             Cancel update
           </AUbutton>
         </div>
@@ -185,6 +195,7 @@ const mapStateToProps = (state, props) => ({
 const mapDispatchToProps = (dispatch, props) => ({
   findSellers: (keyword, category, allSellers, exclude) =>
     dispatch(findSuppliers(keyword, category, allSellers, exclude)),
+  resetSellers: initialSellers => dispatch(actions.change(`${props.model}.sellers`, initialSellers)),
   updateSellers: sellers => dispatch(actions.change(`${props.model}.sellers`, sellers))
 })
 
