@@ -1,4 +1,5 @@
 import React from 'react'
+import format from 'date-fns/format'
 import Feedback from 'marketplace/components/Feedback/Feedback'
 
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
@@ -12,7 +13,12 @@ const BriefSubmitted = props => (
           <AUpageAlert as="success" setFocus={props.setFocus}>
             <h4 className="au-display-sm">Your opportunity has been published</h4>
 
-            <p>It will be open until 6pm Canberra Time.</p>
+            <p>
+              It will be open{' '}
+              {props.brief && (
+                <span>until {format(new Date(props.brief.applicationsClosedAt), 'MMMM Do, YYYY')} at 6PM (in Canberra)</span>
+              )}
+            </p>
             <a href={`/${props.brief.frameworkSlug}/opportunities/${props.brief.id}`}>View live opportunity</a>
           </AUpageAlert>
           <h1 className="au-display-lg">What happens next?</h1>
