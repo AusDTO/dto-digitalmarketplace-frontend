@@ -5,6 +5,7 @@ import questions from '../../bundles/SellerRegistration/components/DisclosuresFo
 import isEmpty from 'lodash/isEmpty';
 import format from 'date-fns/format';
 import startCase from 'lodash/startCase';
+import { mapAustraliaState } from '../../helpers'
 
 import './SellerProfile.css';
 
@@ -117,16 +118,17 @@ const PrivateInfo = (props) => {
             <Row title="Labour licence" show={!isEmpty(labourHire)}>
               {Object.keys(labourHire).map((key, i) => {
                 return (
-                  <div key={i}>
-                    <h4 className="au-display-sm">{key}</h4>
-                    {Object.keys(labourHire[key]).map((subKey, j) => {
-                      return (
-                        <div key={`${key}-${subKey}`}>
-                          {startCase(subKey)}:{labourHire[key][subKey]}
-                        </div>
-                      )
-                    })}
-                  </div>
+                  (labourHire[key]['licenceNumber'] || labourHire[key]['expiry']) && (
+                    <div key={i}>
+                      <h4 className="au-display-sm">{mapAustraliaState(key)}</h4>
+                      <div>
+                        Licence number: {labourHire[key]['licenceNumber']}
+                      </div>
+                      <div>
+                        Expiry: {format(new Date(labourHire[key]['expiry']), 'DD/MM/YYYY')}
+                      </div>
+                    </div>
+                  )
                 )
               })}
             </Row>

@@ -4,7 +4,7 @@ import Row from './Row';
 import format from 'date-fns/format';
 import isEmpty from 'lodash/isEmpty';
 import head from 'lodash/head';
-import { newline, validURL } from '../../helpers';
+import { mapAustraliaState, newline, validURL } from '../../helpers';
 
 import SimpleAccordion  from '../SimpleAccordion';
 import Icon             from '../Icon';
@@ -281,15 +281,17 @@ const Body = (props) => {
         <Row title="Labour licence" show={!isEmpty(labourHire)}>
           {Object.keys(labourHire).map((key, i) => {
             return (
-              <React.Fragment key={i}>
-                <h4 className="au-display-sm">{key.toUpperCase()}</h4>
-                <div>
-                  Licence number: {labourHire[key]['licenceNumber']}
-                </div>
-                <div>
-                  Expiry: {labourHire[key]['expiry']}
-                </div>
-              </React.Fragment>
+              (labourHire[key]['licenceNumber'] || labourHire[key]['expiry']) && (
+                <React.Fragment key={i}>
+                  <h4 className="au-display-sm">{mapAustraliaState(key)}</h4>
+                  <div>
+                    Licence number: {labourHire[key]['licenceNumber']}
+                  </div>
+                  <div>
+                    Expiry: {format(new Date(labourHire[key]['expiry']), 'DD/MM/YYYY')}
+                  </div>
+                </React.Fragment>
+              )
             )
           })}
         </Row>

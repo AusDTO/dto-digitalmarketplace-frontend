@@ -48,6 +48,34 @@ class RecruiterForm extends BaseForm {
         return true;
     }
 
+    expiryFilled(v, state) {
+        const { model } = this.props;
+        
+        if (this.state.recruiter === 'no') {
+            return true
+        }
+        if (v) {
+            if (!this.props[model].labourHire[state].expiry) {
+                return false
+            }
+        }
+        return true;
+    }
+
+    licenceNumberFillded(v, state) {
+        const { model } = this.props;
+        
+        if (this.state.recruiter === 'no') {
+            return true
+        }
+        if (v) {
+            if (!this.props[model].labourHire[state].licenceNumber) {
+                return false
+            }
+        }
+        return true;
+    }
+
     onChangeState(e) {
         const { model, updateProperty } = this.props;
 
@@ -78,7 +106,12 @@ class RecruiterForm extends BaseForm {
         return (
             <Layout>
                 <header>
-                <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'recruiter' && type === 'edit'} />
+                <ValidationSummary
+                    title="You need to fix these issues"
+                    form={form}
+                    applicationErrors={applicationErrors} 
+                    filterFunc={(ae) => ae.step === 'recruiter' && type === 'edit'}
+                />
                 </header>
                 <article role="main">
                     <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
@@ -129,8 +162,7 @@ class RecruiterForm extends BaseForm {
                                     <legend>
                                         <h2 className="au-display-lg" tabIndex="-1">Labour hire licence</h2>
                                     </legend>
-                                    <p>Some states operate under a mandated Labour Hire Licensing Act.</p>
-                                    <p>Please provide your licence details if you plan to submit roles for these states:</p>
+                                    <p>Some states operate under a mandated Labour Hire Licensing Act.  Please provide your licence details if you plan to submit roles for these states:</p>
                                     
                                     {states.map(s => (
                                         <React.Fragment key={s}>
@@ -146,7 +178,15 @@ class RecruiterForm extends BaseForm {
                                                 model={`${model}.labourHire.${s}.expiry`}
                                                 id={`${s}Expiry`}
                                                 messages={{
-                                                    validDate: `Expiry date is required for ${s.toUpperCase()} and must be in the future.`
+                                                    validDate: `Expiry date is required for ${mapAustraliaState(s)} and must be in the future.`,
+                                                    licenceNumberFillded: `Please enter your licence number for ${mapAustraliaState(s)}`
+                                                }}
+                                            />
+                                            <StatefulError
+                                                model={`${model}.labourHire.${s}.licenceNumber`}
+                                                id={`${s}LicenceNumber`}
+                                                messages={{
+                                                    expiryFilled: `Please enter an expiry date for ${mapAustraliaState(s)}.`
                                                 }}
                                             />
                                             <Textfield
@@ -156,6 +196,9 @@ class RecruiterForm extends BaseForm {
                                                 htmlFor={`${s}LicenceNumber`}
                                                 label="Licence number"
                                                 description=""
+                                                validators={{
+                                                    expiryFilled: v => this.expiryFilled(v, s)
+                                                }}
                                             />
                                             <Control
                                                 model={`${model}.labourHire.${s}.expiry`}
@@ -165,7 +208,8 @@ class RecruiterForm extends BaseForm {
                                                 label="Expiry date"
                                                 updateOn="change"
                                                 validators={{
-                                                    validDate: v => this.validExpiryDate(v, s)
+                                                    validDate: v => this.validExpiryDate(v, s),
+                                                    licenceNumberFillded: v => this.licenceNumberFillded(v, s)
                                                 }}
                                                 controlProps={{
                                                     id: `${s}Expiry`,
