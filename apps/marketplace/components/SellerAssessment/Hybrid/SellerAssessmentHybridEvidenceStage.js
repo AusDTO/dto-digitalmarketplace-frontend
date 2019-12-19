@@ -34,13 +34,24 @@ const minimumWordRequirement = 100
 
 const minimumEvidenceWords = val => (val.match(/\S+/g) || []).length >= minimumWordRequirement
 
+const isRecruiterCriteria = (criteriaId, criteria) => {
+  let recruiter = false
+  criteria.find(c => {
+    if (c.id === parseInt(criteriaId, 10)) {
+      recruiter = c.is_recruiter_criteria
+      return true
+    }
+    return false
+  })
+  return recruiter
+}
 
-export const requiredClient = formValues =>
+export const requiredClient = (formValues, meta) =>
   formValues.evidence &&
   Object.keys(formValues.evidence).length > 0 &&
   (formValues.criteria.length === 0 ||
     formValues.criteria.every(
-      criteriaId => formValues.evidence[criteriaId] && required(formValues.evidence[criteriaId].client)
+      criteriaId => formValues.evidence[criteriaId] && (isRecruiterCriteria(criteriaId, meta.domain.criteria) || required(formValues.evidence[criteriaId].client))
     ))
 
 export const requiredRefereeName = formValues =>
@@ -133,10 +144,10 @@ export const requiredEvidence = formValues =>
         minimumEvidenceWords(formValues.evidence[criteriaId].response)
     ))
 
-export const done = formValues =>
+export const done = (formValues, meta) =>
   requiredCandidateFullName(formValues) &&
   requiredCandidatePhoneNumber(formValues) &&
-  requiredClient(formValues) &&
+  requiredClient(formValues, meta) &&
   requiredRefereeName(formValues) &&
   requiredRefereeNumber(formValues) &&
   requiredBackground(formValues) &&
@@ -157,15 +168,9 @@ class SellerAssessmentHybridEvidenceStage extends Component {
 
   setAllOtherCriteriaFromFirst() {
 
-    // if ('criteria' in this.props[this.props.model] && this.props[this.props.model].criteria.length > 0 && isRecruiterCriteria()) {
-    //   console.log("I AM HERE YOU BLIND PERSON")
-    // }
-
     if ('criteria' in this.props[this.props.model] && this.props[this.props.model].criteria.length > 0) {
       const firstCriteriaId = this.props[this.props.model].criteria[0]
-      // const firstCriteriaId = this.props[this.isRecruiterCriteria(criteriaId)]
-      // {this.isRecruiterCriteria(criteriaId) && (
-      
+
       this.updateAllOtherCriteriaFromFirst('client', this.props[this.props.model].evidence[firstCriteriaId].client)
       this.updateAllOtherCriteriaFromFirst(
         'refereeName',
@@ -250,20 +255,6 @@ class SellerAssessmentHybridEvidenceStage extends Component {
     })
   }
 
-  isRecruiterCriteria(criteriaId) {
-    let recruiter = false
-
-    this.props.meta.domain.criteria.find(c => {
-      if (c.id === parseInt(criteriaId, 10)) {
-        recruiter = c.is_recruiter_criteria
-        return true
-      }
-      return false
-    })
-
-    return recruiter
-  }
-
   render() {
     const previouslyFailedCriteria = this.getPreviousFailedCriteria()
 
@@ -272,16 +263,16 @@ class SellerAssessmentHybridEvidenceStage extends Component {
         model={this.props.model}
         validators={{
           '': {
-            requiredCandidateFullName: formValues => requiredCandidateFullName(formValues),
-            requiredCandiatePhoneNumber: formValues => requiredCandidatePhoneNumber(formValues),
-            requiredClient: formValues => requiredClient(formValues),
-            requiredRefereeName: formValues => requiredRefereeName(formValues),
-            requiredRefereeNumber: formValues => requiredRefereeNumber(formValues),
-            requiredBackground: formValues => requiredBackground(formValues),
-            requiredStartDate: formValues => requiredStartDate(formValues),
-            requiredEndDate: formValues => requiredEndDate(formValues),
-            validDates: formValues => validDates(formValues),
-            requiredEvidence: formValues => requiredEvidence(formValues)
+            // requiredCandidateFullName: formValues => requiredCandidateFullName(formValues),
+            // requiredCandiatePhoneNumber: formValues => requiredCandidatePhoneNumber(formValues),
+            // requiredClient: formValues => requiredClient(formValues),
+            // requiredRefereeName: formValues => requiredRefereeName(formValues),
+            // requiredRefereeNumber: formValues => requiredRefereeNumber(formValues),
+            // requiredBackground: formValues => requiredBackground(formValues),
+            // requiredStartDate: formValues => requiredStartDate(formValues),
+            // requiredEndDate: formValues => requiredEndDate(formValues),
+            // validDates: formValues => validDates(formValues),
+            // requiredEvidence: formValues => requiredEvidence(formValues)
           }
         }}
         onSubmit={this.props.onSubmit}
@@ -300,15 +291,15 @@ class SellerAssessmentHybridEvidenceStage extends Component {
           <React.Fragment> 
             <ErrorAlert
               model={this.props.model}
-              // messages={{
-              //   requiredRefereeName: 'You must provide a referee name for each criteria response',
-              //   requiredRefereeNumber: 'You must provide a valid referee phone number for each criteria response',
-              //   requiredBackground: 'You must provide background for each criteria response',
-              //   requiredStartDate: 'You must select a start date for each criteria response',
-              //   requiredEndDate: 'You must select an end date for each criteria response',
-              //   validDates: 'The start date must be before the end date for each criteria response',
-              //   requiredEvidence: `The evidence for each criteria must be at least ${minimumWordRequirement} words in length`
-              // }}
+              messages={{
+                requiredRefereeName: 'You must provide a referee name for each criteria response',
+                requiredRefereeNumber: 'You must provide a valid referee phone number for each criteria response',
+                requiredBackground: 'You must provide background for each criteria response',
+                requiredStartDate: 'You must select a start date for each criteria response',
+                requiredEndDate: 'You must select an end date for each criteria response',
+                validDates: 'The start date must be before the end date for each criteria response',
+                requiredEvidence: `The evidence for each criteria must be at least ${minimumWordRequirement} words in length`
+              }}
             />
             {this.props[this.props.model].criteria.map((criteriaId, index) => (
               <div
@@ -341,13 +332,12 @@ class SellerAssessmentHybridEvidenceStage extends Component {
 
                  {/* Borrowing style from critiera */}
                 <div className={style.criteria}>
-                  {this.isRecruiterCriteria(criteriaId) && (
+                  {isRecruiterCriteria(criteriaId, this.props.meta.domain.criteria) && (
                     <React.Fragment>
                       <p className={styles.criteriaText}>{getCriteriaName(criteriaId, this.props.meta.domain.criteria)}</p>
                           <Textfield
                             model={`${this.props.model}.evidence[${criteriaId}].candidateFullName`}
                             defaultValue={this.props[this.props.model].evidence[criteriaId].candidateFullName}
-                            // disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
                             label="Candidate's full name"
                             description="We may contact your chosen candidate to confirm their experiecne with your organisation."
                             name={`referee_name_${criteriaId}`}
@@ -411,7 +401,7 @@ class SellerAssessmentHybridEvidenceStage extends Component {
                   )}
                 </div> 
                 
-              {!this.isRecruiterCriteria(criteriaId) && (
+              {!isRecruiterCriteria(criteriaId, this.props.meta.domain.criteria) && (
                 <React.Fragment>
                     <p className={styles.criteriaText}>{getCriteriaName(criteriaId, this.props.meta.domain.criteria)}</p>
                     {index !== 0 && (
