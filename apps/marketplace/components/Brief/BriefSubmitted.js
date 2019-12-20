@@ -17,7 +17,7 @@ const BriefSubmitted = props => (
               It will be open{' '}
               {props.brief && (
                 <span>
-                  until {format(new Date(props.brief.applicationsClosedAt), 'MMMM Do, YYYY')} at 6PM (in Canberra)
+                  until {format(new Date(props.brief.applicationsClosedAt), 'MMMM Do, YYYY')} at 6pm (in Canberra)
                 </span>
               )}
             </p>
