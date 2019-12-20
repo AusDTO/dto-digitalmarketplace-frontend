@@ -80,6 +80,8 @@ export const handleLoadEvidenceSuccess = response => ({
     markup : response.data.markup,
     database_size: response.data.database_size,
     placed_candidates: response.data.placed_candidates,
+    candidateFullName: response.data.candidateFullName,
+    candidatePhoneNumber: response.data.candidatePhoneNumber,
     submittedAt: response.data.submitted_at,
     criteria: response.data.criteria,
     failedCriteria: response.data.failed_criteria,
@@ -172,6 +174,8 @@ export const handleEvidenceSaveSuccess = response => ({
     supplierCode: response.data.supplier_code,
     maxDailyRate: response.data.maxDailyRate,
     markup : response.data.markup
+    // candidateFullName : response.data.candidateFullName,
+    // candidatePhoneNumber : response.data.candidatePhoneNumber
   }
 })
 

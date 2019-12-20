@@ -9,20 +9,11 @@ const SellerAssessmentIntroductionStage = props => (
       {props.meta.domain.name} assessment
     </AUheadings>
     <p>
-    Before you can respond to opportunities in this category, you must be assessed by the Digital Marketplace and approved to offer value for money. 
-    Details of your request qill only be visible to the assessment team.
+    Before you can respond to opportunities in this category, you must be assessed by the Digital Marketplace in offering value for money. 
+    The information you submit will only be visible to the assessment team.
     </p>
     <p>
-    You will be asked to submit evidence for a person you previously placed in a  {props.meta.domain.name} specific. 
-    </p>
-    <p>
-      <strong>This person may be:</strong> 
-      <li> 
-        a consultant from your company
-      </li>
-      <li> 
-      a contractor from your recruitment pool
-      </li>
+    You will be asked to submit evidence for a contractor you previously placed in a User reseach and Design specific role. 
     </p>
     <p>
       <strong>Please note:</strong> The time we take to assess your criteria is dependent on volume, seasonal peaks,
