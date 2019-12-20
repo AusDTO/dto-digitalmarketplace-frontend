@@ -31,7 +31,12 @@ class RecruiterForm extends BaseForm {
     }
     
     state = {
-        recruiter: this.props[this.props.model].recruiter
+        recruiter: this.props[this.props.model].recruiter,
+        loaded: false
+    }
+
+    componentDidMount() {
+        this.setState({loaded: true})
     }
 
     validExpiryDate(v, state) {
@@ -43,34 +48,6 @@ class RecruiterForm extends BaseForm {
         if (v) {
             if (this.props[model].labourHire[state].licenceNumber) {
                 return validDate(v)
-            }
-        }
-        return true;
-    }
-
-    expiryFilled(v, state) {
-        const { model } = this.props;
-        
-        if (this.state.recruiter === 'no') {
-            return true
-        }
-        if (v) {
-            if (!this.props[model].labourHire[state].expiry) {
-                return false
-            }
-        }
-        return true;
-    }
-
-    licenceNumberFillded(v, state) {
-        const { model } = this.props;
-        
-        if (this.state.recruiter === 'no') {
-            return true
-        }
-        if (v) {
-            if (!this.props[model].labourHire[state].licenceNumber) {
-                return false
             }
         }
         return true;
@@ -93,6 +70,61 @@ class RecruiterForm extends BaseForm {
         }
     }
 
+    requiredLicenceNumber(v, state) {
+        const { model, setValid } = this.props
+        const valid = (
+            this.props[model].recruiter !== 'no' &&
+            this.props[model].labourHire &&
+            this.props[model].labourHire[state] &&
+            this.props[model].labourHire[state].licenceNumber
+            ? true : false
+        )
+        if (!v) {
+            if (valid) {
+                if (this.state.loaded) {
+                    setValid(`${model}.labourHire.${state}.licenceNumber`, {
+                        required: false
+                    })
+                }
+            }
+            return true
+        } else {
+            if (this.state.loaded) {
+                setValid(`${model}.labourHire.${state}.licenceNumber`, {
+                    required: valid
+                })
+            }
+        }
+        return true
+    }
+    requiredExpiry(v, state) {
+        const { model, setValid } = this.props
+        const valid = (
+            this.props[model].recruiter !== 'no' &&
+            this.props[model].labourHire &&
+            this.props[model].labourHire[state] &&
+            this.props[model].labourHire[state].expiry
+            ? true : false
+        )
+        if (!v) {
+            if (valid) {
+                if (this.state.loaded) {
+                    setValid(`${model}.labourHire.${state}.expiry`, {
+                        required: false
+                    })
+                }
+            }
+            return true
+        } else {
+            if (this.state.loaded) {
+                setValid(`${model}.labourHire.${state}.expiry`, {
+                    required: valid
+                })
+            }
+        }
+        return true
+    }
+
     render() {
         const {action, csrf_token, model, form, children, onSubmit, nextRoute, submitClicked, applicationErrors, type} = this.props;
         let hasFocused = false
@@ -102,7 +134,7 @@ class RecruiterForm extends BaseForm {
             e.focus()
           }
         }
-        
+       
         return (
             <Layout>
                 <header>
@@ -179,14 +211,15 @@ class RecruiterForm extends BaseForm {
                                                 id={`${s}Expiry`}
                                                 messages={{
                                                     validDate: `Expiry date is required for ${mapAustraliaState(s)} and must be in the future.`,
-                                                    licenceNumberFillded: `Please enter your licence number for ${mapAustraliaState(s)}`
+                                                    required: `Please enter your licence number for ${mapAustraliaState(s)}`
                                                 }}
                                             />
+                                            <br />
                                             <StatefulError
                                                 model={`${model}.labourHire.${s}.licenceNumber`}
                                                 id={`${s}LicenceNumber`}
                                                 messages={{
-                                                    expiryFilled: `Please enter an expiry date for ${mapAustraliaState(s)}.`
+                                                    required: `Please enter an expiry date for ${mapAustraliaState(s)}.`
                                                 }}
                                             />
                                             <Textfield
@@ -197,7 +230,7 @@ class RecruiterForm extends BaseForm {
                                                 label="Licence number"
                                                 description=""
                                                 validators={{
-                                                    expiryFilled: v => this.expiryFilled(v, s)
+                                                    required: v => this.requiredExpiry(v, s)
                                                 }}
                                             />
                                             <Control
@@ -209,7 +242,7 @@ class RecruiterForm extends BaseForm {
                                                 updateOn="change"
                                                 validators={{
                                                     validDate: v => this.validExpiryDate(v, s),
-                                                    licenceNumberFillded: v => this.licenceNumberFillded(v, s)
+                                                    required: v => this.requiredLicenceNumber(v, s)
                                                 }}
                                                 controlProps={{
                                                     id: `${s}Expiry`,
