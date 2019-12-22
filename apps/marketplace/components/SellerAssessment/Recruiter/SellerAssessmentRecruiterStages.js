@@ -5,7 +5,7 @@ import SellerAssessmentReviewStage from './SellerAssessmentReviewStage'
 import SellerAssessmentHybridCriteriaStage, { done as hybridcriteriaDone } from './SellerAssessmentHybridCriteriaStage'
 import SellerAssessmentHybridEvidenceStage, { done as hyridevidenceDone } from './SellerAssessmentHybridEvidenceStage'
 
-const SellerAssessmentHybridStages = [
+const SellerAssessmentRecruiterStages = [
   {
     slug: 'introduction',
     title: 'Introduction',
@@ -43,4 +43,4 @@ const SellerAssessmentHybridStages = [
   }
 ]
 
-export default SellerAssessmentHybridStages
+export default SellerAssessmentRecruiterStages

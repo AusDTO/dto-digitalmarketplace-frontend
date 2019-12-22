@@ -202,6 +202,9 @@ class EvidenceAssessment extends React.Component {
                 <strong>CandidateName:</strong> {evidence.data.evidence[criteriaId].candidateFullName}: {evidence.data.evidence[criteriaId].candidatePhoneNumber}
               </p>
               <p>
+                <strong>Candidate Phone Number:</strong>{evidence.data.evidence[criteriaId].candidatePhoneNumber}
+              </p>
+              <p>
                 <strong>Date:</strong> {evidence.data.evidence[criteriaId].startDate} - {evidence.data.evidence[criteriaId].endDate}
               </p>
               <p>

@@ -38,7 +38,8 @@ export const SellerAssessmentEvidenceReducer = {
   endDate: '',
   background: '',
   response: '',
-  sameAsFirst: true
+  sameAsFirst: true,
+  isRecruiterFlag2: false
 }
 
 export const BuyerRFXFormReducer = {

@@ -7,7 +7,7 @@ import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import ProgressFlow from 'marketplace/components/ProgressFlow/ProgressFlow'
 import SellerAssessmentStages from 'marketplace/components/SellerAssessment/SellerAssessmentStages'
 import SellerAssessmentHybridStages from 'marketplace/components/SellerAssessment/Hybrid/SellerAssessmentHybridStages'
-// import SellerAssessmentRecruiterStages from 'marketplace/components/SellerAssessment/Recruiter/SellerAssessmentRecruiterStages'
+import SellerAssessmentRecruiterStages from 'marketplace/components/SellerAssessment/Recruiter/SellerAssessmentRecruiterStages'
 import { rootPath } from 'marketplace/routes'
 import { loadDomainData, loadEvidenceData, saveEvidence } from 'marketplace/actions/supplierActions'
 import { setErrorMessage } from 'marketplace/actions/appActions'
@@ -157,14 +157,15 @@ export class SellerAssessmentFlowPage extends Component {
         )
       }
 
-      else if (this.props.isRecruiterFlag) {
+      else if (!this.props.isHybridFlag) {
+        if(this.props.isRecruiterFlag){
         return (
           <ProgressFlow
             model={model}
             meta={{ domain: this.props.domain, evidence: this.props.evidence }}
             onStageMount={this.handleStageMount}
             basename={`${rootPath}/seller-assessment/${evidenceId}`}
-            stages={SellerAssessmentHybridStages}
+            stages={SellerAssessmentRecruiterStages}
             saveModel={this.saveEvidence}
             showReturnButton={false}
             showReviewButton={false}
@@ -172,6 +173,7 @@ export class SellerAssessmentFlowPage extends Component {
             showConfirmationCheckbox={false}
           />
         )
+        }
       }
 //hybrid flag is false and is recruiter true
     return (
