@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import SellerAssessmentHybridStages from './SellerAssessmentHybridStages'
+import SellerAssessmentHybridStages from './SellerAssessmentRecruiterStages'
 import styles from './SellerAssessmentReviewStage.scss'
 import { getCriteriaName } from '../Hybrid/SellerAssessmentHybridEvidenceStage'
 
