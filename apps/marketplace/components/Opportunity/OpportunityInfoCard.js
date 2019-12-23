@@ -252,9 +252,35 @@ const OpportunityInfoCard = props => (
             (['rfx', 'training2'].includes(props.briefLot) && props.isAssessedForCategory)) &&
           props.canRespond && (
             <div>
-              {props.hasResponded ? (
-                <p className={styles.invitedStatus}>You have already applied for this opportunity.</p>
-              ) : (
+              {props.hasResponded && (
+                <React.Fragment>
+                  <p className={styles.invitedStatus}>You have already submitted a response.</p>
+                  {props.supplierBriefResponseId && (
+                    <p>
+                      <a
+                        href={`${rootPath}/brief/${props.briefId}/${props.briefLot}/respond/${props.supplierBriefResponseId}`}
+                        className={`${styles.button} au-btn`}
+                      >
+                        Edit submission
+                      </a>
+                    </p>
+                  )}
+                </React.Fragment>
+              )}
+              {!props.hasResponded && props.supplierBriefResponseIsDraft && props.supplierBriefResponseId && (
+                <React.Fragment>
+                  <p className={styles.invitedStatus}>You have started your submission.</p>
+                  <p>
+                    <a
+                      href={`${rootPath}/brief/${props.briefId}/${props.briefLot}/respond/${props.supplierBriefResponseId}`}
+                      className={`${styles.button} au-btn`}
+                    >
+                      Edit draft submission
+                    </a>
+                  </p>
+                </React.Fragment>
+              )}
+              {!props.hasResponded && !props.supplierBriefResponseIsDraft && (
                 <div>
                   <a
                     href={`${rootPath}/brief/${props.briefId}/${props.briefLot}/respond`}
@@ -296,7 +322,8 @@ OpportunityInfoCard.defaultProps = {
   isAwaitingDomainAssessment: false,
   isBriefOwner: false,
   hasSignedCurrentAgreement: false,
-  supplierCode: null
+  supplierCode: null,
+  supplierBriefResponseId: 0
 }
 
 OpportunityInfoCard.propTypes = {
@@ -329,7 +356,8 @@ OpportunityInfoCard.propTypes = {
   category: PropTypes.string,
   sellerCategory: PropTypes.string.isRequired,
   hasSignedCurrentAgreement: PropTypes.bool,
-  supplierCode: PropTypes.number
+  supplierCode: PropTypes.number,
+  supplierBriefResponseId: PropTypes.number
 }
 
 export default OpportunityInfoCard

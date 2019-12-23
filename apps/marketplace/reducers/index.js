@@ -160,6 +160,45 @@ export const BuyerSpecialistFormReducer = {
   comprehensiveTerms: false
 }
 
+export const BriefResponseSpecialistReducer = {
+  submit: false,
+  resume: [],
+  attachedDocumentURL: [],
+  availability: '',
+  specialistName: '',
+  specialistGivenNames: '',
+  specialistSurname: '',
+  dayRate: '',
+  dayRateExcludingGST: '',
+  hourRate: '',
+  hourRateExcludingGST: '',
+  essentialRequirements: {},
+  niceToHaveRequirements: {},
+  respondToEmailAddress: '',
+  visaStatus: '',
+  securityClearance: '',
+  previouslyWorked: ''
+}
+
+export const BriefResponseRFXReducer = {
+  submit: false,
+  responseTemplate: [],
+  writtenProposal: [],
+  attachedDocumentURL: [],
+  respondToEmailAddress: '',
+  respondToPhone: ''
+}
+
+export const BriefResponseATMReducer = {
+  submit: false,
+  availability: '',
+  criteria: {},
+  writtenProposal: [],
+  attachedDocumentURL: [],
+  respondToEmailAddress: '',
+  respondToPhone: ''
+}
+
 export const SellerEditFormReducer = {
   supplier: {
     name: '',
@@ -211,13 +250,7 @@ export default combineReducers({
     briefAwardSeller: {
       awardedSupplierCode: ''
     },
-    briefResponseForm: {
-      availability: '',
-      dayRate: '',
-      respondToEmailAddress: '',
-      respondToPhone: '',
-      attachedDocumentURL: []
-    },
+    briefResponseForm: BriefResponseSpecialistReducer,
     downloadReports: {
       startDate: '',
       endDate: '',
