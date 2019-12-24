@@ -37,6 +37,9 @@ const SellerAssessmentCandidatePool = props => (
         validWholeNumber: 'The size of your candidate database must be a whole number (e.g. 1200)'
       }}
     />
+    <p>
+    Your business will be placing candidates for  {props.meta.domain.name} roles by submitting:
+    </p>
   
   <AUradio 
     label="contractors you organised through recruitment activies" 
