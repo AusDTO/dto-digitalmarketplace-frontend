@@ -2,10 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
 import { connect } from 'react-redux'
-import RadioList from 'shared/form/RadioList'
+import Textfield from 'shared/form/Textfield'
 import formProps from 'shared/form/formPropsSelector'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
+import { AUradio } from '@gov.au/control-input'
 
 export const greaterThanZero = formValues => parseInt(formValues.database_size, 10) > 0
 
@@ -14,60 +15,69 @@ export const validWholeNumber = formValues => formValues.database_size && /^[0-9
 export const done = formValues =>
   formValues.database_size && greaterThanZero(formValues) && validWholeNumber(formValues)
 
-const SellerAssessmentHybridPlacingCandidatesStage = props => ({
-  model,
-
-}) => (
+const SellerAssessmentCandidatePool = props => (
   <Form
-    model={model}
+    model={props.model}
+    validators={{
+      '': {
+        validWholeNumber
+      }
+    }}
     onSubmit={props.onSubmit}
     onSubmitFailed={props.onSubmitFailed}
     validateOn="submit"
   >
     <AUheadings level="1" size="xl">
-      Placing Candidates
+      Placing candidates
     </AUheadings>
 
     <ErrorAlert
-      model={model}
+      model={props.model}
       messages={{
         validWholeNumber: 'The size of your candidate database must be a whole number (e.g. 1200)'
       }}
     />
-
-    <RadioList
-      id="previouslyWorked"
-      label={`Has previously worked?`}
-      name="previouslyWorked"
-      model={`${model}.previouslyWorked`}
-      validators={{
-        required
-      }}
-      options={[
-        {
-          label: 'Yes',
-          value: 'Yes'
-        },
-        {
-          label: 'No',
-          value: 'No'
-        }
-      ]}
-      messages={{
-        required: `"Has previously worked for the " is a required field`
-      }}
-  /> */}
-      {props.formButtons}
+  
+    <AUradio
+      label="contractors you organise through recruitments acitivies"
+      name={`criteria-review`}
+      id={`criteria-review--yes`}
+      value="yes"
+      // checked={evidence.approvedCriteria.includes(criteriaId) || this.state.criteria[criteriaId].demonstrates === true}
+      // onChange={e => this.handleCriteriaReviewClick(e, criteriaId)}
+      // block
+      // disabled={evidence.approvedCriteria.includes(criteriaId)}
+    />
+    <AUradio
+      label="your own consultants"
+      name={`criteria-review-`}
+      value="no"
+      id={`criteria-review-no`}
+      // checked={this.state.criteria[criteriaId].demonstrates === false}
+      // onChange={e => this.handleCriteriaReviewClick(e, criteriaId)}
+      // block
+      // disabled={evidence.approvedCriteria.includes(criteriaId)}
+    />
+       <AUradio
+      label="both contractors and consultants"
+      name={`criteria-review-`}
+      value="no"
+      id={`criteria-review-no`}
+      // checked={this.state.criteria[criteriaId].demonstrates === false}
+      // onChange={e => this.handleCriteriaReviewClick(e, criteriaId)}
+      // block
+      // disabled={evidence.approvedCriteria.includes(criteriaId)}
+    />
+    {props.formButtons}
   </Form>
 )
 
-SellerAssessmentHybridPlacingCandidatesStage.defaultProps = {
-  model: '',
+SellerAssessmentCandidatePool.defaultProps = {
   onSubmit: () => {},
   onSubmitFailed: () => {}
 }
 
-SellerAssessmentHybridPlacingCandidatesStage.propTypes = {
+SellerAssessmentCandidatePool.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   meta: PropTypes.object.isRequired,
@@ -79,4 +89,4 @@ const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)
 })
 
-export default connect(mapStateToProps)(SellerAssessmentHybridPlacingCandidatesStage)
+export default connect(mapStateToProps)(SellerAssessmentCandidatePool)

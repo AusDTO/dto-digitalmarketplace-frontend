@@ -4,7 +4,7 @@ import SellerAssessmentCandidatePool, { done as candidatePoolDone } from './Sell
 import SellerAssessmentReviewStage from './SellerAssessmentReviewStage'
 import SellerAssessmentHybridCriteriaStage, { done as hybridcriteriaDone } from './SellerAssessmentHybridCriteriaStage'
 import SellerAssessmentHybridEvidenceStage, { done as hyridevidenceDone } from './SellerAssessmentHybridEvidenceStage'
-// import SellerAssessmentHybridPlacingCandidatesStage, { done as hybridplacingcandidates } from './SellerAssessmentHybridPlacingCandidatesStage'
+import SellerAssessmentHybridPlacingCandidatesStage, { done as hybridplacingcandidates } from './SellerAssessmentHybridPlacingCandidatesStage'
 
 const SellerAssessmentHybridStages = [
   {
@@ -13,12 +13,12 @@ const SellerAssessmentHybridStages = [
     component: SellerAssessmentIntroductionStage,
     isDone: () => true
   },
-  // {
-  //   slug: 'placingCandiates',
-  //   title: 'Placing Candidates',
-  //   component: SellerAssessmentHybridPlacingCandidatesStage,
-  //   isDone: hybridplacingcandidates
-  // },
+  {
+    slug: 'placingCandiates',
+    title: 'Placing Candidates',
+    component: SellerAssessmentHybridPlacingCandidatesStage,
+    isDone: hybridplacingcandidates
+  },
   {
     slug: 'maximumRate',
     title: 'Rate',
