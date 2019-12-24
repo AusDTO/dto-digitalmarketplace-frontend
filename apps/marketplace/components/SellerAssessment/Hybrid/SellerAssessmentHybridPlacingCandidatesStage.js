@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
 import { connect } from 'react-redux'
-import Textfield from 'shared/form/Textfield'
 import formProps from 'shared/form/formPropsSelector'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
@@ -41,21 +40,24 @@ const SellerAssessmentCandidatePool = props => (
     Your business will be placing candidates for  {props.meta.domain.name} roles by submitting:
     </p>
   
-  <AUradio 
+  <AUradio
+    model={`${props.model}.check`}
     label="contractors you organised through recruitment activies" 
     name="radio-ex" 
     id="radio-phone-block" 
     block defaultChecked 
     />
 
-  <AUradio 
+  <AUradio
+    model={`${props.model}.check`}
     label="your own consultants" 
     name="radio-ex" 
     id="radio-tablet-block" 
     block
   />
 
-  <AUradio 
+  <AUradio
+    model={`${props.model}.check`}
     label="both contractors and consultants" 
     name="radio-ex" 
     id="radio-laptop-block" 
