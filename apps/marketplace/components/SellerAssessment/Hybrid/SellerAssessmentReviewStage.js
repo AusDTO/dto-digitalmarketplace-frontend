@@ -38,7 +38,7 @@ const SellerAssessmentReviewStage = props => (
           </Link>
         </AUheading>
         <br/>
-        <strong>Placing candidates: </strong>{props[props.model].check}
+        <strong>Placing candidates: </strong>{props[props.model].check2}
         <br/>
         <br/>
         <div className={styles.spacer} />
