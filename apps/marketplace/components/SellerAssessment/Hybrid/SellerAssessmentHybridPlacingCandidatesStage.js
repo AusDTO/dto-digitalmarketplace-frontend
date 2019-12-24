@@ -45,27 +45,27 @@ const SellerAssessmentCandidatePool = props => (
       value="yes"
       // checked={evidence.approvedCriteria.includes(criteriaId) || this.state.criteria[criteriaId].demonstrates === true}
       // onChange={e => this.handleCriteriaReviewClick(e, criteriaId)}
-      // block
+      block
       // disabled={evidence.approvedCriteria.includes(criteriaId)}
     />
     <AUradio
       label="your own consultants"
-      name={`criteria-review-`}
-      value="no"
-      id={`criteria-review-no`}
+      name={`criteria-review-2`}
+      value="yes"
+      id={`criteria-review-yes`}
       // checked={this.state.criteria[criteriaId].demonstrates === false}
       // onChange={e => this.handleCriteriaReviewClick(e, criteriaId)}
-      // block
+      block
       // disabled={evidence.approvedCriteria.includes(criteriaId)}
     />
        <AUradio
       label="both contractors and consultants"
-      name={`criteria-review-`}
-      value="no"
-      id={`criteria-review-no`}
+      name={`criteria-review-3`}
+      value="yes"
+      id={`criteria-review-yes`}
       // checked={this.state.criteria[criteriaId].demonstrates === false}
       // onChange={e => this.handleCriteriaReviewClick(e, criteriaId)}
-      // block
+      block
       // disabled={evidence.approvedCriteria.includes(criteriaId)}
     />
     {props.formButtons}
