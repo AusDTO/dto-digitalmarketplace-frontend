@@ -30,6 +30,19 @@ const SellerAssessmentReviewStage = props => (
         <AUheading level="1" size="xl">
           {props.meta.domain.name} assessment
         </AUheading>
+
+        <AUheading level="2" size="lg">
+          Placing candidates
+          <Link to="placingCandiates" className={styles.change}>
+            Change
+          </Link>
+        </AUheading>
+        <br/>
+        <strong>Placing candidates: </strong>{props[props.model].check}
+        <br/>
+        <br/>
+        <div className={styles.spacer} />
+
         <AUheading level="2" size="lg">
           Maximum daily rate
           <Link to="rate" className={styles.change}>
