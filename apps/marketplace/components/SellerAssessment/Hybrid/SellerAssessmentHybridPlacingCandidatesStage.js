@@ -38,36 +38,26 @@ const SellerAssessmentCandidatePool = props => (
       }}
     />
   
-    <AUradio
-      label="contractors you organise through recruitments acitivies"
-      name={`criteria-review`}
-      id={`criteria-review--yes`}
-      value="yes"
-      // checked={evidence.approvedCriteria.includes(criteriaId) || this.state.criteria[criteriaId].demonstrates === true}
-      // onChange={e => this.handleCriteriaReviewClick(e, criteriaId)}
-      block
-      // disabled={evidence.approvedCriteria.includes(criteriaId)}
+  <AUradio 
+    label="contractors you organised through recruitment activies" 
+    name="radio-ex" 
+    id="radio-phone-block" 
+    block defaultChecked 
     />
-    <AUradio
-      label="your own consultants"
-      name={`criteria-review-2`}
-      value="yes"
-      id={`criteria-review-yes`}
-      // checked={this.state.criteria[criteriaId].demonstrates === false}
-      // onChange={e => this.handleCriteriaReviewClick(e, criteriaId)}
-      block
-      // disabled={evidence.approvedCriteria.includes(criteriaId)}
-    />
-       <AUradio
-      label="both contractors and consultants"
-      name={`criteria-review-3`}
-      value="yes"
-      id={`criteria-review-yes`}
-      // checked={this.state.criteria[criteriaId].demonstrates === false}
-      // onChange={e => this.handleCriteriaReviewClick(e, criteriaId)}
-      block
-      // disabled={evidence.approvedCriteria.includes(criteriaId)}
-    />
+
+  <AUradio 
+    label="your own consultants" 
+    name="radio-ex" 
+    id="radio-tablet-block" 
+    block
+  />
+
+  <AUradio 
+    label="both contractors and consultants" 
+    name="radio-ex" 
+    id="radio-laptop-block" 
+    block 
+  />
     {props.formButtons}
   </Form>
 )
