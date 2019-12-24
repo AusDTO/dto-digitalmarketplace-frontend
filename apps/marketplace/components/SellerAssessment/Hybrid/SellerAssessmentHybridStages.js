@@ -18,6 +18,7 @@ const SellerAssessmentHybridStages = [
     title: 'Placing Candidates',
     component: SellerAssessmentHybridPlacingCandidatesStage,
     isDone: hybridplacingcandidates
+    //isDone: formValues => formValues.openTo === 'all' || (formValues.openTo === 'category' && formValues.sellerCategory)
   },
   {
     slug: 'maximumRate',
