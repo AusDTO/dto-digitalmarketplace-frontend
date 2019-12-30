@@ -65,7 +65,10 @@ const SellerAssessmentReviewStage = props => (
           </Link>
         </AUheading>
         <br/>
-        <strong>Database size: </strong>{props[props.model].database_size}
+        <strong>Size of candidate database: </strong>{props[props.model].database_size}
+        <br/>
+        <br/>
+        <strong>Candidates placed in last 12 months: </strong>{props[props.model].placed_candidates}
         <br/>
         <br/>
         <div className={styles.spacer} />
