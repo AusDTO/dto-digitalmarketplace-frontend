@@ -32,6 +32,9 @@ const OverviewHeaderPublishedActionsList = props => {
             <a href={`${rootPath}/request-access/publish_opportunities`}>Close opportunity now</a>
           </li>
         )}
+        <li>
+          <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>View opportunity</a>
+        </li>
       </ul>
       <ul className={`${styles.menuList} ${mainStyles.hideDesktop}`}>
         {canCloseOpportunity && hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
@@ -44,6 +47,9 @@ const OverviewHeaderPublishedActionsList = props => {
             <a href={`${rootPath}/request-access/publish_opportunities`}>Close now</a>
           </li>
         )}
+        <li>
+          <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>View opportunity</a>
+        </li>
       </ul>
     </React.Fragment>
   )

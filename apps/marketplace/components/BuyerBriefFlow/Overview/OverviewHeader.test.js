@@ -43,24 +43,16 @@ describe('OverviewHeader', () => {
     const component = mount(<OverviewHeader brief={brief} canCloseOpportunity isClosed={false} isPublished />)
 
     expect(component.children().exists('ul.hideMobile')).toEqual(true)
-
-    expect(
-      component
-        .children()
-        .find('ul.hideMobile a')
-        .first()
-        .text()
-    ).toEqual('Close opportunity now')
+    const desktopLinks = component.children().find('ul.hideMobile a')
+    expect(desktopLinks).toHaveLength(2)
+    expect(desktopLinks.at(0).text()).toEqual('Close opportunity now')
+    expect(desktopLinks.at(1).text()).toEqual('View opportunity')
 
     expect(component.children().exists('ul.hideDesktop')).toEqual(true)
-
-    expect(
-      component
-        .children()
-        .find('ul.hideDesktop a')
-        .first()
-        .text()
-    ).toEqual('Close now')
+    const mobileLinks = component.children().find('ul.hideDesktop a')
+    expect(mobileLinks).toHaveLength(2)
+    expect(mobileLinks.at(0).text()).toEqual('Close now')
+    expect(mobileLinks.at(1).text()).toEqual('View opportunity')
   })
 
   test('shows the correct actions for a published opportunity that can not be closed', () => {
@@ -80,8 +72,13 @@ describe('OverviewHeader', () => {
 
     const component = mount(<OverviewHeader brief={brief} canCloseOpportunity={false} isClosed={false} isPublished />)
 
-    const links = component.children().find('a')
-    expect(links).toHaveLength(0)
+    const desktopLinks = component.children().find('ul.hideMobile a')
+    expect(desktopLinks).toHaveLength(1)
+    expect(desktopLinks.at(0).text()).toEqual('View opportunity')
+
+    const mobileLinks = component.children().find('ul.hideDesktop a')
+    expect(mobileLinks).toHaveLength(1)
+    expect(mobileLinks.at(0).text()).toEqual('View opportunity')
   })
 
   test('shows the correct actions for a closed opportunity', () => {
