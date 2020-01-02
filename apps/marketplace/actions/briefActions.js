@@ -14,6 +14,7 @@ import {
   BRIEF_TRAINING_CREATE_SUCCESS,
   BRIEF_ATM_CREATE_SUCCESS,
   BRIEF_SPECIALIST_CREATE_SUCCESS,
+  CLOSE_OPPORTUNITY_SUCCESS,
   DELETE_BRIEF_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NAME_SPLIT,
@@ -90,6 +91,7 @@ export const handleBriefInfoSuccess = response => ({
   type: BRIEF_INFO_FETCH_DATA_SUCCESS,
   brief: response.data.brief,
   briefResponses: response.data.briefResponses,
+  canCloseOpportunity: response.data.canCloseOpportunity,
   oldWorkOrderCreator: response.data.oldWorkOrderCreator,
   questionsAsked: response.data.questionsAsked,
   briefResponseDownloaded: response.data.briefResponseDownloaded,
@@ -168,6 +170,31 @@ export const handleCreateSpecialistBriefSuccess = response => ({
   type: BRIEF_SPECIALIST_CREATE_SUCCESS,
   brief: response.data
 })
+
+export const handleCloseOpportunitySuccess = response => ({
+  type: CLOSE_OPPORTUNITY_SUCCESS,
+  brief: response.data
+})
+
+export const closeOpportunity = briefId => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: `/brief/${briefId}/close`,
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleCloseOpportunitySuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
 
 export const createRFXBrief = () => (dispatch, getState) => {
   dispatch(sendingRequest(true))
