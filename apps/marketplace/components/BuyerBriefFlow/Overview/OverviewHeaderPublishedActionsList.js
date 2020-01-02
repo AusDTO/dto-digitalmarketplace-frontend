@@ -11,6 +11,10 @@ import mainStyles from '../../../main.scss'
 const OverviewHeaderPublishedActionsList = props => {
   const { brief, canCloseOpportunity, isPartOfTeam, isTeamLead, teams } = props
 
+  const closeHref = hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities')
+    ? `${rootPath}/brief/${brief.id}/close`
+    : `${rootPath}/request-access/publish_opportunities`
+
   return (
     <React.Fragment>
       <ul className={`${styles.menuList} ${mainStyles.hideMobile}`}>
@@ -22,14 +26,9 @@ const OverviewHeaderPublishedActionsList = props => {
             </strong>
           </div>
         </li>
-        {canCloseOpportunity && hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
+        {canCloseOpportunity && (
           <li>
-            <a href={`${rootPath}/brief/${brief.id}/close`}>Close opportunity now</a>
-          </li>
-        )}
-        {canCloseOpportunity && !hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
-          <li>
-            <a href={`${rootPath}/request-access/publish_opportunities`}>Close opportunity now</a>
+            <a href={closeHref}>Close opportunity now</a>
           </li>
         )}
         <li>
@@ -37,14 +36,9 @@ const OverviewHeaderPublishedActionsList = props => {
         </li>
       </ul>
       <ul className={`${styles.menuList} ${mainStyles.hideDesktop}`}>
-        {canCloseOpportunity && hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
+        {canCloseOpportunity && (
           <li>
-            <a href={`${rootPath}/brief/${brief.id}/close`}>Close now</a>
-          </li>
-        )}
-        {canCloseOpportunity && !hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
-          <li>
-            <a href={`${rootPath}/request-access/publish_opportunities`}>Close now</a>
+            <a href={closeHref}>Close now</a>
           </li>
         )}
         <li>
