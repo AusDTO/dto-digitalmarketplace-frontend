@@ -5,8 +5,6 @@ import { Redirect } from 'react-router-dom'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
 import DocumentTitle from 'react-document-title'
-
-import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import range from 'lodash/range'
 import { required, requiredFile, validEmail, validPercentage } from 'marketplace/components/validators'
@@ -17,284 +15,240 @@ import Textarea from 'shared/form/Textarea'
 import RadioList from 'shared/form/RadioList'
 import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import dmapi from 'marketplace/services/apiClient'
+import { rootPath } from 'marketplace/routes'
 import { escapeQuote } from '../helpers'
 
 import styles from './BriefSpecialistResponseForm2.scss'
 
+const getCandidateName = formModel => {
+  let name = 'the candidate'
+  if (formModel.specialistGivenNames && formModel.specialistSurname) {
+    name = `${formModel.specialistGivenNames} ${formModel.specialistSurname}`
+  }
+  return name
+}
+
+const showResumeField = (formModel, briefResponseStatus) =>
+  formModel.resume.length > 0 || (formModel.resume.length === 0 && briefResponseStatus === 'draft')
+
 const BriefSpecialistResponseForm2 = ({
+  briefResponseForm,
   model,
   brief,
-  briefResponses,
+  briefResponseStatus,
   briefResponseSuccess,
   app,
-  submitClicked,
+  onSubmitClicked,
+  onSaveClicked,
   currentlySending,
   handleSubmit,
   setFocus,
-  match,
-  handleNameSubmit,
-  specialistGivenNames,
-  specialistSurname,
-  specialistNumber,
-  addAnotherClicked,
-  addAnotherSpecialist,
+  briefResponseId,
+  briefResponseSave,
   uploading,
   loadingText,
   onRateChange,
   fileCount,
-  addOtherDocument
+  addOtherDocument,
+  supplierContact
 }) => (
   <div className="row">
     <DocumentTitle title="Brief Response - Digital Marketplace">
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
         <article role="main">
-          {(briefResponseSuccess && !addAnotherSpecialist) || briefResponses.length >= brief.numberOfSuppliers ? (
-            <Redirect to={`${match.url}/specialist2/respond/submitted`} />
-          ) : (
-            ''
+          {briefResponseSuccess && briefResponseSave && <Redirect to={`${rootPath}/brief/${brief.id}/responses`} />}
+          {briefResponseSuccess && !briefResponseSave && (
+            <Redirect to={`${rootPath}/brief/${brief.id}/specialist2/respond/${briefResponseId}/submitted`} />
           )}
           {!briefResponseSuccess && (
             <ErrorBox
               title="There was a problem submitting your response"
               model={model}
-              submitClicked={submitClicked}
+              submitClicked={onSubmitClicked}
               setFocus={setFocus}
             />
           )}
-          {!specialistGivenNames && !specialistSurname ? (
-            <div>
-              {briefResponses.length === 0 && (
-                <div>
-                  <h1 className="au-display-xl">Apply for &lsquo;{brief.title}&rsquo;</h1>
-                  <p>
-                    You can submit up to {brief.numberOfSuppliers} candidate
-                    {parseInt(brief.numberOfSuppliers, 10) === 1 ? '' : 's'} for this role. This opportunity closes on{' '}
-                    {format(new Date(brief.applicationsClosedAt), 'DD-MM-YYYY')}.
-                  </p>
-                  <br />
+          <div>
+            <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
+              <h1 className="au-display-xl">
+                {briefResponseStatus === 'draft' ? 'Submit' : 'Edit'} candidate for &lsquo;{brief.title}&rsquo;
+              </h1>
+              <Textfield
+                model={`${model}.specialistGivenNames`}
+                name="specialistGivenNames"
+                id="specialistGivenNames"
+                defaultValue={briefResponseForm.specialistGivenNames}
+                htmlFor="specialistGivenNames"
+                label="Given name(s)"
+                validators={{
+                  required
+                }}
+                messages={{
+                  required: 'Given name(s) is required'
+                }}
+              />
+              <Textfield
+                model={`${model}.specialistSurname`}
+                name="specialistSurname"
+                id="specialistSurname"
+                defaultValue={briefResponseForm.specialistSurname}
+                htmlFor="specialistSurname"
+                label="Surname"
+                validators={{
+                  required
+                }}
+                messages={{
+                  required: 'Surname is required'
+                }}
+              />
+              <h2 className="au-display-lg">About</h2>
+              <Textfield
+                model={`${model}.availability`}
+                name="availability"
+                id="availability"
+                defaultValue={briefResponseForm.availability}
+                htmlFor="availability"
+                label={`Earliest date ${getCandidateName(briefResponseForm)} can start`}
+                maxLength={100}
+                validators={{
+                  required
+                }}
+                messages={{
+                  required: 'Enter a date for when you can start the project'
+                }}
+                description={`Buyer has requested ${format(parse(brief.startDate), 'DD-MM-YYYY')}`}
+              />
+              {brief.preferredFormatForRates === 'dailyRate' && (
+                <div className="row">
+                  <div className="col-sm-6">
+                    <Textfield
+                      model={`${model}.dayRateExcludingGST`}
+                      name="dayRateExcludingGST"
+                      id="dayRateExcludingGST"
+                      defaultValue={briefResponseForm.dayRateExcludingGST}
+                      htmlFor="dayRateExcludingGST"
+                      label="Day rate (excluding GST)"
+                      validators={{
+                        required,
+                        validPercentage
+                      }}
+                      messages={{
+                        required: 'Daily rate is required',
+                        validPercentage: 'Enter only numbers eg. 600.00'
+                      }}
+                      prefix={'$'}
+                      onChange={data => onRateChange('dayRate', data.target.value)}
+                    />
+                  </div>
+                  <div className="col-sm-6">
+                    <Textfield
+                      model={`${model}.dayRate`}
+                      name="dayRate"
+                      id="dayRate"
+                      defaultValue={briefResponseForm.dayRate}
+                      htmlFor="dayRate"
+                      label="Day rate (including GST)"
+                      className={styles.readOnly}
+                      readOnly
+                      prefix={'$'}
+                    />
+                  </div>
                 </div>
               )}
-              <div className="au-display-lg">
-                <strong>Candidate {specialistNumber}</strong>
-              </div>
-              <span>
-                {"Enter the candidate's full legal name as it appears on their driver's licence or passport."}
-              </span>
-              <Form
-                model={model}
-                id="briefName"
-                onSubmit={data => handleNameSubmit(data.specialistGivenNames, data.specialistSurname)}
-              >
-                <Textfield
-                  model={`${model}.specialistGivenNames`}
-                  name="specialistGivenNames"
-                  id="specialistGivenNames"
-                  htmlFor="specialistGivenNames"
-                  label="Given name(s)"
-                  validators={{
-                    required
-                  }}
-                  messages={{
-                    required: 'Given name(s) is required'
-                  }}
-                />
-                <Textfield
-                  model={`${model}.specialistSurname`}
-                  name="specialistSurname"
-                  id="specialistSurname"
-                  htmlFor="specialistSurname"
-                  label="Surname"
-                  validators={{
-                    required
-                  }}
-                  messages={{
-                    required: 'Surname is required'
-                  }}
-                />
-                <input
-                  className="au-btn"
-                  type="submit"
-                  value={briefResponses.length > 0 ? 'Continue' : 'Start application'}
-                />
-              </Form>
-            </div>
-          ) : (
-            <div>
-              <div className={styles.stepTitle}>
-                Specialist {specialistNumber} of {brief.numberOfSuppliers}
-              </div>
-              <Form model={model} id="briefResponse" onSubmit={data => handleSubmit(data)}>
-                <h1 className="au-display-xl">{`${specialistGivenNames} ${specialistSurname}`}</h1>
-                <h2 className="au-display-lg">About</h2>
-                <Textfield
-                  model={`${model}.availability`}
-                  name="availability"
-                  id="availability"
-                  htmlFor="availability"
-                  label={`Earliest date ${specialistGivenNames} ${specialistSurname} can start`}
-                  maxLength={100}
-                  validators={{
-                    required
-                  }}
-                  messages={{
-                    required: 'Enter a date for when you can start the project'
-                  }}
-                  description={`Buyer has requested ${format(parse(brief.startDate), 'DD-MM-YYYY')}`}
-                />
-                {brief.preferredFormatForRates === 'dailyRate' && (
-                  <div className="row">
-                    <div className="col-sm-6">
-                      <Textfield
-                        model={`${model}.dayRateExcludingGST`}
-                        name="dayRateExcludingGST"
-                        id="dayRateExcludingGST"
-                        htmlFor="dayRateExcludingGST"
-                        label="Day rate (excluding GST)"
-                        validators={{
-                          required,
-                          validPercentage
-                        }}
-                        messages={{
-                          required: 'Daily rate is required',
-                          validPercentage: 'Enter only numbers eg. 600.00'
-                        }}
-                        prefix={'$'}
-                        onChange={data => onRateChange('dayRate', data.target.value)}
-                      />
-                    </div>
-                    <div className="col-sm-6">
-                      <Textfield
-                        model={`${model}.dayRate`}
-                        name="dayRate"
-                        id="dayRate"
-                        htmlFor="dayRate"
-                        label="Day rate (including GST)"
-                        className={styles.readOnly}
-                        readOnly
-                        prefix={'$'}
-                      />
-                    </div>
+              {brief.preferredFormatForRates === 'hourlyRate' && (
+                <div className="row">
+                  <div className="col-sm-6">
+                    <Textfield
+                      model={`${model}.hourRateExcludingGST`}
+                      name="hourRateExcludingGST"
+                      id="hourRateExcludingGST"
+                      defaultValue={briefResponseForm.hourRateExcludingGST}
+                      htmlFor="hourRateExcludingGST"
+                      label="Hourly rate (excluding GST)"
+                      validators={{
+                        required,
+                        validPercentage
+                      }}
+                      messages={{
+                        required: 'Hourly rate is required',
+                        validPercentage: 'Enter only numbers eg. 600.00'
+                      }}
+                      onChange={data => onRateChange('hourRate', data.target.value)}
+                      prefix={'$'}
+                    />
                   </div>
-                )}
-                {brief.preferredFormatForRates === 'hourlyRate' && (
-                  <div className="row">
-                    <div className="col-sm-6">
-                      <Textfield
-                        model={`${model}.hourRateExcludingGST`}
-                        name="hourRateExcludingGST"
-                        id="hourRateExcludingGST"
-                        htmlFor="hourRateExcludingGST"
-                        label="Hourly rate (excluding GST)"
-                        validators={{
-                          required,
-                          validPercentage
-                        }}
-                        messages={{
-                          required: 'Hourly rate is required',
-                          validPercentage: 'Enter only numbers eg. 600.00'
-                        }}
-                        onChange={data => onRateChange('hourRate', data.target.value)}
-                        prefix={'$'}
-                      />
-                    </div>
-                    <div className="col-sm-6">
-                      <Textfield
-                        model={`${model}.hourRate`}
-                        name="hourRate"
-                        id="hourRate"
-                        htmlFor="hourRate"
-                        label="Hourly rate (including GST)"
-                        className={styles.readOnly}
-                        readOnly
-                        prefix={'$'}
-                      />
-                    </div>
+                  <div className="col-sm-6">
+                    <Textfield
+                      model={`${model}.hourRate`}
+                      name="hourRate"
+                      id="hourRate"
+                      defaultValue={briefResponseForm.hourRate}
+                      htmlFor="hourRate"
+                      label="Hourly rate (including GST)"
+                      className={styles.readOnly}
+                      readOnly
+                      prefix={'$'}
+                    />
                   </div>
-                )}
-                {app.supplierCode ? (
-                  <FilesInput
-                    label="Résumé"
-                    hint="Attachments must be PDF or ODT format and a maximum of 5MB"
-                    name="attachedDocumentURL"
-                    model={`${model}.attachedDocumentURL.0`}
-                    formFields={1}
-                    fieldLabel="Upload résumé"
-                    url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                    api={dmapi}
-                    description=""
-                    validators={{
-                      requiredFile
-                    }}
-                    messages={{
-                      requiredFile: 'Upload a file for your résumé'
-                    }}
-                    uploading={uploading}
-                  />
-                ) : (
-                  <AUpageAlert as="warning" setFocus={setFocus}>
-                    <h3 className="au-display-sm">There was a problem loading your details</h3>
-                    <p>Only logged in sellers can respond to briefs</p>
-                  </AUpageAlert>
-                )}
-                <RadioList
-                  id="visaStatus"
-                  label={`What is ${specialistGivenNames} ${specialistSurname}'s citizenship status?`}
-                  name="visaStatus"
-                  model={`${model}.visaStatus`}
+                </div>
+              )}
+              {showResumeField(briefResponseForm, briefResponseStatus) && (
+                <FilesInput
+                  label="Résumé"
+                  hint="Attachments must be PDF or ODT format and a maximum of 5MB"
+                  name="resume"
+                  model={`${model}.resume.0`}
+                  fileId={0}
+                  formFields={1}
+                  fieldLabel="Upload résumé"
+                  url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                  api={dmapi}
+                  description=""
                   validators={{
-                    required
+                    requiredFile
                   }}
-                  options={[
-                    {
-                      label: 'Australian citizen',
-                      value: 'AustralianCitizen'
-                    },
-                    {
-                      label: 'Permanent resident',
-                      value: 'PermanentResident'
-                    },
-                    {
-                      label: 'Foreign national with a valid visa',
-                      value: 'ForeignNationalWithAValidVisa'
-                    }
-                  ]}
                   messages={{
-                    required: `"What is ${specialistGivenNames} ${specialistSurname}'s citizenship status?" is a required field`
+                    requiredFile: 'Upload a file for your résumé'
                   }}
+                  uploading={uploading}
                 />
-                {brief.securityClearance === 'mustHave' && (
-                  <RadioList
-                    id="securityClearance"
-                    label={`Does ${specialistGivenNames} ${specialistSurname} currently hold a 
-                      ${brief.securityClearanceCurrent === 'baseline' ? 'baseline' : ''}
-                      ${brief.securityClearanceCurrent === 'nv1' ? 'negative vetting level 1' : ''}
-                      ${brief.securityClearanceCurrent === 'nv2' ? 'negative vetting level 2' : ''}
-                      ${brief.securityClearanceCurrent === 'pv' ? 'positive vetting' : ''} security clearance?`}
-                    name="securityClearance"
-                    model={`${model}.securityClearance`}
-                    validators={{
-                      required
-                    }}
-                    options={[
-                      {
-                        label: 'Yes',
-                        value: 'Yes'
-                      },
-                      {
-                        label: 'No',
-                        value: 'No'
-                      }
-                    ]}
-                    messages={{
-                      required: `${specialistGivenNames} ${specialistSurname}'s security clearance is required`
-                    }}
-                  />
-                )}
+              )}
+              <RadioList
+                id="visaStatus"
+                label={`What is ${getCandidateName(briefResponseForm)}'s citizenship status?`}
+                name="visaStatus"
+                model={`${model}.visaStatus`}
+                validators={{
+                  required
+                }}
+                options={[
+                  {
+                    label: 'Australian citizen',
+                    value: 'AustralianCitizen'
+                  },
+                  {
+                    label: 'Permanent resident',
+                    value: 'PermanentResident'
+                  },
+                  {
+                    label: 'Foreign national with a valid visa',
+                    value: 'ForeignNationalWithAValidVisa'
+                  }
+                ]}
+                messages={{
+                  required: `"What is ${getCandidateName(briefResponseForm)}'s citizenship status?" is a required field`
+                }}
+              />
+              {brief.securityClearance === 'mustHave' && (
                 <RadioList
-                  id="previouslyWorked"
-                  label={`Has ${specialistGivenNames} ${specialistSurname} previously worked for the ${brief.organisation}?`}
-                  name="previouslyWorked"
-                  model={`${model}.previouslyWorked`}
+                  id="securityClearance"
+                  label={`Does ${getCandidateName(briefResponseForm)} currently hold a 
+                    ${brief.securityClearanceCurrent === 'baseline' ? 'baseline' : ''}
+                    ${brief.securityClearanceCurrent === 'nv1' ? 'negative vetting level 1' : ''}
+                    ${brief.securityClearanceCurrent === 'nv2' ? 'negative vetting level 2' : ''}
+                    ${brief.securityClearanceCurrent === 'pv' ? 'positive vetting' : ''} security clearance?`}
+                  name="securityClearance"
+                  model={`${model}.securityClearance`}
                   validators={{
                     required
                   }}
@@ -309,131 +263,166 @@ const BriefSpecialistResponseForm2 = ({
                     }
                   ]}
                   messages={{
-                    required: `"Has ${specialistGivenNames} ${specialistSurname} previously worked for the ${brief.organisation}?" is a required field`
+                    required: `${getCandidateName(briefResponseForm)}'s security clearance is required`
                   }}
                 />
-                <h2 className="au-display-lg">Essential selection criteria</h2>
-                {brief.essentialRequirements &&
-                  brief.essentialRequirements.map((requirement, i) => (
+              )}
+              <RadioList
+                id="previouslyWorked"
+                label={`Has ${getCandidateName(briefResponseForm)} previously worked for the ${brief.organisation}?`}
+                name="previouslyWorked"
+                model={`${model}.previouslyWorked`}
+                validators={{
+                  required
+                }}
+                options={[
+                  {
+                    label: 'Yes',
+                    value: 'Yes'
+                  },
+                  {
+                    label: 'No',
+                    value: 'No'
+                  }
+                ]}
+                messages={{
+                  required: `"Has ${getCandidateName(briefResponseForm)} previously worked for the ${
+                    brief.organisation
+                  }?" is a required field`
+                }}
+              />
+              <h2 className="au-display-lg">Essential selection criteria</h2>
+              {brief.essentialRequirements &&
+                brief.essentialRequirements.map((requirement, i) => (
+                  <Textarea
+                    key={requirement.criteria}
+                    model={`${model}.essentialRequirements['${escapeQuote(requirement.criteria)}']`}
+                    name={`essentialRequirement.${requirement.criteria}`}
+                    id={`essentialRequirement.${i}`}
+                    controlProps={{
+                      limit: 500,
+                      rows: '8'
+                    }}
+                    label={requirement.criteria}
+                    validators={{ required }}
+                    showMessagesDuringFocus
+                    messages={{
+                      required: `${requirement.criteria} is required`
+                    }}
+                    description={brief.includeWeightingsEssential ? `Weighting: ${requirement.weighting}%` : ''}
+                  />
+                ))}
+              {brief.niceToHaveRequirements && brief.niceToHaveRequirements.length > 0 && (
+                <React.Fragment>
+                  <h2 className="au-display-lg">Desirable selection criteria</h2>
+                  {brief.niceToHaveRequirements.map((requirement, i) => (
                     <Textarea
                       key={requirement.criteria}
-                      model={`${model}.essentialRequirements['${escapeQuote(requirement.criteria)}']`}
-                      name={`essentialRequirement.${requirement.criteria}`}
-                      id={`essentialRequirement.${i}`}
+                      model={`${model}.niceToHaveRequirements['${escapeQuote(requirement.criteria)}']`}
+                      name={`niceToHaveRequirement.${requirement.criteria}`}
+                      id={`niceToHaveRequirement.${i}`}
                       controlProps={{
                         limit: 500,
                         rows: '8'
                       }}
-                      label={requirement.criteria}
-                      validators={{ required }}
-                      showMessagesDuringFocus
-                      messages={{
-                        required: `${requirement.criteria} is required`
-                      }}
-                      description={brief.includeWeightingsEssential ? `Weighting: ${requirement.weighting}%` : ''}
+                      label={`${requirement.criteria} (optional)`}
+                      description={brief.includeWeightingsNiceToHave ? `Weighting: ${requirement.weighting}%` : ''}
                     />
                   ))}
-                {brief.niceToHaveRequirements && brief.niceToHaveRequirements.length > 0 && (
-                  <React.Fragment>
-                    <h2 className="au-display-lg">Desirable selection criteria</h2>
-                    {brief.niceToHaveRequirements.map((requirement, i) => (
-                      <Textarea
-                        key={requirement.criteria}
-                        model={`${model}.niceToHaveRequirements['${escapeQuote(requirement.criteria)}']`}
-                        name={`niceToHaveRequirement.${requirement.criteria}`}
-                        id={`niceToHaveRequirement.${i}`}
-                        controlProps={{
-                          limit: 500,
-                          rows: '8'
-                        }}
-                        label={`${requirement.criteria} (optional)`}
-                        description={brief.includeWeightingsNiceToHave ? `Weighting: ${requirement.weighting}%` : ''}
-                      />
-                    ))}
-                  </React.Fragment>
+                </React.Fragment>
+              )}
+              <AUheadings level="2" size="sm">
+                {showResumeField(briefResponseForm, briefResponseStatus) ? 'Other documents (optional)' : 'Attachments'}
+              </AUheadings>
+              <p>
+                {showResumeField(briefResponseForm, briefResponseStatus) && (
+                  <span>If requested by the buyer, you can upload additional documents for this candidate. </span>
                 )}
-                <AUheadings level="2" size="sm">
-                  Other documents (optional)
-                </AUheadings>
+                Attachments must be in DOC, DOCX, ODT, PDF, PPT, PPTX, XLS or XLSX format and a maximum size of 5MB.
+              </p>
+              {app.supplierCode &&
+                range(fileCount + 1).map(i => (
+                  <FilesInput
+                    key={i}
+                    fileId={i}
+                    name="attachedDocumentURL"
+                    model={`${model}.attachedDocumentURL.${i}`}
+                    formFields={1}
+                    fieldLabel="Upload another document"
+                    url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
+                    api={dmapi}
+                    description=""
+                    validators={{}}
+                    messages={{}}
+                    uploading={uploading}
+                    accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.odt"
+                  />
+                ))}
+              {fileCount < 10 && (
                 <p>
-                  If requested by the buyer, you can upload additional documents for this candidate. Attachments must be
-                  in DOC, DOCX, ODT, PDF, PPT, PPTX, XLS or XLSX format and a maximum size of 5MB.
+                  <a
+                    href="#add"
+                    onClick={e => {
+                      e.preventDefault()
+                      addOtherDocument()
+                    }}
+                  >
+                    Add another
+                  </a>
                 </p>
-                {app.supplierCode &&
-                  range(1, fileCount).map(i => (
-                    <FilesInput
-                      key={i}
-                      fileId={i}
-                      name="attachedDocumentURL"
-                      model={`${model}.attachedDocumentURL.${i}`}
-                      formFields={1}
-                      fieldLabel="Upload another document"
-                      url={`/brief/${brief.id}/respond/documents/${app.supplierCode}`}
-                      api={dmapi}
-                      description=""
-                      validators={{}}
-                      messages={{}}
-                      uploading={uploading}
-                      accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.odt"
-                    />
-                  ))}
-                {fileCount < 10 && (
-                  <p>
-                    <a
-                      href="#add"
-                      onClick={e => {
-                        e.preventDefault()
-                        addOtherDocument()
-                      }}
-                    >
-                      Add another
+              )}
+              <Textfield
+                model={`${model}.respondToEmailAddress`}
+                name="respondToEmailAddress"
+                id="respondToEmailAddress"
+                htmlFor="respondToEmailAddress"
+                label="Contact email"
+                description="All communication about your application will be sent to this address."
+                defaultValue={
+                  briefResponseForm.respondToEmailAddress
+                    ? briefResponseForm.respondToEmailAddress
+                    : supplierContact.email
+                }
+                validators={{
+                  required,
+                  validEmail
+                }}
+                messages={{
+                  required: 'A contact email is required',
+                  validEmail: 'A valid contact email is required'
+                }}
+              />
+              {currentlySending || loadingText ? (
+                <LoadingButton text={loadingText || 'Loading'} />
+              ) : (
+                <span>
+                  <input
+                    className="au-btn right-button-margin"
+                    type="submit"
+                    value={briefResponseStatus === 'submitted' ? 'Update candidate' : 'Submit candidate'}
+                    onClick={e => {
+                      onSubmitClicked(e)
+                    }}
+                  />
+                  {briefResponseStatus === 'submitted' && (
+                    <a className="au-btn au-btn--tertiary" href={`${rootPath}/brief/${brief.id}/responses`}>
+                      Cancel all updates
                     </a>
-                  </p>
-                )}
-                <Textfield
-                  model={`${model}.respondToEmailAddress`}
-                  name="respondToEmailAddress"
-                  id="respondToEmailAddress"
-                  htmlFor="respondToEmailAddress"
-                  label="Contact email"
-                  description="All communication about your application will be sent to this address."
-                  defaultValue={app.emailAddress}
-                  validators={{
-                    required,
-                    validEmail
-                  }}
-                  messages={{
-                    required: 'A contact email is required',
-                    validEmail: 'A valid contact email is required'
-                  }}
-                />
-                {currentlySending || loadingText ? (
-                  <LoadingButton text={loadingText || 'Loading'} />
-                ) : (
-                  <span>
+                  )}
+                  {briefResponseStatus === 'draft' && (
                     <input
-                      className="au-btn right-button-margin"
-                      type="submit"
-                      value="Submit specialist"
+                      className="au-btn au-btn--tertiary"
+                      type="button"
+                      value="Save and return later"
                       onClick={e => {
-                        submitClicked(e)
+                        onSaveClicked(e)
                       }}
                     />
-                    {specialistNumber < brief.numberOfSuppliers && (
-                      <input
-                        className="au-btn au-btn--secondary"
-                        type="submit"
-                        value="Submit and add another"
-                        onClick={e => {
-                          addAnotherClicked(e)
-                        }}
-                      />
-                    )}
-                  </span>
-                )}
-              </Form>
-            </div>
-          )}
+                  )}
+                </span>
+              )}
+            </Form>
+          </div>
         </article>
       </div>
     </DocumentTitle>
@@ -443,19 +432,14 @@ const BriefSpecialistResponseForm2 = ({
 BriefSpecialistResponseForm2.defaultProps = {
   model: '',
   brief: {},
-  briefResponses: [],
   briefResponseSuccess: false,
+  briefResponseStatus: '',
   app: {},
-  addAnotherSpecialist: false,
-  specialistGivenNames: null,
-  specialistSurname: null,
+  briefResponseSave: false,
   setFocus: null,
-  match: null,
-  submitClicked: null,
+  onSubmitClicked: () => {},
+  onSaveClicked: () => {},
   handleSubmit: null,
-  handleNameSubmit: null,
-  specialistNumber: null,
-  addAnotherClicked: null,
   uploading: () => null,
   loadingText: null,
   onRateChange: () => null,
@@ -466,19 +450,17 @@ BriefSpecialistResponseForm2.defaultProps = {
 BriefSpecialistResponseForm2.propTypes = {
   model: PropTypes.string.isRequired,
   brief: PropTypes.object.isRequired,
-  briefResponses: PropTypes.array.isRequired,
   briefResponseSuccess: PropTypes.bool,
+  briefResponseStatus: PropTypes.string,
+  supplierContact: PropTypes.shape({
+    email: PropTypes.string.isRequired
+  }).isRequired,
   app: PropTypes.object.isRequired,
   setFocus: PropTypes.func,
-  match: PropTypes.object,
-  submitClicked: PropTypes.func,
+  onSubmitClicked: PropTypes.func,
+  onSaveClicked: PropTypes.func,
   handleSubmit: PropTypes.func,
-  handleNameSubmit: PropTypes.func,
-  specialistGivenNames: PropTypes.string,
-  specialistSurname: PropTypes.string,
-  specialistNumber: PropTypes.number,
-  addAnotherClicked: PropTypes.func,
-  addAnotherSpecialist: PropTypes.bool.isRequired,
+  briefResponseSave: PropTypes.bool,
   uploading: PropTypes.func,
   loadingText: PropTypes.string,
   onRateChange: PropTypes.func,

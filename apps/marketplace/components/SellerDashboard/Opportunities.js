@@ -11,12 +11,17 @@ import styles from '../../main.scss'
 
 const withdrawn = o => o.withdrawn_at && differenceInSeconds(new Date(), o.withdrawn_at) > 0
 const closed = o => !withdrawn(o) && differenceInSeconds(new Date(), o.closed_at) > 0
-const invited = o => !withdrawn(o) && !closed(o) && !o.responseCount
+const invited = o => !withdrawn(o) && !closed(o) && !o.responseCount && !o.draftResponseCount
 const getOpportunityLink = (o, text) => (
   <a href={`${rootPath}/digital-marketplace/opportunities/${o.briefId}`}>{text || o.name}</a>
 )
 const getStatusBadge = o => (
   <React.Fragment>
+    {!closed(o) && !withdrawn(o) && o.draftResponseCount && (
+      <div className={`${styles.badge} ${styles.yellow} ${styles.first}`}>
+        {o.lot === 'specialist' && `${o.draftResponseCount} in `}Draft
+      </div>
+    )}
     {!withdrawn(o) && !closed(o) && o.responseCount && (
       <div className={`${styles.badge} ${styles.lightBlue}`}>
         {o.numberOfSuppliers ? `${o.responseCount} ` : ''}Submitted
@@ -24,6 +29,22 @@ const getStatusBadge = o => (
     )}
     {invited(o) && <div className={`${styles.badge} ${styles.green}`}>Invited</div>}
     {closed(o) && <div className={`${styles.badge}`}>Closed</div>}
+  </React.Fragment>
+)
+
+const getAction = o => (
+  <React.Fragment>
+    {!closed(o) &&
+      !withdrawn(o) &&
+      (o.draftResponseCount || o.responseCount) &&
+      o.briefResponseId &&
+      o.lot !== 'specialist' && (
+        <a href={`${rootPath}/brief/${o.briefId}/${o.lot}/respond/${o.briefResponseId}`}>Edit response</a>
+      )}
+    {!closed(o) && !withdrawn(o) && (o.draftResponseCount || o.responseCount) && o.lot === 'specialist' && (
+      <a href={`${rootPath}/brief/${o.briefId}/responses`}>Edit candidates</a>
+    )}
+    {invited(o) && <a href={`${rootPath}/digital-marketplace/opportunities/${o.briefId}`}>View opportunity</a>}
   </React.Fragment>
 )
 
@@ -68,7 +89,7 @@ export class Opportunities extends Component {
                   <th scope="col" className={`${styles.tableColumnWidth1} ${styles.textAlignCenter}`}>
                     Id
                   </th>
-                  <th scope="col" className={`${styles.tableColumnWidth10} ${styles.textAlignLeft}`}>
+                  <th scope="col" className={`${styles.tableColumnWidth8} ${styles.textAlignLeft}`}>
                     Name
                   </th>
                   <th scope="col" className={`${styles.tableColumnWidth6} ${styles.textAlignLeft}`}>
@@ -77,13 +98,16 @@ export class Opportunities extends Component {
                   <th scope="col" className={`${styles.tableColumnWidth1} ${styles.textAlignLeft}`}>
                     Status
                   </th>
+                  <th scope="col" className={`${styles.tableColumnWidth2} ${styles.textAlignLeft}`}>
+                    Action
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {items.map(opportunity => (
                   <tr key={`opportunity.${opportunity.briefId}`}>
                     <td className={`${styles.tableColumnWidth1} ${styles.textAlignCenter}`}>{opportunity.briefId}</td>
-                    <td className={styles.tableColumnWidth10}>
+                    <td className={styles.tableColumnWidth8}>
                       {getOpportunityLink(opportunity)}
                       <br />
                       {mapLot(opportunity.lot)}
@@ -92,10 +116,11 @@ export class Opportunities extends Component {
                       {withdrawn(opportunity) ? (
                         <span className={styles.darkGrayText}>The buyer has withdrawn this opportunity</span>
                       ) : (
-                        format(opportunity.closed_at, 'hA, dddd Do MMMM YYYY')
+                        format(opportunity.closed_at, '[6pm,] dddd D MMMM YYYY')
                       )}
                     </td>
                     <td className={styles.tableColumnWidth1}>{getStatusBadge(opportunity)}</td>
+                    <td className={styles.tableColumnWidth2}>{getAction(opportunity)}</td>
                   </tr>
                 ))}
               </tbody>

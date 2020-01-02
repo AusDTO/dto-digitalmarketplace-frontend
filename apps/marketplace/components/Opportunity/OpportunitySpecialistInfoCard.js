@@ -8,22 +8,22 @@ const OpportunitySpecialistInfoCard = props => (
   <div className={styles.container}>
     <div className="row">
       {!props.isOpenToAll && (
-        <div className="col-xs-6">
+        <div className="col-xs-5">
           <strong className={styles.stat}>{props.sellersInvited}</strong>
           <br />
           seller{props.sellersInvited === 1 ? '' : 's'} invited
         </div>
       )}
-      <div className="col-xs-6">
+      <div className="col-xs-7">
         <strong className={styles.stat}>{props.sellersApplied}</strong>
         <br />
         candidate{props.sellersApplied === 1 ? '' : 's'}
-        {' applied'}
+        {' submitted'}
       </div>
     </div>
-    <div className="row">
-      <div className="col-xs-12">
-        {props.isOpen && props.closingDate && (
+    {props.isOpen && props.closingDate && (
+      <div className="row">
+        <div className="col-xs-12">
           <div>
             <span>Closes in</span>
             <br />
@@ -31,33 +31,56 @@ const OpportunitySpecialistInfoCard = props => (
               <ClosedDate countdown date={props.closingDate} />
             </strong>
           </div>
-        )}
+        </div>
       </div>
-    </div>
-    <div className="row">
-      <div className="col-xs-12">
-        {props.isApprovedSeller && props.isInvited && props.isAssessedForCategory && !props.hasResponded ? (
-          <p>
-            {props.sellerResponses === 0
-              ? `You have not submitted any candidates. `
-              : `You have submitted ${props.sellerResponses} candidate${props.sellerResponses > 1 ? 's' : ''}. `}
-            {`You can submit ${props.numberOfSuppliers - props.sellerResponses} more before the opportunity closes.`}
-          </p>
-        ) : (
-          <React.Fragment>
-            {props.numberOfSuppliers > 1 ? (
-              <React.Fragment>
-                Sellers can submit up to <b>{props.numberOfSuppliers} candidates</b> for this role.
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                Sellers can submit <b>{props.numberOfSuppliers} candidate</b> for this role.
-              </React.Fragment>
-            )}
-          </React.Fragment>
-        )}
+    )}
+    {props.isOpen && (
+      <div className="row">
+        <div className="col-xs-12">
+          {props.isApprovedSeller && props.isInvited && props.isAssessedForCategory ? (
+            <p>
+              You can submit up to {props.numberOfSuppliers} candidate{props.numberOfSuppliers > 1 && 's'} before the
+              opportunity closes.
+              {props.supplierBriefResponseCountDraft > 0 && props.supplierBriefResponseCountSubmitted === 0 && (
+                <span>
+                  {' '}
+                  You have {props.supplierBriefResponseCountDraft} candidate
+                  {props.supplierBriefResponseCountDraft > 1 && 's'} in draft.
+                </span>
+              )}
+              {props.supplierBriefResponseCountDraft === 0 && props.supplierBriefResponseCountSubmitted > 0 && (
+                <span>
+                  {' '}
+                  You submitted {props.supplierBriefResponseCountSubmitted} candidate
+                  {props.supplierBriefResponseCountSubmitted > 1 && 's'}.
+                </span>
+              )}
+              {props.supplierBriefResponseCountDraft > 0 && props.supplierBriefResponseCountSubmitted > 0 && (
+                <span>
+                  {' '}
+                  You submitted {props.supplierBriefResponseCountSubmitted} candidate
+                  {props.supplierBriefResponseCountSubmitted > 1 && 's'} and have{' '}
+                  {props.supplierBriefResponseCountDraft} candidate{props.supplierBriefResponseCountDraft > 1 && 's'} in
+                  draft.
+                </span>
+              )}
+            </p>
+          ) : (
+            <React.Fragment>
+              {props.numberOfSuppliers > 1 ? (
+                <React.Fragment>
+                  Sellers can submit up to <b>{props.numberOfSuppliers} candidates</b> for this role.
+                </React.Fragment>
+              ) : (
+                <React.Fragment>
+                  Sellers can submit <b>{props.numberOfSuppliers} candidate</b> for this role.
+                </React.Fragment>
+              )}
+            </React.Fragment>
+          )}
+        </div>
       </div>
-    </div>
+    )}
     <div className="row">
       <div className="col-xs-12">
         {!props.isOpen && props.briefStatus !== 'draft' && (
@@ -235,15 +258,17 @@ const OpportunitySpecialistInfoCard = props => (
                 </div>
               ) : (
                 <React.Fragment>
-                  {!props.hasResponded && (
+                  {!props.hasResponded && props.sellerResponses === 0 && (
                     <p>
-                      <a
-                        href={`${rootPath}/brief/${props.briefId}/${
-                          props.briefLot === 'specialist' ? `${props.briefLot}2` : props.briefLot
-                        }/respond`}
-                        className={`${styles.button} au-btn`}
-                      >
+                      <a href={`${rootPath}/brief/${props.briefId}/responses`} className={`${styles.button} au-btn`}>
                         Apply for opportunity
+                      </a>
+                    </p>
+                  )}
+                  {props.sellerResponses > 0 && (
+                    <p>
+                      <a href={`${rootPath}/brief/${props.briefId}/responses`} className={`${styles.button} au-btn`}>
+                        Edit or submit candidates
                       </a>
                     </p>
                   )}
@@ -262,6 +287,8 @@ OpportunitySpecialistInfoCard.defaultProps = {
   sellersInvited: 0,
   sellersApplied: 0,
   sellerResponses: 0,
+  supplierBriefResponseCountSubmitted: 0,
+  supplierBriefResponseCountDraft: 0,
   canRespond: false,
   isAssessedForCategory: false,
   hasEvidenceInDraftForCategory: false,
@@ -287,10 +314,12 @@ OpportunitySpecialistInfoCard.defaultProps = {
 }
 
 OpportunitySpecialistInfoCard.propTypes = {
-  buyerEmail: PropTypes.string,
+  buyerEmail: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   sellersInvited: PropTypes.number,
   sellersApplied: PropTypes.number,
   sellerResponses: PropTypes.number,
+  supplierBriefResponseCountSubmitted: PropTypes.number,
+  supplierBriefResponseCountDraft: PropTypes.number,
   canRespond: PropTypes.bool,
   isAssessedForCategory: PropTypes.bool,
   hasEvidenceInDraftForCategory: PropTypes.bool,
@@ -310,7 +339,6 @@ OpportunitySpecialistInfoCard.propTypes = {
   isBriefOwner: PropTypes.bool,
   closingDate: PropTypes.string.isRequired,
   briefId: PropTypes.number.isRequired,
-  briefLot: PropTypes.string.isRequired,
   briefStatus: PropTypes.string.isRequired,
   category: PropTypes.string,
   sellerCategory: PropTypes.string.isRequired,

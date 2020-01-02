@@ -24,9 +24,7 @@ describe('OpportunitySpecialistInfoCard', () => {
           sellersApplied: 1
         })
       ).text()
-    ).toEqual(
-      '1seller invited1candidate appliedSellers can submit 1 candidate for this role.This opportunity has closed.'
-    )
+    ).toEqual('1seller invited1candidate submittedThis opportunity has closed.')
   })
 
   test('shows seller opportunity closed', () => {
@@ -47,9 +45,7 @@ describe('OpportunitySpecialistInfoCard', () => {
           sellersApplied: 0
         })
       ).text()
-    ).toEqual(
-      '10sellers invited0candidates appliedSellers can submit up to 6 candidates for this role.This opportunity has closed.'
-    )
+    ).toEqual('10sellers invited0candidates submittedThis opportunity has closed.')
   })
 
   test('shows seller invited', () => {
@@ -71,7 +67,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      '1seller invited0candidates appliedSellers can submit up to 6 candidates for this role.You must be signed in and invited to respondLogin'
+      '1seller invited0candidates submittedSellers can submit up to 6 candidates for this role.You must be signed in and invited to respondLogin'
     )
   })
 
@@ -94,7 +90,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      '10sellers invited1candidate appliedSellers can submit up to 6 candidates for this role.You must be signed in and invited to respondLogin'
+      '10sellers invited1candidate submittedSellers can submit up to 6 candidates for this role.You must be signed in and invited to respondLogin'
     )
   })
 
@@ -116,7 +112,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates appliedSellers can submit up to 5 candidates for this role.You must be signed in and approved in software to respondHow to respondLogin'
+      'candidates submittedSellers can submit up to 5 candidates for this role.You must be signed in and approved in software to respondHow to respondLogin'
     )
   })
 
@@ -144,7 +140,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates appliedYou have not submitted any candidates. You can submit 6 more before the opportunity closes.Apply for opportunity'
+      'candidates submittedYou can submit up to 6 candidates before the opportunity closes.Apply for opportunity'
     )
   })
 
@@ -172,7 +168,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates appliedYou have submitted 1 candidate. You can submit 5 more before the opportunity closes.Apply for opportunity'
+      'candidates submittedYou can submit up to 6 candidates before the opportunity closes.Edit or submit candidates'
     )
   })
 
@@ -200,7 +196,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates appliedYou have submitted 3 candidates. You can submit 3 more before the opportunity closes.Apply for opportunity'
+      'candidates submittedYou can submit up to 6 candidates before the opportunity closes.Edit or submit candidates'
     )
   })
 
@@ -227,7 +223,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates appliedSellers can submit up to 6 candidates for this role.You must be signed in and approved in software to respondHow to respondLogin'
+      'candidates submittedSellers can submit up to 6 candidates for this role.You must be signed in and approved in software to respondHow to respondLogin'
     )
   })
 
@@ -254,7 +250,9 @@ describe('OpportunitySpecialistInfoCard', () => {
           hasSignedCurrentAgreement: true
         })
       ).text()
-    ).toEqual('candidates appliedSellers can submit up to 6 candidates for this role.')
+    ).toEqual(
+      'candidates submittedYou can submit up to 6 candidates before the opportunity closes.Edit or submit candidates'
+    )
   })
 
   test('not able to apply because seller is applicant', () => {
@@ -282,7 +280,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates appliedSellers can submit up to 6 candidates for this role.You must complete your profile and be approved in software to respond.Continue application'
+      'candidates submittedSellers can submit up to 6 candidates for this role.You must complete your profile and be approved in software to respond.Continue application'
     )
   })
 
@@ -312,7 +310,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates appliedSellers can submit up to 6 candidates for this role.You must complete your profile and be approved in software to respond. Your application is currently being assessed.'
+      'candidates submittedSellers can submit up to 6 candidates for this role.You must complete your profile and be approved in software to respond. Your application is currently being assessed.'
     )
   })
 
@@ -337,7 +335,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates appliedSellers can submit up to 6 candidates for this role.You must complete your profile and be approved in software to respond.Continue application'
+      'candidates submittedSellers can submit up to 6 candidates for this role.You must complete your profile and be approved in software to respond.Continue application'
     )
   })
 
@@ -366,7 +364,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates appliedSellers can submit up to 6 candidates for this role.Only sellers assessed and approved by the Marketplace in "software" can apply.Request assessment'
+      'candidates submittedSellers can submit up to 6 candidates for this role.Only sellers assessed and approved by the Marketplace in "software" can apply.Request assessment'
     )
   })
 
@@ -396,7 +394,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates appliedSellers can submit up to 6 candidates for this role.Only sellers assessed and approved by the Marketplace in "software" can apply. Your application for this category is currently being assessed.'
+      'candidates submittedSellers can submit up to 6 candidates for this role.Only sellers assessed and approved by the Marketplace in "software" can apply. Your application for this category is currently being assessed.'
     )
   })
 
@@ -426,7 +424,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates appliedYou have not submitted any candidates. You can submit 6 more before the opportunity closes.There is at least one error in your profile. You must update your profile before you can apply for this opportunity.Update profile'
+      'candidates submittedYou can submit up to 6 candidates before the opportunity closes.There is at least one error in your profile. You must update your profile before you can apply for this opportunity.Update profile'
     )
   })
 })
