@@ -15,6 +15,10 @@ const OverviewHeaderPublishedActionsList = props => {
     ? `${rootPath}/brief/${brief.id}/close`
     : `${rootPath}/request-access/publish_opportunities`
 
+  const withdrawHref = hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities')
+    ? `${rootPath}/brief/${brief.id}/withdraw`
+    : `${rootPath}/request-access/publish_opportunities`
+
   return (
     <React.Fragment>
       <ul className={`${styles.menuList} ${mainStyles.hideMobile}`}>
@@ -31,16 +35,9 @@ const OverviewHeaderPublishedActionsList = props => {
             <a href={closeHref}>Close opportunity now</a>
           </li>
         )}
-        {brief.status === 'live' && hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
+        {brief.status === 'live' && (
           <li className={`${mainStyles.red} ${styles.hideMobile}`}>
-            <a className={mainStyles.red} href={`${rootPath}/brief/${brief.id}/withdraw`}>
-              Withdraw opportunity
-            </a>
-          </li>
-        )}
-        {brief.status === 'live' && !hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
-          <li className={`${mainStyles.red} ${styles.hideMobile}`}>
-            <a className={mainStyles.red} href={`${rootPath}/request-access/publish_opportunities`}>
+            <a className={mainStyles.red} href={withdrawHref}>
               Withdraw opportunity
             </a>
           </li>
@@ -55,16 +52,9 @@ const OverviewHeaderPublishedActionsList = props => {
             <a href={closeHref}>Close now</a>
           </li>
         )}
-        {brief.status === 'live' && hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
+        {brief.status === 'live' && (
           <li className={`${mainStyles.red} ${styles.hideDesktop}`}>
-            <a className={mainStyles.red} href={`${rootPath}/brief/${brief.id}/withdraw`}>
-              Withdraw
-            </a>
-          </li>
-        )}
-        {brief.status === 'live' && !hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') && (
-          <li className={`${mainStyles.red} ${styles.hideDesktop}`}>
-            <a className={mainStyles.red} href={`${rootPath}/request-access/publish_opportunities`}>
+            <a className={mainStyles.red} href={withdrawHref}>
               Withdraw
             </a>
           </li>
