@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import AUheading from '@gov.au/headings/lib/js/react.js'
 
@@ -34,7 +35,7 @@ const OverviewHeader = props => {
         {!isPublished && (
           <OverviewHeaderDraftActionsList
             brief={brief}
-            handleDeleteClick={handleDeleteClick}
+            onDeleteClick={handleDeleteClick}
             isPartOfTeam={isPartOfTeam}
             isTeamLead={isTeamLead}
             teams={teams}
@@ -53,6 +54,33 @@ const OverviewHeader = props => {
       </div>
     </div>
   )
+}
+
+OverviewHeader.defaultProps = {
+  brief: {},
+  canCloseOpportunity: null,
+  flowName: '',
+  handleDeleteClick: () => {},
+  isClosed: null,
+  isPublished: null,
+  isPartOfTeam: null,
+  isTeamLead: null,
+  teams: []
+}
+
+OverviewHeader.propTypes = {
+  brief: PropTypes.shape({
+    internalReference: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired
+  }).isRequired,
+  canCloseOpportunity: PropTypes.bool.isRequired,
+  flowName: PropTypes.string.isRequired,
+  handleDeleteClick: PropTypes.func.isRequired,
+  isClosed: PropTypes.bool.isRequired,
+  isPublished: PropTypes.bool,
+  isPartOfTeam: PropTypes.bool.isRequired,
+  isTeamLead: PropTypes.bool.isRequired,
+  teams: PropTypes.array.isRequired
 }
 
 export default OverviewHeader

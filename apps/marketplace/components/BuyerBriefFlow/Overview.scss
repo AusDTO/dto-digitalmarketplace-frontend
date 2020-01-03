@@ -24,7 +24,6 @@ div.header {
   right: 0;
 
   ul {
-    display: inline-block;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -94,10 +93,6 @@ ul.overviewList {
       margin-right: 1rem;
     }
 
-    .hideMobile {
-      display: none;
-    }
-
     .menuList {
       margin-top: 2rem;
     }
@@ -108,10 +103,6 @@ ul.overviewList {
   .headerMenu {
     li + li:before {
       content: "|";
-    }
-
-    .hideDesktop {
-      display: none;
     }
   }
 }

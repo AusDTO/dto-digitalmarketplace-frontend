@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { rootPath } from 'marketplace/routes'
 
@@ -14,6 +15,16 @@ const OverviewHeaderClosedActionsList = props => {
       </li>
     </ul>
   )
+}
+
+OverviewHeaderClosedActionsList.defaultProps = {
+  brief: {}
+}
+
+OverviewHeaderClosedActionsList.propTypes = {
+  brief: PropTypes.shape({
+    id: PropTypes.number.isRequired
+  }).isRequired
 }
 
 export default OverviewHeaderClosedActionsList

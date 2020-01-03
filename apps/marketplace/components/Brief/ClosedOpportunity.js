@@ -9,13 +9,15 @@ import { rootPath } from 'marketplace/routes'
 import styles from '../../main.scss'
 
 const ClosedOpportunity = props => {
-  const { app, brief, handleSubmit, setFocus } = props
+  const { app, brief, onFeedbackSubmit, setFocus } = props
 
   return (
     <React.Fragment>
       <AUpageAlert as="success" setFocus={setFocus}>
         <h1 className="au-display-lg">
-          <strong>Your opportunity has been closed</strong>
+          <strong>
+            {brief.title} ({brief.id}) was closed successfully
+          </strong>
         </h1>
         <div className={styles.marginTop2}>
           <AUbutton link={`${rootPath}/brief/${brief.id}/download-responses`}>Download seller responses</AUbutton>
@@ -24,7 +26,7 @@ const ClosedOpportunity = props => {
       <br />
       <Feedback
         app={app}
-        handleSubmit={handleSubmit}
+        handleSubmit={onFeedbackSubmit}
         difficultyQuestion="How did you find updating your opportunity?"
         commentQuestion="How would you improve this experience?"
         objectAction="closed_opportunity"
@@ -35,13 +37,18 @@ const ClosedOpportunity = props => {
 
 ClosedOpportunity.defaultProps = {
   app: {},
-  handleSubmit: () => {},
+  brief: {},
+  onFeedbackSubmit: () => {},
   setFocus: () => {}
 }
 
 ClosedOpportunity.propTypes = {
   app: PropTypes.object.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
+  brief: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired
+  }).isRequired,
+  onFeedbackSubmit: PropTypes.func.isRequired,
   setFocus: PropTypes.func.isRequired
 }
 

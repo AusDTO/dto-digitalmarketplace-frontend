@@ -42,37 +42,19 @@ describe('OverviewHeader', () => {
 
     const component = mount(<OverviewHeader brief={brief} canCloseOpportunity isClosed={false} isPublished />)
 
-    expect(
-      component
-        .children()
-        .find('li.hideMobile a')
-        .first()
-        .text()
-    ).toEqual('Close opportunity now')
+    expect(component.children().exists('ul.hideMobile')).toEqual(true)
+    const desktopLinks = component.children().find('ul.hideMobile a')
+    expect(desktopLinks).toHaveLength(3)
+    expect(desktopLinks.at(0).text()).toEqual('Close opportunity now')
+    expect(desktopLinks.at(1).text()).toEqual('Withdraw opportunity')
+    expect(desktopLinks.at(2).text()).toEqual('View opportunity')
 
-    expect(
-      component
-        .children()
-        .find('li.hideMobile a')
-        .last()
-        .text()
-    ).toEqual('Withdraw opportunity')
-
-    expect(
-      component
-        .children()
-        .find('li.hideDesktop a')
-        .first()
-        .text()
-    ).toEqual('Close now')
-
-    expect(
-      component
-        .children()
-        .find('li.hideDesktop a')
-        .last()
-        .text()
-    ).toEqual('Withdraw')
+    expect(component.children().exists('ul.hideDesktop')).toEqual(true)
+    const mobileLinks = component.children().find('ul.hideDesktop a')
+    expect(mobileLinks).toHaveLength(3)
+    expect(mobileLinks.at(0).text()).toEqual('Close now')
+    expect(mobileLinks.at(1).text()).toEqual('Withdraw')
+    expect(mobileLinks.at(2).text()).toEqual('View opportunity')
   })
 
   test('shows the correct actions for a published opportunity that can not be closed', () => {
@@ -92,21 +74,15 @@ describe('OverviewHeader', () => {
 
     const component = mount(<OverviewHeader brief={brief} canCloseOpportunity={false} isClosed={false} isPublished />)
 
-    expect(
-      component
-        .children()
-        .find('li.hideMobile a')
-        .first()
-        .text()
-    ).toEqual('Withdraw opportunity')
+    const desktopLinks = component.children().find('ul.hideMobile a')
+    expect(desktopLinks).toHaveLength(2)
+    expect(desktopLinks.at(0).text()).toEqual('Withdraw opportunity')
+    expect(desktopLinks.at(1).text()).toEqual('View opportunity')
 
-    expect(
-      component
-        .children()
-        .find('li.hideDesktop a')
-        .first()
-        .text()
-    ).toEqual('Withdraw')
+    const mobileLinks = component.children().find('ul.hideDesktop a')
+    expect(mobileLinks).toHaveLength(2)
+    expect(mobileLinks.at(0).text()).toEqual('Withdraw')
+    expect(mobileLinks.at(1).text()).toEqual('View opportunity')
   })
 
   test('shows the correct actions for a closed opportunity', () => {

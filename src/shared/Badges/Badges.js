@@ -6,6 +6,7 @@ import styles from './Badges.css'; // eslint-disable-line no-unused-vars
 
 export const titleMap = {
   recruiter_only: 'Recruiter',
+  recruitment: 'Recruiter',
   consultant_only: 'Consultant',
   recruiter_both: 'Recruiter and Consultant',
   indigenous: 'Indigenous business',

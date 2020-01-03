@@ -1,9 +1,9 @@
 import React from 'react'
-import format from 'date-fns/format'
 import Feedback from 'marketplace/components/Feedback/Feedback'
 import DocumentTitle from 'react-document-title'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import { rootPath } from 'marketplace/routes'
 
 const BriefTrainingResponseSubmitted2 = props => (
   <div className="row">
@@ -13,26 +13,25 @@ const BriefTrainingResponseSubmitted2 = props => (
           {!props.app.feedbackSuccess && (
             <AUpageAlert as="success">
               <AUheading level="4" size="md">
-                Your response has been successfully submitted.
+                {props.briefResponsePreviousStatus === 'draft' && (
+                  <span>Your response has been successfully submitted.</span>
+                )}
+                {props.briefResponsePreviousStatus === 'submitted' && <span>You have updated your response.</span>}
               </AUheading>
               <p>
-                {props.brief.sellerSelector && props.brief.sellerSelector === 'oneSeller' ? (
-                  <span>
-                    The buyer will receive your response once the opportunity closes
-                    {props.brief.applicationsClosedAt && (
-                      <span> on {format(new Date(props.brief.applicationsClosedAt), 'dddd D MMMM YYYY')}</span>
-                    )}
-                    .
-                  </span>
-                ) : (
-                  <span>
-                    The buyer will receive all responses once the opportunity closes
-                    {props.brief.applicationsClosedAt && (
-                      <span> on {format(new Date(props.brief.applicationsClosedAt), 'dddd D MMMM YYYY')}</span>
-                    )}
-                    .
-                  </span>
-                )}
+                The buyer receives all submitted responses after the opportunity closes. You can{' '}
+                <a href={`${rootPath}/brief/${props.briefId}/training2/respond/${props.briefResponseId}`}>
+                  update your response
+                </a>{' '}
+                any time before the closing date.
+              </p>
+              <p>
+                <a
+                  href={`${rootPath}/brief/${props.briefId}/training2/respond/${props.briefResponseId}`}
+                  className="au-btn"
+                >
+                  Edit your response
+                </a>
               </p>
             </AUpageAlert>
           )}

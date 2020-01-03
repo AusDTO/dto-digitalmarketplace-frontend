@@ -105,7 +105,9 @@ class CloseOpportunityPage extends Component {
     }
 
     if (this.state.opportunityClosed) {
-      return <ClosedOpportunity app={app} brief={brief} handleSubmit={this.handleFeedbackSubmit} setFocus={setFocus} />
+      return (
+        <ClosedOpportunity app={app} brief={brief} onFeedbackSubmit={this.handleFeedbackSubmit} setFocus={setFocus} />
+      )
     }
 
     if (!canCloseOpportunity) {
@@ -132,7 +134,6 @@ class CloseOpportunityPage extends Component {
 const mapStateToProps = state => ({
   app: state.app,
   brief: state.brief.brief,
-  briefResponses: state.brief.briefResponses,
   canCloseOpportunity: state.brief.canCloseOpportunity,
   errorMessage: state.app.errorMessage
 })

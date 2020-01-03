@@ -29,10 +29,6 @@ const BuyerDashboardLiveBriefs = props => (
         item => (
           <td key={`closed_at_${item.id}`} className={styles.colClosing}>
             {format(new Date(item.closed_at), 'DD/MM/YYYY')}
-            <br />
-            {item.sellerSelector !== 'allSellers' && item.sellers
-              ? `${item.responses ? item.responses : 0} of ${Object.keys(item.sellers).length} submitted`
-              : `${item.responses ? item.responses : 0} submitted`}
           </td>
         )
       ]

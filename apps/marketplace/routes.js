@@ -7,6 +7,9 @@ import CreateTeamPage from './pages/Teams/CreateTeamPage'
 import CreateUserPage from './pages/CreateUserPage'
 import SendInvitePage from './pages/SendInvitePage'
 import BriefPage from './pages/BriefPage'
+import BriefResponseCreatePage from './pages/BriefResponseCreatePage'
+import BriefResponsePage from './pages/BriefResponsePage'
+import BriefResponsesPage from './pages/BriefResponsesPage'
 import LoginPage from './pages/LoginPage'
 import NotFound from './components/NotFound'
 import SellerDashboardPage from './pages/SellerDashboardPage'
@@ -45,6 +48,7 @@ import PublishAnswerPage from './pages/PublishAnswerPage'
 import RequestAccessPage from './pages/RequestAccessPage'
 import DownloadReports from './pages/DownloadReports/DownloadReports'
 import InsightPage from './pages/InsightPage'
+import InvitedSellersPage from './pages/InvitedSellersPage'
 import WithdrawOpportunityPage from './pages/WithdrawOpportunityPage'
 
 export const rootPath = '/2'
@@ -79,6 +83,22 @@ export const Routes = () => (
       path={`${rootPath}/brief/:briefId/ask-a-question`}
       component={AskQuestionPage}
     />
+    <PrivateRoute
+      restrictedTo="supplier"
+      path={`${rootPath}/brief/:briefId/responses`}
+      component={BriefResponsesPage}
+    />
+    <PrivateRoute
+      restrictedTo="supplier"
+      path={`${rootPath}/brief/:briefId/:briefResponseType/respond/:briefResponseId`}
+      component={BriefResponsePage}
+    />
+    <PrivateRoute
+      restrictedTo="supplier"
+      path={`${rootPath}/brief/:briefId/:briefResponseType/respond`}
+      component={BriefResponseCreatePage}
+    />
+    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/invited`} component={InvitedSellersPage} />
     <PrivateRoute path={`${rootPath}/brief/:briefId`} component={BriefPage} />
     <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
     <Route path={`${rootPath}/login`} component={LoginPage} />

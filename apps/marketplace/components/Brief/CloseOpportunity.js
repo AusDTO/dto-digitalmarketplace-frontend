@@ -20,7 +20,7 @@ const CloseOpportunity = props => {
   return (
     <React.Fragment>
       <AUheading size="xl" level="1">
-        Close &apos;{brief.title}&apos;
+        Close &apos;{brief.title}&apos; ({brief.id})
       </AUheading>
       <p>If you close this opportunity now:</p>
       <ul>
@@ -46,7 +46,12 @@ CloseOpportunity.defaultProps = {
 }
 
 CloseOpportunity.propTypes = {
-  brief: PropTypes.object.isRequired,
+  brief: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    lot: PropTypes.string.isRequired,
+    sellers: PropTypes.object.isRequired,
+    title: PropTypes.string.isRequired
+  }).isRequired,
   onCloseOpportunity: PropTypes.func.isRequired
 }
 

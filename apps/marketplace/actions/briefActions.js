@@ -2,7 +2,13 @@ import {
   BRIEF_INFO_FETCH_DATA_SUCCESS,
   BRIEF_PUBLIC_INFO_FETCH_DATA_SUCCESS,
   BRIEF_OVERVIEW_SUCCESS,
+  BRIEF_RESPONSE_LOAD_SUCCESS,
   BRIEF_RESPONSE_SUCCESS,
+  BRIEF_RESPONSE_SUCCESS_RESET,
+  BRIEF_RESPONSE_CREATE_SUCCESS,
+  BRIEF_RESPONSE_SAVE,
+  BRIEF_RESPONSE_DELETE,
+  BRIEF_RESPONSE_SAVE_RESET,
   BRIEF_SAVE_SUCCESS,
   BRIEF_RFX_CREATE_SUCCESS,
   BRIEF_TRAINING_CREATE_SUCCESS,
@@ -13,7 +19,6 @@ import {
   SPECIALIST_NAME,
   SPECIALIST_NAME_SPLIT,
   SPECIALIST_NUMBER,
-  ADD_ANOTHER_SPECIALIST,
   WITHDRAW_OPPORTUNITY_SUCCESS
 } from '../constants/constants'
 
@@ -91,7 +96,8 @@ export const handleBriefInfoSuccess = response => ({
   isOpenToAll: response.data.isOpenToAll,
   oldWorkOrderCreator: response.data.oldWorkOrderCreator,
   questionsAsked: response.data.questionsAsked,
-  briefResponseDownloaded: response.data.briefResponseDownloaded
+  briefResponseDownloaded: response.data.briefResponseDownloaded,
+  supplierContact: response.data.supplierContact
 })
 
 export const handlePublicBriefInfoSuccess = response => ({
@@ -100,6 +106,10 @@ export const handlePublicBriefInfoSuccess = response => ({
   briefResponseCount: response.data.brief_response_count,
   invitedSellerCount: response.data.invited_seller_count,
   supplierBriefResponseCount: response.data.supplier_brief_response_count,
+  supplierBriefResponseCountSubmitted: response.data.supplier_brief_response_count_submitted,
+  supplierBriefResponseCountDraft: response.data.supplier_brief_response_count_draft,
+  supplierBriefResponseId: response.data.supplier_brief_response_id,
+  supplierBriefResponseIsDraft: response.data.supplier_brief_response_is_draft,
   canRespond: response.data.can_respond,
   isAssessedForCategory: response.data.is_assessed_for_category,
   isAssessedForAnyCategory: response.data.is_assessed_in_any_category,
@@ -347,9 +357,31 @@ export const loadPublicBrief = briefId => dispatch => {
   })
 }
 
+export const handleLoadBriefResponse = response => ({
+  type: BRIEF_RESPONSE_LOAD_SUCCESS,
+  briefResponse: response.data
+})
+
+export const loadBriefResponse = briefResponseId => dispatch => {
+  dispatch(sendingRequest(true))
+  return dmapi({ url: `/brief-response/${briefResponseId}` }).then(response => {
+    if (!response || response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleLoadBriefResponse(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
+
 export const handleBriefResponseSuccess = response => ({
   type: BRIEF_RESPONSE_SUCCESS,
-  briefResponse: response.data.briefResponses
+  briefResponse: response.data
+})
+
+export const resetBriefResponseSuccess = () => ({
+  type: BRIEF_RESPONSE_SUCCESS_RESET
 })
 
 export const handleBriefResponseSubmit = (briefId, model) => (dispatch, getState) => {
@@ -372,6 +404,84 @@ export const handleBriefResponseSubmit = (briefId, model) => (dispatch, getState
   })
 }
 
+export const handleCreateBriefResponseSuccess = response => ({
+  type: BRIEF_RESPONSE_CREATE_SUCCESS,
+  createdBriefResponse: response.data
+})
+
+export const createBriefResponse = briefId => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: `/brief/${briefId}/respond`,
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleCreateBriefResponseSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
+
+export const handleSaveBriefResponse = () => ({
+  type: BRIEF_RESPONSE_SAVE
+})
+
+export const resetBriefResponseSave = () => ({
+  type: BRIEF_RESPONSE_SAVE_RESET
+})
+
+export const saveBriefResponse = (briefId, briefResponseId, model) => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  dmapi({
+    url: `/brief/${briefId}/respond/${briefResponseId}`,
+    method: 'PATCH',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify(model)
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleBriefResponseSuccess(response))
+      dispatch(handleLoadBriefResponse(response))
+    }
+    dispatch(sendingRequest(false))
+  })
+}
+
+export const handleDeleteBriefResponse = () => ({
+  type: BRIEF_RESPONSE_DELETE
+})
+
+export const deleteBriefResponse = briefResponseId => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: `/brief-response/${briefResponseId}/withdraw`,
+    method: 'PUT',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleDeleteBriefResponse())
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
+
 export function handleBriefNameSubmit(specialistName) {
   return { type: SPECIALIST_NAME, specialistName }
 }
@@ -386,10 +496,6 @@ export function handleBriefNameSplitSubmit(specialistGivenNames, specialistSurna
 
 export function handleSpecialistNumberSubmit(specialistNumber) {
   return { type: SPECIALIST_NUMBER, specialistNumber }
-}
-
-export function addAnotherSpecialistSubmit(addAnotherSpecialist) {
-  return { type: ADD_ANOTHER_SPECIALIST, addAnotherSpecialist }
 }
 
 export const loadSuppliersResponded = briefId => () =>
