@@ -9,6 +9,8 @@ import CloseOpportunity from 'marketplace/components/Brief/CloseOpportunity'
 import ClosedOpportunity from 'marketplace/components/Brief/ClosedOpportunity'
 import { mapLot } from 'marketplace/components/helpers'
 
+const model = 'closeOpportunityForm'
+
 class CloseOpportunityPage extends Component {
   constructor(props) {
     super(props)
@@ -124,7 +126,7 @@ class CloseOpportunityPage extends Component {
     }
 
     if (canCloseOpportunity) {
-      return <CloseOpportunity brief={brief} onCloseOpportunity={this.handleCloseOpportunity} />
+      return <CloseOpportunity brief={brief} model={model} onCloseOpportunity={this.handleCloseOpportunity} />
     }
 
     return null
@@ -135,12 +137,13 @@ const mapStateToProps = state => ({
   app: state.app,
   brief: state.brief.brief,
   canCloseOpportunity: state.brief.canCloseOpportunity,
+  closeOpportunityForm: state.closeOpportunityForm,
   errorMessage: state.app.errorMessage
 })
 
 const mapDispatchToProps = dispatch => ({
   closeOpportunity: briefId => dispatch(closeOpportunity(briefId)),
-  handleFeedbackSubmit: model => dispatch(handleFeedbackSubmit(model)),
+  handleFeedbackSubmit: data => dispatch(handleFeedbackSubmit(data)),
   loadData: briefId => dispatch(loadBrief(briefId)),
   setError: message => dispatch(setErrorMessage(message))
 })
