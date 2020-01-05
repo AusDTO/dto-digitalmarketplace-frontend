@@ -45,14 +45,14 @@ describe('OverviewHeader', () => {
     expect(component.children().exists('ul.hideMobile')).toEqual(true)
     const desktopLinks = component.children().find('ul.hideMobile a')
     expect(desktopLinks).toHaveLength(2)
-    expect(desktopLinks.at(0).text()).toEqual('Close opportunity now')
-    expect(desktopLinks.at(1).text()).toEqual('View opportunity')
+    expect(desktopLinks.at(0).text()).toEqual('View opportunity')
+    expect(desktopLinks.at(1).text()).toEqual('Close opportunity now')
 
     expect(component.children().exists('ul.hideDesktop')).toEqual(true)
     const mobileLinks = component.children().find('ul.hideDesktop a')
     expect(mobileLinks).toHaveLength(2)
-    expect(mobileLinks.at(0).text()).toEqual('Close now')
-    expect(mobileLinks.at(1).text()).toEqual('View opportunity')
+    expect(mobileLinks.at(0).text()).toEqual('View opportunity')
+    expect(mobileLinks.at(1).text()).toEqual('Close now')
   })
 
   test('shows the correct actions for a published opportunity that can not be closed', () => {

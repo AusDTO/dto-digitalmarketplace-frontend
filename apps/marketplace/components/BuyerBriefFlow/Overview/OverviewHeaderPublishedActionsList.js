@@ -26,24 +26,24 @@ const OverviewHeaderPublishedActionsList = props => {
             </strong>
           </div>
         </li>
+        <li>
+          <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>View opportunity</a>
+        </li>
         {canCloseOpportunity && (
           <li>
             <a href={closeHref}>Close opportunity now</a>
           </li>
         )}
+      </ul>
+      <ul className={`${styles.menuList} ${mainStyles.hideDesktop}`}>
         <li>
           <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>View opportunity</a>
         </li>
-      </ul>
-      <ul className={`${styles.menuList} ${mainStyles.hideDesktop}`}>
         {canCloseOpportunity && (
           <li>
             <a href={closeHref}>Close now</a>
           </li>
         )}
-        <li>
-          <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>View opportunity</a>
-        </li>
       </ul>
     </React.Fragment>
   )
