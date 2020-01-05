@@ -69,7 +69,7 @@ export class CloseOpportunity extends Component {
         </AUheading>
         <p>If you close this opportunity now:</p>
         <ul>
-          <li>{seller.name} will no longer be able to edit their submission</li>
+          <li>{seller.name} will no longer be able to edit their response</li>
           <li>
             you will be able to download{' '}
             {seller.name.toLowerCase().endsWith('s') ? `${seller.name}'` : `${seller.name}'s`} response straight away
