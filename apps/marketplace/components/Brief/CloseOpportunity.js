@@ -6,6 +6,8 @@ import { actions, Form } from 'react-redux-form'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import { AUcheckbox } from '@gov.au/control-input/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+
+import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import { rootPath } from 'marketplace/routes'
 import formProps from 'shared/form/formPropsSelector'
 
@@ -67,6 +69,14 @@ export class CloseOpportunity extends Component {
         <AUheading size="xl" level="1">
           Close &apos;{brief.title}&apos; ({brief.id})
         </AUheading>
+        {hasErrors && (
+          <ErrorAlert
+            model={model}
+            messages={{
+              requiredAuthorityToClose: 'Select the checkbox to confirm you have authority to close this opportunity'
+            }}
+          />
+        )}
         <p>If you close this opportunity now:</p>
         <ul>
           <li>{seller.name} will no longer be able to edit their response</li>
