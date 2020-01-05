@@ -8,6 +8,7 @@ import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import AUtextInput from '@gov.au/text-inputs'
 import { required } from 'marketplace/components/validators'
+import styles from '../../Brief/BriefSpecialistResponseForm2.scss'
 
 const maxDailyRateLimit = 99999
 
@@ -16,6 +17,35 @@ export const greaterThanZero = formValues => parseInt(formValues.maxDailyRate, 1
 export const lessThanLimit = formValues => parseInt(formValues.maxDailyRate, 10) < maxDailyRateLimit
 
 export const validWholeNumber = formValues => formValues.maxDailyRate && /^[0-9]+$/.test(formValues.maxDailyRate)
+
+// export onRateChange={(field, value) => {
+//   let withGst = parseFloat(value * 1.1).toFixed(2)
+//   if (isNaN(withGst)) {
+//     withGst = ''
+//   }
+//   this.props.changeModel(`${this.props.model}.${field}`, `${withGst}`)
+// }}
+
+
+// const isRecruiterCriteria = (criteriaId, criteria) => {
+//   let recruiter = false
+//   criteria.find(c => {
+//     if (c.id === parseInt(criteriaId, 10)) {
+//       recruiter = c.is_recruiter_criteria
+//       return true
+//     }
+//     return false
+//   })
+//   return recruiter
+// }
+
+export const onRateChange = (field, value) =>{
+  let withGst = parseFloat(value * 1.1).toFixed(2)
+    if (isNaN(withGst)) {
+      withGst = ''
+    }
+    this.props.changeModel(`${this.props.model}.${field}`, `${withGst}`)
+}
 
 export const done = formValues =>
   formValues.maxDailyRate && greaterThanZero(formValues) && lessThanLimit(formValues) && validWholeNumber(formValues)
@@ -72,6 +102,7 @@ const SellerAssessmentRateStage = props => (
       id="markup"
       htmlFor="markup"
       defaultValue={props[props.model].markup}
+      // onChange={data => onRateChange('totalMaximumRate', data.target.value)}
       // validators={{
       //   required
       // }}
@@ -91,13 +122,17 @@ const SellerAssessmentRateStage = props => (
         * (parseInt(props[props.model].markup, 10)/100) 
         +  (parseInt(props[props.model].maxDailyRate, 10)))}
       disabled={true}
+      // need to add syles to this
+      // className={styles.readOnly}
+      // readOnly
     />
 
     {props.formButtons}
   </Form>
-)
+  )
 
 SellerAssessmentRateStage.defaultProps = {
+  onRateChange: () => null,
   onSubmit: () => {},
   onSubmitFailed: () => {}
 }
@@ -106,9 +141,12 @@ SellerAssessmentRateStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   meta: PropTypes.object.isRequired,
+  onRateChange: PropTypes.func,
   onSubmit: PropTypes.func,
   onSubmitFailed: PropTypes.func
 }
+
+
 
 const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)

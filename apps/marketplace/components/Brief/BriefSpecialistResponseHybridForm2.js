@@ -165,7 +165,7 @@ const BriefSpecialistResponseForm2 = ({
                         readOnly
                         prefix={'$'}
                       />
-                    </div>
+                    </div>                          
                   </div>
                 )}
                 {brief.preferredFormatForRates === 'hourlyRate' && (
