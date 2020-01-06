@@ -340,19 +340,19 @@ class SellerAssessmentHybridEvidenceStage extends Component {
                             defaultValue={this.props[this.props.model].evidence[criteriaId].candidateFullName}
                             label="Candidate's full name"
                             description="We may contact your chosen candidate to confirm their experiecne with your organisation."
-                            name={`referee_name_${criteriaId}`}
-                            id={`referee_name_${criteriaId}`}
-                            htmlFor={`referee_name_${criteriaId}`}
+                            name={`candidate_full_name_${criteriaId}`}
+                            id={`candidate_full_name_${criteriaId}`}
+                            htmlFor={`candidate_full_name_${criteriaId}`}
                             maxLength={100}
                             validators={{
                               required
                             }}
-                            onChange={e => {
-                              if (index === 0) {
-                                this.updateAllOtherCriteriaFromFirst('refereeName', e.target.value)
-                              }
-                              return true
-                            }}
+                            // onChange={e => {
+                            //   if (index === 0) {
+                            //     this.updateAllOtherCriteriaFromFirst('refereeName', e.target.value)
+                            //   }
+                            //   return true
+                            // }}
                           />
                           <Textfield
                             model={`${this.props.model}.evidence[${criteriaId}].candidatePhoneNumber`}
