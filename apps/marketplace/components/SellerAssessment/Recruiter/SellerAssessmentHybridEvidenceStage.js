@@ -368,12 +368,12 @@ class SellerAssessmentHybridEvidenceStage extends Component {
                               required,
                               validPhoneNumber
                             }}
-                            onChange={e => {
-                              if (index === 0) {
-                                this.updateAllOtherCriteriaFromFirst('candidatePhoneNumber', e.target.value)
-                              }
-                              return true
-                            }}
+                            // onChange={e => {
+                            //   if (index === 0) {
+                            //     this.updateAllOtherCriteriaFromFirst('candidatePhoneNumber', e.target.value)
+                            //   }
+                            //   return true
+                            // }}
                           />
                           <p> The evidence for the criterion must:
                           <ul>
