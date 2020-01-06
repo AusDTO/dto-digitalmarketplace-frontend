@@ -115,7 +115,7 @@ const OpportunityInfoCard = props => (
             )}
           </span>
         )}
-        {props.isOpen &&
+        {/* {props.isOpen &&
           props.loggedIn &&
           (props.briefLot === 'atm' && props.isRecruiterOnly) &&
           props.hasSignedCurrentAgreement && (
@@ -140,12 +140,12 @@ const OpportunityInfoCard = props => (
                 </p>
               )}
             </span>
-          )}
+          )} */}
         {props.isOpen &&
           props.loggedIn &&
           props.isApprovedSeller &&
           props.hasSignedCurrentAgreement &&
-          ((props.briefLot === 'atm' && !props.isRecruiterOnly) || ['rfx', 'training2'].includes(props.briefLot)) &&
+          (props.briefLot === 'atm'  || ['rfx', 'training2'].includes(props.briefLot)) &&
           (!props.isOpenToAll && !props.isOpenToCategory) &&
           !props.canRespond && (
             <div className={styles.invitedStatus}>
@@ -156,7 +156,7 @@ const OpportunityInfoCard = props => (
           props.loggedIn &&
           props.isApprovedSeller &&
           props.hasSignedCurrentAgreement &&
-          (props.briefLot === 'atm' && !props.isRecruiterOnly) &&
+          props.briefLot === 'atm'  &&
           props.isOpenToCategory &&
           props.category &&
           !props.isAssessedForCategory && (
@@ -248,7 +248,7 @@ const OpportunityInfoCard = props => (
         {props.isOpen &&
           props.isApprovedSeller &&
           (props.hasSignedCurrentAgreement || (!props.hasSignedCurrentAgreement && props.hasResponded)) &&
-          ((props.briefLot === 'atm' && !props.isRecruiterOnly) ||
+          (props.briefLot === 'atm' ||
             (['rfx', 'training2'].includes(props.briefLot) && props.isAssessedForCategory)) &&
           props.canRespond && (
             <div>
