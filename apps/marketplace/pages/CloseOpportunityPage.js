@@ -7,7 +7,7 @@ import { handleFeedbackSubmit, setErrorMessage } from 'marketplace/actions/appAc
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import CloseOpportunity from 'marketplace/components/Brief/CloseOpportunity'
 import ClosedOpportunity from 'marketplace/components/Brief/ClosedOpportunity'
-import { mapLot } from 'marketplace/components/helpers'
+import { rootPath } from 'marketplace/routes'
 
 const model = 'closeOpportunityForm'
 
@@ -116,8 +116,15 @@ class CloseOpportunityPage extends Component {
       hasFocused = false
       return (
         <ErrorBoxComponent
-          title={`Unable to close ${brief.lot ? mapLot(brief.lot).toLowerCase() : ''} opportunity`}
-          errorMessage="An opportunity can only be closed early if one seller has been invited and that seller has submitted a response"
+          title="This opportunity cannot be closed right now"
+          errorMessage={
+            <span>
+              This could be because the invited seller has withdrawn their application or the opportunity has already
+              closed. Please{' '}
+              <a href={`${rootPath}/brief/${brief.id}/overview/${brief.lot}`}>return to the overview page</a> to check
+              or contact us if you have any issues.
+            </span>
+          }
           setFocus={setFocus}
           form={{}}
           invalidFields={[]}
