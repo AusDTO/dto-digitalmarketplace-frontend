@@ -89,7 +89,7 @@ export class CloseOpportunity extends Component {
           checked={this.state.hasAuthorityToClose}
           className={`${styles.marginTop2} ${hasErrors ? 'au-control-input--invalid' : ''}`}
           id="authorityToClose"
-          label="I have the authority to close this opportunity and understand once I do so I will be unable to re-open it"
+          label="I have the authority to close this opportunity and understand once I do so I will not be able to re-open it"
           name="authorityToClose"
           onChange={() => {}}
           onClick={e => {
