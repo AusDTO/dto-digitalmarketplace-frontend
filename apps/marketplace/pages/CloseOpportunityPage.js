@@ -68,6 +68,7 @@ class CloseOpportunityPage extends Component {
 
   render = () => {
     const { app, brief, canCloseOpportunity, errorMessage } = this.props
+    const { loading, opportunityClosed } = this.state
 
     let hasFocused = false
     const setFocus = e => {
@@ -90,11 +91,11 @@ class CloseOpportunityPage extends Component {
       )
     }
 
-    if (this.state.loading) {
+    if (loading) {
       return <LoadingIndicatorFullPage />
     }
 
-    if (this.state.opportunityClosed) {
+    if (opportunityClosed) {
       return (
         <ClosedOpportunity app={app} brief={brief} onFeedbackSubmit={this.handleFeedbackSubmit} setFocus={setFocus} />
       )

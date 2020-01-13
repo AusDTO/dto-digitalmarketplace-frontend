@@ -33,7 +33,7 @@ export class CloseOpportunity extends Component {
 
   render = () => {
     const { brief, model, onCloseOpportunity, onSubmitFailed } = this.props
-    const { hasErrors } = this.state
+    const { hasAuthorityToClose, hasErrors } = this.state
 
     let seller = {
       name: ''
@@ -44,7 +44,7 @@ export class CloseOpportunity extends Component {
     }
 
     const requiredAuthorityToClose = () => {
-      const validAuthority = this.state.hasAuthorityToClose === true
+      const validAuthority = hasAuthorityToClose === true
       if (!validAuthority) {
         this.setState({
           hasErrors: true
@@ -86,9 +86,9 @@ export class CloseOpportunity extends Component {
           </li>
         </ul>
         <AUcheckbox
-          checked={this.state.hasAuthorityToClose}
+          checked={hasAuthorityToClose}
           className={`${styles.marginTop2} ${hasErrors ? 'au-control-input--invalid' : ''} ${
-            this.state.hasAuthorityToClose ? styles.bold : ''
+            hasAuthorityToClose ? styles.bold : ''
           }`}
           id="authorityToClose"
           label="I have the authority to close this opportunity and understand once I do so I will not be able to re-open it"
