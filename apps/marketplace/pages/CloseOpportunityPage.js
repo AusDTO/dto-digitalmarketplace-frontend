@@ -94,18 +94,6 @@ class CloseOpportunityPage extends Component {
       return <LoadingIndicatorFullPage />
     }
 
-    if (brief.status !== 'live') {
-      return (
-        <ErrorBoxComponent
-          title={`Unable to close opportunity`}
-          errorMessage={`A ${brief.status} opportunity can not be closed`}
-          setFocus={setFocus}
-          form={{}}
-          invalidFields={[]}
-        />
-      )
-    }
-
     if (this.state.opportunityClosed) {
       return (
         <ClosedOpportunity app={app} brief={brief} onFeedbackSubmit={this.handleFeedbackSubmit} setFocus={setFocus} />
