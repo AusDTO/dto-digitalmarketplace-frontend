@@ -18,14 +18,6 @@ export const lessThanLimit = formValues => parseInt(formValues.maxDailyRate, 10)
 
 export const validWholeNumber = formValues => formValues.maxDailyRate && /^[0-9]+$/.test(formValues.maxDailyRate)
 
-// export onRateChange={(field, value) => {
-//   let withGst = parseFloat(value * 1.1).toFixed(2)
-//   if (isNaN(withGst)) {
-//     withGst = ''
-//   }
-//   this.props.changeModel(`${this.props.model}.${field}`, `${withGst}`)
-// }}
-
 
 // const isRecruiterCriteria = (criteriaId, criteria) => {
 //   let recruiter = false
