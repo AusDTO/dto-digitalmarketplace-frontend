@@ -125,7 +125,9 @@ const OpportunitySpecialistInfoCard = props => {
         <div className="col-xs-12">
           {!isOpen && briefStatus !== 'draft' && closedEarly && (
             <p className={styles.invitedStatus}>
-              This opportunity has closed early as the invited seller has already submitted their response.
+              {hasResponded
+                ? 'This opportunity closed early as you already submitted your response.'
+                : 'This opportunity has closed early as the invited seller has already submitted their response.'}
             </p>
           )}
           {!isOpen && briefStatus !== 'draft' && !closedEarly && (

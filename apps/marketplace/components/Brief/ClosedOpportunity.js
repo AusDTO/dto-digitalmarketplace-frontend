@@ -20,7 +20,7 @@ const ClosedOpportunity = props => {
           </strong>
         </h1>
         <div className={styles.marginTop2}>
-          <AUbutton link={`${rootPath}/brief/${brief.id}/download-responses`}>Download seller responses</AUbutton>
+          <AUbutton link={`${rootPath}/brief/${brief.id}/download-responses`}>View responses now</AUbutton>
         </div>
       </AUpageAlert>
       <br />
