@@ -64,7 +64,7 @@ class CloseOpportunitySuccessPage extends Component {
       hasFocused = false
       return (
         <ErrorBoxComponent
-          title="A problem occurred when loading the brief details"
+          title="A problem occurred when loading the opportunity"
           errorMessage={errorMessage}
           setFocus={setFocus}
           form={{}}
