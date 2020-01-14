@@ -9,9 +9,12 @@ const SellerAssessmentIntroductionStage = props => (
       {props.meta.domain.name} assessment
     </AUheadings>
     <p>
-    Before you can respond to opportunities in this category, you must be assessed by the Digital Marketplace in offering value for money. 
+    Before you can respond to opportunities in this category,
+    <br/> 
+    <a href={`https://marketplace1.zendesk.com/hc/en-gb/articles/115011292847-Request-an-assessment-for-categories`}> you must be assessed by the Digital Marketplace in offering value for money. </a>
     The information you submit will only be visible to the assessment team.
     </p>
+
     <p>
     You will be asked to submit evidence for a contractor you previously placed in a User reseach and Design specific role. 
     </p>
