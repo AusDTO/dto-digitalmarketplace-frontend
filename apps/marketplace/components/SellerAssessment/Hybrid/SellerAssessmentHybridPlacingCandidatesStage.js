@@ -42,7 +42,7 @@ export class SellerAssessmentHybridPlacingCandidatesStage extends Component {
         <AUheading level="1" size="xl">
           Placing candidates
         </AUheading>
-        <p> Your business will be placing candidates for  roles by submitting</p>
+        <p> Your business will be placing candidates for INSERT category roles by submitting</p>
         <ErrorAlert
           model={this.props.model}
           messages={{
