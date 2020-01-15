@@ -78,7 +78,7 @@ export const handleLoadEvidenceSuccess = response => ({
     supplierCode: response.data.supplierCode,
     // placingCandidates: response.data.placingCandidates,
     maxDailyRate: response.data.maxDailyRate,
-    markup : response.data.markup,
+    markup: response.data.markup,
     database_size: response.data.database_size,
     placed_candidates: response.data.placed_candidates,
     candidateFullName: response.data.candidateFullName,
