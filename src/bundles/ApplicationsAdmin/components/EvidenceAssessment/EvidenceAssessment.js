@@ -195,11 +195,12 @@ class EvidenceAssessment extends React.Component {
           )}
           {Object.keys(evidence.data.evidence).map(criteriaId => (
             <React.Fragment key={criteriaId}>
+              {/* Need to change this react fragment so that it filters and displays the right fields depending on the criteria (recruiter or consultant) */}
               <p>
                 <strong>Client:</strong> {evidence.data.evidence[criteriaId].client}
               </p>
               <p>
-                <strong>CandidateName:</strong> {evidence.data.evidence[criteriaId].candidateFullName}: {evidence.data.evidence[criteriaId].candidatePhoneNumber}
+                <strong>CandidateName</strong> {evidence.data.evidence[criteriaId].candidateFullName}: {evidence.data.evidence[criteriaId].candidatePhoneNumber}
               </p>
               <p>
                 <strong>Candidate Phone Number:</strong>{evidence.data.evidence[criteriaId].candidatePhoneNumber}
