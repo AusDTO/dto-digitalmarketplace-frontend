@@ -242,7 +242,8 @@ export class ProgressFlow extends Component {
     // }
     // )})
   
-    this.props.stages.map(stage =>
+    this.props.stages.map(stage => {
+      if(!stage.isHidden){
       items.push({
         link: `${this.props.basename}/${stage.slug}`,
         linkComponent: Link,
@@ -250,6 +251,11 @@ export class ProgressFlow extends Component {
         slug: stage.slug,
         status: this.state.stages[stage.slug]
       })
+    }
+    else{
+      return true
+    }
+    }
     )
 
     const ProgressNavElement = () => (
