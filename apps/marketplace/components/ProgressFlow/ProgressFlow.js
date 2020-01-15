@@ -218,6 +218,8 @@ export class ProgressFlow extends Component {
     }
 
     const items = []
+    //make this into a function aka before the items push 
+    //then added in stages aka true or false 
     this.props.stages.map(stage =>
       items.push({
         link: `${this.props.basename}/${stage.slug}`,

@@ -23,7 +23,8 @@ const SellerAssessmentHybridStages = [
     slug: 'maximumRate',
     title: 'Rate',
     component: SellerAssessmentMaximumRate,
-    isDone: maximumRatesDone
+    isDone: maximumRatesDone,
+    isHidden:true
   },
   {
     slug: 'candidatePool',
