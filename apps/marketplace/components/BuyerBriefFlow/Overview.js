@@ -8,9 +8,9 @@ import { rootPath } from 'marketplace/routes'
 import { hasPermission } from 'marketplace/components/helpers'
 import Tick from 'marketplace/components/Icons/Tick/Tick'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
-import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
-import ClosedDate from 'shared/ClosedDate'
+import OverviewHeader from './Overview/OverviewHeader'
+
 import styles from './Overview.scss'
 import { mapLot } from '../helpers'
 
@@ -109,6 +109,7 @@ class Overview extends Component {
     const {
       brief,
       briefResponses,
+      canCloseOpportunity,
       flow,
       oldWorkOrderCreator,
       questionsAsked,
@@ -135,56 +136,17 @@ class Overview extends Component {
 
       return (
         <div>
-          <div className={styles.header}>
-            <small className={styles.tagLine}>{brief.title || `New ${flowName} request`}</small>
-            {brief.internalReference && (
-              <small className={`${styles.internalReference} ${styles.tagLine}`}>{brief.internalReference}</small>
-            )}
-            <AUheading className={styles.overviewHeading} size="xl" level="1">
-              Overview
-            </AUheading>
-            <div className={styles.headerMenu}>
-              {isPublished && !isClosed && (
-                <div className={styles.headerMenuClosingTime}>
-                  Closing{' '}
-                  <strong>
-                    <ClosedDate countdown date={brief.dates.closing_time} />
-                  </strong>
-                </div>
-              )}
-              <ul className={styles.menuList}>
-                {isPublished && (
-                  <li>
-                    <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>View opportunity</a>
-                  </li>
-                )}
-                {!isPublished && (
-                  <div>
-                    <li>
-                      {hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') ||
-                      hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') ? (
-                        <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>Preview</a>
-                      ) : (
-                        <a href={`${rootPath}/request-access/create_drafts`}>Preview</a>
-                      )}
-                    </li>
-                    <li>
-                      {hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') ||
-                      hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') ? (
-                        <a href="#delete" onClick={this.handleDeleteClick} className={styles.headerMenuDelete}>
-                          Delete draft
-                        </a>
-                      ) : (
-                        <a href={`${rootPath}/request-access/create_drafts`} className={styles.headerMenuDelete}>
-                          Delete draft
-                        </a>
-                      )}
-                    </li>
-                  </div>
-                )}
-              </ul>
-            </div>
-          </div>
+          <OverviewHeader
+            brief={brief}
+            canCloseOpportunity={canCloseOpportunity}
+            flowName={flowName}
+            handleDeleteClick={this.handleDeleteClick}
+            isClosed={isClosed}
+            isPublished={isPublished}
+            isPartOfTeam={isPartOfTeam}
+            isTeamLead={isTeamLead}
+            teams={teams}
+          />
           {this.state.showDeleteAlert && (
             <div className={styles.deleteAlert}>
               <AUpageAlert as="warning">
@@ -271,6 +233,7 @@ Overview.propTypes = {
 }
 
 const mapStateToProps = state => ({
+  canCloseOpportunity: state.brief.canCloseOpportunity,
   deleteBriefSuccess: state.brief.deleteBriefSuccess,
   teams: state.app.teams,
   isTeamLead: state.app.isTeamLead,
