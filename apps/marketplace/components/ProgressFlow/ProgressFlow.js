@@ -221,6 +221,27 @@ export class ProgressFlow extends Component {
     //make this into a function aka before the items push 
     //if ishidden is false items push 
     //then added in stages aka isHidden: true or false 
+
+
+    // const items = []
+    // this.props.stages.map({( stage => {
+    //   if(!stage.isHidden){
+    //     return(
+    //       items.push({
+    //         link: `${this.props.basename}/${stage.slug}`,
+    //         linkComponent: Link,
+    //         text: stage.title,
+    //         slug: stage.slug,
+    //         status: this.state.stages[stage.slug]
+    //       })
+    //     )
+    //   }
+    //   else {
+    //     return true
+    //   }
+    // }
+    // )})
+  
     this.props.stages.map(stage =>
       items.push({
         link: `${this.props.basename}/${stage.slug}`,
