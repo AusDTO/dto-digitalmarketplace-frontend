@@ -23,7 +23,7 @@ WithdrawnOpportunityInfoCard.defaultProps = {
 }
 
 WithdrawnOpportunityInfoCard.propTypes = {
-  reason: PropTypes.string
+  reason: PropTypes.string.isRequired
 }
 
 export default WithdrawnOpportunityInfoCard
