@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect, withRouter } from 'react-router-dom'
+
 import { withdrawOpportunity, loadBrief } from 'marketplace/actions/briefActions'
 import WithdrawOpportunity from 'marketplace/components/Brief/WithdrawOpportunity'
 import { rootPath } from 'marketplace/routes'
+
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 

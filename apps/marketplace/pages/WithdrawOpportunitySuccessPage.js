@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { loadBrief } from 'marketplace/actions/briefActions'
 import { handleFeedbackSubmit } from 'marketplace/actions/appActions'
-import { ErrorBoxComponent } from 'shared/form/ErrorBox'
+import { loadBrief } from 'marketplace/actions/briefActions'
 import WithdrawnOpportunity from 'marketplace/components/Brief/WithdrawnOpportunity'
 import { rootPath } from 'marketplace/routes'
+
+import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
+import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 
 class WithdrawOpportunitySuccessPage extends Component {
   constructor(props) {
