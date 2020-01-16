@@ -167,6 +167,10 @@ table.defaultStyle {
   & tr {
     border-bottom: solid 1px #bebebe;
     color: #313131;
+
+    &.borderBottom0 {
+      border-bottom: none;
+    }
   }
 
   & tr:nth-child(2n) {

@@ -44,7 +44,7 @@ class EditOpportunityTable extends Component {
           </tr>
           {!isOpenToAll && (
             <React.Fragment>
-              <tr>
+              <tr className={sellersToInvite.length > 0 ? styles.borderBottom0 : ''}>
                 <th scope="row">Invited sellers</th>
                 <td>
                   <ul>
