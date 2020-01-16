@@ -69,32 +69,11 @@ class EditOpportunityTable extends Component {
                       ))}
                     </ul>
                   </td>
+                  <td aria-label="No value" />
                 </tr>
               )}
             </React.Fragment>
           )}
-          <tr>
-            <th scope="row">Summary</th>
-            <td>
-              <p>{brief.summary}</p>
-            </td>
-            <td>
-              <a href={`${location.pathname}/summary`}>Edit summary</a>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Documents</th>
-            <td>
-              <ul>
-                {Object.values(brief.attachments).map(attachment => (
-                  <li key={attachment}>{attachment}</li>
-                ))}
-              </ul>
-            </td>
-            <td>
-              <a href={`${location.pathname}/documents`}>Edit documents</a>
-            </td>
-          </tr>
           <tr>
             <th scope="row">Closing date</th>
             <td>
