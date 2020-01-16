@@ -118,7 +118,7 @@ export class WithdrawOpportunity extends Component {
           checked={hasAuthorityToWithdraw}
           className={styles.marginTop2}
           id="authorityToWithdraw"
-          label="I am authorised to withdraw this opportunity and understand I cannot reopen it again"
+          label="I have the authority to withdraw this opportunity and understand once I do so I will not be able to re-open it"
           name="authorityToWithdraw"
           onChange={() => {}}
           onClick={e => {
