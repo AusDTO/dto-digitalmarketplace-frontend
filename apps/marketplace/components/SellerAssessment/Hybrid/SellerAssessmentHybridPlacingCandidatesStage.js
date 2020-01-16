@@ -44,13 +44,13 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
         <AUheadings level="1" size="xl">
           Placing candidates
         </AUheadings>
-        <p> Your business will be placing candidates for {props.meta.domain.name} category roles by submitting</p>
         <ErrorAlert
           model={props.model}
           messages={{
             requiredChoice: 'You must select who can respond'
           }}
         />
+        <p> Your business will be placing candidates for {props.meta.domain.name} category roles by submitting</p>
         <div>
           <RadioList
             id="placingCandidates"
