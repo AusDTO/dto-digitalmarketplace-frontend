@@ -4,7 +4,8 @@ import SellerAssessmentCandidatePool, { done as candidatePoolDone } from './Sell
 import SellerAssessmentReviewStage from './SellerAssessmentReviewStage'
 import SellerAssessmentHybridCriteriaStage, { done as hybridcriteriaDone } from './SellerAssessmentHybridCriteriaStage'
 import SellerAssessmentHybridEvidenceStage, { done as hyridevidenceDone } from './SellerAssessmentHybridEvidenceStage'
-import SellerAssessmentHybridPlacingCandidatesStage from './SellerAssessmentHybridPlacingCandidatesStage'
+import SellerAssessmentRateStage, { done as ratesDone } from '../SellerAssessmentRateStage'
+import SellerAssessmentHybridPlacingCandidatesStage, { hideRateStage as hide } from '../Hybrid/SellerAssessmentHybridPlacingCandidatesStage'
 
 const SellerAssessmentHybridStages = [
   {
@@ -20,11 +21,18 @@ const SellerAssessmentHybridStages = [
     isDone: formValues => formValues.placingCandidates === 'recruitment' || formValues.placingCandidates === 'hybird' || formValues.placingCandidates === 'consultants' 
   },
   {
+    slug: 'rate',
+    title: 'Rate',
+    component: SellerAssessmentRateStage,
+    isDone: ratesDone,
+    isHidden:hide
+  },
+  {
     slug: 'maximumRate',
     title: 'Rate',
     component: SellerAssessmentMaximumRate,
-    isDone: maximumRatesDone
-    // isHidden:true
+    isDone: maximumRatesDone,
+    isHidden:hide
   },
   {
     slug: 'candidatePool',
