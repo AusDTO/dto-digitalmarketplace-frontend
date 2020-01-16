@@ -62,7 +62,7 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
         </div>
         {(props[props.model].placingCandidates === 'recruitment' || props[props.model].placingCandidates === 'hybrid') && (
         <div> 
-        <AUheadings level="1" size="xl">
+        <AUheadings level="1" size="lg">
           Candidate Pool
         </AUheadings>
 
