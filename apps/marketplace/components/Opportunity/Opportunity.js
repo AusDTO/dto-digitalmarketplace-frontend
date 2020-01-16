@@ -12,6 +12,10 @@ import EvaluationCriteria from './EvaluationCriteria'
 import QuestionAnswer from './QuestionAnswer'
 import OpportunityInfoCard from './OpportunityInfoCard'
 import OpportunitySpecialistInfoCard from './OpportunitySpecialistInfoCard'
+import WithdrawnOpportunityInfoCard from './WithdrawnOpportunityInfoCard'
+import WithdrawnOpportunityMessage from './WithdrawnOpportunityMessage'
+
+import mainStyles from '../../main.scss'
 import styles from './Opportunity.scss'
 
 // defining default brief data up here so render() has access to it
@@ -156,6 +160,9 @@ const Opportunity = props => {
   return (
     <div>
       <div className="row">
+        <div className={`col-xs-12 ${mainStyles.hideDesktop} ${mainStyles.marginBottom2}`}>
+          <WithdrawnOpportunityMessage reason={brief.reasonToWithdraw} />
+        </div>
         <div className="col-xs-12 col-md-8">
           {brief.status === 'draft' && (
             <AUcallout description="" className={styles.previewNotice}>
@@ -586,7 +593,8 @@ const Opportunity = props => {
           )}
         </div>
         <div className="col-xs-12 col-md-4">
-          {brief.lotSlug === 'specialist' ? (
+          {brief.status === 'withdrawn' && <WithdrawnOpportunityInfoCard reason={brief.reasonToWithdraw} />}
+          {brief.status !== 'withdrawn' && brief.lotSlug === 'specialist' && (
             <OpportunitySpecialistInfoCard
               sellersInvited={invitedSellerCount}
               sellersApplied={briefResponseCount}
@@ -627,7 +635,8 @@ const Opportunity = props => {
               supplierCode={supplierCode}
               originalClosedAt={originalClosedAt}
             />
-          ) : (
+          )}
+          {brief.status !== 'withdrawn' && brief.lotSlug !== 'specialist' && (
             <OpportunityInfoCard
               supplierBriefResponseId={supplierBriefResponseId}
               supplierBriefResponseIsDraft={supplierBriefResponseIsDraft}
