@@ -15,6 +15,20 @@ export const validWholeNumber = formValues => formValues.database_size && /^[0-9
 export const done = formValues =>
   formValues.database_size && greaterThanZero(formValues) && validWholeNumber(formValues)
 
+export const hideRateStage = formValues => 
+  isHiddenConsultantRate(formValues)
+
+const isHiddenConsultantRate = () => {
+  let isHidden = true
+  criteria.find(c => {
+    if ( props[props.model].placingCandidates === 'recruitment' || props[props.model].placingCandidates === 'hybrid') {
+      return false
+    }
+    return true 
+  })
+  return isHidden
+}
+
 const SellerAssessmentHybridPlacingCandidatesStage = props => (
       <Form
         model={props.model}
@@ -30,7 +44,7 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
         <AUheadings level="1" size="xl">
           Placing candidates
         </AUheadings>
-        <p> Your business will be placing candidates for INSERT category roles by submitting</p>
+        <p> Your business will be placing candidates for {props.meta.domain.name} category roles by submitting</p>
         <ErrorAlert
           model={props.model}
           messages={{
