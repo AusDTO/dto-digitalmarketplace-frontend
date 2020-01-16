@@ -8,6 +8,12 @@ import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import Textfield from 'shared/form/Textfield'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 
+export const greaterThanZero = formValues => parseInt(formValues.database_size, 10) > 0
+
+export const validWholeNumber = formValues => formValues.database_size && /^[0-9]+$/.test(formValues.database_size)
+
+export const done = formValues =>
+  formValues.database_size && greaterThanZero(formValues) && validWholeNumber(formValues)
 
 const SellerAssessmentHybridPlacingCandidatesStage = props => (
       <Form
@@ -54,38 +60,40 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
             messages={{}}
           />
         </div>
-
+        {(props[props.model].placingCandidates === 'recruitment' || props[props.model].placingCandidates === 'hybrid') && (
         <div> 
         <AUheadings level="1" size="xl">
-      Candidate Pool
-    </AUheadings>
+          Candidate Pool
+        </AUheadings>
 
-    <ErrorAlert
-      model={props.model}
-      messages={{
-        validWholeNumber: 'The size of your candidate database must be a whole number (e.g. 1200)'
-      }}
-    />
-    <Textfield
-      model={`${props.model}.database_size`}
-      label="What is the size of your candidate database?"
-      name="database_size"
-      id="database_size"
-      htmlFor="database_size"
-      defaultValue={props[props.model].database_size}
-    />
-    <Textfield
-      model={`${props.model}.placed_candidates`}
-      label={`How many candidates have you placed in ${props.meta.domain.name} roles in the last 12 months?`}
-      name="placed_candidates"
-      id="placed_candidates"
-      htmlFor="placed_candidates"
-      defaultValue={props[props.model].placed_candidates}
-    />
-        </div>
-        {props.formButtons}
-      </Form>
-    )
+        <ErrorAlert
+          model={props.model}
+          messages={{
+            validWholeNumber: 'The size of your candidate database must be a whole number (e.g. 1200)'
+          }}
+        />
+        <Textfield
+          model={`${props.model}.database_size`}
+          label="What is the size of your candidate database?"
+          name="database_size"
+          id="database_size"
+          htmlFor="database_size"
+          defaultValue={props[props.model].database_size}
+        />
+        <Textfield
+          model={`${props.model}.placed_candidates`}
+          label={`How many candidates have you placed in ${props.meta.domain.name} roles in the last 12 months?`}
+          name="placed_candidates"
+          id="placed_candidates"
+          htmlFor="placed_candidates"
+          defaultValue={props[props.model].placed_candidates}
+        />
+            </div>
+        )}
+            {props.formButtons}
+          </Form>
+        )
+
   
 SellerAssessmentHybridPlacingCandidatesStage.defaultProps = {
   onSubmit: () => {},
