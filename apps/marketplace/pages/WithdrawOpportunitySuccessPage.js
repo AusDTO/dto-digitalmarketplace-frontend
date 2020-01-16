@@ -1,21 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect, withRouter } from 'react-router-dom'
-import { withdrawOpportunity, loadBrief } from 'marketplace/actions/briefActions'
-import { setErrorMessage } from 'marketplace/actions/appActions'
-import WithdrawOpportunity from 'marketplace/components/Brief/WithdrawOpportunity'
-import { rootPath } from 'marketplace/routes'
+import { withRouter } from 'react-router-dom'
+
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
+import { loadBrief } from 'marketplace/actions/briefActions'
+import { handleFeedbackSubmit, setErrorMessage } from 'marketplace/actions/appActions'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
+import WithdrawnOpportunity from 'marketplace/components/Brief/WithdrawnOpportunity'
+import { rootPath } from 'marketplace/routes'
 
-const model = 'withdrawOpportunityForm'
-
-class WithdrawOpportunityPage extends Component {
+class WithdrawOpportunitySuccessPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      loading: false,
-      opportunityWithdrawn: false
+      loading: false
     }
   }
 
@@ -39,24 +37,20 @@ class WithdrawOpportunityPage extends Component {
     })
   }
 
-  handleWithdrawOpportunity = () => {
-    this.setState({
-      loading: true
-    })
+  handleFeedbackSubmit = values => {
+    const { app, brief } = this.props
 
-    this.props.withdrawOpportunity(this.props.match.params.briefId, this.props[model]).then(response => {
-      if (response.status === 200) {
-        this.setState({
-          loading: false,
-          opportunityWithdrawn: true
-        })
-      }
+    this.props.handleFeedbackSubmit({
+      object_id: brief.id,
+      object_type: 'Brief',
+      userType: app.userType,
+      ...values
     })
   }
 
   render = () => {
-    const { brief, errorMessage, isOpenToAll } = this.props
-    const { loading, opportunityWithdrawn } = this.state
+    const { app, brief, errorMessage, isOpenToAll } = this.props
+    const { loading } = this.state
 
     let hasFocused = false
     const setFocus = e => {
@@ -70,7 +64,7 @@ class WithdrawOpportunityPage extends Component {
       hasFocused = false
       return (
         <ErrorBoxComponent
-          title="A problem occurred when loading the brief details"
+          title="A problem occurred when loading the opportunity"
           errorMessage={errorMessage}
           setFocus={setFocus}
           form={{}}
@@ -83,15 +77,17 @@ class WithdrawOpportunityPage extends Component {
       return <LoadingIndicatorFullPage />
     }
 
-    if (opportunityWithdrawn) {
-      return <Redirect to={`${rootPath}/brief/${brief.id}/withdrawn`} push />
-    }
-
-    if (brief.status !== 'live') {
+    if (brief.status !== 'withdrawn') {
+      hasFocused = false
       return (
         <ErrorBoxComponent
-          title={`Unable to withdraw opportunity`}
-          errorMessage={`A ${brief.status} opportunity can not be withdrawn`}
+          title="Opportunity has not been withdrawn"
+          errorMessage={
+            <span>
+              Please <a href={`${rootPath}/brief/${brief.id}/overview/${brief.lot}`}>return to the overview page</a> to
+              withdraw this opportunity.
+            </span>
+          }
           setFocus={setFocus}
           form={{}}
           invalidFields={[]}
@@ -100,32 +96,33 @@ class WithdrawOpportunityPage extends Component {
     }
 
     return (
-      <WithdrawOpportunity
+      <WithdrawnOpportunity
+        app={app}
         brief={brief}
+        onFeedbackSubmit={this.handleFeedbackSubmit}
         isOpenToAll={isOpenToAll}
-        model={model}
-        onWithdrawOpportunity={this.handleWithdrawOpportunity}
+        setFocus={setFocus}
       />
     )
   }
 }
 
 const mapStateToProps = state => ({
+  app: state.app,
   brief: state.brief.brief,
   errorMessage: state.app.errorMessage,
-  isOpenToAll: state.brief.isOpenToAll,
-  withdrawOpportunityForm: state.withdrawOpportunityForm
+  isOpenToAll: state.brief.isOpenToAll
 })
 
 const mapDispatchToProps = dispatch => ({
+  handleFeedbackSubmit: data => dispatch(handleFeedbackSubmit(data)),
   loadData: briefId => dispatch(loadBrief(briefId)),
-  setError: message => dispatch(setErrorMessage(message)),
-  withdrawOpportunity: (briefId, data) => dispatch(withdrawOpportunity(briefId, data))
+  setError: message => dispatch(setErrorMessage(message))
 })
 
 export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(WithdrawOpportunityPage)
+  )(WithdrawOpportunitySuccessPage)
 )
