@@ -18,7 +18,7 @@ const SellerAssessmentIntroductionStage = props => (
     </p>
 
     <p>
-    You will be asked to submit evidence for a contractor you previously placed in a User reseach and Design specific role. 
+    You will be asked to submit evidence for a contractor you previously placed in a {props.meta.domain.name} specific role. 
     </p>
     <p>
       <strong>Please note:</strong> The time we take to assess your criteria is dependent on volume, seasonal peaks,
