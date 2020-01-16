@@ -90,7 +90,7 @@ class WithdrawOpportunityPage extends Component {
     if (brief.status !== 'live') {
       return (
         <ErrorBoxComponent
-          title={`Unable to withdraw opportunity`}
+          title="Unable to withdraw opportunity"
           errorMessage={`A ${brief.status} opportunity can not be withdrawn`}
           setFocus={setFocus}
           form={{}}
