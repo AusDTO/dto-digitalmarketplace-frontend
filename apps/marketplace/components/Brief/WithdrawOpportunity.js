@@ -36,6 +36,7 @@ export class WithdrawOpportunity extends Component {
 
   render = () => {
     const { brief, isOpenToAll, model, onSubmitFailed, onWithdrawOpportunity } = this.props
+    const { hasAuthorityToWithdraw, hasErrors } = this.state
 
     const requiredReasonToWithdraw = formValues => {
       const validReason = required(formValues.reasonToWithdraw)
@@ -49,7 +50,7 @@ export class WithdrawOpportunity extends Component {
     }
 
     const requiredAuthorityToWithdraw = () => {
-      const validAuthority = this.state.hasAuthorityToWithdraw === true
+      const validAuthority = hasAuthorityToWithdraw === true
       if (!validAuthority) {
         this.setState({
           hasErrors: true
@@ -75,7 +76,7 @@ export class WithdrawOpportunity extends Component {
         <AUheading size="xl" level="1">
           Withdraw &apos;{brief.title}&apos; ({brief.id})
         </AUheading>
-        {this.state.hasErrors && (
+        {hasErrors && (
           <ErrorAlert
             model={model}
             messages={{
@@ -114,7 +115,7 @@ export class WithdrawOpportunity extends Component {
           />
         </div>
         <AUcheckbox
-          checked={this.state.hasAuthorityToWithdraw}
+          checked={hasAuthorityToWithdraw}
           className={styles.marginTop2}
           id="authorityToWithdraw"
           label="I am authorised to withdraw this opportunity and understand I cannot reopen it again"
