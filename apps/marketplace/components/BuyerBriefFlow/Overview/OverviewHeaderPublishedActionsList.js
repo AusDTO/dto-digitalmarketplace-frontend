@@ -30,9 +30,6 @@ const OverviewHeaderPublishedActionsList = props => {
             </strong>
           </div>
         </li>
-        <li>
-          <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>View opportunity</a>
-        </li>
         {canCloseOpportunity && (
           <li>
             <a href={closeHref}>Close opportunity now</a>
@@ -47,9 +44,6 @@ const OverviewHeaderPublishedActionsList = props => {
         )}
       </ul>
       <ul className={`${styles.menuList} ${mainStyles.hideDesktop}`}>
-        <li>
-          <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>View opportunity</a>
-        </li>
         {canCloseOpportunity && (
           <li>
             <a href={closeHref}>Close now</a>
