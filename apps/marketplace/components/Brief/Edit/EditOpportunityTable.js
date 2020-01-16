@@ -13,13 +13,14 @@ class EditOpportunityTable extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      editClosingDateClicked: false,
       editSellersClicked: false,
       editTitleClicked: false
     }
   }
 
   render = () => {
-    const { brief, edits, isOpenToAll, location } = this.props
+    const { brief, edits, isOpenToAll } = this.props
     const sellersToInvite = Object.keys(edits.sellers).filter(code => !(code in brief.sellers))
 
     if (this.state.editTitleClicked) {
@@ -80,7 +81,9 @@ class EditOpportunityTable extends Component {
               <span>{format(getClosingTime(brief), 'dddd DD MMMM YYYY [at] ha')}</span>
             </td>
             <td>
-              <a href={`${location.pathname}/closing-date`}>Extend closing date</a>
+              <AUbutton as="tertiary" onClick={() => this.setState({ editClosingDateClicked: true })}>
+                Extend closing date
+              </AUbutton>
             </td>
           </tr>
         </tbody>
