@@ -26,9 +26,8 @@ const SellerAssessmentIntroductionStage = props => (
       <li> 
       a contractor from your recruitment pool
       </li>
-      <br/><br/>
-      <strong>Please note:</strong> The time we take to assess your criteria is dependent on volume, seasonal peaks,
-      complex cases and incomplete submissions. We will endeavour to assess your criteria in a reasonable timeframe.
+      <br/>
+      Please note: The time the assessment team takes to assess your criteria is dependent on volume, seasonal peaks, complex cases and incomplete submissions. We will endeavour to assess your criteria in a reasonable timeframe.
     </p>
    
     {props.formButtons}
