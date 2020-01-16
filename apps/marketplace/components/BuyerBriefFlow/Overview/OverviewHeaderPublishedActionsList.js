@@ -5,14 +5,18 @@ import ClosedDate from 'shared/ClosedDate'
 import { rootPath } from 'marketplace/routes'
 import { hasPermission } from 'marketplace/components/helpers'
 
-import styles from '../Overview.scss'
 import mainStyles from '../../../main.scss'
+import styles from '../Overview.scss'
 
 const OverviewHeaderPublishedActionsList = props => {
   const { brief, canCloseOpportunity, isPartOfTeam, isTeamLead, teams } = props
 
   const closeHref = hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities')
     ? `${rootPath}/brief/${brief.id}/close`
+    : `${rootPath}/request-access/publish_opportunities`
+
+  const withdrawHref = hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities')
+    ? `${rootPath}/brief/${brief.id}/withdraw`
     : `${rootPath}/request-access/publish_opportunities`
 
   return (
@@ -34,6 +38,13 @@ const OverviewHeaderPublishedActionsList = props => {
             <a href={closeHref}>Close opportunity now</a>
           </li>
         )}
+        {brief.status === 'live' && (
+          <li className={`${mainStyles.red} ${styles.hideMobile}`}>
+            <a className={mainStyles.red} href={withdrawHref}>
+              Withdraw opportunity
+            </a>
+          </li>
+        )}
       </ul>
       <ul className={`${styles.menuList} ${mainStyles.hideDesktop}`}>
         <li>
@@ -42,6 +53,13 @@ const OverviewHeaderPublishedActionsList = props => {
         {canCloseOpportunity && (
           <li>
             <a href={closeHref}>Close now</a>
+          </li>
+        )}
+        {brief.status === 'live' && (
+          <li className={`${mainStyles.red} ${styles.hideDesktop}`}>
+            <a className={mainStyles.red} href={withdrawHref}>
+              Withdraw
+            </a>
           </li>
         )}
       </ul>

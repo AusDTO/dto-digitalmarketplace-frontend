@@ -51,6 +51,8 @@ import RequestAccessPage from './pages/RequestAccessPage'
 import DownloadReports from './pages/DownloadReports/DownloadReports'
 import InsightPage from './pages/InsightPage'
 import InvitedSellersPage from './pages/InvitedSellersPage'
+import WithdrawOpportunityPage from './pages/WithdrawOpportunityPage'
+import WithdrawOpportunitySuccessPage from './pages/WithdrawOpportunitySuccessPage'
 
 export const rootPath = '/2'
 
@@ -83,6 +85,16 @@ export const Routes = () => (
       restrictedTo="buyer"
       path={`${rootPath}/brief/:briefId/publish-answer/:questionId?`}
       component={PublishAnswerPage}
+    />
+    <PrivateRoute
+      restrictedTo="buyer"
+      path={`${rootPath}/brief/:briefId/withdraw`}
+      component={WithdrawOpportunityPage}
+    />
+    <PrivateRoute
+      restrictedTo="buyer"
+      path={`${rootPath}/brief/:briefId/withdrawn`}
+      component={WithdrawOpportunitySuccessPage}
     />
     <PrivateRoute
       restrictedTo="supplier"

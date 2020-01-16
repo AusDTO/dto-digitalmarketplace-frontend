@@ -84,6 +84,7 @@ const briefReducer = (state = defaultBriefState, action) => {
         briefResponses: action.briefResponses,
         isOpenToAll: action.isOpenToAll,
         canCloseOpportunity: action.canCloseOpportunity,
+        isOpenToAll: action.isOpenToAll,
         specialistNumber: action.briefResponses.length > 0 ? action.briefResponses.length : 1,
         loadedAt: new Date().valueOf(),
         oldWorkOrderCreator: action.oldWorkOrderCreator,

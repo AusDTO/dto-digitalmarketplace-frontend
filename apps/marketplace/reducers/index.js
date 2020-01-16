@@ -297,6 +297,9 @@ export default combineReducers({
       sellers: {},
       title: ''
     },
+    withdrawOpportunityForm: {
+      reasonToWithdraw: ''
+    },
     BuyerRFXForm: BuyerRFXFormReducer,
     BuyerTrainingForm: BuyerTrainingFormReducer,
     BuyerATMForm: BuyerATMFormReducer,

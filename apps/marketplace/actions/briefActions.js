@@ -18,7 +18,8 @@ import {
   DELETE_BRIEF_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NAME_SPLIT,
-  SPECIALIST_NUMBER
+  SPECIALIST_NUMBER,
+  WITHDRAW_OPPORTUNITY_SUCCESS
 } from '../constants/constants'
 
 import {
@@ -191,6 +192,32 @@ export const closeOpportunity = briefId => (dispatch, getState) => {
       dispatch(handleErrorFailure(response))
     } else {
       dispatch(handleCloseOpportunitySuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
+
+export const handleWithdrawOpportunitySuccess = response => ({
+  type: WITHDRAW_OPPORTUNITY_SUCCESS,
+  brief: response.data
+})
+
+export const withdrawOpportunity = (briefId, data) => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: `/brief/${briefId}/withdraw`,
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify(data)
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleWithdrawOpportunitySuccess(response))
     }
     dispatch(sendingRequest(false))
     return response
