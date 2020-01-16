@@ -116,7 +116,7 @@ export class WithdrawOpportunity extends Component {
         </div>
         <AUcheckbox
           checked={hasAuthorityToWithdraw}
-          className={styles.marginTop2}
+          className={`${styles.marginTop2} ${hasErrors ? 'au-control-input--invalid' : ''}`}
           id="authorityToWithdraw"
           label="I have the authority to withdraw this opportunity and understand once I do so I will not be able to re-open it"
           name="authorityToWithdraw"
