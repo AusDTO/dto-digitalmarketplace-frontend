@@ -177,7 +177,7 @@ table.defaultStyle {
     }
   }
 
-  & tr:nth-child(2n) {
+  &.striped tr:nth-child(2n) {
     background-color: #fafafa;
   }
 
