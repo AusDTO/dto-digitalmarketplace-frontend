@@ -46,6 +46,18 @@
   margin-top: 3rem;
 }
 
+@media screen and (max-width: 767px) {
+  .hideMobile {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hideDesktop {
+    display: none;
+  }
+}
+
 @media print { 
   .noPrint, .noPrint * {
     display: none !important;
@@ -230,6 +242,10 @@ table.defaultStyle {
   padding: 2px 5px;
   width: max-content;
   white-space: nowrap;
+
+  &.first {
+    margin-bottom: 0.5rem;
+  }
 
   &.green {
     border: solid 3px #00AC78;

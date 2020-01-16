@@ -7,6 +7,9 @@ import CreateTeamPage from './pages/Teams/CreateTeamPage'
 import CreateUserPage from './pages/CreateUserPage'
 import SendInvitePage from './pages/SendInvitePage'
 import BriefPage from './pages/BriefPage'
+import BriefResponseCreatePage from './pages/BriefResponseCreatePage'
+import BriefResponsePage from './pages/BriefResponsePage'
+import BriefResponsesPage from './pages/BriefResponsesPage'
 import LoginPage from './pages/LoginPage'
 import NotFound from './components/NotFound'
 import SellerDashboardPage from './pages/SellerDashboardPage'
@@ -28,6 +31,8 @@ import BuyerSpecialistCreatePage from './pages/BuyerSpecialistCreatePage'
 import BuyerSpecialistCompletedPage from './pages/BuyerSpecialistCompletedPage'
 import BuyerSpecialistFlowPage from './pages/BuyerSpecialistFlowPage'
 import BriefOutcomeChoicePage from './pages/BriefOutcomeChoicePage'
+import CloseOpportunityPage from './pages/CloseOpportunityPage'
+import CloseOpportunitySuccessPage from './pages/CloseOpportunitySuccessPage'
 import EditOpportunityPage from './pages/EditOpportunityPage'
 import EditTeamFlowPage from './pages/Teams/EditTeamFlowPage'
 import OpportunityPage from './pages/OpportunityPage'
@@ -60,6 +65,12 @@ export const Routes = () => (
       path={`${rootPath}/brief/:briefId/overview/:flow`}
       component={BuyerBriefOverviewPage}
     />
+    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/close`} component={CloseOpportunityPage} />
+    <PrivateRoute
+      restrictedTo="buyer"
+      path={`${rootPath}/brief/:briefId/closed`}
+      component={CloseOpportunitySuccessPage}
+    />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/overview`} component={BriefOverviewPage} />
     <PrivateRoute
       restrictedTo="buyer"
@@ -77,6 +88,21 @@ export const Routes = () => (
       restrictedTo="supplier"
       path={`${rootPath}/brief/:briefId/ask-a-question`}
       component={AskQuestionPage}
+    />
+    <PrivateRoute
+      restrictedTo="supplier"
+      path={`${rootPath}/brief/:briefId/responses`}
+      component={BriefResponsesPage}
+    />
+    <PrivateRoute
+      restrictedTo="supplier"
+      path={`${rootPath}/brief/:briefId/:briefResponseType/respond/:briefResponseId`}
+      component={BriefResponsePage}
+    />
+    <PrivateRoute
+      restrictedTo="supplier"
+      path={`${rootPath}/brief/:briefId/:briefResponseType/respond`}
+      component={BriefResponseCreatePage}
     />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/invited`} component={InvitedSellersPage} />
     <PrivateRoute path={`${rootPath}/brief/:briefId`} component={BriefPage} />
