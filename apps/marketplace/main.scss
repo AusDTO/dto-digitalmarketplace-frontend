@@ -168,6 +168,10 @@ table.defaultStyle {
     border-bottom: solid 1px #bebebe;
     color: #313131;
 
+    & ul {
+      padding-left: inherit;
+    }
+
     &.borderBottom0 {
       border-bottom: none;
     }
