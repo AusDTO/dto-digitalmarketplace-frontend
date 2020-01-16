@@ -67,6 +67,7 @@ class WithdrawOpportunityPage extends Component {
 
   render = () => {
     const { app, brief, errorMessage, isOpenToAll } = this.props
+    const { loading, opportunityWithdrawn } = this.state
 
     let hasFocused = false
     const setFocus = e => {
@@ -89,7 +90,7 @@ class WithdrawOpportunityPage extends Component {
       )
     }
 
-    if (this.state.loading) {
+    if (loading) {
       return <LoadingIndicatorFullPage />
     }
 
@@ -105,7 +106,7 @@ class WithdrawOpportunityPage extends Component {
       )
     }
 
-    if (this.state.opportunityWithdrawn) {
+    if (opportunityWithdrawn) {
       return (
         <WithdrawnOpportunity
           app={app}
