@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { loadBrief } from 'marketplace/actions/briefActions'
-import { handleFeedbackSubmit, setErrorMessage } from 'marketplace/actions/appActions'
+import { handleFeedbackSubmit } from 'marketplace/actions/appActions'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import WithdrawnOpportunity from 'marketplace/components/Brief/WithdrawnOpportunity'
 import { rootPath } from 'marketplace/routes'
@@ -116,8 +116,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   handleFeedbackSubmit: data => dispatch(handleFeedbackSubmit(data)),
-  loadData: briefId => dispatch(loadBrief(briefId)),
-  setError: message => dispatch(setErrorMessage(message))
+  loadData: briefId => dispatch(loadBrief(briefId))
 })
 
 export default withRouter(

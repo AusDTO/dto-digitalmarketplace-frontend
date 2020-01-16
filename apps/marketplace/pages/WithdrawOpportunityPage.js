@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect, withRouter } from 'react-router-dom'
 import { withdrawOpportunity, loadBrief } from 'marketplace/actions/briefActions'
-import { setErrorMessage } from 'marketplace/actions/appActions'
 import WithdrawOpportunity from 'marketplace/components/Brief/WithdrawOpportunity'
 import { rootPath } from 'marketplace/routes'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
@@ -119,7 +118,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   loadData: briefId => dispatch(loadBrief(briefId)),
-  setError: message => dispatch(setErrorMessage(message)),
   withdrawOpportunity: (briefId, data) => dispatch(withdrawOpportunity(briefId, data))
 })
 
