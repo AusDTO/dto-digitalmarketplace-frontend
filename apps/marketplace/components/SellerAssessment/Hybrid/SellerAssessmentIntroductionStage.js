@@ -15,12 +15,18 @@ const SellerAssessmentIntroductionStage = props => (
     <br/>
       Read more on how to 
     <a href={`https://marketplace1.zendesk.com/hc/en-gb/articles/115011292847-Request-an-assessment-for-categories`}> request an assessment for categories</a>
-    </p>
 
-    <p>
-    You will be asked to submit evidence for a person you previously placed in a {props.meta.domain.name} specific role. 
-    </p>
-    <p>
+    <br/><br/>
+    You will be asked to submit evidence for a person you previously placed in a {props.meta.domain.name} specific role.  
+    <br/><br/>
+    <strong>This person may be:</strong> 
+      <li> 
+        a consultant from your company
+      </li>
+      <li> 
+      a contractor from your recruitment pool
+      </li>
+      <br/><br/>
       <strong>Please note:</strong> The time we take to assess your criteria is dependent on volume, seasonal peaks,
       complex cases and incomplete submissions. We will endeavour to assess your criteria in a reasonable timeframe.
     </p>
