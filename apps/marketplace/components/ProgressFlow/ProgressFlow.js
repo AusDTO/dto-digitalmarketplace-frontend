@@ -218,23 +218,22 @@ export class ProgressFlow extends Component {
     }
 
     // hides certain stages
-    //then added in stages aka isHidden: true or false 
+    //then added in stages aka isHidden: true or false
 
     const items = []
     this.props.stages.map(stage => {
-    if(!stage.isHidden){
-      items.push({
-        link: `${this.props.basename}/${stage.slug}`,
-        linkComponent: Link,
-        text: stage.title,
-        slug: stage.slug,
-        status: this.state.stages[stage.slug]
-      })
-    }
-    else {
-      return true
-    }
-  })
+      if (!stage.isHidden) {
+        items.push({
+          link: `${this.props.basename}/${stage.slug}`,
+          linkComponent: Link,
+          text: stage.title,
+          slug: stage.slug,
+          status: this.state.stages[stage.slug]
+        })
+      } else {
+        return true
+      }
+    })
 
     const ProgressNavElement = () => (
       <ProgressNav

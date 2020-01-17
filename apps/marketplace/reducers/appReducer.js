@@ -84,7 +84,7 @@ const appReducer = (state = initialState, action) => {
         agencyId: action.newState.agencyId,
         agencyDomains: action.newState.agencyDomains,
         isRecruiterFlag: action.newState.isRecruiterFlag,
-        isHybridFlag: action.newState.isHybridFlag,
+        isHybridFlag: action.newState.isHybridFlag
       }
     default:
       return state

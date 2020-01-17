@@ -131,7 +131,6 @@ export class SellerAssessmentFlowPage extends Component {
 
     const evidenceId = this.props.match.params.evidenceId
 
-
     if (this.state.loading) {
       return <LoadingIndicatorFullPage />
     }
@@ -140,25 +139,23 @@ export class SellerAssessmentFlowPage extends Component {
       return <Redirect to={`${rootPath}/seller-assessment/${evidenceId}/completed`} push />
     }
 
-      if (this.props.isHybridFlag) {
-        return (
-          <ProgressFlow
-            model={model}
-            meta={{ domain: this.props.domain, evidence: this.props.evidence }}
-            onStageMount={this.handleStageMount}
-            basename={`${rootPath}/seller-assessment/${evidenceId}`}
-            stages={SellerAssessmentHybridStages}
-            saveModel={this.saveEvidence}
-            showReturnButton={false}
-            showReviewButton={false}
-            publishText="Request assessment"
-            showConfirmationCheckbox={false}
-          />
-        )
-      }
-
-      else if (!this.props.isHybridFlag) {
-        if(this.props.isRecruiterFlag){
+    if (this.props.isHybridFlag) {
+      return (
+        <ProgressFlow
+          model={model}
+          meta={{ domain: this.props.domain, evidence: this.props.evidence }}
+          onStageMount={this.handleStageMount}
+          basename={`${rootPath}/seller-assessment/${evidenceId}`}
+          stages={SellerAssessmentHybridStages}
+          saveModel={this.saveEvidence}
+          showReturnButton={false}
+          showReviewButton={false}
+          publishText="Request assessment"
+          showConfirmationCheckbox={false}
+        />
+      )
+    } else if (!this.props.isHybridFlag) {
+      if (this.props.isRecruiterFlag) {
         return (
           <ProgressFlow
             model={model}
@@ -173,9 +170,9 @@ export class SellerAssessmentFlowPage extends Component {
             showConfirmationCheckbox={false}
           />
         )
-        }
       }
-//hybrid flag is false and is recruiter true
+    }
+    //hybrid flag is false and is recruiter true
     return (
       <ProgressFlow
         model={model}
@@ -191,7 +188,7 @@ export class SellerAssessmentFlowPage extends Component {
       />
     )
   }
- }
+}
 
 const mapStateToProps = state => ({
   ...formProps(state, model),
@@ -201,7 +198,6 @@ const mapStateToProps = state => ({
   isRecruiterFlag: state.app.isRecruiterFlag,
   isHybridFlag: state.app.isHybridFlag
 })
-
 
 const mapDispatchToProps = dispatch => ({
   changeFormModel: data => dispatch(actions.merge(model, data)),

@@ -86,10 +86,10 @@ const SellerAssessmentRateStage = props => (
       name="totalMaximumRate"
       id="totalMaximumRate"
       htmlFor="totalMaximumRate"
-      defaultValue={ Math.round(
-        (parseInt(props[props.model].maxDailyRate, 10))
-        * (parseInt(props[props.model].markup, 10)/100) 
-        +  (parseInt(props[props.model].maxDailyRate, 10)))}
+      defaultValue={Math.round(
+        parseInt(props[props.model].maxDailyRate, 10) * (parseInt(props[props.model].markup, 10) / 100) +
+          parseInt(props[props.model].maxDailyRate, 10)
+      )}
       disabled={true}
     />
 

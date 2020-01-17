@@ -284,13 +284,11 @@ export class BriefATMResponseForm extends Component {
                     htmlFor="respondToEmailAddress"
                     label="Email"
                     description="All communication about your application will be sent to this email."
-
                     defaultValue={
                       briefResponseForm.respondToEmailAddress
                         ? briefResponseForm.respondToEmailAddress
                         : supplierContact.email
                     }
-
                     maxLength={100}
                     validators={{
                       required,
@@ -310,7 +308,6 @@ export class BriefATMResponseForm extends Component {
                       briefResponseForm.respondToPhone ? briefResponseForm.respondToPhone : supplierContact.phone
                     }
                     label="Phone number"
-
                     maxLength={100}
                     validators={{
                       required,

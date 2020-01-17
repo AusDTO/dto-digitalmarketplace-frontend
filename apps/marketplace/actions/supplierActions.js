@@ -138,7 +138,7 @@ export const handleCreateEvidenceSuccess = response => ({
     domainId: response.data.domainId,
     supplierCode: response.data.supplierCode,
     maxDailyRate: response.data.maxDailyRate,
-    markup : response.data.markup,
+    markup: response.data.markup,
     submittedAt: response.data.submitted_at,
     criteria: response.data.criteria,
     evidence: response.data.evidence,
@@ -174,7 +174,7 @@ export const handleEvidenceSaveSuccess = response => ({
     domainId: response.data.domain_id,
     supplierCode: response.data.supplier_code,
     maxDailyRate: response.data.maxDailyRate,
-    markup : response.data.markup
+    markup: response.data.markup
     // candidateFullName : response.data.candidateFullName,
     // candidatePhoneNumber : response.data.candidatePhoneNumber
   }

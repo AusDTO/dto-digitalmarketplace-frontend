@@ -12,7 +12,6 @@ import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import styles from './BuyerATMEvaluationCriteriaStage.scss'
 
-
 export const noEmptyWeightings = formValues =>
   !formValues.includeWeightings || formValues.evaluationCriteria.every(val => val.weighting)
 

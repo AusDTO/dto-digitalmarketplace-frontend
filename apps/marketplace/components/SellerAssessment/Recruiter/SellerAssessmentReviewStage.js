@@ -36,14 +36,20 @@ const SellerAssessmentReviewStage = props => (
             Change
           </Link>
         </AUheading>
-        <br/>
+        <br />
         <strong>Daily Rate: </strong>${props[props.model].maxDailyRate}
-        <br/>
-        <br/>
-        <strong>Mark Up: </strong>{props[props.model].markup}%
-        <br/>
-        <br/>
-        <strong>Total: </strong>${Math.round((parseInt(props[props.model].maxDailyRate, 10))* (parseInt(props[props.model].markup, 10)/100) +  (parseInt(props[props.model].maxDailyRate, 10)))} (including GST)
+        <br />
+        <br />
+        <strong>Mark Up: </strong>
+        {props[props.model].markup}%
+        <br />
+        <br />
+        <strong>Total: </strong>$
+        {Math.round(
+          parseInt(props[props.model].maxDailyRate, 10) * (parseInt(props[props.model].markup, 10) / 100) +
+            parseInt(props[props.model].maxDailyRate, 10)
+        )}{' '}
+        (including GST)
         <div className={styles.spacer} />
         <AUheading level="2" size="lg">
           Candidate Pool
@@ -51,13 +57,15 @@ const SellerAssessmentReviewStage = props => (
             Change
           </Link>
         </AUheading>
-        <br/>
-        <strong>Size of candidate database: </strong>{props[props.model].database_size}
-        <br/>
-        <br/>
-        <strong>Candidates placed in last 12 months: </strong>{props[props.model].placed_candidates}
-        <br/>
-        <br/>
+        <br />
+        <strong>Size of candidate database: </strong>
+        {props[props.model].database_size}
+        <br />
+        <br />
+        <strong>Candidates placed in last 12 months: </strong>
+        {props[props.model].placed_candidates}
+        <br />
+        <br />
         <div className={styles.spacer} />
         <AUheading level="2" size="lg">
           Evidence

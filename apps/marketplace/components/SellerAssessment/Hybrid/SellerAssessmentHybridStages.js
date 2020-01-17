@@ -4,8 +4,11 @@ import SellerAssessmentCandidatePool, { done as candidatePoolDone } from './Sell
 import SellerAssessmentReviewStage from './SellerAssessmentReviewStage'
 import SellerAssessmentHybridCriteriaStage, { done as hybridcriteriaDone } from './SellerAssessmentHybridCriteriaStage'
 import SellerAssessmentHybridEvidenceStage, { done as hyridevidenceDone } from './SellerAssessmentHybridEvidenceStage'
+import SellerAssessmentHybridPlacingCandidatesStage from './SellerAssessmentHybridPlacingCandidatesStage'
 import SellerAssessmentRateStage, { done as ratesDone } from '../SellerAssessmentRateStage'
-import SellerAssessmentHybridPlacingCandidatesStage, { hideRateStage as hide } from '../Hybrid/SellerAssessmentHybridPlacingCandidatesStage'
+import SellerAssessmentHybridPlacingCandidatesStage, {
+  hideRateStage as hide
+} from '../Hybrid/SellerAssessmentHybridPlacingCandidatesStage'
 
 const SellerAssessmentHybridStages = [
   {
@@ -18,21 +21,24 @@ const SellerAssessmentHybridStages = [
     slug: 'placingCandiates',
     title: 'Placing Candidates',
     component: SellerAssessmentHybridPlacingCandidatesStage,
-    isDone: formValues => formValues.placingCandidates === 'recruitment' || formValues.placingCandidates === 'hybird' || formValues.placingCandidates === 'consultants' 
+    isDone: formValues =>
+      formValues.placingCandidates === 'recruitment' ||
+      formValues.placingCandidates === 'hybird' ||
+      formValues.placingCandidates === 'consultants'
   },
   {
     slug: 'rate',
     title: 'Rate',
     component: SellerAssessmentRateStage,
     isDone: ratesDone,
-    isHidden:hide
+    isHidden: false
   },
   {
     slug: 'maximumRate',
     title: 'Rate',
     component: SellerAssessmentMaximumRate,
     isDone: maximumRatesDone,
-    isHidden:hide
+    isHidden: hide
   },
   {
     slug: 'candidatePool',

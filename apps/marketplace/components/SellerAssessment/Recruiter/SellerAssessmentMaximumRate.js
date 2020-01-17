@@ -18,7 +18,6 @@ export const lessThanLimit = formValues => parseInt(formValues.maxDailyRate, 10)
 
 export const validWholeNumber = formValues => formValues.maxDailyRate && /^[0-9]+$/.test(formValues.maxDailyRate)
 
-
 // const isRecruiterCriteria = (criteriaId, criteria) => {
 //   let recruiter = false
 //   criteria.find(c => {
@@ -31,12 +30,12 @@ export const validWholeNumber = formValues => formValues.maxDailyRate && /^[0-9]
 //   return recruiter
 // }
 
-export const onRateChange = (field, value) =>{
+export const onRateChange = (field, value) => {
   let withGst = parseFloat(value * 1.1).toFixed(2)
-    if (isNaN(withGst)) {
-      withGst = ''
-    }
-    this.props.changeModel(`${this.props.model}.${field}`, `${withGst}`)
+  if (isNaN(withGst)) {
+    withGst = ''
+  }
+  this.props.changeModel(`${this.props.model}.${field}`, `${withGst}`)
 }
 
 export const done = formValues =>
@@ -109,10 +108,10 @@ const SellerAssessmentRateStage = props => (
       name="totalMaximumRate"
       id="totalMaximumRate"
       htmlFor="totalMaximumRate"
-      defaultValue={ Math.round(
-        (parseInt(props[props.model].maxDailyRate, 10))
-        * (parseInt(props[props.model].markup, 10)/100) 
-        +  (parseInt(props[props.model].maxDailyRate, 10)))}
+      defaultValue={Math.round(
+        parseInt(props[props.model].maxDailyRate, 10) * (parseInt(props[props.model].markup, 10) / 100) +
+          parseInt(props[props.model].maxDailyRate, 10)
+      )}
       disabled={true}
       // need to add syles to this
       // className={styles.readOnly}
@@ -121,7 +120,7 @@ const SellerAssessmentRateStage = props => (
 
     {props.formButtons}
   </Form>
-  )
+)
 
 SellerAssessmentRateStage.defaultProps = {
   onRateChange: () => null,
@@ -137,8 +136,6 @@ SellerAssessmentRateStage.propTypes = {
   onSubmit: PropTypes.func,
   onSubmitFailed: PropTypes.func
 }
-
-
 
 const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)

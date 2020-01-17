@@ -145,7 +145,7 @@ const OpportunityInfoCard = props => (
           props.loggedIn &&
           props.isApprovedSeller &&
           props.hasSignedCurrentAgreement &&
-          (props.briefLot === 'atm'  || ['rfx', 'training2'].includes(props.briefLot)) &&
+          (props.briefLot === 'atm' || ['rfx', 'training2'].includes(props.briefLot)) &&
           (!props.isOpenToAll && !props.isOpenToCategory) &&
           !props.canRespond && (
             <div className={styles.invitedStatus}>
@@ -156,7 +156,7 @@ const OpportunityInfoCard = props => (
           props.loggedIn &&
           props.isApprovedSeller &&
           props.hasSignedCurrentAgreement &&
-          props.briefLot === 'atm'  &&
+          props.briefLot === 'atm' &&
           props.isOpenToCategory &&
           props.category &&
           !props.isAssessedForCategory && (

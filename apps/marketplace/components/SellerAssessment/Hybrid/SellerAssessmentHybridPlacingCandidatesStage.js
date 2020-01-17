@@ -15,67 +15,66 @@ export const validWholeNumber = formValues => formValues.database_size && /^[0-9
 export const done = formValues =>
   formValues.database_size && greaterThanZero(formValues) && validWholeNumber(formValues)
 
-export const hideRateStage = formValues => 
-  isHiddenConsultantRate(formValues)
+export const hideRateStage = formValues => isHiddenConsultantRate(formValues)
 
 const isHiddenConsultantRate = () => {
   let isHidden = true
   criteria.find(c => {
-    if ( props[props.model].placingCandidates === 'recruitment' || props[props.model].placingCandidates === 'hybrid') {
+    if (props[props.model].placingCandidates === 'recruitment' || props[props.model].placingCandidates === 'hybrid') {
       return false
     }
-    return true 
+    return true
   })
   return isHidden
 }
 
 const SellerAssessmentHybridPlacingCandidatesStage = props => (
-      <Form
-        model={props.model}
-        validators={{
-          '': {
-            requiredChoice: formValues => formValues.placingCandidates
+  <Form
+    model={props.model}
+    validators={{
+      '': {
+        requiredChoice: formValues => formValues.placingCandidates
+      }
+    }}
+    onSubmit={props.onSubmit}
+    onSubmitFailed={props.onSubmitFailed}
+    validateOn="submit"
+  >
+    <AUheadings level="1" size="xl">
+      Placing candidates
+    </AUheadings>
+    <ErrorAlert
+      model={props.model}
+      messages={{
+        requiredChoice: 'You must select who can respond'
+      }}
+    />
+    <p> Your business will be placing candidates for {props.meta.domain.name} category roles by submitting</p>
+    <div>
+      <RadioList
+        id="placingCandidates"
+        label=""
+        name="placingCandidates"
+        model={`${props.model}.placingCandidates`}
+        options={[
+          {
+            label: 'contractors you organised through recruitment activities',
+            value: 'recruitment'
+          },
+          {
+            label: 'your own conusultants',
+            value: 'consultants'
+          },
+          {
+            label: 'both contractors and consultants',
+            value: 'hybrid'
           }
-        }}
-        onSubmit={props.onSubmit}
-        onSubmitFailed={props.onSubmitFailed}
-        validateOn="submit"
-      >
-        <AUheadings level="1" size="xl">
-          Placing candidates
-        </AUheadings>
-        <ErrorAlert
-          model={props.model}
-          messages={{
-            requiredChoice: 'You must select who can respond'
-          }}
-        />
-        <p> Your business will be placing candidates for {props.meta.domain.name} category roles by submitting</p>
-        <div>
-          <RadioList
-            id="placingCandidates"
-            label=""
-            name="placingCandidates"
-            model={`${props.model}.placingCandidates`}
-            options={[
-              {
-                label: 'contractors you organised through recruitment activities',
-                value: 'recruitment'
-              },
-              {
-                label: 'your own conusultants',
-                value: 'consultants'
-              },
-              {
-                label: 'both contractors and consultants',
-                value: 'hybrid'
-              }
-            ]}
-            messages={{}}
-          />
-        </div>
-        {(props[props.model].placingCandidates === 'recruitment' || props[props.model].placingCandidates === 'hybrid') && (
-        <div> 
+        ]}
+        messages={{}}
+      />
+    </div>
+    {(props[props.model].placingCandidates === 'recruitment' || props[props.model].placingCandidates === 'hybrid') && (
+      <div>
         <AUheadings level="1" size="lg">
           Candidate Pool
         </AUheadings>
@@ -102,13 +101,12 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
           htmlFor="placed_candidates"
           defaultValue={props[props.model].placed_candidates}
         />
-            </div>
-        )}
-            {props.formButtons}
-          </Form>
-        )
+      </div>
+    )}
+    {props.formButtons}
+  </Form>
+)
 
-  
 SellerAssessmentHybridPlacingCandidatesStage.defaultProps = {
   onSubmit: () => {},
   onSubmitFailed: () => {}
@@ -127,6 +125,4 @@ const mapStateToProps = (state, props) => ({
   domains: state.brief.domains
 })
 
-export default connect(
-  mapStateToProps
-)(SellerAssessmentHybridPlacingCandidatesStage)
+export default connect(mapStateToProps)(SellerAssessmentHybridPlacingCandidatesStage)
