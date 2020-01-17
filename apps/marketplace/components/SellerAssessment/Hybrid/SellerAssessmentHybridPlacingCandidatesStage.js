@@ -23,18 +23,6 @@ export const done = formValues => {
   }
 }
 
-export const hideRateStage = formValues => isHiddenConsultantRate(formValues)
-
-const isHiddenConsultantRate = () => {
-  let isHidden = true
-  if (props[props.model].placingCandidates === 'recruitment' || props[props.model].placingCandidates === 'hybrid') {
-    isHidden = false
-  } else {
-    isHidden = true
-  }
-  return isHidden
-}
-
 const SellerAssessmentHybridPlacingCandidatesStage = props => (
   <Form
     model={props.model}
