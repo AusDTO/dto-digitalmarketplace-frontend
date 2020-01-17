@@ -159,7 +159,7 @@ class SellerAssessmentCriteriaStage extends Component {
                 />
               )
             }
-              return null
+            return null
           })}
         </div>
 
