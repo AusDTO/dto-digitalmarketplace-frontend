@@ -63,40 +63,40 @@ const SellerAssessmentRateStage = props => (
       //   required: 'Maximum Daily Rate is required'
       // }}
     />
-    
-     {(props[props.model].placingCandidates === 'recruitment' || props[props.model].placingCandidates === 'hybrid') && (
-    <div> 
-    <Textfield
-      model={`${props.model}.markup`}
-      postfix={'%'}
-      label="Maximum mark-up"
-      description={`The percentage of on-costs to the day rate, including: your commission, workers compensation, payroll tax`}
-      name="markup"
-      id="markup"
-      htmlFor="markup"
-      defaultValue={props[props.model].markup}
-      // validators={{
-      //   required
-      // }}
-      // messages={{
-      //   required: 'Maximum mark-up is required'
-      // }}
-    />
-    <Textfield
-      model={`${props.model}.totalMaximumRate`}
-      label="Total maximum rate"
-      description={`The threshold for ${props.meta.domain.name} is $${props.meta.domain.priceMaximum}. If your total maximum rate is above this threshold, you will be asked to meet more criteria to prove you offer value for money.`}
-      name="totalMaximumRate"
-      id="totalMaximumRate"
-      htmlFor="totalMaximumRate"
-      defaultValue={Math.round(
-        parseInt(props[props.model].maxDailyRate, 10) * (parseInt(props[props.model].markup, 10) / 100) +
-          parseInt(props[props.model].maxDailyRate, 10)
-      )}
-      disabled={true}
-    />
-    </div>
-     )}
+
+    {(props[props.model].placingCandidates === 'recruitment' || props[props.model].placingCandidates === 'hybrid') && (
+      <div>
+        <Textfield
+          model={`${props.model}.markup`}
+          postfix={'%'}
+          label="Maximum mark-up"
+          description={`The percentage of on-costs to the day rate, including: your commission, workers compensation, payroll tax`}
+          name="markup"
+          id="markup"
+          htmlFor="markup"
+          defaultValue={props[props.model].markup}
+          // validators={{
+          //   required
+          // }}
+          // messages={{
+          //   required: 'Maximum mark-up is required'
+          // }}
+        />
+        <Textfield
+          model={`${props.model}.totalMaximumRate`}
+          label="Total maximum rate"
+          description={`The threshold for ${props.meta.domain.name} is $${props.meta.domain.priceMaximum}. If your total maximum rate is above this threshold, you will be asked to meet more criteria to prove you offer value for money.`}
+          name="totalMaximumRate"
+          id="totalMaximumRate"
+          htmlFor="totalMaximumRate"
+          defaultValue={Math.round(
+            parseInt(props[props.model].maxDailyRate, 10) * (parseInt(props[props.model].markup, 10) / 100) +
+              parseInt(props[props.model].maxDailyRate, 10)
+          )}
+          disabled={true}
+        />
+      </div>
+    )}
     {props.formButtons}
   </Form>
 )

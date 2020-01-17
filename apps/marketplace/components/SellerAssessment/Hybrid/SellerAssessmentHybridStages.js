@@ -4,7 +4,9 @@ import SellerAssessmentCandidatePool, { done as candidatePoolDone } from './Sell
 import SellerAssessmentReviewStage from './SellerAssessmentReviewStage'
 import SellerAssessmentHybridCriteriaStage, { done as hybridcriteriaDone } from './SellerAssessmentHybridCriteriaStage'
 import SellerAssessmentHybridEvidenceStage, { done as hyridevidenceDone } from './SellerAssessmentHybridEvidenceStage'
-import SellerAssessmentHybridPlacingCandidatesStage, { hideRateStage as hide} from  './SellerAssessmentHybridPlacingCandidatesStage'
+import SellerAssessmentHybridPlacingCandidatesStage, {
+  hideRateStage as hide
+} from './SellerAssessmentHybridPlacingCandidatesStage'
 import SellerAssessmentRateStage, { done as ratesDone } from '../SellerAssessmentRateStage'
 
 const SellerAssessmentHybridStages = [
