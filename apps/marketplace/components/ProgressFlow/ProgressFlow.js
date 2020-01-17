@@ -216,13 +216,13 @@ export class ProgressFlow extends Component {
 
     const items = []
     this.props.stages.map(stage => {
-        items.push({
-          link: `${this.props.basename}/${stage.slug}`,
-          linkComponent: Link,
-          text: stage.title,
-          slug: stage.slug,
-          status: this.state.stages[stage.slug]
-        })
+      items.push({
+        link: `${this.props.basename}/${stage.slug}`,
+        linkComponent: Link,
+        text: stage.title,
+        slug: stage.slug,
+        status: this.state.stages[stage.slug]
+      })
     })
 
     const ProgressNavElement = () => (
