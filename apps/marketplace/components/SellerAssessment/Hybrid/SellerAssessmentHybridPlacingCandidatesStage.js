@@ -13,7 +13,7 @@ export const greaterThanZero = formValues => parseInt(formValues.database_size, 
 export const validWholeNumber = formValues => formValues.database_size && /^[0-9]+$/.test(formValues.database_size)
 
 export const done = formValues => {
-  if ([props.model].placingCandidates === 'recruitment' || [props.model].placingCandidates === 'hybrid') {
+  if (props[props.model].placingCandidates === 'recruitment' || props[props.model].placingCandidates === 'hybrid') {
     formValues.placingCandidates &&
       formValues.database_size &&
       greaterThanZero(formValues) &&
