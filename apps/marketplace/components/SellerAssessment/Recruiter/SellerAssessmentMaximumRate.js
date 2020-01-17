@@ -6,9 +6,6 @@ import Textfield from 'shared/form/Textfield'
 import formProps from 'shared/form/formPropsSelector'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
-import AUtextInput from '@gov.au/text-inputs'
-import { required } from 'marketplace/components/validators'
-import styles from '../../Brief/BriefSpecialistResponseForm2.scss'
 
 const maxDailyRateLimit = 99999
 
