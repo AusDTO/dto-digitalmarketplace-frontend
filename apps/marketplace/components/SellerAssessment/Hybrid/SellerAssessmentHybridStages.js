@@ -4,11 +4,8 @@ import SellerAssessmentCandidatePool, { done as candidatePoolDone } from './Sell
 import SellerAssessmentReviewStage from './SellerAssessmentReviewStage'
 import SellerAssessmentHybridCriteriaStage, { done as hybridcriteriaDone } from './SellerAssessmentHybridCriteriaStage'
 import SellerAssessmentHybridEvidenceStage, { done as hyridevidenceDone } from './SellerAssessmentHybridEvidenceStage'
-import SellerAssessmentHybridPlacingCandidatesStage from './SellerAssessmentHybridPlacingCandidatesStage'
+import SellerAssessmentHybridPlacingCandidatesStage, { hideRateStage as hide} from  './SellerAssessmentHybridPlacingCandidatesStage'
 import SellerAssessmentRateStage, { done as ratesDone } from '../SellerAssessmentRateStage'
-import SellerAssessmentHybridPlacingCandidatesStage, {
-  hideRateStage as hide
-} from '../Hybrid/SellerAssessmentHybridPlacingCandidatesStage'
 
 const SellerAssessmentHybridStages = [
   {
@@ -31,21 +28,23 @@ const SellerAssessmentHybridStages = [
     title: 'Rate',
     component: SellerAssessmentRateStage,
     isDone: ratesDone,
-    isHidden: false
+    // isHidden: false
+    isHidden: hide
   },
   {
     slug: 'maximumRate',
     title: 'Rate',
     component: SellerAssessmentMaximumRate,
     isDone: maximumRatesDone,
-    isHidden: hide
+    // isHidden: false
+    isHidden: !hide
   },
-  {
-    slug: 'candidatePool',
-    title: 'Candidate Pool',
-    component: SellerAssessmentCandidatePool,
-    isDone: candidatePoolDone
-  },
+  // {
+  //   slug: 'candidatePool',
+  //   title: 'Candidate Pool',
+  //   component: SellerAssessmentCandidatePool,
+  //   isDone: candidatePoolDone
+  // },
   {
     slug: 'criteria',
     title: 'Criteria',
