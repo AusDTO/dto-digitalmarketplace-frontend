@@ -55,7 +55,7 @@ export function setAuthState(newState) {
 export function setAuthFrameworkError(frameworkError) {
   return { type: SET_AUTH_FRAMEWORK_ERROR, frameworkError }
 }
-//reshma
+
 export const fetchAuth = () => dispatch => {
   dispatch(sendingRequest(true))
   dispatch(setAuthFrameworkError(false))

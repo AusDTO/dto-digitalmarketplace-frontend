@@ -68,7 +68,6 @@ export const loadDomainData = domainId => dispatch => {
     return response
   })
 }
-//reshma
 
 export const handleLoadEvidenceSuccess = response => ({
   type: EVIDENCE_LOAD_SUCCESS,

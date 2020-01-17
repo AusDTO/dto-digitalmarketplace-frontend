@@ -23,11 +23,8 @@ export class ProgressFlow extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      // this is the current state of the nav items in the progress indicator
       stages: {},
-      // this is the state of whether the nav items are done
       stagesDone: {},
-      // this is the current stage
       currentStage: '',
       activateReturn: false,
       activatePreview: false,

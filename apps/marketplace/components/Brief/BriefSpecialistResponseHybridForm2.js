@@ -22,6 +22,7 @@ import { escapeQuote } from '../helpers'
 import styles from './BriefSpecialistResponseForm2.scss'
 
 //make sure to write some tests for this
+
 const BriefSpecialistResponseForm2 = ({
   model,
   brief,

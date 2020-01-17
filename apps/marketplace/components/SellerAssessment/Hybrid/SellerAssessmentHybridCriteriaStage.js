@@ -133,9 +133,8 @@ class SellerAssessmentCriteriaStage extends Component {
                   messages={{}}
                 />
               )
-            } else {
+            } 
               return null
-            }
           })}
         </div>
 
