@@ -23,8 +23,11 @@ export class ProgressFlow extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      // this is the current state of the nav items in the progress indicator
       stages: {},
+      // this is the state of whether the nav items are done
       stagesDone: {},
+      // this is the current stage
       currentStage: '',
       activateReturn: false,
       activatePreview: false,
@@ -215,7 +218,7 @@ export class ProgressFlow extends Component {
     }
 
     const items = []
-    this.props.stages.map(stage => {
+    this.props.stages.map(stage =>
       items.push({
         link: `${this.props.basename}/${stage.slug}`,
         linkComponent: Link,
@@ -223,7 +226,7 @@ export class ProgressFlow extends Component {
         slug: stage.slug,
         status: this.state.stages[stage.slug]
       })
-    })
+    )
 
     const ProgressNavElement = () => (
       <ProgressNav
