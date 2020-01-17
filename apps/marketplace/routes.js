@@ -31,6 +31,8 @@ import BuyerSpecialistCreatePage from './pages/BuyerSpecialistCreatePage'
 import BuyerSpecialistCompletedPage from './pages/BuyerSpecialistCompletedPage'
 import BuyerSpecialistFlowPage from './pages/BuyerSpecialistFlowPage'
 import BriefOutcomeChoicePage from './pages/BriefOutcomeChoicePage'
+import CloseOpportunityPage from './pages/CloseOpportunityPage'
+import CloseOpportunitySuccessPage from './pages/CloseOpportunitySuccessPage'
 import EditTeamFlowPage from './pages/Teams/EditTeamFlowPage'
 import OpportunityPage from './pages/OpportunityPage'
 import CreateTeamFlowPage from './pages/Teams/CreateTeamFlowPage'
@@ -61,6 +63,12 @@ export const Routes = () => (
       restrictedTo="buyer"
       path={`${rootPath}/brief/:briefId/overview/:flow`}
       component={BuyerBriefOverviewPage}
+    />
+    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/close`} component={CloseOpportunityPage} />
+    <PrivateRoute
+      restrictedTo="buyer"
+      path={`${rootPath}/brief/:briefId/closed`}
+      component={CloseOpportunitySuccessPage}
     />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/overview`} component={BriefOverviewPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/assessors`} component={BriefAssessorsPage} />
