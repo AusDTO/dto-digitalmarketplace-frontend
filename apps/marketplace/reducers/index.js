@@ -28,7 +28,7 @@ export const SellerAssessmentFormReducer = {
   evidence: {},
   created_at: null
 }
-//reshma
+
 export const SellerAssessmentEvidenceReducer = {
   candidateFullName: '',
   candidatePhoneNumber: '',

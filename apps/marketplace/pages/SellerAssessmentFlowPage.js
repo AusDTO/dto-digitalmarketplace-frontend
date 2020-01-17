@@ -43,7 +43,7 @@ export class SellerAssessmentFlowPage extends Component {
       this.props.loadDomainData(domainId).then(() => this.setState({ loading: false }))
     }
   }
-  //reshma
+
   getEvidenceData() {
     this.setState({
       loading: true
@@ -172,7 +172,7 @@ export class SellerAssessmentFlowPage extends Component {
         )
       }
     }
-    //hybrid flag is false and is recruiter true
+    // hybrid flag is false and is recruiter true
     return (
       <ProgressFlow
         model={model}

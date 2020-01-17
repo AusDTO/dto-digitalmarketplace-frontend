@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { actions, Form } from 'react-redux-form'
+import { Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import RadioList from 'shared/form/RadioList'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
@@ -13,7 +13,7 @@ export const greaterThanZero = formValues => parseInt(formValues.database_size, 
 export const validWholeNumber = formValues => formValues.database_size && /^[0-9]+$/.test(formValues.database_size)
 
 export const done = formValues => {
-  if (props[props.model].placingCandidates === 'recruitment' || props[props.model].placingCandidates === 'hybrid') {
+  if ([props.model].placingCandidates === 'recruitment' || [props.model].placingCandidates === 'hybrid') {
     formValues.placingCandidates &&
       formValues.database_size &&
       greaterThanZero(formValues) &&

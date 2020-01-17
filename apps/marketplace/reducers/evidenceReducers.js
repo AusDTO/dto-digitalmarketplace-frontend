@@ -7,7 +7,7 @@ import {
 } from '../constants/constants'
 
 const defaultEvidenceState = { ...SellerAssessmentFormReducer }
-//reshma
+
 const evidenceReducer = (state = defaultEvidenceState, action) => {
   switch (action.type) {
     case EVIDENCE_CREATE_SUCCESS:

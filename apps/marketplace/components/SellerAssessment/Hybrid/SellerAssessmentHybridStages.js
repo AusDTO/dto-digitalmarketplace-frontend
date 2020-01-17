@@ -1,13 +1,8 @@
 import SellerAssessmentIntroductionStage from './SellerAssessmentIntroductionStage'
 import SellerAssessmentMaximumRate, { done as maximumRatesDone } from './SellerAssessmentMaximumRate'
-import SellerAssessmentCandidatePool, { done as candidatePoolDone } from './SellerAssessmentCandidatePool'
 import SellerAssessmentReviewStage from './SellerAssessmentReviewStage'
 import SellerAssessmentHybridCriteriaStage, { done as hybridcriteriaDone } from './SellerAssessmentHybridCriteriaStage'
 import SellerAssessmentHybridEvidenceStage, { done as hyridevidenceDone } from './SellerAssessmentHybridEvidenceStage'
-import SellerAssessmentHybridPlacingCandidatesStage, {
-  hideRateStage as hide
-} from './SellerAssessmentHybridPlacingCandidatesStage'
-import SellerAssessmentRateStage, { done as ratesDone } from '../SellerAssessmentRateStage'
 
 const SellerAssessmentHybridStages = [
   {
@@ -30,14 +25,7 @@ const SellerAssessmentHybridStages = [
     title: 'Rate',
     component: SellerAssessmentMaximumRate,
     isDone: maximumRatesDone
-    // isHidden: fa
   },
-  // {
-  //   slug: 'candidatePool',
-  //   title: 'Candidate Pool',
-  //   component: SellerAssessmentCandidatePool,
-  //   isDone: candidatePoolDone
-  // },
   {
     slug: 'criteria',
     title: 'Criteria',
