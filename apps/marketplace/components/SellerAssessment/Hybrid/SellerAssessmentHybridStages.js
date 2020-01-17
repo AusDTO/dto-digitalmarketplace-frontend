@@ -24,20 +24,11 @@ const SellerAssessmentHybridStages = [
       formValues.placingCandidates === 'consultants'
   },
   {
-    slug: 'rate',
-    title: 'Rate',
-    component: SellerAssessmentRateStage,
-    isDone: ratesDone,
-    // isHidden: false
-    isHidden: hide
-  },
-  {
     slug: 'maximumRate',
     title: 'Rate',
     component: SellerAssessmentMaximumRate,
-    isDone: maximumRatesDone,
-    // isHidden: false
-    isHidden: !hide
+    isDone: maximumRatesDone
+    // isHidden: fa
   },
   // {
   //   slug: 'candidatePool',

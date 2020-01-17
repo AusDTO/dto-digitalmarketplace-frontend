@@ -63,6 +63,9 @@ const SellerAssessmentRateStage = props => (
       //   required: 'Maximum Daily Rate is required'
       // }}
     />
+    
+     {(props[props.model].placingCandidates === 'recruitment' || props[props.model].placingCandidates === 'hybrid') && (
+    <div> 
     <Textfield
       model={`${props.model}.markup`}
       postfix={'%'}
@@ -92,7 +95,8 @@ const SellerAssessmentRateStage = props => (
       )}
       disabled={true}
     />
-
+    </div>
+     )}
     {props.formButtons}
   </Form>
 )

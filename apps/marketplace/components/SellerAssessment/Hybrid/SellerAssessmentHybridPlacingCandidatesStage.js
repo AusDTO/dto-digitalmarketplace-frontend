@@ -83,33 +83,33 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
         </div>
         {(props[props.model].placingCandidates === 'recruitment' || props[props.model].placingCandidates === 'hybrid') && (
         <div> 
-        <AUheadings level="1" size="lg">
-          Candidate Pool
-        </AUheadings>
+          <AUheadings level="1" size="lg">
+            Candidate Pool
+          </AUheadings>
 
-        <ErrorAlert
-          model={props.model}
-          messages={{
-            validWholeNumber: 'The size of your candidate database must be a whole number (e.g. 1200)'
-          }}
-        />
-        <Textfield
-          model={`${props.model}.database_size`}
-          label="What is the size of your candidate database?"
-          name="database_size"
-          id="database_size"
-          htmlFor="database_size"
-          defaultValue={props[props.model].database_size}
-        />
-        <Textfield
-          model={`${props.model}.placed_candidates`}
-          label={`How many candidates have you placed in ${props.meta.domain.name} roles in the last 12 months?`}
-          name="placed_candidates"
-          id="placed_candidates"
-          htmlFor="placed_candidates"
-          defaultValue={props[props.model].placed_candidates}
-        />
-            </div>
+          <ErrorAlert
+            model={props.model}
+            messages={{
+              validWholeNumber: 'The size of your candidate database must be a whole number (e.g. 1200)'
+            }}
+          />
+          <Textfield
+            model={`${props.model}.database_size`}
+            label="What is the size of your candidate database?"
+            name="database_size"
+            id="database_size"
+            htmlFor="database_size"
+            defaultValue={props[props.model].database_size}
+          />
+          <Textfield
+            model={`${props.model}.placed_candidates`}
+            label={`How many candidates have you placed in ${props.meta.domain.name} roles in the last 12 months?`}
+            name="placed_candidates"
+            id="placed_candidates"
+            htmlFor="placed_candidates"
+            defaultValue={props[props.model].placed_candidates}
+          />
+        </div>
         )}
             {props.formButtons}
           </Form>
