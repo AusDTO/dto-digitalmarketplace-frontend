@@ -10,13 +10,30 @@ import AUheadings from '@gov.au/headings/lib/js/react.js'
 const maxDailyRateLimit = 99999
 
 export const greaterThanZero = formValues => parseInt(formValues.maxDailyRate, 10) > 0
+export const greaterThanZeroMarkup = formValues => parseInt(formValues.markup, 10) > 0
 
 export const lessThanLimit = formValues => parseInt(formValues.maxDailyRate, 10) < maxDailyRateLimit
 
 export const validWholeNumber = formValues => formValues.maxDailyRate && /^[0-9]+$/.test(formValues.maxDailyRate)
+export const validWholeNumberMarkup = formValues => formValues.markup && /^[0-9]+$/.test(formValues.markup)
 
-export const done = formValues =>
-  formValues.maxDailyRate && greaterThanZero(formValues) && lessThanLimit(formValues) && validWholeNumber(formValues)
+export const done = formValues => {
+  // if (props[props.model].placingCandidates === 'recruitment' || props[props.model].placingCandidates === 'hybrid') {
+  formValues.maxDailyRate &&
+    greaterThanZero(formValues) &&
+    lessThanLimit(formValues) &&
+    validWholeNumber(formValues) &&
+    formValues.markup &&
+    greaterThanZeroMarkup(formValues) &&
+    validWholeNumberMarkup(formValues)
+  // } else {
+  //   formValues.maxDailyRate &&
+  //     formValues.markup &&
+  //     greaterThanZero(formValues) &&
+  //     lessThanLimit(formValues) &&
+  //     validWholeNumber(formValues)
+  // }
+}
 
 const SellerAssessmentRateStage = props => (
   <Form
@@ -25,7 +42,9 @@ const SellerAssessmentRateStage = props => (
       '': {
         greaterThanZero,
         lessThanLimit,
-        validWholeNumber
+        validWholeNumber,
+        greaterThanZeroMarkup,
+        validWholeNumberMarkup
       }
     }}
     onSubmit={props.onSubmit}
@@ -36,34 +55,52 @@ const SellerAssessmentRateStage = props => (
       Maximum rate
     </AUheadings>
 
-    <ErrorAlert
-      model={props.model}
-      messages={{
-        greaterThanZero: 'The maximum daily rate must be greater than zero',
-        lessThanLimit: `The maximum daily rate must be lower than $${maxDailyRateLimit}`,
-        validWholeNumber: 'The maximum daily rate must be a whole number (e.g. 1200)'
-      }}
-    />
-    <Textfield
-      model={`${props.model}.maxDailyRate`}
-      prefix={`$`}
-      postfix={'including GST'}
-      label="Maximum daily rate (excluding mark-up)"
-      description={`This rate must be based on a person who demonstrates skills equivalnet to  `}
-      name="maxDailyRate"
-      id="maxDailyRate"
-      htmlFor="maxDailyRate"
-      defaultValue={props[props.model].maxDailyRate}
-      // validators={{
-      //   required
-      // }}
-      // messages={{
-      //   required: 'Maximum Daily Rate is required'
-      // }}
-    />
+    <div>
+      <ErrorAlert
+        model={props.model}
+        messages={{
+          greaterThanZero: 'The maximum daily rate must be greater than zero',
+          lessThanLimit: `The maximum daily rate must be lower than $${maxDailyRateLimit}`,
+          validWholeNumber: 'The maximum daily rate must be a whole number (e.g. 1200)'
+        }}
+      />
+      <Textfield
+        model={`${props.model}.maxDailyRate`}
+        prefix={`$`}
+        postfix={'including GST'}
+        label="Maximum daily rate (excluding mark-up)"
+        description={`This rate must be based on a person who demonstrates skills equivalnet to  `}
+        name="maxDailyRate"
+        id="maxDailyRate"
+        htmlFor="maxDailyRate"
+        defaultValue={props[props.model].maxDailyRate}
+      />
+    </div>
 
     {(props[props.model].placingCandidates === 'recruitment' || props[props.model].placingCandidates === 'hybrid') && (
       <div>
+        <ErrorAlert
+          model={props.model}
+          messages={{
+            greaterThanZero: 'The maximum daily rate must be greater than zero',
+            lessThanLimit: `The maximum daily rate must be lower than $${maxDailyRateLimit}`,
+            validWholeNumber: 'The maximum daily rate must be a whole number (e.g. 1200)',
+            greaterThanZeroMarkup: 'The maximum mark-up must be greater than zero percent',
+            validWholeNumberMarkup: 'The maximum mark-up must be a whole number (e.g. 15)'
+          }}
+        />
+
+        <Textfield
+          model={`${props.model}.maxDailyRate`}
+          prefix={`$`}
+          postfix={'including GST'}
+          label="Maximum daily rate (excluding mark-up)"
+          description={`This rate must be based on a person who demonstrates skills equivalnet to  `}
+          name="maxDailyRate"
+          id="maxDailyRate"
+          htmlFor="maxDailyRate"
+          defaultValue={props[props.model].maxDailyRate}
+        />
         <Textfield
           model={`${props.model}.markup`}
           postfix={'%'}
@@ -95,6 +132,30 @@ const SellerAssessmentRateStage = props => (
         />
       </div>
     )}
+    {/* 
+    {props[props.model].placingCandidates === 'consultants' && (
+      <div>
+        <ErrorAlert
+          model={props.model}
+          messages={{
+            greaterThanZero: 'The maximum daily rate must be greater than zero',
+            lessThanLimit: `The maximum daily rate must be lower than $${maxDailyRateLimit}`,
+            validWholeNumber: 'The maximum daily rate must be a whole number (e.g. 1200)'
+          }}
+        />
+        <Textfield
+          model={`${props.model}.maxDailyRate`}
+          prefix={`$`}
+          postfix={'including GST'}
+          label="Maximum daily rate (excluding mark-up)"
+          description={`This rate must be based on a person who demonstrates skills equivalnet to  `}
+          name="maxDailyRate"
+          id="maxDailyRate"
+          htmlFor="maxDailyRate"
+          defaultValue={props[props.model].maxDailyRate}
+        />
+      </div>
+    )} */}
     {props.formButtons}
   </Form>
 )
