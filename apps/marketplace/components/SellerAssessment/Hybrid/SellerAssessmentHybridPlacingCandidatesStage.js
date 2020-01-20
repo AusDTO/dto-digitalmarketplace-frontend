@@ -7,7 +7,7 @@ import RadioList from 'shared/form/RadioList'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import Textfield from 'shared/form/Textfield'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
-import { required } from 'marketplace/components/validators'
+// import { required } from 'marketplace/components/validators'
 
 export const greaterThanZero = formValues => parseInt(formValues.database_size, 10) > 0
 
@@ -17,8 +17,13 @@ export const validWholeNumberPlacedCandidates = formValues =>
   formValues.placed_candidates && /^[0-9]+$/.test(formValues.placed_candidates)
 
 export const done = formValues => {
-  if (props[props.model].placingCandidates === 'recruitment' || props[props.model].placingCandidates === 'hybrid') {
-    formValues.placingCandidates && formValues.database_size && greaterThanZero(formValues)
+  if (formValues.placingCandidates === 'recruitment' || formValues.placingCandidates === 'hybrid') {
+    formValues.placingCandidates &&
+      formValues.database_size &&
+      formValues.placed_candidates &&
+      greaterThanZero(formValues) &&
+      validWholeNumber(formValues) &&
+      validWholeNumberPlacedCandidates(formValues)
   } else {
     formValues.placingCandidates
   }
