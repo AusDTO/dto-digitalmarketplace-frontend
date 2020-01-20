@@ -20,7 +20,8 @@ export class WithdrawOpportunity extends Component {
     super(props)
     this.state = {
       hasAuthorityToWithdraw: false,
-      hasErrors: false
+      invalidAuthority: false,
+      invalidReason: false
     }
 
     this.handleWithdrawButtonClick = this.handleWithdrawButtonClick.bind(this)
@@ -28,7 +29,8 @@ export class WithdrawOpportunity extends Component {
 
   handleWithdrawButtonClick = () => {
     this.setState({
-      hasErrors: false
+      invalidAuthority: false,
+      invalidReason: false
     })
 
     this.props.resetFormValidity()
@@ -36,13 +38,13 @@ export class WithdrawOpportunity extends Component {
 
   render = () => {
     const { brief, isOpenToAll, model, onSubmitFailed, onWithdrawOpportunity } = this.props
-    const { hasAuthorityToWithdraw, hasErrors } = this.state
+    const { hasAuthorityToWithdraw, invalidAuthority } = this.state
 
     const requiredReasonToWithdraw = formValues => {
       const validReason = required(formValues.reasonToWithdraw)
       if (!validReason) {
         this.setState({
-          hasErrors: true
+          invalidReason: true
         })
       }
 
@@ -53,7 +55,7 @@ export class WithdrawOpportunity extends Component {
       const validAuthority = hasAuthorityToWithdraw === true
       if (!validAuthority) {
         this.setState({
-          hasErrors: true
+          invalidAuthority: true
         })
       }
 
@@ -81,15 +83,13 @@ export class WithdrawOpportunity extends Component {
         <AUheading size="xl" level="1">
           Withdraw &apos;{brief.title}&apos; ({brief.id})
         </AUheading>
-        {hasErrors && (
-          <ErrorAlert
-            model={model}
-            messages={{
-              requiredReasonToWithdraw: requiredReasonMessage,
-              requiredAuthorityToWithdraw: requiredAuthorityMessage
-            }}
-          />
-        )}
+        <ErrorAlert
+          model={model}
+          messages={{
+            requiredReasonToWithdraw: requiredReasonMessage,
+            requiredAuthorityToWithdraw: requiredAuthorityMessage
+          }}
+        />
         <p>Once you select &apos;Withdraw opportunity&apos;:</p>
         <ul>
           {isOpenToAll ? (
@@ -120,7 +120,7 @@ export class WithdrawOpportunity extends Component {
         </div>
         <AUcheckbox
           checked={hasAuthorityToWithdraw}
-          className={`${styles.marginTop2} ${hasErrors ? 'au-control-input--invalid' : ''}`}
+          className={`${styles.marginTop2} ${invalidAuthority ? 'au-control-input--invalid' : ''}`}
           id="authorityToWithdraw"
           label="I have the authority to withdraw this opportunity and understand once I do so I will not be able to re-open it"
           name="authorityToWithdraw"
