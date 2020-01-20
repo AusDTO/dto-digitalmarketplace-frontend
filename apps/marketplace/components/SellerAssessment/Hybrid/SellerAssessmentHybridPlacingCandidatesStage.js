@@ -18,9 +18,7 @@ export const validWholeNumberPlacedCandidates = formValues =>
 
 export const done = formValues => {
   if (props[props.model].placingCandidates === 'recruitment' || props[props.model].placingCandidates === 'hybrid') {
-    formValues.placingCandidates &&
-      formValues.database_size &&
-      greaterThanZero(formValues)
+    formValues.placingCandidates && formValues.database_size && greaterThanZero(formValues)
   } else {
     formValues.placingCandidates
   }
@@ -31,7 +29,10 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
     model={props.model}
     validators={{
       '': {
-        requiredChoice: formValues => formValues.placingCandidates ==='consultants' || formValues.placingCandidates ==='hybrid' || formValues.placingCandidates ==='recruitment'
+        requiredChoice: formValues =>
+          formValues.placingCandidates === 'consultants' ||
+          formValues.placingCandidates === 'hybrid' ||
+          formValues.placingCandidates === 'recruitment'
         // greaterThanZero: formValues => formValues.database_size
       }
     }}
