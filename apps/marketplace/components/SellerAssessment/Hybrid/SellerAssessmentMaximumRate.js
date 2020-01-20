@@ -6,6 +6,7 @@ import Textfield from 'shared/form/Textfield'
 import formProps from 'shared/form/formPropsSelector'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
+import { isNullOrUndefined } from 'util'
 
 const maxDailyRateLimit = 99999
 
@@ -55,29 +56,8 @@ const SellerAssessmentRateStage = props => (
       Maximum rate
     </AUheadings>
 
-    <div>
-      <ErrorAlert
-        model={props.model}
-        messages={{
-          greaterThanZero: 'The maximum daily rate must be greater than zero',
-          lessThanLimit: `The maximum daily rate must be lower than $${maxDailyRateLimit}`,
-          validWholeNumber: 'The maximum daily rate must be a whole number (e.g. 1200)'
-        }}
-      />
-      <Textfield
-        model={`${props.model}.maxDailyRate`}
-        prefix={`$`}
-        postfix={'including GST'}
-        label="Maximum daily rate (excluding mark-up)"
-        description={`This rate must be based on a person who demonstrates skills equivalnet to  `}
-        name="maxDailyRate"
-        id="maxDailyRate"
-        htmlFor="maxDailyRate"
-        defaultValue={props[props.model].maxDailyRate}
-      />
-    </div>
-
-    {(props[props.model].placingCandidates === 'recruitment' || props[props.model].placingCandidates === 'hybrid') && (
+    {/* If a seller has choosen recruiter/hybrid or has not completed the placingCandidate Stage they should see this page as the default */}
+    {props[props.model].placingCandidates !== 'consultants' && (
       <div>
         <ErrorAlert
           model={props.model}
@@ -132,7 +112,7 @@ const SellerAssessmentRateStage = props => (
         />
       </div>
     )}
-    {/* 
+
     {props[props.model].placingCandidates === 'consultants' && (
       <div>
         <ErrorAlert
@@ -155,7 +135,7 @@ const SellerAssessmentRateStage = props => (
           defaultValue={props[props.model].maxDailyRate}
         />
       </div>
-    )} */}
+    )}
     {props.formButtons}
   </Form>
 )
@@ -178,3 +158,30 @@ const mapStateToProps = (state, props) => ({
 })
 
 export default connect(mapStateToProps)(SellerAssessmentRateStage)
+
+{
+  /* 
+    {props[props.model].placingCandidates === 'consultants' && (
+      <div>
+        <ErrorAlert
+          model={props.model}
+          messages={{
+            greaterThanZero: 'The maximum daily rate must be greater than zero',
+            lessThanLimit: `The maximum daily rate must be lower than $${maxDailyRateLimit}`,
+            validWholeNumber: 'The maximum daily rate must be a whole number (e.g. 1200)'
+          }}
+        />
+        <Textfield
+          model={`${props.model}.maxDailyRate`}
+          prefix={`$`}
+          postfix={'including GST'}
+          label="Maximum daily rate (excluding mark-up)"
+          description={`This rate must be based on a person who demonstrates skills equivalnet to  `}
+          name="maxDailyRate"
+          id="maxDailyRate"
+          htmlFor="maxDailyRate"
+          defaultValue={props[props.model].maxDailyRate}
+        />
+      </div>
+    )} */
+}
