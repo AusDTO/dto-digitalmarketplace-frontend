@@ -34,6 +34,8 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
           formValues.placingCandidates === 'hybrid' ||
           formValues.placingCandidates === 'recruitment',
         greaterThanZero: formValues => formValues.database_size && (formValues.placingCandidates === 'hybrid' ||
+        formValues.placingCandidates === 'recruitment'),
+        validWholeNumber: formValues => formValues.database_size && (formValues.placingCandidates === 'hybrid' ||
         formValues.placingCandidates === 'recruitment')
       }
     }}
@@ -47,9 +49,10 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
     <ErrorAlert
       model={props.model}
       messages={{
-        //it works only once.... to be investigated
         requiredChoice: 'You must select who can respond',
-        greaterThanZero: 'The size of your candidate database must be greater than zero'
+        //shows up regardless (ಠ_ಠ)
+        greaterThanZero: 'The size of your candidate database must be greater than zero',
+        validWholeNumber: 'The size of your database must be a whole number only (e.g 5000)'
       }}
     />
     <p> Your business will be placing candidates for {props.meta.domain.name} category roles by submitting</p>
