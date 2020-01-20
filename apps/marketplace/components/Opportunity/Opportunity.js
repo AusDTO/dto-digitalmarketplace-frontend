@@ -106,6 +106,10 @@ const Opportunity = props => {
     briefResponseCount,
     invitedSellerCount,
     supplierBriefResponseCount,
+    supplierBriefResponseCountSubmitted,
+    supplierBriefResponseCountDraft,
+    supplierBriefResponseId,
+    supplierBriefResponseIsDraft,
     canRespond,
     isAssessedForCategory,
     isAssessedForAnyCategory,
@@ -134,8 +138,11 @@ const Opportunity = props => {
     isTeamLead,
     teams
   } = props
+
   const brief = { ...defaultBriefProps, ...props.brief }
   const category = getBriefCategory(domains, brief.sellerCategory)
+  const originalClosedAt = brief.originalClosedAt ? brief.originalClosedAt : null
+
   if (brief.status === 'draft') {
     if (
       !(
@@ -184,7 +191,7 @@ const Opportunity = props => {
               </div>
               {getQuestionsCloseDate(brief) && (
                 <div className="col-xs-12 col-sm-8">
-                  {`${format(getQuestionsCloseDate(brief), 'dddd D MMMM YYYY')} at 6PM (in Canberra)`}
+                  {`${format(getQuestionsCloseDate(brief), 'dddd D MMMM YYYY')} at 6pm (in Canberra)`}
                 </div>
               )}
             </div>
@@ -194,7 +201,7 @@ const Opportunity = props => {
               </div>
               {getClosingTime(brief) && (
                 <div className="col-xs-12 col-sm-8">
-                  {`${format(getClosingTime(brief), 'dddd D MMMM YYYY')} at 6PM (in Canberra)`}
+                  {`${format(getClosingTime(brief), 'dddd D MMMM YYYY')} at 6pm (in Canberra)`}
                 </div>
               )}
             </div>
@@ -584,6 +591,8 @@ const Opportunity = props => {
               sellersInvited={invitedSellerCount}
               sellersApplied={briefResponseCount}
               sellerResponses={supplierBriefResponseCount}
+              supplierBriefResponseCountSubmitted={supplierBriefResponseCountSubmitted}
+              supplierBriefResponseCountDraft={supplierBriefResponseCountDraft}
               isOpen={brief.status === 'live'}
               closingDate={getClosingTime(brief)}
               canRespond={canRespond}
@@ -616,9 +625,12 @@ const Opportunity = props => {
               hasSupplierErrors={hasSupplierErrors}
               hasSignedCurrentAgreement={hasSignedCurrentAgreement}
               supplierCode={supplierCode}
+              originalClosedAt={originalClosedAt}
             />
           ) : (
             <OpportunityInfoCard
+              supplierBriefResponseId={supplierBriefResponseId}
+              supplierBriefResponseIsDraft={supplierBriefResponseIsDraft}
               sellersInvited={invitedSellerCount}
               sellersApplied={briefResponseCount}
               isOpen={brief.status === 'live'}
@@ -650,6 +662,7 @@ const Opportunity = props => {
               sellerCategory={brief.sellerCategory}
               hasSignedCurrentAgreement={hasSignedCurrentAgreement}
               supplierCode={supplierCode}
+              originalClosedAt={originalClosedAt}
             />
           )}
         </div>
@@ -664,6 +677,10 @@ Opportunity.defaultProps = {
   briefResponseCount: 0,
   invitedSellerCount: 0,
   supplierBriefResponseCount: 0,
+  supplierBriefResponseCountSubmitted: 0,
+  supplierBriefResponseCountDraft: 0,
+  supplierBriefResponseId: 0,
+  supplierBriefResponseIsDraft: false,
   canRespond: false,
   isInvited: false,
   isAssessedForCategory: false,
@@ -732,12 +749,17 @@ Opportunity.propTypes = {
     essentialRequirements: PropTypes.array,
     includeWeightingsNiceToHave: PropTypes.bool,
     niceToHaveRequirements: PropTypes.array,
-    numberOfSuppliers: PropTypes.string
+    numberOfSuppliers: PropTypes.string,
+    originalClosedAt: PropTypes.string
   }),
   domains: PropTypes.array,
   briefResponseCount: PropTypes.number,
   invitedSellerCount: PropTypes.number,
   supplierBriefResponseCount: PropTypes.number,
+  supplierBriefResponseCountSubmitted: PropTypes.number,
+  supplierBriefResponseCountDraft: PropTypes.number,
+  supplierBriefResponseId: PropTypes.number,
+  supplierBriefResponseIsDraft: PropTypes.bool,
   canRespond: PropTypes.bool,
   isInvited: PropTypes.bool,
   isAssessedForCategory: PropTypes.bool,

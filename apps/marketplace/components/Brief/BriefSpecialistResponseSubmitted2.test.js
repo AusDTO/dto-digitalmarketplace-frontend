@@ -16,34 +16,50 @@ describe('BriefSpecialistResponseSubmitted', () => {
     const tree = mount(
       <Provider store={store}>
         <BriefSpecialistResponseSubmitted2
-          briefResponses={['test']}
+          specialistGivenNames="a"
+          specialistSurname="b"
+          briefResponsePreviousStatus="draft"
+          briefResponse={{
+            specialistGivenNames: 'aaa',
+            specialistSurname: 'bbb'
+          }}
+          briefResponses={[{ id: 1, status: 'submitted' }]}
           brief={{ applicationsClosedAt: '3/15/2018', numberOfSuppliers: '3' }}
         />
       </Provider>
     )
 
-    expect(tree.contains(<strong>You have submitted 1 specialist for this opportunity.</strong>)).toBeTruthy()
-    expect(tree.contains(<p>You can submit 2 more before the closing date (March 15th, 2018)</p>)).toBeTruthy()
+    expect(tree.contains(<span>You have successfully submitted aaa bbb for this opportunity.</span>)).toBeTruthy()
     expect(
       tree
         .find('a.au-btn')
         .first()
         .text()
-    ).toEqual('Add another specialist')
+    ).toEqual('Edit or submit candidates')
   })
 
   test('does not shows button when 3 submitted responses', () => {
     const tree = mount(
       <Provider store={store}>
         <BriefSpecialistResponseSubmitted2
-          briefResponses={['test', 'test', 'test']}
+          specialistGivenNames="a"
+          specialistSurname="b"
+          briefResponsePreviousStatus="draft"
+          briefResponse={{
+            specialistGivenNames: 'aaa',
+            specialistSurname: 'bbb'
+          }}
+          briefResponses={[
+            { id: 1, status: 'submitted' },
+            { id: 2, status: 'submitted' },
+            { id: 3, status: 'submitted' }
+          ]}
           brief={{ applicationsClosedAt: '3/15/2018' }}
         />
       </Provider>
     )
 
-    expect(tree.contains(<strong>You have submitted 3 specialists for this opportunity.</strong>)).toBeTruthy()
-    expect(tree.contains(<p>This opportunity closes on March 15th, 2018</p>)).toBeTruthy()
+    expect(tree.contains(<span>You have successfully submitted aaa bbb for this opportunity.</span>)).toBeTruthy()
     expect(tree.find('a.au-btn').exists()).toBeFalsy()
   })
 })

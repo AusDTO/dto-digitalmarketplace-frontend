@@ -63,15 +63,15 @@ class FileInput extends React.Component {
               <Control.file
                 model={model}
                 type="file"
-                id={`file_${fileField}`}
-                name={`file_${fileField}`}
+                id={`file_${name}_${fileField}`}
+                name={`file_${name}_${fileField}`}
                 accept={accept}
                 onChange={this.onChange}
                 className={styles.hidden_input}
                 validators={validators}
                 title={title || ''}
               />
-              <label htmlFor={`file_${fileField}`} id={`label_${id}`} className={styles.custom_input}>
+              <label htmlFor={`file_${name}_${fileField}`} id={`label_${name}_${id}`} className={styles.custom_input}>
                 <div className="au-btn au-btn--secondary">{fieldLabel}</div>
               </label>
               {messages && (
@@ -79,7 +79,7 @@ class FileInput extends React.Component {
                   model={model}
                   messages={messages}
                   showMessagesDuringFocus="false"
-                  id={`file_${fileField}`}
+                  id={`file_${name}_${fileField}`}
                 />
               )}
             </div>
