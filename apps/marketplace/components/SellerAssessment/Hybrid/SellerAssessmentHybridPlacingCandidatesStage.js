@@ -18,14 +18,14 @@ export const validWholeNumberPlacedCandidates = formValues =>
 
 export const done = formValues => {
   if (formValues.placingCandidates === 'recruitment' || formValues.placingCandidates === 'hybrid') {
-    formValues.placingCandidates &&
-      formValues.database_size &&
+    // formValues.placingCandidates &&
+    formValues.database_size &&
       formValues.placed_candidates &&
       greaterThanZero(formValues) &&
       validWholeNumber(formValues) &&
       validWholeNumberPlacedCandidates(formValues)
   } else {
-    formValues.placingCandidates
+    formValues.placingCandidates === 'consultants'
   }
 }
 
