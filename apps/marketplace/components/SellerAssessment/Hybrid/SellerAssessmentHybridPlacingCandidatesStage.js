@@ -13,13 +13,12 @@ export const greaterThanZero = formValues => parseInt(formValues.database_size, 
 
 export const validWholeNumber = formValues => formValues.database_size && /^[0-9]+$/.test(formValues.database_size)
 
-export const validWholeNumberPlacedCandidates = formValues => formValues.placed_candidates && /^[0-9]+$/.test(formValues.placed_candidates)
+export const validWholeNumberPlacedCandidates = formValues =>
+  formValues.placed_candidates && /^[0-9]+$/.test(formValues.placed_candidates)
 
 export const done = formValues => {
   if (props[props.model].placingCandidates === 'recruitment' || props[props.model].placingCandidates === 'hybrid') {
-    formValues.placingCandidates &&
-      formValues.database_size &&
-      greaterThanZero(formValues)
+    formValues.placingCandidates && formValues.database_size && greaterThanZero(formValues)
   } else {
     formValues.placingCandidates
   }
@@ -30,7 +29,10 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
     model={props.model}
     validators={{
       '': {
-        requiredChoice: formValues => formValues.placingCandidates ==='consultants' || formValues.placingCandidates ==='hybrid' || formValues.placingCandidates ==='recruitment',
+        requiredChoice: formValues =>
+          formValues.placingCandidates === 'consultants' ||
+          formValues.placingCandidates === 'hybrid' ||
+          formValues.placingCandidates === 'recruitment',
         greaterThanZero: formValues => formValues.database_size,
         validWholeNumber: formValues => formValues.database_size,
         validWholeNumberPlacedCandidates: formValues => formValues.placed_candidates
@@ -49,8 +51,8 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
         //it works only once.... to be investigated
         requiredChoice: 'You must select who can respond',
         greaterThanZero: 'The size of your candidate database must be greater than zero',
-        validWholeNumber: 'dfdgdf', 
-        validWholeNumberPlacedCandidates: 'dsfsdfsdfsdf',
+        validWholeNumber: 'dfdgdf',
+        validWholeNumberPlacedCandidates: 'dsfsdfsdfsdf'
       }}
     />
     <p> Your business will be placing candidates for {props.meta.domain.name} category roles by submitting</p>
