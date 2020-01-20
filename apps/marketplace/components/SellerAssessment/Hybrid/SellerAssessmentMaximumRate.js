@@ -70,7 +70,7 @@ const SellerAssessmentRateStage = props => (
           }}
         />
 
-        <div className = {styles.maxDailyRate} />
+        <div className={styles.maxDailyRate} />
         <Textfield
           model={`${props.model}.maxDailyRate`}
           prefix={`$`}
