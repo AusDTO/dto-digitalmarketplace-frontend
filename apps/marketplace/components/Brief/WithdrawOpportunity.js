@@ -60,6 +60,11 @@ export class WithdrawOpportunity extends Component {
       return validAuthority
     }
 
+    const requiredReasonMessage = <a href="#reasonToWithdraw">You must enter a reason for withdrawal</a>
+    const requiredAuthorityMessage = (
+      <a href="#authorityToWithdraw">Select the checkbox to confirm you have authority to withdraw this opportunity</a>
+    )
+
     return (
       <Form
         model={model}
@@ -80,9 +85,8 @@ export class WithdrawOpportunity extends Component {
           <ErrorAlert
             model={model}
             messages={{
-              requiredReasonToWithdraw: 'You must enter a reason for withdrawal',
-              requiredAuthorityToWithdraw:
-                'Select the checkbox to confirm you have authority to withdraw this opportunity'
+              requiredReasonToWithdraw: requiredReasonMessage,
+              requiredAuthorityToWithdraw: requiredAuthorityMessage
             }}
           />
         )}
