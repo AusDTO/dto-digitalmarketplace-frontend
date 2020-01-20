@@ -104,9 +104,9 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
           id="database_size"
           htmlFor="database_size"
           defaultValue={props[props.model].database_size}
-          validators={{
-            required
-          }}
+          // validators={{
+          //   required
+          // }}
           messages={{}}
         />
         <Textfield
@@ -116,9 +116,9 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
           id="placed_candidates"
           htmlFor="placed_candidates"
           defaultValue={props[props.model].placed_candidates}
-          validators={{
-            required
-          }}
+          // validators={{
+          //   required
+          // }}
           messages={{}}
         />
       </div>
