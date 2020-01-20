@@ -32,8 +32,9 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
         requiredChoice: formValues =>
           formValues.placingCandidates === 'consultants' ||
           formValues.placingCandidates === 'hybrid' ||
-          formValues.placingCandidates === 'recruitment'
-        // greaterThanZero: formValues => formValues.database_size
+          formValues.placingCandidates === 'recruitment',
+        greaterThanZero: formValues => formValues.database_size && (formValues.placingCandidates === 'hybrid' ||
+        formValues.placingCandidates === 'recruitment')
       }
     }}
     onSubmit={props.onSubmit}
@@ -47,8 +48,8 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
       model={props.model}
       messages={{
         //it works only once.... to be investigated
-        requiredChoice: 'You must select who can respond'
-        // greaterThanZero: 'The size of your candidate database must be greater than zero'
+        requiredChoice: 'You must select who can respond',
+        greaterThanZero: 'The size of your candidate database must be greater than zero'
       }}
     />
     <p> Your business will be placing candidates for {props.meta.domain.name} category roles by submitting</p>
@@ -85,8 +86,8 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
           model={props.model}
           messages={{
             validWholeNumber: 'The size of your candidate database must be a whole number (e.g. 1200)'
-        }}
-        /> */}
+        }} */}
+        {/* /> */}
         <Textfield
           model={`${props.model}.database_size`}
           label="What is the size of your candidate database?"
