@@ -6,7 +6,7 @@ import Textfield from 'shared/form/Textfield'
 import formProps from 'shared/form/formPropsSelector'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
-import { isNullOrUndefined } from 'util'
+import styles from '../Hybrid/SellerAssessmentMaximumRate.scss'
 
 const maxDailyRateLimit = 99999
 
@@ -70,6 +70,7 @@ const SellerAssessmentRateStage = props => (
           }}
         />
 
+        <div className = {styles.maxDailyRate} />
         <Textfield
           model={`${props.model}.maxDailyRate`}
           prefix={`$`}
