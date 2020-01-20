@@ -112,26 +112,31 @@ const SellerAssessmentRateStage = props => (
         />
       </div>
     )}
+
     {/* Only see when consultant is picked in the placing candidates stage */}
-    <ErrorAlert
-      model={props.model}
-      messages={{
-        greaterThanZero: 'The maximum daily rate must be greater than zero',
-        lessThanLimit: `The maximum daily rate must be lower than $${maxDailyRateLimit}`,
-        validWholeNumber: 'The maximum daily rate must be a whole number (e.g. 1200)'
-      }}
-    />
-    <Textfield
-      model={`${props.model}.maxDailyRate`}
-      prefix={`$`}
-      postfix={'including GST'}
-      label="Maximum daily rate (excluding mark-up)"
-      description={`This rate must be based on a person who demonstrates skills equivalnet to  `}
-      name="maxDailyRate"
-      id="maxDailyRate"
-      htmlFor="maxDailyRate"
-      defaultValue={props[props.model].maxDailyRate}
-    />
+    {props[props.model].placingCandidates === 'consultants' && (
+      <div>
+        <ErrorAlert
+          model={props.model}
+          messages={{
+            greaterThanZero: 'The maximum daily rate must be greater than zero',
+            lessThanLimit: `The maximum daily rate must be lower than $${maxDailyRateLimit}`,
+            validWholeNumber: 'The maximum daily rate must be a whole number (e.g. 1200)'
+          }}
+        />
+        <Textfield
+          model={`${props.model}.maxDailyRate`}
+          prefix={`$`}
+          postfix={'including GST'}
+          label="Maximum daily rate (excluding mark-up)"
+          description={`This rate must be based on a person who demonstrates skills equivalnet to  `}
+          name="maxDailyRate"
+          id="maxDailyRate"
+          htmlFor="maxDailyRate"
+          defaultValue={props[props.model].maxDailyRate}
+        />
+      </div>
+    )}
     {props.formButtons}
   </Form>
 )
