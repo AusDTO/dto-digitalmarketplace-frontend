@@ -7,6 +7,7 @@ import RadioList from 'shared/form/RadioList'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import Textfield from 'shared/form/Textfield'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
+import { required } from 'marketplace/components/validators'
 
 export const greaterThanZero = formValues => parseInt(formValues.database_size, 10) > 0
 
@@ -41,6 +42,7 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
     <ErrorAlert
       model={props.model}
       messages={{
+        //it works only once.... to be investigated
         requiredChoice: 'You must select who can respond'
       }}
     />
@@ -87,6 +89,10 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
           id="database_size"
           htmlFor="database_size"
           defaultValue={props[props.model].database_size}
+          validators={{
+            required
+          }}
+          messages={{}}
         />
         <Textfield
           model={`${props.model}.placed_candidates`}
@@ -95,6 +101,10 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
           id="placed_candidates"
           htmlFor="placed_candidates"
           defaultValue={props[props.model].placed_candidates}
+          validators={{
+            required
+          }}
+          messages={{}}
         />
       </div>
     )}
