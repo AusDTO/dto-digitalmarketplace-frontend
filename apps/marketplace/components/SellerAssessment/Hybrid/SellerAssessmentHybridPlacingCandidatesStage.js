@@ -17,8 +17,7 @@ export const done = formValues => {
   if (props[props.model].placingCandidates === 'recruitment' || props[props.model].placingCandidates === 'hybrid') {
     formValues.placingCandidates &&
       formValues.database_size &&
-      greaterThanZero(formValues) &&
-      validWholeNumber(formValues)
+      greaterThanZero(formValues)
   } else {
     formValues.placingCandidates
   }
@@ -29,7 +28,8 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
     model={props.model}
     validators={{
       '': {
-        requiredChoice: formValues => formValues.placingCandidates
+        requiredChoice: formValues => formValues.placingCandidates ==='consultants' || formValues.placingCandidates ==='hybrid' || formValues.placingCandidates ==='recruitment'
+        // greaterThanZero: formValues => formValues.database_size
       }
     }}
     onSubmit={props.onSubmit}
@@ -44,6 +44,7 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
       messages={{
         //it works only once.... to be investigated
         requiredChoice: 'You must select who can respond'
+        // greaterThanZero: 'The size of your candidate database must be greater than zero'
       }}
     />
     <p> Your business will be placing candidates for {props.meta.domain.name} category roles by submitting</p>
@@ -76,12 +77,12 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
           Candidate Pool
         </AUheadings>
 
-        <ErrorAlert
+        {/* <ErrorAlert
           model={props.model}
           messages={{
             validWholeNumber: 'The size of your candidate database must be a whole number (e.g. 1200)'
           }}
-        />
+        /> */}
         <Textfield
           model={`${props.model}.database_size`}
           label="What is the size of your candidate database?"
