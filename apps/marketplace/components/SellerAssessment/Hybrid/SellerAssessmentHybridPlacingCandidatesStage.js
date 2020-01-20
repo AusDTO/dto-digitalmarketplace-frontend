@@ -34,11 +34,15 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
           formValues.placingCandidates === 'hybrid' ||
           formValues.placingCandidates === 'recruitment',
         greaterThanZero: formValues =>
-          formValues.database_size &&
-          (formValues.placingCandidates === 'hybrid' || formValues.placingCandidates === 'recruitment'),
+          formValues.placingCandidates === '' ||
+          formValues.placingCandidates === 'consultants' ||
+          (formValues.database_size &&
+          (formValues.placingCandidates === 'hybrid' || formValues.placingCandidates === 'recruitment')),
         validWholeNumber: formValues =>
-          formValues.database_size &&
-          (formValues.placingCandidates === 'hybrid' || formValues.placingCandidates === 'recruitment')
+          formValues.placingCandidates === '' ||
+          formValues.placingCandidates === 'consultants' ||
+          (formValues.database_size &&
+          (formValues.placingCandidates === 'hybrid' || formValues.placingCandidates === 'recruitment'))
       }
     }}
     onSubmit={props.onSubmit}
