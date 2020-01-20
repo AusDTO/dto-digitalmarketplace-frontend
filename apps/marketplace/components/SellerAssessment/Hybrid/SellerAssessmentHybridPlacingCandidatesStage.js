@@ -42,7 +42,12 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
           formValues.placingCandidates === '' ||
           formValues.placingCandidates === 'consultants' ||
           (formValues.database_size &&
-          (formValues.placingCandidates === 'hybrid' || formValues.placingCandidates === 'recruitment'))
+          (formValues.placingCandidates === 'hybrid' || formValues.placingCandidates === 'recruitment')),
+        validWholeNumberPlacedCandidates: formValues =>
+        formValues.placingCandidates === '' ||
+        formValues.placingCandidates === 'consultants' ||
+        (formValues.placed_candidates &&
+        (formValues.placingCandidates === 'hybrid' || formValues.placingCandidates === 'recruitment'))
       }
     }}
     onSubmit={props.onSubmit}
@@ -58,7 +63,8 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
         requiredChoice: 'You must select who can respond',
         //shows up regardless (ಠ_ಠ)
         greaterThanZero: 'The size of your candidate database must be greater than zero',
-        validWholeNumber: 'The size of your database must be a whole number only (e.g 5000)'
+        validWholeNumber: 'The size of your database must be a whole number only (e.g 5000)',
+        validWholeNumberPlacedCandidates: 'The number of candidates you have placed must be a whole number only (e.g 1200)'
       }}
     />
     <p> Your business will be placing candidates for {props.meta.domain.name} category roles by submitting</p>
