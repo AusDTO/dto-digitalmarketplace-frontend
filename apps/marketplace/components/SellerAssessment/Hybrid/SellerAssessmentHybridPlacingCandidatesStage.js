@@ -16,21 +16,13 @@ export const validWholeNumber = formValues => formValues.database_size && /^[0-9
 export const validWholeNumberPlacedCandidates = formValues =>
   formValues.placed_candidates && /^[0-9]+$/.test(formValues.placed_candidates)
 
-export const done = formValues => {
-  if (formValues.placingCandidates === 'recruitment' || formValues.placingCandidates === 'hybrid') {
-    // formValues.placingCandidates &&
-    /* eslint-disable no-unused-expressions */
-    formValues.database_size &&
-      formValues.placed_candidates &&
-      greaterThanZero(formValues) &&
-      /* eslint-disable no-unused-expressions */
-      validWholeNumber(formValues) &&
-      validWholeNumberPlacedCandidates(formValues)
-  } else {
-    /* eslint-disable no-unused-expressions */
-    formValues.placingCandidates === 'consultants'
-  }
-}
+export const done = formValues =>
+  formValues.placingCandidates ||
+  (formValues.database_size &&
+    formValues.placed_candidates &&
+    greaterThanZero(formValues) &&
+    validWholeNumber(formValues) &&
+    validWholeNumberPlacedCandidates(formValues))
 
 const SellerAssessmentHybridPlacingCandidatesStage = props => (
   <Form
