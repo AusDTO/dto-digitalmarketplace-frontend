@@ -11,7 +11,7 @@ const BuyerRFXIntroductionStage = props => (
     <AUheading level="2" size="lg">
       Before you start
     </AUheading>
-    <li>
+    <ul>
       <li>
         You can{' '}
         <a href="/api/2/r/seek-proposals-and-quotes-questions-template.docx" rel="noopener noreferrer" target="_blank">
@@ -50,7 +50,7 @@ const BuyerRFXIntroductionStage = props => (
           </li>
         </ul>
       </li>
-    </li>
+    </ul>
     <AUheading level="2" size="lg">
       Publishing your requirements
     </AUheading>

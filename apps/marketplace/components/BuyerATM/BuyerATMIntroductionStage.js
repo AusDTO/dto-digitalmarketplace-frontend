@@ -19,7 +19,7 @@ const BuyerATMIntroductionStage = props => (
     <AUheadings level="2" size="lg">
       Before you start
     </AUheadings>
-    <li>
+    <ul>
       <li>
         Download the{' '}
         <a href="/api/2/r/ask-market-questions-template.docx" rel="noopener noreferrer" target="_blank">
@@ -58,7 +58,7 @@ const BuyerATMIntroductionStage = props => (
           </li>
         </ul>
       </li>
-    </li>
+    </ul>
     <AUheadings level="2" size="lg">
       Getting help
     </AUheadings>

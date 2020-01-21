@@ -12,7 +12,7 @@ const BuyerSpecialistIntroductionStage = props => (
     <AUheadings level="2" size="lg">
       Before you start
     </AUheadings>
-    <li>
+    <ul>
       <li>
         Download the{' '}
         <a href="/api/2/r/specialist-questions-template.docx" rel="noopener noreferrer" target="_blank">
@@ -51,7 +51,7 @@ const BuyerSpecialistIntroductionStage = props => (
           </li>
         </ul>
       </li>
-    </li>
+    </ul>
     <AUheadings level="2" size="lg">
       Getting help
     </AUheadings>
