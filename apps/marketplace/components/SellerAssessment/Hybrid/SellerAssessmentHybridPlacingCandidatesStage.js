@@ -19,12 +19,15 @@ export const validWholeNumberPlacedCandidates = formValues =>
 export const done = formValues => {
   if (formValues.placingCandidates === 'recruitment' || formValues.placingCandidates === 'hybrid') {
     // formValues.placingCandidates &&
+    /* eslint-disable no-unused-expressions */
     formValues.database_size &&
       formValues.placed_candidates &&
       greaterThanZero(formValues) &&
+      /* eslint-disable no-unused-expressions */
       validWholeNumber(formValues) &&
       validWholeNumberPlacedCandidates(formValues)
   } else {
+    /* eslint-disable no-unused-expressions */
     formValues.placingCandidates === 'consultants'
   }
 }

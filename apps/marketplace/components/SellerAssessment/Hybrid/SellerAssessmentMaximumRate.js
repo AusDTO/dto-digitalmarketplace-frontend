@@ -20,7 +20,9 @@ export const validWholeNumberMarkup = formValues => formValues.markup && /^[0-9]
 
 export const done = formValues => {
   // if (props[props.model].placingCandidates === 'recruitment' || props[props.model].placingCandidates === 'hybrid') {
+  /* eslint-disable no-unused-expressions */
   formValues.maxDailyRate &&
+    /* eslint-disable no-unused-expressions */
     greaterThanZero(formValues) &&
     lessThanLimit(formValues) &&
     validWholeNumber(formValues) &&
@@ -109,7 +111,7 @@ const SellerAssessmentRateStage = props => (
             parseInt(props[props.model].maxDailyRate, 10) * (parseInt(props[props.model].markup, 10) / 100) +
               parseInt(props[props.model].maxDailyRate, 10)
           )}
-          disabled={true}
+          disabled
         />
       </div>
     )}

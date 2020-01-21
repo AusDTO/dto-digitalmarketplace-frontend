@@ -27,13 +27,13 @@ export const validWholeNumber = formValues => formValues.maxDailyRate && /^[0-9]
 //   return recruiter
 // }
 
-export const onRateChange = (field, value) => {
-  let withGst = parseFloat(value * 1.1).toFixed(2)
-  if (isNaN(withGst)) {
-    withGst = ''
-  }
-  this.props.changeModel(`${this.props.model}.${field}`, `${withGst}`)
-}
+// export const onRateChange = (field, value) => {
+//   let withGst = parseFloat(value * 1.1).toFixed(2)
+//   if (isNaN(withGst)) {
+//     withGst = ''
+//   }
+//   this.props.changeModel(`${this.props.model}.${field}`, `${withGst}`)
+// }
 
 export const done = formValues =>
   formValues.maxDailyRate && greaterThanZero(formValues) && lessThanLimit(formValues) && validWholeNumber(formValues)
@@ -109,7 +109,7 @@ const SellerAssessmentRateStage = props => (
         parseInt(props[props.model].maxDailyRate, 10) * (parseInt(props[props.model].markup, 10) / 100) +
           parseInt(props[props.model].maxDailyRate, 10)
       )}
-      disabled={true}
+      disabled
       // need to add syles to this
       // className={styles.readOnly}
       // readOnly
@@ -120,7 +120,7 @@ const SellerAssessmentRateStage = props => (
 )
 
 SellerAssessmentRateStage.defaultProps = {
-  onRateChange: () => null,
+  // onRateChange: () => null,
   onSubmit: () => {},
   onSubmitFailed: () => {}
 }
@@ -129,7 +129,7 @@ SellerAssessmentRateStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   meta: PropTypes.object.isRequired,
-  onRateChange: PropTypes.func,
+  // onRateChange: PropTypes.func,
   onSubmit: PropTypes.func,
   onSubmitFailed: PropTypes.func
 }
