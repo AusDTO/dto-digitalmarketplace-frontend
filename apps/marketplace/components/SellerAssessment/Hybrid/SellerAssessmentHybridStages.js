@@ -18,7 +18,7 @@ const SellerAssessmentHybridStages = [
     component: SellerAssessmentHybridPlacingCandidatesStage,
     isDone: formValues =>
       formValues.placingCandidates === 'recruitment' ||
-      formValues.placingCandidates === 'hybird' ||
+      formValues.placingCandidates === 'hybrid' ||
       formValues.placingCandidates === 'consultants'
   },
   {
