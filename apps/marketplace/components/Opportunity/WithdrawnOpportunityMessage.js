@@ -9,11 +9,13 @@ const WithdrawnOpportunityMessageBody = props => {
   return (
     <React.Fragment>
       <p className={styles.fontSizeLg}>This opportunity has been withdrawn.</p>
-      <p>
-        <span className={styles.bold}>Reason for withdrawal:</span>
-        <br />
-        {reason}
-      </p>
+      {reason && (
+        <p>
+          <span className={styles.bold}>Reason for withdrawal:</span>
+          <br />
+          {reason}
+        </p>
+      )}
     </React.Fragment>
   )
 }
