@@ -19,7 +19,7 @@ const BuyerTrainingIntroductionStage = props => (
     <AUheading level="2" size="sm">
       Before you start:
     </AUheading>
-    <ul>
+    <ol>
       <li>
         The{' '}
         <a href="/api/2/r/learning-design-standards" rel="noopener noreferrer" target="_blank">
@@ -45,7 +45,38 @@ const BuyerTrainingIntroductionStage = props => (
         </a>{' '}
         to prepare your request offline before publishing.
       </li>
-    </ul>
+      <li>
+        Read the{' '}
+        <a
+          href="https://www.dta.gov.au/help-and-advice/ict-procurement/digital-sourcing-framework-ict-procurement/digital-sourcing-policies"
+          rel="external noopener noreferrer"
+          target="_blank"
+        >
+          Digital Sourcing Framework&apos;s mandatory policies
+        </a>{' '}
+        because they may apply to you. To keep a record of your compliance, complete and save your:
+        <ul>
+          <li>
+            <a
+              href="https://ictprocurement.service-now.com/policy?id=consider_first"
+              rel="external noopener noreferrer"
+              target="_blank"
+            >
+              Consider First Policy document
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://ictprocurement.service-now.com/policy?id=fair_criteria"
+              rel="external noopener noreferrer"
+              target="_blank"
+            >
+              Fair Criteria Checklist
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ol>
     <p>All fields are mandatory unless marked optional.</p>
     {props.formButtons}
   </Form>

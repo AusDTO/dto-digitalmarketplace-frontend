@@ -11,7 +11,7 @@ const BuyerRFXIntroductionStage = props => (
     <AUheading level="2" size="lg">
       Before you start
     </AUheading>
-    <ul>
+    <ol>
       <li>
         You can{' '}
         <a href="/api/2/r/seek-proposals-and-quotes-questions-template.docx" rel="noopener noreferrer" target="_blank">
@@ -34,7 +34,38 @@ const BuyerRFXIntroductionStage = props => (
         </a>{' '}
         you select.
       </li>
-    </ul>
+      <li>
+        Read the{' '}
+        <a
+          href="https://www.dta.gov.au/help-and-advice/ict-procurement/digital-sourcing-framework-ict-procurement/digital-sourcing-policies"
+          rel="external noopener noreferrer"
+          target="_blank"
+        >
+          Digital Sourcing Framework&apos;s mandatory policies
+        </a>{' '}
+        because they may apply to you. To keep a record of your compliance, complete and save your:
+        <ul>
+          <li>
+            <a
+              href="https://ictprocurement.service-now.com/policy?id=consider_first"
+              rel="external noopener noreferrer"
+              target="_blank"
+            >
+              Consider First Policy document
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://ictprocurement.service-now.com/policy?id=fair_criteria"
+              rel="external noopener noreferrer"
+              target="_blank"
+            >
+              Fair Criteria Checklist
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ol>
     <AUheading level="2" size="lg">
       Publishing your requirements
     </AUheading>
