@@ -15,7 +15,7 @@ const WithdrawnOpportunity = props => {
       <AUpageAlert as="success" setFocus={setFocus}>
         <h1 className="au-display-lg">
           <strong>
-            {brief.title} ({brief.id}) was withdrawn successfully
+            &apos;{brief.title}&apos; ({brief.id}) was withdrawn successfully
           </strong>
         </h1>
         <div className={styles.marginTop2}>
