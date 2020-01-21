@@ -38,13 +38,11 @@ const OverviewHeaderPublishedActionsList = props => {
             <a href={closeHref}>Close opportunity now</a>
           </li>
         )}
-        {brief.status === 'live' && (
-          <li className={`${mainStyles.red} ${styles.hideMobile}`}>
-            <a className={mainStyles.red} href={withdrawHref}>
-              Withdraw opportunity
-            </a>
-          </li>
-        )}
+        <li className={`${mainStyles.red} ${styles.hideMobile}`}>
+          <a className={mainStyles.red} href={withdrawHref}>
+            Withdraw opportunity
+          </a>
+        </li>
       </ul>
       <ul className={`${styles.menuList} ${mainStyles.hideDesktop}`}>
         <li>
@@ -55,13 +53,11 @@ const OverviewHeaderPublishedActionsList = props => {
             <a href={closeHref}>Close now</a>
           </li>
         )}
-        {brief.status === 'live' && (
-          <li className={`${mainStyles.red} ${styles.hideDesktop}`}>
-            <a className={mainStyles.red} href={withdrawHref}>
-              Withdraw
-            </a>
-          </li>
-        )}
+        <li className={`${mainStyles.red} ${styles.hideDesktop}`}>
+          <a className={mainStyles.red} href={withdrawHref}>
+            Withdraw
+          </a>
+        </li>
       </ul>
     </React.Fragment>
   )
