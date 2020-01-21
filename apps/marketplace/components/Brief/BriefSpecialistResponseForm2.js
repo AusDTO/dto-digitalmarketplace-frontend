@@ -101,6 +101,26 @@ const BriefSpecialistResponseForm2 = ({
                   required: 'Surname is required'
                 }}
               />
+              <RadioList
+                id="candidate"
+                label={`This candidate is a:`}
+                name="candidate"
+                model={`${model}.candidate`}
+                validators={{
+                  required
+                }}
+                options={[
+                  {
+                    label: 'contractor from your recruitment pool',
+                    value: 'recruiter'
+                  },
+                  {
+                    label: 'consultant from your company',
+                    value: 'consultant'
+                  },
+                ]}
+                messages={{ required: 'You must select where the candidate is from' }}
+              />
               <h2 className="au-display-lg">About</h2>
               <Textfield
                 model={`${model}.availability`}
