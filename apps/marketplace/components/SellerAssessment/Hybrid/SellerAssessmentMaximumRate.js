@@ -18,25 +18,17 @@ export const lessThanLimit = formValues => parseInt(formValues.maxDailyRate, 10)
 export const validWholeNumber = formValues => formValues.maxDailyRate && /^[0-9]+$/.test(formValues.maxDailyRate)
 export const validWholeNumberMarkup = formValues => formValues.markup && /^[0-9]+$/.test(formValues.markup)
 
-export const done = formValues => {
-  // if (props[props.model].placingCandidates === 'recruitment' || props[props.model].placingCandidates === 'hybrid') {
-  /* eslint-disable no-unused-expressions */
-  formValues.maxDailyRate &&
-    /* eslint-disable no-unused-expressions */
+export const done = formValues =>
+  (formValues.maxDailyRate &&
     greaterThanZero(formValues) &&
     lessThanLimit(formValues) &&
     validWholeNumber(formValues) &&
+    formValues.placingCandidates === 'consultants') ||
+  ((formValues.placingCandidates === 'recruitment' || formValues.placingCandidates === 'hybrid') &&
     formValues.markup &&
     greaterThanZeroMarkup(formValues) &&
-    validWholeNumberMarkup(formValues)
-  // } else {
-  //   formValues.maxDailyRate &&
-  //     formValues.markup &&
-  //     greaterThanZero(formValues) &&
-  //     lessThanLimit(formValues) &&
-  //     validWholeNumber(formValues)
-  // }
-}
+    validWholeNumberMarkup(formValues) &&
+    formValues.totalMaximumRate)
 
 const SellerAssessmentRateStage = props => (
   <Form
