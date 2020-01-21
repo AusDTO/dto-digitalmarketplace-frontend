@@ -11,28 +11,13 @@ const BuyerRFXIntroductionStage = props => (
     <AUheading level="2" size="lg">
       Before you start
     </AUheading>
-    <ol>
+    <li>
       <li>
         You can{' '}
         <a href="/api/2/r/seek-proposals-and-quotes-questions-template.docx" rel="noopener noreferrer" target="_blank">
           download the list of questions (XLSX 84 KB)
         </a>{' '}
         to prepare your request offline before publishing.
-      </li>
-      <li>
-        Any{' '}
-        <a href="/search/sellers" target="_blank">
-          sellers
-        </a>{' '}
-        you invite must be approved in the{' '}
-        <a
-          href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476-Panel-categories-and-rates"
-          rel="external noopener noreferrer"
-          target="_blank"
-        >
-          panel category
-        </a>{' '}
-        you select.
       </li>
       <li>
         Read the{' '}
@@ -65,7 +50,7 @@ const BuyerRFXIntroductionStage = props => (
           </li>
         </ul>
       </li>
-    </ol>
+    </li>
     <AUheading level="2" size="lg">
       Publishing your requirements
     </AUheading>

@@ -19,7 +19,7 @@ const BuyerTrainingIntroductionStage = props => (
     <AUheading level="2" size="sm">
       Before you start:
     </AUheading>
-    <ol>
+    <li>
       <li>
         The{' '}
         <a href="/api/2/r/learning-design-standards" rel="noopener noreferrer" target="_blank">
@@ -76,7 +76,7 @@ const BuyerTrainingIntroductionStage = props => (
           </li>
         </ul>
       </li>
-    </ol>
+    </li>
     <p>All fields are mandatory unless marked optional.</p>
     {props.formButtons}
   </Form>
