@@ -32,7 +32,8 @@ const SellerAssessmentReviewStage = props => (
         </AUheading>
         <br />
         <p>
-          Your business will be placing for {props.meta.domain.name} roles by <strong>{props[props.model].placingCandidates}</strong>
+          Your business will be placing for {props.meta.domain.name} roles by{' '}
+          <strong>{props[props.model].placingCandidates}</strong>
           <Link to="placingCandiates" className={styles.change}>
             Change
           </Link>
