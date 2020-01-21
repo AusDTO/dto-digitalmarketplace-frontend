@@ -195,7 +195,7 @@ class Overview extends Component {
                 {questionsAsked} questions asked, {questionsAnswered} answer{questionsAnswered > 1 && `s`} published
               </div>
             </li>
-            {(briefResponseCount > 0 || !isPublished || !isClosed) && (
+            {brief.status !== 'withdrawn' && (briefResponseCount > 0 || !isPublished || !isClosed) && (
               <li>
                 {this.downloadResponsesRender(brief, isPublished, isClosed)}
                 {briefResponseCount > 0 && (
@@ -207,11 +207,13 @@ class Overview extends Component {
                 )}
               </li>
             )}
-            {['rfx', 'training2', 'specialist'].includes(flow) &&
+            {brief.status !== 'withdrawn' &&
+              ['rfx', 'training2', 'specialist'].includes(flow) &&
               (briefResponseCount > 0 || !isPublished || !isClosed) && (
                 <li>{createWorkOrderRender(brief, flow, isPublished, isClosed, oldWorkOrderCreator)}</li>
               )}
             {briefResponseCount === 0 && isClosed && <li>No sellers responded</li>}
+            {brief.status === 'withdrawn' && <li>Opportunity withdrawn</li>}
           </ul>
         </div>
       )
