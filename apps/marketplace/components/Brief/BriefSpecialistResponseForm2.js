@@ -52,7 +52,6 @@ const BriefSpecialistResponseForm2 = ({
   fileCount,
   addOtherDocument,
   supplierContact
-  // isRecruiterFlag
 }) => (
   <div className="row">
     <DocumentTitle title="Brief Response - Digital Marketplace">
@@ -103,7 +102,6 @@ const BriefSpecialistResponseForm2 = ({
                   required: 'Surname is required'
                 }}
               />
-              <br />
               {app.isHybridFlag && (
                 <RadioList
                   id="candidate"
@@ -455,10 +453,6 @@ const BriefSpecialistResponseForm2 = ({
   </div>
 )
 
-const mapStateToProps = state => ({
-  isHybridFlag: state.app.isHybridFlag
-})
-
 BriefSpecialistResponseForm2.defaultProps = {
   model: '',
   brief: {},
@@ -475,7 +469,6 @@ BriefSpecialistResponseForm2.defaultProps = {
   onRateChange: () => null,
   fileCount: 2,
   addOtherDocument: () => null
-  // isRecruiterFlag: false
 }
 
 BriefSpecialistResponseForm2.propTypes = {
@@ -497,7 +490,6 @@ BriefSpecialistResponseForm2.propTypes = {
   onRateChange: PropTypes.func,
   fileCount: PropTypes.number,
   addOtherDocument: PropTypes.func
-  // isRecruiterFlag:PropTypes.bool
 }
 
-export default connect(mapStateToProps)(BriefSpecialistResponseForm2)
+export default BriefSpecialistResponseForm2
