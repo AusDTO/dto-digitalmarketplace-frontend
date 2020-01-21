@@ -17,6 +17,7 @@ import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import dmapi from 'marketplace/services/apiClient'
 import { rootPath } from 'marketplace/routes'
 import { escapeQuote } from '../helpers'
+import { connect } from 'react-redux'
 
 import styles from './BriefSpecialistResponseForm2.scss'
 
@@ -51,6 +52,7 @@ const BriefSpecialistResponseForm2 = ({
   fileCount,
   addOtherDocument,
   supplierContact
+  // isRecruiterFlag
 }) => (
   <div className="row">
     <DocumentTitle title="Brief Response - Digital Marketplace">
@@ -101,26 +103,30 @@ const BriefSpecialistResponseForm2 = ({
                   required: 'Surname is required'
                 }}
               />
-              <RadioList
-                id="candidate"
-                label={`This candidate is a:`}
-                name="candidate"
-                model={`${model}.candidate`}
-                validators={{
-                  required
-                }}
-                options={[
-                  {
-                    label: 'contractor from your recruitment pool',
-                    value: 'recruiter'
-                  },
-                  {
-                    label: 'consultant from your company',
-                    value: 'consultant'
-                  },
-                ]}
-                messages={{ required: 'You must select where the candidate is from' }}
-              />
+              {/* {isRecruiterFlag && ( */}
+              {app.isHybridFlag && (
+                <RadioList
+                  id="candidate"
+                  label={`This candidate is a:`}
+                  name="candidate"
+                  model={`${model}.candidate`}
+                  validators={{
+                    required
+                  }}
+                  options={[
+                    {
+                      label: 'contractor from your recruitment pool',
+                      value: 'recruiter'
+                    },
+                    {
+                      label: 'consultant from your company',
+                      value: 'consultant'
+                    }
+                  ]}
+                  messages={{ required: 'You must select where the candidate is from' }}
+                />
+              )}
+
               <h2 className="au-display-lg">About</h2>
               <Textfield
                 model={`${model}.availability`}
@@ -449,6 +455,10 @@ const BriefSpecialistResponseForm2 = ({
   </div>
 )
 
+const mapStateToProps = state => ({
+  isHybridFlag: state.app.isHybridFlag
+})
+
 BriefSpecialistResponseForm2.defaultProps = {
   model: '',
   brief: {},
@@ -465,6 +475,7 @@ BriefSpecialistResponseForm2.defaultProps = {
   onRateChange: () => null,
   fileCount: 2,
   addOtherDocument: () => null
+  // isRecruiterFlag: false
 }
 
 BriefSpecialistResponseForm2.propTypes = {
@@ -486,6 +497,7 @@ BriefSpecialistResponseForm2.propTypes = {
   onRateChange: PropTypes.func,
   fileCount: PropTypes.number,
   addOtherDocument: PropTypes.func
+  // isRecruiterFlag:PropTypes.bool
 }
 
-export default BriefSpecialistResponseForm2
+export default connect(mapStateToProps)(BriefSpecialistResponseForm2)
