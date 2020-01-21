@@ -174,8 +174,6 @@ export const handleEvidenceSaveSuccess = response => ({
     supplierCode: response.data.supplier_code,
     maxDailyRate: response.data.maxDailyRate,
     markup: response.data.markup
-    // candidateFullName : response.data.candidateFullName,
-    // candidatePhoneNumber : response.data.candidatePhoneNumber
   }
 })
 
