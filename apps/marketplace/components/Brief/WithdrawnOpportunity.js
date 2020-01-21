@@ -12,14 +12,14 @@ const WithdrawnOpportunity = props => {
 
   return (
     <React.Fragment>
-      <AUpageAlert as="success" setFocus={setFocus}>
+      <AUpageAlert as="success" className={styles.fullWidthPageAlert} setFocus={setFocus}>
         <h1 className="au-display-lg">
           <strong>
             &apos;{brief.title}&apos; ({brief.id}) was withdrawn successfully
           </strong>
         </h1>
         <div className={styles.marginTop2}>
-          <p>
+          <p className={styles.noMaxWidth}>
             The reason for withdrawal is now displayed on the{' '}
             <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>opportunity page</a>.{' '}
             {isOpenToAll
