@@ -5,7 +5,7 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 
 import OverviewHeaderDraftActionsList from './OverviewHeaderDraftActionsList'
 import OverviewHeaderPublishedActionsList from './OverviewHeaderPublishedActionsList'
-import OverviewHeaderClosedActionsList from './OverviewHeaderClosedActionsList'
+import OverviewHeaderDefaultActionsList from './OverviewHeaderDefaultActionsList'
 
 import styles from '../Overview.scss'
 
@@ -50,7 +50,7 @@ const OverviewHeader = props => {
             teams={teams}
           />
         )}
-        {isPublished && isClosed && <OverviewHeaderClosedActionsList brief={brief} />}
+        {isPublished && isClosed && <OverviewHeaderDefaultActionsList brief={brief} />}
       </div>
     </div>
   )
