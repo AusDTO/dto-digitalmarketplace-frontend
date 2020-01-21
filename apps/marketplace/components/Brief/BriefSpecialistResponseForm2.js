@@ -103,7 +103,7 @@ const BriefSpecialistResponseForm2 = ({
                   required: 'Surname is required'
                 }}
               />
-              {/* {isRecruiterFlag && ( */}
+              <br />
               {app.isHybridFlag && (
                 <RadioList
                   id="candidate"
