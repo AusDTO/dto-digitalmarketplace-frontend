@@ -7,7 +7,7 @@ import AUaccordion from '@gov.au/accordion/lib/js/react.js'
 import AuthenticatedMobileLinks from './Mobile/AuthenticatedMobileLinks'
 import HeaderActions from './HeaderActions'
 import UnauthenticatedMobileLinks from './Mobile/UnauthenticatedMobileLinks'
-import logoGovCrest from './Government_crest.svg'
+import logoGovCrest from './Government_crest.js'
 
 export class Header extends Component {
   constructor(props) {

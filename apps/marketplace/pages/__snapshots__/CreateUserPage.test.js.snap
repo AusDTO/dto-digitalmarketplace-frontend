@@ -94,7 +94,7 @@ exports[`Test suite for CreateUserPage page Because snaphots 1`] = `
                 </span>
                 <a
                   href="/terms-of-use"
-                  rel="external"
+                  rel="noopener noreferrer"
                   target="_blank"
                 >
                   Terms of Use
