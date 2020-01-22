@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { actions, Form } from 'react-redux-form'
+import { actions, Control, Form } from 'react-redux-form'
 
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import { AUcheckbox } from '@gov.au/control-input/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
-import { required } from 'marketplace/components/validators'
+import { limitWords, required } from 'marketplace/components/validators'
 import { rootPath } from 'marketplace/routes'
 import formProps from 'shared/form/formPropsSelector'
 import Textarea from 'shared/form/Textarea'
@@ -19,12 +19,14 @@ export class WithdrawOpportunity extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      hasAuthorityToWithdraw: false,
       invalidAuthority: false,
       invalidReason: false
     }
 
     this.handleWithdrawButtonClick = this.handleWithdrawButtonClick.bind(this)
+    this.hasAuthority = this.hasAuthority.bind(this)
+    this.hasProvidedReason = this.hasProvidedReason.bind(this)
+    this.isUnderWordLimit = this.isUnderWordLimit.bind(this)
   }
 
   handleWithdrawButtonClick = () => {
@@ -32,37 +34,66 @@ export class WithdrawOpportunity extends Component {
       invalidAuthority: false,
       invalidReason: false
     })
+  }
 
-    this.props.resetFormValidity()
+  hasAuthority = formValues => {
+    if (!formValues.hasAuthorityToWithdraw) {
+      this.setState({
+        invalidAuthority: true
+      })
+    }
+
+    return formValues.hasAuthorityToWithdraw
+  }
+
+  hasProvidedReason = formValues => {
+    const validReason = required(formValues.reasonToWithdraw)
+    if (!validReason) {
+      this.setState({
+        invalidReason: true
+      })
+    }
+
+    return validReason
+  }
+
+  isUnderWordLimit = formValues => {
+    const isUnderWordLimit = limitWords(25)(formValues.reasonToWithdraw)
+
+    if (!isUnderWordLimit) {
+      this.setState({
+        invalidReason: true
+      })
+    }
+
+    return isUnderWordLimit
   }
 
   render = () => {
-    const { brief, isOpenToAll, model, onSubmitFailed, onWithdrawOpportunity } = this.props
-    const { hasAuthorityToWithdraw, invalidAuthority } = this.state
+    const { brief, isOpenToAll, model, onSubmitFailed, onWithdrawOpportunity, setAuthorityToWithdraw } = this.props
+    const { invalidAuthority, invalidReason } = this.state
+    const { hasAuthority, hasProvidedReason, isUnderWordLimit } = this
 
-    const requiredReasonToWithdraw = formValues => {
-      const validReason = required(formValues.reasonToWithdraw)
-      if (!validReason) {
-        this.setState({
-          invalidReason: true
-        })
-      }
+    const AuthorityCheckbox = props => {
+      const { checked, className } = props
 
-      return validReason
-    }
-
-    const requiredAuthorityToWithdraw = () => {
-      const validAuthority = hasAuthorityToWithdraw === true
-      if (!validAuthority) {
-        this.setState({
-          invalidAuthority: true
-        })
-      }
-
-      return validAuthority
+      return (
+        <AUcheckbox
+          checked={checked}
+          className={className}
+          id="authorityToWithdraw"
+          label="I have the authority to withdraw this opportunity and understand once I do so I will not be able to re-open it"
+          name="authorityToWithdraw"
+          onChange={() => {}}
+          onClick={e => {
+            setAuthorityToWithdraw(e.target.checked)
+          }}
+        />
+      )
     }
 
     const requiredReasonMessage = <a href="#reasonToWithdraw">You must enter a reason for withdrawal</a>
+    const overWordLimitMessage = <a href="#reasonToWithdraw">Your reason for withdrawal has exceeded the word limit</a>
     const requiredAuthorityMessage = (
       <a href="#authorityToWithdraw">Select the checkbox to confirm you have authority to withdraw this opportunity</a>
     )
@@ -75,21 +106,25 @@ export class WithdrawOpportunity extends Component {
         validateOn="submit"
         validators={{
           '': {
-            requiredReasonToWithdraw,
-            requiredAuthorityToWithdraw
+            hasProvidedReason,
+            isUnderWordLimit,
+            hasAuthority
           }
         }}
       >
         <AUheading size="xl" level="1">
           Withdraw &apos;{brief.title}&apos; ({brief.id})
         </AUheading>
-        <ErrorAlert
-          model={model}
-          messages={{
-            requiredReasonToWithdraw: requiredReasonMessage,
-            requiredAuthorityToWithdraw: requiredAuthorityMessage
-          }}
-        />
+        {(invalidReason || invalidAuthority) && (
+          <ErrorAlert
+            model={model}
+            messages={{
+              hasProvidedReason: requiredReasonMessage,
+              isUnderWordLimit: overWordLimitMessage,
+              hasAuthority: requiredAuthorityMessage
+            }}
+          />
+        )}
         <p>Once you select &apos;Withdraw opportunity&apos;:</p>
         <ul>
           {isOpenToAll ? (
@@ -115,21 +150,21 @@ export class WithdrawOpportunity extends Component {
             }}
             model={`${model}.reasonToWithdraw`}
             name="reasonToWithdraw"
-            validators={{ required }}
+            validators={{
+              limitWords,
+              required
+            }}
           />
         </div>
-        <AUcheckbox
-          checked={hasAuthorityToWithdraw}
-          className={`${styles.marginTop2} ${invalidAuthority ? 'au-control-input--invalid' : ''}`}
-          id="authorityToWithdraw"
-          label="I have the authority to withdraw this opportunity and understand once I do so I will not be able to re-open it"
-          name="authorityToWithdraw"
-          onChange={() => {}}
-          onClick={e => {
-            this.setState({
-              hasAuthorityToWithdraw: e.target.checked
-            })
+        <Control.checkbox
+          component={AuthorityCheckbox}
+          id="authorityToWithdrawControl"
+          mapProps={{
+            className: ({ fieldValue }) => (!fieldValue.valid && fieldValue.touched ? 'au-control-input--invalid' : ''),
+            checked: prps => prps.modelValue
           }}
+          model={`${model}.hasAuthorityToWithdraw`}
+          validators={{ required }}
         />
         <div className={styles.marginTop2}>
           <AUbutton onClick={this.handleWithdrawButtonClick} type="submit">
@@ -169,7 +204,9 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
-  resetFormValidity: () => dispatch(actions.resetValidity(props.model))
+  resetFormValidity: () => dispatch(actions.resetValidity(props.model)),
+  setAuthorityToWithdraw: hasAuthority =>
+    dispatch(actions.change(`${props.model}.hasAuthorityToWithdraw`, hasAuthority))
 })
 
 export default connect(
