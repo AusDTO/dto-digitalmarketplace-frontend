@@ -20,11 +20,40 @@ export const validWholeNumberMarkup = formValues => formValues.markup && /^[0-9]
 
 const sellerRateChange = (maxDailyRate, markup) => {
   let totalMax = 0
-  let fixMaxDailyRate = parseFloat(maxDailyRate, 10).toFixed(2)
-  let fixMarkUp = parseFloat(markup, 10).toFixed(2)
-  totalMax = fixMaxDailyRate * (fixMarkUp / 100)
+  let fixMaxDailyRate = parseInt(maxDailyRate, 10)
+  let fixMarkUp = parseInt(markup, 10)
+  totalMax = fixMaxDailyRate * (fixMarkUp / 100) + fixMaxDailyRate
   return totalMax
 }
+
+{
+  /* <Textfield
+model={`${model}.hourRateExcludingGST`}
+name="hourRateExcludingGST"
+id="hourRateExcludingGST"
+defaultValue={briefResponseForm.hourRateExcludingGST}
+htmlFor="hourRateExcludingGST"
+label="Hourly rate (excluding GST)"
+validators={{
+  required,
+  validPercentage
+}}
+messages={{
+  required: 'Hourly rate is required',
+  validPercentage: 'Enter only numbers eg. 600.00'
+}}
+onChange={data => onRateChange('hourRate', data.target.value)}
+prefix={'$'}
+/> */
+}
+// onRateChange={(field, value) => {
+//   let withGst = parseFloat(value * 1.1).toFixed(2)
+//   if (isNaN(withGst)) {
+//     withGst = ''
+//   }
+//   this.props.changeModel(`${this.props.model}.${field}`, `${withGst}`)
+// }}
+const changeModel2 = (data, value) => dispatch(actions.change(data, value))
 
 export const done = formValues =>
   (formValues.maxDailyRate &&
