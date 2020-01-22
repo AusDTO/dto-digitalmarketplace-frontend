@@ -43,7 +43,11 @@ const AUFooter = () => (
                 </a>
                 . With the exception of the Commonwealth Coat of Arms and where otherwise noted, this work is licensed
                 under the{' '}
-                <a href="https://github.com/govau/uikit/blob/master/LICENSE" rel="external">
+                <a
+                  href="https://github.com/govau/uikit/blob/master/LICENSE"
+                  rel="external noopener noreferrer"
+                  target="_blank"
+                >
                   MIT license
                 </a>
               </p>

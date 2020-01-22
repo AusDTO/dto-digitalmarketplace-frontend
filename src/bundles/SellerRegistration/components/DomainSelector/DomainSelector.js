@@ -42,7 +42,7 @@ class DomainSelector extends BaseForm {
             <header>
                 <h1 className="au-display-xl" tabIndex="-1">What services will you offer?</h1>
                 <p>Select the services you have the expertise to provide.  For each you choose you will need to provide
-                    a case study and referee to ensure you meet our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a></p>
+                    a case study and referee to ensure you meet our <a href="/assessment-criteria" target="_blank" rel="noopener noreferrer">assessment criteria</a></p>
 
             </header>
         )
@@ -53,7 +53,7 @@ class DomainSelector extends BaseForm {
                     <h1 className="au-display-xl" tabIndex="-1">What services will you offer?</h1>
                     <p>The services you are currently approved for are already ticked. Select any others you have the skills and experience to provide.
                         You will need to provide a case study and referee for each to meet the <a href="/assessment-criteria"
-                                                                                          target="_blank" rel="external">assessment criteria</a>
+                                                                                          target="_blank" rel="noopener noreferrer">assessment criteria</a>
                     </p>
                 </header>
             )

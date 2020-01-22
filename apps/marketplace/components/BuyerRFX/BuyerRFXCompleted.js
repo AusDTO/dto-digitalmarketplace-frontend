@@ -20,7 +20,7 @@ const BuyerRFXCompleted = props => (
     <ul>
       <li>
         While your opportunity is live, you&apos;ll need to{' '}
-        <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000579716#live" rel="external">
+        <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000579716#live" rel="noopener noreferrer">
           answer seller questions
         </a>
         .
