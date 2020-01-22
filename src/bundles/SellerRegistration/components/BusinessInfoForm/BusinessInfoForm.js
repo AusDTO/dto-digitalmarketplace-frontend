@@ -238,7 +238,7 @@ class BusinessInfoForm extends BaseForm {
                             />
                             <label htmlFor="disability">Australian disability enterprise
                                 <p>Your business is listed on the <a href="http://www.ade.org.au/ades-directory"
-                                                                     rel="external" target="_blank">Australian
+                                                                     rel="external noopener noreferrer" target="_blank">Australian
                                     disability enterprise register</a>.</p>
                             </label>
 
@@ -261,7 +261,7 @@ class BusinessInfoForm extends BaseForm {
                             />
                             <label htmlFor="indigenous">Indigenous
                                 <p>Your business is at least 50% Indigenous owned and listed on <a
-                                href="http://www.supplynation.org.au/search" rel="external" target="_blank">Supply Nation.</a></p>
+                                href="http://www.supplynation.org.au/search" rel="external noopener noreferrer" target="_blank">Supply Nation.</a></p>
                             </label>
 
                         </div>

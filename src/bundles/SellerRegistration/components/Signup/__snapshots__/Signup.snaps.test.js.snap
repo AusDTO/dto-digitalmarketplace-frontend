@@ -187,7 +187,7 @@ exports[`Signup renders 1`] = `
           By completing this application you are automatically responding to an open approach to market, whose terms and conditions, like other government tenders, are 
           <a
             href="http://tenders.gov.au"
-            rel="external"
+            rel="external noopener noreferrer"
             target="_blank"
           >
             publicly available.
@@ -215,7 +215,7 @@ exports[`Signup renders 1`] = `
         <p>
           <a
             href="/api/2/r/master-agreement-current.pdf"
-            rel="external"
+            rel="noopener noreferrer"
             target="_blank"
           >
             Download Digital Marketplace Master Agreement (PDF 245KB)

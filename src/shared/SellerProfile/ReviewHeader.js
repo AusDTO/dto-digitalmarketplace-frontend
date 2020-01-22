@@ -47,7 +47,7 @@ const ReviewHeader = (props) => {
                 <h2 className="au-display-lg">Website</h2>
               </div>
               <div className="col-xs-12 col-sm-8 col-sm-push-1">
-                <p><a href={website} target="_blank" rel="external" styleName="external-link">{website}</a></p>
+                <p><a href={website} target="_blank" rel="external noopener noreferrer" styleName="external-link">{website}</a></p>
               </div>
             </div>
 
@@ -57,7 +57,7 @@ const ReviewHeader = (props) => {
                   <h2 className="au-display-lg">Twitter</h2>
                 </div>
                 <div className="col-xs-12 col-sm-8 col-sm-push-1">
-                  <p><a href={twitter} target="_blank" rel="external" styleName="external-link">{twitter}</a></p>
+                  <p><a href={twitter} target="_blank" rel="external noopener noreferrer" styleName="external-link">{twitter}</a></p>
                 </div>
               </div>
             )}
@@ -68,7 +68,7 @@ const ReviewHeader = (props) => {
                   <h2 className="au-display-lg">LinkedIn</h2>
                 </div>
                 <div className="col-xs-12 col-sm-8 col-sm-push-1">
-                  <p><a href={linkedin} target="_blank" rel="external" styleName="external-link">{linkedin}</a></p>
+                  <p><a href={linkedin} target="_blank" rel="external noopener noreferrer" styleName="external-link">{linkedin}</a></p>
                 </div>
               </div>
             )}
