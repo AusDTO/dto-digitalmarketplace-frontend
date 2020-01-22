@@ -8,7 +8,7 @@ import { AUcheckbox } from '@gov.au/control-input/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
-import { required } from 'marketplace/components/validators'
+import { limitWords, required } from 'marketplace/components/validators'
 import { rootPath } from 'marketplace/routes'
 import formProps from 'shared/form/formPropsSelector'
 import Textarea from 'shared/form/Textarea'
@@ -26,6 +26,7 @@ export class WithdrawOpportunity extends Component {
     this.handleWithdrawButtonClick = this.handleWithdrawButtonClick.bind(this)
     this.hasAuthority = this.hasAuthority.bind(this)
     this.hasProvidedReason = this.hasProvidedReason.bind(this)
+    this.isUnderWordLimit = this.isUnderWordLimit.bind(this)
   }
 
   handleWithdrawButtonClick = () => {
@@ -56,10 +57,22 @@ export class WithdrawOpportunity extends Component {
     return validReason
   }
 
+  isUnderWordLimit = formValues => {
+    const isUnderWordLimit = limitWords(25)(formValues.reasonToWithdraw)
+
+    if (!isUnderWordLimit) {
+      this.setState({
+        invalidReason: true
+      })
+    }
+
+    return isUnderWordLimit
+  }
+
   render = () => {
     const { brief, isOpenToAll, model, onSubmitFailed, onWithdrawOpportunity, setAuthorityToWithdraw } = this.props
     const { invalidAuthority, invalidReason } = this.state
-    const { hasAuthority, hasProvidedReason } = this
+    const { hasAuthority, hasProvidedReason, isUnderWordLimit } = this
 
     const AuthorityCheckbox = props => {
       const { checked, className } = props
@@ -80,6 +93,7 @@ export class WithdrawOpportunity extends Component {
     }
 
     const requiredReasonMessage = <a href="#reasonToWithdraw">You must enter a reason for withdrawal</a>
+    const overWordLimitMessage = <a href="#reasonToWithdraw">Your reason for withdrawal has exceeded the word limit</a>
     const requiredAuthorityMessage = (
       <a href="#authorityToWithdraw">Select the checkbox to confirm you have authority to withdraw this opportunity</a>
     )
@@ -93,6 +107,7 @@ export class WithdrawOpportunity extends Component {
         validators={{
           '': {
             hasProvidedReason,
+            isUnderWordLimit,
             hasAuthority
           }
         }}
@@ -105,6 +120,7 @@ export class WithdrawOpportunity extends Component {
             model={model}
             messages={{
               hasProvidedReason: requiredReasonMessage,
+              isUnderWordLimit: overWordLimitMessage,
               hasAuthority: requiredAuthorityMessage
             }}
           />
@@ -134,7 +150,10 @@ export class WithdrawOpportunity extends Component {
             }}
             model={`${model}.reasonToWithdraw`}
             name="reasonToWithdraw"
-            validators={{ required }}
+            validators={{
+              limitWords,
+              required
+            }}
           />
         </div>
         <Control.checkbox
