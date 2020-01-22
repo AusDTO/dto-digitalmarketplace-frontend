@@ -130,7 +130,7 @@ export class WithdrawOpportunity extends Component {
           {isOpenToAll ? (
             <li>we will notify sellers who have drafted or submitted responses to this opportunity</li>
           ) : (
-            <li>we will notify all sellers that you invited</li>
+            <li>we will notify all invited sellers</li>
           )}
           <li>the opportunity page will display your reason for withdrawal</li>
           <li>you will not be able to reopen the opportunity again</li>
