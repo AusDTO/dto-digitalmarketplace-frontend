@@ -3,12 +3,38 @@ import PropTypes from 'prop-types'
 
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import Feedback from 'marketplace/components/Feedback/Feedback'
+import { getSingleInvitedSellerName } from 'marketplace/components/helpers'
 import { rootPath } from 'marketplace/routes'
 
 import styles from '../../main.scss'
 
 const WithdrawnOpportunity = props => {
   const { app, brief, isOpenToAll, onFeedbackSubmit, setFocus } = props
+  const invitedSeller = getSingleInvitedSellerName(brief)
+
+  const OpenToAllMessage = () => (
+    <span>
+      The reason for withdrawal is now displayed on the{' '}
+      <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>opportunity page</a>. Sellers who have
+      drafted or submitted responses to this opportunity have been notified.
+    </span>
+  )
+
+  const SingleInvitedSellerMessage = () => (
+    <span>
+      The reason for withdrawal is now displayed on the{' '}
+      <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>opportunity page</a> and {invitedSeller} has
+      been notified.
+    </span>
+  )
+
+  const AllInvitedSellersMessage = () => (
+    <span>
+      The reason for withdrawal is now displayed on the{' '}
+      <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>opportunity page</a>. Invited sellers have
+      been notified.
+    </span>
+  )
 
   return (
     <React.Fragment>
@@ -20,12 +46,9 @@ const WithdrawnOpportunity = props => {
         </h1>
         <div className={styles.marginTop2}>
           <p className={styles.noMaxWidth}>
-            The reason for withdrawal is now displayed on the{' '}
-            <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>opportunity page</a>.{' '}
-            {isOpenToAll
-              ? 'Sellers who have drafted or submitted responses to this opportunity have been notified'
-              : 'Invited sellers have been notified'}
-            .
+            {isOpenToAll && <OpenToAllMessage />}
+            {!isOpenToAll && invitedSeller && <SingleInvitedSellerMessage />}
+            {!isOpenToAll && !invitedSeller && <AllInvitedSellersMessage />}
           </p>
         </div>
       </AUpageAlert>
