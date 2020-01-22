@@ -17,8 +17,6 @@ import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import dmapi from 'marketplace/services/apiClient'
 import { rootPath } from 'marketplace/routes'
 import { escapeQuote } from '../helpers'
-import { connect } from 'react-redux'
-
 import styles from './BriefSpecialistResponseForm2.scss'
 
 const getCandidateName = formModel => {
