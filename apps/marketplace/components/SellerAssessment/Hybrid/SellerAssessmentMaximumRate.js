@@ -18,6 +18,14 @@ export const lessThanLimit = formValues => parseInt(formValues.maxDailyRate, 10)
 export const validWholeNumber = formValues => formValues.maxDailyRate && /^[0-9]+$/.test(formValues.maxDailyRate)
 export const validWholeNumberMarkup = formValues => formValues.markup && /^[0-9]+$/.test(formValues.markup)
 
+const sellerRateChange = (maxDailyRate, markup) => {
+  let totalMax = 0
+  let fixMaxDailyRate = parseFloat(maxDailyRate, 10).toFixed(2)
+  let fixMarkUp = parseFloat(markup, 10).toFixed(2)
+  totalMax = fixMaxDailyRate * (fixMarkUp / 100)
+  return totalMax
+}
+
 export const done = formValues =>
   (formValues.maxDailyRate &&
     greaterThanZero(formValues) &&
@@ -75,6 +83,7 @@ const SellerAssessmentRateStage = props => (
           id="maxDailyRate"
           htmlFor="maxDailyRate"
           defaultValue={props[props.model].maxDailyRate}
+          // onChange={sellerRateChange(maxDailyRate, markup)}
         />
         <Textfield
           model={`${props.model}.markup`}
@@ -99,11 +108,11 @@ const SellerAssessmentRateStage = props => (
           name="totalMaximumRate"
           id="totalMaximumRate"
           htmlFor="totalMaximumRate"
-          defaultValue={Math.round(
-            parseInt(props[props.model].maxDailyRate, 10) * (parseInt(props[props.model].markup, 10) / 100) +
-              parseInt(props[props.model].maxDailyRate, 10)
-          )}
-          disabled
+          defaultValue={
+            sellerRateChange(props[props.model].maxDailyRate, props[props.model].markup) ||
+            props[props.model].totalMaximumRate
+          }
+          readOnly
         />
       </div>
     )}
@@ -138,7 +147,8 @@ const SellerAssessmentRateStage = props => (
 
 SellerAssessmentRateStage.defaultProps = {
   onSubmit: () => {},
-  onSubmitFailed: () => {}
+  onSubmitFailed: () => {},
+  onRateChange: () => null
 }
 
 SellerAssessmentRateStage.propTypes = {
@@ -146,7 +156,8 @@ SellerAssessmentRateStage.propTypes = {
   formButtons: PropTypes.node.isRequired,
   meta: PropTypes.object.isRequired,
   onSubmit: PropTypes.func,
-  onSubmitFailed: PropTypes.func
+  onSubmitFailed: PropTypes.func,
+  onRateChange: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => ({
