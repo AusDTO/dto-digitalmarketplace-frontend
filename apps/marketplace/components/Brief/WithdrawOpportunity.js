@@ -74,6 +74,13 @@ export class WithdrawOpportunity extends Component {
     const { invalidAuthority, invalidReason } = this.state
     const { hasAuthority, hasProvidedReason, isUnderWordLimit } = this
 
+    let invitedSeller = null
+    if (brief.sellers) {
+      if (Object.keys(brief.sellers).length === 1) {
+        invitedSeller = Object.values(brief.sellers).pop().name
+      }
+    }
+
     const AuthorityCheckbox = props => {
       const { checked, className } = props
 
@@ -127,11 +134,9 @@ export class WithdrawOpportunity extends Component {
         )}
         <p>Once you select &apos;Withdraw opportunity&apos;:</p>
         <ul>
-          {isOpenToAll ? (
-            <li>we will notify sellers who have drafted or submitted responses to this opportunity</li>
-          ) : (
-            <li>we will notify all invited sellers</li>
-          )}
+          {isOpenToAll && <li>we will notify sellers who have drafted or submitted responses to this opportunity</li>}
+          {!isOpenToAll && invitedSeller && <li>we will notify {invitedSeller}</li>}
+          {!isOpenToAll && !invitedSeller && <li>we will notify all invited sellers</li>}
           <li>the opportunity page will display your reason for withdrawal</li>
           <li>you will not be able to reopen the opportunity again</li>
         </ul>
