@@ -70,10 +70,30 @@ export class WithdrawOpportunity extends Component {
     return isUnderWordLimit
   }
 
+  requiredReasonText = 'You must enter a reason for withdrawal'
+  requiredReasonLink = <a href="#reasonToWithdraw">{this.requiredReasonText}</a>
+
+  overWordLimitText = 'Your reason for withdrawal has exceeded the word limit'
+  overWordLimitLink = <a href="#reasonToWithdraw">{this.overWordLimitText}</a>
+
+  requiredAuthorityLink = (
+    <a href="#authorityToWithdraw">Select the checkbox to confirm you have authority to withdraw this opportunity</a>
+  )
+
   render = () => {
     const { brief, isOpenToAll, model, onSubmitFailed, onWithdrawOpportunity, setAuthorityToWithdraw } = this.props
     const { invalidAuthority, invalidReason } = this.state
-    const { hasAuthority, hasProvidedReason, isUnderWordLimit } = this
+    const {
+      hasAuthority,
+      hasProvidedReason,
+      isUnderWordLimit,
+      overWordLimitText,
+      overWordLimitLink,
+      requiredAuthorityLink,
+      requiredReasonLink,
+      requiredReasonText
+    } = this
+
     const invitedSeller = getSingleInvitedSellerName(brief)
 
     const AuthorityCheckbox = props => {
@@ -93,16 +113,6 @@ export class WithdrawOpportunity extends Component {
         />
       )
     }
-
-    const requiredReasonText = 'You must enter a reason for withdrawal'
-    const requiredReasonLink = <a href="#reasonToWithdraw">{requiredReasonText}</a>
-
-    const overWordLimitText = 'Your reason for withdrawal has exceeded the word limit'
-    const overWordLimitLink = <a href="#reasonToWithdraw">{overWordLimitText}</a>
-
-    const requiredAuthorityLink = (
-      <a href="#authorityToWithdraw">Select the checkbox to confirm you have authority to withdraw this opportunity</a>
-    )
 
     return (
       <Form
