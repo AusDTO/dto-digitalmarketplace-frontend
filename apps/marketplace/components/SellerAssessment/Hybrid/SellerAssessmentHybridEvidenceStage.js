@@ -53,7 +53,7 @@ export const requiredClient = (formValues, meta) =>
     formValues.criteria.every(
       criteriaId =>
         formValues.evidence[criteriaId] &&
-        (!isRecruiterCriteria(criteriaId, meta.domain.criteria) || required(formValues.evidence[criteriaId].client))
+        (isRecruiterCriteria(criteriaId, meta.domain.criteria) || required(formValues.evidence[criteriaId].client))
     ))
 
 export const requiredRefereeName = (formValues, meta) =>
@@ -63,7 +63,7 @@ export const requiredRefereeName = (formValues, meta) =>
     formValues.criteria.every(
       criteriaId =>
         formValues.evidence[criteriaId] &&
-        (!isRecruiterCriteria(criteriaId, meta.domain.criteria) || required(formValues.evidence[criteriaId].refereeName))
+        (isRecruiterCriteria(criteriaId, meta.domain.criteria) || required(formValues.evidence[criteriaId].refereeName))
     ))
 
 export const requiredRefereeNumber = (formValues, meta) =>
@@ -73,13 +73,12 @@ export const requiredRefereeNumber = (formValues, meta) =>
     formValues.criteria.every(
       criteriaId =>
         formValues.evidence[criteriaId] &&
-        (!isRecruiterCriteria(criteriaId, meta.domain.criteria) ||
+        (isRecruiterCriteria(criteriaId, meta.domain.criteria) ||
           required(formValues.evidence[criteriaId].refereeNumber)) &&
-        (!isRecruiterCriteria(criteriaId, meta.domain.criteria) ||
+        (isRecruiterCriteria(criteriaId, meta.domain.criteria) ||
           validPhoneNumber(formValues.evidence[criteriaId].refereeNumber))
     ))
 
-    // Recruiter Criteria
 export const requiredCandidateFullName = (formValues, meta) =>
   formValues.evidence &&
   Object.keys(formValues.evidence).length > 0 &&
@@ -87,11 +86,10 @@ export const requiredCandidateFullName = (formValues, meta) =>
     formValues.criteria.every(
       criteriaId =>
         formValues.evidence[criteriaId] &&
-        (isRecruiterCriteria(criteriaId, meta.domain.criteria) ||
+        (!isRecruiterCriteria(criteriaId, meta.domain.criteria) ||
           required(formValues.evidence[criteriaId].candidateFullName))
     ))
 
-    // Recruiter Criteria
 export const requiredCandidatePhoneNumber = (formValues, meta) =>
   formValues.evidence &&
   Object.keys(formValues.evidence).length > 0 &&
@@ -99,9 +97,9 @@ export const requiredCandidatePhoneNumber = (formValues, meta) =>
     formValues.criteria.every(
       criteriaId =>
         formValues.evidence[criteriaId] &&
-        (isRecruiterCriteria(criteriaId, meta.domain.criteria) ||
+        (!isRecruiterCriteria(criteriaId, meta.domain.criteria) ||
           required(formValues.evidence[criteriaId].candidatePhoneNumber)) &&
-        (isRecruiterCriteria(criteriaId, meta.domain.criteria) ||
+        (!isRecruiterCriteria(criteriaId, meta.domain.criteria) ||
           validPhoneNumber(formValues.evidence[criteriaId].candidatePhoneNumber))
     ))
 
@@ -112,7 +110,7 @@ export const requiredBackground = (formValues, meta) =>
     formValues.criteria.every(
       criteriaId =>
         formValues.evidence[criteriaId] &&
-        (!isRecruiterCriteria(criteriaId, meta.domain.criteria) || required(formValues.evidence[criteriaId].background))
+        (isRecruiterCriteria(criteriaId, meta.domain.criteria) || required(formValues.evidence[criteriaId].background))
     ))
 
 export const requiredStartDate = (formValues, meta) =>
@@ -122,7 +120,7 @@ export const requiredStartDate = (formValues, meta) =>
     formValues.criteria.every(
       criteriaId =>
         formValues.evidence[criteriaId] &&
-        (!isRecruiterCriteria(criteriaId, meta.domain.criteria) || required(formValues.evidence[criteriaId].startDate))
+        (isRecruiterCriteria(criteriaId, meta.domain.criteria) || required(formValues.evidence[criteriaId].startDate))
     ))
 
 export const requiredEndDate = (formValues, meta) =>
@@ -132,7 +130,7 @@ export const requiredEndDate = (formValues, meta) =>
     formValues.criteria.every(
       criteriaId =>
         formValues.evidence[criteriaId] &&
-        (!isRecruiterCriteria(criteriaId, meta.domain.criteria) || required(formValues.evidence[criteriaId].endDate))
+        (isRecruiterCriteria(criteriaId, meta.domain.criteria) || required(formValues.evidence[criteriaId].endDate))
     ))
 
 export const validDates = (formValues, meta) =>
@@ -142,13 +140,13 @@ export const validDates = (formValues, meta) =>
     formValues.criteria.some(
       criteriaId =>
         formValues.evidence[criteriaId] &&
-        (!isRecruiterCriteria(criteriaId, meta.domain.criteria) ||
+        (isRecruiterCriteria(criteriaId, meta.domain.criteria) ||
           (!formValues.evidence[criteriaId].startDate || !formValues.evidence[criteriaId].endDate))
     ) ||
     formValues.criteria.every(
       criteriaId =>
         formValues.evidence[criteriaId] &&
-        (!isRecruiterCriteria(criteriaId, meta.domain.criteria) ||
+        (isRecruiterCriteria(criteriaId, meta.domain.criteria) ||
           (formValues.evidence[criteriaId].endDate === 'ongoing' ||
             parseInt(formValues.evidence[criteriaId].startDate, 10) <=
               parseInt(formValues.evidence[criteriaId].endDate, 10)))
