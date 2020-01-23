@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import Textfield from 'shared/form/Textfield'
 import Textarea from 'shared/form/Textarea'
 import formProps from 'shared/form/formPropsSelector'
-import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
+// import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import { required, validPhoneNumber } from 'marketplace/components/validators'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import { rootPath } from 'marketplace/routes'
@@ -422,9 +422,8 @@ class SellerAssessmentHybridEvidenceStage extends Component {
                       <p className={styles.criteriaText}>
                         {getCriteriaName(criteriaId, this.props.meta.domain.criteria)}
                       </p>
-                      {index !== 0 && (
+                      {/* {index !== 0 && (
                         <p>
-                          {/* function that determines the right label message whether it is 1 or 2 */}
                           <CheckboxDetailsField
                             model={`${this.props.model}.evidence[${criteriaId}].sameAsFirst`}
                             id={`client_check_${criteriaId}`}
@@ -437,11 +436,11 @@ class SellerAssessmentHybridEvidenceStage extends Component {
                             messages={{}}
                           />
                         </p>
-                      )}
+                      )} */}
                       <Textfield
                         model={`${this.props.model}.evidence[${criteriaId}].client`}
                         defaultValue={this.props[this.props.model].evidence[criteriaId].client}
-                        disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                        // disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
                         label="Client"
                         name={`client_${criteriaId}`}
                         id={`client_${criteriaId}`}
@@ -460,7 +459,7 @@ class SellerAssessmentHybridEvidenceStage extends Component {
                       <Textfield
                         model={`${this.props.model}.evidence[${criteriaId}].refereeName`}
                         defaultValue={this.props[this.props.model].evidence[criteriaId].refereeName}
-                        disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                        // disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
                         label="Referee's full name"
                         description="We may contact your referee to confirm your involvement in the project."
                         name={`referee_name_${criteriaId}`}
@@ -479,7 +478,7 @@ class SellerAssessmentHybridEvidenceStage extends Component {
                       />
                       <Textfield
                         model={`${this.props.model}.evidence[${criteriaId}].refereeNumber`}
-                        disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                        // disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
                         defaultValue={this.props[this.props.model].evidence[criteriaId].refereeNumber}
                         label="Referee's phone number"
                         description="Please include the area code for landlines."
@@ -504,7 +503,7 @@ class SellerAssessmentHybridEvidenceStage extends Component {
                           <strong>Start of project</strong>
                           <Control.select
                             model={`${this.props.model}.evidence[${criteriaId}].startDate`}
-                            disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                            // disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
                             id={`startDate_${criteriaId}`}
                             name={`startDate_${criteriaId}`}
                             mapProps={{
@@ -531,7 +530,7 @@ class SellerAssessmentHybridEvidenceStage extends Component {
                           <strong>End of project</strong>
                           <Control.select
                             model={`${this.props.model}.evidence[${criteriaId}].endDate`}
-                            disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                            // disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
                             id={`endDate_${criteriaId}`}
                             name={`endDate_${criteriaId}`}
                             mapProps={{
@@ -560,7 +559,7 @@ class SellerAssessmentHybridEvidenceStage extends Component {
                       </div>
                       <Textarea
                         model={`${this.props.model}.evidence[${criteriaId}].background`}
-                        disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                        // disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
                         label="Background"
                         description="Describe the background of the project you worked on."
                         name={`background_${criteriaId}`}
