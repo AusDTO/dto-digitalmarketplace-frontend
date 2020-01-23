@@ -94,9 +94,13 @@ export class WithdrawOpportunity extends Component {
       )
     }
 
-    const requiredReasonMessage = <a href="#reasonToWithdraw">You must enter a reason for withdrawal</a>
-    const overWordLimitMessage = <a href="#reasonToWithdraw">Your reason for withdrawal has exceeded the word limit</a>
-    const requiredAuthorityMessage = (
+    const requiredReasonText = 'You must enter a reason for withdrawal'
+    const requiredReasonLink = <a href="#reasonToWithdraw">{requiredReasonText}</a>
+
+    const overWordLimitText = 'Your reason for withdrawal has exceeded the word limit'
+    const overWordLimitLink = <a href="#reasonToWithdraw">{overWordLimitText}</a>
+
+    const requiredAuthorityLink = (
       <a href="#authorityToWithdraw">Select the checkbox to confirm you have authority to withdraw this opportunity</a>
     )
 
@@ -121,9 +125,9 @@ export class WithdrawOpportunity extends Component {
           <ErrorAlert
             model={model}
             messages={{
-              hasProvidedReason: requiredReasonMessage,
-              isUnderWordLimit: overWordLimitMessage,
-              hasAuthority: requiredAuthorityMessage
+              hasProvidedReason: requiredReasonLink,
+              isUnderWordLimit: overWordLimitLink,
+              hasAuthority: requiredAuthorityLink
             }}
           />
         )}
@@ -146,7 +150,8 @@ export class WithdrawOpportunity extends Component {
             label="Reason for withdrawal"
             key="reasonToWithdraw"
             messages={{
-              required: `You must enter a withdrawal reason`
+              required: requiredReasonText,
+              limitWords: overWordLimitText
             }}
             model={`${model}.reasonToWithdraw`}
             name="reasonToWithdraw"
