@@ -8,6 +8,7 @@ import { AUcheckbox } from '@gov.au/control-input/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
+import { getSingleInvitedSellerName } from 'marketplace/components/helpers'
 import { limitWords, required } from 'marketplace/components/validators'
 import { rootPath } from 'marketplace/routes'
 import formProps from 'shared/form/formPropsSelector'
@@ -69,10 +70,31 @@ export class WithdrawOpportunity extends Component {
     return isUnderWordLimit
   }
 
+  requiredReasonText = 'You must enter a reason for withdrawal'
+  requiredReasonLink = <a href="#reasonToWithdraw">{this.requiredReasonText}</a>
+
+  overWordLimitText = 'Your reason for withdrawal has exceeded the word limit'
+  overWordLimitLink = <a href="#reasonToWithdraw">{this.overWordLimitText}</a>
+
+  requiredAuthorityLink = (
+    <a href="#authorityToWithdraw">Select the checkbox to confirm you have authority to withdraw this opportunity</a>
+  )
+
   render = () => {
     const { brief, isOpenToAll, model, onSubmitFailed, onWithdrawOpportunity, setAuthorityToWithdraw } = this.props
     const { invalidAuthority, invalidReason } = this.state
-    const { hasAuthority, hasProvidedReason, isUnderWordLimit } = this
+    const {
+      hasAuthority,
+      hasProvidedReason,
+      isUnderWordLimit,
+      overWordLimitText,
+      overWordLimitLink,
+      requiredAuthorityLink,
+      requiredReasonLink,
+      requiredReasonText
+    } = this
+
+    const invitedSeller = getSingleInvitedSellerName(brief)
 
     const AuthorityCheckbox = props => {
       const { checked, className } = props
@@ -91,12 +113,6 @@ export class WithdrawOpportunity extends Component {
         />
       )
     }
-
-    const requiredReasonMessage = <a href="#reasonToWithdraw">You must enter a reason for withdrawal</a>
-    const overWordLimitMessage = <a href="#reasonToWithdraw">Your reason for withdrawal has exceeded the word limit</a>
-    const requiredAuthorityMessage = (
-      <a href="#authorityToWithdraw">Select the checkbox to confirm you have authority to withdraw this opportunity</a>
-    )
 
     return (
       <Form
@@ -119,19 +135,17 @@ export class WithdrawOpportunity extends Component {
           <ErrorAlert
             model={model}
             messages={{
-              hasProvidedReason: requiredReasonMessage,
-              isUnderWordLimit: overWordLimitMessage,
-              hasAuthority: requiredAuthorityMessage
+              hasProvidedReason: requiredReasonLink,
+              isUnderWordLimit: overWordLimitLink,
+              hasAuthority: requiredAuthorityLink
             }}
           />
         )}
         <p>Once you select &apos;Withdraw opportunity&apos;:</p>
         <ul>
-          {isOpenToAll ? (
-            <li>we will notify sellers who have drafted or submitted responses to this opportunity</li>
-          ) : (
-            <li>we will notify all sellers that you invited</li>
-          )}
+          {isOpenToAll && <li>we will notify sellers who have drafted or submitted responses to this opportunity</li>}
+          {!isOpenToAll && invitedSeller && <li>we will notify {invitedSeller}</li>}
+          {!isOpenToAll && !invitedSeller && <li>we will notify all invited sellers</li>}
           <li>the opportunity page will display your reason for withdrawal</li>
           <li>you will not be able to reopen the opportunity again</li>
         </ul>
@@ -146,7 +160,8 @@ export class WithdrawOpportunity extends Component {
             label="Reason for withdrawal"
             key="reasonToWithdraw"
             messages={{
-              required: `You must enter a withdrawal reason`
+              required: requiredReasonText,
+              limitWords: overWordLimitText
             }}
             model={`${model}.reasonToWithdraw`}
             name="reasonToWithdraw"
