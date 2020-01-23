@@ -71,7 +71,7 @@ class ProjectView extends React.Component {
                     {partner_links && Object.keys(partner_links).length > 0 && (
                         <p><strong>Partnering with </strong>
                                 {Object.values(partner_links).map((item, i) =>
-                                    <a key={i} className="project__links" href={item.url} rel="external"
+                                    <a key={i} className="project__links" href={item.url} rel="noopener noreferrer"
                                        target="_blank">{item.title}</a>
                                 )}
                             </p>
@@ -153,9 +153,9 @@ class ProjectView extends React.Component {
                                 <ul>
                                     {project_links.map((item, i) => <li key={i}>
                                         {typeof item == 'object' ?
-                                            <a className="project__links" href={item.url} rel="external" target="_blank">{isEmpty(item.title) ? item.url : item.title}</a>
+                                            <a className="project__links" href={item.url} rel="noopener noreferrer" target="_blank">{isEmpty(item.title) ? item.url : item.title}</a>
                                             :
-                                            <a className="project__links" href={item} rel="external" target="_blank">{item}</a>
+                                            <a className="project__links" href={item} rel="noopener noreferrer" target="_blank">{item}</a>
                                         }
                                     </li>)}
                                 </ul>

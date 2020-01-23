@@ -138,10 +138,10 @@ class DomainList extends BaseForm {
         </div>
         <br />
         <p>
-          Your case studies are important for more than meeting our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a>.<br/>
+          Your case studies are important for more than meeting our <a href="/assessment-criteria" target="_blank" rel="noopener noreferrer">assessment criteria</a>.<br/>
           They become part of your seller profile, so think of them as the beginning of your conversation
           with hundreds of buyers and a tool to help them find you through keyword search.
-          For tips on writing a great case study refer to our support <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/115011407668-Adding-case-studies" target="_blank" rel="external">article</a>
+          For tips on writing a great case study refer to our support <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/115011407668-Adding-case-studies" target="_blank" rel="noopener noreferrer">article</a>
         </p>
       </header>)
       if (isNumber(supplierCode)) {
@@ -154,7 +154,7 @@ class DomainList extends BaseForm {
             <p>From 15 July 2019 instead of being assessed through case studies, you must prove your ability against individual criteria based on your previous work.</p>
           </div>
           <br />
-          <p>Case studies are important for showing you meet our <a href="/assessment-criteria" target="_blank" rel="external">assessment criteria</a> for any new
+          <p>Case studies are important for showing you meet our <a href="/assessment-criteria" target="_blank" rel="noopener noreferrer">assessment criteria</a> for any new
             services you wish to offer.</p>
           <p> But they are also much more. Think of them as the beginning of a
             conversation with hundreds of government buyers from all over Australia.

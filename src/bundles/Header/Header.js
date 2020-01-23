@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import AUaccordion from '@gov.au/accordion/lib/js/react.js'
-import logoGovCrest from './Government_crest.svg'
+import logoGovCrest from './Government_crest.js'
 import './Header.css'
 
 class Header extends React.Component {

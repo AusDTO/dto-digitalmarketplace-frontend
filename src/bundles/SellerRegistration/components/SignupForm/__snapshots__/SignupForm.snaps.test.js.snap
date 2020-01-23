@@ -142,7 +142,7 @@ exports[`SignupForm renders 1`] = `
             By creating an account you confirm your acceptance of our
             <a
               href="/terms-of-use"
-              rel="external"
+              rel="noopener noreferrer"
               target="_blank"
             >
                Terms of Use
@@ -308,7 +308,7 @@ exports[`SignupForm renders with form_options 1`] = `
             By creating an account you confirm your acceptance of our
             <a
               href="/terms-of-use"
-              rel="external"
+              rel="noopener noreferrer"
               target="_blank"
             >
                Terms of Use

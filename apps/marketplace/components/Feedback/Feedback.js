@@ -112,7 +112,7 @@ export class Feedback extends React.Component {
                 }}
               />
               <label className="au-control-input__text" htmlFor="contact_for_user_research">
-                You are happy for the Digital Marketplace team to contact you to test new Marketplace designs.
+                I am happy to be contacted about testing new designs
               </label>
             </span>
             <br />

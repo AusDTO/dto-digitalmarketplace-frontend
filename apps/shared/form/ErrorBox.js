@@ -60,8 +60,10 @@ export class ErrorBoxComponent extends React.Component {
                 </li>
               ))
             )}
-          {errorMessage && typeof errorMessage === 'string' && <li key="errorMessage">{errorMessage}</li>}
-          {Array.isArray(errorMessage) && errorMessage.map((err, i) => <li key={`errorMessage${i}`}>{err.message}</li>)}
+          {errorMessage && !Array.isArray(errorMessage) && <li key="errorMessage">{errorMessage}</li>}
+          {errorMessage &&
+            Array.isArray(errorMessage) &&
+            errorMessage.map((err, i) => <li key={`errorMessage${i}`}>{err.message}</li>)}
         </ul>
       </AUpageAlert>
     )
@@ -83,7 +85,7 @@ ErrorBoxComponent.propTypes = {
   ).isRequired,
   form: PropTypes.object,
   title: PropTypes.string,
-  errorMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.array])
+  errorMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.node])
 }
 
 export const mapStateToProps = (state, { model }) => ({
