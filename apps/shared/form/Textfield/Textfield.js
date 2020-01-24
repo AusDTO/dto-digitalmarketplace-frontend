@@ -6,7 +6,6 @@ import CharacterCounter from '../CharacterCounter'
 const TextfieldComponent = props => {
   const {
     className,
-    defaultValue,
     describedBy,
     disabled,
     id,
@@ -36,7 +35,6 @@ const TextfieldComponent = props => {
       <input
         aria-describedby={describedBy}
         className={className}
-        defaultValue={defaultValue}
         disabled={disabled}
         id={id}
         max={max}
@@ -77,7 +75,7 @@ TextfieldComponent.defaultProps = {
   readOnly: false,
   showCharacterCounter: false,
   type: 'text',
-  value: null
+  value: ''
 }
 
 TextfieldComponent.propTypes = {

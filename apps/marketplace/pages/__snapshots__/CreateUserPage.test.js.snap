@@ -49,7 +49,6 @@ exports[`Test suite for CreateUserPage page Because snaphots 1`] = `
                 <input
                   aria-describedby="password-hint"
                   className="au-text-input au-text-input--block"
-                  defaultValue=""
                   disabled={false}
                   id="password"
                   max={null}
@@ -95,7 +94,7 @@ exports[`Test suite for CreateUserPage page Because snaphots 1`] = `
                 </span>
                 <a
                   href="/terms-of-use"
-                  rel="external"
+                  rel="noopener noreferrer"
                   target="_blank"
                 >
                   Terms of Use

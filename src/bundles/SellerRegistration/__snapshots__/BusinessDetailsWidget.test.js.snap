@@ -123,7 +123,7 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
                 You need an Australian Business Number to do business in Australia. 
                 <a
                   href="https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/"
-                  rel="external"
+                  rel="external noopener noreferrer"
                   target="_blank"
                 >
                   Apply for an ABN here.

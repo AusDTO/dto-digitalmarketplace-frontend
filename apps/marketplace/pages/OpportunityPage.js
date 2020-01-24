@@ -86,6 +86,10 @@ class OpportunityPage extends Component {
           briefResponseCount={this.props.briefResponseCount}
           invitedSellerCount={this.props.invitedSellerCount}
           supplierBriefResponseCount={this.props.supplierBriefResponseCount}
+          supplierBriefResponseCountSubmitted={this.props.supplierBriefResponseCountSubmitted}
+          supplierBriefResponseCountDraft={this.props.supplierBriefResponseCountDraft}
+          supplierBriefResponseId={this.props.supplierBriefResponseId}
+          supplierBriefResponseIsDraft={this.props.supplierBriefResponseIsDraft}
           canRespond={this.props.canRespond}
           isAssessedForCategory={this.props.isAssessedForCategory}
           isAssessedForAnyCategory={this.props.isAssessedForAnyCategory}
@@ -123,6 +127,10 @@ const mapResetStateToProps = state => ({
   briefResponseCount: state.brief.briefResponseCount,
   invitedSellerCount: state.brief.invitedSellerCount,
   supplierBriefResponseCount: state.brief.supplierBriefResponseCount,
+  supplierBriefResponseCountSubmitted: state.brief.supplierBriefResponseCountSubmitted,
+  supplierBriefResponseCountDraft: state.brief.supplierBriefResponseCountDraft,
+  supplierBriefResponseId: state.brief.supplierBriefResponseId,
+  supplierBriefResponseIsDraft: state.brief.supplierBriefResponseIsDraft,
   loadBriefSuccess: state.brief.loadBriefSuccess,
   canRespond: state.brief.canRespond,
   isAssessedForCategory: state.brief.isAssessedForCategory,

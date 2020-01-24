@@ -2,3 +2,27 @@
   display: block;
   margin-top: 0.4em;
 }
+
+div.headingArea {
+  display: flex;
+  align-items: flex-start;
+}
+
+div.headingArea > input {
+  background-color: #B70000;
+  border-color: #B70000;
+}
+
+div.headingArea > h1 {
+  flex: 1;
+}
+
+@media (max-width: 991px) {
+  div.headingArea {
+    flex-direction: column-reverse;
+  }
+
+  div.headingArea > input {
+    margin-bottom: 1.5rem;
+  }
+}

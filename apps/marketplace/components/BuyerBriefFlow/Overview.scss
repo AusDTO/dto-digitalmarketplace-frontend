@@ -24,7 +24,6 @@ div.header {
   right: 0;
 
   ul {
-    display: inline-block;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -35,15 +34,14 @@ div.header {
     }
 
     li + li:before {
-      content: "|";
       padding: 0 5px;
     }
   }
 }
 
 div.headerMenuClosingTime {
+  color: #000000;
   display: inline-block;
-  margin-right: 0.75rem;
 }
 
 a.headerMenuDelete, a.headerMenuDelete:hover {
@@ -78,13 +76,33 @@ ul.overviewList {
 @media (max-width: 480px) {
   .headerMenu {
     position: relative;
-
-    .menuList {
-      margin-top: 0.25rem;
-    }
   }
 
   .stageStatus {
     float: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .headerMenu {
+    a {
+      font-size: 1.25rem;
+    }
+
+    li {
+      margin-right: 1rem;
+    }
+
+    .menuList {
+      margin-top: 2rem;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .headerMenu {
+    li + li:before {
+      content: "|";
+    }
   }
 }
