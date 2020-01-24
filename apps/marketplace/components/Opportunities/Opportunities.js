@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ClosedDate from 'shared/ClosedDate'
 import { rootPath } from 'marketplace/routes'
+
+import mainStyles from 'marketplace/main.scss'
 import styles from './Opportunities.scss'
 
 const mapOpenTo = (val, lot) => {
@@ -124,7 +126,11 @@ const Opportunities = props => (
                     {item.location ? item.location.map(v => mapStates(v)).join(', ') : ''}
                   </div>
                   <div className={`col-md-2 col-sm-2 ${styles.cell}`} role="cell" aria-labelledby="header_closing">
-                    <ClosedDate countdown date={item.closed_at} />
+                    {item.status === 'withdrawn' ? (
+                      <span className={mainStyles.darkGrayText}>Withdrawn</span>
+                    ) : (
+                      <ClosedDate countdown date={item.closed_at} />
+                    )}
                   </div>
                   <div
                     className={`col-md-1 col-sm-1 ${styles.cell} ${styles.lastColumn}`}
@@ -171,7 +177,11 @@ const Opportunities = props => (
                     <div className="col-md-9 col-sm-9 col-xs-8">
                       <div>{item.location ? item.location.map(v => mapStates(v)).join(', ') : <span>&nbsp;</span>}</div>
                       <div>
-                        <ClosedDate countdown date={item.closed_at} />
+                        {item.status === 'withdrawn' ? (
+                          <span className={mainStyles.darkGrayText}>Withdrawn</span>
+                        ) : (
+                          <ClosedDate countdown date={item.closed_at} />
+                        )}
                       </div>
                       <div>{item.submissions}</div>
                     </div>
