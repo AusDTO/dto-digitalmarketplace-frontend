@@ -22,7 +22,7 @@ const sellerRateChange = (maxDailyRate, markup) => {
   let totalMax = 0
   const fixMaxDailyRate = parseInt(maxDailyRate, 10)
   const fixMarkUp = parseInt(markup, 10)
-  totalMax = fixMaxDailyRate * (fixMarkUp / 100) + fixMaxDailyRate
+  totalMax = parseFloat(fixMaxDailyRate * (fixMarkUp / 100) + fixMaxDailyRate)
   return totalMax
 }
 
