@@ -9,12 +9,28 @@ import Textfield from 'shared/form/Textfield'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 // import { required } from 'marketplace/components/validators'
 
-export const greaterThanZero = formValues => parseInt(formValues.database_size, 10) > 0
+export const requiredChoice = formValues =>
+  formValues.placingCandidates === 'consultants' ||
+  formValues.placingCandidates === 'hybrid' ||
+  formValues.placingCandidates === 'recruitment'
 
-export const validWholeNumber = formValues => formValues.database_size && /^[0-9]+$/.test(formValues.database_size)
+export const greaterThanZero = formValues =>
+  formValues.placingCandidates === '' ||
+  formValues.placingCandidates === 'consultants' ||
+  (parseInt(formValues.database_size, 10) > 0 &&
+    (formValues.placingCandidates === 'hybrid' || formValues.placingCandidates === 'recruitment'))
+
+export const validWholeNumber = formValues =>
+  formValues.placingCandidates === '' ||
+  formValues.placingCandidates === 'consultants' ||
+  (/^[0-9]+$/.test(formValues.database_size) &&
+    (formValues.placingCandidates === 'hybrid' || formValues.placingCandidates === 'recruitment'))
 
 export const validWholeNumberPlacedCandidates = formValues =>
-  formValues.placed_candidates && /^[0-9]+$/.test(formValues.placed_candidates)
+  formValues.placingCandidates === '' ||
+  formValues.placingCandidates === 'consultants' ||
+  (/^[0-9]+$/.test(formValues.placed_candidates) &&
+    (formValues.placingCandidates === 'hybrid' || formValues.placingCandidates === 'recruitment'))
 
 export const done = formValues =>
   formValues.placingCandidates ||
@@ -29,25 +45,10 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
     model={props.model}
     validators={{
       '': {
-        requiredChoice: formValues =>
-          formValues.placingCandidates === 'consultants' ||
-          formValues.placingCandidates === 'hybrid' ||
-          formValues.placingCandidates === 'recruitment',
-        greaterThanZero: formValues =>
-          formValues.placingCandidates === '' ||
-          formValues.placingCandidates === 'consultants' ||
-          (formValues.database_size &&
-            (formValues.placingCandidates === 'hybrid' || formValues.placingCandidates === 'recruitment')),
-        validWholeNumber: formValues =>
-          formValues.placingCandidates === '' ||
-          formValues.placingCandidates === 'consultants' ||
-          (formValues.database_size &&
-            (formValues.placingCandidates === 'hybrid' || formValues.placingCandidates === 'recruitment')),
-        validWholeNumberPlacedCandidates: formValues =>
-          formValues.placingCandidates === '' ||
-          formValues.placingCandidates === 'consultants' ||
-          (formValues.placed_candidates &&
-            (formValues.placingCandidates === 'hybrid' || formValues.placingCandidates === 'recruitment'))
+        requiredChoice: formValues => requiredChoice(formValues),
+        greaterThanZero: formValues => greaterThanZero(formValues),
+        validWholeNumber: formValues => validWholeNumber(formValues),
+        validWholeNumberPlacedCandidates: formValues => validWholeNumberPlacedCandidates(formValues)
       }
     }}
     onSubmit={props.onSubmit}
@@ -60,7 +61,7 @@ const SellerAssessmentHybridPlacingCandidatesStage = props => (
     <ErrorAlert
       model={props.model}
       messages={{
-        requiredChoice: 'You must select who can respond',
+        requiredChoice: 'You must select the type of candidate you are placing',
         greaterThanZero: 'The size of your candidate database must be greater than zero',
         validWholeNumber: 'The size of your database must be a whole number only (e.g 5000)',
         validWholeNumberPlacedCandidates:
