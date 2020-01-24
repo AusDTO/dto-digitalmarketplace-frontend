@@ -17,7 +17,6 @@ import LoadingButton from 'marketplace/components/LoadingButton/LoadingButton'
 import dmapi from 'marketplace/services/apiClient'
 import { rootPath } from 'marketplace/routes'
 import { escapeQuote } from '../helpers'
-
 import styles from './BriefSpecialistResponseForm2.scss'
 
 const getCandidateName = formModel => {
@@ -101,6 +100,29 @@ const BriefSpecialistResponseForm2 = ({
                   required: 'Surname is required'
                 }}
               />
+              {app.isHybridFlag && (
+                <RadioList
+                  id="candidate"
+                  label={`This candidate is a:`}
+                  name="candidate"
+                  model={`${model}.candidate`}
+                  validators={{
+                    required
+                  }}
+                  options={[
+                    {
+                      label: 'contractor from your recruitment pool',
+                      value: 'recruiter'
+                    },
+                    {
+                      label: 'consultant from your company',
+                      value: 'consultant'
+                    }
+                  ]}
+                  messages={{ required: 'You must select where the candidate is from' }}
+                />
+              )}
+
               <h2 className="au-display-lg">About</h2>
               <Textfield
                 model={`${model}.availability`}

@@ -75,7 +75,13 @@ export const handleLoadEvidenceSuccess = response => ({
     id: response.data.id,
     domainId: response.data.domainId,
     supplierCode: response.data.supplierCode,
+    placingCandidates: response.data.placingCandidates,
     maxDailyRate: response.data.maxDailyRate,
+    markup: response.data.markup,
+    database_size: response.data.database_size,
+    placed_candidates: response.data.placed_candidates,
+    candidateFullName: response.data.candidateFullName,
+    candidatePhoneNumber: response.data.candidatePhoneNumber,
     submittedAt: response.data.submitted_at,
     criteria: response.data.criteria,
     failedCriteria: response.data.failed_criteria,
@@ -131,6 +137,7 @@ export const handleCreateEvidenceSuccess = response => ({
     domainId: response.data.domainId,
     supplierCode: response.data.supplierCode,
     maxDailyRate: response.data.maxDailyRate,
+    markup: response.data.markup,
     submittedAt: response.data.submitted_at,
     criteria: response.data.criteria,
     evidence: response.data.evidence,
@@ -165,7 +172,8 @@ export const handleEvidenceSaveSuccess = response => ({
     id: response.data.id,
     domainId: response.data.domain_id,
     supplierCode: response.data.supplier_code,
-    maxDailyRate: response.data.maxDailyRate
+    maxDailyRate: response.data.maxDailyRate,
+    markup: response.data.markup
   }
 })
 

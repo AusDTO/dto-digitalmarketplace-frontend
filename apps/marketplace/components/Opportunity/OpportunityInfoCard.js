@@ -30,7 +30,6 @@ const OpportunityInfoCard = props => {
     isOpen,
     isOpenToAll,
     isOpenToCategory,
-    isRecruiterOnly,
     loggedIn,
     originalClosedAt,
     rejectedEvidenceId,
@@ -148,6 +147,7 @@ const OpportunityInfoCard = props => {
                 Only approved sellers can apply.
                 {isAwaitingApplicationAssessment && <span> Your application is currently being assessed.</span>}
               </p>
+
               {!isAwaitingApplicationAssessment && (
                 <p>
                   <a href="/sellers/application" className="au-btn au-btn--block">
@@ -157,18 +157,11 @@ const OpportunityInfoCard = props => {
               )}
             </span>
           )}
-          {isOpen && loggedIn && (briefLot === 'atm' && isRecruiterOnly) && hasSignedCurrentAgreement && (
+          {isOpen && loggedIn && briefLot === 'atm' && hasSignedCurrentAgreement && (
             <span>
               <p className={styles.invitedStatus}>
                 Only approved sellers can apply.
                 {isAwaitingApplicationAssessment && <span> Your application is currently being assessed.</span>}
-                {!isAwaitingApplicationAssessment && (
-                  <span>
-                    {' '}
-                    You must edit your profile to indicate you are a consultancy (or both a consultancy and a recruiter)
-                    to be able to apply for this brief.
-                  </span>
-                )}
                 {}
               </p>
               {!isAwaitingApplicationAssessment && (
@@ -184,7 +177,7 @@ const OpportunityInfoCard = props => {
             loggedIn &&
             isApprovedSeller &&
             hasSignedCurrentAgreement &&
-            ((briefLot === 'atm' && !isRecruiterOnly) || ['rfx', 'training2'].includes(briefLot)) &&
+            (briefLot === 'atm' || ['rfx', 'training2'].includes(briefLot)) &&
             (!isOpenToAll && !isOpenToCategory) &&
             !canRespond && (
               <div className={styles.invitedStatus}>
@@ -195,7 +188,7 @@ const OpportunityInfoCard = props => {
             loggedIn &&
             isApprovedSeller &&
             hasSignedCurrentAgreement &&
-            (briefLot === 'atm' && !isRecruiterOnly) &&
+            briefLot === 'atm' &&
             isOpenToCategory &&
             category &&
             !isAssessedForCategory && (
@@ -246,7 +239,6 @@ const OpportunityInfoCard = props => {
             isApprovedSeller &&
             hasSignedCurrentAgreement &&
             briefLot === 'atm' &&
-            !isRecruiterOnly &&
             isOpenToAll &&
             !isAssessedForAnyCategory && (
               <span>
@@ -280,8 +272,7 @@ const OpportunityInfoCard = props => {
           {isOpen &&
             isApprovedSeller &&
             (hasSignedCurrentAgreement || (!hasSignedCurrentAgreement && hasResponded)) &&
-            ((briefLot === 'atm' && !isRecruiterOnly) ||
-              (['rfx', 'training2'].includes(briefLot) && isAssessedForCategory)) &&
+            (briefLot === 'atm' || (['rfx', 'training2'].includes(briefLot) && isAssessedForCategory)) &&
             canRespond && (
               <div>
                 {hasResponded && (
@@ -347,7 +338,6 @@ OpportunityInfoCard.defaultProps = {
   isBuyer: false,
   isApprovedSeller: false,
   isApplicant: false,
-  isRecruiterOnly: false,
   isAwaitingApplicationAssessment: false,
   isAwaitingDomainAssessment: false,
   isBriefOwner: false,
@@ -376,7 +366,6 @@ OpportunityInfoCard.propTypes = {
   isBuyer: PropTypes.bool,
   isApprovedSeller: PropTypes.bool,
   isApplicant: PropTypes.bool,
-  isRecruiterOnly: PropTypes.bool,
   isAwaitingApplicationAssessment: PropTypes.bool,
   isAwaitingDomainAssessment: PropTypes.bool,
   isBriefOwner: PropTypes.bool,

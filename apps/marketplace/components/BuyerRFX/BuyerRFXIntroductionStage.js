@@ -77,13 +77,13 @@ const BuyerRFXIntroductionStage = props => (
     <p>
       <a
         href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000579716"
-        rel="external noopener noreferrer"
+        rel="noopener noreferrer"
         target="_blank"
       >
         View support article
       </a>
       <br />
-      <a href="/contact-us" target="_blank">
+      <a href="/contact-us" rel="noopener noreferrer" target="_blank">
         Contact us
       </a>
     </p>

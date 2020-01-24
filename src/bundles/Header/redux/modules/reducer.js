@@ -14,5 +14,7 @@ export default combineReducers({
   options: (state = {}) => state,
   registerText: (state = {}) => state,
   registerUrl: (state = {}) => state,
-  userType: (state = {}) => state
+  userType: (state = {}) => state,
+  isRecruiterFlag: (state = {}) => state,
+  isHybridFlag: (state = {}) => state,
 })

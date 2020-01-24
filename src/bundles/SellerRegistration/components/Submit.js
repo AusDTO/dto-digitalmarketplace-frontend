@@ -75,8 +75,8 @@ class SubmitStepForm extends BaseForm {
                     <ol styleName="styles.content-list"><li>Review your application and the Master Agreement</li>
                         <li>Complete the declaration</li>
                     </ol>
-                    <a href={agreementPdfUrl} rel="external" target="_blank">Download Master Agreement (PDF 229KB)</a><br/>
-                    <a href={agreementHtmlUrl} target="_blank" rel="external">View Master Agreement in HTML</a><br/><br/>
+                    <a href={agreementPdfUrl} rel="noopener noreferrer" target="_blank">Download Master Agreement (PDF 229KB)</a><br/>
+                    <a href={agreementHtmlUrl} target="_blank" rel="noopener noreferrer">View Master Agreement in HTML</a><br/><br/>
 
                     <iframe title="Master Agreement" styleName="submit.agreement" src={agreementHtmlUrl}/>
                     <br/>
@@ -95,7 +95,7 @@ class SubmitStepForm extends BaseForm {
                     />
                     <label htmlFor="agree">I am <strong>{representative}</strong>, an authorised representative of
                         <strong> {name}</strong> (ABN: {abn}) and I agree to the terms set out in the <a
-                            href={agreementPdfUrl} rel="external" target="_blank">Marketplace Master
+                            href={agreementPdfUrl} rel="noopener noreferrer" target="_blank">Marketplace Master
                             Agreement</a>.</label>
 
                 </div>
@@ -109,8 +109,8 @@ class SubmitStepForm extends BaseForm {
                     <p>Only the authorised representative, <strong>{representative}</strong>, can accept the Master Agreement terms on behalf of <strong>{name}</strong>.</p>
                     <p>Would you like us to send an email now to <strong>{email}</strong> so they can complete the last step?</p>
 
-                  <a href={agreementPdfUrl} rel="external" target="_blank">Download Master Agreement (PDF 229KB)</a><br/><br/>
-                  <a href={agreementHtmlUrl} target="_blank" rel="external">View Master Agreement in HTML</a><br/><br/>
+                  <a href={agreementPdfUrl} rel="noopener noreferrer" target="_blank">Download Master Agreement (PDF 229KB)</a><br/><br/>
+                  <a href={agreementHtmlUrl} target="_blank" rel="noopener noreferrer">View Master Agreement in HTML</a><br/><br/>
 
                 </div>
             )

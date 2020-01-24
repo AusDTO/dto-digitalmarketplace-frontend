@@ -130,12 +130,10 @@ class SellerDashboardPage extends Component {
               </a>
             </div>
           </div>
-          <Header {...this.props} showCategoriesTab={!supplier.is_recruiter_only} />
+          <Header {...this.props} />
           <Switch>
             <Route exact path="(/|/opportunities)" render={() => <Opportunities {...this.props} />} />
-            {!supplier.is_recruiter_only && (
-              <Route exact path="/categories" render={() => <Categories {...this.props} />} />
-            )}
+            <Route exact path="/categories" render={() => <Categories {...this.props} />} />
             <Route path="/team" render={() => <Team {...this.props} removeClicked={this.handleRemoveClick} />} />
             <Route path="/notifications" render={() => <Messages {...this.props} />} />
           </Switch>

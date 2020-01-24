@@ -32,7 +32,9 @@ const initialState = {
   csrfToken: '',
   notificationCount: null,
   agencyId: null,
-  agencyDomains: null
+  agencyDomains: null,
+  isRecruiterFlag: false,
+  isHybridFlag: false
 }
 
 const appReducer = (state = initialState, action) => {
@@ -80,7 +82,9 @@ const appReducer = (state = initialState, action) => {
         isTeamLead: action.newState.isTeamLead,
         isPartOfTeam: action.newState.isPartOfTeam,
         agencyId: action.newState.agencyId,
-        agencyDomains: action.newState.agencyDomains
+        agencyDomains: action.newState.agencyDomains,
+        isRecruiterFlag: action.newState.isRecruiterFlag,
+        isHybridFlag: action.newState.isHybridFlag
       }
     default:
       return state

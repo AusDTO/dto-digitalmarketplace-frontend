@@ -58,13 +58,13 @@ const BuyerSpecialistIntroductionStage = props => (
     <p className={styles.textSpacing}>
       <a
         href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000583195-Hire-a-digital-specialist"
-        rel="external noopener noreferrer"
+        rel="noopener noreferrer"
         target="_blank"
       >
         View support article
       </a>
       <br />
-      <a href="/contact-us" target="_blank">
+      <a href="/contact-us" rel="noopener noreferrer" target="_blank">
         Contact us
       </a>
     </p>

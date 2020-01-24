@@ -24,7 +24,7 @@ exports[`CaseStudyForm renders 1`] = `
          
         <a
           href="/assessment-criteria#"
-          rel="external"
+          rel="noopener noreferrer"
           target="_blank"
         >
           assessment criteria
@@ -32,7 +32,7 @@ exports[`CaseStudyForm renders 1`] = `
         . You can update your case studies before an assessment begins. For more about assessments see the 
         <a
           href="/sellers-guide"
-          rel="external"
+          rel="noopener noreferrer"
           target="_blank"
         >
           seller guide
@@ -614,7 +614,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
          
         <a
           href="/assessment-criteria#"
-          rel="external"
+          rel="noopener noreferrer"
           target="_blank"
         >
           assessment criteria
@@ -622,7 +622,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
         . You can update your case studies before an assessment begins. For more about assessments see the 
         <a
           href="/sellers-guide"
-          rel="external"
+          rel="noopener noreferrer"
           target="_blank"
         >
           seller guide
@@ -1209,7 +1209,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
          
         <a
           href="/assessment-criteria#"
-          rel="external"
+          rel="noopener noreferrer"
           target="_blank"
         >
           assessment criteria
@@ -1217,7 +1217,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
         . You can update your case studies before an assessment begins. For more about assessments see the 
         <a
           href="/sellers-guide"
-          rel="external"
+          rel="noopener noreferrer"
           target="_blank"
         >
           seller guide
@@ -2038,7 +2038,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
          
         <a
           href="/assessment-criteria#"
-          rel="external"
+          rel="noopener noreferrer"
           target="_blank"
         >
           assessment criteria
@@ -2046,7 +2046,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
         . You can update your case studies before an assessment begins. For more about assessments see the 
         <a
           href="/sellers-guide"
-          rel="external"
+          rel="noopener noreferrer"
           target="_blank"
         >
           seller guide
@@ -2635,7 +2635,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
          
         <a
           href="/assessment-criteria#"
-          rel="external"
+          rel="noopener noreferrer"
           target="_blank"
         >
           assessment criteria
@@ -2643,7 +2643,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
         . You can update your case studies before an assessment begins. For more about assessments see the 
         <a
           href="/sellers-guide"
-          rel="external"
+          rel="noopener noreferrer"
           target="_blank"
         >
           seller guide

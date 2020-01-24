@@ -65,6 +65,9 @@ class EvidenceAssessmentHistory extends React.Component {
           )}
           {Object.keys(evidence.evidence).map(criteriaId => (
             <React.Fragment key={criteriaId}>
+               <p>
+                <strong>candidate full name:</strong> {evidence.evidence[criteriaId].candidateFullName}: {evidence.evidence[criteriaId].candidateFullName}
+              </p>
               <p>
                 <strong>Client:</strong> {evidence.evidence[criteriaId].client}
               </p>

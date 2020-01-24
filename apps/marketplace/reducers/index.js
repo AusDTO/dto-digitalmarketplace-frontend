@@ -19,13 +19,20 @@ import teamsDashboard from './teamsDashboardReducers'
 export const SellerAssessmentFormReducer = {
   id: 0,
   domainId: 0,
+  placingCandidates: '',
   maxDailyRate: 0,
+  markup: 0,
+  totalMaximumRate: 0,
+  database_size: 0,
+  placed_candidates: 0,
   criteria: [],
   evidence: {},
   created_at: null
 }
 
 export const SellerAssessmentEvidenceReducer = {
+  candidateFullName: '',
+  candidatePhoneNumber: '',
   client: '',
   refereeName: '',
   refereeNumber: '',

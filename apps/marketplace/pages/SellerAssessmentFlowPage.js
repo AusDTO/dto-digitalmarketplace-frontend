@@ -6,6 +6,8 @@ import formProps from 'shared/form/formPropsSelector'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import ProgressFlow from 'marketplace/components/ProgressFlow/ProgressFlow'
 import SellerAssessmentStages from 'marketplace/components/SellerAssessment/SellerAssessmentStages'
+import SellerAssessmentHybridStages from 'marketplace/components/SellerAssessment/Hybrid/SellerAssessmentHybridStages'
+import SellerAssessmentRecruiterStages from 'marketplace/components/SellerAssessment/Recruiter/SellerAssessmentRecruiterStages'
 import { rootPath } from 'marketplace/routes'
 import { loadDomainData, loadEvidenceData, saveEvidence } from 'marketplace/actions/supplierActions'
 import { setErrorMessage } from 'marketplace/actions/appActions'
@@ -137,6 +139,40 @@ export class SellerAssessmentFlowPage extends Component {
       return <Redirect to={`${rootPath}/seller-assessment/${evidenceId}/completed`} push />
     }
 
+    if (this.props.isHybridFlag) {
+      return (
+        <ProgressFlow
+          model={model}
+          meta={{ domain: this.props.domain, evidence: this.props.evidence }}
+          onStageMount={this.handleStageMount}
+          basename={`${rootPath}/seller-assessment/${evidenceId}`}
+          stages={SellerAssessmentHybridStages}
+          saveModel={this.saveEvidence}
+          showReturnButton={false}
+          showReviewButton={false}
+          publishText="Request assessment"
+          showConfirmationCheckbox={false}
+        />
+      )
+    } else if (!this.props.isHybridFlag) {
+      if (this.props.isRecruiterFlag) {
+        return (
+          <ProgressFlow
+            model={model}
+            meta={{ domain: this.props.domain, evidence: this.props.evidence }}
+            onStageMount={this.handleStageMount}
+            basename={`${rootPath}/seller-assessment/${evidenceId}`}
+            stages={SellerAssessmentRecruiterStages}
+            saveModel={this.saveEvidence}
+            showReturnButton={false}
+            showReviewButton={false}
+            publishText="Request assessment"
+            showConfirmationCheckbox={false}
+          />
+        )
+      }
+    }
+    // hybrid flag is false and is recruiter true
     return (
       <ProgressFlow
         model={model}
@@ -158,7 +194,9 @@ const mapStateToProps = state => ({
   ...formProps(state, model),
   domain: state.domain.domain,
   evidence: state.evidence,
-  errorMessage: state.app.errorMessage
+  errorMessage: state.app.errorMessage,
+  isRecruiterFlag: state.app.isRecruiterFlag,
+  isHybridFlag: state.app.isHybridFlag
 })
 
 const mapDispatchToProps = dispatch => ({

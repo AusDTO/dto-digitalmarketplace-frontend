@@ -66,12 +66,12 @@ const Body = (props) => {
                             {digital_marketplace_panel &&
                             <span><a
                               href="https://www.tenders.gov.au/?event=public.son.view&SONUUID=4E10C3C3-99F9-34E1-61CDE299C229AAEF"
-                              rel="external" target="_blank">SON3413842 Digital Marketplace Panel</a><br/></span>
+                              rel="external noopener noreferrer" target="_blank">SON3413842 Digital Marketplace Panel</a><br/></span>
                             }
 
                             {dsp_panel && <a
                               href="https://www.tenders.gov.au/?event=public.son.view&SONUUID=ACD40659-0FEB-07D3-291A8F6C6FAB4184"
-                              rel="external" target="_blank">SON3364729 Digital Services Professionals</a>}
+                              rel="external noopener noreferrer" target="_blank">SON3364729 Digital Services Professionals</a>}
                           </p>
 
                       </span>
@@ -134,7 +134,7 @@ const Body = (props) => {
                     {validURL(product.website) && (
                       <h3 className="au-display-md" styleName="product-heading">
                         <a  href={product.website} target="_blank"
-                          rel="external">{product.name}</a>
+                          rel="external noopener noreferrer">{product.name}</a>
                       </h3>
                     )}
                     <p className="freetext">
@@ -143,13 +143,13 @@ const Body = (props) => {
                     {validURL(product.pricing) && (
                       <p>
                         <a  href={product.pricing} target="_blank"
-                          rel="external">Product pricing</a>
+                          rel="external noopener noreferrer">Product pricing</a>
                       </p>
                     )}
                     {validURL(product.support) && (
                       <p>
                         <a  href={product.support} target="_blank"
-                          rel="external">Product support</a>
+                          rel="external noopener noreferrer">Product support</a>
                       </p>
                     )}
                   </div>
@@ -208,7 +208,7 @@ const Body = (props) => {
             <div>
               <p styleName="bold-noMargin">ABN</p>
               <p>
-                <a href={`https://abr.business.gov.au/SearchByAbn.aspx?SearchText=${abn}`} rel="external"
+                <a href={`https://abr.business.gov.au/SearchByAbn.aspx?SearchText=${abn}`} rel="external noopener noreferrer"
                   target="_blank">{abn}</a>
               </p>
             </div>

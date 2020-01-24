@@ -71,7 +71,7 @@ const BuyerATMIntroductionStage = props => (
         View support article
       </a>
       <br />
-      <a href="/contact-us" target="_blank">
+      <a href="/contact-us" rel="noopener noreferrer" target="_blank">
         Contact us
       </a>
     </p>
