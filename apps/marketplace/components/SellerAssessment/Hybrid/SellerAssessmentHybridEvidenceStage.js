@@ -83,6 +83,8 @@ export const requiredCandidateFullName = (formValues, meta) =>
   formValues.evidence &&
   Object.keys(formValues.evidence).length > 0 &&
   (formValues.criteria.length === 0 ||
+    // {this.props[this.props.model].criteria.map((criteriaId, index) => (
+    //   {isRecruiterCriteria(criteriaId, this.props.meta.domain.criteria) && (
     formValues.criteria.every(
       criteriaId =>
         formValues.evidence[criteriaId] &&
@@ -349,71 +351,69 @@ class SellerAssessmentHybridEvidenceStage extends Component {
                 </AUheadings>
 
                 {/* Borrowing style from critiera */}
-                <div className={styles.recruiterCriteria}>
-                  {isRecruiterCriteria(criteriaId, this.props.meta.domain.criteria) && (
-                    <React.Fragment>
-                      <p className={styles.criteriaText}>
-                        {getCriteriaName(criteriaId, this.props.meta.domain.criteria)}
-                      </p>
-                      <Textfield
-                        model={`${this.props.model}.evidence[${criteriaId}].candidateFullName`}
-                        defaultValue={this.props[this.props.model].evidence[criteriaId].candidateFullName}
-                        label="Candidate's full name"
-                        description="We may contact your chosen candidate to confirm their experiecne with your organisation."
-                        name={`referee_name_${criteriaId}`}
-                        id={`referee_name_${criteriaId}`}
-                        htmlFor={`referee_name_${criteriaId}`}
-                        maxLength={100}
-                        validators={{
-                          required
-                        }}
-                      />
-                      <Textfield
-                        model={`${this.props.model}.evidence[${criteriaId}].candidatePhoneNumber`}
-                        // disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
-                        defaultValue={this.props[this.props.model].evidence[criteriaId].candidatePhoneNumber}
-                        label="Candidate's phone number"
-                        description="Please include the area code for landlines."
-                        name={`candidate_phone_number_${criteriaId}`}
-                        id={`candidate_phone_number_${criteriaId}`}
-                        htmlFor={`candidate_phone_number_${criteriaId}`}
-                        maxLength={100}
-                        validators={{
-                          required,
-                          validPhoneNumber
-                        }}
-                      />
-                      <p>
-                        {' '}
-                        The evidence for the criterion must:
-                        <ul>
-                          <li>
-                            be demonstrated by your <strong>organisation</strong>{' '}
-                          </li>
-                          <li>
-                            explain the activities <strong> your organisation </strong> was specifically responsible for
-                          </li>
-                          <li>describe the result or outcome of these activities </li>
-                        </ul>
-                      </p>
-                      <Textarea
-                        key={criteriaId}
-                        model={`${this.props.model}.evidence[${criteriaId}].response`}
-                        label={`Evidence for '${getCriteriaName(criteriaId, this.props.meta.domain.criteria)}'`}
-                        name={`criteria_${criteriaId}`}
-                        id={`criteria_${criteriaId}`}
-                        htmlFor={`criteria_${criteriaId}`}
-                        controlProps={{ minimum: minimumWordRequirement, rows: '10' }}
-                        validators={{
-                          required
-                        }}
-                        messages={{
-                          minimumWords: `Your criteria response has not yet reached the ${minimumWordRequirement} word minimum requirement`
-                        }}
-                      />
-                    </React.Fragment>
-                  )}
-                </div>
+                {isRecruiterCriteria(criteriaId, this.props.meta.domain.criteria) && (
+                  <React.Fragment>
+                    <p className={styles.criteriaText}>
+                      {getCriteriaName(criteriaId, this.props.meta.domain.criteria)}
+                    </p>
+                    <Textfield
+                      model={`${this.props.model}.evidence[${criteriaId}].candidateFullName`}
+                      defaultValue={this.props[this.props.model].evidence[criteriaId].candidateFullName}
+                      label="Candidate's full name"
+                      description="We may contact your chosen candidate to confirm their experiecne with your organisation."
+                      name={`referee_name_${criteriaId}`}
+                      id={`referee_name_${criteriaId}`}
+                      htmlFor={`referee_name_${criteriaId}`}
+                      maxLength={100}
+                      validators={{
+                        required
+                      }}
+                    />
+                    <Textfield
+                      model={`${this.props.model}.evidence[${criteriaId}].candidatePhoneNumber`}
+                      // disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                      defaultValue={this.props[this.props.model].evidence[criteriaId].candidatePhoneNumber}
+                      label="Candidate's phone number"
+                      description="Please include the area code for landlines."
+                      name={`candidate_phone_number_${criteriaId}`}
+                      id={`candidate_phone_number_${criteriaId}`}
+                      htmlFor={`candidate_phone_number_${criteriaId}`}
+                      maxLength={100}
+                      validators={{
+                        required,
+                        validPhoneNumber
+                      }}
+                    />
+                    <p>
+                      {' '}
+                      The evidence for the criterion must:
+                      <ul>
+                        <li>
+                          be demonstrated by your <strong>organisation</strong>{' '}
+                        </li>
+                        <li>
+                          explain the activities <strong> your organisation </strong> was specifically responsible for
+                        </li>
+                        <li>describe the result or outcome of these activities </li>
+                      </ul>
+                    </p>
+                    <Textarea
+                      key={criteriaId}
+                      model={`${this.props.model}.evidence[${criteriaId}].response`}
+                      label={`Evidence for '${getCriteriaName(criteriaId, this.props.meta.domain.criteria)}'`}
+                      name={`criteria_${criteriaId}`}
+                      id={`criteria_${criteriaId}`}
+                      htmlFor={`criteria_${criteriaId}`}
+                      controlProps={{ minimum: minimumWordRequirement, rows: '10' }}
+                      validators={{
+                        required
+                      }}
+                      messages={{
+                        minimumWords: `Your criteria response has not yet reached the ${minimumWordRequirement} word minimum requirement`
+                      }}
+                    />
+                  </React.Fragment>
+                )}
 
                 {!isRecruiterCriteria(criteriaId, this.props.meta.domain.criteria) && (
                   <React.Fragment>
@@ -422,9 +422,9 @@ class SellerAssessmentHybridEvidenceStage extends Component {
                       <p className={styles.criteriaText}>
                         {getCriteriaName(criteriaId, this.props.meta.domain.criteria)}
                       </p>
-                      {/* {index !== 0 && (
+                      {index !== 0 && (
                         <p>
-                          <CheckboxDetailsField
+                          {/* <CheckboxDetailsField
                             model={`${this.props.model}.evidence[${criteriaId}].sameAsFirst`}
                             id={`client_check_${criteriaId}`}
                             name={`client_check_${criteriaId}`}
@@ -434,9 +434,9 @@ class SellerAssessmentHybridEvidenceStage extends Component {
                             detailsModel={this.props.model}
                             validators={{}}
                             messages={{}}
-                          />
+                          /> */}
                         </p>
-                      )} */}
+                      )}
                       <Textfield
                         model={`${this.props.model}.evidence[${criteriaId}].client`}
                         defaultValue={this.props[this.props.model].evidence[criteriaId].client}
