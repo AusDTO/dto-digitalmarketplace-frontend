@@ -19,13 +19,46 @@ const BuyerATMIntroductionStage = props => (
     <AUheadings level="2" size="lg">
       Before you start
     </AUheadings>
-    <p>
-      Download the{' '}
-      <a href="/api/2/r/ask-market-questions-template.docx" rel="noopener noreferrer" target="_blank">
-        questions template (DOC 52KB)
-      </a>{' '}
-      to prepare offline before publishing.
-    </p>
+    <ul>
+      <li>
+        Download the{' '}
+        <a href="/api/2/r/ask-market-questions-template.docx" rel="noopener noreferrer" target="_blank">
+          questions template (DOC 52KB)
+        </a>{' '}
+        to prepare offline before publishing.
+      </li>
+      <li>
+        Read the{' '}
+        <a
+          href="https://www.dta.gov.au/help-and-advice/ict-procurement/digital-sourcing-framework-ict-procurement/digital-sourcing-policies"
+          rel="external noopener noreferrer"
+          target="_blank"
+        >
+          Digital Sourcing Framework&apos;s mandatory policies
+        </a>{' '}
+        because they may apply to you. To keep a record of your compliance, complete and save your:
+        <ul>
+          <li>
+            <a
+              href="https://ictprocurement.service-now.com/policy?id=consider_first"
+              rel="external noopener noreferrer"
+              target="_blank"
+            >
+              Consider First Policy document
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://ictprocurement.service-now.com/policy?id=fair_criteria"
+              rel="external noopener noreferrer"
+              target="_blank"
+            >
+              Fair Criteria Checklist
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
     <AUheadings level="2" size="lg">
       Getting help
     </AUheadings>
