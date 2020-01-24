@@ -6,15 +6,30 @@ import styles from '../../main.scss'
 const WithdrawnOpportunityMessageBody = props => {
   const { reason } = props
 
+  // Match white space characters except for spaces
+  const paragraphs = reason.split(/[^\S ]+/)
+
   return (
     <React.Fragment>
       <p className={styles.fontSizeLg}>This opportunity has been withdrawn.</p>
+      <br />
       {reason && (
-        <p>
-          <span className={styles.bold}>Reason for withdrawal:</span>
-          <br />
-          {reason}
-        </p>
+        <div>
+          <p className={styles.bold}>Reason for withdrawal:</p>
+          {paragraphs.map((paragraph, index) => {
+            let paragraphBreak = <br />
+            if (index === paragraphs.length - 1) {
+              paragraphBreak = null
+            }
+
+            return (
+              <React.Fragment key={paragraph}>
+                <p className={styles.noMarginTop}>{paragraph}</p>
+                {paragraphBreak}
+              </React.Fragment>
+            )
+          })}
+        </div>
       )}
     </React.Fragment>
   )
@@ -25,10 +40,12 @@ const WithdrawnOpportunityMessage = props => {
 
   return (
     <React.Fragment>
-      <div className={`col-xs-12 ${styles.red} ${styles.hideMobile}`}>
+      <div className={`col-xs-12 ${styles.infoCardBody} ${styles.red} ${styles.hideMobile}`}>
         <WithdrawnOpportunityMessageBody reason={reason} />
       </div>
-      <div className={`${styles.paddingBottom2} ${styles.greyBorderBottom1} ${styles.red} ${styles.hideDesktop}`}>
+      <div
+        className={`${styles.infoCardBody} ${styles.paddingBottom2} ${styles.greyBorderBottom1} ${styles.red} ${styles.hideDesktop}`}
+      >
         <WithdrawnOpportunityMessageBody reason={reason} />
       </div>
     </React.Fragment>

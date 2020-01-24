@@ -20,7 +20,7 @@ const WithdrawnOpportunity = props => {
     </span>
   )
 
-  const SingleInvitedSellerMessage = () => (
+  const OpenToOneMessage = () => (
     <span>
       The reason for withdrawal is now displayed on the{' '}
       <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>opportunity page</a> and {invitedSeller} has
@@ -28,7 +28,7 @@ const WithdrawnOpportunity = props => {
     </span>
   )
 
-  const AllInvitedSellersMessage = () => (
+  const OpenToSomeMessage = () => (
     <span>
       The reason for withdrawal is now displayed on the{' '}
       <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>opportunity page</a>. Invited sellers have
@@ -47,8 +47,8 @@ const WithdrawnOpportunity = props => {
         <div className={styles.marginTop2}>
           <p className={styles.noMaxWidth}>
             {isOpenToAll && <OpenToAllMessage />}
-            {!isOpenToAll && invitedSeller && <SingleInvitedSellerMessage />}
-            {!isOpenToAll && !invitedSeller && <AllInvitedSellersMessage />}
+            {!isOpenToAll && invitedSeller && <OpenToOneMessage />}
+            {!isOpenToAll && !invitedSeller && <OpenToSomeMessage />}
           </p>
         </div>
       </AUpageAlert>
