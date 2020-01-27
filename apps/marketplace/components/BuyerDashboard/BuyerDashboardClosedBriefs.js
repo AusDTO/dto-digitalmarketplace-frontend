@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import format from 'date-fns/format'
-import BuyerDashboardBriefTable from './BuyerDashboardBriefTable'
 
 import mainStyles from 'marketplace/main.scss'
+
+import BuyerDashboardBriefTable from './BuyerDashboardBriefTable'
+
 import styles from './BuyerDashboard.scss'
 
 const BuyerDashboardClosedBriefs = props => (
