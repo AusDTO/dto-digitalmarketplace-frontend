@@ -42,7 +42,7 @@ export class AppChanges extends Component {
           {
             unassessedCaseStudies.map((study, i) => {
               return <li key={i}>
-                Case study <a href={`/admin/applications/case-study/${appID}/${study.uuid}`} target="_blank" rel="external"><b>{study.title}</b></a> was added</li>
+                Case study <a href={`/admin/applications/case-study/${appID}/${study.uuid}`} target="_blank" rel="noopener noreferrer"><b>{study.title}</b></a> was added</li>
             })
           }
         </ul>
@@ -59,10 +59,10 @@ export class AppChanges extends Component {
         )}
         {supplierCode && <div>
           <div styleName='admin-profile-link'>
-            <a href={`https://marketplace.service.gov.au/supplier/${supplierCode}`} target="_blank" rel="external">
+            <a href={`https://marketplace.service.gov.au/supplier/${supplierCode}`} target="_blank" rel="noopener noreferrer">
               Live Supplier Profile
             </a>
-            <a href={`/admin/applications/${appID}/diff`} target="_blank" rel="external">
+            <a href={`/admin/applications/${appID}/diff`} target="_blank" rel="noopener noreferrer">
               Differences
             </a>
           </div>

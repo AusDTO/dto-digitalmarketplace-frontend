@@ -111,7 +111,7 @@ class SignupForm extends BaseForm {
               <p>
                 The Digital Marketplace encountered an error trying to send your signup email.
                 Please try again later
-                or <a href='/contact-us' target="_blank" rel="external"> contact
+                or <a href='/contact-us' target="_blank" rel="noopener noreferrer"> contact
                 us </a> for assistance.
               </p>
             </li>
@@ -199,7 +199,7 @@ class SignupForm extends BaseForm {
             <p>
               If you don’t receive the email within the next 5 minutes or so, check to see if
               it’s been classified as spam or
-              <a href='/contact-us' target="_blank" rel="external"> contact us </a> for assistance.
+              <a href='/contact-us' target="_blank" rel="noopener noreferrer"> contact us </a> for assistance.
             </p>
           </article>
         </div>
@@ -325,7 +325,7 @@ class SignupForm extends BaseForm {
               <p>
                 <small>
                   By creating an account you confirm your acceptance of our
-                  <a href="/terms-of-use" target="_blank" rel="external"> Terms of Use</a>.
+                  <a href="/terms-of-use" target="_blank" rel="noopener noreferrer"> Terms of Use</a>.
                 </small>
               </p>
               <input type="submit" value='Create your account'/>

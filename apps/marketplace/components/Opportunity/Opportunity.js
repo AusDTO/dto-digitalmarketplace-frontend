@@ -138,8 +138,11 @@ const Opportunity = props => {
     isTeamLead,
     teams
   } = props
+
   const brief = { ...defaultBriefProps, ...props.brief }
   const category = getBriefCategory(domains, brief.sellerCategory)
+  const originalClosedAt = brief.originalClosedAt ? brief.originalClosedAt : null
+
   if (brief.status === 'draft') {
     if (
       !(
@@ -188,7 +191,7 @@ const Opportunity = props => {
               </div>
               {getQuestionsCloseDate(brief) && (
                 <div className="col-xs-12 col-sm-8">
-                  {`${format(getQuestionsCloseDate(brief), 'ha, dddd D MMMM YYYY')}`}
+                  {`${format(getQuestionsCloseDate(brief), 'dddd D MMMM YYYY')} at 6pm (in Canberra)`}
                 </div>
               )}
             </div>
@@ -197,7 +200,9 @@ const Opportunity = props => {
                 <strong>Application closing date</strong>
               </div>
               {getClosingTime(brief) && (
-                <div className="col-xs-12 col-sm-8">{`${format(getClosingTime(brief), 'ha, dddd D MMMM YYYY')}`}</div>
+                <div className="col-xs-12 col-sm-8">
+                  {`${format(getClosingTime(brief), 'dddd D MMMM YYYY')} at 6pm (in Canberra)`}
+                </div>
               )}
             </div>
             <div className="row">
@@ -620,6 +625,7 @@ const Opportunity = props => {
               hasSupplierErrors={hasSupplierErrors}
               hasSignedCurrentAgreement={hasSignedCurrentAgreement}
               supplierCode={supplierCode}
+              originalClosedAt={originalClosedAt}
             />
           ) : (
             <OpportunityInfoCard
@@ -656,6 +662,7 @@ const Opportunity = props => {
               sellerCategory={brief.sellerCategory}
               hasSignedCurrentAgreement={hasSignedCurrentAgreement}
               supplierCode={supplierCode}
+              originalClosedAt={originalClosedAt}
             />
           )}
         </div>
@@ -742,7 +749,8 @@ Opportunity.propTypes = {
     essentialRequirements: PropTypes.array,
     includeWeightingsNiceToHave: PropTypes.bool,
     niceToHaveRequirements: PropTypes.array,
-    numberOfSuppliers: PropTypes.string
+    numberOfSuppliers: PropTypes.string,
+    originalClosedAt: PropTypes.string
   }),
   domains: PropTypes.array,
   briefResponseCount: PropTypes.number,
