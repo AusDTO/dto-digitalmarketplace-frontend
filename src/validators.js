@@ -108,6 +108,14 @@ export const validLinks = (val) => {
   return val.filter(v => validLink(v)).length === val.length;
 };
 
+export const notPrivateLinkedIn = (val) => {
+  if (!val) {
+      return true;
+  }
+
+  return !val.includes('/company-beta')
+}
+
 /**
  * This will only begin to validate if the values passed in contain values
  * If one of the values contains content it turn this field into required
