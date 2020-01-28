@@ -73,12 +73,27 @@ const SellerAssessmentRateStage = props => (
         />
 
         <div className={styles.maxDailyRate} />
+        <h5> Maximum daily rate (excluding mark-up)</h5>
+        <p>
+          This rate must be based on a person who demonstrates skills equivalnet to
+          <a
+            href="https://www.sfia-online.org/en/framework/sfia-7/busskills/level-5"
+            target="_blank"
+            rel="external noopener noreferrer"
+          >
+            SFIA level 5
+          </a>
+        </p>
         <Textfield
           model={`${props.model}.maxDailyRate`}
           prefix={`$`}
           postfix={'including GST'}
-          label="Maximum daily rate (excluding mark-up)"
-          description={`This rate must be based on a person who demonstrates skills equivalnet to  `}
+          // label="Maximum daily rate (excluding mark-up)"
+          // description={`This rate must be based on a person who demonstrates skills equivalnet to`}
+
+          // href="https://www.sfia-online.org/en/framework/sfia-7/busskills/level-5"
+          // target="_blank"
+          // rel="external noopener noreferrer"
           name="maxDailyRate"
           id="maxDailyRate"
           htmlFor="maxDailyRate"
