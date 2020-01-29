@@ -7,7 +7,6 @@ import formProps from 'shared/form/formPropsSelector'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import styles from '../Hybrid/SellerAssessmentMaximumRate.scss'
-import style from '../../Brief/BriefSpecialistResponseForm2.scss'
 
 const maxDailyRateLimit = 99999
 
@@ -21,8 +20,8 @@ export const validWholeNumberMarkup = formValues => formValues.markup && /^[0-9]
 
 const sellerRateChange = (maxDailyRate, markup) => {
   let totalMax = 0
-  let fixMaxDailyRate = parseInt(maxDailyRate, 10)
-  let fixMarkUp = parseInt(markup, 10)
+  const fixMaxDailyRate = parseInt(maxDailyRate, 10)
+  const fixMarkUp = parseInt(markup, 10)
   totalMax = fixMaxDailyRate * (fixMarkUp / 100) + fixMaxDailyRate
   return totalMax
 }
@@ -38,16 +37,8 @@ export const done = formValues =>
     greaterThanZeroMarkup(formValues) &&
     validWholeNumberMarkup(formValues) &&
     formValues.totalMaximumRate)
-  
-  
-const SellerAssessmentRateStage = props => (
 
-  //   const SellerAssessmentRateStage: {
-  //     ({  onRateChange2 }: 
-  //       {
-  //       onRateChange2: any;
-  //     })
-  // }
+const SellerAssessmentRateStage = props => (
   <Form
     model={props.model}
     validators={{
@@ -92,8 +83,6 @@ const SellerAssessmentRateStage = props => (
           id="maxDailyRate"
           htmlFor="maxDailyRate"
           defaultValue={props[props.model].maxDailyRate}
-          onChange={data => props.onRateChange2('totalMaximumRate', data.target.value, props[props.model].markup)}
-          // onChange={sellerRateChange(maxDailyRate, markup)}
         />
         <Textfield
           model={`${props.model}.markup`}
@@ -104,27 +93,18 @@ const SellerAssessmentRateStage = props => (
           id="markup"
           htmlFor="markup"
           defaultValue={props[props.model].markup}
-          onChange={data => props.onRateChange2('totalMaximumRate', props[props.model].maxDailyRate, data.target.value)}
         />
-       
 
-        <span>{sellerRateChange(props[props.model].maxDailyRate,props[props.model].markup)} </span>
-        <Textfield
-          model={`${props.model}.totalMaximumRate`}
-          name="totalMaximumRate"
-          id="totalMaximumRate"
-          defaultValue={props[props.model].totalMaximumRate}
-          htmlFor="dayRate"
-          label="Total Maximum Rate"
-          description={`The threshold for ${props.meta.domain.name} is $${props.meta.domain.priceMaximum}. If your total maximum rate is above this threshold, you will be asked to meet more criteria to prove you offer value for money.`}
-          className={style.readOnly}
-          readOnly
-          // prefix={'$'}
-        />
+        <h5>Total Maximum Rate</h5>
+        <p>
+          The threshold for {props.meta.domain.name} is ${props.meta.domain.priceMaximum}. If your total maximum rate is
+          above this threshold, you will be asked to meet more criteria to prove you offer value for money.
+        </p>
+        <span>${sellerRateChange(props[props.model].maxDailyRate, props[props.model].markup)} </span>
       </div>
     )}
 
-    {/* Only see when consultant is picked in the placing candidates stage */}
+    {/* Only see this when consultant is picked in the placing candidates stage */}
     {props[props.model].placingCandidates === 'consultants' && (
       <div>
         <ErrorAlert
@@ -154,8 +134,7 @@ const SellerAssessmentRateStage = props => (
 
 SellerAssessmentRateStage.defaultProps = {
   onSubmit: () => {},
-  onSubmitFailed: () => {},
-  onRateChange2: () => null
+  onSubmitFailed: () => {}
 }
 
 SellerAssessmentRateStage.propTypes = {
@@ -163,8 +142,7 @@ SellerAssessmentRateStage.propTypes = {
   formButtons: PropTypes.node.isRequired,
   meta: PropTypes.object.isRequired,
   onSubmit: PropTypes.func,
-  onSubmitFailed: PropTypes.func,
-  onRateChange2: PropTypes.func
+  onSubmitFailed: PropTypes.func
 }
 
 const mapStateToProps = (state, props) => ({
