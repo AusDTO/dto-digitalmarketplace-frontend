@@ -281,16 +281,16 @@ class SellerAssessmentHybridEvidenceStage extends Component {
         model={this.props.model}
         validators={{
           '': {
-            // requiredCandidateFullName: formValues => requiredCandidateFullName(formValues),
-            // requiredCandiatePhoneNumber: formValues => requiredCandidatePhoneNumber(formValues),
-            // requiredClient: formValues => requiredClient(formValues),
-            // requiredRefereeName: formValues => requiredRefereeName(formValues),
-            // requiredRefereeNumber: formValues => requiredRefereeNumber(formValues),
-            // requiredBackground: formValues => requiredBackground(formValues),
-            // requiredStartDate: formValues => requiredStartDate(formValues),
-            // requiredEndDate: formValues => requiredEndDate(formValues),
-            // validDates: formValues => validDates(formValues),
-            // requiredEvidence: formValues => requiredEvidence(formValues)
+            // requiredCandidateFullName: formValues => requiredCandidateFullName(formValues, this.props.meta),
+            // requiredCandiatePhoneNumber: formValues => requiredCandidatePhoneNumber(formValues, this.props.meta),
+            requiredClient: formValues => requiredClient(formValues, this.props.meta),
+            requiredRefereeName: formValues => requiredRefereeName(formValues, this.props.meta),
+            requiredRefereeNumber: formValues => requiredRefereeNumber(formValues, this.props.meta),
+            requiredBackground: formValues => requiredBackground(formValues, this.props.meta),
+            requiredStartDate: formValues => requiredStartDate(formValues, this.props.meta),
+            requiredEndDate: formValues => requiredEndDate(formValues, this.props.meta),
+            validDates: formValues => validDates(formValues, this.props.meta),
+            requiredEvidence: formValues => requiredEvidence(formValues)
           }
         }}
         onSubmit={this.props.onSubmit}
