@@ -35,8 +35,7 @@ export const done = formValues =>
   ((formValues.placingCandidates === 'recruitment' || formValues.placingCandidates === 'hybrid') &&
     formValues.markup &&
     greaterThanZeroMarkup(formValues) &&
-    validWholeNumberMarkup(formValues) &&
-    formValues.totalMaximumRate)
+    validWholeNumberMarkup(formValues))
 
 const SellerAssessmentRateStage = props => (
   <Form
