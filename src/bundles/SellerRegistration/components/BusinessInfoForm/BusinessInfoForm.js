@@ -52,6 +52,12 @@ class BusinessInfoForm extends BaseForm {
                           component={SubmitForm}
                           onCustomSubmit={onSubmit}
                           onSubmitFailed={onSubmitFailed}
+                          validators={{
+                            '': {
+                                smallEnoughForSME: formValues =>
+                                    !formValues.seller_type.sme || formValues.number_of_employees !== '200+'
+                            }
+                          }}
                     >
                         {csrf_token && (
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
@@ -167,6 +173,13 @@ class BusinessInfoForm extends BaseForm {
                                 <p>Your business aims to disrupt an established market using technology. It is not listed
                                     on any stock exchange and is less than 5 years old.</p>
                             </label>
+                            <StatefulError
+                                model={model}
+                                id="sme"
+                                messages={{
+                                    smallEnoughForSME: 'Your company has more than 200 employees and does not qualify as an SME'
+                                }}
+                            />
                             <Control.checkbox
                                 model={`${model}.seller_type.sme`}
                                 id="sme"
