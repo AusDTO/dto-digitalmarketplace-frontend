@@ -22,7 +22,7 @@ const sellerRateChange = (maxDailyRate, markup) => {
   let totalMax = 0
   const fixMaxDailyRate = parseInt(maxDailyRate, 10)
   const fixMarkUp = parseInt(markup, 10)
-  totalMax = parseFloat(fixMaxDailyRate * (fixMarkUp / 100) + fixMaxDailyRate)
+  totalMax = fixMaxDailyRate * (fixMarkUp / 100) + fixMaxDailyRate
   return totalMax
 }
 
@@ -35,8 +35,7 @@ export const done = formValues =>
   ((formValues.placingCandidates === 'recruitment' || formValues.placingCandidates === 'hybrid') &&
     formValues.markup &&
     greaterThanZeroMarkup(formValues) &&
-    validWholeNumberMarkup(formValues) &&
-    formValues.totalMaximumRate)
+    validWholeNumberMarkup(formValues))
 
 const SellerAssessmentRateStage = props => (
   <Form
@@ -83,7 +82,6 @@ const SellerAssessmentRateStage = props => (
           id="maxDailyRate"
           htmlFor="maxDailyRate"
           defaultValue={props[props.model].maxDailyRate}
-          // onChange={sellerRateChange(maxDailyRate, markup)}
         />
         <Textfield
           model={`${props.model}.markup`}
@@ -94,30 +92,18 @@ const SellerAssessmentRateStage = props => (
           id="markup"
           htmlFor="markup"
           defaultValue={props[props.model].markup}
-          // validators={{
-          //   required
-          // }}
-          // messages={{
-          //   required: 'Maximum mark-up is required'
-          // }}
         />
-        <Textfield
-          model={`${props.model}.totalMaximumRate`}
-          label="Total maximum rate"
-          description={`The threshold for ${props.meta.domain.name} is $${props.meta.domain.priceMaximum}. If your total maximum rate is above this threshold, you will be asked to meet more criteria to prove you offer value for money.`}
-          name="totalMaximumRate"
-          id="totalMaximumRate"
-          htmlFor="totalMaximumRate"
-          defaultValue={
-            sellerRateChange(props[props.model].maxDailyRate, props[props.model].markup) ||
-            props[props.model].totalMaximumRate
-          }
-          readOnly
-        />
+
+        <h5>Total Maximum Rate</h5>
+        <p>
+          The threshold for {props.meta.domain.name} is ${props.meta.domain.priceMaximum}. If your total maximum rate is
+          above this threshold, you will be asked to meet more criteria to prove you offer value for money.
+        </p>
+        <span>${sellerRateChange(props[props.model].maxDailyRate, props[props.model].markup)} </span>
       </div>
     )}
 
-    {/* Only see when consultant is picked in the placing candidates stage */}
+    {/* Only see this when consultant is picked in the placing candidates stage */}
     {props[props.model].placingCandidates === 'consultants' && (
       <div>
         <ErrorAlert

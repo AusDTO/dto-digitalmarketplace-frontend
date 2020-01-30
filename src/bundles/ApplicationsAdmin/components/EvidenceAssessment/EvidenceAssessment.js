@@ -195,15 +195,11 @@ class EvidenceAssessment extends React.Component {
           )}
           {Object.keys(evidence.data.evidence).map(criteriaId => (
             <React.Fragment key={criteriaId}>
-              {/* Need to change this react fragment so that it filters and displays the right fields depending on the criteria (recruiter or consultant) */}
-              <p>
+
+            {!evidence.data.evidence[criteriaId].candidateFullName && (
+              <div>
+                <p>
                 <strong>Client:</strong> {evidence.data.evidence[criteriaId].client}
-              </p>
-              <p>
-                <strong>CandidateName</strong> {evidence.data.evidence[criteriaId].candidateFullName}: {evidence.data.evidence[criteriaId].candidatePhoneNumber}
-              </p>
-              <p>
-                <strong>Candidate Phone Number:</strong>{evidence.data.evidence[criteriaId].candidatePhoneNumber}
               </p>
               <p>
                 <strong>Date:</strong> {evidence.data.evidence[criteriaId].startDate} - {evidence.data.evidence[criteriaId].endDate}
@@ -215,6 +211,19 @@ class EvidenceAssessment extends React.Component {
                 <strong>Background:</strong>
               </p>
               <p styleName="reviewText">{evidence.data.evidence[criteriaId].background}</p>
+              </div>
+            )}
+            {/* This will only show if recruiter criteria has been selected */}
+            {evidence.data.evidence[criteriaId].candidateFullName && (
+                <div> 
+                  <p>
+                <strong>CandidateName</strong> {evidence.data.evidence[criteriaId].candidateFullName}: {evidence.data.evidence[criteriaId].candidatePhoneNumber}
+              </p>
+              <p>
+                <strong>Candidate Phone Number:</strong>{evidence.data.evidence[criteriaId].candidatePhoneNumber}
+              </p>
+                </div>
+              )}
               <p>
                 <strong>{this.getCriteriaName(criteriaId)}</strong>
               </p>

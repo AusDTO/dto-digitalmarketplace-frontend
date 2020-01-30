@@ -22,7 +22,7 @@ export const SellerAssessmentFormReducer = {
   placingCandidates: '',
   maxDailyRate: 0,
   markup: 0,
-  totalMaximumRate: 0,
+  // totalMaximumRate: 0,
   database_size: 0,
   placed_candidates: 0,
   criteria: [],
