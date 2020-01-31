@@ -25,8 +25,10 @@ const SellerAssessmentIntroductionStage = props => (
       <br />
       <br />
       <strong>This person may be:</strong>
-      <li>a consultant from your company</li>
-      <li>a contractor from your recruitment pool</li>
+      <ul>
+        <li>a consultant from your company</li>
+        <li>a contractor from your recruitment pool</li>
+      </ul>
       <br />
       Please note: The time the assessment team takes to assess your criteria is dependent on volume, seasonal peaks,
       complex cases and incomplete submissions. We will endeavour to assess your criteria in a reasonable timeframe.
