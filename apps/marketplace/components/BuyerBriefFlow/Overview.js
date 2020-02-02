@@ -71,7 +71,7 @@ class Overview extends Component {
       return text
     }
 
-    if (isPublished && isClosed) {
+    if (brief.status === 'withdrawn' || (isPublished && isClosed)) {
       return (
         <span>
           <Tick className={styles.tick} colour="#17788D" />
