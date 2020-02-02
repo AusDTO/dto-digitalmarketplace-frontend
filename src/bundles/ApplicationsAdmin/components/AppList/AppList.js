@@ -131,7 +131,7 @@ class AppList extends Component {
                 <td>{a.status}</td>
                 <td>
                   {a.tasks && a.tasks.subtasks.map((t, i) =>
-                    <a target="_blank" rel="external" styleName={t.status} key={t.key} href={t.link}>{t.summary}</a>
+                    <a target="_blank" rel="noopener noreferrer" styleName={t.status} key={t.key} href={t.link}>{t.summary}</a>
                   )}
                 </td>
                 <td>

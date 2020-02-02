@@ -243,7 +243,7 @@ const BuyerSpecialistResponseFormatsStage = props => (
       topRightComponent={
         <a
           href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476-Panel-categories-and-rates"
-          rel="external noopener noreferrer"
+          rel="noopener noreferrer"
           target="_blank"
         >
           View market rates

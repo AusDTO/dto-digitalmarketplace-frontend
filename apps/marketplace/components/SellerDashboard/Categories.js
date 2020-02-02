@@ -36,7 +36,7 @@ export class Categories extends Component {
     <React.Fragment>
       <a
         target="_blank"
-        rel="external noopener noreferrer"
+        rel="noopener noreferrer"
         href={`https://marketplace1.zendesk.com/hc/en-gb/articles/333757011655-Assessment-criteria${categoryIdToHash(
           categoryId
         )}`}
@@ -46,7 +46,7 @@ export class Categories extends Component {
       </a>
       <a
         target="_blank"
-        rel="external noopener noreferrer"
+        rel="noopener noreferrer"
         href={`https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476${categoryIdToHash(categoryId)}`}
         className={styles.marginRight1}
       >
