@@ -81,11 +81,13 @@ class CloseOpportunitySuccessPage extends Component {
       hasFocused = false
       return (
         <ErrorBoxComponent
-          title="Opportunity has not been closed"
+          title="This opportunity cannot be closed"
           errorMessage={
             <span>
-              Please <a href={`${rootPath}/brief/${brief.id}/overview/${brief.lot}`}>return to the overview page</a> to
-              close this opportunity.
+              This could be because the opportunity has already been closed or your invited seller has not completed
+              their response. Please{' '}
+              <a href={`${rootPath}/brief/${brief.id}/overview/${brief.lot}`}>return to the overview page</a> to check
+              or contact us if you have any issues.
             </span>
           }
           setFocus={setFocus}

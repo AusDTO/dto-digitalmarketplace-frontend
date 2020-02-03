@@ -91,11 +91,11 @@ class CloseOpportunityPage extends Component {
       hasFocused = false
       return (
         <ErrorBoxComponent
-          title="This opportunity cannot be closed right now"
+          title="This opportunity cannot be closed"
           errorMessage={
             <span>
-              This could be because the invited seller has withdrawn their application or the opportunity has already
-              closed. Please{' '}
+              This could be because the opportunity has already been closed or your invited seller has not completed
+              their response. Please{' '}
               <a href={`${rootPath}/brief/${brief.id}/overview/${brief.lot}`}>return to the overview page</a> to check
               or contact us if you have any issues.
             </span>
