@@ -169,6 +169,7 @@ export const BriefResponseSpecialistReducer = {
   specialistName: '',
   specialistGivenNames: '',
   specialistSurname: '',
+  candidate: '',
   dayRate: '',
   dayRateExcludingGST: '',
   hourRate: '',
