@@ -39,9 +39,9 @@ class Code extends React.Component {
                             build digital services.<br/>
                             <br/>
                             Making source code open is criteria 8 in the <a href="https://www.dta.gov.au/standard/"
-                                                                            rel="external" target="blank">Digital
+                                                                            rel="external noopener noreferrer" target="_blank">Digital
                             Service Standard</a>
-                            You can learn how to <a href="https://opensource.guide/" rel="external" target="blank">launch
+                            You can learn how to <a href="https://opensource.guide/" rel="external noopener noreferrer" target="_blank">launch
                             and grow your project</a> or contact us if you would like some help.<br/>
 
                             <a href="mailto:marketplace@digital.gov.au?subject=Open source projects"
@@ -67,12 +67,12 @@ class Code extends React.Component {
                                         tabIndex="0">
                                         <article>
                                             <h3 className="au-display-md">
-                                                <a rel="external" target="_blank" href={item.url}
+                                                <a rel="external noopener noreferrer" target="_blank" href={item.url}
                                                    onClick={(e) => e.stopPropagation()}>{item.name}</a>
                                             </h3>
                                             <p><b>Description: </b>{item.description}<br/><br/>
                                                 <b>Uses: </b>{item.uses}<br/><br/>
-                                                <a rel="external" target="_blank" href={item.demo_url}
+                                                <a rel="external noopener noreferrer" target="_blank" href={item.demo_url}
                                                    onClick={(e) => e.stopPropagation()}>View
                                                     demo</a></p>
 <img src={item.icon}/>

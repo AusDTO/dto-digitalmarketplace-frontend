@@ -16,7 +16,7 @@ exports[`DomainSelector renders 1`] = `
       Select the services you have the expertise to provide.  For each you choose you will need to provide a case study and referee to ensure you meet our 
       <a
         href="/assessment-criteria"
-        rel="external"
+        rel="noopener noreferrer"
         target="_blank"
       >
         assessment criteria
@@ -504,7 +504,7 @@ exports[`DomainSelector renders with populated fields 1`] = `
       Select the services you have the expertise to provide.  For each you choose you will need to provide a case study and referee to ensure you meet our 
       <a
         href="/assessment-criteria"
-        rel="external"
+        rel="noopener noreferrer"
         target="_blank"
       >
         assessment criteria

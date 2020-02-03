@@ -91,10 +91,10 @@ class WithdrawOpportunityPage extends Component {
     if (brief.status !== 'live') {
       return (
         <ErrorBoxComponent
-          title="This opportunity cannot be withdrawn right now"
+          title="This opportunity cannot be withdrawn"
           errorMessage={
             <span>
-              This could be because the opportunity has not been published or has already been withdrawn. Please{' '}
+              This could be because the opportunity has already been withdrawn or not yet been published. Please{' '}
               <a href={`${rootPath}/brief/${brief.id}/overview/${brief.lot}`}>return to the overview page</a> to check
               or contact us if you have any issues.
             </span>

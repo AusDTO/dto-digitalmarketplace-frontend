@@ -223,7 +223,7 @@ class DocumentsForm extends BaseForm {
                                                 <ul className="bordered-list">
                                                     <li className="bordered-list__item row">
                                                         <div className="col-xs-9" styleName="overflow-hidden">
-                                                            <a href={url} target="_blank" rel="external">{doc.filename}</a>
+                                                            <a href={url} target="_blank" rel="noopener noreferrer">{doc.filename}</a>
                                                         </div>
                                                         <div className="col-xs-3" styleName="text-right">
                                                             <a href="3" onClick={this.onReset.bind(this, key)}>Delete</a>
