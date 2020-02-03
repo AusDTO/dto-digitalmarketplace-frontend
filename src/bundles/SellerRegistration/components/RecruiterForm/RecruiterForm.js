@@ -211,7 +211,7 @@ class RecruiterForm extends BaseForm {
                                                 id={`${s}Expiry`}
                                                 messages={{
                                                     validDate: `Expiry date is required for ${mapAustraliaState(s)} and must be in the future.`,
-                                                    required: `Please enter your licence number for ${mapAustraliaState(s)}`
+                                                    required: `Please enter an expiry date for ${mapAustraliaState(s)}.`
                                                 }}
                                             />
                                             <br />
@@ -219,7 +219,7 @@ class RecruiterForm extends BaseForm {
                                                 model={`${model}.labourHire.${s}.licenceNumber`}
                                                 id={`${s}LicenceNumber`}
                                                 messages={{
-                                                    required: `Please enter an expiry date for ${mapAustraliaState(s)}.`
+                                                    required: `Please enter your licence number for ${mapAustraliaState(s)}`
                                                 }}
                                             />
                                             <Textfield
