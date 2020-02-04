@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import differenceInDays from 'date-fns/difference_in_days'
 
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
@@ -171,8 +171,8 @@ class EditOpportunitySellers extends Component {
                 Opportunity closing in {daysUntilOpportunityCloses} day{`${daysUntilOpportunityCloses > 1 ? 's' : ''}`}!
               </AUheading>
               <p>
-                We recommend you extend the closing date to allow invited sellers you added enough time to prepare and
-                submit their responses.
+                We recommend you <Link to="/closing-date">extend the closing date</Link> to allow invited sellers you
+                added enough time to prepare and submit their responses.
               </p>
             </AUpageAlert>
           </div>
