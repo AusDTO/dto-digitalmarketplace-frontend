@@ -948,3 +948,31 @@ article.content-main header h1 {
 article.content-main h2 {
   font-size: 1.5rem;
 }
+
+
+a[rel~='external'] {
+  color: #313131;
+  display: inline;
+  position: relative;
+  background-size: 0.9em auto;
+  text-decoration: none;
+  outline: none;
+  border-bottom: solid 1px #5bcbe3;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.1s;
+  transition-property: background-color, border-color, color;   
+}
+
+a[rel~='external']::after {
+  background-image: url('static/media/external-link--aqua.png');
+  background-image: url('/static/images/icons/external-link--aqua.svg'), linear-gradient(transparent, transparent);
+  background-size: 0.9em auto;
+  content: '';
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  background-repeat: no-repeat;
+  background-position: center 140%;
+  border-bottom: 0px solid transparent;
+  box-sizing: inherit;
+}

@@ -11,7 +11,7 @@ const PanelCategorySelectView = props => (
     <label htmlFor={`${props.id}-category-select`}>{props.label}</label>
     <a
       href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476-Panel-categories-and-rates"
-      rel="external noopener noreferrer"
+      rel="noopener noreferrer"
       target="_blank"
     >
       What you can buy in each category
@@ -56,7 +56,7 @@ const SellerSelectView = props => (
   <div className={styles.sellerSelectView}>
     <label htmlFor={props.id}>{props.label}</label>
     {props.showSellerCatalogueLink && (
-      <a href="/search/sellers" rel="external noopener noreferrer" target="_blank" className={styles.searchAllLink}>
+      <a href="/search/sellers" rel="noopener noreferrer" target="_blank" className={styles.searchAllLink}>
         View seller catalogue
       </a>
     )}

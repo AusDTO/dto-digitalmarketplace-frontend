@@ -5,7 +5,7 @@ import { Form, actions } from 'react-redux-form';
 import isEmpty from 'lodash/isEmpty';
 import isNumber from 'lodash/isNumber';
 
-import {required, limitNumbers, validLinks, validABN} from '../../../../validators';
+import {required, limitNumbers, validLinks, validABN, notPrivateLinkedIn} from '../../../../validators';
 
 import Layout from '../../../../shared/Layout';
 
@@ -128,7 +128,7 @@ class BusinessDetailsForm extends BaseForm {
                           label="ABN"
                           description={isNumber(supplierCode) ? "You need an Australian Business Number to do business in Australia." :
                               (<span>You need an Australian Business Number to do business in Australia.&nbsp;
-                              <a href='https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/' target="_blank" rel="external">Apply for an ABN here.</a>
+                              <a href='https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/' target="_blank" rel="external noopener noreferrer">Apply for an ABN here.</a>
                           </span>)}
                           readOnly={isNumber(supplierCode)}
                           disabled={isNumber(supplierCode)}
@@ -174,9 +174,10 @@ class BusinessDetailsForm extends BaseForm {
                             label="LinkedIn URL (optional)"
                             description="Provide a LinkedIn URL beginning with http"
                             messages={{
-                                validLinks: 'Links provided must begin with http'
+                                validLinks: 'Links provided must begin with http',
+                                notPrivateLinkedIn: 'Please enter a URL you can open when not logged in to LinkedIn.'
                             }}
-                            validators={{validLinks}}
+                            validators={{validLinks, notPrivateLinkedIn}}
                         />
 
                         <Textfield

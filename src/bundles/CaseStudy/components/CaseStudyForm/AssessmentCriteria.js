@@ -87,7 +87,7 @@ const AssessmentCriteria = (props) => {
             </li>
             <li>
               Governing delivery and continuous improvement of a digital service, aligned to the the
-              <a href="//www.dta.gov.au/standard/" target="_blank" rel="external">Digital Service Standard</a>
+              <a href="//www.dta.gov.au/standard/" target="_blank" rel="external noopener noreferrer">Digital Service Standard</a>
             </li>
           </ul>
         </span>

@@ -52,7 +52,7 @@ const CreateUserForm = props => {
           label={
             <span>
               <span>I accept the </span>
-              <a href="/terms-of-use" target="_blank" rel="external">
+              <a href="/terms-of-use" target="_blank" rel="noopener noreferrer">
                 Terms of Use
               </a>
             </span>

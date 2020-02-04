@@ -103,9 +103,9 @@ class View extends React.Component {
                   <ul>
                     {project_links.map((item, i) => <li key={i}>
                         {typeof item == 'object' ?
-                            validURL(item.url) && <a className="project__links" href={item.url} rel="external" target="_blank">{isEmpty(item.title) ? item.url : item.title}</a>
+                            validURL(item.url) && <a className="project__links" href={item.url} rel="external noopener noreferrer" target="_blank">{isEmpty(item.title) ? item.url : item.title}</a>
                             :
-                            validURL(item) && <a className="project__links" href={item} rel="external" target="_blank">{item}</a>
+                            validURL(item) && <a className="project__links" href={item} rel="external noopener noreferrer" target="_blank">{item}</a>
                         }
                     </li>)}
                   </ul>

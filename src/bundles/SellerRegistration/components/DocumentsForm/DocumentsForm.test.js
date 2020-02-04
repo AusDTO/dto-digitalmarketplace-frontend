@@ -37,7 +37,7 @@ test('DocumentsForm renders links when documents are present', () => {
       },
       liability: {
         filename: 'financial_2.pdf',
-        expiry: '2020-02-01'
+        expiry: '2021-02-01'
       },
       workers: {
         filename: 'financial1.pdf'
@@ -67,7 +67,7 @@ describe('DocumentsForm expiry dates', () => {
       documentsForm: {
         documents: {
           liability: {
-            expiry: '2020-02-01',
+            expiry: '2021-02-01',
             filename: 'liability.pdf'
           }
         }
