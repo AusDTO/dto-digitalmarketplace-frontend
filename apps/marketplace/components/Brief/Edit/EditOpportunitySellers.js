@@ -166,11 +166,11 @@ class EditOpportunitySellers extends Component {
         </div>
         {showClosingDateWarning && (
           <div className={`row ${styles.marginTop1}`}>
-            <AUpageAlert as="warning">
+            <AUpageAlert as="warning" className={styles.pageAlert}>
               <AUheading level="2" size="lg">
                 Opportunity closing in {daysUntilOpportunityCloses} day{`${daysUntilOpportunityCloses > 1 ? 's' : ''}`}!
               </AUheading>
-              <p>
+              <p className={styles.noMaxWidth}>
                 We recommend you <Link to="/closing-date">extend the closing date</Link> to allow invited sellers you
                 added enough time to prepare and submit their responses.
               </p>
