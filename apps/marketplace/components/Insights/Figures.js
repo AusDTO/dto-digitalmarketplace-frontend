@@ -19,7 +19,7 @@ const Figures = props => (
       <div className="col-xs-12 col-md-5">
         <div className={insightStyles['blue-box']}>
           <p className={insightStyles['big-text']}>
-            {numeral(props.insightData.austenderData.totalValueAmount).format('($0a)')}
+            {numeral(props.insightData.austenderData.totalValueAmount).format('($0.000a)')}
           </p>
           contracted through the Marketplace since 29 August 2016
         </div>
