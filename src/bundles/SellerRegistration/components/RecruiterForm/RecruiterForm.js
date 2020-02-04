@@ -105,6 +105,18 @@ class RecruiterForm extends BaseForm {
         return messages
     }
 
+    generateLicenceValidators() {
+        let validators = {}
+        states.map(s => {
+            const validator = {}
+            validator[`requiredLicenceNumber_${s}`] = formValues => this.validLicenceNumber(formValues, s)
+            validator[`requiredLicenceExpiry_${s}`] = formValues => this.validLicenceExpiry(formValues, s)
+            validators = { ...validators, ...validator }
+            return true
+        })
+        return validators
+    }
+
     render() {
         const {action, csrf_token, model, form, children, onSubmit, nextRoute, submitClicked, applicationErrors, type} = this.props;
         let hasFocused = false
@@ -135,14 +147,7 @@ class RecruiterForm extends BaseForm {
                           component={SubmitForm}
                           onCustomSubmit={onSubmit}
                           validators={{
-                              '': {
-                                  requiredLicenceNumber_qld: formValues => this.validLicenceNumber(formValues, 'qld'),
-                                  requiredLicenceExpiry_qld: formValues => this.validLicenceExpiry(formValues, 'qld'),
-                                  requiredLicenceNumber_sa: formValues => this.validLicenceNumber(formValues, 'sa'),
-                                  requiredLicenceExpiry_sa: formValues => this.validLicenceExpiry(formValues, 'sa'),
-                                  requiredLicenceNumber_vic: formValues => this.validLicenceNumber(formValues, 'vic'),
-                                  requiredLicenceExpiry_vic: formValues => this.validLicenceExpiry(formValues, 'vic')
-                              }
+                              '': this.generateLicenceValidators()
                           }}
                     >
                         {csrf_token && (
