@@ -31,6 +31,10 @@ class EditOpportunityTable extends Component {
       return <Redirect to="/sellers" />
     }
 
+    if (this.state.editClosingDateClicked) {
+      return <Redirect to="/closing-date" />
+    }
+
     return (
       <table className={`col-xs-12 ${styles.defaultStyle} ${styles.textAlignLeft}`}>
         <tbody>
@@ -78,7 +82,9 @@ class EditOpportunityTable extends Component {
           <tr>
             <th scope="row">Closing date</th>
             <td>
-              <span>{format(getClosingTime(brief), 'dddd DD MMMM YYYY [at] ha')}</span>
+              {itemWasEdited(brief.dates.closing_date, edits.closingDate)
+                ? format(edits.closingDate, 'dddd DD MMMM YYYY [at 6pm (in Canberra)]')
+                : format(getClosingTime(brief), 'dddd DD MMMM YYYY [at] ha [(in Canberra)]')}
             </td>
             <td>
               <AUbutton as="tertiary" onClick={() => this.setState({ editClosingDateClicked: true })}>

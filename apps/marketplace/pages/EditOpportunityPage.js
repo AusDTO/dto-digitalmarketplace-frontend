@@ -8,6 +8,7 @@ import { setErrorMessage } from 'marketplace/actions/appActions'
 import { rootPath } from 'marketplace/routes'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import EditOpportunity from 'marketplace/components/Brief/Edit/EditOpportunity'
+import EditOpportunityClosingDate from 'marketplace/components/Brief/Edit/EditOpportunityClosingDate'
 import EditOpportunitySellers from 'marketplace/components/Brief/Edit/EditOpportunitySellers'
 import EditOpportunityTitle from 'marketplace/components/Brief/Edit/EditOpportunityTitle'
 
@@ -87,6 +88,7 @@ class EditOpportunityPage extends Component {
           <Switch>
             <Route path="/title" render={() => <EditOpportunityTitle brief={brief} model={model} />} />
             <Route path="/sellers" render={() => <EditOpportunitySellers brief={brief} model={model} />} />
+            <Route path="/closing-date" render={() => <EditOpportunityClosingDate brief={brief} model={model} />} />
             <Route
               path="/"
               render={() => (

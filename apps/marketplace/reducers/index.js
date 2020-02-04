@@ -294,6 +294,7 @@ export default combineReducers({
     },
     closeOpportunityForm: {},
     editOpportunityForm: {
+      closingDate: '',
       sellers: {},
       title: ''
     },
