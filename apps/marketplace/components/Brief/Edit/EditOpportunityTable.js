@@ -4,10 +4,9 @@ import format from 'date-fns/format'
 
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import { getClosingTime } from 'marketplace/components/helpers'
+import { itemWasEdited } from './EditOpportunity'
 
 import styles from '../../../main.scss'
-
-const itemWasEdited = (item, edit) => edit !== '' && edit !== item
 
 class EditOpportunityTable extends Component {
   constructor(props) {

@@ -9,8 +9,12 @@ import EditOpportunityTable from './EditOpportunityTable'
 
 import styles from '../../../main.scss'
 
+export const itemWasEdited = (item, edit) => edit !== '' && edit !== item
+
 const EditOpportunity = props => {
   const { brief, edits, isOpenToAll, location } = props
+  const showCheckBox =
+    itemWasEdited(brief.title, edits.title) || itemWasEdited(brief.dates.closing_date, edits.closingDate)
 
   return (
     <div className="col-xs-12">
@@ -25,20 +29,22 @@ const EditOpportunity = props => {
       <div className="row">
         <EditOpportunityTable brief={brief} edits={edits} isOpenToAll={isOpenToAll} location={location} />
       </div>
-      <div className="row">
-        <AUcheckbox
-          className={`${styles.marginTop2}`}
-          id="understandsEditProcess"
-          label={
-            isOpenToAll
-              ? 'I understand if I submit these changes, sellers will be able to view previous versions of my updates.'
-              : 'I understand if I submit these changes, invited sellers will be notified and can view previous versions of my updates.'
-          }
-          name="understandsEditProcess"
-          onChange={() => {}}
-          onClick={() => {}}
-        />
-      </div>
+      {showCheckBox && (
+        <div className="row">
+          <AUcheckbox
+            className={`${styles.marginTop2}`}
+            id="understandsEditProcess"
+            label={
+              isOpenToAll
+                ? 'I understand if I submit these changes, sellers will be able to view previous versions of my updates.'
+                : 'I understand if I submit these changes, invited sellers will be notified and can view previous versions of my updates.'
+            }
+            name="understandsEditProcess"
+            onChange={() => {}}
+            onClick={() => {}}
+          />
+        </div>
+      )}
       <div className={`row ${styles.marginTop2}`}>
         <AUbutton>Submit changes</AUbutton>
         <AUbutton as="tertiary" link={`${rootPath}/brief/${brief.id}/overview/${brief.lot}`}>
