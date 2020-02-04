@@ -151,6 +151,15 @@ class Signup extends React.Component {
     if (recruiter === 'no') {
       filter = /\/candidates|\/domains/
     }
+
+    if (application.type === 'edit') {
+      filter=/\/recruiter/
+    }
+
+    // if(application.sellerTypeIsCompletedOnce === true){
+    //   filter=/\/recruiter|candidates|\/domains/
+    // }
+
     this.filteredSteps = this.steps.filter(s => !s.pattern.match(filter));
 
     let stepKeys = this.filteredSteps.map(s => s['id']);
