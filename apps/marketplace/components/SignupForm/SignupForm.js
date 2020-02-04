@@ -5,13 +5,45 @@ import { Form } from 'react-redux-form'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import DocumentTitle from 'react-document-title'
 
-import { required, validEmail } from 'shared/validators'
+import { required, validEmail, validABN } from 'shared/validators'
+import { EMAIL_NOT_WHITELISTED, GENERAL_ERROR } from 'marketplace/constants/messageConstants'
 import Layout from 'shared/Layout'
 import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
 import RadioList from 'shared/form/RadioList'
 import RadioListBox from 'shared/form/RadioListBox/RadioListBox'
 import LoadingButton from 'shared/LoadingButton/LoadingButton'
+
+const getErrorMessageFromServerCode = (code, abn) => {
+  let message = ''
+
+  switch (code) {
+    case 403:
+      message = <p>{EMAIL_NOT_WHITELISTED}</p>
+      break
+    case 409:
+      message = (
+        <React.Fragment>
+          <p>There is already a seller account with the ABN {abn}. Make sure you:</p>
+          <ul>
+            <li>
+              <a href="#abn">Check the number you entered is correct</a>
+            </li>
+            <li>Check if anyone in your organisation has created an account and ask them to add you as a member</li>
+          </ul>
+          <p>
+            If you have any issues, <a href="/contact-us">contact the Marketplace</a>.
+          </p>
+        </React.Fragment>
+      )
+      break
+    default:
+      message = <p>{GENERAL_ERROR}</p>
+      break
+  }
+
+  return message
+}
 
 const SignupForm = props => {
   const {
@@ -22,6 +54,9 @@ const SignupForm = props => {
     signupSuccess,
     currentlySending,
     isBuyer,
+    userType,
+    signupErrorCode,
+    signupABN,
     emailValidators,
     emailErrorMessages,
     submitClicked,
@@ -99,6 +134,12 @@ const SignupForm = props => {
                   submitClicked={submitClicked}
                   setFocus={setFocus}
                 />
+                {signupErrorCode && (
+                  <AUpageAlert as="error">
+                    <h4 className="au-display-md">There was a problem with signup</h4>
+                    {getErrorMessageFromServerCode(signupErrorCode, signupABN)}
+                  </AUpageAlert>
+                )}
                 <header>
                   <h1 className="au-display-xl">Let’s get started</h1>
                 </header>
@@ -153,30 +194,52 @@ const SignupForm = props => {
                         }}
                       />
                     </div>
-                    Now enter your name and your work email address.
-                    <Textfield
-                      model={`${model}.name`}
-                      name="name"
-                      id="name"
-                      htmlFor="name"
-                      label="Full name"
-                      validators={{
-                        required
-                      }}
-                      messages={{
-                        required: 'Your name is required'
-                      }}
-                    />
-                    <Textfield
-                      model={`${model}.email_address`}
-                      name="email_address"
-                      id="email_address"
-                      type="email"
-                      htmlFor="email_address"
-                      label="Email address"
-                      validators={emailValidators}
-                      messages={emailErrorMessages}
-                    />
+                    {userType && (
+                      <React.Fragment>
+                        Now enter your name and your work email address.
+                        <Textfield
+                          model={`${model}.name`}
+                          name="name"
+                          id="name"
+                          htmlFor="name"
+                          label="Full name"
+                          validators={{
+                            required
+                          }}
+                          messages={{
+                            required: 'Your name is required'
+                          }}
+                        />
+                        <Textfield
+                          model={`${model}.email_address`}
+                          name="email_address"
+                          id="email_address"
+                          type="email"
+                          htmlFor="email_address"
+                          label="Email address"
+                          validators={emailValidators}
+                          messages={emailErrorMessages}
+                        />
+                      </React.Fragment>
+                    )}
+                    {userType === 'seller' && (
+                      <Textfield
+                        model={`${model}.abn`}
+                        name="abn"
+                        id="abn"
+                        type="text"
+                        htmlFor="abn"
+                        label="ABN"
+                        validators={{
+                          required,
+                          validABN: v => !v || validABN(v)
+                        }}
+                        messages={{
+                          required: 'You must supply an ABN',
+                          validABN: 'The ABN supplied is not valid'
+                        }}
+                      />
+                    )}
                     {isBuyer && (
                       <div className="employment-status">
                         <RadioList
@@ -251,20 +314,29 @@ const SignupForm = props => {
                       </div>
                     )}
                     {children}
-                    <p>
-                      <small>
-                        By creating an account you confirm your acceptance of our{' '}
-                        <a href="/terms-of-use" target="_blank" rel="noopener noreferrer">
-                          Terms of Use
-                        </a>
-                      </small>
-                    </p>
-                    {currentlySending ? (
-                      <LoadingButton />
-                    ) : (
-                      <p>
-                        <input className="au-btn" type="submit" value="Create your account" onClick={onSubmitClicked} />
-                      </p>
+                    {userType && (
+                      <React.Fragment>
+                        <p>
+                          <small>
+                            By creating an account you confirm your acceptance of our{' '}
+                            <a href="/terms-of-use" target="_blank" rel="noopener noreferrer">
+                              Terms of Use
+                            </a>
+                          </small>
+                        </p>
+                        {currentlySending ? (
+                          <LoadingButton />
+                        ) : (
+                          <p>
+                            <input
+                              className="au-btn"
+                              type="submit"
+                              value="Create your account"
+                              onClick={onSubmitClicked}
+                            />
+                          </p>
+                        )}
+                      </React.Fragment>
                     )}
                   </Form>
                 </article>
@@ -284,6 +356,9 @@ SignupForm.propTypes = {
   signupSuccess: PropTypes.bool,
   currentlySending: PropTypes.bool.isRequired,
   isBuyer: PropTypes.bool.isRequired,
+  userType: PropTypes.string.isRequired,
+  signupErrorCode: PropTypes.number,
+  signupABN: PropTypes.string,
   emailValidators: PropTypes.object.isRequired,
   emailErrorMessages: PropTypes.object.isRequired,
   submitClicked: PropTypes.bool.isRequired,
@@ -294,6 +369,8 @@ SignupForm.propTypes = {
 
 SignupForm.defaultProps = {
   csrf_token: '',
+  signupErrorCode: null,
+  signupABN: '',
   signupSuccess: null
 }
 
