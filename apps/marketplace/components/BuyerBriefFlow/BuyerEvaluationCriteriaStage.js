@@ -14,7 +14,7 @@ import styles from './BuyerEvaluationCriteriaStage.scss'
 const noEmptyWeightingsEssential = v =>
   !v.includeWeightingsEssential || v.essentialRequirements.every(val => val.weighting)
 
-const weightingsAddUpTo100Essential = v =>
+export const weightingsAddUpTo100Essential = v =>
   !v.includeWeightingsEssential ||
   !noEmptyWeightingsEssential(v) ||
   v.essentialRequirements.reduce(
