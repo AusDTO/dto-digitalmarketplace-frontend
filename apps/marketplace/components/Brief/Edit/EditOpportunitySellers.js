@@ -116,7 +116,7 @@ class EditOpportunitySellers extends Component {
   }
 
   render = () => {
-    const { brief, model } = this.props
+    const { model } = this.props
     const { daysUntilOpportunityCloses, showClosingDateWarning } = this.state
 
     if (this.state.redirectToEditsTable) {
