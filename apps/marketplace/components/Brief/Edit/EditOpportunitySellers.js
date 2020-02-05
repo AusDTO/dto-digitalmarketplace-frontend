@@ -9,10 +9,9 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 
 import { findSuppliers } from 'marketplace/actions/supplierActions'
-import { required } from 'marketplace/components/validators'
-import { rootPath } from 'marketplace/routes'
-import formProps from 'shared/form/formPropsSelector'
 import ItemSelect from 'marketplace/components/ItemSelect/ItemSelect'
+import { required } from 'marketplace/components/validators'
+import formProps from 'shared/form/formPropsSelector'
 import AddSellerActions from './AddSellerActions'
 import AddSellerListItems from './AddSellerListItems'
 
