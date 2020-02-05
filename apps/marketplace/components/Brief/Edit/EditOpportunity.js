@@ -32,14 +32,15 @@ class EditOpportunity extends Component {
 
   validateEditProcessCheckBox = () => {
     const { understandsEditProcess } = this.state
+    const showCheckBox = this.showCheckBox()
 
-    if (this.showCheckBox() && !understandsEditProcess) {
+    if (showCheckBox && !understandsEditProcess) {
       this.setState({
         hasErrors: true
       })
     }
 
-    return understandsEditProcess
+    return showCheckBox ? understandsEditProcess : true
   }
 
   render = () => {
