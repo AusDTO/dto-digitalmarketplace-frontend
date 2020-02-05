@@ -43,7 +43,7 @@ class EditOpportunity extends Component {
   }
 
   render = () => {
-    const { brief, edits, isOpenToAll, location, model } = this.props
+    const { brief, edits, isOpenToAll, location, model, onSubmitEdits } = this.props
     const { hasErrors } = this.state
     const checkBoxValidator = this.validateEditProcessCheckBox
     const showCheckBox = this.showCheckBox()
@@ -52,7 +52,7 @@ class EditOpportunity extends Component {
       <div className="col-xs-12">
         <Form
           model={model}
-          onSubmit={() => {}}
+          onSubmit={onSubmitEdits}
           onSubmitFailed={() => {}}
           validateOn="submit"
           validators={{

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom'
 
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { loadBrief } from 'marketplace/actions/briefActions'
+import { applyEditsToOpportunity, loadBrief } from 'marketplace/actions/briefActions'
 import { setErrorMessage } from 'marketplace/actions/appActions'
 import { rootPath } from 'marketplace/routes'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
@@ -18,8 +18,11 @@ class EditOpportunityPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      editsApplied: false,
       loading: false
     }
+
+    this.handleSubmitEditsClick = this.handleSubmitEditsClick.bind(this)
   }
 
   componentDidMount = () => {
@@ -36,6 +39,23 @@ class EditOpportunityPage extends Component {
     this.props.loadData(this.props.match.params.briefId).then(response => {
       if (response.status === 200) {
         this.setState({
+          loading: false
+        })
+      }
+    })
+  }
+
+  handleSubmitEditsClick = () => {
+    const { edits, match } = this.props
+
+    this.setState({
+      loading: true
+    })
+
+    this.props.applyEdits(match.params.briefId, edits).then(response => {
+      if (response.status === 200) {
+        this.setState({
+          editsApplied: true,
           loading: false
         })
       }
@@ -98,6 +118,7 @@ class EditOpportunityPage extends Component {
                   isOpenToAll={isOpenToAll}
                   location={location}
                   model={model}
+                  onSubmitEdits={this.handleSubmitEditsClick}
                 />
               )}
             />
@@ -117,6 +138,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+  applyEdits: (briefId, data) => dispatch(applyEditsToOpportunity(briefId, data)),
   loadData: briefId => dispatch(loadBrief(briefId)),
   setError: message => dispatch(setErrorMessage(message))
 })
