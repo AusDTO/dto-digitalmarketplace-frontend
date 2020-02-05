@@ -16,6 +16,7 @@ import {
   BRIEF_SPECIALIST_CREATE_SUCCESS,
   CLOSE_OPPORTUNITY_SUCCESS,
   DELETE_BRIEF_SUCCESS,
+  EDIT_OPPORTUNITY_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NAME_SPLIT,
   SPECIALIST_NUMBER,
@@ -536,3 +537,29 @@ export const publishAnswer = (briefId, values) => (dispatch, getState) =>
     },
     data: JSON.stringify(values)
   })
+
+export const handleEditOpportunitySuccess = response => ({
+  type: EDIT_OPPORTUNITY_SUCCESS,
+  brief: response.data
+})
+
+export const applyEditsToOpportunity = (briefId, data) => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: `/brief/${briefId}/edit`,
+    method: 'PATCH',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify(data)
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleEditOpportunitySuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
