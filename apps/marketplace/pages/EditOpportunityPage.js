@@ -92,7 +92,13 @@ class EditOpportunityPage extends Component {
             <Route
               path="/"
               render={() => (
-                <EditOpportunity brief={brief} edits={edits} isOpenToAll={isOpenToAll} location={location} />
+                <EditOpportunity
+                  brief={brief}
+                  edits={edits}
+                  isOpenToAll={isOpenToAll}
+                  location={location}
+                  model={model}
+                />
               )}
             />
           </Switch>
