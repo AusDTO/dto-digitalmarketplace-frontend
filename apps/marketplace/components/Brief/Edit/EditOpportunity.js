@@ -4,11 +4,12 @@ import { Form } from 'react-redux-form'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import { AUcheckbox } from '@gov.au/control-input/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import { rootPath } from 'marketplace/routes'
 import EditOpportunityTable from './EditOpportunityTable'
-import { itemWasEdited } from './helpers'
+import { hasEdits, itemWasEdited } from './helpers'
 
 import styles from '../../../main.scss'
 
@@ -17,11 +18,26 @@ class EditOpportunity extends Component {
     super(props)
     this.state = {
       hasErrors: false,
+      showNoEditsAlert: false,
       understandsEditProcess: false
     }
 
     this.showCheckBox = this.showCheckBox.bind(this)
+    this.handleSubmitClick = this.handleSubmitClick.bind(this)
     this.validateEditProcessCheckBox = this.validateEditProcessCheckBox.bind(this)
+  }
+
+  handleSubmitClick = e => {
+    const { brief, edits } = this.props
+    const editsPending = hasEdits(brief, edits)
+
+    if (!editsPending) {
+      this.setState({
+        showNoEditsAlert: true
+      })
+
+      e.preventDefault()
+    }
   }
 
   showCheckBox = () => {
@@ -44,7 +60,7 @@ class EditOpportunity extends Component {
 
   render = () => {
     const { brief, edits, isOpenToAll, location, model, onSubmitEdits } = this.props
-    const { hasErrors } = this.state
+    const { hasErrors, showNoEditsAlert } = this.state
     const checkBoxValidator = this.validateEditProcessCheckBox
     const showCheckBox = this.showCheckBox()
 
@@ -65,6 +81,11 @@ class EditOpportunity extends Component {
             <AUheading level="1" size="xl">
               Edit live opportunity
             </AUheading>
+            {showNoEditsAlert && (
+              <AUpageAlert as="error">
+                <strong>You have not made any changes to the opportunity.</strong>
+              </AUpageAlert>
+            )}
             <p className={styles.fontSizeMd}>
               If you&apos;re having issues making the changes you need, <a href="/contact-us">contact us</a>.
             </p>
@@ -113,7 +134,9 @@ class EditOpportunity extends Component {
             </div>
           )}
           <div className={`row ${styles.marginTop2}`}>
-            <AUbutton type="submit">Submit changes</AUbutton>
+            <AUbutton onClick={this.handleSubmitClick} type="submit">
+              Submit changes
+            </AUbutton>
             <AUbutton as="tertiary" link={`${rootPath}/brief/${brief.id}/overview/${brief.lot}`}>
               Cancel all updates
             </AUbutton>

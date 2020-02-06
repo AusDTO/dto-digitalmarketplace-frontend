@@ -4,7 +4,7 @@ import format from 'date-fns/format'
 
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import { getClosingTime } from 'marketplace/components/helpers'
-import { itemWasEdited } from './helpers'
+import { getSellersToInvite, itemWasEdited } from './helpers'
 
 import styles from '../../../main.scss'
 
@@ -20,7 +20,7 @@ class EditOpportunityTable extends Component {
 
   render = () => {
     const { brief, edits, isOpenToAll } = this.props
-    const sellersToInvite = Object.keys(edits.sellers).filter(code => !(code in brief.sellers))
+    const sellersToInvite = getSellersToInvite(brief, edits)
 
     if (this.state.editTitleClicked) {
       return <Redirect to="/title" />
