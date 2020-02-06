@@ -4,7 +4,7 @@ import format from 'date-fns/format'
 
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import { getClosingTime } from 'marketplace/components/helpers'
-import { itemWasEdited } from './EditOpportunity'
+import { itemWasEdited } from './helpers'
 
 import styles from '../../../main.scss'
 

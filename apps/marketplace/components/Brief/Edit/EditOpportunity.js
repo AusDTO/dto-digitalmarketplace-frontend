@@ -8,10 +8,9 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import { rootPath } from 'marketplace/routes'
 import EditOpportunityTable from './EditOpportunityTable'
+import { itemWasEdited } from './helpers'
 
 import styles from '../../../main.scss'
-
-export const itemWasEdited = (item, edit) => edit !== '' && edit !== item
 
 class EditOpportunity extends Component {
   constructor(props) {
