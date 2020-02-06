@@ -3,14 +3,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
-import FilesInput from 'shared/form/FilesInput'
 import Textfield from 'shared/form/Textfield'
-import dmapi from 'marketplace/services/apiClient'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
-import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import format from 'date-fns/format'
 import addDays from 'date-fns/add_days'
-import range from 'lodash/range'
 import {
   required,
   validPhoneNumber,
@@ -22,7 +18,6 @@ import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import styles from './BuyerRFXAdditionalInformationStage.scss'
-// import styles from '../BuyerSpecialist/BuyerSpecialistAdditionalInformationStage.scss'
 
 const requiredContactNumber = v => required(v.contactNumber)
 const contactNumberFormat = v => validPhoneNumber(v.contactNumber)
@@ -55,32 +50,8 @@ export class BuyerRFXAdditionalInformationStage extends Component {
     }
   }
 
-  componentDidMount() {
-    this.updateFileCountFromProps()
-  }
-
-  componentDidUpdate() {
-    this.updateFileCountFromProps()
-  }
-
   handleDateChange(date) {
     this.props.setDate(`${date.year}-${date.month}-${date.day}`)
-  }
-
-  updateFileCountFromProps() {
-    if (this.state.fileCount < this.props[this.props.model].attachments.length) {
-      this.setState({
-        fileCount: this.props[this.props.model].attachments.length
-      })
-    }
-  }
-
-  addFileField() {
-    this.setState(curState => {
-      const newState = { ...curState }
-      newState.fileCount += 1
-      return newState
-    })
   }
 
   render() {
@@ -117,39 +88,6 @@ export class BuyerRFXAdditionalInformationStage extends Component {
             closedAtIsBefore: 'You must enter a closing date not more than one year from now'
           }}
         />
-        <AUheadings level="2" size="sm">
-          Attach a document (optional)
-        </AUheadings>
-        <p className={styles.removeTopMargin}>Documents must be in .DOC .XLS .PPT or .PDF format.</p>
-        {range(this.state.fileCount).map(i => (
-          <FilesInput
-            key={i}
-            title="Additional documents (optional)"
-            fieldLabel="Upload document"
-            name="attachments"
-            model={`${model}.attachments.${i}`}
-            formFields={1}
-            url={`/brief/${this.props[model].id}/attachments`}
-            api={dmapi}
-            fileId={i}
-            onReset={this.props.saveModel}
-            onUploadSuccess={this.props.saveModel}
-            accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-          />
-        ))}
-        {this.state.fileCount < 10 && (
-          <p className={styles.verticalMargin}>
-            <a
-              href="#add"
-              onClick={e => {
-                e.preventDefault()
-                this.addFileField()
-              }}
-            >
-              Add another
-            </a>
-          </p>
-        )}
         <AUheadings level="2" size="sm">
           Comprehensive terms
         </AUheadings>
