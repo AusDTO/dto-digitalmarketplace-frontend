@@ -106,10 +106,6 @@ export class BuyerRFXAdditionalInformationStage extends Component {
         <AUheadings level="1" size="xl">
           Additional information
         </AUheadings>
-        <AUcallout description="" className={styles.noticeBar}>
-          Only sellers you selected and other buyers can view attached documents. Buyers and sellers will not be able to
-          view your contact number or internal reference.
-        </AUcallout>
         <ErrorAlert
           model={model}
           messages={{
