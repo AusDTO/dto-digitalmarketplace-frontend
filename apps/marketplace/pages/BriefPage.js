@@ -58,7 +58,7 @@ class BriefPage extends Component {
             <Route
               path={`${match.url}/published`}
               render={() => (
-                <span>
+                <React.Fragment>
                   {app.errorMessage || !loadBriefSuccess || brief.status !== 'live' ? (
                     <ErrorBoxComponent
                       title="This opportunity has been closed or withdrawn"
@@ -83,13 +83,13 @@ class BriefPage extends Component {
                       {...this.props}
                     />
                   )}
-                </span>
+                </React.Fragment>
               )}
             />
             <Route
               path={`${match.url}/download-responses`}
               render={() => (
-                <span>
+                <React.Fragment>
                   {app.errorMessage || !loadBriefSuccess || brief.status !== 'closed' ? (
                     <ErrorBoxComponent
                       title="You cannot download seller responses for this opportunity"
@@ -114,14 +114,14 @@ class BriefPage extends Component {
                       briefResponseDownloaded={this.props.briefResponseDownloaded}
                       onDownloadBrief={() => this.props.loadInitialData(this.props.brief.id)}
                     />
-                  )}{' '}
-                </span>
+                  )}
+                </React.Fragment>
               )}
             />
             <Route
               path={`${match.url}/download-work-order`}
               render={() => (
-                <span>
+                <React.Fragment>
                   {app.errorMessage || !loadBriefSuccess || brief.status !== 'closed' ? (
                     <ErrorBoxComponent
                       title="You cannot create a work-order for this opportunity"
@@ -141,8 +141,8 @@ class BriefPage extends Component {
                     />
                   ) : (
                     <BriefDownloadWorkOrder brief={this.props.brief} />
-                  )}{' '}
-                </span>
+                  )}
+                </React.Fragment>
               )}
             />
             <Route component={NotFound} />
