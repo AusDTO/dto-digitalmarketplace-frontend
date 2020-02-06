@@ -1,4 +1,3 @@
-import { validPhoneNumber, dateIs2DaysInFuture } from 'marketplace/components/validators'
 import BuyerRFXIntroductionStage from './BuyerRFXIntroductionStage'
 import BuyerRFXAboutStage from './BuyerRFXAboutStage'
 import BuyerRFXSelectStage from './BuyerRFXSelectStage'

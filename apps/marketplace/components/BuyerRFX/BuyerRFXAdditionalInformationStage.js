@@ -155,7 +155,6 @@ BuyerRFXAdditionalInformationStage.defaultProps = {
 
 BuyerRFXAdditionalInformationStage.propTypes = {
   model: PropTypes.string.isRequired,
-  saveModel: PropTypes.func.isRequired,
   formButtons: PropTypes.node.isRequired,
   onSubmit: PropTypes.func,
   onSubmitFailed: PropTypes.func
