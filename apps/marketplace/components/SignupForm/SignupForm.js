@@ -196,7 +196,12 @@ const SignupForm = props => {
                     </div>
                     {userType && (
                       <React.Fragment>
-                        Now enter your name, your work email address, and your ABN.
+                        {userType === 'buyer' && (
+                          <React.Fragment>Now enter your name and your work email address.</React.Fragment>
+                        )}
+                        {userType === 'seller' && (
+                          <React.Fragment>Now enter your name, your work email address, and your ABN.</React.Fragment>
+                        )}
                         <Textfield
                           model={`${model}.name`}
                           name="name"
