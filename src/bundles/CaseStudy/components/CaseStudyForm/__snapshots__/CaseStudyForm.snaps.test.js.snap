@@ -1375,19 +1375,24 @@ exports[`CaseStudyForm renders with errors 1`] = `
         >
           Give your case study a title
         </label>
-        <a
-          className="validation-message"
-          href="#title"
-        >
+        <div>
           <span
             className="visuallyhidden"
           >
             Validation Error: 
           </span>
-          <span>
-            Title is required
-          </span>
-        </a>
+          <a
+            className="validation-message"
+            href="#title"
+          >
+            <span
+              className="validation-message"
+            >
+              Title is required
+            </span>
+          </a>
+          <br />
+        </div>
         <input
           className="invalid"
           disabled={false}
@@ -1409,19 +1414,24 @@ exports[`CaseStudyForm renders with errors 1`] = `
         >
           Who was the client?
         </label>
-        <a
-          className="validation-message"
-          href="#client"
-        >
+        <div>
           <span
             className="visuallyhidden"
           >
             Validation Error: 
           </span>
-          <span>
-            Client is required
-          </span>
-        </a>
+          <a
+            className="validation-message"
+            href="#client"
+          >
+            <span
+              className="validation-message"
+            >
+              Client is required
+            </span>
+          </a>
+          <br />
+        </div>
         <input
           className="invalid"
           disabled={false}
@@ -1449,19 +1459,24 @@ exports[`CaseStudyForm renders with errors 1`] = `
         >
           For example, January 2016 — June 2016.
         </p>
-        <a
-          className="validation-message"
-          href="#timeframe"
-        >
+        <div>
           <span
             className="visuallyhidden"
           >
             Validation Error: 
           </span>
-          <span>
-            Timeframe is required
-          </span>
-        </a>
+          <a
+            className="validation-message"
+            href="#timeframe"
+          >
+            <span
+              className="validation-message"
+            >
+              Timeframe is required
+            </span>
+          </a>
+          <br />
+        </div>
         <input
           className="invalid"
           disabled={false}
@@ -1490,19 +1505,24 @@ exports[`CaseStudyForm renders with errors 1`] = `
         >
           For example, ran whole project, engaged in discovery activities or responsible for delivery.
         </p>
-        <a
-          className="validation-message"
-          href="#roles"
-        >
+        <div>
           <span
             className="visuallyhidden"
           >
             Validation Error: 
           </span>
-          <span>
-            You must specify the your business' role
-          </span>
-        </a>
+          <a
+            className="validation-message"
+            href="#roles"
+          >
+            <span
+              className="validation-message"
+            >
+              You must specify the your business' role
+            </span>
+          </a>
+          <br />
+        </div>
         <div>
           <textarea
             aria-describedby="roles-hint"
@@ -1537,19 +1557,24 @@ exports[`CaseStudyForm renders with errors 1`] = `
         >
           Describe the project goal and any relevant background information.
         </p>
-        <a
-          className="validation-message"
-          href="#opportunity"
-        >
+        <div>
           <span
             className="visuallyhidden"
           >
             Validation Error: 
           </span>
-          <span>
-            You must outline the opportunity
-          </span>
-        </a>
+          <a
+            className="validation-message"
+            href="#opportunity"
+          >
+            <span
+              className="validation-message"
+            >
+              You must outline the opportunity
+            </span>
+          </a>
+          <br />
+        </div>
         <div>
           <textarea
             aria-describedby="opportunity-hint"
@@ -1594,19 +1619,24 @@ exports[`CaseStudyForm renders with errors 1`] = `
         >
           How did your capabilities and methods contribute to achieving the project goals?
         </p>
-        <a
-          className="validation-message"
-          href="#approach"
-        >
+        <div>
           <span
             className="visuallyhidden"
           >
             Validation Error: 
           </span>
-          <span>
-            You must outline your approach
-          </span>
-        </a>
+          <a
+            className="validation-message"
+            href="#approach"
+          >
+            <span
+              className="validation-message"
+            >
+              You must outline your approach
+            </span>
+          </a>
+          <br />
+        </div>
         <div>
           <textarea
             aria-describedby="approach-hint"
@@ -1639,19 +1669,24 @@ exports[`CaseStudyForm renders with errors 1`] = `
         >
           List the key achievements of this project.
         </p>
-        <a
-          className="validation-message"
-          href="#outcome"
-        >
+        <div>
           <span
             className="visuallyhidden"
           >
             Validation Error: 
           </span>
-          <span>
-            You must provide at least one outcome.
-          </span>
-        </a>
+          <a
+            className="validation-message"
+            href="#outcome"
+          >
+            <span
+              className="validation-message"
+            >
+              You must provide at least one outcome.
+            </span>
+          </a>
+          <br />
+        </div>
         <div
           className="field"
         >
@@ -1868,19 +1903,24 @@ exports[`CaseStudyForm renders with errors 1`] = `
         >
           The full name of the best person to contact about your experience.
         </p>
-        <a
-          className="validation-message"
-          href="#refereeName"
-        >
+        <div>
           <span
             className="visuallyhidden"
           >
             Validation Error: 
           </span>
-          <span>
-            Please provide a referee name.
-          </span>
-        </a>
+          <a
+            className="validation-message"
+            href="#refereeName"
+          >
+            <span
+              className="validation-message"
+            >
+              Please provide a referee name.
+            </span>
+          </a>
+          <br />
+        </div>
         <input
           className="invalid"
           disabled={false}
@@ -1908,19 +1948,24 @@ exports[`CaseStudyForm renders with errors 1`] = `
         >
           At the time of the project.
         </p>
-        <a
-          className="validation-message"
-          href="#refereePosition"
-        >
+        <div>
           <span
             className="visuallyhidden"
           >
             Validation Error: 
           </span>
-          <span>
-            Please provide a referee position.
-          </span>
-        </a>
+          <a
+            className="validation-message"
+            href="#refereePosition"
+          >
+            <span
+              className="validation-message"
+            >
+              Please provide a referee position.
+            </span>
+          </a>
+          <br />
+        </div>
         <input
           className="invalid"
           disabled={false}
@@ -1948,19 +1993,24 @@ exports[`CaseStudyForm renders with errors 1`] = `
         >
           Please include the area code for landlines.
         </p>
-        <a
-          className="validation-message"
-          href="#refereeEmail"
-        >
+        <div>
           <span
             className="visuallyhidden"
           >
             Validation Error: 
           </span>
-          <span>
-            Please provide a referee phone number.
-          </span>
-        </a>
+          <a
+            className="validation-message"
+            href="#refereeEmail"
+          >
+            <span
+              className="validation-message"
+            >
+              Please provide a referee phone number.
+            </span>
+          </a>
+          <br />
+        </div>
         <input
           className="invalid"
           disabled={false}
@@ -1974,19 +2024,24 @@ exports[`CaseStudyForm renders with errors 1`] = `
         />
       </div>
       <div>
-        <a
-          className="validation-message"
-          href="#refereeContact"
-        >
+        <div>
           <span
             className="visuallyhidden"
           >
             Validation Error: 
           </span>
-          <span>
-            Please acknowledge the referee can be contacted.
-          </span>
-        </a>
+          <a
+            className="validation-message"
+            href="#refereeContact"
+          >
+            <span
+              className="validation-message"
+            >
+              Please acknowledge the referee can be contacted.
+            </span>
+          </a>
+          <br />
+        </div>
         <input
           checked={false}
           disabled={false}
