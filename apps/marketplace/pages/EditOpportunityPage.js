@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom'
+import { BrowserRouter, Redirect, Route, Switch, withRouter } from 'react-router-dom'
 
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { applyEditsToOpportunity, loadBrief } from 'marketplace/actions/briefActions'
@@ -88,6 +88,10 @@ class EditOpportunityPage extends Component {
 
     if (this.state.loading) {
       return <LoadingIndicatorFullPage />
+    }
+
+    if (this.state.editsApplied) {
+      return <Redirect to={`${rootPath}/brief/${brief.id}/edited`} push />
     }
 
     if (brief.status !== 'live') {

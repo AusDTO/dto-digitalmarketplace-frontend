@@ -34,6 +34,7 @@ class EditOpportunityTitle extends Component {
 
   handleContinueClick = data => {
     this.props.setTitle(data.title)
+    this.props.setOnlySellersEdited(false)
     this.setState({
       redirectToEditsTable: true
     })
@@ -98,6 +99,8 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = (dispatch, props) => ({
   resetTitle: initialTitle => dispatch(actions.change(`${props.model}.title`, initialTitle)),
+  setOnlySellersEdited: onlySellersEdited =>
+    dispatch(actions.change(`${props.model}.onlySellersEdited`, onlySellersEdited)),
   setTitle: title => dispatch(actions.change(`${props.model}.title`, title))
 })
 

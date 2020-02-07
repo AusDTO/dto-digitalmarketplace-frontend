@@ -34,6 +34,7 @@ import BriefOutcomeChoicePage from './pages/BriefOutcomeChoicePage'
 import CloseOpportunityPage from './pages/CloseOpportunityPage'
 import CloseOpportunitySuccessPage from './pages/CloseOpportunitySuccessPage'
 import EditOpportunityPage from './pages/EditOpportunityPage'
+import EditOpportunitySuccessPage from './pages/EditOpportunitySuccessPage'
 import EditTeamFlowPage from './pages/Teams/EditTeamFlowPage'
 import OpportunityPage from './pages/OpportunityPage'
 import CreateTeamFlowPage from './pages/Teams/CreateTeamFlowPage'
@@ -78,6 +79,11 @@ export const Routes = () => (
       restrictedTo="buyer"
       path={`${rootPath}/brief/:briefId/edit/:item?`}
       component={EditOpportunityPage}
+    />
+    <PrivateRoute
+      restrictedTo="buyer"
+      path={`${rootPath}/brief/:briefId/edited`}
+      component={EditOpportunitySuccessPage}
     />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/assessors`} component={BriefAssessorsPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/questions`} component={QuestionPage} />

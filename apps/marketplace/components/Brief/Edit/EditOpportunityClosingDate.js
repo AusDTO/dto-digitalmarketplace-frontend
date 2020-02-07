@@ -56,6 +56,7 @@ class EditOpportunityClosingDate extends Component {
 
   handleContinueClick = data => {
     this.props.setClosingDate(data.closingDate)
+    this.props.setOnlySellersEdited(false)
     this.setState({
       hasErrors: false,
       redirectToEditsTable: true
@@ -157,7 +158,9 @@ const mapStateToProps = (state, props) => ({
 const mapDispatchToProps = (dispatch, props) => ({
   resetClosingDate: initialClosingDate => dispatch(actions.change(`${props.model}.closingDate`, initialClosingDate)),
   resetFormValidity: () => dispatch(actions.resetValidity(`${props.model}.closingDate`)),
-  setClosingDate: closingDate => dispatch(actions.change(`${props.model}.closingDate`, closingDate))
+  setClosingDate: closingDate => dispatch(actions.change(`${props.model}.closingDate`, closingDate)),
+  setOnlySellersEdited: onlySellersEdited =>
+    dispatch(actions.change(`${props.model}.onlySellersEdited`, onlySellersEdited))
 })
 
 export default connect(
