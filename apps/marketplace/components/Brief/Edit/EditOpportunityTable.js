@@ -16,10 +16,18 @@ class EditOpportunityTable extends Component {
       editSellersClicked: false,
       editTitleClicked: false
     }
+
+    this.showInvitedSellers = this.showInvitedSellers.bind(this)
+  }
+
+  showInvitedSellers = () => {
+    const { brief, isOpenToAll } = this.props
+    return !isOpenToAll && brief.sellers
   }
 
   render = () => {
-    const { brief, edits, isOpenToAll } = this.props
+    const { brief, edits } = this.props
+    const showInvited = this.showInvitedSellers()
     const sellersToInvite = getSellersToInvite(brief, edits)
 
     if (this.state.editTitleClicked) {
@@ -46,7 +54,7 @@ class EditOpportunityTable extends Component {
               </AUbutton>
             </td>
           </tr>
-          {!isOpenToAll && (
+          {showInvited && (
             <React.Fragment>
               <tr className={sellersToInvite.length > 0 ? styles.borderBottom0 : ''}>
                 <th scope="row">Invited sellers</th>
