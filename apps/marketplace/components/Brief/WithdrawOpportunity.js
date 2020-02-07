@@ -155,7 +155,7 @@ export class WithdrawOpportunity extends Component {
               limit: 25,
               rows: '2'
             }}
-            description="The opportunity page will display your reason for withdrawal"
+            description="This will appear on the opportunity page"
             id="reasonToWithdraw"
             label="Reason for withdrawal"
             key="reasonToWithdraw"
