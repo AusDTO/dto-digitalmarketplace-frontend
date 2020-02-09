@@ -13,27 +13,15 @@ const WithdrawnOpportunity = props => {
   const invitedSeller = getSingleInvitedSellerName(brief)
 
   const OpenToAllMessage = () => (
-    <span>
-      The reason for withdrawal is now displayed on the{' '}
-      <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>opportunity page</a>. Sellers who have
-      drafted or submitted responses to this opportunity have been notified.
-    </span>
+    <li>We have notified sellers who have drafted or submitted responses to this opportunity.</li>
   )
 
-  const OpenToOneMessage = () => (
-    <span>
-      The reason for withdrawal is now displayed on the{' '}
-      <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>opportunity page</a> and {invitedSeller} has
-      been notified.
-    </span>
-  )
+  const OpenToOneMessage = () => <li>We have notified {invitedSeller}.</li>
 
   const OpenToSomeMessage = () => (
-    <span>
-      The reason for withdrawal is now displayed on the{' '}
-      <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>opportunity page</a>. Invited sellers have
-      been notified.
-    </span>
+    <li>
+      We have notified your <a href={`${rootPath}/brief/${brief.id}/invited`}>invited sellers</a>.
+    </li>
   )
 
   return (
@@ -45,11 +33,15 @@ const WithdrawnOpportunity = props => {
           </strong>
         </h1>
         <div className={styles.marginTop2}>
-          <p className={styles.noMaxWidth}>
+          <ul className={styles.noMaxWidth}>
+            <li>
+              The reason for withdrawal is now displayed on the{' '}
+              <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>opportunity page</a>.
+            </li>
             {isOpenToAll && <OpenToAllMessage />}
             {!isOpenToAll && invitedSeller && <OpenToOneMessage />}
             {!isOpenToAll && !invitedSeller && <OpenToSomeMessage />}
-          </p>
+          </ul>
         </div>
       </AUpageAlert>
       <br />

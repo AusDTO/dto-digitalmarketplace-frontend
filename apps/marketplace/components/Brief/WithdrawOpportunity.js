@@ -104,7 +104,7 @@ export class WithdrawOpportunity extends Component {
           checked={checked}
           className={className}
           id="authorityToWithdraw"
-          label="I have the authority to withdraw this opportunity and understand once I do so I will not be able to re-open it"
+          label="I am authorised to withdraw this opportunity, and understand I cannot reopen it again."
           name="authorityToWithdraw"
           onChange={() => {}}
           onClick={e => {
@@ -145,7 +145,11 @@ export class WithdrawOpportunity extends Component {
         <ul>
           {isOpenToAll && <li>we will notify sellers who have drafted or submitted responses to this opportunity</li>}
           {!isOpenToAll && invitedSeller && <li>we will notify {invitedSeller}</li>}
-          {!isOpenToAll && !invitedSeller && <li>we will notify all invited sellers</li>}
+          {!isOpenToAll && !invitedSeller && (
+            <li>
+              we will notify all <a href={`${rootPath}/brief/${brief.id}/invited`}>invited sellers</a>
+            </li>
+          )}
           <li>the opportunity page will display your reason for withdrawal</li>
           <li>you will not be able to reopen the opportunity again</li>
         </ul>
@@ -155,7 +159,7 @@ export class WithdrawOpportunity extends Component {
               limit: 25,
               rows: '2'
             }}
-            description="The opportunity page will display your reason for withdrawal"
+            description="This will appear on the opportunity page"
             id="reasonToWithdraw"
             label="Reason for withdrawal"
             key="reasonToWithdraw"
