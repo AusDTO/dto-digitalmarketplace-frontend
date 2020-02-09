@@ -145,7 +145,11 @@ export class WithdrawOpportunity extends Component {
         <ul>
           {isOpenToAll && <li>we will notify sellers who have drafted or submitted responses to this opportunity</li>}
           {!isOpenToAll && invitedSeller && <li>we will notify {invitedSeller}</li>}
-          {!isOpenToAll && !invitedSeller && <li>we will notify all invited sellers</li>}
+          {!isOpenToAll && !invitedSeller && (
+            <li>
+              we will notify all <a href={`${rootPath}/brief/${brief.id}/invited`}>invited sellers</a>
+            </li>
+          )}
           <li>the opportunity page will display your reason for withdrawal</li>
           <li>you will not be able to reopen the opportunity again</li>
         </ul>
