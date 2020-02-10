@@ -269,7 +269,7 @@ class SignupForm extends Component {
                             }}
                           />
                           <AUcheckbox
-                            label="I'm an international supplier who does not have an ABN"
+                            label="My business is located outside of Australia and does not have an ABN"
                             name="international"
                             id="international"
                             onChange={this.handleInternationalChange}
