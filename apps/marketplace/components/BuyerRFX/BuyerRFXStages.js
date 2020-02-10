@@ -1,10 +1,9 @@
-import { validPhoneNumber, dateIs2DaysInFuture } from 'marketplace/components/validators'
 import BuyerRFXIntroductionStage from './BuyerRFXIntroductionStage'
 import BuyerRFXAboutStage from './BuyerRFXAboutStage'
 import BuyerRFXSelectStage from './BuyerRFXSelectStage'
 import BuyerRFXRequirementsStage from './BuyerRFXRequirementsStage'
 import BuyerRFXReviewStage from './BuyerRFXReviewStage'
-import BuyerRFXAdditionalInformationStage from './BuyerRFXAdditionalInformationStage'
+import BuyerRFXAdditionalInformationStage, { done as additionalDone } from './BuyerRFXAdditionalInformationStage'
 import BuyerRFXResponseFormatsStage, { done as responseFormatDone } from './BuyerRFXResponseFormatsStage'
 import BuyerRFXTimeframesAndBudgetStage from './BuyerRFXTimeframesAndBudgetStage'
 import BuyerEvaluationCriteriaStage, { done as evaluationDone } from '../BuyerBriefFlow/BuyerEvaluationCriteriaStage'
@@ -65,8 +64,7 @@ const BuyerRFXStages = [
     slug: 'additional',
     title: 'Additional information',
     component: BuyerRFXAdditionalInformationStage,
-    isDone: formValues =>
-      dateIs2DaysInFuture(formValues.closedAt) && formValues.contactNumber && validPhoneNumber(formValues.contactNumber)
+    isDone: additionalDone
   },
   {
     slug: 'review',
