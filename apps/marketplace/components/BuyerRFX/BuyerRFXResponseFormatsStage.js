@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { actions, Form } from 'react-redux-form'
+import { Form } from 'react-redux-form'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
@@ -18,12 +18,6 @@ const atleastOneProposal = v =>
 const onlyProposalOrTemplate = v =>
   !atleastOneFormat(v) ||
   !(v.evaluationType.includes('Written proposal') && v.evaluationType.includes('Response template'))
-
-const handleClick = (e, props) => {
-  if (!e.target.checked) {
-    props.resetProposalCheck()
-  }
-}
 
 export const done = v => atleastOneFormat(v) && atleastOneProposal(v) && onlyProposalOrTemplate(v)
 
@@ -66,7 +60,6 @@ const BuyerRFXResponseFormatsStage = props => (
         detailsModel={props.model}
         validators={{}}
         messages={{}}
-        onClick={e => handleClick(e, props)}
       />
       <div>
         <div className={styles.subFormats}>
@@ -183,11 +176,4 @@ const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)
 })
 
-const mapDispatchToProps = (dispatch, props) => ({
-  resetProposalCheck: () => dispatch(actions.change(`${props.model}.proposalType[]`, []))
-})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(BuyerRFXResponseFormatsStage)
+export default connect(mapStateToProps)(BuyerRFXResponseFormatsStage)
