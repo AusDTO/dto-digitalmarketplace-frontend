@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Redirect, withRouter } from 'react-router-dom'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { closeOpportunity, loadBrief } from 'marketplace/actions/briefActions'
-import { setErrorMessage } from 'marketplace/actions/appActions'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import CloseOpportunity from 'marketplace/components/Brief/CloseOpportunity'
 import { rootPath } from 'marketplace/routes'
@@ -124,8 +123,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   closeOpportunity: briefId => dispatch(closeOpportunity(briefId)),
-  loadData: briefId => dispatch(loadBrief(briefId)),
-  setError: message => dispatch(setErrorMessage(message))
+  loadData: briefId => dispatch(loadBrief(briefId))
 })
 
 export default withRouter(
