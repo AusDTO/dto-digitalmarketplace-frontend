@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import format from 'date-fns/format'
 import { rootPath } from 'marketplace/routes'
 import NotVisible from 'marketplace/components/Icons/NotVisible/NotVisible'
@@ -131,6 +132,7 @@ const Opportunity = props => {
     supplierCode,
     isPartOfTeam,
     isTeamLead,
+    lastEditedAt,
     teams
   } = props
 
@@ -176,6 +178,28 @@ const Opportunity = props => {
               {brief.title}
             </AUheading>
           </span>
+          {lastEditedAt && (
+            <div className="row">
+              <div className="col-xs-12">
+                <AUpageAlert
+                  as="warning"
+                  className={`${mainStyles.pageAlert} ${mainStyles.marginTop2} ${mainStyles.marginRight2}`}
+                >
+                  <AUheading level="2" size="lg">
+                    Updates made
+                  </AUheading>
+                  <div className={`${mainStyles.marginTop1} ${mainStyles.noMaxWidth}`}>
+                    <p className={mainStyles.noMaxWidth}>
+                      This opportunity was last updated on {format(lastEditedAt, 'D MMMM YYYY')}.{' '}
+                      <a className={mainStyles.floatRight} href={`${rootPath}/brief/${brief.id}/history`}>
+                        View all updates
+                      </a>
+                    </p>
+                  </div>
+                </AUpageAlert>
+              </div>
+            </div>
+          )}
           <div className={styles.details}>
             <div className="row">
               <div className="col-xs-12 col-sm-4">

@@ -112,6 +112,7 @@ class OpportunityPage extends Component {
           hasSupplierErrors={this.props.hasSupplierErrors}
           isInvited={this.props.isInvited}
           hasSignedCurrentAgreement={this.props.hasSignedCurrentAgreement}
+          lastEditedAt={this.props.lastEditedAt}
           supplierCode={this.props.supplierCode}
         />
       )
@@ -155,6 +156,7 @@ const mapResetStateToProps = state => ({
   hasSupplierErrors: state.brief.hasSupplierErrors,
   isInvited: state.brief.isInvited,
   hasSignedCurrentAgreement: state.brief.hasSignedCurrentAgreement,
+  lastEditedAt: state.brief.lastEditedAt,
   supplierCode: state.app.supplierCode
 })
 
