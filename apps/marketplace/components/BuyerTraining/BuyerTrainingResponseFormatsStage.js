@@ -27,7 +27,7 @@ const handleClick = (e, props) => {
 
 export const done = v => atleastOneFormat(v) && atleastOneProposal(v) && onlyProposalOrTemplate(v)
 
-const BuyerRFXResponseFormatsStage = props => (
+const BuyerTrainingResponseFormatsStage = props => (
   <Form
     model={props.model}
     validators={{
@@ -167,12 +167,12 @@ const BuyerRFXResponseFormatsStage = props => (
   </Form>
 )
 
-BuyerRFXResponseFormatsStage.defaultProps = {
+BuyerTrainingResponseFormatsStage.defaultProps = {
   onSubmit: () => {},
   onSubmitFailed: () => {}
 }
 
-BuyerRFXResponseFormatsStage.propTypes = {
+BuyerTrainingResponseFormatsStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   onSubmit: PropTypes.func,
@@ -190,4 +190,4 @@ const mapDispatchToProps = (dispatch, props) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(BuyerRFXResponseFormatsStage)
+)(BuyerTrainingResponseFormatsStage)
