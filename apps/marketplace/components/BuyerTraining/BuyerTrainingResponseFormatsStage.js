@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Form } from 'react-redux-form'
+import { actions, Form } from 'react-redux-form'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
@@ -19,9 +19,15 @@ const onlyProposalOrTemplate = v =>
   !atleastOneFormat(v) ||
   !(v.evaluationType.includes('Written proposal') && v.evaluationType.includes('Response template'))
 
+const handleClick = (e, props) => {
+  if (!e.target.checked) {
+    props.resetProposalCheck()
+  }
+}
+
 export const done = v => atleastOneFormat(v) && atleastOneProposal(v) && onlyProposalOrTemplate(v)
 
-const BuyerTrainingResponseFormatsStage = props => (
+const BuyerRFXResponseFormatsStage = props => (
   <Form
     model={props.model}
     validators={{
@@ -39,7 +45,6 @@ const BuyerTrainingResponseFormatsStage = props => (
       Response formats
     </AUheading>
     <ErrorAlert
-      title="An error occurred"
       model={props.model}
       messages={{
         atleastOneFormat: 'You must choose what you would like sellers to provide through the Marketplace',
@@ -61,6 +66,7 @@ const BuyerTrainingResponseFormatsStage = props => (
         detailsModel={props.model}
         validators={{}}
         messages={{}}
+        onClick={e => handleClick(e, props)}
       />
       <div>
         <div className={styles.subFormats}>
@@ -118,7 +124,7 @@ const BuyerTrainingResponseFormatsStage = props => (
         description={
           <span>
             You will need to upload your own template or the{' '}
-            <a href="/static/media/documents/Response-Template.docx" target="_blank" rel="noreferrer noopener">
+            <a href="/static/media/documents/Response-Template.docx" target="_blank" rel="noopener noreferrer">
               Marketplace template (DOCX 67 KB)
             </a>
             . If you use the Marketplace template, make sure you update it with your Agency&apos;s requirements.
@@ -161,12 +167,12 @@ const BuyerTrainingResponseFormatsStage = props => (
   </Form>
 )
 
-BuyerTrainingResponseFormatsStage.defaultProps = {
+BuyerRFXResponseFormatsStage.defaultProps = {
   onSubmit: () => {},
   onSubmitFailed: () => {}
 }
 
-BuyerTrainingResponseFormatsStage.propTypes = {
+BuyerRFXResponseFormatsStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   onSubmit: PropTypes.func,
@@ -177,4 +183,11 @@ const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model)
 })
 
-export default connect(mapStateToProps)(BuyerTrainingResponseFormatsStage)
+const mapDispatchToProps = (dispatch, props) => ({
+  resetProposalCheck: () => dispatch(actions.change(`${props.model}.proposalType[]`, []))
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BuyerRFXResponseFormatsStage)
