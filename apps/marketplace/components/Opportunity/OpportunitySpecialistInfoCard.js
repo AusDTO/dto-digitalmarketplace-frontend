@@ -177,7 +177,7 @@ const OpportunitySpecialistInfoCard = props => {
               Contact the buyer
             </a>
           )}
-          {isBuyer && isBriefOwner && (
+          {isOpen && isBuyer && isBriefOwner && (
             <a href={`${rootPath}/brief/${briefId}/edit`} className="au-btn au-btn--block">
               Edit your opportunity
             </a>
