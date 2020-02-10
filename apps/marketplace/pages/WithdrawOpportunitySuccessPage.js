@@ -2,14 +2,15 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { loadBrief } from 'marketplace/actions/briefActions'
 import { handleFeedbackSubmit } from 'marketplace/actions/appActions'
-import { ErrorBoxComponent } from 'shared/form/ErrorBox'
-import ClosedOpportunity from 'marketplace/components/Brief/ClosedOpportunity'
+import { loadBrief } from 'marketplace/actions/briefActions'
+import WithdrawnOpportunity from 'marketplace/components/Brief/WithdrawnOpportunity'
 import { rootPath } from 'marketplace/routes'
 
-class CloseOpportunitySuccessPage extends Component {
+import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
+import { ErrorBoxComponent } from 'shared/form/ErrorBox'
+
+class WithdrawOpportunitySuccessPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -49,7 +50,7 @@ class CloseOpportunitySuccessPage extends Component {
   }
 
   render = () => {
-    const { app, brief, errorMessage } = this.props
+    const { app, brief, errorMessage, isOpenToAll } = this.props
     const { loading } = this.state
 
     let hasFocused = false
@@ -77,15 +78,15 @@ class CloseOpportunitySuccessPage extends Component {
       return <LoadingIndicatorFullPage />
     }
 
-    if (brief.status !== 'closed') {
+    if (brief.status !== 'withdrawn') {
       hasFocused = false
       return (
         <ErrorBoxComponent
-          title="Opportunity has not been closed"
+          title="Opportunity has not been withdrawn"
           errorMessage={
             <span>
               Please <a href={`${rootPath}/brief/${brief.id}/overview/${brief.lot}`}>return to the overview page</a> to
-              close this opportunity.
+              withdraw this opportunity.
             </span>
           }
           setFocus={setFocus}
@@ -96,7 +97,13 @@ class CloseOpportunitySuccessPage extends Component {
     }
 
     return (
-      <ClosedOpportunity app={app} brief={brief} onFeedbackSubmit={this.handleFeedbackSubmit} setFocus={setFocus} />
+      <WithdrawnOpportunity
+        app={app}
+        brief={brief}
+        onFeedbackSubmit={this.handleFeedbackSubmit}
+        isOpenToAll={isOpenToAll}
+        setFocus={setFocus}
+      />
     )
   }
 }
@@ -104,7 +111,8 @@ class CloseOpportunitySuccessPage extends Component {
 const mapStateToProps = state => ({
   app: state.app,
   brief: state.brief.brief,
-  errorMessage: state.app.errorMessage
+  errorMessage: state.app.errorMessage,
+  isOpenToAll: state.brief.isOpenToAll
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -116,5 +124,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(CloseOpportunitySuccessPage)
+  )(WithdrawOpportunitySuccessPage)
 )

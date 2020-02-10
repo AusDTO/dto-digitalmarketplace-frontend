@@ -1,20 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect, withRouter } from 'react-router-dom'
-import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { closeOpportunity, loadBrief } from 'marketplace/actions/briefActions'
-import { ErrorBoxComponent } from 'shared/form/ErrorBox'
-import CloseOpportunity from 'marketplace/components/Brief/CloseOpportunity'
+
+import { withdrawOpportunity, loadBrief } from 'marketplace/actions/briefActions'
+import WithdrawOpportunity from 'marketplace/components/Brief/WithdrawOpportunity'
 import { rootPath } from 'marketplace/routes'
 
-const model = 'closeOpportunityForm'
+import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
+import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 
-class CloseOpportunityPage extends Component {
+const model = 'withdrawOpportunityForm'
+
+class WithdrawOpportunityPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
       loading: false,
-      opportunityClosed: false
+      opportunityWithdrawn: false
     }
   }
 
@@ -38,24 +40,24 @@ class CloseOpportunityPage extends Component {
     })
   }
 
-  handleCloseOpportunity = () => {
+  handleWithdrawOpportunity = () => {
     this.setState({
       loading: true
     })
 
-    this.props.closeOpportunity(this.props.match.params.briefId).then(response => {
+    this.props.withdrawOpportunity(this.props.match.params.briefId, this.props[model]).then(response => {
       if (response.status === 200) {
         this.setState({
           loading: false,
-          opportunityClosed: true
+          opportunityWithdrawn: true
         })
       }
     })
   }
 
   render = () => {
-    const { brief, canCloseOpportunity, errorMessage } = this.props
-    const { loading, opportunityClosed } = this.state
+    const { brief, errorMessage, isOpenToAll } = this.props
+    const { loading, opportunityWithdrawn } = this.state
 
     let hasFocused = false
     const setFocus = e => {
@@ -82,19 +84,17 @@ class CloseOpportunityPage extends Component {
       return <LoadingIndicatorFullPage />
     }
 
-    if (opportunityClosed) {
-      return <Redirect to={`${rootPath}/brief/${brief.id}/closed`} push />
+    if (opportunityWithdrawn) {
+      return <Redirect to={`${rootPath}/brief/${brief.id}/withdrawn`} push />
     }
 
-    if (!canCloseOpportunity) {
-      hasFocused = false
+    if (brief.status !== 'live') {
       return (
         <ErrorBoxComponent
-          title="This opportunity cannot be closed right now"
+          title="This opportunity cannot be withdrawn"
           errorMessage={
             <span>
-              This could be because the invited seller has withdrawn their application or the opportunity has already
-              closed. Please{' '}
+              This could be because the opportunity has already been withdrawn or not yet been published. Please{' '}
               <a href={`${rootPath}/brief/${brief.id}/overview/${brief.lot}`}>return to the overview page</a> to check
               or contact us if you have any issues.
             </span>
@@ -106,29 +106,32 @@ class CloseOpportunityPage extends Component {
       )
     }
 
-    if (canCloseOpportunity) {
-      return <CloseOpportunity brief={brief} model={model} onCloseOpportunity={this.handleCloseOpportunity} />
-    }
-
-    return null
+    return (
+      <WithdrawOpportunity
+        brief={brief}
+        isOpenToAll={isOpenToAll}
+        model={model}
+        onWithdrawOpportunity={this.handleWithdrawOpportunity}
+      />
+    )
   }
 }
 
 const mapStateToProps = state => ({
   brief: state.brief.brief,
-  canCloseOpportunity: state.brief.canCloseOpportunity,
-  closeOpportunityForm: state.closeOpportunityForm,
-  errorMessage: state.app.errorMessage
+  errorMessage: state.app.errorMessage,
+  isOpenToAll: state.brief.isOpenToAll,
+  withdrawOpportunityForm: state.withdrawOpportunityForm
 })
 
 const mapDispatchToProps = dispatch => ({
-  closeOpportunity: briefId => dispatch(closeOpportunity(briefId)),
-  loadData: briefId => dispatch(loadBrief(briefId))
+  loadData: briefId => dispatch(loadBrief(briefId)),
+  withdrawOpportunity: (briefId, data) => dispatch(withdrawOpportunity(briefId, data))
 })
 
 export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(CloseOpportunityPage)
+  )(WithdrawOpportunityPage)
 )
