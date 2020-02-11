@@ -31,7 +31,7 @@ class InvitedSellerPage extends Component {
         })
       }
       if (this.props.brief && !['rfx', 'specialist', 'training2'].includes(this.props.brief.lotSlug)) {
-        this.props.setError('Only RFX and specialist briefs have invited sellers.')
+        this.props.setError('This opportunity is open to all sellers.')
       }
       if (this.props.brief && this.props.brief.sellers && Object.keys(this.props.brief.sellers).length < 1) {
         this.props.setError('No invited sellers to show.')
@@ -50,7 +50,7 @@ class InvitedSellerPage extends Component {
       }
       return (
         <ErrorBoxComponent
-          title="A problem occurred when loading the brief details"
+          title="You cannot view invited sellers"
           errorMessage={this.props.errorMessage}
           setFocus={setFocus}
           form={{}}
