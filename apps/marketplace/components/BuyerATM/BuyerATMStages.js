@@ -1,10 +1,9 @@
-import { validPhoneNumber, dateIs2DaysInFuture } from 'marketplace/components/validators'
 import BuyerATMIntroductionStage from './BuyerATMIntroductionStage'
 import BuyerATMAboutStage from './BuyerATMAboutStage'
 import BuyerATMSelectStage from './BuyerATMSelectStage'
 import BuyerATMObjectivesStage from './BuyerATMObjectivesStage'
 import BuyerATMReviewStage from './BuyerATMReviewStage'
-import BuyerATMAdditionalInformationStage from './BuyerATMAdditionalInformationStage'
+import BuyerATMAdditionalInformationStage, { done as additionalDone } from './BuyerATMAdditionalInformationStage'
 import BuyerATMResponseFormatsStage from './BuyerATMResponseFormatsStage'
 import BuyerATMTimeframesAndBudgetStage from './BuyerATMTimeframesAndBudgetStage'
 import BuyerATMEvaluationCriteriaStage, {
@@ -72,8 +71,7 @@ const BuyerATMStages = [
     slug: 'additional',
     title: 'Additional information',
     component: BuyerATMAdditionalInformationStage,
-    isDone: formValues =>
-      dateIs2DaysInFuture(formValues.closedAt) && formValues.contactNumber && validPhoneNumber(formValues.contactNumber)
+    isDone: additionalDone
   },
   {
     slug: 'review',
