@@ -51,6 +51,7 @@ class BusinessDetailsForm extends BaseForm {
             model,
             returnLink,
             supplierCode,
+            ABN,
             form,
             buttonText,
             children,
@@ -126,8 +127,14 @@ class BusinessDetailsForm extends BaseForm {
                           id="abn"
                           htmlFor="abn"
                           label="ABN"
-                          readOnly
-                          disabled
+                          readOnly={ABN ? true : false}
+                          disabled={ABN ? true : false}
+                          validators={{
+                              validABN: val => val === 'N/A' || validABN(val)
+                          }}
+                          messages={{
+                            validABN: 'ABN is required and must match a valid ABN as listed on the Australian Business Register'
+                          }}
                         />
 
                         <Textarea
@@ -314,6 +321,7 @@ BusinessDetailsForm.defaultProps = {
 const mapStateToProps = (state) => {
     return {
         supplierCode: (state.application && state.application.supplier_code),
+        ABN: (state.application && state.application.abn),
         returnLink: state.businessDetailsForm && state.businessDetailsForm.returnLink,
         ...formProps(state, 'businessDetailsForm'),
         applicationErrors: state.application_errors

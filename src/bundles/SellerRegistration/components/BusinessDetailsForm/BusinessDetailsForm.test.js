@@ -47,7 +47,7 @@ test('handleClick with formValid=false', () => {
 });
 
 test('render existing supplier copy', () => {
-  let store = createStore({application: {supplier_code: 0}});
+  let store = createStore({application: {supplier_code: 0, abn: "123456"}});
   const wrapper = mount(
     <Provider store={store}>
       <BusinessDetailsForm />

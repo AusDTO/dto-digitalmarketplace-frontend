@@ -111,14 +111,14 @@ exports[`BusinessDetailsForm renders 1`] = `
         </label>
         <input
           className=""
-          disabled={true}
+          disabled={false}
           id="abn"
           name="abn"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          readOnly={true}
+          readOnly={false}
           type="text"
         />
       </div>
@@ -474,14 +474,14 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
         </label>
         <input
           className=""
-          disabled={true}
+          disabled={false}
           id="abn"
           name="abn"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          readOnly={true}
+          readOnly={false}
           type="text"
         />
       </div>
