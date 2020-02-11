@@ -44,7 +44,6 @@ test('handleClick with formValid=false', () => {
     wrapper.find('button[type="submit"]').first().simulate('click')
     expect(store.getState().forms.businessDetailsForm.$form.valid).toBeFalsy()
     expect(wrapper.find('h1').text()).toBe('Tell us about your business');
-    expect(wrapper.find('#abn-hint').text()).toMatch(/Apply for an ABN here/);
 });
 
 test('render existing supplier copy', () => {

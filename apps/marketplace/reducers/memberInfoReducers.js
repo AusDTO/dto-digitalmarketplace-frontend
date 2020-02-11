@@ -1,5 +1,7 @@
 import {
   SIGNUP_SUCCESS,
+  SIGNUP_ERROR,
+  SIGNUP_ABN,
   CREATE_USER_SUCCESS,
   SEND_INVITE_SUCCESS,
   SET_ERROR_MESSAGE,
@@ -26,6 +28,18 @@ const userReducer = (state = defaultUserState, action) => {
         ...state,
         signupSuccess: true,
         signupErrored: false
+      }
+
+    case SIGNUP_ERROR:
+      return {
+        ...state,
+        signupErrorCode: action.errorCode
+      }
+
+    case SIGNUP_ABN:
+      return {
+        ...state,
+        signupABN: action.signupABN
       }
 
     case CREATE_USER_SUCCESS:
