@@ -273,7 +273,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                       model={`${model}.status.closed`}
                       id="closed"
                       name="closed"
-                      label="Closed"
+                      label="Closed and withdrawn"
                       detailsModel={model}
                       messages={{}}
                     />
@@ -355,7 +355,7 @@ export class OpportunitiesFiltersComponent extends BaseForm {
                       model={`${model}.status.closed`}
                       id="closed"
                       name="closed"
-                      label="Closed"
+                      label="Closed and withdrawn"
                       detailsModel={model}
                       messages={{}}
                     />
