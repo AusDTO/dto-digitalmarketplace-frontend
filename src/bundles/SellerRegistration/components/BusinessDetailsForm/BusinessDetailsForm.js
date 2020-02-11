@@ -126,16 +126,8 @@ class BusinessDetailsForm extends BaseForm {
                           id="abn"
                           htmlFor="abn"
                           label="ABN"
-                          description={isNumber(supplierCode) ? "You need an Australian Business Number to do business in Australia." :
-                              (<span>You need an Australian Business Number to do business in Australia.&nbsp;
-                              <a href='https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/' target="_blank" rel="external noopener noreferrer">Apply for an ABN here.</a>
-                          </span>)}
-                          readOnly={isNumber(supplierCode)}
-                          disabled={isNumber(supplierCode)}
-                          messages={{
-                              validABN: 'ABN is required and must match a valid ABN as listed on the Australian Business Register'
-                          }}
-                          validators={{validABN}}
+                          readOnly
+                          disabled
                         />
 
                         <Textarea
