@@ -3,13 +3,14 @@ import { actions } from 'react-redux-form'
 import { withRouter, Switch, Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import ErrorBox from 'shared/form/ErrorBox'
+import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import NotFound from 'marketplace/components/NotFound'
 import BriefDownloadResponses from 'marketplace/components/Brief/BriefDownloadResponses'
 import BriefDownloadWorkOrder from 'marketplace/components/Brief/BriefDownloadWorkOrder'
 import { loadBrief } from 'marketplace/actions/briefActions'
 import { handleFeedbackSubmit } from 'marketplace/actions/appActions'
 import BriefSubmitted from 'marketplace/components/Brief/BriefSubmitted'
+import { rootPath } from 'marketplace/routes'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 
 class BriefPage extends Component {
@@ -38,7 +39,7 @@ class BriefPage extends Component {
   }
 
   render() {
-    const { currentlySending, loadBriefSuccess, match, app } = this.props
+    const { brief, currentlySending, loadBriefSuccess, match, app } = this.props
 
     let hasFocused = false
     const setFocus = e => {
@@ -57,41 +58,91 @@ class BriefPage extends Component {
             <Route
               path={`${match.url}/published`}
               render={() => (
-                <BriefSubmitted
-                  setFocus={setFocus}
-                  submitClicked={this.state.submitClicked}
-                  handleSubmit={values => this.handleFeedbackSubmit(values)}
-                  {...this.props}
-                />
+                <React.Fragment>
+                  {app.errorMessage || !loadBriefSuccess || brief.status !== 'live' ? (
+                    <ErrorBoxComponent
+                      title="This opportunity has been closed or withdrawn"
+                      errorMessage={
+                        <span>
+                          This opportunity is not live. This could be because it has closed or been withdrawn. Please{' '}
+                          <a href={`${rootPath}/brief/${brief.id}/overview/${brief.lot}`}>
+                            return to the overview page
+                          </a>{' '}
+                          to check or contact us if you have any issues.
+                        </span>
+                      }
+                      setFocus={setFocus}
+                      form={{}}
+                      invalidFields={[]}
+                    />
+                  ) : (
+                    <BriefSubmitted
+                      setFocus={setFocus}
+                      submitClicked={this.state.submitClicked}
+                      handleSubmit={values => this.handleFeedbackSubmit(values)}
+                      {...this.props}
+                    />
+                  )}
+                </React.Fragment>
               )}
             />
             <Route
               path={`${match.url}/download-responses`}
               render={() => (
-                <span>
-                  {!app.errorMessage && loadBriefSuccess ? (
+                <React.Fragment>
+                  {app.errorMessage || !loadBriefSuccess || brief.status !== 'closed' ? (
+                    <ErrorBoxComponent
+                      title="You cannot download seller responses for this opportunity"
+                      errorMessage={
+                        <span>
+                          This could be because the opportunity is still live, has been withdrawn or has not yet been
+                          published. Please{' '}
+                          <a href={`${rootPath}/brief/${brief.id}/overview/${brief.lot}`}>
+                            return to the overview page
+                          </a>{' '}
+                          to check or contact us if you have any issues.
+                        </span>
+                      }
+                      setFocus={setFocus}
+                      form={{}}
+                      invalidFields={[]}
+                    />
+                  ) : (
                     <BriefDownloadResponses
                       brief={this.props.brief}
                       briefResponses={this.props.briefResponses}
                       briefResponseDownloaded={this.props.briefResponseDownloaded}
                       onDownloadBrief={() => this.props.loadInitialData(this.props.brief.id)}
                     />
-                  ) : (
-                    <ErrorBox title="There was a problem downloading the documents" setFocus={setFocus} />
-                  )}{' '}
-                </span>
+                  )}
+                </React.Fragment>
               )}
             />
             <Route
               path={`${match.url}/download-work-order`}
               render={() => (
-                <span>
-                  {!app.errorMessage && loadBriefSuccess ? (
-                    <BriefDownloadWorkOrder brief={this.props.brief} />
+                <React.Fragment>
+                  {app.errorMessage || !loadBriefSuccess || brief.status !== 'closed' ? (
+                    <ErrorBoxComponent
+                      title="You cannot create a work-order for this opportunity"
+                      errorMessage={
+                        <span>
+                          This could be because the opportunity is still live, has been withdrawn or has not yet been
+                          published. Please{' '}
+                          <a href={`${rootPath}/brief/${brief.id}/overview/${brief.lot}`}>
+                            return to the overview page
+                          </a>{' '}
+                          to check or contact us if you have any issues.
+                        </span>
+                      }
+                      setFocus={setFocus}
+                      form={{}}
+                      invalidFields={[]}
+                    />
                   ) : (
-                    <ErrorBox title="There was a problem loading the brief" setFocus={setFocus} />
-                  )}{' '}
-                </span>
+                    <BriefDownloadWorkOrder brief={this.props.brief} />
+                  )}
+                </React.Fragment>
               )}
             />
             <Route component={NotFound} />
