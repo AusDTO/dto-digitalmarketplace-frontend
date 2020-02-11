@@ -10,6 +10,10 @@
   float: right;
 }
 
+.fontSizeLg {
+  font-size: 1.5rem;
+}
+
 .fontSizeMd {
   font-size: 1.25rem;
 }
@@ -27,6 +31,18 @@
 
   .padding0 {
     padding: 0;
+  }
+}
+
+.fullWidthPageAlert {
+  .noMaxWidth {
+    max-width: none;
+  }
+}
+
+.infoCardBody {
+  .noMarginTop {
+    margin-top: 0;
   }
 }
 

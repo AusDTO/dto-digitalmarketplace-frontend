@@ -300,6 +300,7 @@ export default combineReducers({
       title: ''
     },
     withdrawOpportunityForm: {
+      hasAuthorityToWithdraw: false,
       reasonToWithdraw: ''
     },
     BuyerRFXForm: BuyerRFXFormReducer,

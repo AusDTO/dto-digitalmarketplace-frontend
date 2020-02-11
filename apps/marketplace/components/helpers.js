@@ -174,3 +174,13 @@ export const getClosingTime = brief => {
   }
   return ''
 }
+
+export const getSingleInvitedSellerName = brief => {
+  if (brief.sellers) {
+    if (Object.keys(brief.sellers).length === 1) {
+      return Object.values(brief.sellers).pop().name
+    }
+  }
+
+  return null
+}

@@ -11,6 +11,7 @@ import { loadQuestion } from 'marketplace/actions/questionActions'
 import { required } from 'marketplace/components/validators'
 import Textarea from 'shared/form/Textarea'
 import { rootPath } from 'marketplace/routes'
+import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 
 const model = 'publishAQuestionForm'
@@ -92,6 +93,32 @@ class PublishAnswerPage extends Component {
 
     if (loading) {
       return <LoadingIndicatorFullPage />
+    }
+
+    let hasFocused = false
+    const setFocus = e => {
+      if (!hasFocused) {
+        hasFocused = true
+        e.focus()
+      }
+    }
+
+    if (brief.status && brief.status !== 'live') {
+      return (
+        <ErrorBoxComponent
+          title="Pending questions cannot be viewed for this opportunity"
+          errorMessage={
+            <span>
+              This could be because the opportunity is no longer live or has not yet been published. Please{' '}
+              <a href={`${rootPath}/brief/${brief.id}/overview/${brief.lot}`}>return to the overview page</a> to check
+              or contact us if you have any issues.
+            </span>
+          }
+          setFocus={setFocus}
+          form={{}}
+          invalidFields={[]}
+        />
+      )
     }
 
     if (brief && brief.id) {

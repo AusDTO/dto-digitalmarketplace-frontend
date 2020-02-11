@@ -153,9 +153,11 @@ const Opportunity = props => {
   return (
     <div>
       <div className="row">
-        <div className={`col-xs-12 ${mainStyles.hideDesktop} ${mainStyles.marginBottom2}`}>
-          <WithdrawnOpportunityMessage reason={brief.reasonToWithdraw} />
-        </div>
+        {brief.status === 'withdrawn' && (
+          <div className={`col-xs-12 ${mainStyles.hideDesktop} ${mainStyles.marginBottom2}`}>
+            <WithdrawnOpportunityMessage reason={brief.reasonToWithdraw} />
+          </div>
+        )}
         <div className="col-xs-12 col-md-8">
           {brief.status === 'draft' && (
             <AUcallout description="" className={styles.previewNotice}>

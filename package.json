@@ -193,7 +193,7 @@
     ]
   },
   "engines": {
-    "node": "8.x"
+    "node": "10.x"
   },
   "pancake": {
     "auto-save": true,
