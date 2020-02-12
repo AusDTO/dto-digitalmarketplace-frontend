@@ -25,8 +25,7 @@ class EditOpportunityTitle extends Component {
   }
 
   handleCancelClick = () => {
-    const { initialTitle } = this.state
-    this.props.resetTitle(initialTitle)
+    this.props.resetTitle('')
     this.setState({
       redirectToEditsTable: true
     })

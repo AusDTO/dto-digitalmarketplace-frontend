@@ -46,8 +46,7 @@ class EditOpportunityClosingDate extends Component {
   }
 
   handleCancelClick = () => {
-    const { initialClosingDate } = this.state
-    this.props.resetClosingDate(initialClosingDate)
+    this.props.resetClosingDate('')
     this.setState({
       hasErrors: false,
       redirectToEditsTable: true
