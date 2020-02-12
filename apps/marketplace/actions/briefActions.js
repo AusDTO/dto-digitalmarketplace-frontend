@@ -17,6 +17,7 @@ import {
   CLOSE_OPPORTUNITY_SUCCESS,
   DELETE_BRIEF_SUCCESS,
   EDIT_OPPORTUNITY_SUCCESS,
+  LOAD_OPPORTUNITY_EDIT_HISTORY_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NAME_SPLIT,
   SPECIALIST_NUMBER,
@@ -559,6 +560,31 @@ export const applyEditsToOpportunity = (briefId, data) => (dispatch, getState) =
       dispatch(handleErrorFailure(response))
     } else {
       dispatch(handleEditOpportunitySuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
+
+export const handleLoadOpportunityHistorySuccess = response => ({
+  type: LOAD_OPPORTUNITY_EDIT_HISTORY_SUCCESS,
+  brief: response.data.brief,
+  edits: response.data.edits
+})
+
+export const loadOpportunityHistory = briefId => dispatch => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: `/brief/${briefId}/history`,
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleLoadOpportunityHistorySuccess(response))
     }
     dispatch(sendingRequest(false))
     return response
