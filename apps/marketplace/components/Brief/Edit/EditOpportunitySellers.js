@@ -31,6 +31,9 @@ class EditOpportunitySellers extends Component {
       timeoutId: null
     }
 
+    this.state.daysUntilOpportunityCloses =
+      this.state.daysUntilOpportunityCloses < 0 ? 0 : this.state.daysUntilOpportunityCloses
+
     if (
       this.state.daysUntilOpportunityCloses <= 2 ||
       this.state.daysUntilOpportunityCloses <= Math.round(this.state.daysUntilOpportunityCloses / 2)
