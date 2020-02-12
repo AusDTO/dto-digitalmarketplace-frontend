@@ -133,12 +133,15 @@ const Opportunity = props => {
     isPartOfTeam,
     isTeamLead,
     lastEditedAt,
-    teams
+    teams,
+    userType
   } = props
 
   const brief = { ...defaultBriefProps, ...props.brief }
   const category = getBriefCategory(domains, brief.sellerCategory)
   const originalClosedAt = brief.originalClosedAt ? brief.originalClosedAt : null
+  const historyLink =
+    userType === 'supplier' ? `${rootPath}/seller/brief/${brief.id}/history` : `${rootPath}/brief/${brief.id}/history`
 
   if (brief.status === 'draft') {
     if (
@@ -193,7 +196,7 @@ const Opportunity = props => {
                   <div className={`${mainStyles.marginTop1} ${mainStyles.noMaxWidth}`}>
                     <p className={mainStyles.noMaxWidth}>
                       This opportunity was last updated on {format(lastEditedAt, 'D MMMM YYYY')}.{' '}
-                      <a className={mainStyles.floatRight} href={`${rootPath}/brief/${brief.id}/history`}>
+                      <a className={mainStyles.floatRight} href={historyLink}>
                         View all updates
                       </a>
                     </p>

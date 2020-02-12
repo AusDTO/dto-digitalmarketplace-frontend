@@ -114,6 +114,7 @@ class OpportunityPage extends Component {
           hasSignedCurrentAgreement={this.props.hasSignedCurrentAgreement}
           lastEditedAt={this.props.lastEditedAt}
           supplierCode={this.props.supplierCode}
+          userType={this.props.userType}
         />
       )
     }
@@ -157,7 +158,8 @@ const mapResetStateToProps = state => ({
   isInvited: state.brief.isInvited,
   hasSignedCurrentAgreement: state.brief.hasSignedCurrentAgreement,
   lastEditedAt: state.brief.lastEditedAt,
-  supplierCode: state.app.supplierCode
+  supplierCode: state.app.supplierCode,
+  userType: state.app.userType
 })
 
 const mapResetDispatchToProps = dispatch => ({
