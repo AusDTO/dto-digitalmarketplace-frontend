@@ -133,6 +133,7 @@ const Opportunity = props => {
     isPartOfTeam,
     isTeamLead,
     lastEditedAt,
+    onlySellersEdited,
     teams,
     userType
   } = props
@@ -183,7 +184,7 @@ const Opportunity = props => {
               {brief.title}
             </AUheading>
           </span>
-          {lastEditedAt && (
+          {lastEditedAt && !onlySellersEdited && (
             <div className="row">
               <div className="col-xs-12">
                 <AUpageAlert

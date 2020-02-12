@@ -113,6 +113,7 @@ class OpportunityPage extends Component {
           isInvited={this.props.isInvited}
           hasSignedCurrentAgreement={this.props.hasSignedCurrentAgreement}
           lastEditedAt={this.props.lastEditedAt}
+          onlySellersEdited={this.props.onlySellersEdited}
           supplierCode={this.props.supplierCode}
           userType={this.props.userType}
         />
@@ -158,6 +159,7 @@ const mapResetStateToProps = state => ({
   isInvited: state.brief.isInvited,
   hasSignedCurrentAgreement: state.brief.hasSignedCurrentAgreement,
   lastEditedAt: state.brief.lastEditedAt,
+  onlySellersEdited: state.brief.onlySellersEdited,
   supplierCode: state.app.supplierCode,
   userType: state.app.userType
 })

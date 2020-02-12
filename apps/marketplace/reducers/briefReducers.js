@@ -128,7 +128,8 @@ const briefReducer = (state = defaultBriefState, action) => {
         hasSupplierErrors: action.hasSupplierErrors,
         isInvited: action.isInvited,
         hasSignedCurrentAgreement: action.hasSignedCurrentAgreement,
-        lastEditedAt: action.lastEditedAt
+        lastEditedAt: action.lastEditedAt,
+        onlySellersEdited: action.onlySellersEdited
       }
 
     case BRIEF_SAVE_SUCCESS:
