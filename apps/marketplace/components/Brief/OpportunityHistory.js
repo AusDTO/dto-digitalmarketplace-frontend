@@ -47,7 +47,8 @@ const OpportunityHistory = props => {
   return (
     <React.Fragment>
       <PageHeader actions={[]} organisation={`${brief.title} (${brief.id})`} title="History of updates" />
-      {edits && edits.map(edit => <EditSummary edit={edit} key={edit.editedAt} />)}
+      {edits.length > 0 && edits.map(edit => <EditSummary edit={edit} key={edit.editedAt} />)}
+      {edits.length === 0 && <p>No changes have been made to this opportunity.</p>}
     </React.Fragment>
   )
 }
