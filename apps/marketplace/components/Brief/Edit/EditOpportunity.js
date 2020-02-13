@@ -104,8 +104,9 @@ class EditOpportunity extends Component {
                       className={`${styles.border0} ${styles.padding0}`}
                       onClick={() => document.getElementById('understandsEditProcess').focus()}
                     >
-                      Select the checkbox to confirm you understand invited sellers can view previous versions of your
-                      updates.
+                      {isOpenToAll
+                        ? 'Select the checkbox to confirm you understand sellers will be able to view previous versions of your updates.'
+                        : 'Select the checkbox to confirm you understand invited sellers can view previous versions of your updates.'}
                     </AUbutton>
                   )
                 }}
