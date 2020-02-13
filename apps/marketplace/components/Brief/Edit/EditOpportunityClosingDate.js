@@ -135,7 +135,7 @@ class EditOpportunityClosingDate extends Component {
           <span>
             {format(
               getBriefLastQuestionDate(new Date(this.props[model].closingDate)),
-              'dddd DD MMMM YYYY [at] ha [(in Canberra)]'
+              'dddd DD MMMM YYYY [at 6pm (in Canberra)]'
             )}
           </span>
         </div>
