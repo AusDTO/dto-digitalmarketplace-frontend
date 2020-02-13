@@ -5,22 +5,12 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 
 import OverviewHeaderDraftActionsList from './OverviewHeaderDraftActionsList'
 import OverviewHeaderPublishedActionsList from './OverviewHeaderPublishedActionsList'
-import OverviewHeaderClosedActionsList from './OverviewHeaderClosedActionsList'
+import OverviewHeaderDefaultActionsList from './OverviewHeaderDefaultActionsList'
 
 import styles from '../Overview.scss'
 
 const OverviewHeader = props => {
-  const {
-    brief,
-    canCloseOpportunity,
-    flowName,
-    handleDeleteClick,
-    isClosed,
-    isPublished,
-    isPartOfTeam,
-    isTeamLead,
-    teams
-  } = props
+  const { brief, canCloseOpportunity, flowName, handleDeleteClick, isPartOfTeam, isTeamLead, teams } = props
 
   return (
     <div className={styles.header}>
@@ -32,7 +22,7 @@ const OverviewHeader = props => {
         Overview
       </AUheading>
       <div className={styles.headerMenu}>
-        {!isPublished && (
+        {brief.status === 'draft' && (
           <OverviewHeaderDraftActionsList
             brief={brief}
             onDeleteClick={handleDeleteClick}
@@ -41,7 +31,7 @@ const OverviewHeader = props => {
             teams={teams}
           />
         )}
-        {isPublished && !isClosed && (
+        {brief.status === 'live' && (
           <OverviewHeaderPublishedActionsList
             brief={brief}
             canCloseOpportunity={canCloseOpportunity}
@@ -50,7 +40,7 @@ const OverviewHeader = props => {
             teams={teams}
           />
         )}
-        {isPublished && isClosed && <OverviewHeaderClosedActionsList brief={brief} />}
+        {['closed', 'withdrawn'].includes(brief.status) && <OverviewHeaderDefaultActionsList brief={brief} />}
       </div>
     </div>
   )
@@ -61,8 +51,6 @@ OverviewHeader.defaultProps = {
   canCloseOpportunity: null,
   flowName: '',
   handleDeleteClick: () => {},
-  isClosed: null,
-  isPublished: null,
   isPartOfTeam: null,
   isTeamLead: null,
   teams: []
@@ -76,8 +64,6 @@ OverviewHeader.propTypes = {
   canCloseOpportunity: PropTypes.bool.isRequired,
   flowName: PropTypes.string.isRequired,
   handleDeleteClick: PropTypes.func.isRequired,
-  isClosed: PropTypes.bool.isRequired,
-  isPublished: PropTypes.bool,
   isPartOfTeam: PropTypes.bool.isRequired,
   isTeamLead: PropTypes.bool.isRequired,
   teams: PropTypes.array.isRequired

@@ -4,6 +4,7 @@ import { loadPublicBrief } from 'marketplace/actions/briefActions'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import BuyerRFXCompleted from 'marketplace/components/BuyerRFX/BuyerRFXCompleted'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
+import { rootPath } from 'marketplace/routes'
 
 class BuyerRFXCompletedPage extends Component {
   constructor(props) {
@@ -41,7 +42,7 @@ class BuyerRFXCompletedPage extends Component {
     if (this.props.errorMessage) {
       return (
         <ErrorBoxComponent
-          title="A problem occurred when loading the brief details"
+          title="A problem has occurred"
           errorMessage={this.props.errorMessage}
           setFocus={setFocus}
           form={{}}
@@ -59,8 +60,17 @@ class BuyerRFXCompletedPage extends Component {
     if (this.props.brief && this.props.brief.status && this.props.brief.status !== 'live') {
       return (
         <ErrorBoxComponent
-          title="A problem occurred when loading the brief details"
-          errorMessage="This brief is not yet live"
+          title="A problem has occurred"
+          errorMessage={
+            <span>
+              This opportunity is not live. This could be because it has closed, been withdrawn or has not yet been
+              published. Please{' '}
+              <a href={`${rootPath}/brief/${this.props.brief.id}/overview/${this.props.brief.lot}`}>
+                return to the overview page
+              </a>{' '}
+              to check or contact us if you have any issues.
+            </span>
+          }
           setFocus={setFocus}
           form={{}}
           invalidFields={[]}
