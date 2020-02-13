@@ -27,7 +27,10 @@ class Agency extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     const formData = new FormData(event.target)
-    let data = Object.fromEntries(formData)
+    let data = [...formData].reduce((obj, [key, val]) => {
+      obj[key] = val
+      return obj
+    }, {})
     const { agency } = this.state
     data.id = agency.id
     if (data.reports === "on") {
