@@ -14,7 +14,9 @@ const SellerAssessmentIntroductionStage = props => (
     </p>
     <p>
       <strong>Please note:</strong> The time we take to assess your criteria is dependent on volume, seasonal peaks,
-      complex cases and incomplete submissions. We will endeavour to assess your criteria in a reasonable timeframe.
+      complex cases and incomplete submissions. If you submit your assessment within 2 days of the closing date for an
+      opportunity, we cannot guarantee that you will be assessed in time to respond. We will endeavour to assess your
+      criteria in a reasonable timeframe.
     </p>
     <AUheadings level="2" size="lg">
       You will be asked for
