@@ -197,7 +197,7 @@ const Opportunity = props => {
                   <div className={`${mainStyles.marginTop1} ${mainStyles.noMaxWidth}`}>
                     <p className={mainStyles.noMaxWidth}>
                       This opportunity was last updated on {format(lastEditedAt, 'D MMMM YYYY')}.{' '}
-                      <a className={mainStyles.floatRight} href={historyLink}>
+                      <a className={mainStyles.floatRight} href={historyLink} rel="noopener noreferrer" target="_blank">
                         View all updates
                       </a>
                     </p>
