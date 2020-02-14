@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
-import { AUcheckbox } from '@gov.au/control-input/lib/js/react.js'
+import AUselect from '@gov.au/select/lib/js/react.js'
 import DocumentTitle from 'react-document-title'
 
 import { required, validEmail, validABN } from 'shared/validators'
@@ -51,15 +51,17 @@ class SignupForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      disableABN: false
+      isInternational: false
     }
     this.handleInternationalChange = this.handleInternationalChange.bind(this)
   }
 
   handleInternationalChange(e) {
-    const isIntl = e.target.checked
-    this.setState({ disableABN: isIntl })
-    if (isIntl) {
+    const isIntl = e.target.value
+    this.setState({
+      isInternational: isIntl === 'yes'
+    })
+    if (isIntl === 'yes') {
       this.props.setABN('N/A')
       this.props.setABNValidity(true)
     } else {
@@ -251,6 +253,25 @@ class SignupForm extends Component {
                       )}
                       {userType === 'seller' && (
                         <React.Fragment>
+                          <label className="question-heading au-text-input__label" htmlFor="international">
+                            Australian business status
+                          </label>
+                          <AUselect
+                            required
+                            block
+                            id="international"
+                            onChange={this.handleInternationalChange}
+                            options={[
+                              {
+                                value: 'no',
+                                text: 'My business is located inside Australia'
+                              },
+                              {
+                                value: 'yes',
+                                text: 'My business is located outside Australia'
+                              }
+                            ]}
+                          />
                           <Textfield
                             model={`${model}.abn`}
                             name="abn"
@@ -258,21 +279,15 @@ class SignupForm extends Component {
                             type="text"
                             htmlFor="abn"
                             label="ABN"
-                            disabled={this.state.disableABN}
+                            disabled={this.state.isInternational}
                             validators={{
-                              required: v => this.state.disableABN || required(v),
-                              validABN: v => !v || this.state.disableABN || validABN(v)
+                              required: v => this.state.isInternational || required(v),
+                              validABN: v => !v || this.state.isInternational || validABN(v)
                             }}
                             messages={{
                               required: 'You must supply an ABN',
                               validABN: 'The ABN supplied is not valid'
                             }}
-                          />
-                          <AUcheckbox
-                            label="My business is located outside of Australia and does not have an ABN"
-                            name="international"
-                            id="international"
-                            onChange={this.handleInternationalChange}
                           />
                         </React.Fragment>
                       )}
