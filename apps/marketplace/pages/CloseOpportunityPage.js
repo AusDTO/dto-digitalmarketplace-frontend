@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Redirect, withRouter } from 'react-router-dom'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { closeOpportunity, loadBrief } from 'marketplace/actions/briefActions'
-import { setErrorMessage } from 'marketplace/actions/appActions'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import CloseOpportunity from 'marketplace/components/Brief/CloseOpportunity'
 import { rootPath } from 'marketplace/routes'
@@ -91,11 +90,11 @@ class CloseOpportunityPage extends Component {
       hasFocused = false
       return (
         <ErrorBoxComponent
-          title="This opportunity cannot be closed right now"
+          title="This opportunity cannot be closed"
           errorMessage={
             <span>
-              This could be because the invited seller has withdrawn their application or the opportunity has already
-              closed. Please{' '}
+              This could be because the opportunity has already been closed or your invited seller has not completed
+              their response. Please{' '}
               <a href={`${rootPath}/brief/${brief.id}/overview/${brief.lot}`}>return to the overview page</a> to check
               or contact us if you have any issues.
             </span>
@@ -124,8 +123,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   closeOpportunity: briefId => dispatch(closeOpportunity(briefId)),
-  loadData: briefId => dispatch(loadBrief(briefId)),
-  setError: message => dispatch(setErrorMessage(message))
+  loadData: briefId => dispatch(loadBrief(briefId))
 })
 
 export default withRouter(

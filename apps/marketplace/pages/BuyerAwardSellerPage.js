@@ -7,12 +7,14 @@ import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingInd
 import BuyerAwardSeller from 'marketplace/components/Brief/BuyerAwardSeller'
 import { rootPath } from 'marketplace/routes'
 import { hasPermission } from 'marketplace/components/helpers'
+import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 
 export class BuyerAwardSellerPage extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
+      brief: {},
       error: null,
       loading: true,
       suppliers: [],
@@ -55,16 +57,43 @@ export class BuyerAwardSellerPage extends Component {
   }
 
   render() {
-    const { suppliers, workOrderCreated, error, loading } = this.state
-
+    const { brief, suppliers, workOrderCreated, error, loading } = this.state
     const { isPartOfTeam, isTeamLead, teams } = this.props
+
+    let hasFocused = false
+    const setFocus = e => {
+      if (!hasFocused) {
+        hasFocused = true
+        e.focus()
+      }
+    }
 
     if (workOrderCreated) {
       return <Redirect to={`${rootPath}/brief/${this.props.match.params.briefId}/download-work-order`} />
     }
+
     if (loading) {
       return <LoadingIndicatorFullPage />
     }
+
+    if (brief.status !== 'closed') {
+      return (
+        <ErrorBoxComponent
+          title="You cannot award this opportunity to a seller"
+          errorMessage={
+            <span>
+              This could be because the opportunity is still live, has been withdrawn or has not yet been published.
+              Please <a href={`${rootPath}/brief/${brief.id}/overview/${brief.lot}`}>return to the overview page</a> to
+              check or contact us if you have any issues.
+            </span>
+          }
+          setFocus={setFocus}
+          form={{}}
+          invalidFields={[]}
+        />
+      )
+    }
+
     if (!hasPermission(isPartOfTeam, isTeamLead, teams, 'create_work_orders')) {
       return <Redirect to={`${rootPath}/request-access/create_work_orders`} />
     }
