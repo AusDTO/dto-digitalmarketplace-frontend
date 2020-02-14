@@ -272,23 +272,24 @@ class SignupForm extends Component {
                               }
                             ]}
                           />
-                          <Textfield
-                            model={`${model}.abn`}
-                            name="abn"
-                            id="abn"
-                            type="text"
-                            htmlFor="abn"
-                            label="ABN"
-                            disabled={this.state.isInternational}
-                            validators={{
-                              required: v => this.state.isInternational || required(v),
-                              validABN: v => !v || this.state.isInternational || validABN(v)
-                            }}
-                            messages={{
-                              required: 'You must supply an ABN',
-                              validABN: 'The ABN supplied is not valid'
-                            }}
-                          />
+                          {!this.state.isInternational && (
+                            <Textfield
+                              model={`${model}.abn`}
+                              name="abn"
+                              id="abn"
+                              type="text"
+                              htmlFor="abn"
+                              label="ABN"
+                              validators={{
+                                required: v => required(v),
+                                validABN: v => !v || validABN(v)
+                              }}
+                              messages={{
+                                required: 'You must supply an ABN',
+                                validABN: 'The ABN supplied is not valid'
+                              }}
+                            />
+                          )}
                         </React.Fragment>
                       )}
                       {isBuyer && (
