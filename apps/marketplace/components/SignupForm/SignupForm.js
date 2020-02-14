@@ -280,7 +280,6 @@ class SignupForm extends Component {
                               type="text"
                               htmlFor="abn"
                               label="ABN"
-                              disabled={this.state.isInternational}
                               validators={{
                                 required: v => required(v),
                                 validABN: v => !v || validABN(v)
