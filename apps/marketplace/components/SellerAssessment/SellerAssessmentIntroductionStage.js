@@ -24,8 +24,8 @@ const SellerAssessmentIntroductionStage = props => (
         your maximum daily rate for your services in {props.meta.domain.name}. Use{' '}
         <a
           href="https://www.sfia-online.org/en/framework/sfia-7/busskills/level-5"
-          rel="noopener noreferrer"
           target="_blank"
+          rel="external noopener noreferrer"
         >
           SFIA level 5
         </a>{' '}

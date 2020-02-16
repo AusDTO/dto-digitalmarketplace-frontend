@@ -292,6 +292,11 @@ export default combineReducers({
         Remote: false
       }
     },
+    closeOpportunityForm: {},
+    withdrawOpportunityForm: {
+      hasAuthorityToWithdraw: false,
+      reasonToWithdraw: ''
+    },
     BuyerRFXForm: BuyerRFXFormReducer,
     BuyerTrainingForm: BuyerTrainingFormReducer,
     BuyerATMForm: BuyerATMFormReducer,

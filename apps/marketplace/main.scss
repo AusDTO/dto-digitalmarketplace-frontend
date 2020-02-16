@@ -1,3 +1,31 @@
+.bold {
+  font-weight: bold;
+}
+
+.greyBorderBottom1 {
+  border-bottom: 1px solid #979797;
+}
+
+.fontSizeLg {
+  font-size: 1.5rem;
+}
+
+.fontSizeMd {
+  font-size: 1.25rem;
+}
+
+.fullWidthPageAlert {
+  .noMaxWidth {
+    max-width: none;
+  }
+}
+
+.infoCardBody {
+  .noMarginTop {
+    margin-top: 0;
+  }
+}
+
 .marginBottom1 {
   margin-bottom: 1rem;
 }
@@ -42,6 +70,26 @@
   margin-top: 3rem;
 }
 
+.paddingBottom1 {
+  padding-bottom: 1rem;
+}
+
+.paddingBottom2 {
+  padding-bottom: 2rem;
+}
+
+@media screen and (max-width: 767px) {
+  .hideMobile {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hideDesktop {
+    display: none;
+  }
+}
+
 @media print { 
   .noPrint, .noPrint * {
     display: none !important;
@@ -59,6 +107,22 @@
 
 .darkGrayText {
   color: #717171;
+}
+
+.red, .red a {
+  color: #FF0000;
+}
+
+@media screen and (max-width: 767px) {
+  .hideMobile {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hideDesktop {
+    display: none;
+  }
 }
 
 @media (max-width: 899px) {

@@ -19,7 +19,9 @@ const ItemSelectInput = props => {
 
   return (
     <div>
-      <label htmlFor={id}>{label}</label>
+      <label className={styles.label} htmlFor={id}>
+        {label}
+      </label>
       <div>
         <span>{description}</span>
       </div>
