@@ -84,7 +84,7 @@ export class BuyerATMAdditionalInformationStage extends Component {
             closedAtIsValid: 'You must enter a valid closing date',
             closedAtIs2DaysInFuture: 'You must enter a closing date at least 2 days from now',
             requiredClosedAt: 'You must enter the closing date for this opportunity',
-            closedAtIsBefore: 'You must enter a closing date not more than one year from now'
+            closedAtIsBefore: 'You must enter a closing date no more than one year from now'
           }}
         />
 
