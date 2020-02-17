@@ -144,7 +144,7 @@ class BuyerEvaluationCriteriaStage extends Component {
             noEmptyWeightingsNiceToHave: 'You cannot leave any weightings blank.',
             weightingsAddUpTo100NiceToHave: 'Desirable weightings must add up to 100%.',
             noZeroWeightingsNiceToHave: 'Desirable must be greater than 0.',
-            noEmptyCriteriaNiceToHave: 'You cannot leave any weightings blank.'
+            noEmptyCriteriaNiceToHave: 'You cannot have blank desirable criteria.'
           }}
         />
         <AUheading level="2" size="lg">
