@@ -159,7 +159,6 @@ class BuyerEvaluationCriteriaStage extends Component {
             noEmptyCriteriaNiceToHave: 'You cannot have blank desirable criteria.',
             noDuplicateEssential: 'All essential criteria must be unique',
             noDuplicateNiceToHave: 'All desirable criteria must be unique'
-
           }}
         />
         <AUheading level="2" size="lg">
