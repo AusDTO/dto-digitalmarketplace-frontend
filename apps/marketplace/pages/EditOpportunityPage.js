@@ -11,6 +11,7 @@ import EditOpportunity from 'marketplace/components/Brief/Edit/EditOpportunity'
 import EditOpportunityClosingDate from 'marketplace/components/Brief/Edit/EditOpportunityClosingDate'
 import EditOpportunitySellers from 'marketplace/components/Brief/Edit/EditOpportunitySellers'
 import EditOpportunityTitle from 'marketplace/components/Brief/Edit/EditOpportunityTitle'
+import { hasEdits } from 'marketplace/components/Brief/Edit/helpers'
 
 const model = 'editOpportunityForm'
 
@@ -23,12 +24,19 @@ class EditOpportunityPage extends Component {
     }
 
     this.handleSubmitEditsClick = this.handleSubmitEditsClick.bind(this)
+    this.handleWindowBeforeUnload = this.handleWindowBeforeUnload.bind(this)
   }
 
   componentDidMount = () => {
+    window.addEventListener('beforeunload', this.handleWindowBeforeUnload)
+
     if (this.props.match.params.briefId) {
       this.getBriefData()
     }
+  }
+
+  componentWillUnmount = () => {
+    window.removeEventListener('beforeunload', this.handleWindowBeforeUnload)
   }
 
   getBriefData = () => {
@@ -60,6 +68,19 @@ class EditOpportunityPage extends Component {
         })
       }
     })
+  }
+
+  handleWindowBeforeUnload = e => {
+    const { brief, edits } = this.props
+    const message = 'Are you sure you want to leave your edits without saving them?'
+
+    if (hasEdits(brief, edits)) {
+      e.preventDefault()
+      e.returnValue = message
+      return message
+    }
+
+    return null
   }
 
   render = () => {
