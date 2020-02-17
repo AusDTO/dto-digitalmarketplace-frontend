@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import format from 'date-fns/format'
 
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import { getClosingTime } from 'marketplace/components/helpers'
-import { getSellersToInvite, itemWasEdited } from './helpers'
+import { getSellersToInvite, itemWasEdited, getAllDocuments } from './helpers'
 
 import styles from '../../../main.scss'
 
@@ -86,6 +86,31 @@ class EditOpportunityTable extends Component {
               )}
             </React.Fragment>
           )}
+          <tr>
+            <th scope="row">Documents</th>
+            <td>
+              {(getAllDocuments(brief).length > 0 || getAllDocuments(edits).length > 0) && (
+                <ul>
+                  {getAllDocuments(edits).length > 0
+                    ? getAllDocuments(edits).map(document => (
+                        <li key={document}>
+                          <a href={`#${document}`}>{document}</a>
+                        </li>
+                      ))
+                    : getAllDocuments(brief).map(document => (
+                        <li key={document}>
+                          <a href={`#${document}`}>{document}</a>
+                        </li>
+                      ))}
+                </ul>
+              )}
+            </td>
+            <td>
+              <Link to="/documents" className="au-btn au-btn--tertiary">
+                Edit documents
+              </Link>
+            </td>
+          </tr>
           <tr>
             <th scope="row">Closing date</th>
             <td>

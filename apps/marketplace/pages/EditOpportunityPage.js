@@ -11,6 +11,7 @@ import EditOpportunity from 'marketplace/components/Brief/Edit/EditOpportunity'
 import EditOpportunityClosingDate from 'marketplace/components/Brief/Edit/EditOpportunityClosingDate'
 import EditOpportunitySellers from 'marketplace/components/Brief/Edit/EditOpportunitySellers'
 import EditOpportunityTitle from 'marketplace/components/Brief/Edit/EditOpportunityTitle'
+import EditOpportunityDocuments from 'marketplace/components/Brief/Edit/EditOpportunityDocuments'
 import { hasEdits } from 'marketplace/components/Brief/Edit/helpers'
 
 const model = 'editOpportunityForm'
@@ -133,6 +134,7 @@ class EditOpportunityPage extends Component {
           <Switch>
             <Route path="/title" render={() => <EditOpportunityTitle brief={brief} model={model} />} />
             <Route path="/sellers" render={() => <EditOpportunitySellers brief={brief} model={model} />} />
+            <Route path="/documents" render={() => <EditOpportunityDocuments brief={brief} model={model} />} />
             <Route path="/closing-date" render={() => <EditOpportunityClosingDate brief={brief} model={model} />} />
             <Route
               path="/"
