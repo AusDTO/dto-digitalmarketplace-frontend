@@ -14,6 +14,14 @@ import styles from './BuyerEvaluationCriteriaStage.scss'
 const noEmptyWeightingsEssential = v =>
   !v.includeWeightingsEssential || v.essentialRequirements.every(val => val.weighting)
 
+const noDuplicateEssential = v =>
+  new Set(v.essentialRequirements.map(val => val.criteria)).size ===
+  v.essentialRequirements.map(val => val.criteria).length
+
+const noDuplicateNiceToHave = v =>
+  new Set(v.niceToHaveRequirements.map(val => val.criteria)).size ===
+  v.niceToHaveRequirements.map(val => val.criteria).length
+
 export const weightingsAddUpTo100Essential = v =>
   !v.includeWeightingsEssential ||
   !noEmptyWeightingsEssential(v) ||
@@ -54,7 +62,9 @@ export const done = v =>
   noEmptyWeightingsNiceToHave(v) &&
   weightingsAddUpTo100NiceToHave(v) &&
   noZeroWeightingsNiceToHave(v) &&
-  noEmptyCriteriaNiceToHave(v)
+  noEmptyCriteriaNiceToHave(v) &&
+  noDuplicateEssential(v) &&
+  noDuplicateNiceToHave(v)
 
 class BuyerEvaluationCriteriaStage extends Component {
   constructor(props) {
@@ -124,7 +134,9 @@ class BuyerEvaluationCriteriaStage extends Component {
             noEmptyWeightingsNiceToHave,
             weightingsAddUpTo100NiceToHave,
             noZeroWeightingsNiceToHave,
-            noEmptyCriteriaNiceToHave
+            noEmptyCriteriaNiceToHave,
+            noDuplicateEssential,
+            noDuplicateNiceToHave
           }
         }}
         onSubmit={this.props.onSubmit}
@@ -144,7 +156,9 @@ class BuyerEvaluationCriteriaStage extends Component {
             noEmptyWeightingsNiceToHave: 'You cannot leave any weightings blank.',
             weightingsAddUpTo100NiceToHave: 'Desirable weightings must add up to 100%.',
             noZeroWeightingsNiceToHave: 'Desirable must be greater than 0.',
-            noEmptyCriteriaNiceToHave: 'You cannot leave any weightings blank.'
+            noEmptyCriteriaNiceToHave: 'You cannot leave any weightings blank.',
+            noDuplicateEssential: 'All essential criteria must be unique',
+            noDuplicateNiceToHave: 'All desirable criteria must be unique'
           }}
         />
         <AUheading level="2" size="lg">

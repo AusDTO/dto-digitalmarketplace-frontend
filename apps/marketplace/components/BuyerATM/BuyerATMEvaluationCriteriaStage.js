@@ -28,6 +28,9 @@ export const noZeroWeightings = formValues =>
 
 export const noEmptyCriteria = formValues => formValues.evaluationCriteria.every(val => val.criteria)
 
+export const noDuplicateCriteria = v =>
+  new Set(v.evaluationCriteria.map(val => val.criteria)).size === v.evaluationCriteria.map(val => val.criteria).length
+
 class BuyerATMEvaluationCriteriaStage extends Component {
   constructor(props) {
     super(props)
@@ -71,7 +74,7 @@ class BuyerATMEvaluationCriteriaStage extends Component {
       <Form
         model={this.props.model}
         validators={{
-          '': { noEmptyWeightings, weightingsAddUpTo100, noZeroWeightings, noEmptyCriteria }
+          '': { noEmptyWeightings, weightingsAddUpTo100, noZeroWeightings, noEmptyCriteria, noDuplicateCriteria }
         }}
         onSubmit={this.props.onSubmit}
         onSubmitFailed={this.props.onSubmitFailed}
@@ -91,7 +94,8 @@ class BuyerATMEvaluationCriteriaStage extends Component {
             noEmptyWeightings: 'You must not have any empty weighting.',
             weightingsAddUpTo100: 'Weightings must add up to 100%.',
             noZeroWeightings: 'Weightings must be greater than 0.',
-            noEmptyCriteria: 'You must not have any empty criteria.'
+            noEmptyCriteria: 'You must not have any empty criteria.',
+            noDuplicateCriteria: 'All criteria must be unique'
           }}
         />
         <p>
