@@ -270,7 +270,7 @@ class DocumentsForm extends BaseForm {
                                             <p styleName="filler">&nbsp;</p>
                                             <p id={`span_${key}`} ref={`span_${key}`} styleName="file-name">{!isEmpty(name) && name}</p>
                                             <button type="submit" styleName="submit-container" onClick={this.onUpload.bind(this, key)}>Upload</button>
-                                            <p styleName="custom-input">Choose file</p>
+                                            <p styleName="custom-input">Change file</p>
                                         </div>
                                     }
                                 </div>
