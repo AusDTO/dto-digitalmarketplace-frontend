@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import format from 'date-fns/format'
 
-import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import { getClosingTime } from 'marketplace/components/helpers'
 import { getSellersToInvite, itemWasEdited } from './helpers'
 
@@ -11,11 +10,6 @@ import styles from '../../../main.scss'
 class EditOpportunityTable extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      editClosingDateClicked: false,
-      editSellersClicked: false,
-      editTitleClicked: false
-    }
 
     this.showInvitedSellers = this.showInvitedSellers.bind(this)
   }
@@ -30,18 +24,6 @@ class EditOpportunityTable extends Component {
     const showInvited = this.showInvitedSellers()
     const sellersToInvite = getSellersToInvite(brief, edits)
 
-    if (this.state.editTitleClicked) {
-      return <Redirect to="/title" />
-    }
-
-    if (this.state.editSellersClicked) {
-      return <Redirect to="/sellers" />
-    }
-
-    if (this.state.editClosingDateClicked) {
-      return <Redirect to="/closing-date" />
-    }
-
     return (
       <table className={`col-xs-12 ${styles.defaultStyle} ${styles.textAlignLeft}`}>
         <tbody>
@@ -49,9 +31,9 @@ class EditOpportunityTable extends Component {
             <th scope="row">Opportunity title</th>
             <td>{itemWasEdited(brief.title, edits.title) ? edits.title : brief.title}</td>
             <td>
-              <AUbutton as="tertiary" onClick={() => this.setState({ editTitleClicked: true })}>
+              <Link to="/title" className="au-btn au-btn--tertiary">
                 Edit title
-              </AUbutton>
+              </Link>
             </td>
           </tr>
           {showInvited && (
@@ -66,9 +48,9 @@ class EditOpportunityTable extends Component {
                   </ul>
                 </td>
                 <td>
-                  <AUbutton as="tertiary" onClick={() => this.setState({ editSellersClicked: true })}>
+                  <Link to="/sellers" className="au-btn au-btn--tertiary">
                     {sellersToInvite.length > 0 ? 'Edit' : 'Add'} sellers
-                  </AUbutton>
+                  </Link>
                 </td>
               </tr>
               {sellersToInvite.length > 0 && (
@@ -94,9 +76,9 @@ class EditOpportunityTable extends Component {
                 : format(getClosingTime(brief), 'dddd DD MMMM YYYY [at] ha [(in Canberra)]')}
             </td>
             <td>
-              <AUbutton as="tertiary" onClick={() => this.setState({ editClosingDateClicked: true })}>
+              <Link to="/closing-date" className="au-btn au-btn--tertiary">
                 Extend closing date
-              </AUbutton>
+              </Link>
             </td>
           </tr>
         </tbody>
