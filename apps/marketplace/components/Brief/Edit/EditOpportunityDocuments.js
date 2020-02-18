@@ -74,8 +74,8 @@ class EditOpportunityDocuments extends Component {
     })
   }
 
-  renderDocumentRow(document, index, type) {
-    if (typeof document !== 'string' || document === '') {
+  renderDocumentRow(document, index, type, atleastOne) {
+    if (typeof document !== 'string' || (!atleastOne && document === '')) {
       return null
     }
     const { model, brief } = this.props
@@ -175,7 +175,7 @@ class EditOpportunityDocuments extends Component {
                 </thead>
                 <tbody>
                   {requirementsDocument.map((document, index) =>
-                    this.renderDocumentRow(document, index, 'requirementsDocument')
+                    this.renderDocumentRow(document, index, 'requirementsDocument', true)
                   )}
                 </tbody>
               </React.Fragment>
@@ -189,7 +189,7 @@ class EditOpportunityDocuments extends Component {
                 </thead>
                 <tbody>
                   {responseTemplate.map((document, index) =>
-                    this.renderDocumentRow(document, index, 'responseTemplate')
+                    this.renderDocumentRow(document, index, 'responseTemplate', true)
                   )}
                 </tbody>
               </React.Fragment>
