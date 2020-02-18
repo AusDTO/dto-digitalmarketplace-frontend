@@ -270,7 +270,8 @@ class DocumentsForm extends BaseForm {
                                             <p styleName="filler">&nbsp;</p>
                                             <p id={`span_${key}`} ref={`span_${key}`} styleName="file-name">{!isEmpty(name) && name}</p>
                                             <button type="submit" styleName="submit-container" onClick={this.onUpload.bind(this, key)}>Upload</button>
-                                            <p styleName="custom-input">Change file</p>
+                                            <input type="file" id={key} name={key} styleName="hidden-input" accept=".pdf,.jpg,.png" onChange={this.onChange.bind(this, key)} />
+                                            <label id={`label_${key}`} htmlFor={key} styleName="custom-input"> {!isEmpty(name) && "Change file"} </label>
                                         </div>
                                     }
                                 </div>
