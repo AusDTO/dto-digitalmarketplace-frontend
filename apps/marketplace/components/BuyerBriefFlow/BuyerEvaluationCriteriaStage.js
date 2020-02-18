@@ -14,14 +14,6 @@ import styles from './BuyerEvaluationCriteriaStage.scss'
 const noEmptyWeightingsEssential = v =>
   !v.includeWeightingsEssential || v.essentialRequirements.every(val => val.weighting)
 
-const noDuplicateEssential = v =>
-  new Set(v.essentialRequirements.map(val => val.criteria)).size ===
-  v.essentialRequirements.map(val => val.criteria).length
-
-const noDuplicateNiceToHave = v =>
-  new Set(v.niceToHaveRequirements.map(val => val.criteria)).size ===
-  v.niceToHaveRequirements.map(val => val.criteria).length
-
 export const weightingsAddUpTo100Essential = v =>
   !v.includeWeightingsEssential ||
   !noEmptyWeightingsEssential(v) ||
@@ -134,9 +126,7 @@ class BuyerEvaluationCriteriaStage extends Component {
             noEmptyWeightingsNiceToHave,
             weightingsAddUpTo100NiceToHave,
             noZeroWeightingsNiceToHave,
-            noEmptyCriteriaNiceToHave,
-            noDuplicateEssential,
-            noDuplicateNiceToHave
+            noEmptyCriteriaNiceToHave
           }
         }}
         onSubmit={this.props.onSubmit}
@@ -156,9 +146,7 @@ class BuyerEvaluationCriteriaStage extends Component {
             noEmptyWeightingsNiceToHave: 'You cannot leave any weightings blank.',
             weightingsAddUpTo100NiceToHave: 'Desirable weightings must add up to 100%.',
             noZeroWeightingsNiceToHave: 'Desirable must be greater than 0.',
-            noEmptyCriteriaNiceToHave: 'You cannot have blank desirable criteria.',
-            noDuplicateEssential: 'All essential criteria must be unique',
-            noDuplicateNiceToHave: 'All desirable criteria must be unique'
+            noEmptyCriteriaNiceToHave: 'You cannot leave any weightings blank.'
           }}
         />
         <AUheading level="2" size="lg">
