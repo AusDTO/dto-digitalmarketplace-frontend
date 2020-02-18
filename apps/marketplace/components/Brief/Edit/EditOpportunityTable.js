@@ -29,6 +29,7 @@ class EditOpportunityTable extends Component {
     const { brief, edits } = this.props
     const showInvited = this.showInvitedSellers()
     const sellersToInvite = getSellersToInvite(brief, edits)
+    const documentBaseURL = `/api/2/brief/${brief.id}/attachments/`
 
     if (this.state.editTitleClicked) {
       return <Redirect to="/title" />
@@ -94,12 +95,16 @@ class EditOpportunityTable extends Component {
                   {getAllDocuments(edits).length > 0
                     ? getAllDocuments(edits).map(document => (
                         <li key={document}>
-                          <a href={`#${document}`}>{document}</a>
+                          <a href={`${documentBaseURL}${document}`} target="_blank" rel="noopener noreferrer">
+                            {document}
+                          </a>
                         </li>
                       ))
                     : getAllDocuments(brief).map(document => (
                         <li key={document}>
-                          <a href={`#${document}`}>{document}</a>
+                          <a href={`${documentBaseURL}${document}`} target="_blank" rel="noopener noreferrer">
+                            {document}
+                          </a>
                         </li>
                       ))}
                 </ul>

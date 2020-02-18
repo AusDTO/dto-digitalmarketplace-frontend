@@ -6,8 +6,10 @@ import { Redirect } from 'react-router-dom'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 
-import { required } from 'marketplace/components/validators'
+import dmapi from 'marketplace/services/apiClient'
+import { requiredFile } from 'marketplace/components/validators'
 import formProps from 'shared/form/formPropsSelector'
+import FilesInput from 'shared/form/FilesInput'
 
 import styles from '../../../main.scss'
 
@@ -16,69 +18,96 @@ class EditOpportunityDocuments extends Component {
     super(props)
     this.state = {
       redirectToEditsTable: false,
-      attachments: [],
-      requirementsDocument: [],
-      responseTemplate: []
+      initial: {}
     }
 
-    if (props[props.model].attachments && props[props.model].attachments.length > 0) {
-      this.state.attachments = props[props.model].attachments
-    } else if (props.brief.attachments && props.brief.attachments.length > 0) {
-      this.state.attachments = props.brief.attachments
+    // populate the form model with documents from the brief if the form properties are empty
+    const data = { ...props[props.model] }
+    const { attachments, requirementsDocument, responseTemplate } = props[props.model]
+    if (attachments && attachments.length === 0 && props.brief.attachments && props.brief.attachments.length > 0) {
+      data.attachments = [...props.brief.attachments]
     }
+    if (
+      requirementsDocument &&
+      requirementsDocument.length === 0 &&
+      props.brief.requirementsDocument &&
+      props.brief.requirementsDocument.length > 0
+    ) {
+      data.requirementsDocument = [...props.brief.requirementsDocument]
+    }
+    if (
+      responseTemplate &&
+      responseTemplate.length === 0 &&
+      props.brief.responseTemplate &&
+      props.brief.responseTemplate.length > 0
+    ) {
+      data.responseTemplate = [...props.brief.responseTemplate]
+    }
+    this.props.updateModel(data)
 
-    if (props[props.model].requirementsDocument && props[props.model].requirementsDocument.length > 0) {
-      this.state.requirementsDocument = props[props.model].requirementsDocument
-    } else if (props.brief.requirementsDocument && props.brief.requirementsDocument.length > 0) {
-      this.state.requirementsDocument = props.brief.requirementsDocument
-    }
-
-    if (props[props.model].responseTemplate && props[props.model].responseTemplate.length > 0) {
-      this.state.responseTemplate = props[props.model].responseTemplate
-    } else if (props.brief.responseTemplate && props.brief.responseTemplate.length > 0) {
-      this.state.responseTemplate = props.brief.responseTemplate
-    }
+    // keep the initial state of the form
+    this.state.initial = { ...data }
 
     this.handleCancelClick = this.handleCancelClick.bind(this)
     this.handleContinueClick = this.handleContinueClick.bind(this)
   }
 
-  handleCancelClick = () => {
+  handleCancelClick() {
+    // restore to the form's initial state
+    const data = { ...this.state.initial }
+    this.props.updateModel(data)
     this.setState({
       redirectToEditsTable: true
     })
   }
 
-  handleContinueClick = data => {
-    const newData = { ...data }
-    newData.attachments = [...this.state.attachments]
-    newData.requirementsDocument = [...this.state.requirementsDocument]
-    newData.responseTemplate = [...this.state.responseTemplate]
-    this.props.updateModel(newData)
+  handleContinueClick() {
+    const data = { ...this.props[this.props.model] }
+    const { attachments, requirementsDocument, responseTemplate } = this.props[this.props.model]
+    data.attachments = [...attachments.filter(x => x)]
+    data.requirementsDocument = [...requirementsDocument.filter(x => x)]
+    data.responseTemplate = [...responseTemplate.filter(x => x)]
+    this.props.updateModel(data)
     this.props.setOnlySellersEdited(false)
     this.setState({
       redirectToEditsTable: true
     })
   }
 
-  handleReplaceDocumentClick = () => {}
-
-  renderDocumentRow(document) {
+  renderDocumentRow(document, index, type) {
+    if (typeof document !== 'string' || document === '') {
+      return null
+    }
+    const { model, brief } = this.props
     return (
-      <tr key={document}>
-        <td>{document}</td>
+      <tr key={`${type}-${index}`}>
         <td>
-          <a href="#replace" className="au-btn au-btn--tertiary" onClick={this.handleReplaceDocumentClick}>
-            Replace document
-          </a>
+          <FilesInput
+            fieldLabel="Upload another document"
+            name={type}
+            model={`${model}.${type}.${index}`}
+            formFields={1}
+            url={`/brief/${brief.id}/attachments`}
+            api={dmapi}
+            fileId={index}
+            validators={{
+              requiredFile: val => type === 'attachments' || requiredFile(val)
+            }}
+            messages={{
+              requiredFile: 'You must upload your written proposal'
+            }}
+            accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+          />
         </td>
       </tr>
     )
   }
 
   render = () => {
-    const { model } = this.props
+    const { model, brief } = this.props
     const { redirectToEditsTable } = this.state
+    const { attachments, requirementsDocument, responseTemplate } = this.props[model]
+    const documentCount = attachments.length + requirementsDocument.length + responseTemplate.length
 
     if (redirectToEditsTable) {
       return <Redirect to="/" />
@@ -92,7 +121,12 @@ class EditOpportunityDocuments extends Component {
         validateOn="submit"
         validators={{
           '': {
-            required
+            hasRequirementsDoc: values =>
+              !brief.requirementsDocument ||
+              brief.requirementsDocument.length === 0 ||
+              values.requirementsDocument.length > 0,
+            hasResponseTemplate: values =>
+              !brief.responseTemplate || brief.responseTemplate.length === 0 || values.responseTemplate.length > 0
           }
         }}
       >
@@ -106,8 +140,60 @@ class EditOpportunityDocuments extends Component {
           <AUheading level="2" size="lg">
             Existing documents
           </AUheading>
+          {documentCount === 0 && <p>There are no documents currently attached to this opportunity.</p>}
           <table className={`col-xs-12 ${styles.defaultStyle} ${styles.textAlignLeft}`}>
-            <tbody>{this.state.attachments.map(document => this.renderDocumentRow(document))}</tbody>
+            <React.Fragment>
+              <thead>
+                <tr>
+                  <td>Attachments</td>
+                </tr>
+              </thead>
+              <tbody>
+                {attachments.map((document, index) => this.renderDocumentRow(document, index, 'attachments'))}
+                <tr>
+                  <td>
+                    <FilesInput
+                      fieldLabel="Upload another document"
+                      name="attachments"
+                      model={`${model}.attachments.${attachments.length}`}
+                      formFields={1}
+                      url={`/brief/${brief.id}/attachments`}
+                      api={dmapi}
+                      fileId={attachments.length}
+                      accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </React.Fragment>
+            {requirementsDocument.length > 0 && (
+              <React.Fragment>
+                <thead>
+                  <tr>
+                    <td>Requirements document</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  {requirementsDocument.map((document, index) =>
+                    this.renderDocumentRow(document, index, 'requirementsDocument')
+                  )}
+                </tbody>
+              </React.Fragment>
+            )}
+            {responseTemplate.length > 0 && (
+              <React.Fragment>
+                <thead>
+                  <tr>
+                    <td>Response template</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  {responseTemplate.map((document, index) =>
+                    this.renderDocumentRow(document, index, 'responseTemplate')
+                  )}
+                </tbody>
+              </React.Fragment>
+            )}
           </table>
         </div>
         <div className={`row ${styles.marginTop2}`}>
