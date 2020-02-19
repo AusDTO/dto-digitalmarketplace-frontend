@@ -62,12 +62,12 @@ export class DateComponent extends Component {
     return (
       <div className={`row ${this.props.className}`}>
         <div className="col-xs-12">
-          <label htmlFor="closing_date" className="question-heading au-text-input__label">
+          <label htmlFor={this.props.id} className="question-heading au-text-input__label">
             {this.props.label}
           </label>
           <div>{this.props.description}</div>
         </div>
-        <div id="closing_date" className={`col-xs-12 col-md-6 ${styles.inputsContainer}`}>
+        <div id={this.props.id} className={`col-xs-12 col-md-6 ${styles.inputsContainer}`}>
           <div>
             <label htmlFor="day">Day</label>
             <AUtextInput
