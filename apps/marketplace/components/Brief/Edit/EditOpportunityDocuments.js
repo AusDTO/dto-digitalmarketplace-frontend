@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
+import differenceInCalendarDays from 'date-fns/difference_in_calendar_days'
 
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 
 import dmapi from 'marketplace/services/apiClient'
 import { requiredFile } from 'marketplace/components/validators'
@@ -17,8 +19,20 @@ class EditOpportunityDocuments extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      daysUntilOpportunityCloses: differenceInCalendarDays(props.brief.dates.closing_date, new Date()),
+      showClosingDateWarning: false,
       redirectToEditsTable: false,
       initial: {}
+    }
+
+    this.state.daysUntilOpportunityCloses =
+      this.state.daysUntilOpportunityCloses < 0 ? 0 : this.state.daysUntilOpportunityCloses
+
+    if (
+      this.state.daysUntilOpportunityCloses <= 2 ||
+      this.state.daysUntilOpportunityCloses <= Math.round(this.state.daysUntilOpportunityCloses / 2)
+    ) {
+      this.state.showClosingDateWarning = true
     }
 
     // populate the form model with documents from the brief if the form properties are empty
@@ -74,38 +88,35 @@ class EditOpportunityDocuments extends Component {
     })
   }
 
-  renderDocumentRow(document, index, type, atleastOne) {
-    if (typeof document !== 'string' || (!atleastOne && document === '')) {
+  renderDocumentRow(document, index, type, alwaysShow) {
+    if (typeof document !== 'string' || (!alwaysShow && document === '')) {
       return null
     }
     const { model, brief } = this.props
     return (
-      <tr key={`${type}-${index}`}>
-        <td>
-          <FilesInput
-            fieldLabel="Upload another document"
-            name={type}
-            model={`${model}.${type}.${index}`}
-            formFields={1}
-            url={`/brief/${brief.id}/attachments`}
-            api={dmapi}
-            fileId={index}
-            validators={{
-              requiredFile: val => type === 'attachments' || requiredFile(val)
-            }}
-            messages={{
-              requiredFile: 'You must upload your written proposal'
-            }}
-            accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-          />
-        </td>
-      </tr>
+      <FilesInput
+        key={`${type}-${index}`}
+        fieldLabel="Upload another document"
+        name={type}
+        model={`${model}.${type}.${index}`}
+        formFields={1}
+        url={`/brief/${brief.id}/attachments`}
+        api={dmapi}
+        fileId={index}
+        validators={{
+          requiredFile: val => type === 'attachments' || requiredFile(val)
+        }}
+        messages={{
+          requiredFile: 'Document can not be empty'
+        }}
+        accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+      />
     )
   }
 
   render = () => {
     const { model, brief } = this.props
-    const { redirectToEditsTable } = this.state
+    const { redirectToEditsTable, showClosingDateWarning, daysUntilOpportunityCloses } = this.state
     const { attachments, requirementsDocument, responseTemplate } = this.props[model]
     const documentCount = attachments.length + requirementsDocument.length + responseTemplate.length
 
@@ -134,68 +145,61 @@ class EditOpportunityDocuments extends Component {
           <AUheading level="1" size="xl">
             Documents
           </AUheading>
-          <p>
-            If you need to remove a document, <a href="/contact-us">contact us</a>.
-          </p>
-          <AUheading level="2" size="lg">
-            Existing documents
-          </AUheading>
           {documentCount === 0 && <p>There are no documents currently attached to this opportunity.</p>}
-          <table className={`col-xs-12 ${styles.defaultStyle} ${styles.textAlignLeft}`}>
+          <React.Fragment>
+            <AUheading level="2" size="md">
+              Attachments
+            </AUheading>
+            {attachments.map((document, index) => this.renderDocumentRow(document, index, 'attachments'))}
+            <FilesInput
+              fieldLabel="Upload another document"
+              name="attachments"
+              model={`${model}.attachments.${attachments.length}`}
+              formFields={1}
+              url={`/brief/${brief.id}/attachments`}
+              api={dmapi}
+              fileId={attachments.length}
+              accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+            />
+          </React.Fragment>
+          {requirementsDocument.length > 0 && (
             <React.Fragment>
-              <thead>
-                <tr>
-                  <td>Attachments</td>
-                </tr>
-              </thead>
-              <tbody>
-                {attachments.map((document, index) => this.renderDocumentRow(document, index, 'attachments'))}
-                <tr>
-                  <td>
-                    <FilesInput
-                      fieldLabel="Upload another document"
-                      name="attachments"
-                      model={`${model}.attachments.${attachments.length}`}
-                      formFields={1}
-                      url={`/brief/${brief.id}/attachments`}
-                      api={dmapi}
-                      fileId={attachments.length}
-                      accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                    />
-                  </td>
-                </tr>
-              </tbody>
+              <AUheading level="2" size="md">
+                Requirements document
+              </AUheading>
+              {requirementsDocument.map((document, index) =>
+                this.renderDocumentRow(document, index, 'requirementsDocument', true)
+              )}
             </React.Fragment>
-            {requirementsDocument.length > 0 && (
-              <React.Fragment>
-                <thead>
-                  <tr>
-                    <td>Requirements document</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  {requirementsDocument.map((document, index) =>
-                    this.renderDocumentRow(document, index, 'requirementsDocument', true)
-                  )}
-                </tbody>
-              </React.Fragment>
-            )}
-            {responseTemplate.length > 0 && (
-              <React.Fragment>
-                <thead>
-                  <tr>
-                    <td>Response template</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  {responseTemplate.map((document, index) =>
-                    this.renderDocumentRow(document, index, 'responseTemplate', true)
-                  )}
-                </tbody>
-              </React.Fragment>
-            )}
-          </table>
+          )}
+          {responseTemplate.length > 0 && (
+            <React.Fragment>
+              <AUheading level="2" size="md">
+                Response template
+              </AUheading>
+              {responseTemplate.map((document, index) =>
+                this.renderDocumentRow(document, index, 'responseTemplate', true)
+              )}
+            </React.Fragment>
+          )}
         </div>
+        {showClosingDateWarning && (
+          <div className={`row ${styles.marginTop1}`}>
+            <AUpageAlert as="warning" className={styles.pageAlert}>
+              <AUheading level="2" size="lg">
+                {daysUntilOpportunityCloses === 0 && 'Opportunity closing today!'}
+                {daysUntilOpportunityCloses !== 0 &&
+                  `Opportunity closing in ${daysUntilOpportunityCloses} day${`${
+                    daysUntilOpportunityCloses > 1 ? 's' : ''
+                  }`}!`}
+              </AUheading>
+              <p className={styles.noMaxWidth}>
+                We recommend you <Link to="/closing-date">extend the closing date</Link> to allow invited sellers you
+                added enough time to prepare and submit their responses.
+              </p>
+            </AUpageAlert>
+          </div>
+        )}
         <div className={`row ${styles.marginTop2}`}>
           <AUbutton type="submit">Continue</AUbutton>
           <AUbutton as="tertiary" onClick={this.handleCancelClick}>
