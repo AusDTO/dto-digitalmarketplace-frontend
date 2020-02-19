@@ -45,10 +45,16 @@ class EditOpportunityDocuments extends Component {
       this.state.showClosingDateWarning = true
     }
 
-    // populate the form model with documents from the brief if the form properties are empty
+    // populate the form model with documents from the brief if the form properties are empty and the documents have not been edited
     const data = { ...props[props.model] }
-    const { attachments, requirementsDocument, responseTemplate } = props[props.model]
-    if (attachments && attachments.length === 0 && props.brief.attachments && props.brief.attachments.length > 0) {
+    const { attachments, requirementsDocument, responseTemplate, documentsEdited } = props[props.model]
+    if (
+      !documentsEdited &&
+      attachments &&
+      attachments.length === 0 &&
+      props.brief.attachments &&
+      props.brief.attachments.length > 0
+    ) {
       data.attachments = [...props.brief.attachments]
     }
     if (
@@ -74,12 +80,14 @@ class EditOpportunityDocuments extends Component {
 
     this.handleCancelClick = this.handleCancelClick.bind(this)
     this.handleContinueClick = this.handleContinueClick.bind(this)
+    this.handleDocumentChange = this.handleDocumentChange.bind(this)
   }
 
   handleCancelClick() {
     // restore to the form's initial state
     const data = { ...this.state.initial }
     this.props.updateModel(data)
+    this.props.setDocumentsEdited(false)
     this.setState({
       redirectToEditsTable: true
     })
@@ -96,6 +104,10 @@ class EditOpportunityDocuments extends Component {
     this.setState({
       redirectToEditsTable: true
     })
+  }
+
+  handleDocumentChange() {
+    this.props.setDocumentsEdited(true)
   }
 
   renderDocumentRow(document, index, type, alwaysShow) {
@@ -134,6 +146,8 @@ class EditOpportunityDocuments extends Component {
           requiredFile: getErrorMessage(type)
         }}
         accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+        onReset={this.handleDocumentChange}
+        onUploadSuccess={this.handleDocumentChange}
       />
     )
   }
@@ -180,6 +194,8 @@ class EditOpportunityDocuments extends Component {
               api={dmapi}
               fileId={attachments.length}
               accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+              onReset={this.handleDocumentChange}
+              onUploadSuccess={this.handleDocumentChange}
             />
           </React.Fragment>
           {requirementsDocument.length > 0 && (
@@ -238,7 +254,8 @@ const mapStateToProps = (state, props) => ({
 const mapDispatchToProps = (dispatch, props) => ({
   setOnlySellersEdited: onlySellersEdited =>
     dispatch(actions.change(`${props.model}.onlySellersEdited`, onlySellersEdited)),
-  updateModel: data => dispatch(actions.change(props.model, data))
+  updateModel: data => dispatch(actions.change(props.model, data)),
+  setDocumentsEdited: edited => dispatch(actions.change(`${props.model}.documentsEdited`, edited))
 })
 
 export default connect(

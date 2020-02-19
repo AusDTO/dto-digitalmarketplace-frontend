@@ -296,6 +296,7 @@ export default combineReducers({
     editOpportunityForm: {
       closingDate: '',
       onlySellersEdited: true,
+      documentsEdited: false,
       sellers: {},
       attachments: [],
       requirementsDocument: [],

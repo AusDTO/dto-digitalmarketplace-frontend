@@ -15,6 +15,9 @@ export const getAllDocuments = brief => {
 }
 
 export const documentsWasEdited = (brief, edits) => {
+  if (edits.documentsEdited) {
+    return true
+  }
   const briefDocs = getAllDocuments(brief)
   const editDocs = getAllDocuments(edits)
   if (editDocs.length === 0) {

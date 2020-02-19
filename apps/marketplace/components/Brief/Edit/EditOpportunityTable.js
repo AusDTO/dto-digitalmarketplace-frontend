@@ -92,21 +92,22 @@ class EditOpportunityTable extends Component {
             <td>
               {(getAllDocuments(brief).length > 0 || getAllDocuments(edits).length > 0) && (
                 <ul>
-                  {getAllDocuments(edits).length > 0
-                    ? getAllDocuments(edits).map(document => (
-                        <li key={document}>
-                          <a href={`${documentBaseURL}${document}`} target="_blank" rel="noopener noreferrer">
-                            {document}
-                          </a>
-                        </li>
-                      ))
-                    : getAllDocuments(brief).map(document => (
-                        <li key={document}>
-                          <a href={`${documentBaseURL}${document}`} target="_blank" rel="noopener noreferrer">
-                            {document}
-                          </a>
-                        </li>
-                      ))}
+                  {edits.documentsEdited &&
+                    getAllDocuments(edits).map(document => (
+                      <li key={document}>
+                        <a href={`${documentBaseURL}${document}`} target="_blank" rel="noopener noreferrer">
+                          {document}
+                        </a>
+                      </li>
+                    ))}
+                  {!edits.documentsEdited &&
+                    getAllDocuments(brief).map(document => (
+                      <li key={document}>
+                        <a href={`${documentBaseURL}${document}`} target="_blank" rel="noopener noreferrer">
+                          {document}
+                        </a>
+                      </li>
+                    ))}
                 </ul>
               )}
             </td>
