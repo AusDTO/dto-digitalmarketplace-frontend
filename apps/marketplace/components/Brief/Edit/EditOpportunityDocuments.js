@@ -93,6 +93,20 @@ class EditOpportunityDocuments extends Component {
       return null
     }
     const { model, brief } = this.props
+    const getErrorMessage = docType => {
+      let error = ''
+      switch (docType) {
+        case 'requirementsDocument':
+          error = 'You must supply a requirements document'
+          break
+        case 'responseTemplate':
+          error = 'You must supply a response template'
+          break
+        default:
+          break
+      }
+      return error
+    }
     return (
       <FilesInput
         key={`${type}-${index}`}
@@ -107,7 +121,7 @@ class EditOpportunityDocuments extends Component {
           requiredFile: val => type === 'attachments' || requiredFile(val)
         }}
         messages={{
-          requiredFile: 'Document can not be empty'
+          requiredFile: getErrorMessage(type)
         }}
         accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
       />
