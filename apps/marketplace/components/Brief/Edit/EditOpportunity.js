@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { Form } from 'react-redux-form'
 
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
@@ -10,6 +11,7 @@ import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import { rootPath } from 'marketplace/routes'
 import EditOpportunityTable from './EditOpportunityTable'
 import { hasEdits, itemWasEdited } from './helpers'
+import { isValid as DocumentsIsValid } from './EditOpportunityDocuments'
 
 import styles from '../../../main.scss'
 
@@ -19,6 +21,7 @@ class EditOpportunity extends Component {
     this.state = {
       hasErrors: false,
       showNoEditsAlert: false,
+      showDocumentsErrorAlert: false,
       understandsEditProcess: false
     }
 
@@ -34,6 +37,14 @@ class EditOpportunity extends Component {
     if (!editsPending) {
       this.setState({
         showNoEditsAlert: true
+      })
+
+      e.preventDefault()
+    }
+
+    if (!DocumentsIsValid(brief, edits)) {
+      this.setState({
+        showDocumentsErrorAlert: true
       })
 
       e.preventDefault()
@@ -60,7 +71,7 @@ class EditOpportunity extends Component {
 
   render = () => {
     const { brief, edits, isOpenToAll, location, model, onSubmitEdits } = this.props
-    const { hasErrors, showNoEditsAlert } = this.state
+    const { hasErrors, showNoEditsAlert, showDocumentsErrorAlert } = this.state
     const checkBoxValidator = this.validateEditProcessCheckBox
     const showCheckBox = this.showCheckBox()
 
@@ -84,6 +95,13 @@ class EditOpportunity extends Component {
             {showNoEditsAlert && (
               <AUpageAlert as="error">
                 <strong>You have not made any changes to the opportunity.</strong>
+              </AUpageAlert>
+            )}
+            {showDocumentsErrorAlert && (
+              <AUpageAlert as="error">
+                <strong>
+                  You have errors in the <Link to="/documents">edit documents</Link> section.
+                </strong>
               </AUpageAlert>
             )}
             <p className={styles.fontSizeMd}>

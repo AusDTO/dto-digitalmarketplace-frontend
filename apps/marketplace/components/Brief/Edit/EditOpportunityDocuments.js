@@ -15,6 +15,16 @@ import FilesInput from 'shared/form/FilesInput'
 
 import styles from '../../../main.scss'
 
+export const hasRequirementsDoc = (brief, edits) =>
+  !brief.requirementsDocument ||
+  brief.requirementsDocument.length === 0 ||
+  edits.requirementsDocument.filter(x => x).length > 0
+
+export const hasResponseTemplate = (brief, edits) =>
+  !brief.responseTemplate || brief.responseTemplate.length === 0 || edits.responseTemplate.filter(x => x).length > 0
+
+export const isValid = (brief, edits) => hasRequirementsDoc(brief, edits) && hasResponseTemplate(brief, edits)
+
 class EditOpportunityDocuments extends Component {
   constructor(props) {
     super(props)
@@ -146,12 +156,8 @@ class EditOpportunityDocuments extends Component {
         validateOn="submit"
         validators={{
           '': {
-            hasRequirementsDoc: values =>
-              !brief.requirementsDocument ||
-              brief.requirementsDocument.length === 0 ||
-              values.requirementsDocument.length > 0,
-            hasResponseTemplate: values =>
-              !brief.responseTemplate || brief.responseTemplate.length === 0 || values.responseTemplate.length > 0
+            hasRequirementsDoc: values => hasRequirementsDoc(brief, values),
+            hasResponseTemplate: values => hasResponseTemplate(brief, values)
           }
         }}
       >

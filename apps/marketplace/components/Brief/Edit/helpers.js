@@ -11,7 +11,7 @@ export const getAllDocuments = brief => {
   if (brief.responseTemplate) {
     documents.push(...brief.responseTemplate)
   }
-  return documents
+  return documents.filter(x => x)
 }
 
 export const documentsWasEdited = (brief, edits) => {
