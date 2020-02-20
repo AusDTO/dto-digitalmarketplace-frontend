@@ -157,7 +157,7 @@ const OpportunityInfoCard = props => {
               )}
             </span>
           )}
-          {isOpen && loggedIn && (briefLot === 'atm' && isRecruiterOnly) && hasSignedCurrentAgreement && (
+          {isOpen && loggedIn && briefLot === 'atm' && isRecruiterOnly && hasSignedCurrentAgreement && (
             <span>
               <p className={styles.invitedStatus}>
                 Only approved sellers can apply.
@@ -169,7 +169,6 @@ const OpportunityInfoCard = props => {
                     to be able to apply for this brief.
                   </span>
                 )}
-                {}
               </p>
               {!isAwaitingApplicationAssessment && (
                 <p>
@@ -195,7 +194,8 @@ const OpportunityInfoCard = props => {
             loggedIn &&
             isApprovedSeller &&
             hasSignedCurrentAgreement &&
-            (briefLot === 'atm' && !isRecruiterOnly) &&
+            briefLot === 'atm' &&
+            !isRecruiterOnly &&
             isOpenToCategory &&
             category &&
             !isAssessedForCategory && (

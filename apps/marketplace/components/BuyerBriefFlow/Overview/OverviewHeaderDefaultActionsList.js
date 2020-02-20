@@ -5,7 +5,7 @@ import { rootPath } from 'marketplace/routes'
 
 import styles from '../Overview.scss'
 
-const OverviewHeaderClosedActionsList = props => {
+const OverviewHeaderDefaultActionsList = props => {
   const { brief } = props
 
   return (
@@ -17,14 +17,14 @@ const OverviewHeaderClosedActionsList = props => {
   )
 }
 
-OverviewHeaderClosedActionsList.defaultProps = {
+OverviewHeaderDefaultActionsList.defaultProps = {
   brief: {}
 }
 
-OverviewHeaderClosedActionsList.propTypes = {
+OverviewHeaderDefaultActionsList.propTypes = {
   brief: PropTypes.shape({
     id: PropTypes.number.isRequired
   }).isRequired
 }
 
-export default OverviewHeaderClosedActionsList
+export default OverviewHeaderDefaultActionsList
