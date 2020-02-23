@@ -8,6 +8,22 @@ import PageHeader from 'marketplace/components/PageHeader/PageHeader'
 
 import styles from '../../main.scss'
 
+const DocumentChange = (previous, current) => {
+  let message = ''
+  const removed = previous.filter(x => !current.includes(x))
+  const added = current.filter(x => !previous.includes(x))
+  if (removed.length > 0) {
+    message += `${removed.join(' and ')} removed`
+  }
+  if (added.length > 0) {
+    if (removed.length > 0) {
+      message += ', and '
+    }
+    message += `${added.join(' and ')} added`
+  }
+  return <span>{message}</span>
+}
+
 const EditSummary = props => {
   const { edit } = props
 
@@ -31,6 +47,10 @@ const EditSummary = props => {
                 {format(edit.closingDate.newValue, 'DD MMMM YYYY')}
                 &apos;
               </li>
+            )
+          } else if (['attachments', 'requirementsDocument', 'responseTemplate'].includes(key)) {
+            return (
+              <li key={`${edit.editedAt}`}>{DocumentChange(edit.attachments.oldValue, edit.attachments.newValue)}</li>
             )
           }
 
