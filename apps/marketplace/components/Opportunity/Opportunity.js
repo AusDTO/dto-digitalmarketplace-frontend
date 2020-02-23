@@ -3,10 +3,11 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import format from 'date-fns/format'
 import { rootPath } from 'marketplace/routes'
 import NotVisible from 'marketplace/components/Icons/NotVisible/NotVisible'
-import { getBriefLastQuestionDate, hasPermission } from 'marketplace/components/helpers'
+import { getBriefLastQuestionDate, getClosingTime, hasPermission } from 'marketplace/components/helpers'
 import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import EvaluationCriteria from './EvaluationCriteria'
 import QuestionAnswer from './QuestionAnswer'
@@ -53,15 +54,6 @@ const defaultBriefProps = {
   clarificationQuestions: [],
   clarificationQuestionsAreClosed: true,
   contactEmail: ''
-}
-
-const getClosingTime = brief => {
-  if (brief.dates.closing_time) {
-    return brief.dates.closing_time
-  } else if (brief.closedAt) {
-    return brief.closedAt
-  }
-  return ''
 }
 
 const getTrimmedFilename = fileName => {
@@ -140,12 +132,17 @@ const Opportunity = props => {
     supplierCode,
     isPartOfTeam,
     isTeamLead,
-    teams
+    lastEditedAt,
+    onlySellersEdited,
+    teams,
+    userType
   } = props
 
   const brief = { ...defaultBriefProps, ...props.brief }
   const category = getBriefCategory(domains, brief.sellerCategory)
   const originalClosedAt = brief.originalClosedAt ? brief.originalClosedAt : null
+  const historyLink =
+    userType === 'supplier' ? `${rootPath}/seller/brief/${brief.id}/history` : `${rootPath}/brief/${brief.id}/history`
 
   if (brief.status === 'draft') {
     if (
@@ -187,6 +184,28 @@ const Opportunity = props => {
               {brief.title}
             </AUheading>
           </span>
+          {lastEditedAt && !onlySellersEdited && (
+            <div className="row">
+              <div className="col-xs-12">
+                <AUpageAlert
+                  as="warning"
+                  className={`${mainStyles.pageAlert} ${mainStyles.marginTop2} ${mainStyles.marginRight2}`}
+                >
+                  <AUheading level="2" size="lg">
+                    Updates made
+                  </AUheading>
+                  <div className={`${mainStyles.marginTop1} ${mainStyles.noMaxWidth}`}>
+                    <p className={mainStyles.noMaxWidth}>
+                      This opportunity was last updated on {format(lastEditedAt, 'D MMMM YYYY')}.{' '}
+                      <a className={mainStyles.floatRight} href={historyLink} rel="noopener noreferrer" target="_blank">
+                        View all updates
+                      </a>
+                    </p>
+                  </div>
+                </AUpageAlert>
+              </div>
+            </div>
+          )}
           <div className={styles.details}>
             <div className="row">
               <div className="col-xs-12 col-sm-4">

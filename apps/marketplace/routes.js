@@ -33,7 +33,10 @@ import BuyerSpecialistFlowPage from './pages/BuyerSpecialistFlowPage'
 import BriefOutcomeChoicePage from './pages/BriefOutcomeChoicePage'
 import CloseOpportunityPage from './pages/CloseOpportunityPage'
 import CloseOpportunitySuccessPage from './pages/CloseOpportunitySuccessPage'
+import EditOpportunityPage from './pages/EditOpportunityPage'
+import EditOpportunitySuccessPage from './pages/EditOpportunitySuccessPage'
 import EditTeamFlowPage from './pages/Teams/EditTeamFlowPage'
+import OpportunityHistoryPage from './pages/OpportunityHistoryPage'
 import OpportunityPage from './pages/OpportunityPage'
 import CreateTeamFlowPage from './pages/Teams/CreateTeamFlowPage'
 import SellerAssessmentFlowPage from './pages/SellerAssessmentFlowPage'
@@ -73,6 +76,17 @@ export const Routes = () => (
       component={CloseOpportunitySuccessPage}
     />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/overview`} component={BriefOverviewPage} />
+    <PrivateRoute
+      restrictedTo="buyer"
+      path={`${rootPath}/brief/:briefId/edit/:item?`}
+      component={EditOpportunityPage}
+    />
+    <PrivateRoute
+      restrictedTo="buyer"
+      path={`${rootPath}/brief/:briefId/edited`}
+      component={EditOpportunitySuccessPage}
+    />
+    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/history`} component={OpportunityHistoryPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/assessors`} component={BriefAssessorsPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/questions`} component={QuestionPage} />
     <PrivateRoute
@@ -195,6 +209,11 @@ export const Routes = () => (
       restrictedTo="supplier"
       path={`${rootPath}/seller-assessment/:evidenceId/:stage?`}
       component={SellerAssessmentFlowPage}
+    />
+    <PrivateRoute
+      restrictedTo="supplier"
+      path={`${rootPath}/seller/brief/:briefId/history`}
+      component={OpportunityHistoryPage}
     />
     <Route component={NotFound} />
   </Switch>

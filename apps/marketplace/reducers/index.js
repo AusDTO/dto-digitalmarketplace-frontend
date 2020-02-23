@@ -235,7 +235,8 @@ export default combineReducers({
     },
     signupForm: {
       name: '',
-      email_address: ''
+      email_address: '',
+      abn: ''
     },
     createUserForm: {
       name: '',
@@ -293,6 +294,12 @@ export default combineReducers({
       }
     },
     closeOpportunityForm: {},
+    editOpportunityForm: {
+      closingDate: '',
+      onlySellersEdited: true,
+      sellers: {},
+      title: ''
+    },
     withdrawOpportunityForm: {
       hasAuthorityToWithdraw: false,
       reasonToWithdraw: ''
