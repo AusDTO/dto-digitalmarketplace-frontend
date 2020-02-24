@@ -27,7 +27,10 @@ class Agency extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     const formData = new FormData(event.target)
-    let data = Object.fromEntries(formData)
+    let data = [...formData].reduce((obj, [key, val]) => {
+      obj[key] = val
+      return obj
+    }, {})
     const { agency } = this.state
     data.id = agency.id
     if (data.reports === "on") {
@@ -41,6 +44,9 @@ class Agency extends React.Component {
       data.whitelisted = false
     }
     data.domains = data.domains.split('\n')
+    // clean out any trailing white space and remove any empty rows
+    data.domains = data.domains.map(x => x.trim())
+    data.domains = data.domains.filter(x => x)
 
     this.setState({
       loading: true

@@ -23,7 +23,8 @@ export const weightingsAddUpTo100Essential = v =>
   ) === 100
 
 const noZeroWeightingsEssential = v =>
-  !v.includeWeightingsEssential || v.essentialRequirements.every(val => parseInt(val.weighting, 10) > 0)
+  !v.includeWeightingsEssential ||
+  v.essentialRequirements.every(val => val.weighting === '' || parseInt(val.weighting, 10) > 0)
 
 const noEmptyCriteriaEssential = v => v.essentialRequirements.every(val => val.criteria)
 
@@ -34,12 +35,11 @@ const noEmptyCriteriaNiceToHave = v => v.niceToHaveRequirements.every(val => (va
 
 const weightingsAddUpTo100NiceToHave = v =>
   !v.includeWeightingsNiceToHave ||
-  (noEmptyWeightingsNiceToHave(v) &&
-    noEmptyCriteriaNiceToHave(v) &&
-    v.niceToHaveRequirements.reduce(
-      (accumulator, currentValue) => accumulator + parseInt(currentValue.weighting, 10),
-      0
-    ) === 100)
+  !noEmptyWeightingsNiceToHave(v) ||
+  v.niceToHaveRequirements.reduce(
+    (accumulator, currentValue) => accumulator + parseInt(currentValue.weighting, 10),
+    0
+  ) === 100
 
 const noZeroWeightingsNiceToHave = v =>
   noEmptyCriteriaNiceToHave(v) ||
@@ -144,7 +144,7 @@ class BuyerEvaluationCriteriaStage extends Component {
             noEmptyWeightingsNiceToHave: 'You cannot leave any weightings blank.',
             weightingsAddUpTo100NiceToHave: 'Desirable weightings must add up to 100%.',
             noZeroWeightingsNiceToHave: 'Desirable must be greater than 0.',
-            noEmptyCriteriaNiceToHave: 'You cannot leave any weightings blank.'
+            noEmptyCriteriaNiceToHave: 'You cannot have blank desirable criteria.'
           }}
         />
         <AUheading level="2" size="lg">
