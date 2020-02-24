@@ -184,7 +184,7 @@ class RecruiterForm extends BaseForm {
                                     value="both"/>
                                 <label htmlFor="both">My business does both recruitment and consultancy</label>
                             </fieldset>
-                            {this.props[model].recruiter && this.props[model].recruiter !== 'no' && (
+                            {this.props[model].recruiter && (
                                 <fieldset>
                                     <legend>
                                         <h2 id="LabourHire" className="au-display-lg" tabIndex="-1">Labour hire licence</h2>
@@ -194,7 +194,7 @@ class RecruiterForm extends BaseForm {
                                         id="LabourHire"
                                         messages={this.generateLicenceMessages()}
                                     />
-                                    <p>Some states operate under a mandated Labour Hire Licensing Act.  Please provide your licence details if you plan to submit roles for these states:</p>
+                                    <p>Some states operate under a mandated Labour Hire Licensing Act. You will require a relevant license if you are applying for specialist opportunities in VIC, SA or QLD.</p>
                                     {states.map(s => (
                                         <React.Fragment key={s}>
                                             <h3 className="au-display-md" tabIndex="-1">{mapAustraliaState(s)}</h3>
