@@ -42,7 +42,7 @@ class EditOpportunity extends Component {
       e.preventDefault()
     }
 
-    if (!DocumentsIsValid(brief, edits)) {
+    if (edits.documentsEdited && !DocumentsIsValid(brief, edits)) {
       this.setState({
         showDocumentsErrorAlert: true
       })
