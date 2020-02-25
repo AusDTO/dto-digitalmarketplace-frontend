@@ -19,8 +19,14 @@ const SellerAssessmentCompleted = props => (
     </AUheading>
     <p>The Marketplace will assess your submitted pricing and responses against the criteria you selected.</p>
     <p>
+      <strong>How long does assessment take?</strong>
+      <br />
       The time we take to assess your criteria is dependent on volume, seasonal peaks, complex cases and incomplete
       submissions. We will endeavour to assess your criteria in a reasonable timeframe.
+      <br />
+      <br />
+      If you submit your request for assessment within 2 days of the closing date, we cannot guarantee that you will be
+      assessed in time to respond.
     </p>
   </div>
 )
