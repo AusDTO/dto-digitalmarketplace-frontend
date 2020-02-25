@@ -13,9 +13,12 @@ const EditSummary = props => {
 
   return (
     <div className={styles.marginTop2}>
-      <AUheading level="2" size="xs">
-        {format(edit.editedAt, 'DD MMMM YYYY [,] h[:]mma')}
-      </AUheading>
+      {(Object.prototype.hasOwnProperty.call(edit, 'title') ||
+        Object.prototype.hasOwnProperty.call(edit, 'closingDate')) && (
+        <AUheading level="2" size="xs">
+          {format(edit.editedAt, 'DD MMMM YYYY [,] h[:]mma')}
+        </AUheading>
+      )}
       <ul>
         {Object.keys(edit).map(key => {
           if (key === 'title') {
