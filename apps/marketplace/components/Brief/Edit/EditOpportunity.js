@@ -10,7 +10,7 @@ import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import { rootPath } from 'marketplace/routes'
 import EditOpportunityTable from './EditOpportunityTable'
-import { hasEdits, itemWasEdited } from './helpers'
+import { hasEdits, itemWasEdited, documentsWasEdited } from './helpers'
 import { isValid as DocumentsIsValid } from './EditOpportunityDocuments'
 
 import styles from '../../../main.scss'
@@ -53,7 +53,11 @@ class EditOpportunity extends Component {
 
   showCheckBox = () => {
     const { brief, edits } = this.props
-    return itemWasEdited(brief.title, edits.title) || itemWasEdited(brief.dates.closing_date, edits.closingDate)
+    return (
+      itemWasEdited(brief.title, edits.title) ||
+      itemWasEdited(brief.dates.closing_date, edits.closingDate) ||
+      documentsWasEdited(brief, edits)
+    )
   }
 
   validateEditProcessCheckBox = () => {
