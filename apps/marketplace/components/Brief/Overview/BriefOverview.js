@@ -60,8 +60,13 @@ export class BriefOverview extends Component {
       status,
       isPartOfTeam,
       isTeamLead,
+      mustJoinTeam,
       teams
     } = this.props
+
+    if (!isPartOfTeam && mustJoinTeam) {
+      return <Redirect to={`${rootPath}/team/join`} />
+    }
 
     if (status === 'draft') {
       if (
@@ -138,7 +143,8 @@ export class BriefOverview extends Component {
 const mapStateToProps = state => ({
   teams: state.app.teams,
   isTeamLead: state.app.isTeamLead,
-  isPartOfTeam: state.app.isPartOfTeam
+  isPartOfTeam: state.app.isPartOfTeam,
+  mustJoinTeam: state.app.mustJoinTeam
 })
 
 export default connect(mapStateToProps)(BriefOverview)

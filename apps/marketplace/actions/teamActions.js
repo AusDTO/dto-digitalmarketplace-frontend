@@ -116,7 +116,7 @@ export const handleTeamActionSuccess = (data, type) => ({ data, type })
 
 export const loadBuyerTeams = (endpoint = '/teams') => dispatch => {
   dispatch(sendingRequest(true))
-  dmapi({ url: endpoint }).then(response => {
+  return dmapi({ url: endpoint }).then(response => {
     if (!response || response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
     } else {
@@ -124,6 +124,7 @@ export const loadBuyerTeams = (endpoint = '/teams') => dispatch => {
       dispatch(handleTeamActionSuccess(response.data, TEAMS_OVERVIEW_SUCCESS))
     }
     dispatch(sendingRequest(false))
+    return response
   })
 }
 

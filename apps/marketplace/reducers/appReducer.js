@@ -79,6 +79,7 @@ const appReducer = (state = initialState, action) => {
         teams: action.newState.teams,
         isTeamLead: action.newState.isTeamLead,
         isPartOfTeam: action.newState.isPartOfTeam,
+        mustJoinTeam: action.newState.mustJoinTeam,
         agencyId: action.newState.agencyId,
         agencyDomains: action.newState.agencyDomains
       }
