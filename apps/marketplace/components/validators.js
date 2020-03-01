@@ -5,7 +5,6 @@ import parse_date from 'date-fns/parse'
 import format from 'date-fns/format'
 import isValid from 'date-fns/is_valid'
 import isFuture from 'date-fns/is_future'
-import isPast from 'date-fns/is_past'
 import isAfter from 'date-fns/is_after'
 import isBefore from 'date-fns/is_before'
 import addDays from 'date-fns/add_days'
@@ -51,25 +50,6 @@ export const validDate = (val, enableFutureCheck) => {
   } else {
     return true
   }
-  return false
-}
-
-export const dateIsInPast = (val, enablePastCheck) => {
-  const dateObj = parse_date(val)
-  if (!val || !isValid(dateObj)) {
-    return false
-  }
-  if (format(dateObj, 'YYYY-MM-DD') !== val) {
-    return false
-  }
-  if (enablePastCheck === undefined || enablePastCheck) {
-    if (isPast(val)) {
-      return true
-    }
-  } 
-  // else {
-  //   return true
-  // }
   return false
 }
 
