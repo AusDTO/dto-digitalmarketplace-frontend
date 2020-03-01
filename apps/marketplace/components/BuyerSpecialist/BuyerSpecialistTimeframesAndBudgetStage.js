@@ -4,23 +4,18 @@ import { connect } from 'react-redux'
 import { Form, actions } from 'react-redux-form'
 import Textfield from 'shared/form/Textfield'
 import formProps from 'shared/form/formPropsSelector'
-import { required, dateIs2DaysInFuture, validDate, dateIsInPast } from 'marketplace/components/validators'
+import { required, dateIs2DaysInFuture, validDate } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
 
 const contractLengthRequired = v => required(v.contractLength)
 const startDateRequired = v => required(v.startDate)
-const startDateIsValid = v => validDate(v.startDate) || !dateIsInPast(v.startDate)
+const startDateIsValid = v => validDate(v.startDate)
 const startDateIs2DaysInFuture = v => !startDateRequired(v) || !startDateIsValid(v) || dateIs2DaysInFuture(v.startDate)
-const startDateIsNotInPast = v => !startDateRequired(v) || !startDateIsValid(v) || !startDateIs2DaysInFuture(v) || dateIsInPast(v.startDate)
 
 export const done = v =>
-  startDateRequired(v) &&
-  startDateIsValid(v) &&
-  startDateIs2DaysInFuture(v) &&
-  contractLengthRequired(v) 
-  // &&startDateIsNotInPast(v)
+  startDateRequired(v) && startDateIsValid(v) && startDateIs2DaysInFuture(v) && contractLengthRequired(v)
 
 class BuyerSpecialistTimeframesAndBudgetStage extends Component {
   constructor(props) {
@@ -46,8 +41,7 @@ class BuyerSpecialistTimeframesAndBudgetStage extends Component {
             startDateRequired,
             startDateIsValid,
             startDateIs2DaysInFuture,
-            contractLengthRequired,
-            startDateIsNotInPast
+            contractLengthRequired
           }
         }}
       >
@@ -60,8 +54,7 @@ class BuyerSpecialistTimeframesAndBudgetStage extends Component {
             startDateRequired: 'Enter an estimated start date for the opportunity',
             startDateIsValid: 'You must enter a valid start date',
             startDateIs2DaysInFuture: 'You must enter an estimated start date at least 2 days from now',
-            contractLengthRequired: 'Enter a contract length for the opportunity',
-            startDateIsNotInPast: 'You must enter a start date that is in the future.'
+            contractLengthRequired: 'Enter a contract length for the opportunity'
           }}
         />
         <DateControl
