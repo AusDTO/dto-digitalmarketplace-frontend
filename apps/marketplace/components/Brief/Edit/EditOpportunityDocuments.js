@@ -230,8 +230,8 @@ class EditOpportunityDocuments extends Component {
                   }`}!`}
               </AUheading>
               <p className={styles.noMaxWidth}>
-                We recommend you <Link to="/closing-date">extend the closing date</Link> to allow invited sellers you
-                added enough time to prepare and submit their responses.
+                We recommend you <Link to="/closing-date">extend the closing date</Link> to allow invited sellers enough
+                time to prepare and submit their responses.
               </p>
             </AUpageAlert>
           </div>
