@@ -49,8 +49,9 @@ class JoinATeamPage extends Component {
                   <React.Fragment>
                     <h1 className="au-display-xl">Join a team</h1>
                     <p>
-                      Your agency requires each user in XXX to be part of a team before they can access features on the
-                      Digital Marketplace. Learn more about <a href="#1">working with internal teams</a>.
+                      Your agency requires each user in {this.props.agency} to be part of a team before they can access
+                      features on the Digital Marketplace. Learn more about <a href="#1">working with internal teams</a>
+                      .
                     </p>
                     {Object.keys(this.props.teams).length > 0 && (
                       <React.Fragment>
@@ -78,6 +79,7 @@ class JoinATeamPage extends Component {
 
 const mapStateToProps = state => ({
   teams: state.teamsDashboard.teamsOverview.teams,
+  agency: state.app.agency,
   isPartOfTeam: state.app.isPartOfTeam,
   mustJoinTeam: state.app.mustJoinTeam
 })
