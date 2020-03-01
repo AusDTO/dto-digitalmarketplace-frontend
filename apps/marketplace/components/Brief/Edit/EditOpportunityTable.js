@@ -71,7 +71,7 @@ class EditOpportunityTable extends Component {
           <tr>
             <th scope="row">Closing date</th>
             <td>
-              {itemWasEdited(brief.dates.closing_date, edits.closingDate)
+              {itemWasEdited(format(new Date(brief.dates.closing_time), 'YYYY-MM-DD'), edits.closingDate)
                 ? format(edits.closingDate, 'dddd DD MMMM YYYY [at 6pm (in Canberra)]')
                 : format(getClosingTime(brief), 'dddd DD MMMM YYYY [at] ha [(in Canberra)]')}
             </td>
