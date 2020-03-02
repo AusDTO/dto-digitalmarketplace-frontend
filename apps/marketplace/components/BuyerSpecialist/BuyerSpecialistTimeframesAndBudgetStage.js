@@ -4,17 +4,20 @@ import { connect } from 'react-redux'
 import { Form, actions } from 'react-redux-form'
 import Textfield from 'shared/form/Textfield'
 import formProps from 'shared/form/formPropsSelector'
-import { required, dateIs2DaysInFuture, validDate, dateIsInPast } from 'marketplace/components/validators'
+import { required, dateIs2DaysInFuture, validDate } from 'marketplace/components/validators'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
 
 const contractLengthRequired = v => required(v.contractLength)
 const startDateRequired = v => required(v.startDate)
-const startDateIsValid = v => validDate(v.startDate, false)
-const startDateIsInPast = v => !startDateRequired(v)  || validDate(v.startDate, true)
-const startDateIs2DaysInFuture = v => !startDateRequired(v) || !validDate(v.startDate, false) || !validDate(v.startDate, true) || dateIs2DaysInFuture(v.startDate)
-
+const startDateIsValid = v => !startDateRequired(v) || validDate(v.startDate, false)
+const startDateIsInPast = v => !startDateRequired(v) || validDate(v.startDate, true)
+const startDateIs2DaysInFuture = v =>
+  !startDateRequired(v) ||
+  !validDate(v.startDate, false) ||
+  !validDate(v.startDate, true) ||
+  dateIs2DaysInFuture(v.startDate)
 
 export const done = v =>
   startDateRequired(v) && startDateIsValid(v) && startDateIs2DaysInFuture(v) && contractLengthRequired(v)
