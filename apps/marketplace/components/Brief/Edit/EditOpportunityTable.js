@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import format from 'date-fns/format'
 
 import { getClosingTime } from 'marketplace/components/helpers'
+import SummaryPreview from './SummaryPreview'
 import { getSellersToInvite, itemWasEdited } from './helpers'
 
 import styles from '../../../main.scss'
@@ -68,6 +69,15 @@ class EditOpportunityTable extends Component {
               )}
             </React.Fragment>
           )}
+          <tr>
+            <th scope="row">Summary</th>
+            <SummaryPreview brief={brief} edits={edits} />
+            <td>
+              <Link to="/summary" className="au-btn au-btn--tertiary">
+                Edit summary
+              </Link>
+            </td>
+          </tr>
           <tr>
             <th scope="row">Closing date</th>
             <td>
