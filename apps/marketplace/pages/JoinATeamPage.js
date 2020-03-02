@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import DocumentTitle from 'react-document-title'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import { loadBuyerTeams } from 'marketplace/actions/teamActions'
+import { rootPath } from 'marketplace/routes'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import styles from '../main.scss'
 
@@ -31,6 +32,10 @@ class JoinATeamPage extends Component {
   render() {
     if (this.state.loading) {
       return <LoadingIndicatorFullPage />
+    }
+
+    if (this.props.isPartOfTeam || !this.props.mustJoinTeam) {
+      return <Redirect to={`${rootPath}/buyer-dashboard`} />
     }
 
     return (
