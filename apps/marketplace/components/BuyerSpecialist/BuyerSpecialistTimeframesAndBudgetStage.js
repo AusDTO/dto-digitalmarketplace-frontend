@@ -12,12 +12,9 @@ import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
 const contractLengthRequired = v => required(v.contractLength)
 const startDateRequired = v => required(v.startDate)
 const startDateIsValid = v => !startDateRequired(v) || validDate(v.startDate, false)
-const startDateIsInPast = v => !startDateRequired(v) || validDate(v.startDate, true)
+const startDateIsInPast = v => !startDateRequired(v) || validDate(v.startDate, true) || !validDate(v.startDate, false)
 const startDateIs2DaysInFuture = v =>
-  !startDateRequired(v) ||
-  !validDate(v.startDate, false) ||
-  !validDate(v.startDate, true) ||
-  dateIs2DaysInFuture(v.startDate)
+  !startDateRequired(v) || !startDateIsValid(v) || !startDateIsInPast(v) || dateIs2DaysInFuture(v.startDate)
 
 export const done = v =>
   startDateRequired(v) && startDateIsValid(v) && startDateIs2DaysInFuture(v) && contractLengthRequired(v)
