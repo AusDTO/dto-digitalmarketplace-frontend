@@ -14,6 +14,7 @@ const EditSummary = props => {
   return (
     <div className={styles.marginTop2}>
       {(Object.prototype.hasOwnProperty.call(edit, 'title') ||
+        Object.prototype.hasOwnProperty.call(edit, 'summary') ||
         Object.prototype.hasOwnProperty.call(edit, 'closingDate')) && (
         <AUheading level="2" size="xs">
           {format(edit.editedAt, 'DD MMMM YYYY [,] h[:]mma')}
@@ -25,6 +26,12 @@ const EditSummary = props => {
             return (
               <li key={`${edit.editedAt}-${edit.title.newValue}`}>
                 Title changed from &apos;{edit.title.oldValue}&apos; to &apos;{edit.title.newValue}&apos;
+              </li>
+            )
+          } else if (key === 'summary') {
+            return (
+              <li key={`${edit.editedAt}-${edit.summary.newValue}`}>
+                Summary was updated - <a href="#">view previous version</a>
               </li>
             )
           } else if (key === 'closingDate') {
