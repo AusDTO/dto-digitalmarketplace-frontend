@@ -15,17 +15,23 @@ export class BuyerTrainingCreatePage extends Component {
   }
 
   componentDidMount() {
-    this.props.createTrainingBrief().then(response => {
-      if (response.status === 200) {
-        this.setState({
-          briefId: parseInt(response.data.id, 10)
-        })
-      }
-    })
+    if (this.props.isPartOfTeam || !this.props.mustJoinTeam) {
+      this.props.createTrainingBrief().then(response => {
+        if (response.status === 200) {
+          this.setState({
+            briefId: parseInt(response.data.id, 10)
+          })
+        }
+      })
+    }
   }
 
   render() {
-    const { isPartOfTeam, isTeamLead, teams } = this.props
+    const { isPartOfTeam, isTeamLead, mustJoinTeam, teams } = this.props
+
+    if (!isPartOfTeam && mustJoinTeam) {
+      return <Redirect to={`${rootPath}/team/join`} />
+    }
 
     if (!hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts')) {
       return <Redirect to={`${rootPath}/request-access/create_drafts`} />
@@ -39,11 +45,19 @@ export class BuyerTrainingCreatePage extends Component {
   }
 }
 
+BuyerTrainingCreatePage.defaultProps = {
+  teams: {},
+  isTeamLead: false,
+  isPartOfTeam: false,
+  mustJoinTeam: false
+}
+
 const mapStateToProps = state => ({
   csrfToken: state.app.csrfToken,
   teams: state.app.teams,
   isTeamLead: state.app.isTeamLead,
-  isPartOfTeam: state.app.isPartOfTeam
+  isPartOfTeam: state.app.isPartOfTeam,
+  mustJoinTeam: state.app.mustJoinTeam
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -140,6 +140,13 @@ export class BriefOverview extends Component {
   }
 }
 
+BriefOverview.defaultProps = {
+  teams: {},
+  isTeamLead: false,
+  isPartOfTeam: false,
+  mustJoinTeam: false
+}
+
 const mapStateToProps = state => ({
   teams: state.app.teams,
   isTeamLead: state.app.isTeamLead,

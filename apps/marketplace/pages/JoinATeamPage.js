@@ -5,6 +5,7 @@ import DocumentTitle from 'react-document-title'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import { loadBuyerTeams } from 'marketplace/actions/teamActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
+import styles from '../main.scss'
 
 class JoinATeamPage extends Component {
   constructor(props) {
@@ -44,31 +45,33 @@ class JoinATeamPage extends Component {
           )}
           <div className="row">
             <div className="col-xs-12">
-              <article role="main">
-                {!this.props.isPartOfTeam && this.props.mustJoinTeam && (
-                  <React.Fragment>
-                    <h1 className="au-display-xl">Join a team</h1>
-                    <p>
-                      Your agency requires each user in {this.props.agency} to be part of a team before they can access
-                      features on the Digital Marketplace. Learn more about <a href="#1">working with internal teams</a>
-                      .
-                    </p>
-                    {Object.keys(this.props.teams).length > 0 && (
-                      <React.Fragment>
-                        <h2 className="au-display-lg">Current teams</h2>
-                        <ul>
-                          {Object.values(this.props.teams).map(team => (
-                            <li key={team.id}>{team.name}</li>
-                          ))}
-                        </ul>
-                      </React.Fragment>
-                    )}
-                    <p>
-                      <a href="#1">Create a new team</a>
-                    </p>
-                  </React.Fragment>
-                )}
-              </article>
+              {!this.props.isPartOfTeam && this.props.mustJoinTeam && (
+                <React.Fragment>
+                  <h1 className="au-display-xl">Join a team</h1>
+                  <p>
+                    Your agency requires each user in {this.props.agency} to be part of a team before they can access
+                    features on the Digital Marketplace. Learn more about <a href="#1">working with internal teams</a>.
+                  </p>
+                  {Object.keys(this.props.teams).length > 0 && (
+                    <React.Fragment>
+                      <h2 className="au-display-lg">Current teams</h2>
+                      <table className={`${styles.defaultStyle} ${styles.marginBottom3} col-xs-7`}>
+                        {Object.values(this.props.teams).map(team => (
+                          <tr key={team.id}>
+                            <td className={styles.tableColumnWidth10}>{team.name}</td>
+                            <td className={styles.tableColumnWidth2}>
+                              <a href="#1">Request to join</a>
+                            </td>
+                          </tr>
+                        ))}
+                      </table>
+                    </React.Fragment>
+                  )}
+                  <p>
+                    <a href="#1">Create a new team</a>
+                  </p>
+                </React.Fragment>
+              )}
             </div>
           </div>
         </React.Fragment>
