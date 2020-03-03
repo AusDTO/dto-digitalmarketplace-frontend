@@ -90,6 +90,14 @@ export class Categories extends Component {
             <a href="https://marketplace1.zendesk.com/hc/en-gb/requests/new" rel="noopener noreferrer" target="_blank">
               Contact us to adjust your rate
             </a>
+            <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={`${rootPath}/seller-assessment/${category.evidence_id}/review`}
+            className={styles.marginRight1}
+          >
+            View Submitted Assessment
+           </a>
           </React.Fragment>
         )
       case 'rejected':
