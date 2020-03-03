@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Redirect } from 'react-router-dom'
+import format from 'date-fns/format'
 import DocumentTitle from 'react-document-title'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
@@ -15,7 +16,7 @@ class JoinATeamPage extends Component {
     this.state = {
       loading: true,
       requestSent: false,
-      teamIdToJoin: null,
+      pendingRequests: {},
       teamNameToJoin: '',
       errorMessage: ''
     }
@@ -24,13 +25,7 @@ class JoinATeamPage extends Component {
   componentDidMount() {
     this.props
       .loadTeams()
-      .then(
-        this.props.getJoinRequest().then(res => {
-          if (res.status === 200 && res.data.team_id) {
-            this.setState({ teamIdToJoin: res.data.team_id })
-          }
-        })
-      )
+      .then(this.getPendingRequests())
       .then(res => {
         if (!res.status === 200) {
           this.setState({
@@ -42,12 +37,21 @@ class JoinATeamPage extends Component {
       })
   }
 
+  getPendingRequests() {
+    return this.props.getJoinRequest().then(res => {
+      if (res.status === 200 && res.data.join_requests) {
+        this.setState({ pendingRequests: { ...res.data.join_requests } })
+      }
+    })
+  }
+
   handleRequestClick(e, teamId, teamName) {
     e.preventDefault()
     this.setState({ loading: true })
     this.props.requestToJoin(teamId).then(res => {
       if (res.status === 200) {
-        this.setState({ requestSent: true, teamIdToJoin: teamId, teamNameToJoin: teamName })
+        this.setState({ requestSent: true, teamNameToJoin: teamName })
+        this.getPendingRequests()
       } else {
         this.setState({
           errorMessage: res.data
@@ -56,6 +60,12 @@ class JoinATeamPage extends Component {
       this.setState({ loading: false })
       return true
     })
+  }
+
+  showRequestToJoin(teamId) {
+    return (
+      Object.keys(this.state.pendingRequests).length === 0 || typeof this.state.pendingRequests[teamId] !== 'undefined'
+    )
   }
 
   render() {
@@ -108,17 +118,26 @@ class JoinATeamPage extends Component {
                         <tbody>
                           {Object.values(this.props.teams).map(team => (
                             <tr key={team.id}>
-                              <td className={styles.tableColumnWidth10}>{team.name}</td>
-                              <td className={styles.tableColumnWidth2}>
-                                {!this.state.teamIdToJoin && (
+                              <td className={styles.tableColumnWidth12}>{team.name}</td>
+                              <td className={`${styles.tableColumnWidth4} ${styles.textAlignRight}`}>
+                                {typeof this.state.pendingRequests[team.id] !== 'undefined' &&
+                                  this.state.pendingRequests[team.id].length > 0 && (
+                                    <span className={styles.green}>
+                                      {this.state.pendingRequests[team.id].map(request => (
+                                        <em key={request.id}>
+                                          <strong>Request sent: </strong>
+                                          <span>
+                                            {format(request.created_at, 'D MMMM YYYY [at] hh:mma')}
+                                            <br />
+                                          </span>
+                                        </em>
+                                      ))}
+                                    </span>
+                                  )}
+                                {this.showRequestToJoin(team.id) && (
                                   <a href="#request" onClick={e => this.handleRequestClick(e, team.id, team.name)}>
                                     Request to join
                                   </a>
-                                )}
-                                {this.state.teamIdToJoin && this.state.teamIdToJoin === team.id && (
-                                  <span className={styles.green}>
-                                    <strong>Request sent</strong>
-                                  </span>
                                 )}
                               </td>
                             </tr>

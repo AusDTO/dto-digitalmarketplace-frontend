@@ -168,7 +168,7 @@ export const requestToJoin = teamId => (dispatch, getState) =>
 
 export const getJoinRequest = () => () =>
   dmapi({
-    url: '/team/join-request',
+    url: '/team/join-requests',
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
