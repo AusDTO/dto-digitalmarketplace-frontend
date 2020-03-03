@@ -21,6 +21,14 @@
   border-bottom: 1px solid #979797;
 }
 
+.greyBorderLeft1 {
+  border-left: 1px solid #979797;
+}
+
+.greyBorderRight1 {
+  border-right: 1px solid #979797;
+}
+
 .floatRight {
   float: right;
 }
@@ -119,6 +127,22 @@
 
 .paddingBottom2 {
   padding-bottom: 2rem;
+}
+
+.paddingLeft1 {
+  padding-left: 1rem;
+}
+
+.paddingLeft2 {
+  padding-left: 2rem;
+}
+
+.paddingRight1 {
+  padding-right: 1rem;
+}
+
+.paddingRight2 {
+  padding-right: 2rem;
 }
 
 @media screen and (max-width: 767px) {
