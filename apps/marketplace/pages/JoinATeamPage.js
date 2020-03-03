@@ -114,15 +114,17 @@ class JoinATeamPage extends Component {
                   {Object.keys(this.props.teams).length > 0 && (
                     <React.Fragment>
                       <h2 className="au-display-lg">Current teams</h2>
-                      <table className={`${styles.defaultStyle} ${styles.marginBottom3} col-xs-7`}>
+                      <table className={`${styles.defaultStyle} ${styles.marginBottom3} col-xs-12`}>
                         <tbody>
                           {Object.values(this.props.teams).map(team => (
                             <tr key={team.id}>
-                              <td className={styles.tableColumnWidth12}>{team.name}</td>
-                              <td className={`${styles.tableColumnWidth4} ${styles.textAlignRight}`}>
+                              <td className={styles.tableColumnWidth6}>{team.name}</td>
+                              <td className={`${styles.tableColumnWidth6} ${styles.textAlignRight}`}>
                                 {typeof this.state.pendingRequests[team.id] !== 'undefined' &&
                                   this.state.pendingRequests[team.id].length > 0 && (
-                                    <span className={styles.green}>
+                                    <span
+                                      className={`${styles.green} ${styles.inlineBlock} ${styles.textAlignLeft} ${styles.marginRight1}`}
+                                    >
                                       {this.state.pendingRequests[team.id].map(request => (
                                         <em key={request.id}>
                                           <strong>Request sent: </strong>
@@ -135,9 +137,11 @@ class JoinATeamPage extends Component {
                                     </span>
                                   )}
                                 {this.showRequestToJoin(team.id) && (
-                                  <a href="#request" onClick={e => this.handleRequestClick(e, team.id, team.name)}>
-                                    Request to join
-                                  </a>
+                                  <span className={`${styles.inlineBlock} ${styles.textVerticalAlignTop}`}>
+                                    <a href="#request" onClick={e => this.handleRequestClick(e, team.id, team.name)}>
+                                      Request to join
+                                    </a>
+                                  </span>
                                 )}
                               </td>
                             </tr>
