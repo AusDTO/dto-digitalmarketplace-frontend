@@ -6,6 +6,7 @@ import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import SellerAssessmentCompleted from 'marketplace/components/SellerAssessment/SellerAssessmentView'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 
+
 class SellerAssessmentViewPage extends Component {
   constructor(props) {
     super(props)
