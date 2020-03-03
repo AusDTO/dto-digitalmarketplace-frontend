@@ -14,11 +14,9 @@ const SummaryComparison = props => {
   const previousSummaryIsLonger = previous.length >= updated.length
 
   return (
-    <React.Fragment>
-      <div className="row">
-        <PageHeader actions={[]} organisation={`${brief.title} (${brief.id})`} title="Summary updates" />
-      </div>
-      <div className={`row ${styles.hideMobile} ${localStyles.container} ${styles.marginTop2}`}>
+    <div className={localStyles.container}>
+      <PageHeader actions={[]} organisation={`${brief.title} (${brief.id})`} title="Summary updates" />
+      <div className={`row ${styles.hideMobile} ${styles.marginTop2}`}>
         <div className={`col-md-6 ${localStyles.previous} ${previousSummaryIsLonger ? styles.greyBorderRight1 : ''}`}>
           <AUheading level="2" size="xs">
             Previous summary:
@@ -32,7 +30,7 @@ const SummaryComparison = props => {
           <p>{updated}</p>
         </div>
       </div>
-      <div className={`row ${styles.hideDesktop} ${localStyles.container}`}>
+      <div className={`row ${styles.hideDesktop}`}>
         <div className={`col-xs-12 ${localStyles.previous}`}>
           <AUheading level="2" size="md">
             Previous summary:
@@ -46,12 +44,14 @@ const SummaryComparison = props => {
           <p>{updated}</p>
         </div>
       </div>
-      <div className={`row ${styles.marginTop2} ${localStyles.container}`}>
-        <Link to="/" className={`au-btn au-btn--tertiary ${localStyles.inlineLink}`}>
-          Return to History of updates
-        </Link>
+      <div className={`row ${styles.marginTop2}`}>
+        <div className="col-xs-12">
+          <Link to="/" className={`au-btn au-btn--tertiary ${localStyles.inlineLink}`}>
+            Return to History of updates
+          </Link>
+        </div>
       </div>
-    </React.Fragment>
+    </div>
   )
 }
 
