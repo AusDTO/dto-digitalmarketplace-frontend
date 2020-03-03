@@ -12,4 +12,15 @@
         border: none;
         padding: 0;
     }
+      
+    @media screen and (max-width: 767px) {
+        .previous {
+            padding-bottom: 2rem;
+        }
+    
+        .updated {
+            padding-left: 0;
+            padding-top: 2rem;   
+        }
+    }
 }

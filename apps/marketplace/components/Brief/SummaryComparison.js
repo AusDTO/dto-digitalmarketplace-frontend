@@ -18,23 +18,29 @@ const SummaryComparison = props => {
       <div className="row">
         <PageHeader actions={[]} organisation={`${brief.title} (${brief.id})`} title="Summary updates" />
       </div>
-      <div className={`row ${localStyles.container} ${styles.marginTop2}`}>
-        <div
-          className={`col-xs-12 col-md-6 ${localStyles.previous} ${
-            previousSummaryIsLonger ? styles.greyBorderRight1 : ''
-          }`}
-        >
+      <div className={`row ${styles.hideMobile} ${localStyles.container} ${styles.marginTop2}`}>
+        <div className={`col-md-6 ${localStyles.previous} ${previousSummaryIsLonger ? styles.greyBorderRight1 : ''}`}>
           <AUheading level="2" size="xs">
             Previous summary:
           </AUheading>
           <p>{previous}</p>
         </div>
-        <div
-          className={`col-xs-12 col-md-6 ${localStyles.updated} ${
-            previousSummaryIsLonger ? '' : styles.greyBorderLeft1
-          }`}
-        >
+        <div className={`col-md-6 ${localStyles.updated} ${previousSummaryIsLonger ? '' : styles.greyBorderLeft1}`}>
           <AUheading level="2" size="xs">
+            Updated summary:
+          </AUheading>
+          <p>{updated}</p>
+        </div>
+      </div>
+      <div className={`row ${styles.hideDesktop} ${localStyles.container}`}>
+        <div className={`col-xs-12 ${localStyles.previous}`}>
+          <AUheading level="2" size="md">
+            Previous summary:
+          </AUheading>
+          <p>{previous}</p>
+        </div>
+        <div className={`col-xs-12 ${localStyles.updated} ${styles.greyBorderTop1}`}>
+          <AUheading level="2" size="md">
             Updated summary:
           </AUheading>
           <p>{updated}</p>
