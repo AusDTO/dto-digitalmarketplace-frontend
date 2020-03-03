@@ -155,3 +155,22 @@ export const requestAccess = permission => (dispatch, getState) =>
       permission
     })
   })
+
+export const requestToJoin = teamId => (dispatch, getState) =>
+  dmapi({
+    url: `/team/${teamId}/request-join`,
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    }
+  })
+
+export const getJoinRequest = () => () =>
+  dmapi({
+    url: '/team/join-request',
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
