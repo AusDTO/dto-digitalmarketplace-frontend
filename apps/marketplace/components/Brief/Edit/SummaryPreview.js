@@ -15,7 +15,7 @@ class SummaryPreview extends Component {
       summaryExpanded: false
     }
 
-    this.SUMMARY_PREVIEW_LENGTH = 245
+    this.SUMMARY_PREVIEW_LENGTH = window.innerWidth > 767 ? 245 : 130
     this.summary = itemWasEdited(props.brief.summary, props.edits.summary) ? props.edits.summary : props.brief.summary
     this.longSummary = this.summary.length > this.SUMMARY_PREVIEW_LENGTH
     this.summaryPreview = this.longSummary ? this.summary.slice(0, this.SUMMARY_PREVIEW_LENGTH) : this.summary
