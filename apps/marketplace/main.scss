@@ -21,14 +21,6 @@
   border-bottom: 1px solid #979797;
 }
 
-.greyBorderLeft1 {
-  border-left: 1px solid #979797;
-}
-
-.greyBorderRight1 {
-  border-right: 1px solid #979797;
-}
-
 .greyBorderTop1 {
   border-top: 1px solid #979797;
 }
@@ -47,6 +39,10 @@
 
 .hidden {
   display: none;
+}
+
+.inlineBlock {
+  display: inline-block;
 }
 
 .pageAlert {
@@ -75,6 +71,10 @@
   .noMarginTop {
     margin-top: 0;
   }
+}
+
+.marginBottom0 {
+  margin-bottom: 0;
 }
 
 .marginBottom1 {
@@ -111,6 +111,10 @@
 
 .marginRight2 {
   margin-right: 2rem;
+}
+
+.marginTop0 {
+  margin-top: 0;
 }
 
 .marginTop1 {
@@ -151,6 +155,10 @@
 
 .paddingRight2 {
   padding-right: 2rem;
+}
+
+.paddingTop1 {
+  padding-top: 1rem;
 }
 
 @media screen and (max-width: 767px) {

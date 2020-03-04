@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 
 import PageHeader from 'marketplace/components/PageHeader/PageHeader'
+import { rootPath } from 'marketplace/routes'
 
 import localStyles from './OpportunityHistory.scss'
 import styles from '../../main.scss'
@@ -70,6 +71,9 @@ const OpportunityHistory = props => {
       <PageHeader actions={[]} organisation={`${brief.title} (${brief.id})`} title="History of updates" />
       {edits.length > 0 && edits.map(edit => <EditSummary edit={edit} key={edit.editedAt} />)}
       {edits.length === 0 && <p>No changes have been made to this opportunity.</p>}
+      <div className={styles.marginTop2}>
+        <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>Return to opportunity</a>
+      </div>
     </React.Fragment>
   )
 }
