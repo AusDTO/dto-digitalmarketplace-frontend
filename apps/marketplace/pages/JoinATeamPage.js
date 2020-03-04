@@ -5,7 +5,7 @@ import format from 'date-fns/format'
 import DocumentTitle from 'react-document-title'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import { loadBuyerTeams, requestToJoin, getJoinRequest } from 'marketplace/actions/teamActions'
+import { loadBuyerTeams, requestToJoin, getJoinRequests } from 'marketplace/actions/teamActions'
 import { rootPath } from 'marketplace/routes'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import styles from '../main.scss'
@@ -27,7 +27,7 @@ class JoinATeamPage extends Component {
       .loadTeams()
       .then(this.getPendingRequests())
       .then(res => {
-        if (!res.status === 200) {
+        if (res.status !== 200) {
           this.setState({
             errorMessage: res.data
           })
@@ -38,7 +38,7 @@ class JoinATeamPage extends Component {
   }
 
   getPendingRequests() {
-    return this.props.getJoinRequest().then(res => {
+    return this.props.getJoinRequests().then(res => {
       if (res.status === 200 && res.data.join_requests) {
         this.setState({ pendingRequests: { ...res.data.join_requests } })
       }
@@ -82,7 +82,7 @@ class JoinATeamPage extends Component {
         <React.Fragment>
           {this.state.errorMessage && (
             <div className="row">
-              <div className="col-sm-push-2 col-sm-8 col-xs-12">
+              <div className="col-xs-12">
                 <AUpageAlert as="error">{this.state.errorMessage}</AUpageAlert>
               </div>
             </div>
@@ -174,7 +174,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   loadTeams: () => dispatch(loadBuyerTeams()),
-  getJoinRequest: () => dispatch(getJoinRequest()),
+  getJoinRequests: () => dispatch(getJoinRequests()),
   requestToJoin: teamId => dispatch(requestToJoin(teamId))
 })
 

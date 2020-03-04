@@ -53,6 +53,7 @@ import InvitedSellersPage from './pages/InvitedSellersPage'
 import WithdrawOpportunityPage from './pages/WithdrawOpportunityPage'
 import WithdrawOpportunitySuccessPage from './pages/WithdrawOpportunitySuccessPage'
 import JoinATeamPage from './pages/JoinATeamPage'
+import JoinATeamDeclineRequestPage from './pages/JoinATeamDeclineRequestPage'
 
 export const rootPath = '/2'
 
@@ -156,6 +157,11 @@ export const Routes = () => (
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/create`} component={BuyerATMCreatePage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/:briefId/:stage?`} component={BuyerATMFlowPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/join`} component={JoinATeamPage} />
+    <PrivateRoute
+      restrictedTo="buyer"
+      path={`${rootPath}/team/:teamId/decline-join/:token`}
+      component={JoinATeamDeclineRequestPage}
+    />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/(teams|people)`} component={TeamsPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/create`} component={CreateTeamPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/edit/:teamId/:stage?`} component={EditTeamFlowPage} />

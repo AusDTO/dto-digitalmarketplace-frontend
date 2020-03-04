@@ -166,11 +166,33 @@ export const requestToJoin = teamId => (dispatch, getState) =>
     }
   })
 
-export const getJoinRequest = () => () =>
+export const getJoinRequests = () => () =>
   dmapi({
     url: '/team/join-requests',
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
     }
+  })
+
+export const getJoinRequest = (teamId, token) => () =>
+  dmapi({
+    url: `/team/join-request/${teamId}/${token}`,
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+
+export const declineRequestToJoin = (teamId, token, reason) => (dispatch, getState) =>
+  dmapi({
+    url: `/team/decline-join-request/${teamId}/${token}`,
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify({
+      reason
+    })
   })
