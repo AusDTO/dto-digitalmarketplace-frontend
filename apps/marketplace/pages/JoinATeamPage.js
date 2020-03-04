@@ -104,8 +104,8 @@ class JoinATeamPage extends Component {
                   )}
                   <h1 className="au-display-xl">Join a team</h1>
                   <p>
-                    Your agency requires each user in {this.props.agency} to be part of a team before they can access
-                    features on the Digital Marketplace. Learn more about{' '}
+                    Your agency requires each user in {this.props.organisation} to be part of a team before they can
+                    access features on the Digital Marketplace. Learn more about{' '}
                     <a href="/api/2/r/how-teams-work" rel="noopener noreferrer" target="_blank">
                       working with internal teams
                     </a>
@@ -167,7 +167,7 @@ class JoinATeamPage extends Component {
 
 const mapStateToProps = state => ({
   teams: state.teamsDashboard.teamsOverview.teams,
-  agency: state.app.agency,
+  organisation: state.teamsDashboard.organisation,
   isPartOfTeam: state.app.isPartOfTeam,
   mustJoinTeam: state.app.mustJoinTeam
 })
