@@ -2,10 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { loadEvidenceData } from 'marketplace/actions/supplierActions'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
-// import SellerAssessmentCompleted from 'marketplace/components/SellerAssessment/SellerAssessmentCompleted'
 import SellerAssessmentCompleted from 'marketplace/components/SellerAssessment/SellerAssessmentView'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-
 
 class SellerAssessmentViewPage extends Component {
   constructor(props) {
@@ -69,7 +67,8 @@ class SellerAssessmentViewPage extends Component {
     // }
 
     if (this.props.evidence && this.props.evidence.submittedAt) {
-      return <SellerAssessmentCompleted contactEmail={this.props.emailAddress} />
+      return <SellerAssessmentCompleted contactEmail={this.props.emailAddress} 
+      evidence={this.props.evidence} />
     }
 
     return null

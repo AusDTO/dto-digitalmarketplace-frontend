@@ -112,10 +112,7 @@ export class Categories extends Component {
         return (
           <React.Fragment>
             <p>The Marketplace is reviewing your request for assessment.</p>
-            <a
-              href={`${rootPath}/seller-assessment/${category.evidence_id}/view`}
-              className={styles.marginRight1}
-            >
+            <a href={`${rootPath}/seller-assessment/${category.evidence_id}/view`} className={styles.marginRight1}>
               View Submitted Assessment
             </a>
           </React.Fragment>
