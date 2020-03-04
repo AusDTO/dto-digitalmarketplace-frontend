@@ -48,7 +48,7 @@ class EditOpportunityTable extends Component {
           </ul>
         )}
         {getAllDocuments(brief).length === 0 && getAllDocuments(edits).length === 0 && (
-          <em>No documents have been uploaded</em>
+          <em className={styles.darkGrayText}>No documents have been uploaded</em>
         )}
       </React.Fragment>
     )
