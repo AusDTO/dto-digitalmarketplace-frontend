@@ -6,6 +6,10 @@
   border-bottom: 1px solid #979797;
 }
 
+.greyBorderTop1 {
+  border-top: 1px solid #979797;
+}
+
 .floatRight {
   float: right;
 }
@@ -16,6 +20,10 @@
 
 .fontSizeMd {
   font-size: 1.25rem;
+}
+
+.inlineBlock {
+  display: inline-block;
 }
 
 .pageAlert {
@@ -44,6 +52,10 @@
   .noMarginTop {
     margin-top: 0;
   }
+}
+
+.marginBottom0 {
+  margin-bottom: 0;
 }
 
 .marginBottom1 {
@@ -82,6 +94,10 @@
   margin-right: 2rem;
 }
 
+.marginTop0 {
+  margin-top: 0;
+}
+
 .marginTop1 {
   margin-top: 1rem;
 }
@@ -100,6 +116,10 @@
 
 .paddingBottom2 {
   padding-bottom: 2rem;
+}
+
+.paddingTop1 {
+  padding-top: 1rem;
 }
 
 @media screen and (max-width: 767px) {

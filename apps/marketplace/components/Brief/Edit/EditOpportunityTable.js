@@ -2,9 +2,12 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import format from 'date-fns/format'
 
+import AUheading from '@gov.au/headings/lib/js/react.js'
+
 import { getClosingTime } from 'marketplace/components/helpers'
 import { getSellersToInvite, itemWasEdited } from './helpers'
 
+import localStyles from './EditOpportunityTable.scss'
 import styles from '../../../main.scss'
 
 class EditOpportunityTable extends Component {
@@ -25,64 +28,138 @@ class EditOpportunityTable extends Component {
     const sellersToInvite = getSellersToInvite(brief, edits)
 
     return (
-      <table className={`col-xs-12 ${styles.defaultStyle} ${styles.textAlignLeft}`}>
-        <tbody>
-          <tr>
-            <th scope="row">Opportunity title</th>
-            <td>{itemWasEdited(brief.title, edits.title) ? edits.title : brief.title}</td>
-            <td>
-              <Link to="/title" className="au-btn au-btn--tertiary">
-                Edit title
-              </Link>
-            </td>
-          </tr>
-          {showInvited && (
-            <React.Fragment>
-              <tr className={sellersToInvite.length > 0 ? styles.borderBottom0 : ''}>
-                <th scope="row">Invited sellers</th>
-                <td>
-                  <ul>
-                    {Object.values(brief.sellers).map(seller => (
-                      <li key={seller.name}>{seller.name}</li>
-                    ))}
-                  </ul>
-                </td>
-                <td>
-                  <Link to="/sellers" className="au-btn au-btn--tertiary">
-                    {sellersToInvite.length > 0 ? 'Edit' : 'Add'} sellers
-                  </Link>
-                </td>
-              </tr>
-              {sellersToInvite.length > 0 && (
-                <tr>
-                  <th scope="row">Sellers to invite</th>
+      <React.Fragment>
+        <table className={`col-xs-12 ${styles.hideMobile} ${styles.defaultStyle} ${styles.textAlignLeft}`}>
+          <tbody>
+            <tr>
+              <th scope="row">Opportunity title</th>
+              <td>{itemWasEdited(brief.title, edits.title) ? edits.title : brief.title}</td>
+              <td>
+                <Link to="/title" className="au-btn au-btn--tertiary">
+                  Edit title
+                </Link>
+              </td>
+            </tr>
+            {showInvited && (
+              <React.Fragment>
+                <tr className={sellersToInvite.length > 0 ? styles.borderBottom0 : ''}>
+                  <th scope="row">Invited sellers</th>
                   <td>
                     <ul>
-                      {sellersToInvite.map(code => (
-                        <li key={edits.sellers[code].name}>{edits.sellers[code].name}</li>
+                      {Object.values(brief.sellers).map(seller => (
+                        <li key={seller.name}>{seller.name}</li>
                       ))}
                     </ul>
                   </td>
-                  <td aria-label="No value" />
+                  <td>
+                    <Link to="/sellers" className="au-btn au-btn--tertiary">
+                      {sellersToInvite.length > 0 ? 'Edit' : 'Add'} sellers
+                    </Link>
+                  </td>
                 </tr>
-              )}
-            </React.Fragment>
-          )}
-          <tr>
-            <th scope="row">Closing date</th>
-            <td>
-              {itemWasEdited(format(new Date(brief.dates.closing_time), 'YYYY-MM-DD'), edits.closingDate)
-                ? format(edits.closingDate, 'dddd DD MMMM YYYY [at 6pm (in Canberra)]')
-                : format(getClosingTime(brief), 'dddd DD MMMM YYYY [at] ha [(in Canberra)]')}
-            </td>
-            <td>
-              <Link to="/closing-date" className="au-btn au-btn--tertiary">
-                Extend closing date
+                {sellersToInvite.length > 0 && (
+                  <tr>
+                    <th scope="row">Sellers to invite</th>
+                    <td>
+                      <ul>
+                        {sellersToInvite.map(code => (
+                          <li key={edits.sellers[code].name}>{edits.sellers[code].name}</li>
+                        ))}
+                      </ul>
+                    </td>
+                    <td aria-label="No value" />
+                  </tr>
+                )}
+              </React.Fragment>
+            )}
+            <tr>
+              <th scope="row">Closing date</th>
+              <td>
+                {itemWasEdited(format(new Date(brief.dates.closing_time), 'YYYY-MM-DD'), edits.closingDate)
+                  ? format(edits.closingDate, 'dddd DD MMMM YYYY [at 6pm (in Canberra)]')
+                  : format(getClosingTime(brief), 'dddd DD MMMM YYYY [at] ha [(in Canberra)]')}
+              </td>
+              <td>
+                <Link to="/closing-date" className="au-btn au-btn--tertiary">
+                  Extend closing date
+                </Link>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div className={`${styles.hideDesktop} ${styles.marginTop2}`}>
+          <div
+            className={`${styles.greyBorderTop1} ${styles.greyBorderBottom1} ${styles.paddingTop1} ${styles.paddingBottom1} ${localStyles.editSection}`}
+          >
+            <div>
+              <AUheading className={localStyles.editSectionHeading} level="2" size="sm">
+                Opportunity title
+              </AUheading>
+              <Link to="/title" className={`au-btn au-btn--tertiary ${styles.floatRight} ${localStyles.editLink}`}>
+                Edit
               </Link>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </div>
+            <div>
+              <p>{itemWasEdited(brief.title, edits.title) ? edits.title : brief.title}</p>
+            </div>
+          </div>
+          {showInvited && (
+            <div
+              className={`${styles.greyBorderBottom1} ${styles.paddingTop1} ${styles.paddingBottom1} ${localStyles.editSection}`}
+            >
+              <div>
+                <AUheading className={localStyles.editSectionHeading} level="2" size="sm">
+                  Invited sellers
+                </AUheading>
+                <Link to="/sellers" className={`au-btn au-btn--tertiary ${styles.floatRight} ${localStyles.editLink}`}>
+                  {sellersToInvite.length > 0 ? 'Edit' : 'Add'}
+                </Link>
+              </div>
+              <div>
+                <ul className={`${styles.marginTop0} ${styles.marginBottom0}`}>
+                  {Object.values(brief.sellers).map(seller => (
+                    <li key={seller.name}>{seller.name}</li>
+                  ))}
+                </ul>
+              </div>
+              {sellersToInvite.length > 0 && (
+                <div className={styles.marginTop1}>
+                  <AUheading className={localStyles.editSectionHeading} level="2" size="sm">
+                    Sellers to invite
+                  </AUheading>
+                  <ul className={`${styles.marginTop0} ${styles.marginBottom0}`}>
+                    {sellersToInvite.map(code => (
+                      <li key={edits.sellers[code].name}>{edits.sellers[code].name}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
+          <div
+            className={`${styles.greyBorderBottom1} ${styles.paddingTop1} ${styles.paddingBottom1} ${localStyles.editSection}`}
+          >
+            <div>
+              <AUheading className={localStyles.editSectionHeading} level="2" size="sm">
+                Closing date
+              </AUheading>
+              <Link
+                to="/closing-date"
+                className={`au-btn au-btn--tertiary ${styles.floatRight} ${localStyles.editLink}`}
+              >
+                Extend
+              </Link>
+            </div>
+            <div>
+              <p>
+                {itemWasEdited(format(new Date(brief.dates.closing_time), 'YYYY-MM-DD'), edits.closingDate)
+                  ? format(edits.closingDate, 'dddd DD MMMM YYYY [at 6pm (in Canberra)]')
+                  : format(getClosingTime(brief), 'dddd DD MMMM YYYY [at] ha [(in Canberra)]')}
+              </p>
+            </div>
+          </div>
+        </div>
+      </React.Fragment>
     )
   }
 }
