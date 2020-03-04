@@ -6,6 +6,7 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 
 import { getClosingTime } from 'marketplace/components/helpers'
 import SummaryPreview from './SummaryPreview'
+import SummaryPreviewMobile from './SummaryPreviewMobile'
 import { getSellersToInvite, itemWasEdited } from './helpers'
 
 import localStyles from './EditOpportunityTable.scss'
@@ -158,7 +159,7 @@ class EditOpportunityTable extends Component {
               </Link>
             </div>
             <div>
-              <SummaryPreview brief={brief} edits={edits} />
+              <SummaryPreviewMobile brief={brief} edits={edits} />
             </div>
           </div>
           <div
