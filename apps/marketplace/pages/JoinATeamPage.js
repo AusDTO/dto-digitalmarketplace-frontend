@@ -112,43 +112,45 @@ class JoinATeamPage extends Component {
                     .
                   </p>
                   {Object.keys(this.props.teams).length > 0 && (
-                    <React.Fragment>
-                      <h2 className="au-display-lg">Current teams</h2>
-                      <table className={`${styles.defaultStyle} ${styles.marginBottom3} col-xs-12`}>
-                        <tbody>
-                          {Object.values(this.props.teams).map(team => (
-                            <tr key={team.id}>
-                              <td className={styles.tableColumnWidth6}>{team.name}</td>
-                              <td className={`${styles.tableColumnWidth6} ${styles.textAlignRight}`}>
-                                {typeof this.state.pendingRequests[team.id] !== 'undefined' &&
-                                  this.state.pendingRequests[team.id].length > 0 && (
-                                    <span
-                                      className={`${styles.green} ${styles.inlineBlock} ${styles.textAlignLeft} ${styles.marginRight1}`}
-                                    >
-                                      {this.state.pendingRequests[team.id].map(request => (
-                                        <em key={request.id}>
-                                          <strong>Request sent: </strong>
-                                          <span>
-                                            {format(request.created_at, 'D MMMM YYYY [at] hh:mma')}
-                                            <br />
-                                          </span>
-                                        </em>
-                                      ))}
-                                    </span>
-                                  )}
-                                {this.showRequestToJoin(team.id) && (
-                                  <span className={`${styles.inlineBlock} ${styles.textVerticalAlignTop}`}>
-                                    <a href="#request" onClick={e => this.handleRequestClick(e, team.id, team.name)}>
-                                      Request to join
-                                    </a>
+                    <table className={`${styles.defaultStyle} ${styles.marginBottom1} ${styles.marginTop1} col-xs-12`}>
+                      <thead>
+                        <tr>
+                          <th className={styles.textAlignLeft}>Current teams</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {Object.values(this.props.teams).map(team => (
+                          <tr key={team.id}>
+                            <td className={styles.tableColumnWidth6}>{team.name}</td>
+                            <td className={`${styles.tableColumnWidth6} ${styles.textAlignRight}`}>
+                              {typeof this.state.pendingRequests[team.id] !== 'undefined' &&
+                                this.state.pendingRequests[team.id].length > 0 && (
+                                  <span
+                                    className={`${styles.green} ${styles.inlineBlock} ${styles.textAlignLeft} ${styles.marginRight1}`}
+                                  >
+                                    {this.state.pendingRequests[team.id].map(request => (
+                                      <em key={request.id}>
+                                        <strong>Request sent: </strong>
+                                        <span>
+                                          {format(request.created_at, 'D MMMM YYYY [at] hh:mma')}
+                                          <br />
+                                        </span>
+                                      </em>
+                                    ))}
                                   </span>
                                 )}
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </React.Fragment>
+                              {this.showRequestToJoin(team.id) && (
+                                <span className={`${styles.inlineBlock} ${styles.textVerticalAlignTop}`}>
+                                  <a href="#request" onClick={e => this.handleRequestClick(e, team.id, team.name)}>
+                                    Request to join
+                                  </a>
+                                </span>
+                              )}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
                   )}
                   <p>
                     <a href="#create">Create a new team</a>
