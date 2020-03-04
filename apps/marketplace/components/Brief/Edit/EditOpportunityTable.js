@@ -26,7 +26,7 @@ class EditOpportunityTable extends Component {
     const { brief, edits } = this.props
     const documentBaseURL = `/api/2/brief/${brief.id}/attachments/`
     return (
-      <div>
+      <React.Fragment>
         {(getAllDocuments(brief).length > 0 || getAllDocuments(edits).length > 0) && (
           <ul>
             {edits.documentsEdited &&
@@ -50,7 +50,7 @@ class EditOpportunityTable extends Component {
         {getAllDocuments(brief).length === 0 && getAllDocuments(edits).length === 0 && (
           <em>No documents have been uploaded</em>
         )}
-      </div>
+      </React.Fragment>
     )
   }
 
