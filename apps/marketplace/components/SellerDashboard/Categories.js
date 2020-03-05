@@ -85,18 +85,15 @@ export class Categories extends Component {
                 <br />
               </span>
             )}
-            <a href="https://marketplace1.zendesk.com/hc/en-gb/requests/new" rel="noopener noreferrer" target="_blank">
-              Contact us to adjust your rate
-            </a>
-            <br />
             <a
-              target="_blank"
+              href="https://marketplace1.zendesk.com/hc/en-gb/requests/new"
               rel="noopener noreferrer"
-              href={`${rootPath}/seller-assessment/${category.evidence_id}/view`}
+              target="_blank"
               className={styles.marginRight1}
             >
-              View Submitted Assessment
+              Contact us to adjust your rate
             </a>
+            <a href={`${rootPath}/seller-assessment/${category.evidence_id}/view`}>View Submitted Assessment</a>
           </React.Fragment>
         )
       case 'rejected':
@@ -105,7 +102,10 @@ export class Categories extends Component {
             <a href={`${rootPath}/seller-assessment/${category.evidence_id}/feedback`} className={styles.marginRight1}>
               View feedback
             </a>
-            <a href={`${rootPath}/seller-assessment/create/${category.id}`}>Resubmit</a>
+            <a href={`${rootPath}/seller-assessment/create/${category.id}`} className={styles.marginRight1}>
+              Resubmit{' '}
+            </a>
+            <a href={`${rootPath}/seller-assessment/${category.evidence_id}/view`}>View Submitted Assessment</a>
           </React.Fragment>
         )
       case 'submitted':
