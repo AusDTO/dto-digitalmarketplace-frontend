@@ -116,6 +116,7 @@ class JoinATeamPage extends Component {
                       <thead>
                         <tr>
                           <th className={styles.textAlignLeft}>Current teams</th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
