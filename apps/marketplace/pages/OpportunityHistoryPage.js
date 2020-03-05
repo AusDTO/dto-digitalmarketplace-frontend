@@ -17,17 +17,19 @@ class OpportunityHistoryPage extends Component {
   }
 
   componentDidMount = () => {
-    if (this.props.match.params.briefId) {
-      this.getOpportunityHistory()
+    const { match } = this.props
+
+    if (match.params.briefId) {
+      this.getOpportunityHistory(match.params.briefId)
     }
   }
 
-  getOpportunityHistory = () => {
+  getOpportunityHistory = briefId => {
     this.setState({
       loading: true
     })
 
-    this.props.loadHistory(this.props.match.params.briefId).then(response => {
+    this.props.loadHistory(briefId).then(response => {
       if (response.status === 200) {
         this.setState({
           dataLoaded: true,
