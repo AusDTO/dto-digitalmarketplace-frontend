@@ -37,7 +37,7 @@ export class QuestionPage extends Component {
   }
 
   render() {
-    const { isPartOfTeam, isTeamLead, teams } = this.props
+    const { isPartOfTeam, isTeamLead, mustJoinTeam, teams } = this.props
     const { brief, questionCount } = this.state
     const briefId = this.props.match.params.briefId
 
@@ -65,6 +65,10 @@ export class QuestionPage extends Component {
           invalidFields={[]}
         />
       )
+    }
+
+    if (!isPartOfTeam && mustJoinTeam) {
+      return <Redirect to={`${rootPath}/team/join`} />
     }
 
     if (!hasPermission(isPartOfTeam, isTeamLead, teams, 'answer_seller_questions')) {
@@ -110,7 +114,8 @@ const mapStateToProps = state => ({
   organisation: state.dashboard.buyerDashboardOrganisation,
   teams: state.app.teams,
   isTeamLead: state.app.isTeamLead,
-  isPartOfTeam: state.app.isPartOfTeam
+  isPartOfTeam: state.app.isPartOfTeam,
+  mustJoinTeam: state.app.mustJoinTeam
 })
 
 export default withRouter(connect(mapStateToProps)(QuestionPage))
