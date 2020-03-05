@@ -153,7 +153,7 @@ class JoinATeamPage extends Component {
                     </table>
                   )}
                   <p>
-                    <a href="#create">Create a new team</a>
+                    <a href={`${rootPath}/team/create-new`}>Create a new team</a>
                   </p>
                 </React.Fragment>
               )}
