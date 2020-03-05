@@ -5,6 +5,8 @@ import format from 'date-fns/format'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 
 import { getClosingTime } from 'marketplace/components/helpers'
+import SummaryPreview from './SummaryPreview'
+import SummaryPreviewMobile from './SummaryPreviewMobile'
 import { getSellersToInvite, itemWasEdited } from './helpers'
 
 import localStyles from './EditOpportunityTable.scss'
@@ -73,6 +75,15 @@ class EditOpportunityTable extends Component {
               </React.Fragment>
             )}
             <tr>
+              <th scope="row">Summary</th>
+              <SummaryPreview brief={brief} edits={edits} />
+              <td>
+                <Link to="/summary" className="au-btn au-btn--tertiary">
+                  Edit summary
+                </Link>
+              </td>
+            </tr>
+            <tr>
               <th scope="row">Closing date</th>
               <td>
                 {itemWasEdited(format(new Date(brief.dates.closing_time), 'YYYY-MM-DD'), edits.closingDate)
@@ -136,6 +147,21 @@ class EditOpportunityTable extends Component {
               )}
             </div>
           )}
+          <div
+            className={`${styles.greyBorderBottom1} ${styles.paddingTop1} ${styles.paddingBottom1} ${localStyles.editSection}`}
+          >
+            <div>
+              <AUheading className={localStyles.editSectionHeading} level="2" size="sm">
+                Summary
+              </AUheading>
+              <Link to="/summary" className={`au-btn au-btn--tertiary ${styles.floatRight} ${localStyles.editLink}`}>
+                Edit
+              </Link>
+            </div>
+            <div>
+              <SummaryPreviewMobile brief={brief} edits={edits} />
+            </div>
+          </div>
           <div
             className={`${styles.greyBorderBottom1} ${styles.paddingTop1} ${styles.paddingBottom1} ${localStyles.editSection}`}
           >

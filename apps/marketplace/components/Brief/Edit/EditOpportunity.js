@@ -42,7 +42,11 @@ class EditOpportunity extends Component {
 
   showCheckBox = () => {
     const { brief, edits } = this.props
-    return itemWasEdited(brief.title, edits.title) || itemWasEdited(brief.dates.closing_date, edits.closingDate)
+    return (
+      itemWasEdited(brief.title, edits.title) ||
+      itemWasEdited(brief.dates.closing_date, edits.closingDate) ||
+      itemWasEdited(brief.summary, edits.summary)
+    )
   }
 
   validateEditProcessCheckBox = () => {

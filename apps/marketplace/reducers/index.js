@@ -297,6 +297,7 @@ export default combineReducers({
       closingDate: '',
       onlySellersEdited: true,
       sellers: {},
+      summary: '',
       title: ''
     },
     withdrawOpportunityForm: {
