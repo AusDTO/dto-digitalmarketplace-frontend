@@ -128,8 +128,7 @@ export class SellerAssessmentViewPage extends Component {
 const mapStateToProps = state => ({
   ...formProps(state, model),
   domain: state.domain.domain,
-  evidence: state.evidence,
-  errorMessage: state.app.errorMessage
+  evidence: state.evidence
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -137,8 +136,7 @@ const mapDispatchToProps = dispatch => ({
   resetFormValidity: () => dispatch(actions.resetValidity(model)),
   saveEvidence: (evidenceId, data) => dispatch(saveEvidence(evidenceId, data)),
   loadInitialData: evidenceId => dispatch(loadEvidenceData(evidenceId)),
-  loadDomainData: domainId => dispatch(loadDomainData(domainId)),
-  setError: message => dispatch(setErrorMessage(message))
+  loadDomainData: domainId => dispatch(loadDomainData(domainId))
 })
 
 export default connect(
