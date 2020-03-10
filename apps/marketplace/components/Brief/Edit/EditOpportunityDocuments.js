@@ -135,25 +135,27 @@ class EditOpportunityDocuments extends Component {
       return error
     }
     return (
-      <FilesInput
-        key={`${type}-${index}`}
-        fieldLabel="Upload another document"
-        name={type}
-        model={`${model}.${type}.${index}`}
-        formFields={1}
-        url={`/brief/${brief.id}/attachments`}
-        api={dmapi}
-        fileId={index}
-        validators={{
-          requiredFile: val => type === 'attachments' || requiredFile(val)
-        }}
-        messages={{
-          requiredFile: getErrorMessage(type)
-        }}
-        accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-        onReset={this.handleDocumentChange}
-        onUploadSuccess={this.handleDocumentChange}
-      />
+      <div key={`${type}-${index}`} className={`${styles.marginTop1} ${styles.greyBorderBottom1}`}>
+        <FilesInput
+          key={`${type}-${index}`}
+          fieldLabel="Upload another document"
+          name={type}
+          model={`${model}.${type}.${index}`}
+          formFields={1}
+          url={`/brief/${brief.id}/attachments`}
+          api={dmapi}
+          fileId={index}
+          validators={{
+            requiredFile: val => type === 'attachments' || requiredFile(val)
+          }}
+          messages={{
+            requiredFile: getErrorMessage(type)
+          }}
+          accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+          onReset={this.handleDocumentChange}
+          onUploadSuccess={this.handleDocumentChange}
+        />
+      </div>
     )
   }
 
@@ -185,13 +187,13 @@ class EditOpportunityDocuments extends Component {
             Documents
           </AUheading>
           {documentCount === 0 && <p>There are no documents currently attached to this opportunity.</p>}
-          <React.Fragment>
+          <div className={`${styles.marginBottom2} ${styles.marginTop2}`}>
             <AUheading level="2" size="md">
               Attachments
             </AUheading>
             {attachments.map((document, index) => this.renderDocumentRow(document, index, 'attachments'))}
             <FilesInput
-              fieldLabel="Upload another document"
+              fieldLabel={attachments.filter(x => x).length > 0 ? `Upload another attachment` : `Upload an attachment`}
               name="attachments"
               model={`${model}.attachments.${attachments.length}`}
               formFields={1}
@@ -202,26 +204,26 @@ class EditOpportunityDocuments extends Component {
               onReset={this.handleDocumentChange}
               onUploadSuccess={this.handleDocumentChange}
             />
-          </React.Fragment>
+          </div>
           {requirementsDocument.length > 0 && (
-            <React.Fragment>
+            <div className={styles.marginBottom2}>
               <AUheading level="2" size="md">
                 Requirements document
               </AUheading>
               {requirementsDocument.map((document, index) =>
                 this.renderDocumentRow(document, index, 'requirementsDocument', true)
               )}
-            </React.Fragment>
+            </div>
           )}
           {responseTemplate.length > 0 && (
-            <React.Fragment>
+            <div className={styles.marginBottom2}>
               <AUheading level="2" size="md">
                 Response template
               </AUheading>
               {responseTemplate.map((document, index) =>
                 this.renderDocumentRow(document, index, 'responseTemplate', true)
               )}
-            </React.Fragment>
+            </div>
           )}
         </div>
         {showClosingDateWarning && (
