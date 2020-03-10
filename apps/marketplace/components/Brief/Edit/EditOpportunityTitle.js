@@ -25,7 +25,9 @@ class EditOpportunityTitle extends Component {
   }
 
   handleCancelClick = () => {
-    this.props.resetTitle('')
+    const { initialTitle } = this.state
+
+    this.props.setTitle(initialTitle)
     this.setState({
       redirectToEditsTable: true
     })
@@ -97,7 +99,6 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
-  resetTitle: initialTitle => dispatch(actions.change(`${props.model}.title`, initialTitle)),
   setOnlySellersEdited: onlySellersEdited =>
     dispatch(actions.change(`${props.model}.onlySellersEdited`, onlySellersEdited)),
   setTitle: title => dispatch(actions.change(`${props.model}.title`, title))
