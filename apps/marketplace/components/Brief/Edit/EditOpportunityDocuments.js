@@ -56,6 +56,8 @@ class EditOpportunityDocuments extends Component {
       props.brief.attachments.length > 0
     ) {
       data.attachments = [...props.brief.attachments]
+    } else if (documentsEdited) {
+      data.attachments = [...attachments]
     }
     if (
       requirementsDocument &&
@@ -64,6 +66,8 @@ class EditOpportunityDocuments extends Component {
       props.brief.requirementsDocument.length > 0
     ) {
       data.requirementsDocument = [...props.brief.requirementsDocument]
+    } else if (documentsEdited) {
+      data.requirementsDocument = [...requirementsDocument]
     }
     if (
       responseTemplate &&
@@ -72,6 +76,8 @@ class EditOpportunityDocuments extends Component {
       props.brief.responseTemplate.length > 0
     ) {
       data.responseTemplate = [...props.brief.responseTemplate]
+    } else if (documentsEdited) {
+      data.responseTemplate = [...responseTemplate]
     }
     this.props.updateModel(data)
 
@@ -87,7 +93,6 @@ class EditOpportunityDocuments extends Component {
     // restore to the form's initial state
     const data = { ...this.state.initial }
     this.props.updateModel(data)
-    this.props.setDocumentsEdited(false)
     this.setState({
       redirectToEditsTable: true
     })
