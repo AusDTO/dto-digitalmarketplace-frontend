@@ -2,6 +2,21 @@
   font-weight: bold;
 }
 
+.bottomLinearGradient {
+  position: relative;
+
+  &::after {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 10.26%, #FFFFFF 115.38%);
+    bottom: 0;  
+    content: "";
+    display: block;
+    height: 100%;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+  }
+}
+
 .greyBorderBottom1 {
   border-bottom: 1px solid #979797;
 }
@@ -20,6 +35,10 @@
 
 .fontSizeMd {
   font-size: 1.25rem;
+}
+
+.hidden {
+  display: none;
 }
 
 .inlineBlock {
@@ -116,6 +135,26 @@
 
 .paddingBottom2 {
   padding-bottom: 2rem;
+}
+
+.paddingLeft0 {
+  padding-left: 0;
+}
+
+.paddingLeft1 {
+  padding-left: 1rem;
+}
+
+.paddingLeft2 {
+  padding-left: 2rem;
+}
+
+.paddingRight1 {
+  padding-right: 1rem;
+}
+
+.paddingRight2 {
+  padding-right: 2rem;
 }
 
 .paddingTop1 {
@@ -298,6 +337,34 @@ table.defaultStyle {
 
   & td.tableColumnWidth12 {
     width: 24rem;
+  }
+
+  & td.tableColumnWidth13 {
+    width: 26rem;
+  }
+
+  & td.tableColumnWidth14 {
+    width: 28rem;
+  }
+
+  & td.tableColumnWidth15 {
+    width: 30rem;
+  }
+
+  & td.tableColumnWidth16 {
+    width: 32rem;
+  }
+
+  & td.tableColumnWidth17 {
+    width: 34rem;
+  }
+
+  & td.tableColumnWidth18 {
+    width: 36rem;
+  }
+
+  & td.tableColumnWidth19 {
+    width: 38rem;
   }
 
   @media (max-width: 899px) {

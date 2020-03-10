@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom'
 
 import { loadOpportunityHistory } from 'marketplace/actions/briefActions'
 import OpportunityHistory from 'marketplace/components/Brief/OpportunityHistory'
+import SummaryComparison from 'marketplace/components/Brief/SummaryComparison'
+import { rootPath } from 'marketplace/routes'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 
@@ -17,17 +19,19 @@ class OpportunityHistoryPage extends Component {
   }
 
   componentDidMount = () => {
-    if (this.props.match.params.briefId) {
-      this.getOpportunityHistory()
+    const { match } = this.props
+
+    if (match.params.briefId) {
+      this.getOpportunityHistory(match.params.briefId)
     }
   }
 
-  getOpportunityHistory = () => {
+  getOpportunityHistory = briefId => {
     this.setState({
       loading: true
     })
 
-    this.props.loadHistory(this.props.match.params.briefId).then(response => {
+    this.props.loadHistory(briefId).then(response => {
       if (response.status === 200) {
         this.setState({
           dataLoaded: true,
@@ -67,7 +71,25 @@ class OpportunityHistoryPage extends Component {
     }
 
     if (dataLoaded) {
-      return <OpportunityHistory brief={brief} edits={edits} />
+      return (
+        <BrowserRouter basename={`${rootPath}/brief/${brief.id}/history`}>
+          <div className="col-xs-12">
+            <Switch>
+              <Route
+                path="/summary"
+                render={props => (
+                  <SummaryComparison
+                    brief={brief}
+                    previous={props.location.state.previous}
+                    updated={props.location.state.updated}
+                  />
+                )}
+              />
+              <Route path="/" render={() => <OpportunityHistory brief={brief} edits={edits} />} />
+            </Switch>
+          </div>
+        </BrowserRouter>
+      )
     }
 
     return null

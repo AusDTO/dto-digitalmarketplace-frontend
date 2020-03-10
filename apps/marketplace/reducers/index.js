@@ -301,6 +301,7 @@ export default combineReducers({
       attachments: [],
       requirementsDocument: [],
       responseTemplate: [],
+      summary: '',
       title: ''
     },
     withdrawOpportunityForm: {

@@ -6,17 +6,17 @@ import { Redirect } from 'react-router-dom'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 
-import { required } from 'marketplace/components/validators'
+import { limitWords, required } from 'marketplace/components/validators'
 import formProps from 'shared/form/formPropsSelector'
-import Textfield from 'shared/form/Textfield'
+import Textarea from 'shared/form/Textarea'
 
 import styles from '../../../main.scss'
 
-class EditOpportunityTitle extends Component {
+class EditOpportunitySummary extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      initialTitle: props[props.model].title ? props[props.model].title : props.brief.title,
+      initialSummary: props[props.model].summary ? props[props.model].summary : props.brief.summary,
       redirectToEditsTable: false
     }
 
@@ -25,16 +25,16 @@ class EditOpportunityTitle extends Component {
   }
 
   handleCancelClick = () => {
-    const { initialTitle } = this.state
+    const { initialSummary } = this.state
 
-    this.props.setTitle(initialTitle)
+    this.props.setSummary(initialSummary)
     this.setState({
       redirectToEditsTable: true
     })
   }
 
   handleContinueClick = data => {
-    this.props.setTitle(data.title)
+    this.props.setSummary(data.summary)
     this.props.setOnlySellersEdited(false)
     this.setState({
       redirectToEditsTable: true
@@ -42,8 +42,25 @@ class EditOpportunityTitle extends Component {
   }
 
   render = () => {
-    const { model } = this.props
-    const { initialTitle, redirectToEditsTable } = this.state
+    const { brief, model } = this.props
+    const { initialSummary, redirectToEditsTable } = this.state
+
+    let label = 'Summary of work to be done'
+    let limitWordsMessage = 'Your summary has exceeded the 200 word limit'
+    let requiredMessage = 'You must add a summary of work to be done'
+    let controlProps = {
+      limit: 200
+    }
+
+    if (brief.lot === 'specialist') {
+      label = 'What will the specialist do?'
+      limitWordsMessage = 'What will the specialist do has exceeded the 1000 word limit'
+      requiredMessage = 'You must answer "What will the specialist do?".'
+      controlProps = {
+        limit: 1000,
+        rows: '10'
+      }
+    }
 
     if (redirectToEditsTable) {
       return <Redirect to="/" />
@@ -57,29 +74,32 @@ class EditOpportunityTitle extends Component {
         validateOn="submit"
         validators={{
           '': {
-            required
+            required,
+            limitWords
           }
         }}
       >
         <div className="row">
           <AUheading level="1" size="xl">
-            Edit title
+            Edit summary
           </AUheading>
         </div>
         <div className="row">
-          <Textfield
-            model={`${model}.title`}
-            label="Opportunity title"
-            name="title"
-            id="title"
-            htmlFor="title"
-            defaultValue={initialTitle}
-            maxLength={100}
+          <Textarea
+            model={`${model}.summary`}
+            label={label}
+            name="summary"
+            id="summary"
+            htmlFor="summary"
+            defaultValue={initialSummary}
+            controlProps={controlProps}
             validators={{
-              required
+              required,
+              limitWords
             }}
             messages={{
-              required: 'Opportunity title is required'
+              required: requiredMessage,
+              limitWords: limitWordsMessage
             }}
           />
         </div>
@@ -101,10 +121,10 @@ const mapStateToProps = (state, props) => ({
 const mapDispatchToProps = (dispatch, props) => ({
   setOnlySellersEdited: onlySellersEdited =>
     dispatch(actions.change(`${props.model}.onlySellersEdited`, onlySellersEdited)),
-  setTitle: title => dispatch(actions.change(`${props.model}.title`, title))
+  setSummary: summary => dispatch(actions.change(`${props.model}.summary`, summary))
 })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(EditOpportunityTitle)
+)(EditOpportunitySummary)

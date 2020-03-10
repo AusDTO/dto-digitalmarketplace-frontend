@@ -50,7 +50,8 @@ class EditOpportunitySellers extends Component {
 
   handleCancelClick = () => {
     const { initialSellers } = this.state
-    this.props.resetSellers(initialSellers)
+
+    this.props.updateSellers(initialSellers)
     this.setState({
       redirectToEditsTable: true
     })
@@ -201,7 +202,6 @@ const mapStateToProps = (state, props) => ({
 const mapDispatchToProps = (dispatch, props) => ({
   findSellers: (keyword, category, allSellers, exclude) =>
     dispatch(findSuppliers(keyword, category, allSellers, exclude)),
-  resetSellers: initialSellers => dispatch(actions.change(`${props.model}.sellers`, initialSellers)),
   updateSellers: sellers => dispatch(actions.change(`${props.model}.sellers`, sellers))
 })
 

@@ -10,9 +10,11 @@ import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import EditOpportunity from 'marketplace/components/Brief/Edit/EditOpportunity'
 import EditOpportunityClosingDate from 'marketplace/components/Brief/Edit/EditOpportunityClosingDate'
 import EditOpportunitySellers from 'marketplace/components/Brief/Edit/EditOpportunitySellers'
+import EditOpportunitySummary from 'marketplace/components/Brief/Edit/EditOpportunitySummary'
 import EditOpportunityTitle from 'marketplace/components/Brief/Edit/EditOpportunityTitle'
 import EditOpportunityDocuments from 'marketplace/components/Brief/Edit/EditOpportunityDocuments'
 import { hasEdits } from 'marketplace/components/Brief/Edit/helpers'
+import { hasPermission } from 'marketplace/components/helpers'
 
 const model = 'editOpportunityForm'
 
@@ -85,7 +87,11 @@ class EditOpportunityPage extends Component {
   }
 
   render = () => {
-    const { brief, edits, errorMessage, isOpenToAll, location } = this.props
+    const { brief, edits, errorMessage, isOpenToAll, isPartOfTeam, isTeamLead, location, teams } = this.props
+
+    if (!hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities')) {
+      return <Redirect to={`${rootPath}/request-access/publish_opportunities`} />
+    }
 
     let hasFocused = false
     const setFocus = e => {
@@ -134,6 +140,7 @@ class EditOpportunityPage extends Component {
           <Switch>
             <Route path="/title" render={() => <EditOpportunityTitle brief={brief} model={model} />} />
             <Route path="/sellers" render={() => <EditOpportunitySellers brief={brief} model={model} />} />
+            <Route path="/summary" render={() => <EditOpportunitySummary brief={brief} model={model} />} />
             <Route path="/documents" render={() => <EditOpportunityDocuments brief={brief} model={model} />} />
             <Route path="/closing-date" render={() => <EditOpportunityClosingDate brief={brief} model={model} />} />
             <Route
@@ -160,8 +167,11 @@ const mapStateToProps = state => ({
   app: state.app,
   brief: state.brief.brief,
   edits: state.editOpportunityForm,
+  errorMessage: state.app.errorMessage,
   isOpenToAll: state.brief.isOpenToAll,
-  errorMessage: state.app.errorMessage
+  isPartOfTeam: state.app.isPartOfTeam,
+  isTeamLead: state.app.isTeamLead,
+  teams: state.app.teams
 })
 
 const mapDispatchToProps = dispatch => ({

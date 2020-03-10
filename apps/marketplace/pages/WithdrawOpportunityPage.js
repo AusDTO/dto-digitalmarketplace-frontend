@@ -4,6 +4,7 @@ import { Redirect, withRouter } from 'react-router-dom'
 
 import { withdrawOpportunity, loadBrief } from 'marketplace/actions/briefActions'
 import WithdrawOpportunity from 'marketplace/components/Brief/WithdrawOpportunity'
+import { hasPermission } from 'marketplace/components/helpers'
 import { rootPath } from 'marketplace/routes'
 
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
@@ -56,8 +57,12 @@ class WithdrawOpportunityPage extends Component {
   }
 
   render = () => {
-    const { brief, errorMessage, isOpenToAll } = this.props
+    const { brief, errorMessage, isOpenToAll, isPartOfTeam, isTeamLead, teams } = this.props
     const { loading, opportunityWithdrawn } = this.state
+
+    if (!hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities')) {
+      return <Redirect to={`${rootPath}/request-access/publish_opportunities`} />
+    }
 
     let hasFocused = false
     const setFocus = e => {
@@ -121,6 +126,9 @@ const mapStateToProps = state => ({
   brief: state.brief.brief,
   errorMessage: state.app.errorMessage,
   isOpenToAll: state.brief.isOpenToAll,
+  isPartOfTeam: state.app.isPartOfTeam,
+  isTeamLead: state.app.isTeamLead,
+  teams: state.app.teams,
   withdrawOpportunityForm: state.withdrawOpportunityForm
 })
 

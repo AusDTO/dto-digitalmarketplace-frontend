@@ -56,7 +56,8 @@ class EditOpportunity extends Component {
     return (
       itemWasEdited(brief.title, edits.title) ||
       itemWasEdited(brief.dates.closing_date, edits.closingDate) ||
-      documentsWasEdited(brief, edits)
+      documentsWasEdited(brief, edits) ||
+      itemWasEdited(brief.summary, edits.summary)
     )
   }
 

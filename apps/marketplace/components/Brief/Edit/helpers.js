@@ -51,6 +51,7 @@ export const hasEdits = (brief, edits) => {
   if (
     itemWasEdited(brief.title, edits.title) ||
     getSellersToInvite(brief, edits).length > 0 ||
+    itemWasEdited(brief.summary, edits.summary) ||
     itemWasEdited(format(new Date(brief.dates.closing_time), 'YYYY-MM-DD'), edits.closingDate) ||
     documentsWasEdited(brief, edits)
   ) {

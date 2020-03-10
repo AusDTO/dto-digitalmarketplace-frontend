@@ -1,12 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import format from 'date-fns/format'
+import { Link } from 'react-router-dom'
 
 import AUheading from '@gov.au/headings/lib/js/react.js'
 
 import PageHeader from 'marketplace/components/PageHeader/PageHeader'
 import { rootPath } from 'marketplace/routes'
 
+import localStyles from './OpportunityHistory.scss'
 import styles from '../../main.scss'
 
 const DocumentChange = (previous, current) => {
@@ -29,8 +31,9 @@ const EditSummary = props => {
   const { edit } = props
 
   return (
-    <div className={styles.marginTop2}>
+    <div className={`${styles.marginTop2} ${localStyles.editSummary}`}>
       {(Object.prototype.hasOwnProperty.call(edit, 'title') ||
+        Object.prototype.hasOwnProperty.call(edit, 'summary') ||
         Object.prototype.hasOwnProperty.call(edit, 'closingDate')) && (
         <AUheading level="2" size="xs">
           {format(edit.editedAt, 'DD MMMM YYYY [,] h[:]mma')}
@@ -42,6 +45,21 @@ const EditSummary = props => {
             return (
               <li key={`${edit.editedAt}-${edit.title.newValue}`}>
                 Title changed from &apos;{edit.title.oldValue}&apos; to &apos;{edit.title.newValue}&apos;
+              </li>
+            )
+          } else if (key === 'summary') {
+            return (
+              <li key={`${edit.editedAt}-${edit.summary.newValue}`}>
+                Summary was updated -{' '}
+                <Link
+                  to={{
+                    pathname: '/summary',
+                    state: { previous: edit.summary.oldValue, updated: edit.summary.newValue }
+                  }}
+                  className={`au-btn au-btn--tertiary ${localStyles.inlineLink}`}
+                >
+                  view previous version
+                </Link>
               </li>
             )
           } else if (key === 'closingDate') {

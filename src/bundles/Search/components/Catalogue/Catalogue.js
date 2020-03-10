@@ -91,7 +91,7 @@ export class Catalogue extends React.Component {
                 <div>
                   <CheckboxList
                     id="role"
-                    title="Area of expertise"
+                    title="Categories"
                     list={search.role}
                     onChange={actions.updateRole}
                   />
