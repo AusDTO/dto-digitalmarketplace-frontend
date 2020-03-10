@@ -192,6 +192,9 @@ class EditOpportunityDocuments extends Component {
               Attachments
             </AUheading>
             {attachments.map((document, index) => this.renderDocumentRow(document, index, 'attachments'))}
+            <p className={`${styles.marginTop1} ${styles.darkGrayText}`}>
+              Documents must be in .DOC, .DOCX, .XLS, .XLSX, .PPT, .PPTX, or .PDF format and no more than 32MB in size.
+            </p>
             <FilesInput
               fieldLabel={attachments.filter(x => x).length > 0 ? `Upload another attachment` : `Upload an attachment`}
               name="attachments"
