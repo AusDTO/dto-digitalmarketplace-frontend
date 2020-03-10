@@ -5,6 +5,7 @@ import { withRouter, Redirect } from 'react-router-dom'
 
 import BaseForm from 'shared/form/BaseForm'
 import formProps from 'shared/form/formPropsSelector'
+import { rootPath } from 'marketplace/routes'
 
 import LoginForm from '../components/LoginForm'
 import { login } from '../actions/appActions'
@@ -32,8 +33,12 @@ export class LoginPageComponent extends BaseForm {
   }
 
   render() {
-    const { model, loggedIn, handleSubmit, currentlySending } = this.props
-    const { from } = this.props.location.state || { from: { pathname: '/' } }
+    const { model, loggedIn, handleSubmit, currentlySending, isPartOfTeam, mustJoinTeam } = this.props
+    const { from } = this.props.location.state || { from: { pathname: `${rootPath}/opportunities` } }
+
+    if (loggedIn && !isPartOfTeam && mustJoinTeam) {
+      return <Redirect to={`${rootPath}/team/join`} />
+    }
 
     return (
       <div className="row">
@@ -59,7 +64,9 @@ export class LoginPageComponent extends BaseForm {
 const mapStateToProps = state => ({
   ...formProps(state, 'loginForm'),
   loggedIn: state.app.loggedIn,
-  currentlySending: state.app.currentlySending
+  currentlySending: state.app.currentlySending,
+  isPartOfTeam: state.app.isPartOfTeam,
+  mustJoinTeam: state.app.mustJoinTeam
 })
 
 const mapDispatchToProps = dispatch => ({
