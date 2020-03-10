@@ -25,7 +25,9 @@ class EditOpportunitySummary extends Component {
   }
 
   handleCancelClick = () => {
-    this.props.resetSummary('')
+    const { initialSummary } = this.state
+
+    this.props.setSummary(initialSummary)
     this.setState({
       redirectToEditsTable: true
     })
@@ -117,7 +119,6 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
-  resetSummary: initialSummary => dispatch(actions.change(`${props.model}.summary`, initialSummary)),
   setOnlySellersEdited: onlySellersEdited =>
     dispatch(actions.change(`${props.model}.onlySellersEdited`, onlySellersEdited)),
   setSummary: summary => dispatch(actions.change(`${props.model}.summary`, summary))
