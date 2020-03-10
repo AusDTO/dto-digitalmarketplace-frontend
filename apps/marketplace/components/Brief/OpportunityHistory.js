@@ -34,7 +34,10 @@ const EditSummary = props => {
     <div className={`${styles.marginTop2} ${localStyles.editSummary}`}>
       {(Object.prototype.hasOwnProperty.call(edit, 'title') ||
         Object.prototype.hasOwnProperty.call(edit, 'summary') ||
-        Object.prototype.hasOwnProperty.call(edit, 'closingDate')) && (
+        Object.prototype.hasOwnProperty.call(edit, 'closingDate') ||
+        Object.prototype.hasOwnProperty.call(edit, 'attachments') ||
+        Object.prototype.hasOwnProperty.call(edit, 'responseTemplate') ||
+        Object.prototype.hasOwnProperty.call(edit, 'requirementsDocument')) && (
         <AUheading level="2" size="xs">
           {format(edit.editedAt, 'DD MMMM YYYY [,] h[:]mma')}
         </AUheading>
