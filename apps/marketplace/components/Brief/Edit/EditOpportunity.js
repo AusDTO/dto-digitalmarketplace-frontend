@@ -109,8 +109,8 @@ class EditOpportunity extends Component {
                       onClick={() => document.getElementById('understandsEditProcess').focus()}
                     >
                       {isOpenToAll
-                        ? 'Select the checkbox to confirm you understand sellers will be able to view previous versions of your updates.'
-                        : 'Select the checkbox to confirm you understand invited sellers can view previous versions of your updates.'}
+                        ? 'Select the checkbox to confirm you understand sellers will be able to view the history of your updates.'
+                        : 'Select the checkbox to confirm you understand invited sellers can view the history of your updates.'}
                     </AUbutton>
                   )
                 }}
@@ -124,8 +124,8 @@ class EditOpportunity extends Component {
                 id="understandsEditProcess"
                 label={
                   isOpenToAll
-                    ? 'I understand if I submit these changes, sellers will be able to view previous versions of my updates.'
-                    : 'I understand if I submit these changes, invited sellers will be notified and can view previous versions of my updates.'
+                    ? 'I understand if I submit these changes, sellers will be able to view the history of my updates.'
+                    : 'I understand if I submit these changes, invited sellers will be notified and can view the history of my updates.'
                 }
                 name="understandsEditProcess"
                 onChange={() => {}}
