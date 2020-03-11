@@ -37,9 +37,6 @@ export class BuyerATMAdditionalInformationStage extends Component {
   constructor(props) {
     super(props)
     this.handleDateChange = this.handleDateChange.bind(this)
-  }
-
-  componentWillMount() {
     if (!this.props[this.props.model].closedAt) {
       const date = addDays(new Date(), 14)
       this.props.setDate(format(date, 'YYYY-MM-DD'))
@@ -115,7 +112,7 @@ export class BuyerATMAdditionalInformationStage extends Component {
           onDateChange={this.handleDateChange}
           defaultValue={this.props[model].closedAt}
           label="Closing date for opportunity"
-          description="This date must be at least 2 days after you publish this request. Responses will be available after 6pm Canberra time."
+          description="We recommend publishing for at least 2 weeks to allow interested sellers to respond. Responses will be available after 6pm Canberra time on this date."
         />
         {this.props.formButtons}
       </Form>
