@@ -17,9 +17,6 @@ export const getAllDocuments = brief => {
 }
 
 export const documentsWasEdited = (brief, edits) => {
-  if (edits.documentsEdited) {
-    return true
-  }
   const briefDocs = getAllDocuments(brief)
   const editDocs = getAllDocuments(edits)
   if (editDocs.length === 0) {
@@ -42,7 +39,7 @@ export const documentsWasEdited = (brief, edits) => {
     return true
   })
 
-  return edited
+  return (edits.documentsEdited && edited) || edited
 }
 
 export const itemWasEdited = (item, edit) => edit !== '' && edit !== item
