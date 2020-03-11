@@ -76,7 +76,9 @@ class EditOpportunityTable extends Component {
             )}
             <tr>
               <th scope="row">Summary</th>
-              <SummaryPreview brief={brief} edits={edits} />
+              <td className={styles.tableColumnWidth19}>
+                <SummaryPreview brief={brief} desktop edits={edits} previewHeight={64} />
+              </td>
               <td>
                 <Link to="/summary" className="au-btn au-btn--tertiary">
                   Edit summary
@@ -159,7 +161,7 @@ class EditOpportunityTable extends Component {
               </Link>
             </div>
             <div>
-              <SummaryPreviewMobile brief={brief} edits={edits} />
+              <SummaryPreview brief={brief} edits={edits} previewHeight={80} />
             </div>
           </div>
           <div

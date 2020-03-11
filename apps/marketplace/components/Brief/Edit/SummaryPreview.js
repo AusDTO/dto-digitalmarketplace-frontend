@@ -12,15 +12,23 @@ class SummaryPreview extends Component {
     super(props)
 
     this.state = {
+      summaryDivHeight: 0,
       summaryExpanded: false
     }
 
-    this.SUMMARY_PREVIEW_LENGTH = 245
+    this.summaryRef = React.createRef()
     this.summary = itemWasEdited(props.brief.summary, props.edits.summary) ? props.edits.summary : props.brief.summary
-    this.longSummary = this.summary.length > this.SUMMARY_PREVIEW_LENGTH
-    this.summaryPreview = this.longSummary ? this.summary.slice(0, this.SUMMARY_PREVIEW_LENGTH) : this.summary
 
     this.handleExpandSummaryClick = this.handleExpandSummaryClick.bind(this)
+  }
+
+  componentDidMount = () => {
+    const height = this.summaryRef.clientHeight
+
+    // eslint-disable-next-line react/no-did-mount-set-state
+    this.setState({
+      summaryDivHeight: height
+    })
   }
 
   handleExpandSummaryClick = () => {
@@ -30,22 +38,35 @@ class SummaryPreview extends Component {
   }
 
   render = () => {
-    const { longSummary, summary, summaryPreview } = this
-    const { summaryExpanded } = this.state
+    const { summary } = this
+    const { previewHeight } = this.props
+    const { summaryDivHeight, summaryExpanded } = this.state
 
     return (
       <React.Fragment>
-        <td className={`${styles.tableColumnWidth19} ${!longSummary ? styles.hidden : ''}`}>
-          <div className={`${!summaryExpanded ? styles.bottomLinearGradient : ''}`}>
-            <p>{summaryExpanded ? summary : summaryPreview}</p>
-          </div>
-          <div className={localStyles.toggleSummaryContainer}>
-            <AUbutton as="tertiary" className={localStyles.toggleSummaryButton} onClick={this.handleExpandSummaryClick}>
-              {summaryExpanded ? 'Collapse summary' : 'Expand summary'}
-            </AUbutton>
-          </div>
-        </td>
-        <td className={`${styles.tableColumnWidth19} ${longSummary ? styles.hidden : ''}`}>{summary}</td>
+        <div
+          className={`
+            ${summaryDivHeight > previewHeight && !summaryExpanded ? styles.maxHeight4Half : ''}
+            ${summaryDivHeight > previewHeight && !summaryExpanded ? styles.overflowHidden : ''}
+            ${summaryDivHeight > previewHeight && !summaryExpanded ? styles.bottomLinearGradient : ''}
+            ${styles.whiteSpacePreWrap}
+          `}
+          ref={summaryRef => {
+            this.summaryRef = summaryRef
+          }}
+        >
+          {summary}
+        </div>
+        <div
+          className={`
+            ${summaryDivHeight <= previewHeight ? styles.hidden : ''}
+            ${localStyles.toggleSummaryContainer}
+          `}
+        >
+          <AUbutton as="tertiary" className={localStyles.toggleSummaryButton} onClick={this.handleExpandSummaryClick}>
+            {summaryExpanded ? 'Collapse summary' : 'Expand summary'}
+          </AUbutton>
+        </div>
       </React.Fragment>
     )
   }
