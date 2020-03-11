@@ -129,6 +129,26 @@
   margin-top: 3rem;
 }
 
+.maxHeight1 {
+  max-height: 1rem;
+}
+
+.maxHeight2 {
+  max-height: 2rem;
+}
+
+.maxHeight3 {
+  max-height: 3rem;
+}
+
+.maxHeight4Half {
+  max-height: 4.5rem;
+}
+
+.overflowHidden {
+  overflow: hidden;
+}
+
 .paddingBottom1 {
   padding-bottom: 1rem;
 }
@@ -159,6 +179,10 @@
 
 .paddingTop1 {
   padding-top: 1rem;
+}
+
+.whiteSpacePreWrap {
+  white-space: pre-wrap;
 }
 
 @media screen and (max-width: 767px) {
