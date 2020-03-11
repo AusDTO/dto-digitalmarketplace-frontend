@@ -36,9 +36,6 @@ export const done = v =>
 export class BuyerATMAdditionalInformationStage extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      fileCount: 1
-    }
     this.handleDateChange = this.handleDateChange.bind(this)
   }
 
