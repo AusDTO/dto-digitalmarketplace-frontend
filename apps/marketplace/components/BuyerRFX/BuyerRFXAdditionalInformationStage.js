@@ -52,7 +52,7 @@ export class BuyerRFXAdditionalInformationStage extends Component {
     const { model } = this.props
     return (
       <Form
-        className={styles.additionalInformationContainer}
+        className={`${styles.marginBottom3} ${styles.maxWidth100} ${styles.marginTop0}`}
         model={model}
         validators={{
           '': {
@@ -85,7 +85,7 @@ export class BuyerRFXAdditionalInformationStage extends Component {
         <AUheadings level="2" size="sm">
           Comprehensive terms
         </AUheadings>
-        <p className={`${styles.fullWidth} ${styles.removeTopMargin}`}>
+          <p className={`${styles.maxWidth100} ${styles.marginTop0}`}>
           We recommend that the{' '}
           <a href="/api/2/r/comprehensive-terms-current.pdf" rel="noopener noreferrer" target="_blank">
             comprehensive terms
@@ -93,7 +93,7 @@ export class BuyerRFXAdditionalInformationStage extends Component {
           only be applied to procurements that are complex or high value. The terms will apply to your work order, in
           addition to the Master Agreement.
         </p>
-        <p className={styles.verticalMargin}>
+        <p className={styles.marginBottom3}>
           <CheckboxDetailsField
             model={`${this.props.model}.comprehensiveTerms`}
             id={`comprehensiveTerms`}
