@@ -37,17 +37,11 @@ export const done = v =>
 export class BuyerTrainingAdditionalInformationStage extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      fileCount: 1
-    }
-    this.handleDateChange = this.handleDateChange.bind(this)
-  }
-
-  componentWillMount() {
     if (!this.props[this.props.model].closedAt) {
       const date = addDays(new Date(), 14)
       this.props.setDate(format(date, 'YYYY-MM-DD'))
     }
+    this.handleDateChange = this.handleDateChange.bind(this)
   }
 
   handleDateChange(date) {
