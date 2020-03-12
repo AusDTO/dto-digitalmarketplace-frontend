@@ -45,7 +45,7 @@ export class BuyerRFXAdditionalInformationStage extends Component {
 
   componentWillMount() {
     if (!this.props[this.props.model].closedAt) {
-      const date = addDays(new Date(), 7)
+      const date = addDays(new Date(), 14)
       this.props.setDate(format(date, 'YYYY-MM-DD'))
     }
   }
