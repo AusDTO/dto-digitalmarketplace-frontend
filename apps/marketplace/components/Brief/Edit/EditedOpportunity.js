@@ -27,10 +27,10 @@ const EditedOpportunity = props => {
       ) : (
         <AUpageAlert as="success" setFocus={setFocus}>
           <h1 className="au-display-lg">
-            <strong>Your opportunity is now updated with the changes you made</strong>
+            <strong>Your opportunity is now updated</strong>
           </h1>
           <div className={styles.marginTop2}>
-            <p>Sellers will be able to view previous versions of your updates.</p>
+            <p>Sellers will be able to view the history of your updates.</p>
             <div className={styles.marginTop1}>
               <AUbutton link={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>View opportunity</AUbutton>
             </div>

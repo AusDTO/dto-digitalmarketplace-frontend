@@ -2,29 +2,33 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 import { Redirect } from 'react-router-dom'
-import addDays from 'date-fns/add_days'
 import format from 'date-fns/format'
+import isAfter from 'date-fns/is_after'
 
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
-import { getBriefLastQuestionDate } from 'marketplace/components/helpers'
-import { dateIs2DaysInFuture, required } from 'marketplace/components/validators'
+import { getBriefLastQuestionDate, getClosingTime } from 'marketplace/components/helpers'
+import { required, validDate } from 'marketplace/components/validators'
 import formProps from 'shared/form/formPropsSelector'
 
 import styles from '../../../main.scss'
 
-const ClosingDateIsNotTwoDaysInFutureMessage = (
-  <AUbutton
-    as="tertiary"
-    className={`${styles.border0} ${styles.padding0}`}
-    onClick={() => document.getElementById('day').focus()}
-  >
-    {`The closing date must be on or after ${format(addDays(new Date(), 2), 'DD MMMM YYYY')}.`}
-  </AUbutton>
-)
+const ClosingDateIsNotValidMessage = props => {
+  const { closingDate } = props
+
+  return (
+    <AUbutton
+      as="tertiary"
+      className={`${styles.border0} ${styles.padding0}`}
+      onClick={() => document.getElementById('day').focus()}
+    >
+      {`The closing date must be a valid date after ${format(closingDate, 'DD MMMM YYYY')}.`}
+    </AUbutton>
+  )
+}
 
 class EditOpportunityClosingDate extends Component {
   constructor(props) {
@@ -42,7 +46,7 @@ class EditOpportunityClosingDate extends Component {
     this.handleCancelClick = this.handleCancelClick.bind(this)
     this.handleContinueClick = this.handleContinueClick.bind(this)
     this.handleDateChange = this.handleDateChange.bind(this)
-    this.isClosingDateTwoDaysInFuture = this.isClosingDateTwoDaysInFuture.bind(this)
+    this.isClosingDateValid = this.isClosingDateValid.bind(this)
   }
 
   handleCancelClick = () => {
@@ -72,8 +76,13 @@ class EditOpportunityClosingDate extends Component {
     })
   }
 
-  isClosingDateTwoDaysInFuture = formValues => {
-    const dateIsValid = formValues.closingDate && dateIs2DaysInFuture(formValues.closingDate)
+  isClosingDateValid = formValues => {
+    const { brief } = this.props
+    const currentClosingDate = new Date(getClosingTime(brief))
+    const dateIsValid =
+      formValues.closingDate &&
+      validDate(formValues.closingDate) &&
+      isAfter(new Date(formValues.closingDate), currentClosingDate)
 
     if (!dateIsValid) {
       this.setState({
@@ -85,8 +94,9 @@ class EditOpportunityClosingDate extends Component {
   }
 
   render = () => {
-    const { model } = this.props
+    const { brief, model } = this.props
     const { hasErrors, redirectToEditsTable } = this.state
+    const InvalidClosingDateMessage = <ClosingDateIsNotValidMessage closingDate={getClosingTime(brief)} />
 
     if (redirectToEditsTable) {
       return <Redirect to="/" />
@@ -100,7 +110,7 @@ class EditOpportunityClosingDate extends Component {
         validateOn="submit"
         validators={{
           '': {
-            closingDateIsTwoDaysInFuture: this.isClosingDateTwoDaysInFuture
+            closingDateIsValid: this.isClosingDateValid
           }
         }}
       >
@@ -114,7 +124,7 @@ class EditOpportunityClosingDate extends Component {
             <ErrorAlert
               model={model}
               messages={{
-                closingDateIsTwoDaysInFuture: ClosingDateIsNotTwoDaysInFutureMessage
+                closingDateIsValid: InvalidClosingDateMessage
               }}
             />
           )}
