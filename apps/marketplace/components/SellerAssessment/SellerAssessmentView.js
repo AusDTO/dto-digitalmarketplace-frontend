@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUdirectionLink from '@gov.au/direction-links/lib/js/react.js'
 import formProps from 'shared/form/formPropsSelector'
@@ -10,43 +9,12 @@ import { connect } from 'react-redux'
 import { getCriteriaName } from '/Users/reshmaabraham/code/dto-digitalmarketplace-frontend/apps/marketplace/components/SellerAssessment/SellerAssessmentEvidenceStage'
 
 const SellerAssessmentView = props => (
-  //     getStatusBadge = category => {
-  //     switch (category.status) {
-  //       case 'unassessed':
-  //         return <div className={`${styles.darkGrayText}`}>-</div>
-  //       case 'draft':
-  //         if (category.previous_evidence_id) {
-  //           return <div className={`${styles.badge} ${styles.red}`}>Unsuccessful</div>
-  //         }
-  //         return <div className={`${styles.badge} ${styles.yellow}`}>In draft</div>
-  //       case 'submitted':
-  //         return <div className={`${styles.badge} ${styles.lightBlue}`}>Submitted</div>
-  //       case 'assessed':
-  //         return <div className={`${styles.badge} ${styles.green}`}>Approved</div>
-  //       case 'rejected':
-  //         return <div className={`${styles.badge} ${styles.red}`}>Unsuccessful</div>
-  //       default:
-  //         return ''
-  //     }
-  //   }
-
   <div>
     <AUdirectionLink link={`${rootPath}/seller-dashboard`} text="back to dashboard" direction="left" />
 
     <AUheading level="1" size="xl">
       {props.meta.domain.name} Assessment {props[props.model].maxDailyRate}
     </AUheading>
-
-    {/* <div>
-        {(() => {
-          switch(props[props.model].status) {
-            case "approved": return <p> Please note that you cannot edit your category assessment if you have been approved</p>;
-            // case "name2": return <SelectBox/>;
-            // case "name3": return <SelectBox/>;
-            default: return ''
-          }
-        })()}
-      </div> */}
 
     <p>
       Please note that you cannot edit your category assessment if you have been <b>approved or submitted</b>.
@@ -99,7 +67,6 @@ const SellerAssessmentView = props => (
 )
 
 SellerAssessmentView.propTypes = {
-  contactEmail: PropTypes.string.isRequired,
   meta: PropTypes.object.isRequired,
   model: PropTypes.string.isRequired
 }

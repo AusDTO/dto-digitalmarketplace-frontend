@@ -7,7 +7,6 @@ import SellerAssessmentStages from 'marketplace/components/SellerAssessment/Sell
 import { rootPath } from 'marketplace/routes'
 import { loadDomainData, loadEvidenceData, saveEvidence } from 'marketplace/actions/supplierActions'
 import SellerAssessmentView from 'marketplace/components/SellerAssessment/SellerAssessmentView'
-import { setErrorMessage } from 'marketplace/actions/appActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { SellerAssessmentFormReducer, SellerAssessmentEvidenceReducer } from 'marketplace/reducers'
 
