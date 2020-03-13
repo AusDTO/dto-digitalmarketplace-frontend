@@ -44,14 +44,13 @@ export class BuyerSpecialistRequirementsStage extends Component {
     this.state = {
       fileCount: 1
     }
-    this.handleDateChange = this.handleDateChange.bind(this)
-  }
 
-  componentWillMount() {
     if (!this.props[this.props.model].closedAt) {
       const date = addDays(new Date(), 7)
       this.props.setDate(format(date, 'YYYY-MM-DD'))
     }
+
+    this.handleDateChange = this.handleDateChange.bind(this)
   }
 
   componentDidMount() {
