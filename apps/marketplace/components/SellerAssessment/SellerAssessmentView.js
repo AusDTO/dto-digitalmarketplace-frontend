@@ -9,6 +9,8 @@ import { connect } from 'react-redux'
 import { getCriteriaName } from '/Users/reshmaabraham/code/dto-digitalmarketplace-frontend/apps/marketplace/components/SellerAssessment/SellerAssessmentEvidenceStage'
 
 const SellerAssessmentView = props => (
+
+  
   <div>
     <AUdirectionLink link={`${rootPath}/seller-dashboard`} text="back to dashboard" direction="left" />
 
@@ -16,12 +18,16 @@ const SellerAssessmentView = props => (
       {props.meta.domain.name} Assessment {props[props.model].maxDailyRate}
     </AUheading>
 
+    {/* Approved */}
     <p>
-      Please note that you cannot edit your category assessment if you have been <b>approved or submitted</b>.
-      <br />
-      <br />
-      If your category assessment has been <b>rejected</b>, you can view the feedback and resubmit your assessment.
+      You cannot edit your request for approved categories. If you want to change your rate, please contact the Digital
+      Marketplace.
     </p>
+    {/* Rejected */}
+    <p>If your assessment was not approved, you can view the feedback and submit another request.</p>
+
+    {/* Submitted */}
+    <p>You cannot edit your request once you've submitted the request for assessment. </p>
 
     <AUheading level="2" size="lg">
       Maximum daily rate

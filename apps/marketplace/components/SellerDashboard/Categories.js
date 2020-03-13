@@ -93,7 +93,7 @@ export class Categories extends Component {
             >
               Contact us to adjust your rate
             </a>
-            <a href={`${rootPath}/seller-assessment/${category.evidence_id}/view`}>View Submitted Assessment</a>
+            <a href={`${rootPath}/seller-assessment/${category.evidence_id}/view`}>View Submitted Evidence</a>
           </React.Fragment>
         )
       case 'rejected':
@@ -105,7 +105,7 @@ export class Categories extends Component {
             <a href={`${rootPath}/seller-assessment/create/${category.id}`} className={styles.marginRight1}>
               Resubmit{' '}
             </a>
-            <a href={`${rootPath}/seller-assessment/${category.evidence_id}/view`}>View Submitted Assessment</a>
+            <a href={`${rootPath}/seller-assessment/${category.evidence_id}/view`}>View Submitted Evidence</a>
           </React.Fragment>
         )
       case 'submitted':
@@ -113,7 +113,7 @@ export class Categories extends Component {
           <React.Fragment>
             <p>The Marketplace is reviewing your request for assessment.</p>
             <a href={`${rootPath}/seller-assessment/${category.evidence_id}/view`} className={styles.marginRight1}>
-              View Submitted Assessment
+              View Submitted Evidence
             </a>
           </React.Fragment>
         )
