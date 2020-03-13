@@ -86,7 +86,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
     const { model } = this.props
     return (
       <Form
-        className={styles.additionalInformationContainer}
+      className={`${styles.marginBottom3} ${styles.maxWidth100} ${styles.marginTop0}`}
         model={model}
         validators={{
           '': {
@@ -123,7 +123,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
         <AUheadings level="2" size="sm">
           Attach a document (optional)
         </AUheadings>
-        <p className={styles.removeTopMargin}>Documents must be in .DOC .XLS .PPT or .PDF format.</p>
+        <p className={styles.marginTop0}>Documents must be in .DOC .XLS .PPT or .PDF format.</p>
         {range(this.state.fileCount).map(i => (
           <FilesInput
             key={i}
@@ -141,7 +141,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
           />
         ))}
         {this.state.fileCount < 10 && (
-          <p className={styles.verticalMargin}>
+          <p className={styles.marginBottom3}>
             <a
               href="#add"
               onClick={e => {
@@ -156,7 +156,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
         <AUheadings level="2" size="sm">
           Comprehensive terms
         </AUheadings>
-        <p className={`${styles.fullWidth} ${styles.removeTopMargin}`}>
+        <p className={`${styles.maxWidth100} ${styles.marginTop0}`}>
           We recommend that the{' '}
           <a href="/api/2/r/comprehensive-terms-current.pdf" rel="noopener noreferrer" target="_blank">
             comprehensive terms
@@ -164,7 +164,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
           only be applied to procurements that are complex or high value. The terms will apply to your work order, in
           addition to the Master Agreement.
         </p>
-        <p className={styles.verticalMargin}>
+        <p className={styles.marginBottom3}>
           <CheckboxDetailsField
             model={`${this.props.model}.comprehensiveTerms`}
             id={`comprehensiveTerms`}
