@@ -115,7 +115,7 @@ const PrivateInfo = (props) => {
                     </p>
                 }
             </Row>
-            <Row title="Labour licence" show={!isEmpty(labourHire)}>
+            <Row title="Labour hire licence" show={!isEmpty(labourHire)}>
               {Object.keys(labourHire).map((key, i) => {
                 return (
                   (labourHire[key]['licenceNumber'] || labourHire[key]['expiry']) && (
