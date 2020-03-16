@@ -34,6 +34,7 @@ export class DateComponent extends Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleBlur = this.handleBlur.bind(this)
+    this.handleInput = this.handleInput.bind(this)
   }
 
   handleChange(e) {
@@ -58,6 +59,11 @@ export class DateComponent extends Component {
     })
   }
 
+  handleInput = e => {
+    e.persist()
+    this.props.onDateInput(e)
+  }
+
   render() {
     return (
       <div className={`row ${this.props.className}`}>
@@ -78,6 +84,7 @@ export class DateComponent extends Component {
               value={this.state.day}
               onChange={this.handleChange}
               onBlur={this.handleBlur}
+              onInput={this.handleInput}
               min="1"
               max="31"
               placeholder="DD"
@@ -93,6 +100,7 @@ export class DateComponent extends Component {
               value={this.state.month}
               onChange={this.handleChange}
               onBlur={this.handleBlur}
+              onInput={this.handleInput}
               min="1"
               max="12"
               placeholder="MM"
@@ -108,6 +116,7 @@ export class DateComponent extends Component {
               value={this.state.year}
               onChange={this.handleChange}
               onBlur={this.handleBlur}
+              onInput={this.handleInput}
               min="2016"
               max="2099"
               placeholder="YYYY"
@@ -121,6 +130,7 @@ export class DateComponent extends Component {
 
 DateComponent.defaultProps = {
   onDateChange: () => {},
+  onDateInput: () => {},
   value: '',
   label: '',
   className: '',
@@ -129,6 +139,7 @@ DateComponent.defaultProps = {
 
 DateComponent.propTypes = {
   onDateChange: PropTypes.func,
+  onDateInput: PropTypes.func,
   value: PropTypes.string,
   label: PropTypes.string,
   className: PropTypes.string,
@@ -141,6 +152,7 @@ const DateControl = props => (
     model={props.model}
     component={DateComponent}
     onDateChange={props.onDateChange}
+    onDateInput={props.onDateInput}
     className={props.className}
     label={props.label}
     description={props.description}
@@ -154,6 +166,7 @@ const DateControl = props => (
 
 DateControl.defaultProps = {
   onDateChange: () => {},
+  onDateInput: () => {},
   className: '',
   label: '',
   validators: {}
@@ -163,6 +176,7 @@ DateControl.propTypes = {
   id: PropTypes.string.isRequired,
   model: PropTypes.string.isRequired,
   onDateChange: PropTypes.func,
+  onDateInput: PropTypes.func,
   className: PropTypes.string,
   label: PropTypes.string,
   validators: PropTypes.object

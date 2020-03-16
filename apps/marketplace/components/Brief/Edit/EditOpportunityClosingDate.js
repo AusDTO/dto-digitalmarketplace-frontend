@@ -45,7 +45,7 @@ class EditOpportunityClosingDate extends Component {
 
     this.handleCancelClick = this.handleCancelClick.bind(this)
     this.handleContinueClick = this.handleContinueClick.bind(this)
-    this.handleDateChange = this.handleDateChange.bind(this)
+    this.handleDateInput = this.handleDateInput.bind(this)
     this.isClosingDateValid = this.isClosingDateValid.bind(this)
   }
 
@@ -68,8 +68,35 @@ class EditOpportunityClosingDate extends Component {
     })
   }
 
-  handleDateChange = date => {
-    this.props.setClosingDate(`${date.year}-${date.month}-${date.day}`)
+  handleDateInput = e => {
+    let { value } = e.target
+    const { id } = e.target
+    const { closingDate } = this.props[this.props.model]
+
+    if (value.length === 1) {
+      value = value.padStart(2, '0')
+    }
+
+    const currentClosingDate = closingDate.split('-')
+    let year = currentClosingDate[0]
+    let month = currentClosingDate[1]
+    let day = currentClosingDate[2]
+
+    switch (id) {
+      case 'day':
+        day = value
+        break
+      case 'month':
+        month = value
+        break
+      case 'year':
+        year = value
+        break
+      default:
+        break
+    }
+
+    this.props.setClosingDate(`${year}-${month}-${day}`)
     this.props.resetFormValidity()
     this.setState({
       hasErrors: false
@@ -133,7 +160,7 @@ class EditOpportunityClosingDate extends Component {
           <DateControl
             id="closingDate"
             model={`${model}.closingDate`}
-            onDateChange={this.handleDateChange}
+            onDateInput={this.handleDateInput}
             validators={{
               required
             }}
