@@ -57,7 +57,7 @@ const PrivateInfo = (props) => {
             <Row title="Business Details" show={true}>
                 Number of Employees: {number_of_employees}<br/>
                 Government experience: <ul>
-                {Object.keys(government_experience).map((key, i) => {
+                {government_experience && Object.keys(government_experience).map((key, i) => {
                     return (<li key={i}>{govExperienceTitle[key]}</li>)
                 })
                 }
@@ -65,7 +65,7 @@ const PrivateInfo = (props) => {
                 {other_panels && <p>Other panels: {other_panels}</p>}
             </Row>
             <Row title="Disclosures" show={true}>
-                {Object.keys(questions).map((key, i) => {
+                {questions && Object.keys(questions).map((key, i) => {
                     const question = questions[key];
                     const answer = props['disclosures'][key];
                     const details = props['disclosures'][key + "_details"];
