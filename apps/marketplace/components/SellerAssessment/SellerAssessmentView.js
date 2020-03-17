@@ -4,9 +4,9 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUdirectionLink from '@gov.au/direction-links/lib/js/react.js'
 import formProps from 'shared/form/formPropsSelector'
 import { rootPath } from 'marketplace/routes'
-import styles from './SellerAssessmentReviewStage.scss'
 import { connect } from 'react-redux'
 import { getCriteriaName } from '../SellerAssessment/SellerAssessmentEvidenceStage'
+import styles from './SellerAssessmentReviewStage.scss'
 
 const SellerAssessmentView = props => (
   <div>
@@ -24,7 +24,7 @@ const SellerAssessmentView = props => (
     )}
 
     {props.meta.evidence.status === 'submitted' && (
-      <p>You cannot edit your request once you've submitted the request for assessment.</p>
+      <p>You cannot edit your request once you&apos;ve submitted the request for assessment.</p>
     )}
 
     {props.meta.evidence.status === 'rejected' && (
