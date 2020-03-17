@@ -74,9 +74,7 @@ const EditSummary = props => {
               </li>
             )
           } else if (['attachments', 'requirementsDocument', 'responseTemplate'].includes(key)) {
-            return (
-              <li key={`${edit.editedAt}`}>{DocumentChange(edit.attachments.oldValue, edit.attachments.newValue)}</li>
-            )
+            return <li key={`${edit.editedAt}`}>{DocumentChange(edit[key].oldValue, edit[key].newValue)}</li>
           }
 
           return null
