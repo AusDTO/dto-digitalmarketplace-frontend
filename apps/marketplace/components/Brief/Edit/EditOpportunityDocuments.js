@@ -134,11 +134,15 @@ class EditOpportunityDocuments extends Component {
       }
       return error
     }
+    const typeSwitch = {
+      requirementsDocument: 'requirements',
+      responseTemplate: 'response template'
+    }
     return (
       <div key={`${type}-${index}`} className={`${styles.marginTop1} ${styles.greyBorderBottom1}`}>
         <FilesInput
           key={`${type}-${index}`}
-          fieldLabel="Upload another document"
+          fieldLabel={`Upload ${typeSwitch[type]} document`}
           name={type}
           model={`${model}.${type}.${index}`}
           formFields={1}
@@ -187,14 +191,44 @@ class EditOpportunityDocuments extends Component {
             Documents
           </AUheading>
           {documentCount === 0 && <p>There are no documents currently attached to this opportunity.</p>}
+          {requirementsDocument.length > 0 && (
+            <div className={`${styles.marginBottom2} ${styles.marginTop2}`}>
+              <AUheading level="2" size="md">
+                Requirements document
+              </AUheading>
+              <p className={`${styles.marginTop1} ${styles.darkGrayText}`}>
+                Documents must be in .DOCX, .XLSX, .PPTX, or .PDF format and no more than 32MB in size.
+              </p>
+              {requirementsDocument.map((document, index) =>
+                this.renderDocumentRow(document, index, 'requirementsDocument', true)
+              )}
+            </div>
+          )}
+          {responseTemplate.length > 0 && (
+            <div className={styles.marginBottom2}>
+              <AUheading level="2" size="md">
+                Response template
+              </AUheading>
+              <p className={`${styles.marginTop1} ${styles.darkGrayText}`}>
+                Documents must be in .DOCX, .XLSX, .PPTX, or .PDF format and no more than 32MB in size.
+              </p>
+              {responseTemplate.map((document, index) =>
+                this.renderDocumentRow(document, index, 'responseTemplate', true)
+              )}
+            </div>
+          )}
           <div className={`${styles.marginBottom2} ${styles.marginTop2}`}>
             <AUheading level="2" size="md">
-              Attachments
+              {responseTemplate.length > 0 || requirementsDocument.length > 0 ? (
+                <span>Other attachments</span>
+              ) : (
+                <span>Attachments</span>
+              )}
             </AUheading>
-            {attachments.map((document, index) => this.renderDocumentRow(document, index, 'attachments'))}
             <p className={`${styles.marginTop1} ${styles.darkGrayText}`}>
               Documents must be in .DOCX, .XLSX, .PPTX, or .PDF format and no more than 32MB in size.
             </p>
+            {attachments.map((document, index) => this.renderDocumentRow(document, index, 'attachments'))}
             <FilesInput
               fieldLabel={attachments.filter(x => x).length > 0 ? `Upload another attachment` : `Upload an attachment`}
               name="attachments"
@@ -208,26 +242,6 @@ class EditOpportunityDocuments extends Component {
               onUploadSuccess={this.handleDocumentChange}
             />
           </div>
-          {requirementsDocument.length > 0 && (
-            <div className={styles.marginBottom2}>
-              <AUheading level="2" size="md">
-                Requirements document
-              </AUheading>
-              {requirementsDocument.map((document, index) =>
-                this.renderDocumentRow(document, index, 'requirementsDocument', true)
-              )}
-            </div>
-          )}
-          {responseTemplate.length > 0 && (
-            <div className={styles.marginBottom2}>
-              <AUheading level="2" size="md">
-                Response template
-              </AUheading>
-              {responseTemplate.map((document, index) =>
-                this.renderDocumentRow(document, index, 'responseTemplate', true)
-              )}
-            </div>
-          )}
         </div>
         {showClosingDateWarning && (
           <div className={`row ${styles.marginTop1}`}>
