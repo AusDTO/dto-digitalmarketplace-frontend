@@ -21,6 +21,10 @@ class EditOpportunitySellers extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      daysOpportunityOpenFor: differenceInCalendarDays(
+        props.brief.dates.closing_date,
+        props.brief.dates.published_date
+      ),
       daysUntilOpportunityCloses: differenceInCalendarDays(props.brief.dates.closing_date, new Date()),
       initialSellers: props[props.model].sellers ? props[props.model].sellers : [],
       redirectToEditsTable: false,
@@ -36,7 +40,7 @@ class EditOpportunitySellers extends Component {
 
     if (
       this.state.daysUntilOpportunityCloses <= 2 ||
-      this.state.daysUntilOpportunityCloses <= Math.round(this.state.daysUntilOpportunityCloses / 2)
+      this.state.daysUntilOpportunityCloses <= Math.round(this.state.daysOpportunityOpenFor / 2)
     ) {
       this.state.showClosingDateWarning = true
     }
