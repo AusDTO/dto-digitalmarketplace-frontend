@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 import { Link, Redirect } from 'react-router-dom'
 import differenceInCalendarDays from 'date-fns/difference_in_calendar_days'
-import differenceInDays from 'date-fns/difference_in_days'
 
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
