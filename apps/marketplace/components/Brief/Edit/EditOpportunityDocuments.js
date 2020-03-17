@@ -190,15 +190,15 @@ class EditOpportunityDocuments extends Component {
           <AUheading level="1" size="xl">
             Documents
           </AUheading>
+          <p className={`${styles.marginTop1} ${styles.darkGrayText}`}>
+            Documents must be in .DOCX, .XLSX, .PPTX, or .PDF format and no more than 32MB in size.
+          </p>
           {documentCount === 0 && <p>There are no documents currently attached to this opportunity.</p>}
           {requirementsDocument.length > 0 && (
             <div className={`${styles.marginBottom2} ${styles.marginTop2}`}>
               <AUheading level="2" size="md">
                 Requirements document
               </AUheading>
-              <p className={`${styles.marginTop1} ${styles.darkGrayText}`}>
-                Documents must be in .DOCX, .XLSX, .PPTX, or .PDF format and no more than 32MB in size.
-              </p>
               {requirementsDocument.map((document, index) =>
                 this.renderDocumentRow(document, index, 'requirementsDocument', true)
               )}
@@ -209,9 +209,6 @@ class EditOpportunityDocuments extends Component {
               <AUheading level="2" size="md">
                 Response template
               </AUheading>
-              <p className={`${styles.marginTop1} ${styles.darkGrayText}`}>
-                Documents must be in .DOCX, .XLSX, .PPTX, or .PDF format and no more than 32MB in size.
-              </p>
               {responseTemplate.map((document, index) =>
                 this.renderDocumentRow(document, index, 'responseTemplate', true)
               )}
@@ -225,9 +222,6 @@ class EditOpportunityDocuments extends Component {
                 <span>Attachments</span>
               )}
             </AUheading>
-            <p className={`${styles.marginTop1} ${styles.darkGrayText}`}>
-              Documents must be in .DOCX, .XLSX, .PPTX, or .PDF format and no more than 32MB in size.
-            </p>
             {attachments.map((document, index) => this.renderDocumentRow(document, index, 'attachments'))}
             <FilesInput
               fieldLabel={attachments.filter(x => x).length > 0 ? `Upload another attachment` : `Upload an attachment`}
