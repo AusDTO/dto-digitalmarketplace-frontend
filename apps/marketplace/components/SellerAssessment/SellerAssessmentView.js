@@ -24,11 +24,11 @@ const SellerAssessmentView = props => (
     )}
 
     {props.meta.evidence.status === 'submitted' && (
-      <p>You cannot edit your request once you&apos;ve submitted the request for assessment.</p>
+      <p>You cannot edit your request once you&apos;ve submitted an request for assessment.</p>
     )}
 
     {props.meta.evidence.status === 'rejected' && (
-      <p>If your assessment was not approved, you can view the feedback and submit another request.</p>
+      <p>If your assessment is not approved, you can view the feedback and submit another request.</p>
     )}
 
     <AUheading level="2" size="lg">
