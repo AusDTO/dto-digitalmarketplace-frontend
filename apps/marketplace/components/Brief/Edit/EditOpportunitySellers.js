@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 import { Link, Redirect } from 'react-router-dom'
 import differenceInCalendarDays from 'date-fns/difference_in_calendar_days'
+import differenceInDays from 'date-fns/difference_in_days'
 
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
@@ -21,6 +22,10 @@ class EditOpportunitySellers extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      daysOpportunityOpenFor: differenceInCalendarDays(
+        props.brief.dates.closing_date,
+        props.brief.dates.published_date
+      ),
       daysUntilOpportunityCloses: differenceInCalendarDays(props.brief.dates.closing_date, new Date()),
       initialSellers: props[props.model].sellers ? props[props.model].sellers : [],
       redirectToEditsTable: false,
@@ -36,7 +41,7 @@ class EditOpportunitySellers extends Component {
 
     if (
       this.state.daysUntilOpportunityCloses <= 2 ||
-      this.state.daysUntilOpportunityCloses <= Math.round(this.state.daysUntilOpportunityCloses / 2)
+      this.state.daysUntilOpportunityCloses <= Math.round(this.state.daysOpportunityOpenFor / 2)
     ) {
       this.state.showClosingDateWarning = true
     }
