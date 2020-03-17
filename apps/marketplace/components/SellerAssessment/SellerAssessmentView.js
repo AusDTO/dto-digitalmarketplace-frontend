@@ -6,14 +6,14 @@ import formProps from 'shared/form/formPropsSelector'
 import { rootPath } from 'marketplace/routes'
 import styles from './SellerAssessmentReviewStage.scss'
 import { connect } from 'react-redux'
-import { getCriteriaName } from '/Users/reshmaabraham/code/dto-digitalmarketplace-frontend/apps/marketplace/components/SellerAssessment/SellerAssessmentEvidenceStage'
+import { getCriteriaName } from '../SellerAssessment/SellerAssessmentEvidenceStage'
 
 const SellerAssessmentView = props => (
   <div>
     <AUdirectionLink link={`${rootPath}/seller-dashboard/categories`} text="back to dashboard" direction="left" />
 
     <AUheading level="1" size="xl">
-      {props.meta.domain.name} Assessment {props[props.model].maxDailyRate}
+      {props.meta.domain.name} Assessment
     </AUheading>
 
     {props.meta.evidence.status === 'assessed' && (
@@ -23,17 +23,12 @@ const SellerAssessmentView = props => (
       </p>
     )}
 
-{props.meta.evidence.status === 'submitted' && (
-      <p>
-        You cannot edit your request once you've submitted the request for assessment.
-      </p>
+    {props.meta.evidence.status === 'submitted' && (
+      <p>You cannot edit your request once you've submitted the request for assessment.</p>
     )}
 
-
-{props.meta.evidence.status === 'rejected' && (
-      <p>
-        If your assessment was not approved, you can view the feedback and submit another request.
-      </p>
+    {props.meta.evidence.status === 'rejected' && (
+      <p>If your assessment was not approved, you can view the feedback and submit another request.</p>
     )}
 
     <AUheading level="2" size="lg">
@@ -41,6 +36,9 @@ const SellerAssessmentView = props => (
     </AUheading>
     <p>${props[props.model].maxDailyRate} (including GST)</p>
     <div className={styles.spacer} />
+    <AUheading level="2" size="lg">
+      Evidence
+    </AUheading>
     {props[props.model].criteria.map(criteriaId => (
       <React.Fragment key={criteriaId}>
         <AUheading level="2" size="md">
