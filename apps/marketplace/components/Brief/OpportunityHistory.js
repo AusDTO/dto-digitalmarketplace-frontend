@@ -11,20 +11,19 @@ import { rootPath } from 'marketplace/routes'
 import localStyles from './OpportunityHistory.scss'
 import styles from '../../main.scss'
 
-const DocumentChange = (previous, current) => {
-  let message = ''
+const DocumentChanges = (previous, current) => {
   const removed = previous.filter(x => !current.includes(x))
   const added = current.filter(x => !previous.includes(x))
-  if (removed.length > 0) {
-    message += `${removed.join(' and ')} removed`
-  }
-  if (added.length > 0) {
-    if (removed.length > 0) {
-      message += ', and '
-    }
-    message += `${added.join(' and ')} added`
-  }
-  return <span>{message}</span>
+  const items = []
+  removed.map(item => {
+    items.push(<li key={item}>{item} removed</li>)
+    return true
+  })
+  added.map(item => {
+    items.push(<li key={item}>{item} added</li>)
+    return true
+  })
+  return items.map(item => item)
 }
 
 const EditSummary = props => {
@@ -74,7 +73,7 @@ const EditSummary = props => {
               </li>
             )
           } else if (['attachments', 'requirementsDocument', 'responseTemplate'].includes(key)) {
-            return <li key={`${edit.editedAt}`}>{DocumentChange(edit[key].oldValue, edit[key].newValue)}</li>
+            return DocumentChanges(edit[key].oldValue, edit[key].newValue)
           }
 
           return null
