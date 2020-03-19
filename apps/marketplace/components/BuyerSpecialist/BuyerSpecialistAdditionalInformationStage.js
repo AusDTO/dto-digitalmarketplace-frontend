@@ -104,7 +104,10 @@ export class BuyerSpecialistRequirementsStage extends Component {
         <AUheadings level="1" size="xl">
           Additional information
         </AUheadings>
-        <AUcallout description="" className={styles.noticeBar}>
+        <AUcallout
+          description=""
+          className={`${styles.marginBottom2} ${styles.marginTop2} ${styles.borderLeft} ${styles.backgroundColorLightBlue} ${styles.colorDarkBlue}`}
+        >
           Only sellers you selected and other buyers can view attached documents. Buyers and sellers will not be able to
           view your contact number or internal reference.
         </AUcallout>
