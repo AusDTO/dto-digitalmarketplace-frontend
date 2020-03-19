@@ -113,7 +113,7 @@ export class Categories extends Component {
           <React.Fragment>
             <p>The Marketplace is reviewing your request for assessment.</p>
             <a href={`${rootPath}/seller-assessment/${category.evidence_id}/view`} className={styles.marginRight1}>
-              view submitted evidence
+              View submitted evidence
             </a>
           </React.Fragment>
         )
