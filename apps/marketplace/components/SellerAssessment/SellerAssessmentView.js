@@ -28,7 +28,11 @@ const SellerAssessmentView = props => (
     )}
 
     {props.meta.evidence.status === 'rejected' && (
-      <p>If your assessment is not approved, you can view the feedback and submit another request.</p>
+      <p>
+        If your assessment is not approved, you can view the
+        <a href={`${rootPath}/seller-assessment/${props[props.model].id}/feedback/`}>{' '}feedback{' '}</a>
+        and submit another request.
+      </p>
     )}
 
     <AUheading level="2" size="lg">
