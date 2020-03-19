@@ -20,7 +20,7 @@ const EditSummary = props => {
         Object.prototype.hasOwnProperty.call(edit, 'summary') ||
         Object.prototype.hasOwnProperty.call(edit, 'closingDate')) && (
         <AUheading level="2" size="xs">
-          {format(edit.editedAt, 'DD MMMM YYYY [,] h[:]mma')}
+          {format(edit.editedAt, 'DD MMMM YYYY[,] h[:]mma')}
         </AUheading>
       )}
       <ul>
