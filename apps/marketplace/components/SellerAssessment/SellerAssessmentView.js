@@ -24,13 +24,17 @@ const SellerAssessmentView = props => (
     )}
 
     {props.meta.evidence.status === 'submitted' && (
-      <p>You cannot edit your request once you&apos;ve submitted an request for assessment.</p>
+      <p>
+        You cannot edit your request once you&apos;ve submitted an request for assessment.
+        <br />
+        If you have an issue, <a href="/contact-us">contact our support team.</a>
+      </p>
     )}
 
     {props.meta.evidence.status === 'rejected' && (
       <p>
         If your assessment is not approved, you can view the
-        <a href={`${rootPath}/seller-assessment/${props[props.model].id}/feedback/`}>{' '}feedback{' '}</a>
+        <a href={`${rootPath}/seller-assessment/${props[props.model].id}/feedback/`}> feedback </a>
         and submit another request.
       </p>
     )}
