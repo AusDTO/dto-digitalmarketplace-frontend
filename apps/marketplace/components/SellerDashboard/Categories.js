@@ -111,7 +111,7 @@ export class Categories extends Component {
       case 'submitted':
         return (
           <React.Fragment>
-            <p>The Marketplace is reviewing your request for assessment.</p>
+            <p>The Digital Marketplace is reviewing your request for assessment.</p>
             <a href={`${rootPath}/seller-assessment/${category.evidence_id}/view`} className={styles.marginRight1}>
               View submitted evidence
             </a>
