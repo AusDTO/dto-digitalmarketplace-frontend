@@ -9,7 +9,8 @@ import BuyerATMTimeframesAndBudgetStage from './BuyerATMTimeframesAndBudgetStage
 import BuyerATMEvaluationCriteriaStage, {
   weightingsAddUpTo100,
   noEmptyWeightings,
-  noEmptyCriteria
+  noEmptyCriteria,
+  noDuplicateCriteria
 } from './BuyerATMEvaluationCriteriaStage'
 
 const BuyerATMStages = [
@@ -43,7 +44,8 @@ const BuyerATMStages = [
       formValues.evaluationCriteria.length > 0 &&
       noEmptyCriteria(formValues) &&
       noEmptyWeightings(formValues) &&
-      weightingsAddUpTo100(formValues)
+      weightingsAddUpTo100(formValues) &&
+      noDuplicateCriteria(formValues)
   },
   {
     slug: 'formats',
