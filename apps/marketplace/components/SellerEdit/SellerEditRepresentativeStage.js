@@ -5,7 +5,7 @@ import { Form } from 'react-redux-form'
 import Textfield from 'shared/form/Textfield'
 import formProps from 'shared/form/formPropsSelector'
 import { required, validPhoneNumber, validEmail } from 'marketplace/components/validators'
-import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 
 const requiredName = v => required(v.supplier.data.representative)
@@ -32,9 +32,9 @@ const SellerEditRepresentativeStage = props => (
     onSubmitFailed={props.onSubmitFailed}
     validateOn="submit"
   >
-    <AUheadings level="1" size="xl">
+    <AUheading level="1" size="xl">
       Authorised representative
-    </AUheadings>
+    </AUheading>
     <ErrorAlert
       model={props.model}
       messages={{

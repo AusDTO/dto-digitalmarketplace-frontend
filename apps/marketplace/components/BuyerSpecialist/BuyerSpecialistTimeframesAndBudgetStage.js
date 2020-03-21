@@ -5,7 +5,7 @@ import { Form, actions } from 'react-redux-form'
 import Textfield from 'shared/form/Textfield'
 import formProps from 'shared/form/formPropsSelector'
 import { required, dateIs2DaysInFuture, validDate } from 'marketplace/components/validators'
-import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
 
@@ -48,9 +48,9 @@ class BuyerSpecialistTimeframesAndBudgetStage extends Component {
           }
         }}
       >
-        <AUheadings level="1" size="xl">
+        <AUheading level="1" size="xl">
           Timeframes
-        </AUheadings>
+        </AUheading>
         <ErrorAlert
           model={model}
           messages={{

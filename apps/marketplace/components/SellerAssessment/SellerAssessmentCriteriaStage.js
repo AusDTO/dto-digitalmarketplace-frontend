@@ -6,7 +6,7 @@ import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import formProps from 'shared/form/formPropsSelector'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import { SellerAssessmentEvidenceReducer } from 'marketplace/reducers'
-import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import styles from './SellerAssessmentCriteriaStage.scss'
 
 const getCriteriaNeeded = (criteriaNeeded, priceMaximum, maxDailyRate) => {
@@ -98,9 +98,9 @@ class SellerAssessmentCriteriaStage extends Component {
         onSubmitFailed={this.props.onSubmitFailed}
         validateOn="submit"
       >
-        <AUheadings level="1" size="xl">
+        <AUheading level="1" size="xl">
           Assessment criteria
-        </AUheadings>
+        </AUheading>
         <ErrorAlert
           model={this.props.model}
           messages={{

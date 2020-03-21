@@ -6,7 +6,7 @@ import Textfield from 'shared/form/Textfield'
 import Textarea from 'shared/form/Textarea'
 import formProps from 'shared/form/formPropsSelector'
 import { required } from 'marketplace/components/validators'
-import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 
 const startDateRequired = formValues => required(formValues.startDate)
@@ -27,9 +27,9 @@ const BuyerTrainingTimeframesAndBudgetStage = props => (
       }
     }}
   >
-    <AUheadings level="1" size="xl">
+    <AUheading level="1" size="xl">
       Timeframes and budget
-    </AUheadings>
+    </AUheading>
     <ErrorAlert
       title="An error occurred"
       model={props.model}

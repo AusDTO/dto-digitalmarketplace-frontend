@@ -1,17 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
-import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import styles from './BuyerSpecialistIntroductionStage.scss'
 
 const BuyerSpecialistIntroductionStage = props => (
   <Form model={props.model} onSubmit={props.onSubmit} className={styles.introductionContainer}>
-    <AUheadings level="1" size="xl">
+    <AUheading level="1" size="xl">
       Hire a digital specialist
-    </AUheadings>
-    <AUheadings level="2" size="lg">
+    </AUheading>
+    <AUheading level="2" size="lg">
       Before you start
-    </AUheadings>
+    </AUheading>
     <ul>
       <li>
         Download the{' '}
@@ -52,9 +52,9 @@ const BuyerSpecialistIntroductionStage = props => (
         </ul>
       </li>
     </ul>
-    <AUheadings level="2" size="lg">
+    <AUheading level="2" size="lg">
       Getting help
-    </AUheadings>
+    </AUheading>
     <p className={styles.textSpacing}>
       <a
         href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000583195-Hire-a-digital-specialist"

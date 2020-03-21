@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
-import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 
 const SellerAssessmentIntroductionStage = props => (
   <Form model={props.model} onSubmit={props.onSubmit}>
-    <AUheadings level="1" size="xl">
+    <AUheading level="1" size="xl">
       {props.meta.domain.name} assessment
-    </AUheadings>
+    </AUheading>
     <p>
       You must be assessed as offering value for money before you can respond to opportunities published on the Digital
       Marketplace. The information you submit will only be visible to the assessment team.
@@ -22,9 +22,9 @@ const SellerAssessmentIntroductionStage = props => (
       If you submit your request for assessment within 2 days of the closing date, we cannot guarantee that you will be
       assessed in time to respond.
     </p>
-    <AUheadings level="2" size="lg">
+    <AUheading level="2" size="lg">
       You will be asked for
-    </AUheadings>
+    </AUheading>
     <ul>
       <li>
         your maximum daily rate for your services in {props.meta.domain.name}. Use{' '}

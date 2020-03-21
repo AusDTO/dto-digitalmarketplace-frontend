@@ -10,7 +10,7 @@ import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import { required, validPhoneNumber } from 'marketplace/components/validators'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import { rootPath } from 'marketplace/routes'
-import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import format from 'date-fns/format'
 import styles from './SellerAssessmentEvidenceStage.scss'
@@ -241,9 +241,9 @@ class SellerAssessmentEvidenceStage extends Component {
         onSubmitFailed={this.props.onSubmitFailed}
         validateOn="submit"
       >
-        <AUheadings level="1" size="xl">
+        <AUheading level="1" size="xl">
           Evidence
-        </AUheadings>
+        </AUheading>
         {this.props[this.props.model].criteria.length < 1 ? (
           <p>
             Before providing evidence, you must first select which{' '}
@@ -273,9 +273,9 @@ class SellerAssessmentEvidenceStage extends Component {
               >
                 {previouslyFailedCriteria.includes(criteriaId) && (
                   <AUpageAlert as="warning">
-                    <AUheadings level="2" size="lg">
+                    <AUheading level="2" size="lg">
                       Update your evidence
-                    </AUheadings>
+                    </AUheading>
                     <p>
                       Please update the evidence of this criteria based on the{' '}
                       <a
@@ -289,9 +289,9 @@ class SellerAssessmentEvidenceStage extends Component {
                     </p>
                   </AUpageAlert>
                 )}
-                <AUheadings level="2" size="lg">
+                <AUheading level="2" size="lg">
                   Criteria:
-                </AUheadings>
+                </AUheading>
                 <p className={styles.criteriaText}>{getCriteriaName(criteriaId, this.props.meta.domain.criteria)}</p>
                 {index !== 0 && (
                   <p>
