@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
 import DocumentTitle from 'react-document-title'
-import AUheading from '@gov.au/headings/lib/js/react.js'
+import AUheadings from '@gov.au/headings/lib/js/react.js'
 import range from 'lodash/range'
 import { required, requiredFile, validEmail, validPercentage } from 'marketplace/components/validators'
 import ErrorBox from 'shared/form/ErrorBox'
@@ -331,9 +331,9 @@ const BriefSpecialistResponseForm2 = ({
                   ))}
                 </React.Fragment>
               )}
-              <AUheading level="2" size="sm">
+              <AUheadings level="2" size="sm">
                 {showResumeField(briefResponseForm, briefResponseStatus) ? 'Other documents (optional)' : 'Attachments'}
-              </AUheading>
+              </AUheadings>
               <p>
                 {showResumeField(briefResponseForm, briefResponseStatus) && (
                   <span>If requested by the buyer, you can upload additional documents for this candidate. </span>
