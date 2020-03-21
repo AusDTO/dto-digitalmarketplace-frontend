@@ -6,7 +6,7 @@ import formProps from 'shared/form/formPropsSelector'
 import FilesInput from 'shared/form/FilesInput'
 import Textfield from 'shared/form/Textfield'
 import dmapi from 'marketplace/services/apiClient'
-import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import format from 'date-fns/format'
 import addDays from 'date-fns/add_days'
@@ -102,9 +102,9 @@ export class BuyerSpecialistRequirementsStage extends Component {
         onSubmitFailed={this.props.onSubmitFailed}
         validateOn="submit"
       >
-        <AUheadings level="1" size="xl">
+        <AUheading level="1" size="xl">
           Additional information
-        </AUheadings>
+        </AUheading>
         <AUcallout description="" className={styles.noticeBar}>
           Only sellers you selected and other buyers can view attached documents. Buyers and sellers will not be able to
           view your contact number or internal reference.
@@ -120,9 +120,9 @@ export class BuyerSpecialistRequirementsStage extends Component {
             closedAtIsBefore: 'You must enter a closing date no more than one year from now'
           }}
         />
-        <AUheadings level="2" size="sm">
+        <AUheading level="2" size="sm">
           Attach a document (optional)
-        </AUheadings>
+        </AUheading>
         <p className={styles.removeTopMargin}>Documents must be in .DOC .XLS .PPT or .PDF format.</p>
         {range(this.state.fileCount).map(i => (
           <FilesInput
@@ -153,9 +153,9 @@ export class BuyerSpecialistRequirementsStage extends Component {
             </a>
           </p>
         )}
-        <AUheadings level="2" size="sm">
+        <AUheading level="2" size="sm">
           Comprehensive terms
-        </AUheadings>
+        </AUheading>
         <p className={`${styles.fullWidth} ${styles.removeTopMargin}`}>
           We recommend that the{' '}
           <a href="/api/2/r/comprehensive-terms-current.pdf" rel="noopener noreferrer" target="_blank">
