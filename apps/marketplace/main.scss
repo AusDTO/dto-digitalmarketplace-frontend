@@ -37,12 +37,6 @@
   font-size: 1.25rem;
 }
 
-.fullWidthPageAlert {
-  .noMaxWidth {
-    max-width: none;
-  }
-}
-
 .marginBottom1 {
   margin-bottom: 1rem;
 }
@@ -89,6 +83,10 @@
 
 .marginTop3 {
   margin-top: 3rem;
+}
+
+.maxWidthNone {
+  max-width: none;
 }
 
 .maxWidth100 {

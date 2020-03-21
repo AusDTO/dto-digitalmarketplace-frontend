@@ -26,7 +26,7 @@ const WithdrawnOpportunity = props => {
 
   return (
     <React.Fragment>
-      <AUpageAlert as="success" className={styles.fullWidthPageAlert} setFocus={setFocus}>
+      <AUpageAlert as="success" className={styles.maxWidthNone} setFocus={setFocus}>
         <h1 className="au-display-lg">
           <strong>
             &apos;{brief.title}&apos; ({brief.id}) was withdrawn successfully
