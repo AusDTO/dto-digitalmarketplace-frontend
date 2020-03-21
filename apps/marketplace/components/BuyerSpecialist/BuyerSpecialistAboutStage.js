@@ -7,7 +7,7 @@ import Textarea from 'shared/form/Textarea'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import formProps from 'shared/form/formPropsSelector'
 import { required } from 'marketplace/components/validators'
-import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import locations from 'marketplace/components/BuyerBriefFlow/Locations'
 import styles from './BuyerSpecialistAboutStage.scss'
@@ -34,9 +34,9 @@ const BuyerSpecialistAboutStage = props => (
     onSubmitFailed={props.onSubmitFailed}
     validateOn="submit"
   >
-    <AUheadings level="1" size="xl">
+    <AUheading level="1" size="xl">
       About
-    </AUheadings>
+    </AUheading>
     <ErrorAlert
       model={props.model}
       messages={{
@@ -90,9 +90,9 @@ const BuyerSpecialistAboutStage = props => (
         limitWords: 'What will the specialist do has exceeded the 1000 word limit'
       }}
     />
-    <AUheadings level="2" size="sm">
+    <AUheading level="2" size="sm">
       Where can the work be done?
-    </AUheadings>
+    </AUheading>
     <div className={styles.locations}>
       {Object.keys(locations).map(key => (
         <CheckboxDetailsField
