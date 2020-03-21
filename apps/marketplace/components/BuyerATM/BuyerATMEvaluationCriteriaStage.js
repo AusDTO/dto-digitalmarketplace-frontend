@@ -6,7 +6,7 @@ import { actions, Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import Textarea from 'shared/form/Textarea'
 import Textfield from 'shared/form/Textfield'
-import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
@@ -80,9 +80,9 @@ class BuyerATMEvaluationCriteriaStage extends Component {
         onSubmitFailed={this.props.onSubmitFailed}
         validateOn="submit"
       >
-        <AUheadings level="1" size="xl">
+        <AUheading level="1" size="xl">
           Response criteria
-        </AUheadings>
+        </AUheading>
         <AUcallout title="" description="" className={styles.noticeBar}>
           <strong>Sellers can only respond to each criteria you list here.</strong>
           <br />
