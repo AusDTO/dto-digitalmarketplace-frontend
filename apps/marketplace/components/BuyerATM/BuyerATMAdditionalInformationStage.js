@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import Textfield from 'shared/form/Textfield'
-import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import format from 'date-fns/format'
 import addDays from 'date-fns/add_days'
 import {
@@ -67,9 +67,9 @@ export class BuyerATMAdditionalInformationStage extends Component {
         onSubmitFailed={this.props.onSubmitFailed}
         validateOn="submit"
       >
-        <AUheadings level="1" size="xl">
+        <AUheading level="1" size="xl">
           Additional information
-        </AUheadings>
+        </AUheading>
         <ErrorAlert
           model={model}
           messages={{
