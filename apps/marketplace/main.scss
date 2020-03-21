@@ -17,6 +17,9 @@
 .darkGrayText {
   color: #717171;
 }
+.displayBlock{
+  display: block;
+}
 
 .fontSizeLg {
   font-size: 1.5rem;
@@ -118,11 +121,6 @@
   .noPrintContainer {
     width: 100% !important;
   }
-}
-
-.rightAlignedBlock {
-  display: block;
-  text-align: right;
 }
 
 @media screen and (max-width: 767px) {
