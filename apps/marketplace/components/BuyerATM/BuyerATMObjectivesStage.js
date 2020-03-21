@@ -6,7 +6,7 @@ import formProps from 'shared/form/formPropsSelector'
 import FilesInput from 'shared/form/FilesInput'
 import Textarea from 'shared/form/Textarea'
 import dmapi from 'marketplace/services/apiClient'
-import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import range from 'lodash/range'
 import { required } from 'marketplace/components/validators'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
@@ -60,9 +60,9 @@ export class BuyerATMRequirementsStage extends Component {
         onSubmitFailed={this.props.onSubmitFailed}
         validateOn="submit"
       >
-        <AUheadings level="1" size="xl">
+        <AUheading level="1" size="xl">
           Objectives
-        </AUheadings>
+        </AUheading>
         <ErrorAlert
           model={model}
           messages={{
@@ -134,9 +134,9 @@ export class BuyerATMRequirementsStage extends Component {
         />
         {this.props[model].evaluationType.includes('Response template') && (
           <div>
-            <AUheadings level="2" size="sm">
+            <AUheading level="2" size="sm">
               Response template
-            </AUheadings>
+            </AUheading>
             <FilesInput
               title="Response template"
               fieldLabel="Upload template"
@@ -152,9 +152,9 @@ export class BuyerATMRequirementsStage extends Component {
             />
           </div>
         )}
-        <AUheadings level="2" size="sm">
+        <AUheading level="2" size="sm">
           Additional documents (optional)
-        </AUheadings>
+        </AUheading>
         <p>
           Documents must be in .DOC .XLS .PPT or .PDF format and can be viewed by anyone with a Digital Marketplace
           account. Do not include internal or private information.
