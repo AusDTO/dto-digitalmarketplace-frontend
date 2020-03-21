@@ -10,21 +10,12 @@
   color: #00698F;
 }
 
+.borderLeft{
+  border-left: 10px solid #00698F;
+}
 
 .darkGrayText {
   color: #717171;
-}
-
-.red, .red a {
-  color: #FF0000;
-}
-
-.greyBorderBottom1 {
-  border-bottom: 1px solid #979797;
-}
-
-.borderLeft{
-  border-left: 10px solid #00698F;
 }
 
 .fontSizeLg {
@@ -33,6 +24,10 @@
 
 .fontSizeMd {
   font-size: 1.25rem;
+}
+
+.greyBorderBottom1 {
+  border-bottom: 1px solid #979797;
 }
 
 .marginBottom1 {
@@ -97,6 +92,10 @@
 
 .paddingBottom2 {
   padding-bottom: 2rem;
+}
+
+.red, .red a {
+  color: #FF0000;
 }
 
 @media screen and (max-width: 767px) {
