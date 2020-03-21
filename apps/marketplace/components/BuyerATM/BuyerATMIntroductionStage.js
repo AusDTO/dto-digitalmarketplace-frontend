@@ -1,24 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
-import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
 import styles from './BuyerATMIntroductionStage.scss'
 
 const BuyerATMIntroductionStage = props => (
   <Form model={props.model} onSubmit={props.onSubmit}>
-    <AUheadings level="1" size="xl">
+    <AUheading level="1" size="xl">
       Ask the market
-    </AUheadings>
+    </AUheading>
     <AUcallout description="" className={styles.noticeBar}>
       This approach is for expressions of interest or requests for information. Sellers submit up to 500 words to each
       criteria you provide. If you need proposals, use{' '}
       <a href={`${rootPath}/outcome-choice`}>seek proposals and quotes</a>.
     </AUcallout>
-    <AUheadings level="2" size="lg">
+    <AUheading level="2" size="lg">
       Before you start
-    </AUheadings>
+    </AUheading>
     <ul>
       <li>
         Download the{' '}
@@ -59,9 +59,9 @@ const BuyerATMIntroductionStage = props => (
         </ul>
       </li>
     </ul>
-    <AUheadings level="2" size="lg">
+    <AUheading level="2" size="lg">
       Getting help
-    </AUheadings>
+    </AUheading>
     <p>
       <a
         href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000575036"
