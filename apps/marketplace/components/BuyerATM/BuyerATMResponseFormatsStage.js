@@ -5,7 +5,7 @@ import { actions, Form } from 'react-redux-form'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import formProps from 'shared/form/formPropsSelector'
 import { required } from 'marketplace/components/validators'
-import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import RadioList from 'shared/form/RadioList'
@@ -26,9 +26,9 @@ const BuyerATMResponseFormatsStage = props => (
     onSubmitFailed={props.onSubmitFailed}
     validateOn="submit"
   >
-    <AUheadings level="1" size="xl">
+    <AUheading level="1" size="xl">
       Response formats
-    </AUheadings>
+    </AUheading>
     <AUcallout description="" className={styles.noticeBar}>
       Sellers submit up to 500 words to each response criteria.
       <br />
@@ -41,9 +41,9 @@ const BuyerATMResponseFormatsStage = props => (
         atleastOneFormat: 'You must select at least one response format'
       }}
     />
-    <AUheadings level="2" size="lg">
+    <AUheading level="2" size="lg">
       Do you need sellers to provide any other information?
-    </AUheadings>
+    </AUheading>
     <RadioList
       id="requestMoreInfo"
       label=""
