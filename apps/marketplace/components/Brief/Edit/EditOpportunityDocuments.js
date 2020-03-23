@@ -220,15 +220,15 @@ class EditOpportunityDocuments extends Component {
                 <span>Attachments</span>
               )}
             </AUheading>
-            {attachments.filter(x => x).map((document, index) => this.renderDocumentRow(index, 'attachments'))}
+            {attachments.map((document, index) => (document ? this.renderDocumentRow(index, 'attachments') : ''))}
             <FilesInput
               fieldLabel={attachments.filter(x => x).length > 0 ? `Upload another attachment` : `Upload an attachment`}
               name="attachments"
-              model={`${model}.attachments.${attachments.filter(x => x).length}`}
+              model={`${model}.attachments.${attachments.filter(x => x).length + 1}`}
               formFields={1}
               url={`/brief/${brief.id}/attachments`}
               api={dmapi}
-              fileId={attachments.filter(x => x).length}
+              fileId={attachments.filter(x => x).length + 1}
               accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
               onReset={this.handleDocumentChange}
               onUploadSuccess={this.handleDocumentChange}
