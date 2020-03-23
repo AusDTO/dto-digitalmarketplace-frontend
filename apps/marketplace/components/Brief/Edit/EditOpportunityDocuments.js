@@ -119,10 +119,7 @@ class EditOpportunityDocuments extends Component {
     this.props.setDocumentsEdited(true)
   }
 
-  renderDocumentRow(document, index, type, alwaysShow) {
-    if (typeof document !== 'string' || (!alwaysShow && document === '')) {
-      return null
-    }
+  renderDocumentRow(index, type) {
     const { model, brief } = this.props
     const getErrorMessage = docType => {
       let error = ''
@@ -203,9 +200,7 @@ class EditOpportunityDocuments extends Component {
               <AUheading level="2" size="md">
                 Requirements document
               </AUheading>
-              {requirementsDocument.map((document, index) =>
-                this.renderDocumentRow(document, index, 'requirementsDocument', true)
-              )}
+              {requirementsDocument.map((document, index) => this.renderDocumentRow(index, 'requirementsDocument'))}
             </div>
           )}
           {responseTemplate.length > 0 && (
@@ -213,9 +208,7 @@ class EditOpportunityDocuments extends Component {
               <AUheading level="2" size="md">
                 Response template
               </AUheading>
-              {responseTemplate.map((document, index) =>
-                this.renderDocumentRow(document, index, 'responseTemplate', true)
-              )}
+              {responseTemplate.map((document, index) => this.renderDocumentRow(index, 'responseTemplate'))}
             </div>
           )}
           <div className={`${styles.marginBottom2} ${styles.marginTop2}`}>
@@ -226,15 +219,15 @@ class EditOpportunityDocuments extends Component {
                 <span>Attachments</span>
               )}
             </AUheading>
-            {attachments.map((document, index) => this.renderDocumentRow(document, index, 'attachments'))}
+            {attachments.filter(x => x).map((document, index) => this.renderDocumentRow(index, 'attachments'))}
             <FilesInput
               fieldLabel={attachments.filter(x => x).length > 0 ? `Upload another attachment` : `Upload an attachment`}
               name="attachments"
-              model={`${model}.attachments.${attachments.length}`}
+              model={`${model}.attachments.${attachments.filter(x => x).length}`}
               formFields={1}
               url={`/brief/${brief.id}/attachments`}
               api={dmapi}
-              fileId={attachments.length}
+              fileId={attachments.filter(x => x).length}
               accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
               onReset={this.handleDocumentChange}
               onUploadSuccess={this.handleDocumentChange}

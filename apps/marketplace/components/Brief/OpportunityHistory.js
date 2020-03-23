@@ -15,15 +15,19 @@ const DocumentChanges = (previous, current) => {
   const removed = previous.filter(x => !current.includes(x))
   const added = current.filter(x => !previous.includes(x))
   const items = []
-  removed.map(item => {
-    items.push(<li key={item}>{item} removed</li>)
-    return true
-  })
-  added.map(item => {
-    items.push(<li key={item}>{item} added</li>)
-    return true
-  })
-  return items.map(item => item)
+  removed
+    .filter(x => x)
+    .map(item => {
+      items.push(<li key={item}>{item} removed</li>)
+      return true
+    })
+  added
+    .filter(x => x)
+    .map(item => {
+      items.push(<li key={item}>{item} added</li>)
+      return true
+    })
+  return items
 }
 
 const EditSummary = props => {

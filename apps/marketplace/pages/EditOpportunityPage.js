@@ -63,7 +63,13 @@ class EditOpportunityPage extends Component {
       loading: true
     })
 
-    this.props.applyEdits(match.params.briefId, edits).then(response => {
+    // clean out any empty documents
+    const editedData = { ...edits }
+    editedData.attachments = editedData.attachments.filter(x => x)
+    editedData.requirementsDocument = editedData.requirementsDocument.filter(x => x)
+    editedData.responseTemplate = editedData.responseTemplate.filter(x => x)
+
+    this.props.applyEdits(match.params.briefId, editedData).then(response => {
       if (response.status === 200) {
         this.setState({
           editsApplied: true,
