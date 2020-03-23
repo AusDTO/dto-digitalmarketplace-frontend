@@ -42,7 +42,7 @@ const EditSummary = props => {
         Object.prototype.hasOwnProperty.call(edit, 'responseTemplate') ||
         Object.prototype.hasOwnProperty.call(edit, 'requirementsDocument')) && (
         <AUheading level="2" size="xs">
-          {format(edit.editedAt, 'DD MMMM YYYY [,] h[:]mma')}
+          {format(edit.editedAt, 'DD MMMM YYYY[,] h[:]mma')}
         </AUheading>
       )}
       <ul>

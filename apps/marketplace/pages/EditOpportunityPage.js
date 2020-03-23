@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { actions } from 'react-redux-form'
 import { BrowserRouter, Redirect, Route, Switch, withRouter } from 'react-router-dom'
 
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
@@ -25,6 +26,9 @@ class EditOpportunityPage extends Component {
       editsApplied: false,
       loading: false
     }
+
+    // This reset is intended to clear any state that may be present when the browser's back button is clicked after a successful submit
+    props.resetForm(model)
 
     this.handleSubmitEditsClick = this.handleSubmitEditsClick.bind(this)
     this.handleWindowBeforeUnload = this.handleWindowBeforeUnload.bind(this)
@@ -183,6 +187,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   applyEdits: (briefId, data) => dispatch(applyEditsToOpportunity(briefId, data)),
   loadData: briefId => dispatch(loadBrief(briefId)),
+  resetForm: formModel => dispatch(actions.reset(formModel)),
   setError: message => dispatch(setErrorMessage(message))
 })
 
