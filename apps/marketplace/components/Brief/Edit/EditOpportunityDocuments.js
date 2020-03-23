@@ -136,6 +136,7 @@ class EditOpportunityDocuments extends Component {
       return error
     }
     const typeSwitch = {
+      attachments: 'another',
       requirementsDocument: 'requirements',
       responseTemplate: 'response template'
     }
