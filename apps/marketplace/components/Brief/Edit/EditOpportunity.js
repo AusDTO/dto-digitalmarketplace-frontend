@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Form } from 'react-redux-form'
+import format from 'date-fns/format'
 
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import { AUcheckbox } from '@gov.au/control-input/lib/js/react.js'
@@ -44,7 +45,7 @@ class EditOpportunity extends Component {
     const { brief, edits } = this.props
     return (
       itemWasEdited(brief.title, edits.title) ||
-      itemWasEdited(brief.dates.closing_date, edits.closingDate) ||
+      itemWasEdited(format(new Date(brief.dates.closing_time), 'YYYY-MM-DD'), edits.closingDate) ||
       itemWasEdited(brief.summary, edits.summary)
     )
   }
