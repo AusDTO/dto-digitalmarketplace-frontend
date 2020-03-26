@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import AUlinklist from '@gov.au/link-list/lib/js/react.js'
 
@@ -23,6 +24,16 @@ const AddSellerActions = props => {
       ]}
     />
   )
+}
+
+AddSellerActions.defaultProps = {
+  id: '',
+  onRemoveSellerClick: () => {}
+}
+
+AddSellerActions.propTypes = {
+  id: PropTypes.string.isRequired,
+  onRemoveSellerClick: PropTypes.func.isRequired
 }
 
 export default AddSellerActions
