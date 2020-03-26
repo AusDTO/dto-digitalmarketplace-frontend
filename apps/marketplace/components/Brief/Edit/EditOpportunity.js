@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
 import format from 'date-fns/format'
 
@@ -151,6 +152,50 @@ class EditOpportunity extends Component {
       </div>
     )
   }
+}
+
+EditOpportunity.defaultProps = {
+  brief: {
+    dates: {
+      closing_time: ''
+    },
+    summary: '',
+    title: ''
+  },
+  edits: {
+    closingDate: '',
+    onlySellersEdited: true,
+    sellers: {},
+    summary: '',
+    title: ''
+  },
+  isOpenToAll: true,
+  location: {},
+  model: '',
+  onSubmitEdits: () => {}
+}
+
+EditOpportunity.propTypes = {
+  brief: PropTypes.shape({
+    dates: PropTypes.shape({
+      closing_time: PropTypes.string.isRequired
+    }).isRequired,
+    id: PropTypes.number.isRequired,
+    lot: PropTypes.string.isRequired,
+    summary: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired
+  }),
+  edits: PropTypes.shape({
+    closingDate: PropTypes.string.isRequired,
+    onlySellersEdited: PropTypes.bool.isRequired,
+    sellers: PropTypes.object.isRequired,
+    summary: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired
+  }),
+  isOpenToAll: PropTypes.bool.isRequired,
+  location: PropTypes.object.isRequired,
+  model: PropTypes.string.isRequired,
+  onSubmitEdits: PropTypes.func.isRequired
 }
 
 export default EditOpportunity
