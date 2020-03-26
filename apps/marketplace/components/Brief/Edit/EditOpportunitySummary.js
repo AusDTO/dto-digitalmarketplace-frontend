@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 import { Redirect } from 'react-router-dom'
@@ -112,6 +113,22 @@ class EditOpportunitySummary extends Component {
       </Form>
     )
   }
+}
+
+EditOpportunitySummary.defaultProps = {
+  brief: {
+    lot: '',
+    summary: ''
+  },
+  model: ''
+}
+
+EditOpportunitySummary.propTypes = {
+  brief: PropTypes.shape({
+    lot: PropTypes.string.isRequired,
+    summary: PropTypes.string.isRequired
+  }),
+  model: PropTypes.string.isRequired
 }
 
 const mapStateToProps = (state, props) => ({
