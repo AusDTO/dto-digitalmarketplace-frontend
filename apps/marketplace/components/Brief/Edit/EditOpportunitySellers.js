@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 import { Link, Redirect } from 'react-router-dom'
@@ -198,6 +199,26 @@ class EditOpportunitySellers extends Component {
       </Form>
     )
   }
+}
+
+EditOpportunitySellers.defaultProps = {
+  brief: {
+    dates: {
+      closing_time: '',
+      published_date: ''
+    }
+  },
+  model: ''
+}
+
+EditOpportunitySellers.propTypes = {
+  brief: PropTypes.shape({
+    dates: PropTypes.shape({
+      closing_time: PropTypes.string.isRequired,
+      published_date: PropTypes.string.isRequired
+    }).isRequired
+  }),
+  model: PropTypes.string.isRequired
 }
 
 const mapStateToProps = (state, props) => ({
