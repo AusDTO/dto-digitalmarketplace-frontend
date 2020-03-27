@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 
@@ -70,6 +71,25 @@ class SummaryPreview extends Component {
       </React.Fragment>
     )
   }
+}
+
+SummaryPreview.defaultProps = {
+  brief: {
+    summary: ''
+  },
+  edits: {
+    summary: ''
+  }
+}
+
+SummaryPreview.propTypes = {
+  brief: PropTypes.shape({
+    summary: PropTypes.string.isRequired
+  }),
+  edits: PropTypes.shape({
+    summary: PropTypes.string.isRequired
+  }),
+  previewHeight: PropTypes.number.isRequired
 }
 
 export default SummaryPreview
