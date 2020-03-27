@@ -9,12 +9,12 @@ import { GENERAL_ERROR } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
 
-export const findSuppliers = (keyword, category, all, codes_to_exclude = []) => {
+export const findSuppliers = (keyword, category, all, codesToExclude = []) => {
   const params = {
     keyword,
     category,
     all,
-    exclude: JSON.stringify(codes_to_exclude)
+    exclude: JSON.stringify(codesToExclude)
   }
   return dmapi({ url: `/suppliers/search`, params }).then(response => {
     if (!response || response.error) {

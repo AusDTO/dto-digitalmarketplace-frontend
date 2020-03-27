@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import format from 'date-fns/format'
 
@@ -243,6 +244,38 @@ class EditOpportunityTable extends Component {
       </React.Fragment>
     )
   }
+}
+
+EditOpportunityTable.defaultProps = {
+  brief: {
+    dates: {
+      closing_time: ''
+    },
+    sellers: {},
+    title: ''
+  },
+  edits: {
+    closingDate: '',
+    sellers: {},
+    title: ''
+  },
+  isOpenToAll: false
+}
+
+EditOpportunityTable.propTypes = {
+  brief: PropTypes.shape({
+    dates: PropTypes.shape({
+      closing_time: PropTypes.string.isRequired
+    }).isRequired,
+    sellers: PropTypes.object.isRequired,
+    title: PropTypes.string.isRequired
+  }),
+  edits: PropTypes.shape({
+    closingDate: PropTypes.string.isRequired,
+    sellers: PropTypes.object.isRequired,
+    title: PropTypes.string.isRequired
+  }),
+  isOpenToAll: PropTypes.bool.isRequired
 }
 
 export default EditOpportunityTable

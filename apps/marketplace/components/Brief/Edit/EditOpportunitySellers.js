@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 import { Link, Redirect } from 'react-router-dom'
 import differenceInCalendarDays from 'date-fns/difference_in_calendar_days'
+import format from 'date-fns/format'
 
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
@@ -22,10 +24,10 @@ class EditOpportunitySellers extends Component {
     super(props)
     this.state = {
       daysOpportunityOpenFor: differenceInCalendarDays(
-        props.brief.dates.closing_date,
+        format(new Date(props.brief.dates.closing_time), 'YYYY-MM-DD'),
         props.brief.dates.published_date
       ),
-      daysUntilOpportunityCloses: differenceInCalendarDays(props.brief.dates.closing_date, new Date()),
+      daysUntilOpportunityCloses: differenceInCalendarDays(props.brief.dates.closing_time, new Date()),
       initialSellers: props[props.model].sellers ? props[props.model].sellers : [],
       redirectToEditsTable: false,
       searchResults: [],
@@ -197,6 +199,26 @@ class EditOpportunitySellers extends Component {
       </Form>
     )
   }
+}
+
+EditOpportunitySellers.defaultProps = {
+  brief: {
+    dates: {
+      closing_time: '',
+      published_date: ''
+    }
+  },
+  model: ''
+}
+
+EditOpportunitySellers.propTypes = {
+  brief: PropTypes.shape({
+    dates: PropTypes.shape({
+      closing_time: PropTypes.string.isRequired,
+      published_date: PropTypes.string.isRequired
+    }).isRequired
+  }),
+  model: PropTypes.string.isRequired
 }
 
 const mapStateToProps = (state, props) => ({

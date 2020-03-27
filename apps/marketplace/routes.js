@@ -86,7 +86,6 @@ export const Routes = () => (
       path={`${rootPath}/brief/:briefId/edited`}
       component={EditOpportunitySuccessPage}
     />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/history`} component={OpportunityHistoryPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/assessors`} component={BriefAssessorsPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/questions`} component={QuestionPage} />
     <PrivateRoute
@@ -135,6 +134,7 @@ export const Routes = () => (
       path={`${rootPath}/seller-edit/:supplierCode`}
       component={SellerEditFlowPage}
     />
+    <Route path={`${rootPath}/:framework/opportunities/:briefId/history`} component={OpportunityHistoryPage} />
     <Route path={`${rootPath}/:framework/opportunities/:briefId`} component={OpportunityPage} />
     <Route path={`${rootPath}/opportunities`} component={OpportunitiesPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-dashboard`} component={BuyerDashboardPage} />
@@ -209,11 +209,6 @@ export const Routes = () => (
       restrictedTo="supplier"
       path={`${rootPath}/seller-assessment/:evidenceId/:stage?`}
       component={SellerAssessmentFlowPage}
-    />
-    <PrivateRoute
-      restrictedTo="supplier"
-      path={`${rootPath}/seller/brief/:briefId/history`}
-      component={OpportunityHistoryPage}
     />
     <Route component={NotFound} />
   </Switch>
