@@ -152,7 +152,7 @@ class EditOpportunityClosingDate extends Component {
             <ErrorAlert
               model={model}
               messages={{
-                closingDateIsValid: InvalidClosingDateMessage
+                closingDateIsValid: invalidClosingDateMessage
               }}
             />
           )}
