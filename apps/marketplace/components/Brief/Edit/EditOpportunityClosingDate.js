@@ -124,7 +124,7 @@ class EditOpportunityClosingDate extends Component {
   render = () => {
     const { brief, model } = this.props
     const { hasErrors, redirectToEditsTable } = this.state
-    const InvalidClosingDateMessage = <ClosingDateIsNotValidMessage closingDate={getClosingTime(brief)} />
+    const invalidClosingDateMessage = <ClosingDateIsNotValidMessage closingDate={getClosingTime(brief)} />
 
     if (redirectToEditsTable) {
       return <Redirect to="/" />
@@ -152,7 +152,7 @@ class EditOpportunityClosingDate extends Component {
             <ErrorAlert
               model={model}
               messages={{
-                closingDateIsValid: InvalidClosingDateMessage
+                closingDateIsValid: invalidClosingDateMessage
               }}
             />
           )}
