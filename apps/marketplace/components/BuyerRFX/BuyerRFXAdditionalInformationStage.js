@@ -52,7 +52,7 @@ export class BuyerRFXAdditionalInformationStage extends Component {
     const { model } = this.props
     return (
       <Form
-        className={`${styles.marginBottom3} ${styles.maxWidth100} ${styles.marginTop0}`}
+        className={`${styles.maxWidth100} ${styles.marginTop0}`}
         model={model}
         validators={{
           '': {
