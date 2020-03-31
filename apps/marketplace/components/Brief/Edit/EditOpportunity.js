@@ -13,7 +13,7 @@ import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import { rootPath } from 'marketplace/routes'
 import EditOpportunityTable from './EditOpportunityTable'
 import { hasEdits, itemWasEdited, documentsWasEdited } from './helpers'
-import { isValid as DocumentsIsValid } from './EditOpportunityDocuments'
+import { isValid as documentsIsValid } from './EditOpportunityDocuments'
 
 import styles from '../../../main.scss'
 
@@ -44,7 +44,7 @@ class EditOpportunity extends Component {
       e.preventDefault()
     }
 
-    if (edits.documentsEdited && !DocumentsIsValid(brief, edits)) {
+    if (edits.documentsEdited && !documentsIsValid(brief, edits)) {
       this.setState({
         showDocumentsErrorAlert: true
       })

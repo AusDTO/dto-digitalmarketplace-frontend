@@ -11,7 +11,7 @@ import { rootPath } from 'marketplace/routes'
 import localStyles from './OpportunityHistory.scss'
 import styles from '../../main.scss'
 
-const DocumentChanges = (previous, current) => {
+const documentChanges = (previous, current) => {
   const removed = previous.filter(x => !current.includes(x))
   const added = current.filter(x => !previous.includes(x))
   const items = []
@@ -77,7 +77,7 @@ const EditSummary = props => {
               </li>
             )
           } else if (['attachments', 'requirementsDocument', 'responseTemplate'].includes(key)) {
-            return DocumentChanges(edit[key].oldValue, edit[key].newValue)
+            return documentChanges(edit[key].oldValue, edit[key].newValue)
           }
 
           return null
