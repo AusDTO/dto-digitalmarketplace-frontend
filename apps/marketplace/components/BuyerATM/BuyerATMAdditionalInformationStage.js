@@ -16,7 +16,7 @@ import {
 } from 'marketplace/components/validators'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
-import styles from 'marketplace/main.scss'
+import styles from '../BuyerSpecialist/BuyerSpecialistAdditionalInformationStage.scss'
 
 const requiredContactNumber = v => required(v.contactNumber)
 const contactNumberFormat = v => validPhoneNumber(v.contactNumber)
@@ -51,7 +51,7 @@ export class BuyerATMAdditionalInformationStage extends Component {
     const { model } = this.props
     return (
       <Form
-        className={`${styles.marginBottom3} ${styles.maxWidth100} ${styles.marginTop0}`}
+        className={styles.additionalInformationContainer}
         model={model}
         validators={{
           '': {
