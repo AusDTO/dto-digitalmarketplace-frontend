@@ -45,6 +45,8 @@ export class Categories extends Component {
         View criteria
       </a>
       <a
+        target="_blank"
+        rel="noopener noreferrer"
         href={`https://marketplace1.zendesk.com/hc/en-gb/articles/360000556476${categoryIdToHash(categoryId)}`}
         className={styles.marginRight1}
       >
