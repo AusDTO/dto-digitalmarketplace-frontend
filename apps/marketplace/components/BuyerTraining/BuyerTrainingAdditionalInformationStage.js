@@ -17,7 +17,7 @@ import {
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
-import styles from '../../main.scss'
+import styles from '../BuyerSpecialist/BuyerSpecialistAdditionalInformation.scss'
 
 const requiredContactNumber = v => required(v.contactNumber)
 const contactNumberFormat = v => validPhoneNumber(v.contactNumber)
@@ -52,7 +52,7 @@ export class BuyerTrainingAdditionalInformationStage extends Component {
     const { model } = this.props
     return (
       <Form
-        className={`${styles.marginBottom3} ${styles.maxWidth100} ${styles.marginTop0}`}
+        className={styles.additionalInformationContainer}
         model={model}
         validators={{
           '': {
@@ -85,7 +85,7 @@ export class BuyerTrainingAdditionalInformationStage extends Component {
         <AUheadings level="2" size="sm">
           Comprehensive terms
         </AUheadings>
-        <p className={`${styles.maxWidth100} ${styles.marginTop0}`}>
+        <p className={`${styles.fullWidth} ${styles.removeTopMargin}`}>
           We recommend that the{' '}
           <a href="/api/2/r/comprehensive-terms-current.pdf" rel="noopener noreferrer" target="_blank">
             comprehensive terms
@@ -93,7 +93,7 @@ export class BuyerTrainingAdditionalInformationStage extends Component {
           only be applied to procurements that are complex or high value. The terms will apply to your work order, in
           addition to the Master Agreement.
         </p>
-        <p className={styles.marginBottom3}>
+        <p className={styles.verticalMargin}>
           <CheckboxDetailsField
             model={`${this.props.model}.comprehensiveTerms`}
             id={`comprehensiveTerms`}
