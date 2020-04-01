@@ -11,8 +11,10 @@ import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
 
 const contractLengthRequired = v => required(v.contractLength)
 const startDateRequired = v => required(v.startDate)
-const startDateIsValid = v => validDate(v.startDate)
-const startDateIs2DaysInFuture = v => !startDateRequired(v) || !startDateIsValid(v) || dateIs2DaysInFuture(v.startDate)
+const startDateIsValid = v => !startDateRequired(v) || validDate(v.startDate, false)
+const startDateIsInPast = v => !startDateRequired(v) || !startDateIsValid(v) || validDate(v.startDate, true)
+const startDateIs2DaysInFuture = v =>
+  !startDateRequired(v) || !startDateIsValid(v) || !startDateIsInPast(v) || dateIs2DaysInFuture(v.startDate)
 
 export const done = v =>
   startDateRequired(v) && startDateIsValid(v) && startDateIs2DaysInFuture(v) && contractLengthRequired(v)
@@ -41,7 +43,8 @@ class BuyerSpecialistTimeframesAndBudgetStage extends Component {
             startDateRequired,
             startDateIsValid,
             startDateIs2DaysInFuture,
-            contractLengthRequired
+            contractLengthRequired,
+            startDateIsInPast
           }
         }}
       >
@@ -54,7 +57,8 @@ class BuyerSpecialistTimeframesAndBudgetStage extends Component {
             startDateRequired: 'Enter an estimated start date for the opportunity',
             startDateIsValid: 'You must enter a valid start date',
             startDateIs2DaysInFuture: 'You must enter an estimated start date at least 2 days from now',
-            contractLengthRequired: 'Enter a contract length for the opportunity'
+            contractLengthRequired: 'Enter a contract length for the opportunity',
+            startDateIsInPast: 'You must enter a start date that is in the future'
           }}
         />
         <DateControl
