@@ -19,7 +19,6 @@ import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
 import styles from '../BuyerSpecialist/BuyerSpecialistAdditionalInformation.scss'
 
-
 const requiredContactNumber = v => required(v.contactNumber)
 const contactNumberFormat = v => validPhoneNumber(v.contactNumber)
 const requiredClosedAt = v => required(v.closedAt)
