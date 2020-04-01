@@ -86,6 +86,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
     return (
       <Form
         className={styles.additionalInformationContainer}
+        model={model}
         validators={{
           '': {
             requiredContactNumber,
