@@ -30,10 +30,10 @@ export class TeamsOverview extends Component {
 
     return (
       <div className={styles.teams}>
-        <p>
+        <div className={styles.optin}>
           If you would like to opt in to restrict all permissions to people who are not in a team, please{' '}
           <a href="/contact-us">contact us</a>
-        </p>
+        </div>
         {Object.keys(teams).length === 0 ? <NoTeamsMessage /> : <TeamsOverviewTable teams={teams} />}
       </div>
     )
