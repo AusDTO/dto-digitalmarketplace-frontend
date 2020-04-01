@@ -2,20 +2,8 @@
   font-weight: bold;
 }
 
-.backgroundColorLightBlue{
-  background-color: #daf3f3;
-}
-
-.colorDarkBlue {
-  color: #00698F;
-}
-
-.borderLeft{
-  border-left: 10px solid #00698F;
-}
-
-.darkGrayText {
-  color: #717171;
+.greyBorderBottom1 {
+  border-bottom: 1px solid #979797;
 }
 
 .fontSizeLg {
@@ -26,8 +14,16 @@
   font-size: 1.25rem;
 }
 
-.greyBorderBottom1 {
-  border-bottom: 1px solid #979797;
+.fullWidthPageAlert {
+  .noMaxWidth {
+    max-width: none;
+  }
+}
+
+.infoCardBody {
+  .noMarginTop {
+    margin-top: 0;
+  }
 }
 
 .marginBottom1 {
@@ -62,10 +58,6 @@
   margin-right: 1rem;
 }
 
-.marginTop0 {
-  margin-top: 0rem;
-}
-
 .marginTop1 {
   margin-top: 1rem;
 }
@@ -78,24 +70,12 @@
   margin-top: 3rem;
 }
 
-.maxWidthNone {
-  max-width: none;
-}
-
-.maxWidth100 {
-  max-width: 100%;
-}
-
 .paddingBottom1 {
   padding-bottom: 1rem;
 }
 
 .paddingBottom2 {
   padding-bottom: 2rem;
-}
-
-.red, .red a {
-  color: #FF0000;
 }
 
 @media screen and (max-width: 767px) {
@@ -123,6 +103,14 @@
 .rightAlignedBlock {
   display: block;
   text-align: right;
+}
+
+.darkGrayText {
+  color: #717171;
+}
+
+.red, .red a {
+  color: #FF0000;
 }
 
 @media screen and (max-width: 767px) {
