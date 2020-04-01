@@ -92,7 +92,8 @@ export class BuyerATMAdditionalInformationStage extends Component {
           defaultValue={this.props[this.props.model].contactNumber}
           maxLength={100}
           validators={{
-            required
+            required,
+            validPhoneNumber
           }}
         />
         <Textfield
