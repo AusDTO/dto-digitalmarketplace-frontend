@@ -253,7 +253,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setValid: (p, v) => dispatch(actions.setValidity(p, v)),
         updateProperty: (p, v) => dispatch(actions.change(p, v))
     }
 }
