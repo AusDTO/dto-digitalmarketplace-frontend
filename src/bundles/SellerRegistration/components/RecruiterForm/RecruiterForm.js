@@ -48,10 +48,8 @@ class RecruiterForm extends BaseForm {
 
         if (e.target.value === 'no') {
             states.forEach(s => {
-                let expiryProperty = `${model}.labourHire.${s}.expiry`
-                let licenceNumberProperty = `${model}.labourHire.${s}.licenceNumber`
-                updateProperty(expiryProperty, null)
-                updateProperty(licenceNumberProperty, null)
+                updateProperty(`${model}.labourHire.${s}.expiry`, null)
+                updateProperty(`${model}.labourHire.${s}.licenceNumber`, null)
             })
         }
     }
