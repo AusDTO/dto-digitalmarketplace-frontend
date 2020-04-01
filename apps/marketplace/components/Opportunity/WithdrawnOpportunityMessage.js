@@ -40,11 +40,11 @@ const WithdrawnOpportunityMessage = props => {
 
   return (
     <React.Fragment>
-      <div className={`col-xs-12 ${styles.marginTop0} ${styles.red} ${styles.hideMobile}`}>
+      <div className={`col-xs-12 ${styles.infoCardBody} ${styles.red} ${styles.hideMobile}`}>
         <WithdrawnOpportunityMessageBody reason={reason} />
       </div>
       <div
-        className={`${styles.marginTop0} ${styles.paddingBottom2} ${styles.greyBorderBottom1} ${styles.red} ${styles.hideDesktop}`}
+        className={`${styles.infoCardBody} ${styles.paddingBottom2} ${styles.greyBorderBottom1} ${styles.red} ${styles.hideDesktop}`}
       >
         <WithdrawnOpportunityMessageBody reason={reason} />
       </div>
