@@ -21,7 +21,7 @@ import {
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
-import styles from '../../main.scss'
+import styles from '../BuyerSpecialist/BuyerSpecialistAdditionalInformation.scss'
 
 const requiredContactNumber = v => required(v.contactNumber)
 const contactNumberFormat = v => validPhoneNumber(v.contactNumber)
@@ -85,8 +85,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
     const { model } = this.props
     return (
       <Form
-        className={`${styles.marginBottom3} ${styles.maxWidth100} ${styles.marginTop0}`}
-        model={model}
+        className={styles.additionalInformationContainer}
         validators={{
           '': {
             requiredContactNumber,
@@ -104,10 +103,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
         <AUheadings level="1" size="xl">
           Additional information
         </AUheadings>
-        <AUcallout
-          description=""
-          className={`${styles.marginBottom2} ${styles.marginTop2} ${styles.borderLeft} ${styles.backgroundColorLightBlue} ${styles.colorDarkBlue}`}
-        >
+        <AUcallout description="" className={styles.noticeBar}>
           Only sellers you selected and other buyers can view attached documents. Buyers and sellers will not be able to
           view your contact number or internal reference.
         </AUcallout>
@@ -119,13 +115,13 @@ export class BuyerSpecialistRequirementsStage extends Component {
             closedAtIsValid: 'You must enter a valid closing date',
             closedAtIs2DaysInFuture: 'You must enter a closing date at least 2 days from now',
             requiredClosedAt: 'You must enter the closing date for this opportunity',
-            closedAtIsBefore: 'You must enter a closing date no more than one year from now'
+            closedAtIsBefore: 'You must enter a closing date not more than one year from now'
           }}
         />
         <AUheadings level="2" size="sm">
           Attach a document (optional)
         </AUheadings>
-        <p className={styles.marginTop0}>Documents must be in .DOC .XLS .PPT or .PDF format.</p>
+        <p className={styles.removeTopMargin}>Documents must be in .DOC .XLS .PPT or .PDF format.</p>
         {range(this.state.fileCount).map(i => (
           <FilesInput
             key={i}
@@ -143,7 +139,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
           />
         ))}
         {this.state.fileCount < 10 && (
-          <p className={styles.marginBottom3}>
+          <p className={styles.verticalMargin}>
             <a
               href="#add"
               onClick={e => {
@@ -158,7 +154,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
         <AUheadings level="2" size="sm">
           Comprehensive terms
         </AUheadings>
-        <p className={`${styles.maxWidth100} ${styles.marginTop0}`}>
+        <p className={`${styles.fullWidth} ${styles.removeTopMargin}`}>
           We recommend that the{' '}
           <a href="/api/2/r/comprehensive-terms-current.pdf" rel="noopener noreferrer" target="_blank">
             comprehensive terms
@@ -166,7 +162,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
           only be applied to procurements that are complex or high value. The terms will apply to your work order, in
           addition to the Master Agreement.
         </p>
-        <p className={styles.marginBottom3}>
+        <p className={styles.verticalMargin}>
           <CheckboxDetailsField
             model={`${this.props.model}.comprehensiveTerms`}
             id={`comprehensiveTerms`}
