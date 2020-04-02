@@ -177,6 +177,11 @@ const OpportunitySpecialistInfoCard = props => {
               Contact the buyer
             </a>
           )}
+          {isOpen && isBuyer && isBriefOwner && (
+            <a href={`${rootPath}/brief/${briefId}/edit`} className="au-btn au-btn--block">
+              Edit your opportunity
+            </a>
+          )}
           {isOpen && loggedIn && isApplicant && (
             <span>
               <p className={styles.invitedStatus}>
