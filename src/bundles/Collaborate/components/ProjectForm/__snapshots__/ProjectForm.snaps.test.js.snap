@@ -1611,19 +1611,24 @@ exports[`ProjectForm renders with errors 1`] = `
         >
           Give your project a title
         </label>
-        <a
-          className="validation-message"
-          href="#title"
-        >
+        <div>
           <span
             className="visuallyhidden"
           >
             Validation Error: 
           </span>
-          <span>
-            Title is required
-          </span>
-        </a>
+          <a
+            className="validation-message"
+            href="#title"
+          >
+            <span
+              className="validation-message"
+            >
+              Title is required
+            </span>
+          </a>
+          <br />
+        </div>
         <input
           className="invalid"
           disabled={false}
@@ -1652,19 +1657,24 @@ exports[`ProjectForm renders with errors 1`] = `
         >
           A brief overview of the project
         </p>
-        <a
-          className="validation-message"
-          href="#summary"
-        >
+        <div>
           <span
             className="visuallyhidden"
           >
             Validation Error: 
           </span>
-          <span>
-            You must outline the project summary
-          </span>
-        </a>
+          <a
+            className="validation-message"
+            href="#summary"
+          >
+            <span
+              className="validation-message"
+            >
+              You must outline the project summary
+            </span>
+          </a>
+          <br />
+        </div>
         <div>
           <textarea
             aria-describedby="summary-hint"
@@ -1692,19 +1702,24 @@ exports[`ProjectForm renders with errors 1`] = `
         >
           Which local, state or federal government body is involved? 
         </label>
-        <a
-          className="validation-message"
-          href="#client"
-        >
+        <div>
           <span
             className="visuallyhidden"
           >
             Validation Error: 
           </span>
-          <span>
-            Government body is required
-          </span>
-        </a>
+          <a
+            className="validation-message"
+            href="#client"
+          >
+            <span
+              className="validation-message"
+            >
+              Government body is required
+            </span>
+          </a>
+          <br />
+        </div>
         <input
           className="invalid"
           disabled={false}
@@ -1721,19 +1736,24 @@ exports[`ProjectForm renders with errors 1`] = `
         <legend>
           What stage is the project at?
         </legend>
-        <a
-          className="validation-message"
-          href="#discovery"
-        >
+        <div>
           <span
             className="visuallyhidden"
           >
             Validation Error: 
           </span>
-          <span>
-            You must provide project stage
-          </span>
-        </a>
+          <a
+            className="validation-message"
+            href="#discovery"
+          >
+            <span
+              className="validation-message"
+            >
+              You must provide project stage
+            </span>
+          </a>
+          <br />
+        </div>
         <input
           checked={false}
           disabled={false}
@@ -1855,19 +1875,24 @@ exports[`ProjectForm renders with errors 1`] = `
         >
           eg. Planning, Roads and Parking, Community Services, Waste Management
         </p>
-        <a
-          className="validation-message"
-          href="#service"
-        >
+        <div>
           <span
             className="visuallyhidden"
           >
             Validation Error: 
           </span>
-          <span>
-            Service/activity is required
-          </span>
-        </a>
+          <a
+            className="validation-message"
+            href="#service"
+          >
+            <span
+              className="validation-message"
+            >
+              Service/activity is required
+            </span>
+          </a>
+          <br />
+        </div>
         <input
           className="invalid"
           disabled={false}
@@ -1896,19 +1921,24 @@ exports[`ProjectForm renders with errors 1`] = `
         >
           Describe the project goal and any relevant background information.
         </p>
-        <a
-          className="validation-message"
-          href="#aim"
-        >
+        <div>
           <span
             className="visuallyhidden"
           >
             Validation Error: 
           </span>
-          <span>
-            You must outline the aim
-          </span>
-        </a>
+          <a
+            className="validation-message"
+            href="#aim"
+          >
+            <span
+              className="validation-message"
+            >
+              You must outline the aim
+            </span>
+          </a>
+          <br />
+        </div>
         <div>
           <textarea
             aria-describedby="aim-hint"
@@ -1939,19 +1969,24 @@ exports[`ProjectForm renders with errors 1`] = `
             What project activities are you doing / did you do?
           </label>
           
-          <a
-            className="validation-message"
-            href="#about"
-          >
+          <div>
             <span
               className="visuallyhidden"
             >
               Validation Error: 
             </span>
-            <span>
-              You must outline about the project
-            </span>
-          </a>
+            <a
+              className="validation-message"
+              href="#about"
+            >
+              <span
+                className="validation-message"
+              >
+                You must outline about the project
+              </span>
+            </a>
+            <br />
+          </div>
           <div>
             <textarea
               aria-describedby="about-label"
@@ -2077,19 +2112,24 @@ exports[`ProjectForm renders with errors 1`] = `
           >
             List the key achievements of this project.
           </p>
-          <a
-            className="validation-message"
-            href="#outcome"
-          >
+          <div>
             <span
               className="visuallyhidden"
             >
               Validation Error: 
             </span>
-            <span>
-              You must provide at least one outcome.
-            </span>
-          </a>
+            <a
+              className="validation-message"
+              href="#outcome"
+            >
+              <span
+                className="validation-message"
+              >
+                You must provide at least one outcome.
+              </span>
+            </a>
+            <br />
+          </div>
           <div
             className="field"
           >
@@ -2354,19 +2394,24 @@ exports[`ProjectForm renders with errors 1`] = `
         >
           The full name of the best person to contact.
         </p>
-        <a
-          className="validation-message"
-          href="#contactName"
-        >
+        <div>
           <span
             className="visuallyhidden"
           >
             Validation Error: 
           </span>
-          <span>
-            Please provide a contact name.
-          </span>
-        </a>
+          <a
+            className="validation-message"
+            href="#contactName"
+          >
+            <span
+              className="validation-message"
+            >
+              Please provide a contact name.
+            </span>
+          </a>
+          <br />
+        </div>
         <input
           className="invalid"
           disabled={false}
@@ -2388,19 +2433,24 @@ exports[`ProjectForm renders with errors 1`] = `
         >
           Project contact email
         </label>
-        <a
-          className="validation-message"
-          href="#contactEmail"
-        >
+        <div>
           <span
             className="visuallyhidden"
           >
             Validation Error: 
           </span>
-          <span>
-            Please provide a contact email address.
-          </span>
-        </a>
+          <a
+            className="validation-message"
+            href="#contactEmail"
+          >
+            <span
+              className="validation-message"
+            >
+              Please provide a contact email address.
+            </span>
+          </a>
+          <br />
+        </div>
         <input
           className="invalid"
           disabled={false}
@@ -2414,19 +2464,24 @@ exports[`ProjectForm renders with errors 1`] = `
         />
       </div>
       <div>
-        <a
-          className="validation-message"
-          href="#contactAgreed"
-        >
+        <div>
           <span
             className="visuallyhidden"
           >
             Validation Error: 
           </span>
-          <span>
-            Please acknowledge the contact point.
-          </span>
-        </a>
+          <a
+            className="validation-message"
+            href="#contactAgreed"
+          >
+            <span
+              className="validation-message"
+            >
+              Please acknowledge the contact point.
+            </span>
+          </a>
+          <br />
+        </div>
         <label
           className="au-control-input"
           htmlFor="contactAgreed"
