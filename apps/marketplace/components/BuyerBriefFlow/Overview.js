@@ -7,12 +7,11 @@ import isValid from 'date-fns/is_valid'
 import { rootPath } from 'marketplace/routes'
 import { hasPermission } from 'marketplace/components/helpers'
 import Tick from 'marketplace/components/Icons/Tick/Tick'
-import AUbutton from '@gov.au/buttons/lib/js/react.js'
-import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import OverviewHeader from './Overview/OverviewHeader'
+import ConfirmActionAlert from '../Alerts/ConfirmActionAlert'
+import { mapLot } from '../helpers'
 
 import styles from './Overview.scss'
-import { mapLot } from '../helpers'
 
 const createWorkOrderRender = (brief, flow, isPublished, isClosed, oldWorkOrderCreator) => {
   if (isPublished && isClosed) {
@@ -149,13 +148,14 @@ class Overview extends Component {
           />
           {this.state.showDeleteAlert && (
             <div className={styles.deleteAlert}>
-              <AUpageAlert as="warning">
-                <p>Are you sure you want to delete this opportunity?</p>
-                <AUbutton onClick={() => this.handleDeleteBrief(brief.id)}>Yes, delete opportunity</AUbutton>
-                <AUbutton as="secondary" onClick={this.toggleDeleteAlert}>
-                  Do not delete
-                </AUbutton>
-              </AUpageAlert>
+              <ConfirmActionAlert
+                cancelButtonText="Do not delete"
+                confirmButtonText="Yes, delete opportunity"
+                content={<p>Are you sure you want to delete this opportunity?</p>}
+                handleCancelClick={this.toggleDeleteAlert}
+                handleConfirmClick={() => this.handleDeleteBrief(brief.id)}
+                type="warning"
+              />
             </div>
           )}
           <ul className={styles.overviewList}>
@@ -189,6 +189,18 @@ class Overview extends Component {
                 </span>
               )}
             </li>
+            {brief.status === 'live' && isPublished && (
+              <li>
+                {hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') ? (
+                  <a href={`${rootPath}/brief/${brief.id}/edit`}>Edit live opportunity</a>
+                ) : (
+                  <a href={`${rootPath}/request-access/publish_opportunities`}>Edit live opportunity</a>
+                )}
+                <div className={styles.stageStatus}>
+                  <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>View live opportunity</a>
+                </div>
+              </li>
+            )}
             <li>
               {this.answerSellerQuestionsRender(brief, isPublished, isClosed)}
               <div className={styles.stageStatus}>

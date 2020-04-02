@@ -293,6 +293,17 @@ export default combineReducers({
       }
     },
     closeOpportunityForm: {},
+    editOpportunityForm: {
+      closingDate: '',
+      onlySellersEdited: true,
+      documentsEdited: false,
+      sellers: {},
+      attachments: [],
+      requirementsDocument: [],
+      responseTemplate: [],
+      summary: '',
+      title: ''
+    },
     withdrawOpportunityForm: {
       hasAuthorityToWithdraw: false,
       reasonToWithdraw: ''

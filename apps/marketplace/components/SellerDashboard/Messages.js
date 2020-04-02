@@ -112,7 +112,7 @@ export class Messages extends Component {
       <div className={`${styles.marginTop2} row`}>
         <div className="col-xs-12">
           {items && items.length > 0 ? (
-            <table className={`${styles.defaultStyle} ${styles.marginBottom3} col-xs-12`}>
+            <table className={`${styles.defaultStyle} ${styles.marginBottom3} ${styles.striped} col-xs-12`}>
               <thead>
                 <tr className={styles.headingRow}>
                   <th scope="col" className={`${styles.tableColumnWidth10} ${styles.textAlignLeft}`}>
