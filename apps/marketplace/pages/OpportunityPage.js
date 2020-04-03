@@ -115,6 +115,7 @@ class OpportunityPage extends Component {
           lastEditedAt={this.props.lastEditedAt}
           onlySellersEdited={this.props.onlySellersEdited}
           supplierCode={this.props.supplierCode}
+          userType={this.props.userType}
         />
       )
     }

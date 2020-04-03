@@ -134,7 +134,8 @@ const Opportunity = props => {
     isTeamLead,
     lastEditedAt,
     onlySellersEdited,
-    teams
+    teams,
+    userType
   } = props
 
   const brief = { ...defaultBriefProps, ...props.brief }
@@ -181,41 +182,43 @@ const Opportunity = props => {
               {brief.title}
             </AUheading>
           </span>
-          {lastEditedAt && !onlySellersEdited && (
-            <div className="row">
-              <div className="col-xs-12">
-                <AUpageAlert
-                  as="warning"
-                  className={`${mainStyles.pageAlert} ${mainStyles.marginTop2} ${mainStyles.marginRight2}`}
-                >
-                  <AUheading level="2" size="lg">
-                    Updates made
-                  </AUheading>
-                  <div className={`${mainStyles.marginTop1} ${mainStyles.noMaxWidth}`}>
-                    <p className={mainStyles.noMaxWidth}>
-                      This opportunity was last updated on {format(lastEditedAt, 'D MMMM YYYY')}.{' '}
-                      <a
-                        className={`${mainStyles.hideMobile} ${mainStyles.floatRight}`}
-                        href={`${rootPath}/${brief.frameworkSlug}/opportunities/${brief.id}/history`}
-                        rel="noopener noreferrer"
-                        target="_blank"
-                      >
-                        View history of updates
-                      </a>
-                      <a
-                        className={`${mainStyles.hideDesktop} ${mainStyles.block} ${mainStyles.marginTop1}`}
-                        href={`${rootPath}/${brief.frameworkSlug}/opportunities/${brief.id}/history`}
-                        rel="noopener noreferrer"
-                        target="_blank"
-                      >
-                        View history of updates
-                      </a>
-                    </p>
-                  </div>
-                </AUpageAlert>
+          {lastEditedAt &&
+            !onlySellersEdited &&
+            (isOpenToAll || (loggedIn && (userType === 'buyer' || (userType === 'supplier' && isInvited)))) && (
+              <div className="row">
+                <div className="col-xs-12">
+                  <AUpageAlert
+                    as="warning"
+                    className={`${mainStyles.pageAlert} ${mainStyles.marginTop2} ${mainStyles.marginRight2}`}
+                  >
+                    <AUheading level="2" size="lg">
+                      Updates made
+                    </AUheading>
+                    <div className={`${mainStyles.marginTop1} ${mainStyles.noMaxWidth}`}>
+                      <p className={mainStyles.noMaxWidth}>
+                        This opportunity was last updated on {format(lastEditedAt, 'D MMMM YYYY')}.{' '}
+                        <a
+                          className={`${mainStyles.hideMobile} ${mainStyles.floatRight}`}
+                          href={`${rootPath}/${brief.frameworkSlug}/opportunities/${brief.id}/history`}
+                          rel="noopener noreferrer"
+                          target="_blank"
+                        >
+                          View history of updates
+                        </a>
+                        <a
+                          className={`${mainStyles.hideDesktop} ${mainStyles.block} ${mainStyles.marginTop1}`}
+                          href={`${rootPath}/${brief.frameworkSlug}/opportunities/${brief.id}/history`}
+                          rel="noopener noreferrer"
+                          target="_blank"
+                        >
+                          View history of updates
+                        </a>
+                      </p>
+                    </div>
+                  </AUpageAlert>
+                </div>
               </div>
-            </div>
-          )}
+            )}
           <div className={styles.details}>
             <div className="row">
               <div className="col-xs-12 col-sm-4">
@@ -743,7 +746,8 @@ Opportunity.defaultProps = {
   loggedIn: false,
   hasSupplierErrors: false,
   hasSignedCurrentAgreement: false,
-  supplierCode: null
+  supplierCode: null,
+  userType: null
 }
 
 Opportunity.propTypes = {
@@ -822,7 +826,8 @@ Opportunity.propTypes = {
   loggedIn: PropTypes.bool,
   hasSupplierErrors: PropTypes.bool,
   hasSignedCurrentAgreement: PropTypes.bool,
-  supplierCode: PropTypes.number
+  supplierCode: PropTypes.number,
+  userType: PropTypes.string
 }
 
 const mapStateToProps = state => ({
