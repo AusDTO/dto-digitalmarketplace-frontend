@@ -13,7 +13,7 @@ import styles from '../main.scss'
 
 const mapToDisplay = p => {
   if (p === 'publish_opportunities') {
-    return 'publish or edit live opportunities'
+    return 'publish and edit live opportunities'
   }
 
   return p.replace(/_/g, ' ')
