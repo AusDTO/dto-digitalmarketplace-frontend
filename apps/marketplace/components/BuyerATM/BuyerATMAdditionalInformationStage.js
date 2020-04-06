@@ -23,7 +23,7 @@ const contactNumberFormat = v => validPhoneNumber(v.contactNumber)
 const requiredClosedAt = v => required(v.closedAt)
 const closedAtIsValid = v => validDate(v.closedAt)
 const closedAtIs2DaysInFuture = v => !closedAtIsValid(v) || dateIs2DaysInFuture(v.closedAt)
-const closedAtIsBefore = v => !closedAtIsValid(v) || dateIsBefore(v.closedAt, addDays(new Date(), 364))
+const closedAtIsBefore = v => !closedAtIsValid(v) || dateIsBefore(v.closedAt, addDays(new Date(), 366))
 
 export const done = v =>
   requiredContactNumber(v) &&
