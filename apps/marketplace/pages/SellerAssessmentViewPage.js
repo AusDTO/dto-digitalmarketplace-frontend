@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { loadDomainData, loadEvidenceData } from 'marketplace/actions/supplierActions'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import SellerAssessmentView from 'marketplace/components/SellerAssessment/SellerAssessmentView'
+import { loadDomainEvidenceData } from '../actions/supplierActions'
 
 class SellerAssessmentViewPage extends Component {
   constructor(props) {
@@ -14,18 +15,19 @@ class SellerAssessmentViewPage extends Component {
 
   componentDidMount() {
     if (this.props.match.params.evidenceId) {
-      this.getEvidenceData().then(data => this.getDomainData(data.domainId))
+      // this.getEvidenceData().then(data => this.getDomainData(data.domainId))
+      this.getEvidenceData()
     }
   }
 
-  getDomainData(domainId) {
-    if (domainId) {
-      this.setState({
-        loading: true
-      })
-      this.props.loadDomainData(domainId).then(() => this.setState({ loading: false }))
-    }
-  }
+  // getDomainData(domainId) {
+  //   if (domainId) {
+  //     this.setState({
+  //       loading: true
+  //     })
+  //     this.props.loadDomainData(domainId).then(() => this.setState({ loading: false }))
+  //   }
+  // }
 
   getEvidenceData() {
     this.setState({
@@ -43,7 +45,8 @@ class SellerAssessmentViewPage extends Component {
     if (this.state.loading) {
       return <LoadingIndicatorFullPage />
     }
-    return <SellerAssessmentView meta={{ domain: this.props.domain }} evidence={this.props.evidence} />
+    // return <SellerAssessmentView meta={{ domain: this.props.domain }} evidence={this.props.evidence} />
+    return <SellerAssessmentView evidence={this.props.evidence} />
   }
 }
 
@@ -53,8 +56,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  loadInitialData: evidenceId => dispatch(loadEvidenceData(evidenceId)),
-  loadDomainData: domainId => dispatch(loadDomainData(domainId))
+  loadInitialData: evidenceId => dispatch(loadDomainEvidenceData(evidenceId)),
+  // loadDomainData: domainId => dispatch(loadDomainData(domainId))
 })
 
 export default connect(

@@ -10,9 +10,9 @@ const SellerAssessmentView = props => (
   <div>
     <AUdirectionLink link={`${rootPath}/seller-dashboard/categories`} text="back to dashboard" direction="left" />
 
-    <AUheading level="1" size="xl">
+    {/* <AUheading level="1" size="xl">
       {props.meta.domain.name} Assessment
-    </AUheading>
+    </AUheading> */}
 
     {props.evidence.status === 'assessed' && (
       <p>
@@ -35,13 +35,13 @@ const SellerAssessmentView = props => (
         <a href={`${rootPath}/seller-assessment/${props.evidence.id}/feedback/`}> feedback </a>
         and submit another request.
       </p>
-    )}
+    )} 
 
     <AUheading level="2" size="lg">
       Maximum daily rate
     </AUheading>
     <p>${props.evidence.maxDailyRate} (including GST)</p>
-    <AUheading level="2" size="lg">
+    {/* <AUheading level="2" size="lg">
       Evidence
     </AUheading>
 
@@ -80,12 +80,12 @@ const SellerAssessmentView = props => (
             <div className={styles.spacer} />
           )}
         </React.Fragment>
-      ))}
-  </div>
+      ))}*/}
+  </div> 
 )
 
 SellerAssessmentView.propTypes = {
-  meta: PropTypes.object.isRequired,
+  // meta: PropTypes.object.isRequired,
   evidence: PropTypes.object.isRequired
 }
 

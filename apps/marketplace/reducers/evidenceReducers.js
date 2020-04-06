@@ -1,5 +1,6 @@
 import { SellerAssessmentFormReducer } from 'marketplace/reducers'
 import {
+  DOMAIN_EVIDENCE_LOAD_SUCCESS,
   EVIDENCE_CREATE_SUCCESS,
   EVIDENCE_LOAD_SUCCESS,
   EVIDENCE_SAVE_SUCCESS,
@@ -10,6 +11,7 @@ const defaultEvidenceState = { ...SellerAssessmentFormReducer }
 
 const evidenceReducer = (state = defaultEvidenceState, action) => {
   switch (action.type) {
+    case DOMAIN_EVIDENCE_LOAD_SUCCESS:
     case EVIDENCE_CREATE_SUCCESS:
     case EVIDENCE_LOAD_SUCCESS:
     case EVIDENCE_SAVE_SUCCESS:
