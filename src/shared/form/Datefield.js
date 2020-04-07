@@ -36,7 +36,10 @@ class Datefield extends React.Component {
       [e.target.name]: e.target.value
     }, () => {
       const { year, month, day } = this.state;
-      let date = format(new Date(Number((year && year.length === 2 ? "20":"") + year), Number(month) - 1, Number(day)), 'YYYY-MM-DD');
+      let date = null;
+      if (year && month && day) {
+        date = format(new Date(Number((year && year.length === 2 ? "20":"") + year), Number(month) - 1, Number(day)), 'YYYY-MM-DD');
+      }
       setDate(model, date);
     });
   }
