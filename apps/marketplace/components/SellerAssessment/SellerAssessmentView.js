@@ -45,45 +45,42 @@ const SellerAssessmentView = props => (
       Evidence
     </AUheading>
 
-    {props.evidence.domanCriteria && props.evidence.domanCriteria.map(domainCriteria => <div>{domainCriteria.name}</div>)}
-
     {props.evidence.criteria &&
       props.evidence.criteria.map(criteriaId => (
-        <React.Fragment></React.Fragment>
-        // <React.Fragment key={criteriaId}>
-        //   <AUheading level="2" size="md">
-        //     Criteria
-        //   </AUheading>
-        //   <p>{props.evidence.domainCriteria} </p>
-        //   <p className={styles.reviewText}>{getCriteriaName(criteriaId, props.evidence.domainCriteria)}</p>
-        //   <AUheading level="2" size="md">
-        //     Client
-        //   </AUheading>
-        //   <p className={styles.reviewText}>{props.evidence.evidence[criteriaId].client}</p>
-        //   <AUheading level="2" size="md">
-        //     Referee&apos;s name and number
-        //   </AUheading>
-        //   <p className={styles.reviewText}>
-        //     {props.evidence.evidence[criteriaId].refereeName}: {props.evidence.evidence[criteriaId].refereeNumber}
-        //   </p>
-        //   <AUheading level="2" size="md">
-        //     Project date
-        //   </AUheading>
-        //   <p className={styles.reviewText}>
-        //     {props.evidence.evidence[criteriaId].startDate} - {props.evidence.evidence[criteriaId].endDate}
-        //   </p>
-        //   <AUheading level="2" size="md">
-        //     Background
-        //   </AUheading>
-        //   <p className={styles.reviewText}>{props.evidence.evidence[criteriaId].background}</p>
-        //   <AUheading level="2" size="md">
-        //     Evidence of meeting the criteria
-        //   </AUheading>
-        //   <p className={styles.reviewText}>{props.evidence.evidence[criteriaId].response}</p>
-        //   {props.evidence.criteria.indexOf(criteriaId) !== props.evidence.criteria.length - 1 && (
-        //     <div className={styles.spacer} />
-        //   )} 
-        // </React.Fragment>
+        <React.Fragment key={criteriaId}>
+          <AUheading level="2" size="md">
+            Criteria
+          </AUheading>
+          {/* <p>{props.evidence.domainCriteria} </p>
+          <p className={styles.reviewText}>{getCriteriaName(criteriaId, props.evidence.domainCriteria)}</p> */}
+          <AUheading level="2" size="md">
+            Client
+          </AUheading>
+          <p className={styles.reviewText}>{props.evidence.evidence[criteriaId].client}</p>
+          <AUheading level="2" size="md">
+            Referee&apos;s name and number
+          </AUheading>
+          <p className={styles.reviewText}>
+            {props.evidence.evidence[criteriaId].refereeName}: {props.evidence.evidence[criteriaId].refereeNumber}
+          </p>
+          <AUheading level="2" size="md">
+            Project date
+          </AUheading>
+          <p className={styles.reviewText}>
+            {props.evidence.evidence[criteriaId].startDate} - {props.evidence.evidence[criteriaId].endDate}
+          </p>
+          <AUheading level="2" size="md">
+            Background
+          </AUheading>
+          <p className={styles.reviewText}>{props.evidence.evidence[criteriaId].background}</p>
+          <AUheading level="2" size="md">
+            Evidence of meeting the criteria
+          </AUheading>
+          <p className={styles.reviewText}>{props.evidence.evidence[criteriaId].response}</p>
+          {props.evidence.criteria.indexOf(criteriaId) !== props.evidence.criteria.length - 1 && (
+            <div className={styles.spacer} /> 
+          )} 
+        </React.Fragment>
       ))}
   </div> 
 )
@@ -94,3 +91,18 @@ SellerAssessmentView.propTypes = {
 }
 
 export default SellerAssessmentView
+
+
+
+    {/* {props.evidence.domanCriteria &&
+      props.evidence.domanCriteria.map(domainCriteria => <div>{domainCriteria.name}</div>)}
+
+    {props.evidence.criteria &&
+      props.evidence.criteria.map(criteriaId => (
+        <React.Fragment key={criteriaId}>
+          {props.evidence.domanCriteria && props.evidence.domanCriteria.map(domainCriteria => 
+          <div> 
+            {criteriaId === domainCriteria}
+            <p> YAY</p>
+          </div>
+          )} */}
