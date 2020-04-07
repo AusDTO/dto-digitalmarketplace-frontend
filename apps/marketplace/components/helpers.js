@@ -166,6 +166,15 @@ export const mapLot = lot => {
   }
 }
 
+export const getClosingTime = brief => {
+  if (brief.dates.closing_time) {
+    return brief.dates.closing_time
+  } else if (brief.closedAt) {
+    return brief.closedAt
+  }
+  return ''
+}
+
 export const getSingleInvitedSellerName = brief => {
   if (brief.sellers) {
     if (Object.keys(brief.sellers).length === 1) {

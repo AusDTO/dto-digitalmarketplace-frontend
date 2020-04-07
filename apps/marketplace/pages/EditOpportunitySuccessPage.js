@@ -1,24 +1,24 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
-import { withdrawOpportunity, loadBrief } from 'marketplace/actions/briefActions'
-import WithdrawOpportunity from 'marketplace/components/Brief/WithdrawOpportunity'
-import { hasPermission } from 'marketplace/components/helpers'
+import { handleFeedbackSubmit } from 'marketplace/actions/appActions'
+import { loadBrief } from 'marketplace/actions/briefActions'
+import EditedOpportunity from 'marketplace/components/Brief/Edit/EditedOpportunity'
 import { rootPath } from 'marketplace/routes'
 
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 
-const model = 'withdrawOpportunityForm'
-
-class WithdrawOpportunityPage extends Component {
+class EditOpportunitySuccessPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      loading: false,
-      opportunityWithdrawn: false
+      loading: false
     }
+
+    this.getBriefData = this.getBriefData.bind(this)
+    this.handleFeedbackSubmit = this.handleFeedbackSubmit.bind(this)
   }
 
   componentDidMount = () => {
@@ -41,28 +41,20 @@ class WithdrawOpportunityPage extends Component {
     })
   }
 
-  handleWithdrawOpportunity = () => {
-    this.setState({
-      loading: true
-    })
+  handleFeedbackSubmit = values => {
+    const { app, brief } = this.props
 
-    this.props.withdrawOpportunity(this.props.match.params.briefId, this.props[model]).then(response => {
-      if (response.status === 200) {
-        this.setState({
-          loading: false,
-          opportunityWithdrawn: true
-        })
-      }
+    this.props.handleFeedbackSubmit({
+      object_id: brief.id,
+      object_type: 'Brief',
+      userType: app.userType,
+      ...values
     })
   }
 
   render = () => {
-    const { brief, errorMessage, isOpenToAll, isPartOfTeam, isTeamLead, teams } = this.props
-    const { loading, opportunityWithdrawn } = this.state
-
-    if (!hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities')) {
-      return <Redirect to={`${rootPath}/request-access/publish_opportunities`} />
-    }
+    const { app, brief, edits, errorMessage } = this.props
+    const { loading } = this.state
 
     let hasFocused = false
     const setFocus = e => {
@@ -89,17 +81,14 @@ class WithdrawOpportunityPage extends Component {
       return <LoadingIndicatorFullPage />
     }
 
-    if (opportunityWithdrawn) {
-      return <Redirect to={`${rootPath}/brief/${brief.id}/withdrawn`} push />
-    }
-
     if (brief.status !== 'live') {
+      hasFocused = false
       return (
         <ErrorBoxComponent
-          title="This opportunity cannot be withdrawn"
+          title="You cannot edit this opportunity"
           errorMessage={
             <span>
-              This could be because the opportunity has already been withdrawn or not yet been published. Please{' '}
+              This opportunity is not live. This could be because it has closed or been withdrawn. Please{' '}
               <a href={`${rootPath}/brief/${brief.id}/overview/${brief.lot}`}>return to the overview page</a> to check
               or contact us if you have any issues.
             </span>
@@ -112,34 +101,32 @@ class WithdrawOpportunityPage extends Component {
     }
 
     return (
-      <WithdrawOpportunity
+      <EditedOpportunity
+        app={app}
         brief={brief}
-        isOpenToAll={isOpenToAll}
-        model={model}
-        onWithdrawOpportunity={this.handleWithdrawOpportunity}
+        edits={edits}
+        onFeedbackSubmit={this.handleFeedbackSubmit}
+        setFocus={setFocus}
       />
     )
   }
 }
 
 const mapStateToProps = state => ({
+  app: state.app,
   brief: state.brief.brief,
-  errorMessage: state.app.errorMessage,
-  isOpenToAll: state.brief.isOpenToAll,
-  isPartOfTeam: state.app.isPartOfTeam,
-  isTeamLead: state.app.isTeamLead,
-  teams: state.app.teams,
-  withdrawOpportunityForm: state.withdrawOpportunityForm
+  edits: state.editOpportunityForm,
+  errorMessage: state.app.errorMessage
 })
 
 const mapDispatchToProps = dispatch => ({
-  loadData: briefId => dispatch(loadBrief(briefId)),
-  withdrawOpportunity: (briefId, data) => dispatch(withdrawOpportunity(briefId, data))
+  handleFeedbackSubmit: data => dispatch(handleFeedbackSubmit(data)),
+  loadData: briefId => dispatch(loadBrief(briefId))
 })
 
 export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(WithdrawOpportunityPage)
+  )(EditOpportunitySuccessPage)
 )

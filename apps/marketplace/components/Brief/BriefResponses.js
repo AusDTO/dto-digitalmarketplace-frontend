@@ -139,7 +139,7 @@ class BriefResponses extends Component {
               </div>
               <p>Buyers will only be able to view your submitted candidates after the closing date.</p>
               {this.props.responses.length > 0 && (
-                <table className={`${stylesMain.defaultStyle} ${stylesMain.marginTop1} col-xs-12`}>
+                <table className={`${stylesMain.defaultStyle} ${stylesMain.marginTop1} ${styles.striped} col-xs-12`}>
                   <thead>
                     <tr className={stylesMain.headingRow}>
                       <th scope="col" className={`${stylesMain.tableColumnWidth11} ${stylesMain.textAlignLeft}`}>
