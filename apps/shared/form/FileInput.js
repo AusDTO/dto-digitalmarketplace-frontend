@@ -9,7 +9,6 @@ import styles from './scss/FileInput.scss'
 class FileInput extends React.Component {
   state = {
     uploading: undefined,
-    file: undefined,
     errors: undefined
   }
 
@@ -17,14 +16,13 @@ class FileInput extends React.Component {
     e.preventDefault()
     const { model, createDocument } = this.props
     createDocument(model)
-    this.setState({ file: undefined }, this.props.onReset)
+    this.props.onReset()
   }
 
   onChange = e => {
     e.preventDefault()
     this.setState({
       uploading: true,
-      file: e.target.files[0],
       errors: undefined
     })
 

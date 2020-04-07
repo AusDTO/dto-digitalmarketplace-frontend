@@ -11,7 +11,13 @@ import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingInd
 
 import styles from '../main.scss'
 
-const mapToDisplay = p => p.replace(/_/g, ' ')
+const mapToDisplay = p => {
+  if (p === 'publish_opportunities') {
+    return 'publish and edit live opportunities'
+  }
+
+  return p.replace(/_/g, ' ')
+}
 
 class RequestAccessPage extends Component {
   constructor(props) {

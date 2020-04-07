@@ -114,6 +114,7 @@ export default combineReducers({
     },
     recruiterForm: {
       recruiter: '',
+      labourHire: {},
     },
     candidatesForm: {
       recruiter_info: {},

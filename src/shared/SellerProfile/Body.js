@@ -4,7 +4,7 @@ import Row from './Row';
 import format from 'date-fns/format';
 import isEmpty from 'lodash/isEmpty';
 import head from 'lodash/head';
-import { newline, validURL } from '../../helpers';
+import { mapAustraliaState, newline, validURL } from '../../helpers';
 
 import SimpleAccordion  from '../SimpleAccordion';
 import Icon             from '../Icon';
@@ -22,6 +22,7 @@ const Body = (props) => {
     abn,
     addresses,
     documents = {},
+    labourHire = {},
     tools,
     methodologies,
     technologies,
@@ -277,6 +278,23 @@ const Body = (props) => {
             ))}
           </ul>
         </Row>
+        <Row title="Labour hire licence" show={!isEmpty(labourHire)}>
+          {Object.keys(labourHire).map((key, i) => {
+            return (
+              (labourHire[key]['licenceNumber'] || labourHire[key]['expiry']) && (
+                <React.Fragment key={i}>
+                  <h4 className="au-display-sm">{mapAustraliaState(key)}</h4>
+                  <div>
+                    Licence number: {labourHire[key]['licenceNumber']}
+                  </div>
+                  <div>
+                    Expiry: {format(new Date(labourHire[key]['expiry']), 'DD/MM/YYYY')}
+                  </div>
+                </React.Fragment>
+              )
+            )
+          })}
+        </Row>
         <Row title="Signed agreement" show={true}>
           {signed_agreements && signed_agreements.map((sa, i) => {
             const { htmlUrl, pdfUrl, signedAt } = sa
@@ -332,6 +350,7 @@ Body.propTypes = {
     case_studies: PropTypes.object,
     signed_agreements: PropTypes.array,
     representative: PropTypes.string,
+    labourHire: PropTypes.object,
     email: PropTypes.string,
     phone: PropTypes.string,
     website: PropTypes.string,

@@ -89,3 +89,26 @@ export const getNextKey = obj => {
   }, -1)
   return max + 1
 }   
+
+export const mapAustraliaState = state => {
+    switch(state) {
+        case 'act':
+            return 'Australian Capital Territory'
+        case 'nsw':
+            return 'New South Wales'
+        case 'nt':
+            return 'Northern Territory'
+        case 'qld':
+            return 'Queensland'
+        case 'tas':
+            return 'Tasmania'
+        case 'sa':
+            return 'South Australia'
+        case 'wa':
+            return 'Western Australia'
+        case 'vic':
+            return 'Victoria'
+        default:
+          return 'Unknown'
+    }
+}

@@ -69,6 +69,7 @@ const uploadDocument = (url, api, id, file, csrfToken) => () => {
       }
       return {
         errorMessage: compact([
+          response.data && response.data.message,
           response.data && response.data.errorMessage,
           response.errorMessage,
           response.statusText,

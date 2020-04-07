@@ -80,6 +80,8 @@ export class Messages extends Component {
       case 'S011':
       case 'S012':
         return <a href={`/sellers/edit/?step=${item.step}`}>Manage your documents</a>
+      case 'S014':
+        return <a href={`/sellers/edit/?step=${item.step}`}>Update licence details</a>
       case 'SB002':
         return <a href={`/2/seller-edit/${supplier.code}/${item.step}`}>View new Master Agreement</a>
       default:
@@ -110,7 +112,7 @@ export class Messages extends Component {
       <div className={`${styles.marginTop2} row`}>
         <div className="col-xs-12">
           {items && items.length > 0 ? (
-            <table className={`${styles.defaultStyle} ${styles.marginBottom3} col-xs-12`}>
+            <table className={`${styles.defaultStyle} ${styles.marginBottom3} ${styles.striped} col-xs-12`}>
               <thead>
                 <tr className={styles.headingRow}>
                   <th scope="col" className={`${styles.tableColumnWidth10} ${styles.textAlignLeft}`}>
