@@ -33,7 +33,10 @@ import BuyerSpecialistFlowPage from './pages/BuyerSpecialistFlowPage'
 import BriefOutcomeChoicePage from './pages/BriefOutcomeChoicePage'
 import CloseOpportunityPage from './pages/CloseOpportunityPage'
 import CloseOpportunitySuccessPage from './pages/CloseOpportunitySuccessPage'
+import EditOpportunityPage from './pages/EditOpportunityPage'
+import EditOpportunitySuccessPage from './pages/EditOpportunitySuccessPage'
 import EditTeamFlowPage from './pages/Teams/EditTeamFlowPage'
+import OpportunityHistoryPage from './pages/OpportunityHistoryPage'
 import OpportunityPage from './pages/OpportunityPage'
 import CreateTeamFlowPage from './pages/Teams/CreateTeamFlowPage'
 import SellerAssessmentFlowPage from './pages/SellerAssessmentFlowPage'
@@ -76,6 +79,16 @@ export const Routes = () => (
       component={CloseOpportunitySuccessPage}
     />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/overview`} component={BriefOverviewPage} />
+    <PrivateRoute
+      restrictedTo="buyer"
+      path={`${rootPath}/brief/:briefId/edit/:item?`}
+      component={EditOpportunityPage}
+    />
+    <PrivateRoute
+      restrictedTo="buyer"
+      path={`${rootPath}/brief/:briefId/edited`}
+      component={EditOpportunitySuccessPage}
+    />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/assessors`} component={BriefAssessorsPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/questions`} component={QuestionPage} />
     <PrivateRoute
@@ -124,6 +137,7 @@ export const Routes = () => (
       path={`${rootPath}/seller-edit/:supplierCode`}
       component={SellerEditFlowPage}
     />
+    <Route path={`${rootPath}/:framework/opportunities/:briefId/history`} component={OpportunityHistoryPage} />
     <Route path={`${rootPath}/:framework/opportunities/:briefId`} component={OpportunityPage} />
     <Route path={`${rootPath}/opportunities`} component={OpportunitiesPage} />
     <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-dashboard`} component={BuyerDashboardPage} />

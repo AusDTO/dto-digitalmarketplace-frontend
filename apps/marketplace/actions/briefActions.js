@@ -16,6 +16,8 @@ import {
   BRIEF_SPECIALIST_CREATE_SUCCESS,
   CLOSE_OPPORTUNITY_SUCCESS,
   DELETE_BRIEF_SUCCESS,
+  EDIT_OPPORTUNITY_SUCCESS,
+  LOAD_OPPORTUNITY_EDIT_HISTORY_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NAME_SPLIT,
   SPECIALIST_NUMBER,
@@ -131,7 +133,9 @@ export const handlePublicBriefInfoSuccess = response => ({
   domains: response.data.domains,
   hasSupplierErrors: response.data.has_supplier_errors,
   isInvited: response.data.is_invited,
-  hasSignedCurrentAgreement: response.data.has_signed_current_agreement
+  hasSignedCurrentAgreement: response.data.has_signed_current_agreement,
+  lastEditedAt: response.data.last_edited_at,
+  onlySellersEdited: response.data.only_sellers_edited
 })
 
 export const handleErrorFailure = response => dispatch => {
@@ -536,3 +540,54 @@ export const publishAnswer = (briefId, values) => (dispatch, getState) =>
     },
     data: JSON.stringify(values)
   })
+
+export const handleEditOpportunitySuccess = response => ({
+  type: EDIT_OPPORTUNITY_SUCCESS,
+  brief: response.data
+})
+
+export const applyEditsToOpportunity = (briefId, data) => (dispatch, getState) => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: `/brief/${briefId}/edit`,
+    method: 'PATCH',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify(data)
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleEditOpportunitySuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
+
+export const handleLoadOpportunityHistorySuccess = response => ({
+  type: LOAD_OPPORTUNITY_EDIT_HISTORY_SUCCESS,
+  brief: response.data.brief,
+  edits: response.data.edits
+})
+
+export const loadOpportunityHistory = briefId => dispatch => {
+  dispatch(sendingRequest(true))
+  return dmapi({
+    url: `/brief/${briefId}/history`,
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    if (response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      dispatch(handleLoadOpportunityHistorySuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}

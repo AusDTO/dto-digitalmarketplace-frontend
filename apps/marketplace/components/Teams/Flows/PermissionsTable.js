@@ -50,7 +50,7 @@ export class PermissionsTable extends Component {
                 Create drafts
               </th>
               <th className={styles.permissionsColumn} scope="col">
-                Publish opportunities
+                Publish / edit opportunities
               </th>
               <th className={styles.permissionsColumn} scope="col">
                 Answer seller questions

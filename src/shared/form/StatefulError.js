@@ -26,16 +26,26 @@ class StatefulError extends React.Component {
         model={model}
         show={(field) => field.touched && (showMessagesDuringFocus || !field.focus)}
         messages={messages}
+        component={({ children }) => {
+          return (
+            <React.Fragment>
+              <a className="validation-message" href={`#${id}`}>
+                <span className="validation-message">{children}</span>
+              </a>
+              <br />
+            </React.Fragment>
+          )
+        }}
         wrapper={({ children }) => {
           if (!children.length) {
             return null;
           }
 
           return (
-            <a className="validation-message" href={`#${id}`}>
+            <div>
               <span className="visuallyhidden">Validation Error: </span>
               {children}
-            </a>
+            </div>
           )
         }}
       />

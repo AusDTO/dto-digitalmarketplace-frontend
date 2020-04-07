@@ -40,6 +40,7 @@ export const pruneModel = (model) => {
     pricing,
     products,
     recruiter_info,
+    labourHire
   } = model;
 
   let newModel = model;

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 
-import styles from './PageAlertError.scss'
+import styles from '../../main.scss'
 
 class PageAlertError extends Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class PageAlertError extends Component {
         // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
         tabIndex={0}
       >
-        <AUpageAlert as="error" className={styles.container}>
+        <AUpageAlert as="error" className={styles.pageAlert}>
           <AUheading level="2" size="lg">
             An error occurred
           </AUheading>
