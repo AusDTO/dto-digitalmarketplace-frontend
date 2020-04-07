@@ -75,6 +75,8 @@ export const handleLoadDomainEvidenceSuccess = response => ({
   data: {
     id: response.data.id,
     domainId: response.data.domainId,
+    domainName: response.data.domain_name,
+    domainCriteria: response.data.domain_criteria,
     supplierCode: response.data.supplierCode,
     maxDailyRate: response.data.maxDailyRate,
     submittedAt: response.data.submitted_at,
