@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import Textfield from 'shared/form/Textfield'
-import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import format from 'date-fns/format'
 import addDays from 'date-fns/add_days'
 import {
@@ -68,9 +68,9 @@ export class BuyerRFXAdditionalInformationStage extends Component {
         onSubmitFailed={this.props.onSubmitFailed}
         validateOn="submit"
       >
-        <AUheadings level="1" size="xl">
+        <AUheading level="1" size="xl">
           Additional information
-        </AUheadings>
+        </AUheading>
         <ErrorAlert
           model={model}
           messages={{
@@ -82,9 +82,9 @@ export class BuyerRFXAdditionalInformationStage extends Component {
             closedAtIsBefore: 'You must enter a closing date no more than one year from now'
           }}
         />
-        <AUheadings level="2" size="sm">
+        <AUheading level="2" size="sm">
           Comprehensive terms
-        </AUheadings>
+        </AUheading>
         <p className={`${styles.fullWidth} ${styles.removeTopMargin}`}>
           We recommend that the{' '}
           <a href="/api/2/r/comprehensive-terms-current.pdf" rel="noopener noreferrer" target="_blank">
