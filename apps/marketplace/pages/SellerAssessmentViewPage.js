@@ -56,7 +56,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  loadInitialData: evidenceId => dispatch(loadDomainEvidenceData(evidenceId)),
+  loadInitialData: evidenceId => dispatch(loadDomainEvidenceData(evidenceId))
   // loadDomainData: domainId => dispatch(loadDomainData(domainId))
 })
 
