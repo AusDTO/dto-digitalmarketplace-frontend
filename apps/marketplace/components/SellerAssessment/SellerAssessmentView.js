@@ -50,7 +50,7 @@ const SellerAssessmentView = props => (
           <AUheading level="2" size="md">
             Criteria
           </AUheading>
-          <p className={styles.reviewText}>{props.evidence.domainCriteria[criteriaId].name}</p> 
+          <p className={styles.reviewText}>{props.evidence.domainCriteria[criteriaId].name}</p>
           <AUheading level="2" size="md">
             Client
           </AUheading>
