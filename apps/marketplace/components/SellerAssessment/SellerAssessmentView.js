@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUdirectionLink from '@gov.au/direction-links/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
-import { getCriteriaName } from '../SellerAssessment/SellerAssessmentEvidenceStage'
 import styles from './SellerAssessmentReviewStage.scss'
 
 const SellerAssessmentView = props => (
@@ -35,7 +34,7 @@ const SellerAssessmentView = props => (
         <a href={`${rootPath}/seller-assessment/${props.evidence.id}/feedback/`}> feedback </a>
         and submit another request.
       </p>
-    )} 
+    )}
 
     <AUheading level="2" size="lg">
       Maximum daily rate
@@ -51,8 +50,7 @@ const SellerAssessmentView = props => (
           <AUheading level="2" size="md">
             Criteria
           </AUheading>
-          {/* <p>{props.evidence.domainCriteria} </p>
-          <p className={styles.reviewText}>{getCriteriaName(criteriaId, props.evidence.domainCriteria)}</p> */}
+          <p className={styles.reviewText}>{props.evidence.domainCriteria[criteriaId].name}</p> 
           <AUheading level="2" size="md">
             Client
           </AUheading>
@@ -78,11 +76,11 @@ const SellerAssessmentView = props => (
           </AUheading>
           <p className={styles.reviewText}>{props.evidence.evidence[criteriaId].response}</p>
           {props.evidence.criteria.indexOf(criteriaId) !== props.evidence.criteria.length - 1 && (
-            <div className={styles.spacer} /> 
-          )} 
+            <div className={styles.spacer} />
+          )}
         </React.Fragment>
       ))}
-  </div> 
+  </div>
 )
 
 SellerAssessmentView.propTypes = {
@@ -92,9 +90,8 @@ SellerAssessmentView.propTypes = {
 
 export default SellerAssessmentView
 
-
-
-    {/* {props.evidence.domanCriteria &&
+{
+  /* {props.evidence.domanCriteria &&
       props.evidence.domanCriteria.map(domainCriteria => <div>{domainCriteria.name}</div>)}
 
     {props.evidence.criteria &&
@@ -105,4 +102,5 @@ export default SellerAssessmentView
             {criteriaId === domainCriteria}
             <p> YAY</p>
           </div>
-          )} */}
+          )} */
+}
