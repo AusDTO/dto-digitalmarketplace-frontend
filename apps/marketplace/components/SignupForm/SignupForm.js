@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { actions, Form } from 'react-redux-form'
+import { Form } from 'react-redux-form'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUselect from '@gov.au/select/lib/js/react.js'
 import DocumentTitle from 'react-document-title'
@@ -61,12 +61,6 @@ class SignupForm extends Component {
     this.setState({
       isInternational: isIntl === 'yes'
     })
-    if (isIntl === 'yes') {
-      this.props.setABN('N/A')
-      this.props.setABNValidity(true)
-    } else {
-      this.props.setABN('')
-    }
   }
 
   render() {
@@ -290,6 +284,23 @@ class SignupForm extends Component {
                               }}
                             />
                           )}
+                          {this.state.isInternational && (
+                            <Textfield
+                              model={`${model}.abn`}
+                              name="abn"
+                              id="abn"
+                              type="text"
+                              htmlFor="abn"
+                              label="International business identifier number"
+                              description="This should be a number that is the equivalent of an ABN for your country of operation"
+                              validators={{
+                                required: v => required(v)
+                              }}
+                              messages={{
+                                required: 'You must supply an International business identifier number'
+                              }}
+                            />
+                          )}
                         </React.Fragment>
                       )}
                       {isBuyer && (
@@ -429,12 +440,4 @@ SignupForm.defaultProps = {
 
 const mapStateToProps = () => ({})
 
-const mapDispatchToProps = (dispatch, props) => ({
-  setABN: abn => dispatch(actions.change(`${props.model}.abn`, abn)),
-  setABNValidity: isValid => dispatch(actions.setValidity(`${props.model}.abn`, isValid))
-})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SignupForm)
+export default connect(mapStateToProps)(SignupForm)
