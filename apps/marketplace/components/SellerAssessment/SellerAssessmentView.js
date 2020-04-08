@@ -84,23 +84,7 @@ const SellerAssessmentView = props => (
 )
 
 SellerAssessmentView.propTypes = {
-  // meta: PropTypes.object.isRequired,
   evidence: PropTypes.object.isRequired
 }
 
 export default SellerAssessmentView
-
-{
-  /* {props.evidence.domanCriteria &&
-      props.evidence.domanCriteria.map(domainCriteria => <div>{domainCriteria.name}</div>)}
-
-    {props.evidence.criteria &&
-      props.evidence.criteria.map(criteriaId => (
-        <React.Fragment key={criteriaId}>
-          {props.evidence.domanCriteria && props.evidence.domanCriteria.map(domainCriteria => 
-          <div> 
-            {criteriaId === domainCriteria}
-            <p> YAY</p>
-          </div>
-          )} */
-}
