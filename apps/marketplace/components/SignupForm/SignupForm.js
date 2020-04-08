@@ -255,6 +255,7 @@ class SignupForm extends Component {
                             block
                             id="international"
                             onChange={this.handleInternationalChange}
+                            value={this.state.isInternational ? 'yes': 'no'}
                             options={[
                               {
                                 value: 'no',
