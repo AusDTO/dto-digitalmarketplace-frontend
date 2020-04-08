@@ -14,6 +14,7 @@ const Textarea = props => {
     id,
     label,
     model,
+    defaultValue,
     description,
     showMessagesDuringFocus = true,
     controlProps = {},
@@ -66,6 +67,7 @@ const Textarea = props => {
           ...controlProps,
           disabled
         }}
+        defaultValue={defaultValue}
         validators={validators}
         component={TextareaComponent}
         mapProps={{

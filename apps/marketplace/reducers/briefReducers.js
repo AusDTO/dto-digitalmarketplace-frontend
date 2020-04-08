@@ -14,7 +14,8 @@ import {
   SPECIALIST_NAME_SPLIT,
   SPECIALIST_NUMBER,
   BRIEF_OVERVIEW_SUCCESS,
-  DELETE_BRIEF_SUCCESS
+  DELETE_BRIEF_SUCCESS,
+  LOAD_OPPORTUNITY_EDIT_HISTORY_SUCCESS
 } from '../constants/constants'
 
 const defaultBriefState = {
@@ -126,7 +127,9 @@ const briefReducer = (state = defaultBriefState, action) => {
         loadedAt: new Date().valueOf(),
         hasSupplierErrors: action.hasSupplierErrors,
         isInvited: action.isInvited,
-        hasSignedCurrentAgreement: action.hasSignedCurrentAgreement
+        hasSignedCurrentAgreement: action.hasSignedCurrentAgreement,
+        lastEditedAt: action.lastEditedAt,
+        onlySellersEdited: action.onlySellersEdited
       }
 
     case BRIEF_SAVE_SUCCESS:
@@ -205,6 +208,13 @@ const briefReducer = (state = defaultBriefState, action) => {
       return {
         ...state,
         specialistNumber: action.specialistNumber + state.specialistNumber
+      }
+
+    case LOAD_OPPORTUNITY_EDIT_HISTORY_SUCCESS:
+      return {
+        ...state,
+        brief: action.brief,
+        edits: action.edits
       }
 
     default:

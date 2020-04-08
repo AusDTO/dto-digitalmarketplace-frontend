@@ -5,6 +5,7 @@ import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingInd
 import { closeOpportunity, loadBrief } from 'marketplace/actions/briefActions'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import CloseOpportunity from 'marketplace/components/Brief/CloseOpportunity'
+import { hasPermission } from 'marketplace/components/helpers'
 import { rootPath } from 'marketplace/routes'
 
 const model = 'closeOpportunityForm'
@@ -54,8 +55,12 @@ class CloseOpportunityPage extends Component {
   }
 
   render = () => {
-    const { brief, canCloseOpportunity, errorMessage } = this.props
+    const { brief, canCloseOpportunity, errorMessage, isPartOfTeam, isTeamLead, teams } = this.props
     const { loading, opportunityClosed } = this.state
+
+    if (!hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities')) {
+      return <Redirect to={`${rootPath}/request-access/publish_opportunities`} />
+    }
 
     let hasFocused = false
     const setFocus = e => {
@@ -118,7 +123,10 @@ const mapStateToProps = state => ({
   brief: state.brief.brief,
   canCloseOpportunity: state.brief.canCloseOpportunity,
   closeOpportunityForm: state.closeOpportunityForm,
-  errorMessage: state.app.errorMessage
+  errorMessage: state.app.errorMessage,
+  isPartOfTeam: state.app.isPartOfTeam,
+  isTeamLead: state.app.isTeamLead,
+  teams: state.app.teams
 })
 
 const mapDispatchToProps = dispatch => ({
