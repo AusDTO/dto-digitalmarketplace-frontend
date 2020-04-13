@@ -34,7 +34,7 @@ export const done = v =>
   closedAtIs2DaysInFuture(v) &&
   closedAtIsBefore(v)
 
-export class BuyerTrainingAdditionalInformationStage extends Component {
+class BuyerTrainingAdditionalInformationStage extends Component {
   constructor(props) {
     super(props)
     if (!this.props[this.props.model].closedAt) {
