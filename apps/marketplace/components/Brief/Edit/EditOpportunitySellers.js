@@ -47,6 +47,9 @@ class EditOpportunitySellers extends Component {
       this.state.showClosingDateWarning = true
     }
 
+    // This reset clears any invalid state from the parent form which prevents submit events from this component.
+    props.resetValidity(props.model)
+
     this.handleCancelClick = this.handleCancelClick.bind(this)
     this.handleContinueClick = this.handleContinueClick.bind(this)
     this.handleRemoveSellerClick = this.handleRemoveSellerClick.bind(this)
@@ -228,6 +231,7 @@ const mapStateToProps = (state, props) => ({
 const mapDispatchToProps = (dispatch, props) => ({
   findSellers: (keyword, category, allSellers, exclude) =>
     dispatch(findSuppliers(keyword, category, allSellers, exclude)),
+  resetValidity: model => dispatch(actions.setValidity(model, true)),
   updateSellers: sellers => dispatch(actions.change(`${props.model}.sellers`, sellers))
 })
 

@@ -29,19 +29,19 @@ class EditOpportunity extends Component {
 
     this.showCheckBox = this.showCheckBox.bind(this)
     this.handleSubmitClick = this.handleSubmitClick.bind(this)
+    this.validateEditsHaveBeenMade = this.validateEditsHaveBeenMade.bind(this)
     this.validateEditProcessCheckBox = this.validateEditProcessCheckBox.bind(this)
   }
 
   handleSubmitClick = e => {
     const { brief, edits } = this.props
-    const editsPending = hasEdits(brief, edits)
+    const { showNoEditsAlert } = this.state
 
-    if (!editsPending) {
+    // Reset so the alert can focus on subsequent submit events
+    if (showNoEditsAlert) {
       this.setState({
-        showNoEditsAlert: true
+        showNoEditsAlert: false
       })
-
-      e.preventDefault()
     }
 
     if (edits.documentsEdited && !documentsIsValid(brief, edits)) {
@@ -63,6 +63,19 @@ class EditOpportunity extends Component {
     )
   }
 
+  validateEditsHaveBeenMade = () => {
+    const { brief, edits } = this.props
+    const editsPending = hasEdits(brief, edits)
+
+    if (!editsPending) {
+      this.setState({
+        showNoEditsAlert: true
+      })
+    }
+
+    return editsPending
+  }
+
   validateEditProcessCheckBox = () => {
     const { understandsEditProcess } = this.state
     const showCheckBox = this.showCheckBox()
@@ -79,6 +92,7 @@ class EditOpportunity extends Component {
   render = () => {
     const { brief, edits, isOpenToAll, location, model, onSubmitEdits } = this.props
     const { hasErrors, showNoEditsAlert, showDocumentsErrorAlert } = this.state
+    const editsMadeValidator = this.validateEditsHaveBeenMade
     const checkBoxValidator = this.validateEditProcessCheckBox
     const showCheckBox = this.showCheckBox()
 
@@ -91,6 +105,7 @@ class EditOpportunity extends Component {
           validateOn="submit"
           validators={{
             '': {
+              editsMadeValidator,
               checkBoxValidator
             }
           }}
@@ -100,9 +115,12 @@ class EditOpportunity extends Component {
               Edit live opportunity
             </AUheading>
             {showNoEditsAlert && (
-              <AUpageAlert as="error">
-                <strong>You have not made any changes to the opportunity.</strong>
-              </AUpageAlert>
+              <ErrorAlert
+                model={model}
+                messages={{
+                  editsMadeValidator: 'You have not made any changes to the opportunity.'
+                }}
+              />
             )}
             {showDocumentsErrorAlert && (
               <AUpageAlert as="error">

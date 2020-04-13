@@ -42,6 +42,8 @@ class EditOpportunityClosingDate extends Component {
       redirectToEditsTable: false
     }
 
+    // This reset clears any invalid state from the parent form which prevents submit events from this component.
+    props.resetValidity(props.model)
     props.setClosingDate(this.state.initialClosingDate)
 
     this.handleCancelClick = this.handleCancelClick.bind(this)
@@ -72,7 +74,8 @@ class EditOpportunityClosingDate extends Component {
   handleDateInput = e => {
     let { value } = e.target
     const { id } = e.target
-    const { closingDate } = this.props[this.props.model]
+    const { model } = this.props
+    const { closingDate } = this.props[model]
 
     if (value.length === 1) {
       value = value.padStart(2, '0')
@@ -98,7 +101,7 @@ class EditOpportunityClosingDate extends Component {
     }
 
     this.props.setClosingDate(`${year}-${month}-${day}`)
-    this.props.resetFormValidity()
+    this.props.resetValidity(`${model}.closingDate`)
     this.setState({
       hasErrors: false
     })
@@ -213,7 +216,7 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
-  resetFormValidity: () => dispatch(actions.resetValidity(`${props.model}.closingDate`)),
+  resetValidity: model => dispatch(actions.setValidity(model, true)),
   setClosingDate: closingDate => dispatch(actions.change(`${props.model}.closingDate`, closingDate)),
   setOnlySellersEdited: onlySellersEdited =>
     dispatch(actions.change(`${props.model}.onlySellersEdited`, onlySellersEdited))
