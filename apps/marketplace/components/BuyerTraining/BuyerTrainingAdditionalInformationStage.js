@@ -96,8 +96,8 @@ export class BuyerTrainingAdditionalInformationStage extends Component {
         <p className={styles.verticalMargin}>
           <CheckboxDetailsField
             model={`${this.props.model}.comprehensiveTerms`}
-            id={`comprehensiveTerms`}
-            name={`comprehensiveTerms`}
+            id="comprehensiveTerms"
+            name="comprehensiveTerms"
             label="Apply the comprehensive terms to this opportunity"
             detailsModel={this.props.model}
             validators={{}}
