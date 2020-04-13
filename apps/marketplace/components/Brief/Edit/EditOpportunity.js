@@ -7,7 +7,6 @@ import format from 'date-fns/format'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import { AUcheckbox } from '@gov.au/control-input/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import { rootPath } from 'marketplace/routes'
@@ -29,27 +28,25 @@ class EditOpportunity extends Component {
 
     this.showCheckBox = this.showCheckBox.bind(this)
     this.handleSubmitClick = this.handleSubmitClick.bind(this)
+    this.validateDocuments = this.validateDocuments.bind(this)
     this.validateEditsHaveBeenMade = this.validateEditsHaveBeenMade.bind(this)
     this.validateEditProcessCheckBox = this.validateEditProcessCheckBox.bind(this)
   }
 
-  handleSubmitClick = e => {
-    const { brief, edits } = this.props
-    const { showNoEditsAlert } = this.state
+  handleSubmitClick = () => {
+    const { showDocumentsErrorAlert, showNoEditsAlert } = this.state
 
-    // Reset so the alert can focus on subsequent submit events
+    // Reset so the alerts can focus on subsequent submit events
     if (showNoEditsAlert) {
       this.setState({
         showNoEditsAlert: false
       })
     }
 
-    if (edits.documentsEdited && !documentsIsValid(brief, edits)) {
+    if (showDocumentsErrorAlert) {
       this.setState({
-        showDocumentsErrorAlert: true
+        showDocumentsErrorAlert: false
       })
-
-      e.preventDefault()
     }
   }
 
@@ -61,6 +58,19 @@ class EditOpportunity extends Component {
       itemWasEdited(format(new Date(brief.dates.closing_time), 'YYYY-MM-DD'), edits.closingDate) ||
       itemWasEdited(brief.summary, edits.summary)
     )
+  }
+
+  validateDocuments = () => {
+    const { brief, edits } = this.props
+    const valid = edits.documentsEdited ? documentsIsValid(brief, edits) : true
+
+    if (!valid) {
+      this.setState({
+        showDocumentsErrorAlert: true
+      })
+    }
+
+    return valid
   }
 
   validateEditsHaveBeenMade = () => {
@@ -93,6 +103,7 @@ class EditOpportunity extends Component {
     const { brief, edits, isOpenToAll, location, model, onSubmitEdits } = this.props
     const { hasErrors, showNoEditsAlert, showDocumentsErrorAlert } = this.state
     const editsMadeValidator = this.validateEditsHaveBeenMade
+    const documentsValidator = this.validateDocuments
     const checkBoxValidator = this.validateEditProcessCheckBox
     const showCheckBox = this.showCheckBox()
 
@@ -106,6 +117,7 @@ class EditOpportunity extends Component {
           validators={{
             '': {
               editsMadeValidator,
+              documentsValidator,
               checkBoxValidator
             }
           }}
@@ -123,11 +135,16 @@ class EditOpportunity extends Component {
               />
             )}
             {showDocumentsErrorAlert && (
-              <AUpageAlert as="error">
-                <strong>
-                  You have errors in the <Link to="/documents">edit documents</Link> section.
-                </strong>
-              </AUpageAlert>
+              <ErrorAlert
+                model={model}
+                messages={{
+                  documentsValidator: (
+                    <span>
+                      You have errors in the <Link to="/documents">edit documents</Link> section.
+                    </span>
+                  )
+                }}
+              />
             )}
             <p className={styles.fontSizeMd}>
               If you&apos;re having issues making the changes you need, <a href="/contact-us">contact us</a>.
