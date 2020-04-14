@@ -121,15 +121,13 @@ class BusinessDetailsForm extends BaseForm {
                           }}
                         />
 
-                        <Textfield
+                        {!ABN && <Textfield
                           model={`${model}.abn`}
                           name="abn"
                           id="abn"
                           htmlFor="abn"
                           label="ABN"
-                          readOnly={ABN ? true : false}
-                          disabled={ABN ? true : false}
-                        />
+                        />}
 
                         <Textarea
                             model={`${model}.summary`}

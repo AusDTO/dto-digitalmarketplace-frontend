@@ -124,7 +124,6 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
               onChange={[Function]}
               onFocus={[Function]}
               onKeyPress={[Function]}
-              readOnly={false}
               type="text"
             />
           </div>

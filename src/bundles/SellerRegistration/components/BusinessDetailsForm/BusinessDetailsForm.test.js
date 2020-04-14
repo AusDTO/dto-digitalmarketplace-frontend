@@ -55,6 +55,4 @@ test('render existing supplier copy', () => {
   )
 
   expect(wrapper.find('h1').text()).toBe('Check your business details');
-  expect(wrapper.find('#abn').first().prop('readOnly')).toBeTruthy();
-  expect(wrapper.find('#abn').first().prop('disabled')).toBeTruthy();
 });
