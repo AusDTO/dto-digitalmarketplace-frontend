@@ -15,7 +15,8 @@ const SellerAssessmentView = props => (
 
     {props.evidence.status === 'assessed' && (
       <p>
-        You cannot edit your request for approved categories. If you want to change your rate, please <a href="/contact-us">contact our support team.</a>
+        You cannot edit your request for approved categories. If you want to change your rate, please{' '}
+        <a href="/contact-us">contact our support team.</a>
       </p>
     )}
 
