@@ -5,7 +5,7 @@ import { Form, actions } from 'react-redux-form';
 import isEmpty from 'lodash/isEmpty';
 import isNumber from 'lodash/isNumber';
 
-import {required, limitNumbers, validLinks, validABN, notPrivateLinkedIn} from '../../../../validators';
+import {required, limitNumbers, validLinks, notPrivateLinkedIn} from '../../../../validators';
 
 import Layout from '../../../../shared/Layout';
 
@@ -129,12 +129,6 @@ class BusinessDetailsForm extends BaseForm {
                           label="ABN"
                           readOnly={ABN ? true : false}
                           disabled={ABN ? true : false}
-                          validators={{
-                              validABN: val => val === 'N/A' || validABN(val)
-                          }}
-                          messages={{
-                            validABN: 'ABN is required and must match a valid ABN as listed on the Australian Business Register'
-                          }}
                         />
 
                         <Textarea
