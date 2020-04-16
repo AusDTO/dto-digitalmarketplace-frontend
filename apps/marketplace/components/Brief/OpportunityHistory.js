@@ -87,13 +87,21 @@ const EditSummary = props => {
   )
 }
 
+const allEditDetailsRemoved = edit =>
+  Object.keys(edit).length === 1 && Object.prototype.hasOwnProperty.call(edit, 'editedAt')
+
 const OpportunityHistory = props => {
   const { brief, edits } = props
 
   return (
     <React.Fragment>
       <PageHeader actions={[]} organisation={`${brief.title} (${brief.id})`} title="History of updates" />
-      {edits.length > 0 && edits.map(edit => <EditSummary edit={edit} key={edit.editedAt} />)}
+      {edits.length > 0 &&
+        !edits.every(allEditDetailsRemoved) &&
+        edits.map(edit => <EditSummary edit={edit} key={edit.editedAt} />)}
+      {edits.length > 0 && edits.every(allEditDetailsRemoved) && (
+        <p>You must be signed in as a buyer or invited seller to view the history of updates.</p>
+      )}
       {edits.length === 0 && <p>No changes have been made to this opportunity.</p>}
       <div className={styles.marginTop2}>
         <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>Return to opportunity</a>
