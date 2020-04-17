@@ -34,6 +34,8 @@ const ClosingDateIsNotValidMessage = props => {
 class EditOpportunityClosingDate extends Component {
   constructor(props) {
     super(props)
+    window.scrollTo(0, 0)
+
     this.state = {
       hasErrors: false,
       initialClosingDate: props[props.model].closingDate
