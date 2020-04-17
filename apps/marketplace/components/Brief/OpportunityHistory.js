@@ -88,6 +88,7 @@ const EditSummary = props => {
 }
 
 const OpportunityHistory = props => {
+  window.scrollTo(0, 0)
   const { brief, edits } = props
 
   return (
