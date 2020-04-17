@@ -51,7 +51,7 @@ class BusinessDetailsForm extends BaseForm {
             model,
             returnLink,
             supplierCode,
-            ABN,
+            abn,
             form,
             buttonText,
             children,
@@ -121,7 +121,7 @@ class BusinessDetailsForm extends BaseForm {
                           }}
                         />
 
-                        {!ABN && <Textfield
+                        {!abn && <Textfield
                           model={`${model}.abn`}
                           name="abn"
                           id="abn"
@@ -313,7 +313,7 @@ BusinessDetailsForm.defaultProps = {
 const mapStateToProps = (state) => {
     return {
         supplierCode: (state.application && state.application.supplier_code),
-        ABN: (state.application && state.application.abn),
+        abn: (state.application && state.application.abn),
         returnLink: state.businessDetailsForm && state.businessDetailsForm.returnLink,
         ...formProps(state, 'businessDetailsForm'),
         applicationErrors: state.application_errors
