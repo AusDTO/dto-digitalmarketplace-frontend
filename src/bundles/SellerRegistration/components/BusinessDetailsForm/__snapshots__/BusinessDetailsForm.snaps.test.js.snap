@@ -109,21 +109,6 @@ exports[`BusinessDetailsForm renders 1`] = `
         >
           ABN
         </label>
-        <p
-          className="hint"
-          id="abn-hint"
-        >
-          <span>
-            You need an Australian Business Number to do business in Australia. 
-            <a
-              href="https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/"
-              rel="external noopener noreferrer"
-              target="_blank"
-            >
-              Apply for an ABN here.
-            </a>
-          </span>
-        </p>
         <input
           className=""
           disabled={false}
@@ -133,7 +118,6 @@ exports[`BusinessDetailsForm renders 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          readOnly={false}
           type="text"
         />
       </div>
@@ -487,21 +471,6 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
         >
           ABN
         </label>
-        <p
-          className="hint"
-          id="abn-hint"
-        >
-          <span>
-            You need an Australian Business Number to do business in Australia. 
-            <a
-              href="https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/"
-              rel="external noopener noreferrer"
-              target="_blank"
-            >
-              Apply for an ABN here.
-            </a>
-          </span>
-        </p>
         <input
           className=""
           disabled={false}
@@ -511,7 +480,6 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           onChange={[Function]}
           onFocus={[Function]}
           onKeyPress={[Function]}
-          readOnly={false}
           type="text"
         />
       </div>
