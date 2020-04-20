@@ -26,6 +26,7 @@ export class SignupPageComponent extends BaseForm {
         validEmail: 'A validly formatted email is required.'
       },
       isBuyer: this.props.signupForm.user_type === 'buyer',
+      userType: '',
       submitClicked: null
     }
   }
@@ -42,6 +43,7 @@ export class SignupPageComponent extends BaseForm {
             required: 'Your email is required',
             validEmail: 'A validly formatted email is required.'
           },
+          userType: nextProps.signupForm.user_type,
           isBuyer: false
         })
       }
@@ -56,6 +58,7 @@ export class SignupPageComponent extends BaseForm {
             required: 'Your email is required',
             validEmail: 'A validly formatted email is required.'
           },
+          userType: nextProps.signupForm.user_type,
           isBuyer: true
         })
       }
@@ -63,7 +66,11 @@ export class SignupPageComponent extends BaseForm {
   }
 
   handleSubmit = model => {
-    this.props.handleSignupSubmit(model)
+    this.props.handleSignupSubmit(model).then(res => {
+      if (res.error) {
+        this.onSubmitFailed()
+      }
+    })
   }
 
   onSubmitFailed = () => {
@@ -118,6 +125,8 @@ SignupPageComponent.defaultProps = {
 const mapStateToProps = state => ({
   ...formProps(state, 'signupForm'),
   signupSuccess: state.user.signupSuccess,
+  signupErrorCode: state.user.signupErrorCode,
+  signupABN: state.user.signupABN,
   currentlySending: state.app.currentlySending
 })
 
