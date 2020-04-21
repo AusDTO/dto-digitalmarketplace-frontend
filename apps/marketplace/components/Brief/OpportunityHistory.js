@@ -91,6 +91,7 @@ const allEditDetailsRemoved = edit =>
   Object.keys(edit).length === 1 && Object.prototype.hasOwnProperty.call(edit, 'editedAt')
 
 const OpportunityHistory = props => {
+  window.scrollTo(0, 0)
   const { brief, edits } = props
 
   return (

@@ -20,6 +20,8 @@ import styles from '../../../main.scss'
 class EditOpportunity extends Component {
   constructor(props) {
     super(props)
+    window.scrollTo(0, 0)
+
     this.state = {
       hasErrors: false,
       showNoEditsAlert: false,
