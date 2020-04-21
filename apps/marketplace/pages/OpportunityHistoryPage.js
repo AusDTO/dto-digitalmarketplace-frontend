@@ -72,7 +72,7 @@ class OpportunityHistoryPage extends Component {
 
     if (dataLoaded) {
       return (
-        <BrowserRouter basename={`${rootPath}/${brief.frameworkSlug}/opportunities/${brief.id}/history`}>
+        <BrowserRouter basename={`${rootPath}/${brief.framework}/opportunities/${brief.id}/history`}>
           <div className="col-xs-12">
             <Switch>
               <Route
