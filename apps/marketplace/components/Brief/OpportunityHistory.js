@@ -105,7 +105,7 @@ const OpportunityHistory = props => {
       )}
       {edits.length === 0 && <p>No changes have been made to this opportunity.</p>}
       <div className={styles.marginTop2}>
-        <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>Return to opportunity</a>
+        <a href={`${rootPath}/${brief.framework}/opportunities/${brief.id}`}>Return to opportunity</a>
       </div>
     </React.Fragment>
   )
@@ -118,6 +118,7 @@ OpportunityHistory.defaultProps = {
 
 OpportunityHistory.propTypes = {
   brief: PropTypes.shape({
+    framework: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired
   }).isRequired,
