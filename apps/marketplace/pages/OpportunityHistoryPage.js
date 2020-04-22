@@ -42,8 +42,8 @@ class OpportunityHistoryPage extends Component {
   }
 
   render = () => {
-    const { brief, edits } = this.props
-    const { dataLoaded, errorMessage, loading } = this.state
+    const { brief, edits, errorMessage } = this.props
+    const { dataLoaded, loading } = this.state
 
     let hasFocused = false
     const setFocus = e => {
