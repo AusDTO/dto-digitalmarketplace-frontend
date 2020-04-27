@@ -16,6 +16,8 @@ import styles from '../../../main.scss'
 class EditOpportunitySummary extends Component {
   constructor(props) {
     super(props)
+    window.scrollTo(0, 0)
+
     this.state = {
       initialSummary: props[props.model].summary ? props[props.model].summary : props.brief.summary,
       redirectToEditsTable: false

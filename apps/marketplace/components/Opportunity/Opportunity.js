@@ -204,16 +204,12 @@ const Opportunity = props => {
                         <a
                           className={`${mainStyles.hideMobile} ${mainStyles.floatRight}`}
                           href={`${rootPath}/${brief.frameworkSlug}/opportunities/${brief.id}/history`}
-                          rel="noopener noreferrer"
-                          target="_blank"
                         >
                           View history of updates
                         </a>
                         <a
                           className={`${mainStyles.hideDesktop} ${mainStyles.block} ${mainStyles.marginTop1}`}
                           href={`${rootPath}/${brief.frameworkSlug}/opportunities/${brief.id}/history`}
-                          rel="noopener noreferrer"
-                          target="_blank"
                         >
                           View history of updates
                         </a>

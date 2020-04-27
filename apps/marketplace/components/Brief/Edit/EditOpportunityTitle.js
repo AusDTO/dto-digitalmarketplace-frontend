@@ -16,6 +16,8 @@ import styles from '../../../main.scss'
 class EditOpportunityTitle extends Component {
   constructor(props) {
     super(props)
+    window.scrollTo(0, 0)
+
     this.state = {
       initialTitle: props[props.model].title ? props[props.model].title : props.brief.title,
       redirectToEditsTable: false
