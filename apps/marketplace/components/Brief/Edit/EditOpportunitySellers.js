@@ -22,6 +22,8 @@ import styles from '../../../main.scss'
 class EditOpportunitySellers extends Component {
   constructor(props) {
     super(props)
+    window.scrollTo(0, 0)
+
     this.state = {
       daysOpportunityOpenFor: differenceInCalendarDays(
         format(new Date(props.brief.dates.closing_time), 'YYYY-MM-DD'),

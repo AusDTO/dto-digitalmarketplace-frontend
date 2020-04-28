@@ -1,26 +1,23 @@
-import { SIGNUP_SUCCESS, CREATE_USER_SUCCESS, SEND_INVITE_SUCCESS } from '../constants/constants'
 import {
-  EMAIL_NOT_WHITELISTED,
-  USER_NOT_CREATED,
-  INVITE_NOT_SENT,
-  ACCOUNT_TAKEN,
-  GENERAL_ERROR
-} from '../constants/messageConstants'
+  SIGNUP_SUCCESS,
+  SIGNUP_ERROR,
+  SIGNUP_ABN,
+  CREATE_USER_SUCCESS,
+  SEND_INVITE_SUCCESS
+} from '../constants/constants'
+import { USER_NOT_CREATED, INVITE_NOT_SENT } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
+
+export const setSignupErrorCode = errorCode => ({ type: SIGNUP_ERROR, errorCode })
+
+export const setSignupABN = signupABN => ({ type: SIGNUP_ABN, signupABN })
 
 export const handleSignupSuccess = () => ({ type: SIGNUP_SUCCESS })
 
 export const handleSignupSubmit = model => (dispatch, getState) => {
-  const getErrorMessage = status =>
-    ({
-      403: EMAIL_NOT_WHITELISTED,
-      409: ACCOUNT_TAKEN,
-      default: GENERAL_ERROR
-    }[status])
-
   dispatch(sendingRequest(true))
-  dmapi({
+  return dmapi({
     url: '/signup',
     method: 'POST',
     headers: {
@@ -30,12 +27,15 @@ export const handleSignupSubmit = model => (dispatch, getState) => {
     data: JSON.stringify(model)
   }).then(response => {
     if (response.error) {
-      const errorMessage = getErrorMessage(response.status) || getErrorMessage('default')
-      dispatch(setErrorMessage(errorMessage))
+      dispatch(setSignupErrorCode(response.status))
+      if (response.data.abn) {
+        dispatch(setSignupABN(response.data.abn))
+      }
     } else {
       dispatch(handleSignupSuccess(response))
     }
     dispatch(sendingRequest(false))
+    return response
   })
 }
 

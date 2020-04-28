@@ -6,7 +6,7 @@ import formProps from 'shared/form/formPropsSelector'
 import FilesInput from 'shared/form/FilesInput'
 import Textfield from 'shared/form/Textfield'
 import dmapi from 'marketplace/services/apiClient'
-import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUheading from '@gov.au/headings/lib/js/react.js'
 import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import format from 'date-fns/format'
 import addDays from 'date-fns/add_days'
@@ -21,14 +21,14 @@ import {
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
 import CheckboxDetailsField from 'shared/form/CheckboxDetailsField'
-import styles from './BuyerSpecialistAdditionalInformationStage.scss'
+import styles from '../BuyerSpecialist/BuyerSpecialistAdditionalInformationStage.scss'
 
 const requiredContactNumber = v => required(v.contactNumber)
 const contactNumberFormat = v => validPhoneNumber(v.contactNumber)
 const requiredClosedAt = v => required(v.closedAt)
 const closedAtIsValid = v => validDate(v.closedAt)
 const closedAtIs2DaysInFuture = v => !closedAtIsValid(v) || dateIs2DaysInFuture(v.closedAt)
-const closedAtIsBefore = v => !closedAtIsValid(v) || dateIsBefore(v.closedAt, addDays(new Date(), 364))
+const closedAtIsBefore = v => !closedAtIsValid(v) || dateIsBefore(v.closedAt, addDays(new Date(), 366))
 
 export const done = v =>
   requiredContactNumber(v) &&
@@ -44,14 +44,13 @@ export class BuyerSpecialistRequirementsStage extends Component {
     this.state = {
       fileCount: 1
     }
-    this.handleDateChange = this.handleDateChange.bind(this)
-  }
 
-  componentWillMount() {
     if (!this.props[this.props.model].closedAt) {
       const date = addDays(new Date(), 7)
       this.props.setDate(format(date, 'YYYY-MM-DD'))
     }
+
+    this.handleDateChange = this.handleDateChange.bind(this)
   }
 
   componentDidMount() {
@@ -102,9 +101,9 @@ export class BuyerSpecialistRequirementsStage extends Component {
         onSubmitFailed={this.props.onSubmitFailed}
         validateOn="submit"
       >
-        <AUheadings level="1" size="xl">
+        <AUheading level="1" size="xl">
           Additional information
-        </AUheadings>
+        </AUheading>
         <AUcallout description="" className={styles.noticeBar}>
           Only sellers you selected and other buyers can view attached documents. Buyers and sellers will not be able to
           view your contact number or internal reference.
@@ -117,12 +116,12 @@ export class BuyerSpecialistRequirementsStage extends Component {
             closedAtIsValid: 'You must enter a valid closing date',
             closedAtIs2DaysInFuture: 'You must enter a closing date at least 2 days from now',
             requiredClosedAt: 'You must enter the closing date for this opportunity',
-            closedAtIsBefore: 'You must enter a closing date not more than one year from now'
+            closedAtIsBefore: 'You must enter a closing date no more than one year from now'
           }}
         />
-        <AUheadings level="2" size="sm">
+        <AUheading level="2" size="sm">
           Attach a document (optional)
-        </AUheadings>
+        </AUheading>
         <p className={styles.removeTopMargin}>Documents must be in .DOC .XLS .PPT or .PDF format.</p>
         {range(this.state.fileCount).map(i => (
           <FilesInput
@@ -153,9 +152,9 @@ export class BuyerSpecialistRequirementsStage extends Component {
             </a>
           </p>
         )}
-        <AUheadings level="2" size="sm">
+        <AUheading level="2" size="sm">
           Comprehensive terms
-        </AUheadings>
+        </AUheading>
         <p className={`${styles.fullWidth} ${styles.removeTopMargin}`}>
           We recommend that the{' '}
           <a href="/api/2/r/comprehensive-terms-current.pdf" rel="noopener noreferrer" target="_blank">
@@ -185,7 +184,8 @@ export class BuyerSpecialistRequirementsStage extends Component {
           defaultValue={this.props[this.props.model].contactNumber}
           maxLength={100}
           validators={{
-            required
+            required,
+            validPhoneNumber
           }}
         />
         <Textfield

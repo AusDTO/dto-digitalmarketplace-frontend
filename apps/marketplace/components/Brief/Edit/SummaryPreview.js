@@ -65,7 +65,7 @@ class SummaryPreview extends Component {
           `}
         >
           <AUbutton as="tertiary" className={localStyles.toggleSummaryButton} onClick={this.handleExpandSummaryClick}>
-            {summaryExpanded ? 'Collapse summary' : 'Expand summary'}
+            {summaryExpanded ? 'Read less' : 'Read more'}
           </AUbutton>
         </div>
       </React.Fragment>
