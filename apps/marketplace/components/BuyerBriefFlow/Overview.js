@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { deleteBrief } from 'marketplace/actions/briefActions'
@@ -110,6 +110,7 @@ class Overview extends Component {
       briefResponses,
       canCloseOpportunity,
       flow,
+      location,
       oldWorkOrderCreator,
       questionsAsked,
       isPartOfTeam,
@@ -192,7 +193,14 @@ class Overview extends Component {
             {brief.status === 'live' && isPublished && (
               <li>
                 {hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') ? (
-                  <a href={`${rootPath}/brief/${brief.id}/edit`}>Edit live opportunity</a>
+                  <Link
+                    to={{
+                      pathname: `${rootPath}/brief/${brief.id}/edit`,
+                      state: { from: location.pathname }
+                    }}
+                  >
+                    Edit live opportunity
+                  </Link>
                 ) : (
                   <a href={`${rootPath}/request-access/publish_opportunities`}>Edit live opportunity</a>
                 )}
@@ -242,6 +250,7 @@ Overview.defaultProps = {
 Overview.propTypes = {
   brief: PropTypes.object.isRequired,
   flow: PropTypes.string.isRequired,
+  location: PropTypes.object.isRequired,
   oldWorkOrderCreator: PropTypes.bool,
   questionsAsked: PropTypes.number
 }

@@ -65,6 +65,7 @@ class BuyerBriefOverviewPage extends Component {
         <Overview
           brief={this.props.brief}
           briefResponses={this.props.briefResponses}
+          location={this.props.location}
           oldWorkOrderCreator={this.props.oldWorkOrderCreator}
           questionsAsked={this.props.questionsAsked}
           flow={this.props.match.params.flow}
