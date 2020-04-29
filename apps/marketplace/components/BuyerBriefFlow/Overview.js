@@ -243,6 +243,7 @@ class Overview extends Component {
 }
 
 Overview.defaultProps = {
+  location: {},
   oldWorkOrderCreator: true,
   questionsAsked: 0
 }
@@ -250,7 +251,7 @@ Overview.defaultProps = {
 Overview.propTypes = {
   brief: PropTypes.object.isRequired,
   flow: PropTypes.string.isRequired,
-  location: PropTypes.object.isRequired,
+  location: PropTypes.object,
   oldWorkOrderCreator: PropTypes.bool,
   questionsAsked: PropTypes.number
 }
