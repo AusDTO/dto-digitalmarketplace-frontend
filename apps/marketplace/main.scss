@@ -302,6 +302,10 @@ table.defaultStyle {
     &.borderBottom0 {
       border-bottom: none;
     }
+
+    &.borderTop1 {
+      border-top: solid 1px #bebebe;
+    }
   }
 
   &.striped tr:nth-child(2n) {
