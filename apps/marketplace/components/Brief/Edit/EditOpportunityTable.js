@@ -65,7 +65,7 @@ class EditOpportunityTable extends Component {
       <React.Fragment>
         <table className={`col-xs-12 ${styles.hideMobile} ${styles.defaultStyle} ${styles.textAlignLeft}`}>
           <tbody>
-            <tr>
+            <tr className={styles.verticalAlignTop}>
               <th scope="row">Opportunity title</th>
               <td>{itemWasEdited(brief.title, edits.title) ? edits.title : brief.title}</td>
               <td>
@@ -76,7 +76,7 @@ class EditOpportunityTable extends Component {
             </tr>
             {showInvited && (
               <React.Fragment>
-                <tr className={sellersToInvite.length > 0 ? styles.borderBottom0 : ''}>
+                <tr className={`${sellersToInvite.length > 0 ? styles.borderBottom0 : ''} ${styles.verticalAlignTop}`}>
                   <th scope="row">Invited sellers</th>
                   <td>
                     <ul>
@@ -92,7 +92,7 @@ class EditOpportunityTable extends Component {
                   </td>
                 </tr>
                 {sellersToInvite.length > 0 && (
-                  <tr>
+                  <tr className={styles.verticalAlignTop}>
                     <th scope="row">Sellers to invite</th>
                     <td>
                       <ul>
@@ -106,7 +106,7 @@ class EditOpportunityTable extends Component {
                 )}
               </React.Fragment>
             )}
-            <tr>
+            <tr className={styles.verticalAlignTop}>
               <th scope="row">Summary</th>
               <td className={styles.tableColumnWidth19}>
                 <SummaryPreview brief={brief} desktop edits={edits} previewHeight={64} />
@@ -117,7 +117,7 @@ class EditOpportunityTable extends Component {
                 </Link>
               </td>
             </tr>
-            <tr>
+            <tr className={styles.verticalAlignTop}>
               <th scope="row">Documents</th>
               <td>{this.generateDocumentList()}</td>
               <td>
@@ -126,7 +126,7 @@ class EditOpportunityTable extends Component {
                 </Link>
               </td>
             </tr>
-            <tr>
+            <tr className={styles.verticalAlignTop}>
               <th scope="row">Closing date</th>
               <td>
                 {itemWasEdited(format(new Date(brief.dates.closing_time), 'YYYY-MM-DD'), edits.closingDate)
