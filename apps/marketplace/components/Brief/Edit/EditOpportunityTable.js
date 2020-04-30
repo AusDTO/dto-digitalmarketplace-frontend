@@ -30,10 +30,10 @@ class EditOpportunityTable extends Component {
     return (
       <React.Fragment>
         {(getAllDocuments(brief).length > 0 || getAllDocuments(edits).length > 0) && (
-          <ul>
+          <ul className={localStyles.editList}>
             {edits.documentsEdited &&
               getAllDocuments(edits).map(document => (
-                <li key={document}>
+                <li className={styles.marginBottom1} key={document}>
                   <a href={`${documentBaseURL}${document}`} target="_blank" rel="noopener noreferrer">
                     {document}
                   </a>
@@ -41,7 +41,7 @@ class EditOpportunityTable extends Component {
               ))}
             {!edits.documentsEdited &&
               getAllDocuments(brief).map(document => (
-                <li key={document}>
+                <li className={styles.marginBottom1} key={document}>
                   <a href={`${documentBaseURL}${document}`} target="_blank" rel="noopener noreferrer">
                     {document}
                   </a>
@@ -83,9 +83,11 @@ class EditOpportunityTable extends Component {
                 >
                   <th scope="row">Invited sellers</th>
                   <td>
-                    <ul>
+                    <ul className={localStyles.editList}>
                       {Object.values(brief.sellers).map(seller => (
-                        <li key={seller.name}>{seller.name}</li>
+                        <li className={styles.marginBottom1} key={seller.name}>
+                          {seller.name}
+                        </li>
                       ))}
                     </ul>
                   </td>
@@ -99,9 +101,11 @@ class EditOpportunityTable extends Component {
                   <tr className={`${styles.verticalAlignTop} ${localStyles.editSection}`}>
                     <th scope="row">Sellers to invite</th>
                     <td>
-                      <ul>
+                      <ul className={localStyles.editList}>
                         {sellersToInvite.map(code => (
-                          <li key={edits.sellers[code].name}>{edits.sellers[code].name}</li>
+                          <li className={styles.marginBottom1} key={edits.sellers[code].name}>
+                            {edits.sellers[code].name}
+                          </li>
                         ))}
                       </ul>
                     </td>

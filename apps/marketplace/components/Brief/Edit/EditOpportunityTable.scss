@@ -12,4 +12,12 @@
         border: none;
         padding: 0;
     }
+
+    .editList {
+        margin-top: 0;
+
+        .editListItem {
+            margin-top: 0.5rem;
+        }
+    }
 }
