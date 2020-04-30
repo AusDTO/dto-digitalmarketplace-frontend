@@ -49,7 +49,11 @@ export class DownloadReports extends Component {
   }
 
   render() {
-    const { isPartOfTeam, isTeamLead, teams } = this.props
+    const { isPartOfTeam, isTeamLead, mustJoinTeam, teams } = this.props
+
+    if (!isPartOfTeam && mustJoinTeam) {
+      return <Redirect to={`${rootPath}/team/join`} />
+    }
 
     if (!hasPermission(isPartOfTeam, isTeamLead, teams, 'download_reports')) {
       return <Redirect to={`${rootPath}/request-access/download_reports`} />
@@ -177,7 +181,8 @@ const mapStateToProps = state => ({
   ...formProps(state, model),
   teams: state.app.teams,
   isTeamLead: state.app.isTeamLead,
-  isPartOfTeam: state.app.isPartOfTeam
+  isPartOfTeam: state.app.isPartOfTeam,
+  mustJoinTeam: state.app.mustJoinTeam
 })
 
 const mapDispatchToProps = dispatch => ({

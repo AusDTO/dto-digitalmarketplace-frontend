@@ -22,7 +22,11 @@ export class BriefDownloadResponses extends Component {
   }
 
   render() {
-    const { brief, briefResponses, briefResponseDownloaded, isPartOfTeam, isTeamLead, teams } = this.props
+    const { brief, briefResponses, briefResponseDownloaded, isPartOfTeam, isTeamLead, mustJoinTeam, teams } = this.props
+
+    if (!isPartOfTeam && mustJoinTeam) {
+      return <Redirect to={`${rootPath}/team/join`} />
+    }
 
     if (!hasPermission(isPartOfTeam, isTeamLead, teams, 'download_responses')) {
       return <Redirect to={`${rootPath}/request-access/download_responses`} />
@@ -117,7 +121,8 @@ BriefDownloadResponses.propTypes = {
 const mapStateToProps = state => ({
   teams: state.app.teams,
   isTeamLead: state.app.isTeamLead,
-  isPartOfTeam: state.app.isPartOfTeam
+  isPartOfTeam: state.app.isPartOfTeam,
+  mustJoinTeam: state.app.mustJoinTeam
 })
 
 export default connect(mapStateToProps)(BriefDownloadResponses)

@@ -6,6 +6,8 @@ import { Provider } from 'react-redux'
 import configureStore from '../store'
 import LoginPage from './LoginPage'
 
+jest.mock('shared/Icon/_getIcons')
+
 describe('Test suite for LoginPage component', () => {
   const state = {}
 

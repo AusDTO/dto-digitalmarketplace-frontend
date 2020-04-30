@@ -90,7 +90,7 @@ export class BuyerTrainingFlowPage extends Component {
   }
 
   render() {
-    const { isPartOfTeam, isTeamLead, teams } = this.props
+    const { isPartOfTeam, isTeamLead, mustJoinTeam, teams } = this.props
     if (this.props.errorMessage) {
       let hasFocused = false
       const setFocus = e => {
@@ -114,6 +114,10 @@ export class BuyerTrainingFlowPage extends Component {
 
     if (this.state.loading) {
       return <LoadingIndicatorFullPage />
+    }
+
+    if (!isPartOfTeam && mustJoinTeam) {
+      return <Redirect to={`${rootPath}/team/join`} />
     }
 
     if (
@@ -151,7 +155,8 @@ const mapStateToProps = state => ({
   emailAddress: state.app.emailAddress,
   teams: state.app.teams,
   isTeamLead: state.app.isTeamLead,
-  isPartOfTeam: state.app.isPartOfTeam
+  isPartOfTeam: state.app.isPartOfTeam,
+  mustJoinTeam: state.app.mustJoinTeam
 })
 
 const mapDispatchToProps = dispatch => ({
