@@ -10,6 +10,12 @@ import styles from '../../../main.scss'
 
 const EditedOpportunity = props => {
   const { app, brief, edits, onFeedbackSubmit, setFocus } = props
+  const singleSellerInvited = Object.keys(edits.sellers).length === 1
+  let seller = ''
+
+  if (edits.onlySellersEdited && singleSellerInvited) {
+    seller = Object.values(edits.sellers)[0].name
+  }
 
   return (
     <React.Fragment>
@@ -17,7 +23,9 @@ const EditedOpportunity = props => {
         <AUpageAlert as="success" setFocus={setFocus}>
           <h1 className="au-display-lg">
             <strong>
-              You have invited new seller/s to submit responses to {brief.title} ({brief.id})
+              {singleSellerInvited
+                ? `You have invited ${seller} to submit a response to ${brief.title} (${brief.id})`
+                : `You have invited additional sellers to submit responses to ${brief.title} (${brief.id})`}
             </strong>
           </h1>
           <div className={styles.marginTop2}>
