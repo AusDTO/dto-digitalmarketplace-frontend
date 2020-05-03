@@ -131,6 +131,18 @@ class EditOpportunitySellers extends Component {
     const { model } = this.props
     const { daysUntilOpportunityCloses, showClosingDateWarning } = this.state
 
+    const emptyResultsMessage = (
+      <li>
+        Seller cannot be found in this category.
+        <a className={`${styles.hideMobile} ${styles.floatRight}`} href="/search/sellers" target="_blank">
+          Search all sellers
+        </a>
+        <a className={`${styles.hideDesktop} ${styles.inlineBlock}`} href="/search/sellers" target="_blank">
+          Search all sellers
+        </a>
+      </li>
+    )
+
     if (this.state.redirectToEditsTable) {
       return <Redirect to="/" />
     }
@@ -154,7 +166,7 @@ class EditOpportunitySellers extends Component {
         </div>
         <div className={`row ${styles.marginTop1}`}>
           <ItemSelect
-            emptyResultsMessage={<li>Seller cannot be found in this category.</li>}
+            emptyResultsMessage={emptyResultsMessage}
             handleSearchChange={this.handleSellerSearchChange}
             htmlFor="sellers"
             id="sellers"
