@@ -29,7 +29,7 @@ const EditedOpportunity = props => {
             </strong>
           </h1>
           <div className={styles.marginTop2}>
-            <p>You can view all invited sellers by selecting the opportunity on your dashboard.</p>
+            <p>You can view invited sellers by selecting the opportunity on your dashboard.</p>
             <div className={styles.marginTop1}>
               <AUbutton link={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>View opportunity</AUbutton>
             </div>
