@@ -116,6 +116,7 @@ const Opportunity = props => {
     isOpenToAll,
     isOpenToCategory,
     isBriefOwner,
+    location,
     loggedIn,
     hasResponded,
     isBuyer,
@@ -135,6 +136,7 @@ const Opportunity = props => {
     lastEditedAt,
     onlySellersEdited,
     teams,
+    mustJoinTeam,
     userType
   } = props
 
@@ -143,6 +145,9 @@ const Opportunity = props => {
   const originalClosedAt = brief.originalClosedAt ? brief.originalClosedAt : null
 
   if (brief.status === 'draft') {
+    if (!isPartOfTeam && mustJoinTeam) {
+      return <Redirect to={`${rootPath}/team/join`} />
+    }
     if (
       !(
         hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') ||
@@ -319,9 +324,9 @@ const Opportunity = props => {
                 <strong>Location of work</strong>
               </div>
               <div className="col-xs-12 col-sm-8">
-                {brief.location.map(location => (
-                  <span key={location}>
-                    {location}
+                {brief.location.map(state => (
+                  <span key={state}>
+                    {state}
                     <br />
                   </span>
                 ))}
@@ -664,6 +669,7 @@ const Opportunity = props => {
               hasSignedCurrentAgreement={hasSignedCurrentAgreement}
               supplierCode={supplierCode}
               originalClosedAt={originalClosedAt}
+              location={location}
             />
           )}
           {brief.status !== 'withdrawn' && brief.lotSlug !== 'specialist' && (
@@ -702,6 +708,7 @@ const Opportunity = props => {
               hasSignedCurrentAgreement={hasSignedCurrentAgreement}
               supplierCode={supplierCode}
               originalClosedAt={originalClosedAt}
+              location={location}
             />
           )}
         </div>
@@ -739,6 +746,7 @@ Opportunity.defaultProps = {
   isAwaitingDomainAssessment: false,
   hasBeenAssessedForBrief: false,
   hasResponded: false,
+  location: {},
   loggedIn: false,
   hasSupplierErrors: false,
   hasSignedCurrentAgreement: false,
@@ -819,6 +827,7 @@ Opportunity.propTypes = {
   isAwaitingDomainAssessment: PropTypes.bool,
   hasBeenAssessedForBrief: PropTypes.bool,
   hasResponded: PropTypes.bool,
+  location: PropTypes.object,
   loggedIn: PropTypes.bool,
   hasSupplierErrors: PropTypes.bool,
   hasSignedCurrentAgreement: PropTypes.bool,
@@ -829,7 +838,8 @@ Opportunity.propTypes = {
 const mapStateToProps = state => ({
   teams: state.app.teams,
   isTeamLead: state.app.isTeamLead,
-  isPartOfTeam: state.app.isPartOfTeam
+  isPartOfTeam: state.app.isPartOfTeam,
+  mustJoinTeam: state.app.mustJoinTeam
 })
 
 export default connect(mapStateToProps)(Opportunity)
