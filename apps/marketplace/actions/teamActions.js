@@ -116,7 +116,7 @@ export const handleTeamActionSuccess = (data, type) => ({ data, type })
 
 export const loadBuyerTeams = (endpoint = '/teams') => dispatch => {
   dispatch(sendingRequest(true))
-  dmapi({ url: endpoint }).then(response => {
+  return dmapi({ url: endpoint }).then(response => {
     if (!response || response.error) {
       dispatch(setErrorMessage(GENERAL_ERROR))
     } else {
@@ -124,6 +124,7 @@ export const loadBuyerTeams = (endpoint = '/teams') => dispatch => {
       dispatch(handleTeamActionSuccess(response.data, TEAMS_OVERVIEW_SUCCESS))
     }
     dispatch(sendingRequest(false))
+    return response
   })
 }
 
@@ -152,5 +153,46 @@ export const requestAccess = permission => (dispatch, getState) =>
     },
     data: JSON.stringify({
       permission
+    })
+  })
+
+export const requestToJoin = teamId => (dispatch, getState) =>
+  dmapi({
+    url: `/team/${teamId}/request-join`,
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    }
+  })
+
+export const getJoinRequests = () => () =>
+  dmapi({
+    url: '/team/join-requests',
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+
+export const getJoinRequest = (teamId, token) => () =>
+  dmapi({
+    url: `/team/join-request/${teamId}/${token}`,
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+
+export const declineRequestToJoin = (teamId, token, reason) => (dispatch, getState) =>
+  dmapi({
+    url: `/team/decline-join-request/${teamId}/${token}`,
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getState().app.csrfToken,
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify({
+      reason
     })
   })

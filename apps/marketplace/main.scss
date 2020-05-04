@@ -211,6 +211,10 @@
   }
 }
 
+.inlineBlock {
+  display: inline-block;
+}
+
 .rightAlignedBlock {
   display: block;
   text-align: right;
@@ -222,6 +226,10 @@
 
 .red, .red a {
   color: #FF0000;
+}
+
+.green, .green a {
+  color: #00AC78;
 }
 
 @media screen and (max-width: 767px) {
@@ -261,6 +269,10 @@
     & div {
       display: inline-block;
     }
+  }
+
+  .textVerticalAlignTop {
+    vertical-align: top;
   }
 
   .textAlignLeft {
