@@ -136,6 +136,7 @@ const Opportunity = props => {
     lastEditedAt,
     onlySellersEdited,
     teams,
+    mustJoinTeam,
     userType
   } = props
 
@@ -144,6 +145,9 @@ const Opportunity = props => {
   const originalClosedAt = brief.originalClosedAt ? brief.originalClosedAt : null
 
   if (brief.status === 'draft') {
+    if (!isPartOfTeam && mustJoinTeam) {
+      return <Redirect to={`${rootPath}/team/join`} />
+    }
     if (
       !(
         hasPermission(isPartOfTeam, isTeamLead, teams, 'create_drafts') ||
@@ -834,7 +838,8 @@ Opportunity.propTypes = {
 const mapStateToProps = state => ({
   teams: state.app.teams,
   isTeamLead: state.app.isTeamLead,
-  isPartOfTeam: state.app.isPartOfTeam
+  isPartOfTeam: state.app.isPartOfTeam,
+  mustJoinTeam: state.app.mustJoinTeam
 })
 
 export default connect(mapStateToProps)(Opportunity)
