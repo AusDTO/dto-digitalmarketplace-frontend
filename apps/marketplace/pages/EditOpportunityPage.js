@@ -4,7 +4,7 @@ import { actions } from 'react-redux-form'
 import { BrowserRouter, Redirect, Route, Switch, withRouter } from 'react-router-dom'
 
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { applyEditsToOpportunity, loadBrief } from 'marketplace/actions/briefActions'
+import { applyEditsToOpportunity, loadOpportunityToEdit } from 'marketplace/actions/briefActions'
 import { setErrorMessage } from 'marketplace/actions/appActions'
 import { rootPath } from 'marketplace/routes'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
@@ -176,6 +176,7 @@ class EditOpportunityPage extends Component {
 const mapStateToProps = state => ({
   app: state.app,
   brief: state.brief.brief,
+  domains: state.brief.domains,
   edits: state.editOpportunityForm,
   errorMessage: state.app.errorMessage,
   isOpenToAll: state.brief.isOpenToAll,
@@ -186,7 +187,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   applyEdits: (briefId, data) => dispatch(applyEditsToOpportunity(briefId, data)),
-  loadData: briefId => dispatch(loadBrief(briefId)),
+  loadData: briefId => dispatch(loadOpportunityToEdit(briefId)),
   resetForm: formModel => dispatch(actions.reset(formModel)),
   setError: message => dispatch(setErrorMessage(message))
 })
