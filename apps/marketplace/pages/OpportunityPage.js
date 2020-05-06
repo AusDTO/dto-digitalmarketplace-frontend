@@ -113,6 +113,7 @@ class OpportunityPage extends Component {
           isInvited={this.props.isInvited}
           hasSignedCurrentAgreement={this.props.hasSignedCurrentAgreement}
           lastEditedAt={this.props.lastEditedAt}
+          location={this.props.location}
           onlySellersEdited={this.props.onlySellersEdited}
           supplierCode={this.props.supplierCode}
           userType={this.props.userType}

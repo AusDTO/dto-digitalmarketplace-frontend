@@ -116,6 +116,7 @@ const Opportunity = props => {
     isOpenToAll,
     isOpenToCategory,
     isBriefOwner,
+    location,
     loggedIn,
     hasResponded,
     isBuyer,
@@ -323,9 +324,9 @@ const Opportunity = props => {
                 <strong>Location of work</strong>
               </div>
               <div className="col-xs-12 col-sm-8">
-                {brief.location.map(location => (
-                  <span key={location}>
-                    {location}
+                {brief.location.map(state => (
+                  <span key={state}>
+                    {state}
                     <br />
                   </span>
                 ))}
@@ -668,6 +669,7 @@ const Opportunity = props => {
               hasSignedCurrentAgreement={hasSignedCurrentAgreement}
               supplierCode={supplierCode}
               originalClosedAt={originalClosedAt}
+              location={location}
             />
           )}
           {brief.status !== 'withdrawn' && brief.lotSlug !== 'specialist' && (
@@ -706,6 +708,7 @@ const Opportunity = props => {
               hasSignedCurrentAgreement={hasSignedCurrentAgreement}
               supplierCode={supplierCode}
               originalClosedAt={originalClosedAt}
+              location={location}
             />
           )}
         </div>
@@ -743,6 +746,7 @@ Opportunity.defaultProps = {
   isAwaitingDomainAssessment: false,
   hasBeenAssessedForBrief: false,
   hasResponded: false,
+  location: {},
   loggedIn: false,
   hasSupplierErrors: false,
   hasSignedCurrentAgreement: false,
@@ -823,6 +827,7 @@ Opportunity.propTypes = {
   isAwaitingDomainAssessment: PropTypes.bool,
   hasBeenAssessedForBrief: PropTypes.bool,
   hasResponded: PropTypes.bool,
+  location: PropTypes.object,
   loggedIn: PropTypes.bool,
   hasSupplierErrors: PropTypes.bool,
   hasSignedCurrentAgreement: PropTypes.bool,
