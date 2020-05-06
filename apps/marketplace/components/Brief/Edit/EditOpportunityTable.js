@@ -63,9 +63,11 @@ class EditOpportunityTable extends Component {
 
     return (
       <React.Fragment>
-        <table className={`col-xs-12 ${styles.hideMobile} ${styles.defaultStyle} ${styles.textAlignLeft}`}>
+        <table
+          className={`col-xs-12 ${styles.hideMobile} ${styles.defaultStyle} ${styles.textAlignLeft} ${styles.marginTop1}`}
+        >
           <tbody>
-            <tr className={`${styles.verticalAlignTop} ${localStyles.editSection}`}>
+            <tr className={`${styles.borderTop1} ${styles.verticalAlignTop} ${localStyles.editSection}`}>
               <th scope="row">Opportunity title</th>
               <td>{itemWasEdited(brief.title, edits.title) ? edits.title : brief.title}</td>
               <td>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { isBefore, parse } from 'date-fns'
 import ClosedDate from 'shared/ClosedDate'
@@ -30,6 +31,7 @@ const OpportunitySpecialistInfoCard = props => {
     isOpen,
     isOpenToAll,
     isRecruiterOnly,
+    location,
     loggedIn,
     numberOfSuppliers,
     originalClosedAt,
@@ -178,9 +180,15 @@ const OpportunitySpecialistInfoCard = props => {
             </a>
           )}
           {isOpen && isBuyer && isBriefOwner && (
-            <a href={`${rootPath}/brief/${briefId}/edit`} className="au-btn au-btn--block">
+            <Link
+              className="au-btn au-btn--block"
+              to={{
+                pathname: `${rootPath}/brief/${briefId}/edit`,
+                state: { from: location.pathname }
+              }}
+            >
               Edit your opportunity
-            </a>
+            </Link>
           )}
           {isOpen && loggedIn && isApplicant && (
             <span>
@@ -326,6 +334,7 @@ OpportunitySpecialistInfoCard.defaultProps = {
   draftEvidenceId: undefined,
   rejectedEvidenceId: undefined,
   isOpenToAll: false,
+  location: {},
   loggedIn: false,
   hasResponded: false,
   isOpen: false,
@@ -358,6 +367,7 @@ OpportunitySpecialistInfoCard.propTypes = {
   draftEvidenceId: PropTypes.number,
   rejectedEvidenceId: PropTypes.number,
   isOpenToAll: PropTypes.bool,
+  location: PropTypes.object,
   loggedIn: PropTypes.bool,
   hasResponded: PropTypes.bool,
   isOpen: PropTypes.bool,

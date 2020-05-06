@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { isBefore, parse } from 'date-fns'
 import ClosedDate from 'shared/ClosedDate'
@@ -31,6 +32,7 @@ const OpportunityInfoCard = props => {
     isOpenToAll,
     isOpenToCategory,
     isRecruiterOnly,
+    location,
     loggedIn,
     originalClosedAt,
     rejectedEvidenceId,
@@ -130,9 +132,15 @@ const OpportunityInfoCard = props => {
             </a>
           )}
           {isOpen && isBuyer && isBriefOwner && (
-            <a href={`${rootPath}/brief/${briefId}/edit`} className="au-btn au-btn--block">
+            <Link
+              className="au-btn au-btn--block"
+              to={{
+                pathname: `${rootPath}/brief/${briefId}/edit`,
+                state: { from: location.pathname }
+              }}
+            >
               Edit your opportunity
-            </a>
+            </Link>
           )}
           {isOpen && loggedIn && isApprovedSeller && !hasSignedCurrentAgreement && !hasResponded && (
             <span>
@@ -345,6 +353,7 @@ OpportunityInfoCard.defaultProps = {
   rejectedEvidenceId: undefined,
   isOpenToCategory: false,
   isOpenToAll: false,
+  location: {},
   loggedIn: false,
   hasResponded: false,
   isOpen: false,
@@ -374,6 +383,7 @@ OpportunityInfoCard.propTypes = {
   rejectedEvidenceId: PropTypes.number,
   isOpenToCategory: PropTypes.bool,
   isOpenToAll: PropTypes.bool,
+  location: PropTypes.object,
   loggedIn: PropTypes.bool,
   hasResponded: PropTypes.bool,
   isOpen: PropTypes.bool,

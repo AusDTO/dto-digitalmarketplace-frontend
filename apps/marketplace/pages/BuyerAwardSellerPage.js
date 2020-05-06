@@ -58,7 +58,7 @@ export class BuyerAwardSellerPage extends Component {
 
   render() {
     const { brief, suppliers, workOrderCreated, error, loading } = this.state
-    const { isPartOfTeam, isTeamLead, teams } = this.props
+    const { isPartOfTeam, isTeamLead, mustJoinTeam, teams } = this.props
 
     let hasFocused = false
     const setFocus = e => {
@@ -94,6 +94,10 @@ export class BuyerAwardSellerPage extends Component {
       )
     }
 
+    if (!isPartOfTeam && mustJoinTeam) {
+      return <Redirect to={`${rootPath}/team/join`} />
+    }
+
     if (!hasPermission(isPartOfTeam, isTeamLead, teams, 'create_work_orders')) {
       return <Redirect to={`${rootPath}/request-access/create_work_orders`} />
     }
@@ -125,7 +129,8 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   teams: state.app.teams,
   isTeamLead: state.app.isTeamLead,
-  isPartOfTeam: state.app.isPartOfTeam
+  isPartOfTeam: state.app.isPartOfTeam,
+  mustJoinTeam: state.app.mustJoinTeam
 })
 
 export default withRouter(
