@@ -7,7 +7,12 @@ import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import format from 'date-fns/format'
 import { rootPath } from 'marketplace/routes'
 import NotVisible from 'marketplace/components/Icons/NotVisible/NotVisible'
-import { getBriefLastQuestionDate, getClosingTime, hasPermission } from 'marketplace/components/helpers'
+import {
+  getBriefCategory,
+  getBriefLastQuestionDate,
+  getClosingTime,
+  hasPermission
+} from 'marketplace/components/helpers'
 import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import EvaluationCriteria from './EvaluationCriteria'
 import QuestionAnswer from './QuestionAnswer'
@@ -63,11 +68,6 @@ const getTrimmedFilename = fileName => {
     newFileName = `${fileName.substring(0, 14)}...${fileName.substring(fileName.length - 15)}`
   }
   return newFileName
-}
-
-const getBriefCategory = (domains, briefCategory) => {
-  const category = domains.find(domain => domain.id === briefCategory)
-  return category ? category.name : null
 }
 
 const getStartDate = brief => {
