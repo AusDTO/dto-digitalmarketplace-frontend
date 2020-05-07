@@ -15,7 +15,7 @@ import EditOpportunitySummary from 'marketplace/components/Brief/Edit/EditOpport
 import EditOpportunityTitle from 'marketplace/components/Brief/Edit/EditOpportunityTitle'
 import EditOpportunityDocuments from 'marketplace/components/Brief/Edit/EditOpportunityDocuments'
 import { hasEdits } from 'marketplace/components/Brief/Edit/helpers'
-import { hasPermission } from 'marketplace/components/helpers'
+import { getBriefCategory, hasPermission } from 'marketplace/components/helpers'
 
 const model = 'editOpportunityForm'
 
@@ -97,7 +97,8 @@ class EditOpportunityPage extends Component {
   }
 
   render = () => {
-    const { brief, edits, errorMessage, isOpenToAll, isPartOfTeam, isTeamLead, location, teams } = this.props
+    const { brief, domains, edits, errorMessage, isOpenToAll, isPartOfTeam, isTeamLead, location, teams } = this.props
+    const category = getBriefCategory(domains, brief.sellerCategory)
 
     if (!hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities')) {
       return <Redirect to={`${rootPath}/request-access/publish_opportunities`} />
@@ -149,7 +150,10 @@ class EditOpportunityPage extends Component {
         <div className="col-xs-12">
           <Switch>
             <Route path="/title" render={() => <EditOpportunityTitle brief={brief} model={model} />} />
-            <Route path="/sellers" render={() => <EditOpportunitySellers brief={brief} model={model} />} />
+            <Route
+              path="/sellers"
+              render={() => <EditOpportunitySellers brief={brief} category={category} model={model} />}
+            />
             <Route path="/summary" render={() => <EditOpportunitySummary brief={brief} model={model} />} />
             <Route path="/documents" render={() => <EditOpportunityDocuments brief={brief} model={model} />} />
             <Route path="/closing-date" render={() => <EditOpportunityClosingDate brief={brief} model={model} />} />
