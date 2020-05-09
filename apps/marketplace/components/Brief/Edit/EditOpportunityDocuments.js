@@ -29,6 +29,8 @@ export const isValid = (brief, edits) => hasRequirementsDoc(brief, edits) && has
 class EditOpportunityDocuments extends Component {
   constructor(props) {
     super(props)
+    window.scrollTo(0, 0)
+
     this.state = {
       daysOpportunityOpenFor: differenceInCalendarDays(
         format(new Date(props.brief.dates.closing_time), 'YYYY-MM-DD'),

@@ -211,6 +211,10 @@
   }
 }
 
+.inlineBlock {
+  display: inline-block;
+}
+
 .rightAlignedBlock {
   display: block;
   text-align: right;
@@ -222,6 +226,10 @@
 
 .red, .red a {
   color: #FF0000;
+}
+
+.green, .green a {
+  color: #00AC78;
 }
 
 @media screen and (max-width: 767px) {
@@ -263,6 +271,10 @@
     }
   }
 
+  .textVerticalAlignTop {
+    vertical-align: top;
+  }
+
   .textAlignLeft {
     text-align: left;
   }
@@ -301,6 +313,10 @@ table.defaultStyle {
 
     &.borderBottom0 {
       border-bottom: none;
+    }
+
+    &.borderTop1 {
+      border-top: solid 1px #bebebe;
     }
   }
 

@@ -235,7 +235,8 @@ export default combineReducers({
     },
     signupForm: {
       name: '',
-      email_address: ''
+      email_address: '',
+      abn: ''
     },
     createUserForm: {
       name: '',

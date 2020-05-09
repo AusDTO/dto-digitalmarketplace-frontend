@@ -20,6 +20,8 @@ import styles from '../../../main.scss'
 class EditOpportunity extends Component {
   constructor(props) {
     super(props)
+    window.scrollTo(0, 0)
+
     this.state = {
       hasErrors: false,
       showNoEditsAlert: false,
@@ -81,6 +83,11 @@ class EditOpportunity extends Component {
     const { hasErrors, showNoEditsAlert, showDocumentsErrorAlert } = this.state
     const checkBoxValidator = this.validateEditProcessCheckBox
     const showCheckBox = this.showCheckBox()
+
+    const returnPath =
+      location.state && Object.prototype.hasOwnProperty.call(location.state, 'from') && location.state.from
+        ? location.state.from
+        : `${rootPath}/brief/${brief.id}/overview/${brief.lot}`
 
     return (
       <div className="col-xs-12">
@@ -163,7 +170,7 @@ class EditOpportunity extends Component {
             <AUbutton onClick={this.handleSubmitClick} type="submit">
               Submit changes
             </AUbutton>
-            <AUbutton as="tertiary" link={`${rootPath}/brief/${brief.id}/overview/${brief.lot}`}>
+            <AUbutton as="tertiary" link={returnPath}>
               Cancel all updates
             </AUbutton>
           </div>

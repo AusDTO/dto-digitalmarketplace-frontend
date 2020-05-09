@@ -42,8 +42,8 @@ class OpportunityHistoryPage extends Component {
   }
 
   render = () => {
-    const { brief, edits } = this.props
-    const { dataLoaded, errorMessage, loading } = this.state
+    const { brief, edits, errorMessage } = this.props
+    const { dataLoaded, loading } = this.state
 
     let hasFocused = false
     const setFocus = e => {
@@ -72,7 +72,7 @@ class OpportunityHistoryPage extends Component {
 
     if (dataLoaded) {
       return (
-        <BrowserRouter basename={`${rootPath}/${brief.frameworkSlug}/opportunities/${brief.id}/history`}>
+        <BrowserRouter basename={`${rootPath}/${brief.framework}/opportunities/${brief.id}/history`}>
           <div className="col-xs-12">
             <Switch>
               <Route

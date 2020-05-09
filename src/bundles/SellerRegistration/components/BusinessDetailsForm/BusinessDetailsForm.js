@@ -5,7 +5,7 @@ import { Form, actions } from 'react-redux-form';
 import isEmpty from 'lodash/isEmpty';
 import isNumber from 'lodash/isNumber';
 
-import {required, limitNumbers, validLinks, validABN, notPrivateLinkedIn} from '../../../../validators';
+import {required, limitNumbers, validLinks, notPrivateLinkedIn} from '../../../../validators';
 
 import Layout from '../../../../shared/Layout';
 
@@ -51,6 +51,7 @@ class BusinessDetailsForm extends BaseForm {
             model,
             returnLink,
             supplierCode,
+            abn,
             form,
             buttonText,
             children,
@@ -120,23 +121,13 @@ class BusinessDetailsForm extends BaseForm {
                           }}
                         />
 
-                        <Textfield
+                        {!abn && <Textfield
                           model={`${model}.abn`}
                           name="abn"
                           id="abn"
                           htmlFor="abn"
                           label="ABN"
-                          description={isNumber(supplierCode) ? "You need an Australian Business Number to do business in Australia." :
-                              (<span>You need an Australian Business Number to do business in Australia.&nbsp;
-                              <a href='https://abr.gov.au/For-Business,-Super-funds---Charities/Applying-for-an-ABN/' target="_blank" rel="external noopener noreferrer">Apply for an ABN here.</a>
-                          </span>)}
-                          readOnly={isNumber(supplierCode)}
-                          disabled={isNumber(supplierCode)}
-                          messages={{
-                              validABN: 'ABN is required and must match a valid ABN as listed on the Australian Business Register'
-                          }}
-                          validators={{validABN}}
-                        />
+                        />}
 
                         <Textarea
                             model={`${model}.summary`}
@@ -322,6 +313,7 @@ BusinessDetailsForm.defaultProps = {
 const mapStateToProps = (state) => {
     return {
         supplierCode: (state.application && state.application.supplier_code),
+        abn: (state.application && state.application.abn),
         returnLink: state.businessDetailsForm && state.businessDetailsForm.returnLink,
         ...formProps(state, 'businessDetailsForm'),
         applicationErrors: state.application_errors

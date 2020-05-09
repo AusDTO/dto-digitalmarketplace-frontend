@@ -10,6 +10,7 @@ import localStyles from './SummaryComparison.scss'
 import styles from '../../main.scss'
 
 const SummaryComparison = props => {
+  window.scrollTo(0, 0)
   const { brief, previous, updated } = props
   const previousSummaryIsLonger = previous.length >= updated.length
 

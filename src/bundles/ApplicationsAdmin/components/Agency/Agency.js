@@ -43,6 +43,11 @@ class Agency extends React.Component {
     } else {
       data.whitelisted = false
     }
+    if (data.must_join_team === "on") {
+      data.must_join_team = true
+    } else {
+      data.must_join_team = false
+    }
     data.domains = data.domains.split('\n')
     // clean out any trailing white space and remove any empty rows
     data.domains = data.domains.map(x => x.trim())
@@ -173,6 +178,12 @@ class Agency extends React.Component {
             id="whitelisted"
             name="whitelisted"
             defaultChecked={agency.whitelisted}
+          />
+          <AUcheckbox
+            label="Users must join team"
+            id="must_join_team"
+            name="must_join_team"
+            defaultChecked={agency.must_join_team}
           />
           {loading ?
             <p>Loading</p> :
