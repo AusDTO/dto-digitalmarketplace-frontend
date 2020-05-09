@@ -16,7 +16,14 @@ const SellerAssessmentView = props => (
     {props.evidence.status === 'assessed' && (
       <p>
         You cannot edit your request for approved categories. If you want to change your rate, please{' '}
-        <a href="/contact-us">contact our support team.</a>
+        <a
+          href="https://marketplace1.zendesk.com/hc/en-gb/requests/new"
+          rel="noopener noreferrer"
+          target="_blank"
+          className={styles.marginRight1}
+        >
+          contact our support team.
+        </a>
       </p>
     )}
 
