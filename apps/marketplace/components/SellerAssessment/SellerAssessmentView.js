@@ -24,7 +24,15 @@ const SellerAssessmentView = props => (
       <p>
         You cannot edit your request once you&apos;ve submitted an request for assessment.
         <br />
-        If you have an issue, <a href="/contact-us">contact our support team.</a>
+        If you have an issue,{' '}
+        <a
+          href="https://marketplace1.zendesk.com/hc/en-gb/requests/new"
+          rel="noopener noreferrer"
+          target="_blank"
+          className={styles.marginRight1}
+        >
+          contact our support team.
+        </a>
       </p>
     )}
 
