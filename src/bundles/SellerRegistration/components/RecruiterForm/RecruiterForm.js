@@ -164,6 +164,12 @@ class RecruiterForm extends BaseForm {
                                 </legend>
                                 <p>Recruiters provide candidates for digital specialist roles, but are not directly responsible for their work, performance or deliverables.
                                     Examples include temporary and contract recruitment.</p>
+                                {recruiter === 'both' && (
+                                    <PageAlert as="warning" styleName="recruiterStyles.pageAlert">
+                                        <h2 className="au-display-lg">Assessment process</h2>
+                                        <p styleName="recruiterStyles.pageAlertContent">Businesses that do both recruitment and consultancy must submit evidence and be approved for relevant categories before they can apply for opportunities.</p>
+                                    </PageAlert>
+                                )}
                                 {recruiter === 'no' && (
                                     <PageAlert as="warning" styleName="recruiterStyles.pageAlert">
                                         <h2 className="au-display-lg">Assessment process</h2>
