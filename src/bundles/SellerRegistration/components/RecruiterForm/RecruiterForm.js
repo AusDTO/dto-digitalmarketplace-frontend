@@ -18,7 +18,11 @@ import { mapAustraliaState } from '../../../../helpers'
 import { validDate } from '../../../../validators';
 
 import ValidationSummary from '../ValidationSummary';
-import '../SellerRegistration.css';
+
+import PageAlert from '@gov.au/page-alerts';
+
+import recruiterStyles from './RecruiterForm.css';
+import styles from '../SellerRegistration.css';
 
 const states = ['qld', 'sa', 'vic']
 
@@ -117,6 +121,8 @@ class RecruiterForm extends BaseForm {
 
     render() {
         const {action, csrf_token, model, form, children, onSubmit, nextRoute, submitClicked, applicationErrors, type} = this.props;
+        const { recruiter } = this.state
+
         let hasFocused = false
         const setFocus = e => {
           if (!hasFocused) {
@@ -151,13 +157,19 @@ class RecruiterForm extends BaseForm {
                         {csrf_token && (
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
                         )}
-                        <div styleName="content">
+                        <div styleName="styles.content">
                             <fieldset>
                                 <legend>
                                     <h1 className="au-display-xl" tabIndex="-1">Are you a recruiter?</h1>
                                 </legend>
                                 <p>Recruiters provide candidates for digital specialist roles, but are not directly responsible for their work, performance or deliverables.
                                     Examples include temporary and contract recruitment.</p>
+                                {recruiter === 'no' && (
+                                    <PageAlert as="warning" styleName="recruiterStyles.pageAlert">
+                                        <h2 className="au-display-lg">Assessment process</h2>
+                                        <p styleName="recruiterStyles.pageAlertContent">Businesses that provide services on a consultancy basis must submit evidence and be approved for relevant categories before they can apply for opportunities.</p>
+                                    </PageAlert>
+                                )}
                                 <Control.radio
                                     model={`${model}.recruiter`}
                                     onClick={this.onChangeState.bind(this)}
