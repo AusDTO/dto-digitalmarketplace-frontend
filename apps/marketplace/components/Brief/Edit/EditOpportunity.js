@@ -109,6 +109,11 @@ class EditOpportunity extends Component {
     const checkBoxValidator = this.validateEditProcessCheckBox
     const showCheckBox = this.showCheckBox()
 
+    const returnPath =
+      location.state && Object.prototype.hasOwnProperty.call(location.state, 'from') && location.state.from
+        ? location.state.from
+        : `${rootPath}/brief/${brief.id}/overview/${brief.lot}`
+
     return (
       <div className="col-xs-12">
         <Form
@@ -200,7 +205,7 @@ class EditOpportunity extends Component {
             <AUbutton onClick={this.handleSubmitClick} type="submit">
               Submit changes
             </AUbutton>
-            <AUbutton as="tertiary" link={`${rootPath}/brief/${brief.id}/overview/${brief.lot}`}>
+            <AUbutton as="tertiary" link={returnPath}>
               Cancel all updates
             </AUbutton>
           </div>
