@@ -21,6 +21,29 @@ class Textarea extends Component {
       wordsLeft: limit - words,
       wordsToGo: minimum - words
     }
+
+    this.countWords = this.countWords.bind(this)
+    this.limitText = this.limitText.bind(this)
+    this.toGoText = this.toGoText.bind(this)
+    this.updateWordCounter = this.updateWordCounter.bind(this)
+  }
+
+  componentDidUpdate = prevProps => {
+    const { value } = this.props
+
+    if (value !== prevProps.value) {
+      this.updateWordCounter(value)
+    }
+  }
+
+  updateWordCounter = content => {
+    const { limit, minimum } = this.props
+    const words = this.countWords(content)
+
+    this.setState({
+      wordsLeft: limit - words,
+      wordsToGo: minimum - words
+    })
   }
 
   countWords(s: string) {
@@ -30,12 +53,9 @@ class Textarea extends Component {
 
   onChange(e) {
     const content = e.target.value
-    const words = this.countWords(content)
-    const { limit, minimum, onChange, onCustomChange } = this.props
-    this.setState({
-      wordsLeft: limit - words,
-      wordsToGo: minimum - words
-    })
+    const { onChange, onCustomChange } = this.props
+
+    this.updateWordCounter(content)
     onChange(content)
     onCustomChange(content)
   }
