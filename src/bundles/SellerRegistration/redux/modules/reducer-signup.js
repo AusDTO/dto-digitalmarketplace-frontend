@@ -115,6 +115,7 @@ export default combineReducers({
     recruiterForm: {
       recruiter: '',
       labourHire: {},
+      understandsAssessmentProcess: false
     },
     candidatesForm: {
       recruiter_info: {},

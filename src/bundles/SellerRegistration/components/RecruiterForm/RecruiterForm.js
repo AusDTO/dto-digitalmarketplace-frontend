@@ -15,7 +15,7 @@ import StatefulError from '../../../../shared/form/StatefulError';
 import StepNav       from '../StepNav';
 import { mapAustraliaState } from '../../../../helpers'
 
-import { validDate } from '../../../../validators';
+import { required, validDate } from '../../../../validators';
 
 import ValidationSummary from '../ValidationSummary';
 
@@ -121,7 +121,7 @@ class RecruiterForm extends BaseForm {
 
     render() {
         const {action, csrf_token, model, form, children, onSubmit, nextRoute, submitClicked, applicationErrors, type} = this.props;
-        const { recruiter } = this.state
+        const { recruiter } = this.props[model]
 
         let hasFocused = false
         const setFocus = e => {
@@ -248,6 +248,26 @@ class RecruiterForm extends BaseForm {
                                 </fieldset>
                             )}
                             {children}
+                            {(recruiter === 'both' || recruiter === 'no') && (
+                                <React.Fragment>
+                                    <StatefulError
+                                        id="understandsAssessmentProcess"
+                                        model={`${model}.understandsAssessmentProcess`}
+                                        messages={{
+                                            required: 'Confirm you understand that once you preview and submit your updates, you will not be able to apply for opportunities until you have submitted evidence and been approved for relevant categories.'
+                                        }}
+                                    />
+                                    <Control.checkbox
+                                        model={`${model}.understandsAssessmentProcess`}
+                                        id="understandsAssessmentProcess"
+                                        name="understandsAssessmentProcess"
+                                        validators={{ required }}
+                                    />
+                                    <label htmlFor="understandsAssessmentProcess">
+                                        <p>I understand once I preview and submit my updates, I will not be able to apply for opportunities until I have submitted evidence and been approved for relevant categories.</p>
+                                    </label>
+                                </React.Fragment>
+                            )}
                         </div>
                         <StepNav buttonText="Save and continue" to={nextRoute}/>
                     </Form>
