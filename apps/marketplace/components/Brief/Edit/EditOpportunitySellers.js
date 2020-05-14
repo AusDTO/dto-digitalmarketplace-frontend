@@ -153,6 +153,7 @@ class EditOpportunitySellers extends Component {
         </a>
       </li>
     )
+    const hasSelectedSellers = Object.keys(this.props[model].sellers).length > 0
 
     if (this.state.redirectToEditsTable) {
       return <Redirect to="/" />
@@ -198,7 +199,7 @@ class EditOpportunitySellers extends Component {
             validators={{}}
           />
         </div>
-        {showClosingDateWarning && (
+        {hasSelectedSellers && showClosingDateWarning && (
           <div className={`row ${styles.marginTop1}`}>
             <AUpageAlert as="warning" className={styles.pageAlert}>
               <AUheading level="2" size="lg">

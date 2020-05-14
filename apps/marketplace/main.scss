@@ -185,6 +185,10 @@
   padding-top: 1rem;
 }
 
+.verticalAlignTop {
+  vertical-align: top;
+}
+
 .whiteSpacePreWrap {
   white-space: pre-wrap;
 }
@@ -309,6 +313,10 @@ table.defaultStyle {
 
     &.borderBottom0 {
       border-bottom: none;
+    }
+
+    &.borderTop1 {
+      border-top: solid 1px #bebebe;
     }
   }
 
