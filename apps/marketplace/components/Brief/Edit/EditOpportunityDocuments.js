@@ -176,6 +176,7 @@ class EditOpportunityDocuments extends Component {
     const { redirectToEditsTable, showClosingDateWarning, daysUntilOpportunityCloses } = this.state
     const { attachments, requirementsDocument, responseTemplate } = this.props[model]
     const documentCount = attachments.length + requirementsDocument.length + responseTemplate.length
+    const documentsEdited = this.props[model].documentsEdited
 
     if (redirectToEditsTable) {
       return <Redirect to="/" />
@@ -241,7 +242,7 @@ class EditOpportunityDocuments extends Component {
             />
           </div>
         </div>
-        {showClosingDateWarning && (
+        {documentsEdited && showClosingDateWarning && (
           <div className={`row ${styles.marginTop1}`}>
             <AUpageAlert as="warning" className={styles.pageAlert}>
               <AUheading level="2" size="lg">

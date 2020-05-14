@@ -30,10 +30,10 @@ class EditOpportunityTable extends Component {
     return (
       <React.Fragment>
         {(getAllDocuments(brief).length > 0 || getAllDocuments(edits).length > 0) && (
-          <ul>
+          <ul className={localStyles.editList}>
             {edits.documentsEdited &&
               getAllDocuments(edits).map(document => (
-                <li key={document}>
+                <li className={styles.marginBottom1} key={document}>
                   <a href={`${documentBaseURL}${document}`} target="_blank" rel="noopener noreferrer">
                     {document}
                   </a>
@@ -41,7 +41,7 @@ class EditOpportunityTable extends Component {
               ))}
             {!edits.documentsEdited &&
               getAllDocuments(brief).map(document => (
-                <li key={document}>
+                <li className={styles.marginBottom1} key={document}>
                   <a href={`${documentBaseURL}${document}`} target="_blank" rel="noopener noreferrer">
                     {document}
                   </a>
@@ -67,39 +67,47 @@ class EditOpportunityTable extends Component {
           className={`col-xs-12 ${styles.hideMobile} ${styles.defaultStyle} ${styles.textAlignLeft} ${styles.marginTop1}`}
         >
           <tbody>
-            <tr className={styles.borderTop1}>
+            <tr className={`${styles.borderTop1} ${styles.verticalAlignTop} ${localStyles.editSection}`}>
               <th scope="row">Opportunity title</th>
               <td>{itemWasEdited(brief.title, edits.title) ? edits.title : brief.title}</td>
               <td>
-                <Link to="/title" className="au-btn au-btn--tertiary">
+                <Link to="/title" className={`au-btn au-btn--tertiary ${localStyles.editAction}`}>
                   Edit title
                 </Link>
               </td>
             </tr>
             {showInvited && (
               <React.Fragment>
-                <tr className={sellersToInvite.length > 0 ? styles.borderBottom0 : ''}>
+                <tr
+                  className={`${styles.verticalAlignTop} ${localStyles.editSection} ${
+                    sellersToInvite.length > 0 ? styles.borderBottom0 : ''
+                  }`}
+                >
                   <th scope="row">Invited sellers</th>
                   <td>
-                    <ul>
+                    <ul className={localStyles.editList}>
                       {Object.values(brief.sellers).map(seller => (
-                        <li key={seller.name}>{seller.name}</li>
+                        <li className={styles.marginBottom1} key={seller.name}>
+                          {seller.name}
+                        </li>
                       ))}
                     </ul>
                   </td>
                   <td>
-                    <Link to="/sellers" className="au-btn au-btn--tertiary">
+                    <Link to="/sellers" className={`au-btn au-btn--tertiary ${localStyles.editAction}`}>
                       {sellersToInvite.length > 0 ? 'Edit' : 'Add'} sellers
                     </Link>
                   </td>
                 </tr>
                 {sellersToInvite.length > 0 && (
-                  <tr>
+                  <tr className={`${styles.verticalAlignTop} ${localStyles.editSection}`}>
                     <th scope="row">Sellers to invite</th>
                     <td>
-                      <ul>
+                      <ul className={localStyles.editList}>
                         {sellersToInvite.map(code => (
-                          <li key={edits.sellers[code].name}>{edits.sellers[code].name}</li>
+                          <li className={styles.marginBottom1} key={edits.sellers[code].name}>
+                            {edits.sellers[code].name}
+                          </li>
                         ))}
                       </ul>
                     </td>
@@ -108,27 +116,27 @@ class EditOpportunityTable extends Component {
                 )}
               </React.Fragment>
             )}
-            <tr>
+            <tr className={`${styles.verticalAlignTop} ${localStyles.editSection}`}>
               <th scope="row">Summary</th>
               <td className={styles.tableColumnWidth19}>
                 <SummaryPreview brief={brief} desktop edits={edits} previewHeight={64} />
               </td>
               <td>
-                <Link to="/summary" className="au-btn au-btn--tertiary">
+                <Link to="/summary" className={`au-btn au-btn--tertiary ${localStyles.editAction}`}>
                   Edit summary
                 </Link>
               </td>
             </tr>
-            <tr>
+            <tr className={`${styles.verticalAlignTop} ${localStyles.editSection}`}>
               <th scope="row">Documents</th>
               <td>{this.generateDocumentList()}</td>
               <td>
-                <Link to="/documents" className="au-btn au-btn--tertiary">
+                <Link to="/documents" className={`au-btn au-btn--tertiary ${localStyles.editAction}`}>
                   {getAllDocuments(brief).length > 0 || getAllDocuments(edits).length > 0 ? 'Edit' : 'Add'} documents
                 </Link>
               </td>
             </tr>
-            <tr>
+            <tr className={`${styles.verticalAlignTop} ${localStyles.editSection}`}>
               <th scope="row">Closing date</th>
               <td>
                 {itemWasEdited(format(new Date(brief.dates.closing_time), 'YYYY-MM-DD'), edits.closingDate)
@@ -136,7 +144,7 @@ class EditOpportunityTable extends Component {
                   : format(getClosingTime(brief), 'dddd DD MMMM YYYY [at] ha [(in Canberra)]')}
               </td>
               <td>
-                <Link to="/closing-date" className="au-btn au-btn--tertiary">
+                <Link to="/closing-date" className={`au-btn au-btn--tertiary ${localStyles.editAction}`}>
                   Extend closing date
                 </Link>
               </td>
