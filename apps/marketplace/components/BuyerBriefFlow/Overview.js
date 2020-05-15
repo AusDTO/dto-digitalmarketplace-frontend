@@ -190,6 +190,11 @@ class Overview extends Component {
                 </span>
               )}
             </li>
+            {brief.status === 'draft' && (
+              <li>
+                <span>Edit live opportunity</span>
+              </li>
+            )}
             {brief.status === 'live' && isPublished && (
               <li>
                 {hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') ? (
