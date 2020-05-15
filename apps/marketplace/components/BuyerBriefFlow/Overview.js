@@ -214,6 +214,12 @@ class Overview extends Component {
                 </div>
               </li>
             )}
+            {brief.status === 'closed' && (
+              <li>
+                <Tick className={styles.tick} colour="#17788D" />
+                <span>Edit live opportunity</span>
+              </li>
+            )}
             <li>
               {this.answerSellerQuestionsRender(brief, isPublished, isClosed)}
               <div className={styles.stageStatus}>
