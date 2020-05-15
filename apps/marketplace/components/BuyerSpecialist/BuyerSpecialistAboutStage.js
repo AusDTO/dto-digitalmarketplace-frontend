@@ -87,7 +87,7 @@ const BuyerSpecialistAboutStage = props => (
         required
       }}
       messages={{
-        limitWords: 'What will the specialist do has exceeded the 1000 word limit'
+        limitWords: "You have exceeded the 1000 word limit for 'What will the specialist do?'."
       }}
     />
     <AUheadings level="2" size="sm">
