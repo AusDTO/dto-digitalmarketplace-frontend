@@ -75,6 +75,7 @@ const Textarea = props => {
             !fieldValue.valid && fieldValue.touched
               ? 'au-text-input--invalid au-text-input au-text-input--block au-text-input--textarea'
               : 'au-text-input au-text-input--block au-text-input--textarea',
+          valid: ({ fieldValue }) => fieldValue.valid,
           value: prps => prps.viewValue,
           ...mapProps,
           ...controls.default
