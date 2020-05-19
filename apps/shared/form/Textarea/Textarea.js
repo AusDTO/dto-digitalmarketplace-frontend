@@ -88,8 +88,7 @@ class Textarea extends Component {
       describedby,
       hint,
       rows,
-      disabled,
-      valid
+      disabled
     } = this.props
     let { wordsLeft, wordsToGo } = this.state
 
@@ -128,7 +127,7 @@ class Textarea extends Component {
         />
         {limit && (
           <span
-            className={`word-count-counter ${styles.wordCount} ${valid ? styles.valid : styles.invalid}`}
+            className={`word-count-counter ${styles.wordCount} ${wordsLeft < 0 ? styles.invalid : styles.valid}`}
             aria-live="polite"
           >
             {this.limitText(counter, wordsLeft)}
@@ -136,7 +135,7 @@ class Textarea extends Component {
         )}
         {minimum && (
           <span
-            className={`word-count-counter ${styles.wordCount} ${valid ? styles.valid : styles.invalid}`}
+            className={`word-count-counter ${styles.wordCount} ${wordsToGo < 0 ? styles.invalid : styles.valid}`}
             aria-live="polite"
           >
             {this.toGoText(toGoCounter, wordsToGo)}
