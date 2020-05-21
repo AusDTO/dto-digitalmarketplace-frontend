@@ -254,7 +254,7 @@ class RecruiterForm extends BaseForm {
                                         id="understandsAssessmentProcess"
                                         model={`${model}.understandsAssessmentProcess`}
                                         messages={{
-                                            required: 'Confirm you understand that once you preview and submit your updates, you will not be able to apply for opportunities until you have submitted evidence and been approved for relevant categories.'
+                                            required: 'Confirm you understand that if you submit your business as a consultancy, you cannot respond to opportunities until you request an assessment and are approved for the relevant categories.'
                                         }}
                                     />
                                     <Control.checkbox
