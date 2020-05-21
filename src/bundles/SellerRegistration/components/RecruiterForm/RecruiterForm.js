@@ -264,7 +264,7 @@ class RecruiterForm extends BaseForm {
                                         validators={{ required }}
                                     />
                                     <label htmlFor="understandsAssessmentProcess">
-                                        <p>I understand once I preview and submit my updates, I will not be able to apply for opportunities until I have submitted evidence and been approved for relevant categories.</p>
+                                        <p>I understand that once my business is updated to a consultancy in the Digital Marketplace, I will lose my current category approvals. I must request assessment from my dashboard and be approved in the relevant categories before I can respond to opportunities.</p>
                                     </label>
                                 </React.Fragment>
                             )}
