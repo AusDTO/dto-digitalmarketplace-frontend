@@ -35,11 +35,34 @@ class RecruiterForm extends BaseForm {
     }
     
     state = {
+        checkboxLabel: '',
+        confirmMessage: '',
         recruiter: this.props[this.props.model].recruiter,
         loaded: false
     }
 
+    checkboxLabelWhenRecruiterConsultant = 'I understand that once my business is updated to both recruitment and consultancy in the Digital Marketplace, I will lose my current category approvals. I must request assessment from my dashboard and be approved in the relevant categories before I can respond to opportunities.'
+    checkboxLabelWhenConsultant = 'I understand that once my business is updated to a consultancy in the Digital Marketplace, I will lose my current category approvals. I must request assessment from my dashboard and be approved in the relevant categories before I can respond to opportunities.'
+    confirmMessageWhenRecruiterConsultant = 'Confirm you understand that if you submit your business as both recruitment and consultancy, you cannot respond to opportunities until you request an assessment and are approved for the relevant categories.'
+    confirmMessageWhenConsultant = 'Confirm you understand that if you submit your business as a consultancy, you cannot respond to opportunities until you request an assessment and are approved for the relevant categories.'
+
     componentDidMount() {
+        const { recruiter } = this.state
+
+        if (recruiter === 'both') {
+            this.setState({
+                checkboxLabel: this.checkboxLabelWhenRecruiterConsultant,
+                confirmMessage: this.confirmMessageWhenRecruiterConsultant
+            })
+        }
+
+        if (recruiter === 'no') {
+            this.setState({
+                checkboxLabel: this.checkboxLabelWhenConsultant,
+                confirmMessage: this.confirmMessageWhenConsultant
+            })
+        }
+
         this.setState({loaded: true})
     }
 
@@ -50,10 +73,22 @@ class RecruiterForm extends BaseForm {
             recruiter: e.target.value
         })
 
+        if (e.target.value === 'both') {
+            this.setState({
+                checkboxLabel: this.checkboxLabelWhenRecruiterConsultant,
+                confirmMessage: this.confirmMessageWhenRecruiterConsultant
+            })
+        }
+
         if (e.target.value === 'no') {
             states.forEach(s => {
                 updateProperty(`${model}.labourHire.${s}.expiry`, null)
                 updateProperty(`${model}.labourHire.${s}.licenceNumber`, null)
+            })
+
+            this.setState({
+                checkboxLabel: this.checkboxLabelWhenConsultant,
+                confirmMessage: this.confirmMessageWhenConsultant
             })
         }
     }
@@ -121,6 +156,7 @@ class RecruiterForm extends BaseForm {
 
     render() {
         const {action, csrf_token, model, form, children, onSubmit, nextRoute, submitClicked, applicationErrors, type} = this.props;
+        const { confirmMessage, checkboxLabel } = this.state
         const { recruiter } = this.props[model]
 
         let hasFocused = false
@@ -254,7 +290,7 @@ class RecruiterForm extends BaseForm {
                                         id="understandsAssessmentProcess"
                                         model={`${model}.understandsAssessmentProcess`}
                                         messages={{
-                                            required: 'Confirm you understand that if you submit your business as a consultancy, you cannot respond to opportunities until you request an assessment and are approved for the relevant categories.'
+                                            requiredU: confirmMessage
                                         }}
                                     />
                                     <Control.checkbox
@@ -264,7 +300,7 @@ class RecruiterForm extends BaseForm {
                                         validators={{ required }}
                                     />
                                     <label htmlFor="understandsAssessmentProcess">
-                                        <p>I understand that once my business is updated to a consultancy in the Digital Marketplace, I will lose my current category approvals. I must request assessment from my dashboard and be approved in the relevant categories before I can respond to opportunities.</p>
+                                        <p>{checkboxLabel}</p>
                                     </label>
                                 </React.Fragment>
                             )}
