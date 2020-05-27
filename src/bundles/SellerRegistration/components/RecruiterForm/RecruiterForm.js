@@ -19,6 +19,7 @@ import { required, validDate } from '../../../../validators';
 
 import ValidationSummary from '../ValidationSummary';
 
+import { AUcheckbox } from '@gov.au/control-input'
 import PageAlert from '@gov.au/page-alerts';
 
 import recruiterStyles from './RecruiterForm.css';
@@ -153,6 +154,25 @@ class RecruiterForm extends BaseForm {
         })
         return validators
     }
+
+   UnderstandsProcessCheckbox = props => {
+        const { checked } = props
+        const { model, updateProperty } = this.props
+        const { checkboxLabel } = this.state
+  
+        return (
+          <AUcheckbox
+            checked={checked}
+            id="understandsAssessmentProcess"
+            label={checkboxLabel}
+            name="understandsAssessmentProcess"
+            onChange={() => {}}
+            onClick={e => {
+              updateProperty(`${model}.understandsAssessmentProcess`, e.target.checked)
+            }}
+          />
+        )
+      }  
 
     render() {
         const {action, csrf_token, model, form, children, onSubmit, nextRoute, submitClicked, applicationErrors, type} = this.props;
@@ -290,18 +310,18 @@ class RecruiterForm extends BaseForm {
                                         id="understandsAssessmentProcess"
                                         model={`${model}.understandsAssessmentProcess`}
                                         messages={{
-                                            requiredU: confirmMessage
+                                            required: 'Confirm you understand that once you submit these updates, you cannot respond to opportunities until you request an assessment and are approved for the relevant categories.'
                                         }}
                                     />
                                     <Control.checkbox
+                                        component={this.UnderstandsProcessCheckbox}
+                                        id="understandsAssessmentProcessControl"
+                                        mapProps={{
+                                            checked: prps => prps.modelValue
+                                        }}
                                         model={`${model}.understandsAssessmentProcess`}
-                                        id="understandsAssessmentProcess"
-                                        name="understandsAssessmentProcess"
                                         validators={{ required }}
                                     />
-                                    <label htmlFor="understandsAssessmentProcess">
-                                        <p>{checkboxLabel}</p>
-                                    </label>
                                 </React.Fragment>
                             )}
                         </div>
