@@ -55,7 +55,8 @@ class EditOpportunitySummary extends Component {
     let limitWordsMessage = 'Your summary has exceeded the 200 word limit'
     let requiredMessage = 'You must add a summary of work to be done'
     let controlProps = {
-      limit: 200
+      limit: 200,
+      rows: '10'
     }
 
     if (brief.lot === 'specialist') {
