@@ -22,13 +22,13 @@ const SummaryComparison = props => {
           <AUheading level="2" size="xs">
             Previous summary:
           </AUheading>
-          <p>{previous}</p>
+          <p className={styles.whiteSpacePreWrap}>{previous}</p>
         </div>
         <div className={`col-md-6 ${localStyles.updated} ${previousSummaryIsLonger ? '' : styles.greyBorderLeft1}`}>
           <AUheading level="2" size="xs">
             Updated summary:
           </AUheading>
-          <p>{updated}</p>
+          <p className={styles.whiteSpacePreWrap}>{updated}</p>
         </div>
       </div>
       <div className={`row ${styles.hideDesktop}`}>
@@ -36,13 +36,13 @@ const SummaryComparison = props => {
           <AUheading level="2" size="md">
             Previous summary:
           </AUheading>
-          <p>{previous}</p>
+          <p className={styles.whiteSpacePreWrap}>{previous}</p>
         </div>
         <div className={`col-xs-12 ${localStyles.updated} ${styles.greyBorderTop1}`}>
           <AUheading level="2" size="md">
             Updated summary:
           </AUheading>
-          <p>{updated}</p>
+          <p className={styles.whiteSpacePreWrap}>{updated}</p>
         </div>
       </div>
       <div className={`row ${styles.marginTop2}`}>

@@ -23,6 +23,9 @@ class EditOpportunitySummary extends Component {
       redirectToEditsTable: false
     }
 
+    // This reset clears any invalid state from the parent form which prevents submit events from this component.
+    props.resetValidity(props.model)
+
     this.handleCancelClick = this.handleCancelClick.bind(this)
     this.handleContinueClick = this.handleContinueClick.bind(this)
   }
@@ -139,6 +142,7 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
+  resetValidity: model => dispatch(actions.setValidity(model, true)),
   setOnlySellersEdited: onlySellersEdited =>
     dispatch(actions.change(`${props.model}.onlySellersEdited`, onlySellersEdited)),
   setSummary: summary => dispatch(actions.change(`${props.model}.summary`, summary))
