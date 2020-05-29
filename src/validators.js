@@ -167,13 +167,13 @@ export const validPercentage = (val) => {
 }
 
 export const validPhoneNumber = (val) => {
-
     if (!val) {
         return true;
     }
 
-    const length = (val.match(/[0-9]/g) || []).length
-    return length >= 10;
+    const numberCount = (val.match(/[0-9]/g) || []).length
+    const validCharCount = (val.match(/[ 0-9()+]/g) || []).length
+    return val.length === validCharCount && numberCount >= 10
 }
 
 export const notNegativeNumber = (val) => {

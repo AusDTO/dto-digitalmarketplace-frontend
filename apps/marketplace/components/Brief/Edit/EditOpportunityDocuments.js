@@ -91,6 +91,9 @@ class EditOpportunityDocuments extends Component {
     // keep the initial state of the form
     this.state.initial = { ...data }
 
+    // This reset clears any invalid state from the parent form which prevents submit events from this component.
+    props.resetValidity(props.model)
+
     this.handleCancelClick = this.handleCancelClick.bind(this)
     this.handleContinueClick = this.handleContinueClick.bind(this)
     this.handleDocumentChange = this.handleDocumentChange.bind(this)
@@ -173,6 +176,7 @@ class EditOpportunityDocuments extends Component {
     const { redirectToEditsTable, showClosingDateWarning, daysUntilOpportunityCloses } = this.state
     const { attachments, requirementsDocument, responseTemplate } = this.props[model]
     const documentCount = attachments.length + requirementsDocument.length + responseTemplate.length
+    const documentsEdited = this.props[model].documentsEdited
 
     if (redirectToEditsTable) {
       return <Redirect to="/" />
@@ -238,7 +242,7 @@ class EditOpportunityDocuments extends Component {
             />
           </div>
         </div>
-        {showClosingDateWarning && (
+        {documentsEdited && showClosingDateWarning && (
           <div className={`row ${styles.marginTop1}`}>
             <AUpageAlert as="warning" className={styles.pageAlert}>
               <AUheading level="2" size="lg">
@@ -271,6 +275,7 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
+  resetValidity: model => dispatch(actions.setValidity(model, true)),
   setOnlySellersEdited: onlySellersEdited =>
     dispatch(actions.change(`${props.model}.onlySellersEdited`, onlySellersEdited)),
   updateModel: data => dispatch(actions.change(props.model, data)),
