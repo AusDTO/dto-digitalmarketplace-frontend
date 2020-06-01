@@ -49,7 +49,6 @@ class EditOpportunitySummary extends Component {
     const { initialSummary, redirectToEditsTable } = this.state
 
     let label = 'Summary of work to be done'
-    let limitWordsMessage = 'Your summary has exceeded the 200 word limit'
     let requiredMessage = 'You must add a summary of work to be done'
     let controlProps = {
       limit: 200
@@ -57,13 +56,14 @@ class EditOpportunitySummary extends Component {
 
     if (brief.lot === 'specialist') {
       label = 'What will the specialist do?'
-      limitWordsMessage = 'Your summary has exceeded the 1000 word limit'
       requiredMessage = 'You must answer "What will the specialist do?".'
       controlProps = {
         limit: 1000,
         rows: '10'
       }
     }
+
+    const limitWordsMessage = `Your summary has exceeded the ${controlProps.limit} word limit`
 
     if (redirectToEditsTable) {
       return <Redirect to="/" />
