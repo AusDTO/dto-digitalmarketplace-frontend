@@ -190,6 +190,11 @@ class Overview extends Component {
                 </span>
               )}
             </li>
+            {brief.status === 'draft' && (
+              <li>
+                <span>Edit live opportunity</span>
+              </li>
+            )}
             {brief.status === 'live' && isPublished && (
               <li>
                 {hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities') ? (
@@ -207,6 +212,12 @@ class Overview extends Component {
                 <div className={styles.stageStatus}>
                   <a href={`${rootPath}/digital-marketplace/opportunities/${brief.id}`}>View live opportunity</a>
                 </div>
+              </li>
+            )}
+            {brief.status === 'closed' && (
+              <li>
+                <Tick className={styles.tick} colour="#17788D" />
+                <span>Edit live opportunity</span>
               </li>
             )}
             <li>
