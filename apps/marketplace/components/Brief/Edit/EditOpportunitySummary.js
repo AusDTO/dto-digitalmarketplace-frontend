@@ -57,7 +57,7 @@ class EditOpportunitySummary extends Component {
 
     if (brief.lot === 'specialist') {
       label = 'What will the specialist do?'
-      limitWordsMessage = "You have exceeded the 1000 word limit for 'What will the specialist do?'."
+      limitWordsMessage = 'Your summary has exceeded the 1000 word limit'
       requiredMessage = 'You must answer "What will the specialist do?".'
       controlProps = {
         limit: 1000,
