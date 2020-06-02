@@ -5,7 +5,7 @@ import { Control, controls } from 'react-redux-form';
 import StatefulError from './StatefulError';
 import TextareaComponent from '../Textarea';
 
-import { limitWords } from '../../validators';
+import { limitWords, validCharacters } from '../../validators';
 
 const Textarea = (props) => {
   let {
@@ -24,6 +24,18 @@ const Textarea = (props) => {
   if (controlProps.limit) {
     validators = { ...validators, limitWords: limitWords(controlProps.limit) }
     messages = { limitWords: `${label} has exceeded the word limit.`, ...messages }
+  }
+
+  validators = {
+    validCharacters,
+    ...validators
+  }
+
+  if (!messages || !messages.validCharacters) {
+    messages = {
+      validCharacters: `You cannot have invalid characters in '${label}'.`,
+      ...messages
+    }
   }
 
   return (
