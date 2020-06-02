@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Control } from 'react-redux-form'
 
+import { validCharacters } from 'shared/validators'
+
 import StatefulError from './StatefulError'
 import TextfieldComponent from './Textfield/Textfield'
 
@@ -18,7 +20,6 @@ const Textfield = props => {
     label,
     max,
     maxLength,
-    messages,
     min,
     minLength,
     model,
@@ -30,9 +31,23 @@ const Textfield = props => {
     prefix,
     readOnly,
     showCharacterCounter,
-    type,
-    validators
+    type
   } = props
+
+  let { messages, validators } = props
+
+  validators = {
+    validCharacters,
+    ...validators
+  }
+
+  if (!messages || !messages.validCharacters) {
+    messages = {
+      validCharacters: `You cannot have invalid characters in '${label}'.`,
+      ...messages
+    }
+  }
+
   return (
     <div className={`field ${className}`}>
       <label htmlFor={htmlFor} id={`${id}-label`} className="question-heading au-text-input__label">

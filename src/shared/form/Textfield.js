@@ -4,9 +4,25 @@ import {Control} from 'react-redux-form';
 
 import StatefulError from './StatefulError';
 
+import { validCharacters } from '../../validators';
+
 class Textfield extends React.Component {
     render() {
-        const {name, id, htmlFor, label, model, validators, messages, description, pattern, maxLength, disabled, readOnly, type} = this.props;
+        const {name, id, htmlFor, label, model, description, pattern, maxLength, disabled, readOnly, type} = this.props;
+        let { messages, validators } = this.props
+
+        validators = {
+          validCharacters,
+          ...validators
+        }
+
+        if (!messages || !messages.validCharacters) {
+          messages = {
+            validCharacters: `You cannot have invalid characters in '${label}'.`,
+            ...messages
+          }
+        }
+
         return (
             <div className="field">
                 <label htmlFor={htmlFor} className="question-heading">{label}</label>
