@@ -77,29 +77,34 @@ const SellerSelectView = props => (
   </div>
 )
 
-const SellerSelectResultsView = props => (
-  <ul
-    className={`${props.className} ${!props.noResults ? props.hasResultsClassName : ''} ${
-      props.sellers.length > 3 ? props.hasManyResultsClassName : ''
-    }`}
-  >
-    {props.noResults && props.searchFor && (
-      <li>
-        {props.notFoundMessage}
-        <a href="/search/sellers" rel="noopener noreferrer" target="_blank" className={styles.searchAllLink}>
-          Search all sellers
-        </a>
-      </li>
-    )}
-    {props.sellers.map(seller => (
-      <li key={seller.code}>
-        <a href={`#${seller.code}`} onClick={e => props.handleSellerSelectClick(seller, e)}>
-          {seller.name}
-        </a>
-      </li>
-    ))}
-  </ul>
-)
+const SellerSelectResultsView = props => {
+  const { category } = props
+  const searchUri = category ? `/search/sellers?role=${encodeURIComponent(category)}&sort_by=a-z` : '/search/sellers'
+
+  return (
+    <ul
+      className={`${props.className} ${!props.noResults ? props.hasResultsClassName : ''} ${
+        props.sellers.length > 3 ? props.hasManyResultsClassName : ''
+      }`}
+    >
+      {props.noResults && props.searchFor && (
+        <li>
+          {props.notFoundMessage}
+          <a href={searchUri} rel="noopener noreferrer" target="_blank" className={styles.searchAllLink}>
+            Search sellers
+          </a>
+        </li>
+      )}
+      {props.sellers.map(seller => (
+        <li key={seller.code}>
+          <a href={`#${seller.code}`} onClick={e => props.handleSellerSelectClick(seller, e)}>
+            {seller.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}
 
 let timeoutHandle = null
 
@@ -175,6 +180,9 @@ export class SellerSelect extends Component {
   }
 
   render() {
+    const categoryData = this.props.categories.find(category => category.value === this.props.selectedCategory)
+    const category = categoryData ? categoryData.text : null
+
     return (
       <div className={styles.container}>
         {this.props.showCategorySelect && (
@@ -201,6 +209,7 @@ export class SellerSelect extends Component {
             />
             {this.state.inputValue.length >= this.props.minimumSearchChars && (
               <SellerSelectResultsView
+                category={category}
                 className={styles.selectList}
                 hasResultsClassName={styles.hasResults}
                 hasManyResultsClassName={styles.manyResults}
