@@ -15,7 +15,8 @@ import {
   SPECIALIST_NUMBER,
   BRIEF_OVERVIEW_SUCCESS,
   DELETE_BRIEF_SUCCESS,
-  LOAD_OPPORTUNITY_EDIT_HISTORY_SUCCESS
+  LOAD_OPPORTUNITY_EDIT_HISTORY_SUCCESS,
+  LOAD_OPPORTUNITY_TO_EDIT_SUCCESS
 } from '../constants/constants'
 
 const defaultBriefState = {
@@ -215,6 +216,14 @@ const briefReducer = (state = defaultBriefState, action) => {
         ...state,
         brief: action.brief,
         edits: action.edits
+      }
+
+    case LOAD_OPPORTUNITY_TO_EDIT_SUCCESS:
+      return {
+        ...state,
+        brief: action.brief,
+        domains: action.domains,
+        isOpenToAll: action.isOpenToAll
       }
 
     default:
