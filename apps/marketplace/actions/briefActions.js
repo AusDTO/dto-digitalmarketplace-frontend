@@ -17,6 +17,7 @@ import {
   CLOSE_OPPORTUNITY_SUCCESS,
   DELETE_BRIEF_SUCCESS,
   EDIT_OPPORTUNITY_SUCCESS,
+  LOAD_OPPORTUNITY_TO_EDIT_SUCCESS,
   LOAD_OPPORTUNITY_EDIT_HISTORY_SUCCESS,
   SPECIALIST_NAME,
   SPECIALIST_NAME_SPLIT,
@@ -342,6 +343,27 @@ export const loadBrief = briefId => dispatch => {
     } else {
       response.data.loadedAt = new Date().valueOf()
       dispatch(handleBriefInfoSuccess(response))
+    }
+    dispatch(sendingRequest(false))
+    return response
+  })
+}
+
+export const handleLoadOpportunityToEditSuccess = response => ({
+  type: LOAD_OPPORTUNITY_TO_EDIT_SUCCESS,
+  brief: response.data.brief,
+  domains: response.data.domains,
+  isOpenToAll: response.data.isOpenToAll
+})
+
+export const loadOpportunityToEdit = briefId => dispatch => {
+  dispatch(sendingRequest(true))
+  return dmapi({ url: `/brief/${briefId}/edit` }).then(response => {
+    if (!response || response.error) {
+      dispatch(handleErrorFailure(response))
+    } else {
+      response.data.loadedAt = new Date().valueOf()
+      dispatch(handleLoadOpportunityToEditSuccess(response))
     }
     dispatch(sendingRequest(false))
     return response

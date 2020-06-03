@@ -184,3 +184,8 @@ export const getSingleInvitedSellerName = brief => {
 
   return null
 }
+
+export const getBriefCategory = (domains, briefCategory) => {
+  const category = domains.find(domain => domain.id === briefCategory)
+  return category ? category.name : null
+}
