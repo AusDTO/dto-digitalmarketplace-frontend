@@ -4,7 +4,7 @@ import { actions } from 'react-redux-form'
 import { BrowserRouter, Redirect, Route, Switch, withRouter } from 'react-router-dom'
 
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
-import { applyEditsToOpportunity, loadBrief } from 'marketplace/actions/briefActions'
+import { applyEditsToOpportunity, loadOpportunityToEdit } from 'marketplace/actions/briefActions'
 import { setErrorMessage } from 'marketplace/actions/appActions'
 import { rootPath } from 'marketplace/routes'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
@@ -15,7 +15,7 @@ import EditOpportunitySummary from 'marketplace/components/Brief/Edit/EditOpport
 import EditOpportunityTitle from 'marketplace/components/Brief/Edit/EditOpportunityTitle'
 import EditOpportunityDocuments from 'marketplace/components/Brief/Edit/EditOpportunityDocuments'
 import { hasEdits } from 'marketplace/components/Brief/Edit/helpers'
-import { hasPermission } from 'marketplace/components/helpers'
+import { getBriefCategory, hasPermission } from 'marketplace/components/helpers'
 
 const model = 'editOpportunityForm'
 
@@ -97,7 +97,8 @@ class EditOpportunityPage extends Component {
   }
 
   render = () => {
-    const { brief, edits, errorMessage, isOpenToAll, isPartOfTeam, isTeamLead, location, teams } = this.props
+    const { brief, domains, edits, errorMessage, isOpenToAll, isPartOfTeam, isTeamLead, location, teams } = this.props
+    const category = getBriefCategory(domains, brief.sellerCategory)
 
     if (!hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities')) {
       return <Redirect to={`${rootPath}/request-access/publish_opportunities`} />
@@ -149,7 +150,10 @@ class EditOpportunityPage extends Component {
         <div className="col-xs-12">
           <Switch>
             <Route path="/title" render={() => <EditOpportunityTitle brief={brief} model={model} />} />
-            <Route path="/sellers" render={() => <EditOpportunitySellers brief={brief} model={model} />} />
+            <Route
+              path="/sellers"
+              render={() => <EditOpportunitySellers brief={brief} category={category} model={model} />}
+            />
             <Route path="/summary" render={() => <EditOpportunitySummary brief={brief} model={model} />} />
             <Route path="/documents" render={() => <EditOpportunityDocuments brief={brief} model={model} />} />
             <Route path="/closing-date" render={() => <EditOpportunityClosingDate brief={brief} model={model} />} />
@@ -176,6 +180,7 @@ class EditOpportunityPage extends Component {
 const mapStateToProps = state => ({
   app: state.app,
   brief: state.brief.brief,
+  domains: state.brief.domains,
   edits: state.editOpportunityForm,
   errorMessage: state.app.errorMessage,
   isOpenToAll: state.brief.isOpenToAll,
@@ -186,7 +191,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   applyEdits: (briefId, data) => dispatch(applyEditsToOpportunity(briefId, data)),
-  loadData: briefId => dispatch(loadBrief(briefId)),
+  loadData: briefId => dispatch(loadOpportunityToEdit(briefId)),
   resetForm: formModel => dispatch(actions.reset(formModel)),
   setError: message => dispatch(setErrorMessage(message))
 })
