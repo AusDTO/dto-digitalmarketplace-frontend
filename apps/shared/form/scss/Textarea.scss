@@ -1,5 +1,12 @@
+.invalid {
+  color: #cc0000;
+}
+
+.valid {
+  color: #717171;
+}
+
 .wordCount {
   display: block;
   text-align: right;
-  color: #717171;
 }
