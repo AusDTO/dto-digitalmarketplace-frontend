@@ -155,6 +155,11 @@ class RecruiterForm extends BaseForm {
         return validators
     }
 
+    showAssessmentWarning = () => {
+        const { supplier, type } = this.props
+        return type === 'edit' && supplier.recruiter === 'yes'
+    }
+
    UnderstandsProcessCheckbox = props => {
         const { checked } = props
         const { model, updateProperty } = this.props
@@ -220,13 +225,13 @@ class RecruiterForm extends BaseForm {
                                 </legend>
                                 <p>Recruiters provide candidates for digital specialist roles, but are not directly responsible for their work, performance or deliverables.
                                     Examples include temporary and contract recruitment.</p>
-                                {type === 'edit' && recruiter === 'both' && (
+                                {this.showAssessmentWarning() && recruiter === 'both' && (
                                     <PageAlert as="warning" styleName="recruiterStyles.pageAlert">
                                         <h2 className="au-display-lg">Assessment process</h2>
                                         <p styleName="recruiterStyles.pageAlertContent">Businesses that do both recruitment and consultancy must submit evidence and be approved for relevant categories before they can apply for opportunities.</p>
                                     </PageAlert>
                                 )}
-                                {type === 'edit' && recruiter === 'no' && (
+                                {this.showAssessmentWarning() && recruiter === 'no' && (
                                     <PageAlert as="warning" styleName="recruiterStyles.pageAlert">
                                         <h2 className="au-display-lg">Assessment process</h2>
                                         <p styleName="recruiterStyles.pageAlertContent">Businesses that provide services on a consultancy basis must submit evidence and be approved for relevant categories before they can apply for opportunities.</p>
@@ -304,7 +309,7 @@ class RecruiterForm extends BaseForm {
                                 </fieldset>
                             )}
                             {children}
-                            {type === 'edit' && (recruiter === 'both' || recruiter === 'no') && (
+                            {this.showAssessmentWarning() && (recruiter === 'both' || recruiter === 'no') && (
                                 <React.Fragment>
                                     <StatefulError
                                         id="understandsAssessmentProcess"
