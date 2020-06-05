@@ -160,7 +160,7 @@ class RecruiterForm extends BaseForm {
         return type === 'edit' && supplier.recruiter === 'yes'
     }
 
-   UnderstandsProcessCheckbox = props => {
+    UnderstandsProcessCheckbox = props => {
         const { checked } = props
         const { model, updateProperty } = this.props
         const { checkboxLabel } = this.state
@@ -177,7 +177,7 @@ class RecruiterForm extends BaseForm {
             }}
           />
         )
-      }  
+    }  
 
     render() {
         const {action, csrf_token, model, form, children, onSubmit, nextRoute, submitClicked, applicationErrors, type} = this.props;
