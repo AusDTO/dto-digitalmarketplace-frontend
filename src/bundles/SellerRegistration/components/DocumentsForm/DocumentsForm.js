@@ -56,7 +56,7 @@ class DocumentsForm extends BaseForm {
         {
             'label': 'Financial statement',
             'id': 'financial',
-            'description': 'Please provide an up-to-date financial statement. If you do not have this, ask your accountant for a letter confirming financial viability.',
+            'description': 'Please provide an up-to-date financial statement. If you do not have this, ask your accountant for a letter confirming financial viability. We will not accept an internal letter as proof of financial viability.',
             'expires': false
         },
         {
