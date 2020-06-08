@@ -151,10 +151,8 @@ class DocumentsForm extends BaseForm {
                 <header>
                     <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'documents' && type === 'edit'} />
                     <h1 className="au-display-xl" tabIndex="-1">Upload your documents</h1>
-
                     <p>The details of your insurance documents and financial statement are not visible on your profile (other than the insurance expiry dates). These details may be shared with buyers on request, so make sure they are up to date.</p>
-                    <p>  Each should be no larger than 5MB and in PDF, PNG or JPEG format. If you have multiple files for a document, please scan and merge as one upload.
-                  </p>
+                    <p>Each should be no larger than 5MB and in PDF, PNG or JPEG format. If you have multiple files for a document, please scan and merge as one upload.</p>
                     <br />
                 </header>
                 <article role="main">
