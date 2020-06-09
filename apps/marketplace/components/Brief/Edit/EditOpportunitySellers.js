@@ -49,6 +49,9 @@ class EditOpportunitySellers extends Component {
       this.state.showClosingDateWarning = true
     }
 
+    // This reset clears any invalid state from the parent form which prevents submit events from this component.
+    props.resetValidity(props.model)
+
     this.handleCancelClick = this.handleCancelClick.bind(this)
     this.handleContinueClick = this.handleContinueClick.bind(this)
     this.handleRemoveSellerClick = this.handleRemoveSellerClick.bind(this)
@@ -128,8 +131,32 @@ class EditOpportunitySellers extends Component {
   }
 
   render = () => {
-    const { model } = this.props
+    const { category, model } = this.props
     const { daysUntilOpportunityCloses, showClosingDateWarning } = this.state
+    const searchUri = category ? `/search/sellers?role=${encodeURIComponent(category)}&sort_by=a-z` : '/search/sellers'
+
+    const emptyResultsMessage = (
+      <li>
+        Seller cannot be found in this category.
+        <a
+          className={`${styles.hideMobile} ${styles.floatRight}`}
+          href={searchUri}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Search sellers
+        </a>
+        <a
+          className={`${styles.hideDesktop} ${styles.inlineBlock}`}
+          href={searchUri}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Search sellers
+        </a>
+      </li>
+    )
+    const hasSelectedSellers = Object.keys(this.props[model].sellers).length > 0
 
     if (this.state.redirectToEditsTable) {
       return <Redirect to="/" />
@@ -154,7 +181,7 @@ class EditOpportunitySellers extends Component {
         </div>
         <div className={`row ${styles.marginTop1}`}>
           <ItemSelect
-            emptyResultsMessage={<li>Seller cannot be found in this category.</li>}
+            emptyResultsMessage={emptyResultsMessage}
             handleSearchChange={this.handleSellerSearchChange}
             htmlFor="sellers"
             id="sellers"
@@ -175,7 +202,7 @@ class EditOpportunitySellers extends Component {
             validators={{}}
           />
         </div>
-        {showClosingDateWarning && (
+        {hasSelectedSellers && showClosingDateWarning && (
           <div className={`row ${styles.marginTop1}`}>
             <AUpageAlert as="warning" className={styles.pageAlert}>
               <AUheading level="2" size="lg">
@@ -210,6 +237,7 @@ EditOpportunitySellers.defaultProps = {
       published_date: ''
     }
   },
+  category: '',
   model: ''
 }
 
@@ -220,6 +248,7 @@ EditOpportunitySellers.propTypes = {
       published_date: PropTypes.string.isRequired
     }).isRequired
   }),
+  category: PropTypes.string,
   model: PropTypes.string.isRequired
 }
 
@@ -230,6 +259,7 @@ const mapStateToProps = (state, props) => ({
 const mapDispatchToProps = (dispatch, props) => ({
   findSellers: (keyword, category, allSellers, exclude) =>
     dispatch(findSuppliers(keyword, category, allSellers, exclude)),
+  resetValidity: model => dispatch(actions.setValidity(model, true)),
   updateSellers: sellers => dispatch(actions.change(`${props.model}.sellers`, sellers))
 })
 

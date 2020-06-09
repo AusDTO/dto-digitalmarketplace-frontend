@@ -3,8 +3,17 @@
         display: inline-block;
     }
 
+    .editAction {
+        border: none;
+        padding-top: 0;
+    }
+
     .editLink {
         border: none;
         padding: 0;
+    }
+
+    .editList {
+        margin-top: 0;
     }
 }

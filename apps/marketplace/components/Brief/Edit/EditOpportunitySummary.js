@@ -23,6 +23,9 @@ class EditOpportunitySummary extends Component {
       redirectToEditsTable: false
     }
 
+    // This reset clears any invalid state from the parent form which prevents submit events from this component.
+    props.resetValidity(props.model)
+
     this.handleCancelClick = this.handleCancelClick.bind(this)
     this.handleContinueClick = this.handleContinueClick.bind(this)
   }
@@ -49,21 +52,22 @@ class EditOpportunitySummary extends Component {
     const { initialSummary, redirectToEditsTable } = this.state
 
     let label = 'Summary of work to be done'
-    let limitWordsMessage = 'Your summary has exceeded the 200 word limit'
     let requiredMessage = 'You must add a summary of work to be done'
     let controlProps = {
-      limit: 200
+      limit: 200,
+      rows: '10'
     }
 
     if (brief.lot === 'specialist') {
       label = 'What will the specialist do?'
-      limitWordsMessage = 'What will the specialist do has exceeded the 1000 word limit'
       requiredMessage = 'You must answer "What will the specialist do?".'
       controlProps = {
         limit: 1000,
         rows: '10'
       }
     }
+
+    const limitWordsMessage = `Your summary has exceeded the ${controlProps.limit} word limit`
 
     if (redirectToEditsTable) {
       return <Redirect to="/" />
@@ -138,6 +142,7 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
+  resetValidity: model => dispatch(actions.setValidity(model, true)),
   setOnlySellersEdited: onlySellersEdited =>
     dispatch(actions.change(`${props.model}.onlySellersEdited`, onlySellersEdited)),
   setSummary: summary => dispatch(actions.change(`${props.model}.summary`, summary))
