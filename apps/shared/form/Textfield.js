@@ -43,7 +43,7 @@ const Textfield = props => {
 
   if (!messages || !messages.validCharacters) {
     messages = {
-      validCharacters: `You cannot have invalid characters in '${label}'.`,
+      validCharacters: `Your draft content for '${label}' contains invalid characters. This usually happens when you copy and paste from an external document. We recommend to type in your response.`,
       ...messages
     }
   }
