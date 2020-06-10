@@ -12,7 +12,7 @@ exports[`Textarea with limit 5, 10 words 1`] = `
   />
   <span
     aria-live="polite"
-    className="word-count-counter wordCount"
+    className="word-count-counter wordCount invalid"
   >
     5 words too many
   </span>
@@ -31,7 +31,7 @@ exports[`Textarea with limit 100, 10 words 1`] = `
   />
   <span
     aria-live="polite"
-    className="word-count-counter wordCount"
+    className="word-count-counter wordCount valid"
   >
     90 words left
   </span>
@@ -49,7 +49,7 @@ exports[`Textarea with limit 100, no words 1`] = `
   />
   <span
     aria-live="polite"
-    className="word-count-counter wordCount"
+    className="word-count-counter wordCount valid"
   >
     100 words left
   </span>
