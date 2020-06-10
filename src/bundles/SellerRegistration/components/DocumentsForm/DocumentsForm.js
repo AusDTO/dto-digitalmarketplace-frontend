@@ -60,7 +60,13 @@ class DocumentsForm extends BaseForm {
             'expires': false
         },
         {
-            'label': 'Professional Indemnity and Public Liability Insurance',
+            'label': 'Professional Indemnity Insurance',
+            'id': 'indemnity',
+            'description': 'Your insurer can issue a certificate of currency.',
+            'expires': true
+        },
+        {
+            'label': 'Public Liability Insurance',
             'id': 'liability',
             'description': 'Your insurer can issue a certificate of currency.',
             'expires': true
@@ -174,7 +180,7 @@ class DocumentsForm extends BaseForm {
                         onCustomSubmit={onSubmit}
                         onSubmitFailed={onSubmitFailed}
                         validators={{
-                            documents: (documents = {}) => minObjectLength(documents, 3) && documents.workers.noWorkersCompensation !== false
+                            documents: (documents = {}) => minObjectLength(documents, 4) && documents.workers.noWorkersCompensation !== false
                         }}
                     >
                         {csrf_token && (
