@@ -199,11 +199,28 @@ export const onlyWholeNumbers = (val) => {
   return false;
 }
 
+export const validCharacters = val => {
+  if (!val) {
+    return true
+  }
+
+  // eslint-disable-next-line no-control-regex
+  const regex = /[\000\x00\u0000]+/g
+  const match = val.match(regex)
+
+  if (match === null) {
+    return true
+  }
+
+  return match.length === 0
+}
+
 export default {
   required,
   minArrayLength,
   min,
   validABN,
+  validCharacters,
   validLinks,
   validDate,
   validEmail,

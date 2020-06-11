@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Control, controls } from 'react-redux-form'
-import { limitWords, minimumWords } from 'shared/validators'
+import { limitWords, minimumWords, validCharacters } from 'shared/validators'
 
 import StatefulError from './StatefulError'
 import TextareaComponent from './Textarea/Textarea'
@@ -34,6 +34,7 @@ const Textarea = props => {
       }
     }
   }
+
   if (controlProps && controlProps.minimum) {
     validators = { ...validators, minimumWords: minimumWords(controlProps.minimum) }
     if (!messages || !messages.minimumWords) {
@@ -43,6 +44,19 @@ const Textarea = props => {
       }
     }
   }
+
+  validators = {
+    validCharacters,
+    ...validators
+  }
+
+  if (!messages || !messages.validCharacters) {
+    messages = {
+      validCharacters: `Your draft content for '${label}' contains invalid characters. This usually happens when you copy and paste from an external document. We recommend to type in your response.`,
+      ...messages
+    }
+  }
+
   return (
     <div className="field">
       <label id={`${id}-label`} className={`question-heading au-text-input__label ${mainStyles.newLines}`} htmlFor={id}>
