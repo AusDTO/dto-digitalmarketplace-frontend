@@ -200,7 +200,7 @@ export const onlyWholeNumbers = (val) => {
 }
 
 export const validCharacters = val => {
-  if (!val) {
+  if (!val || typeof val !== 'string') {
     return true
   }
 
