@@ -187,7 +187,7 @@ export const validPriceRange = max => val =>
   required(val) && validPrice(val) && (parseFloat(val) > 0 && parseFloat(max.replace(/,/g, '')) >= parseFloat(val))
 
 export const validCharacters = val => {
-  if (!val) {
+  if (!val || typeof val !== 'string') {
     return true
   }
 
