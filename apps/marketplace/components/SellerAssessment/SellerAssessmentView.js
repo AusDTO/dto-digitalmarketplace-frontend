@@ -29,7 +29,7 @@ const SellerAssessmentView = props => (
 
     {props.evidence.status === 'submitted' && (
       <p>
-        You cannot edit your request once you&apos;ve submitted an request for assessment.
+        You cannot edit your request once you&apos;ve submitted a request for assessment.
         <br />
         If you have an issue,{' '}
         <a
