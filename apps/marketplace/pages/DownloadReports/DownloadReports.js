@@ -115,7 +115,7 @@ export class DownloadReports extends Component {
             },
             {
               value: 'rfx',
-              label: 'RFx opportunities'
+              label: 'Seek proposals and quotes opportunities'
             },
             {
               value: 'training',
