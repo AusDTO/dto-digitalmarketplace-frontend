@@ -4,6 +4,7 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUdirectionLink from '@gov.au/direction-links/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
 import styles from './SellerAssessmentReviewStage.scss'
+import main from '../../main.scss'
 
 const SellerAssessmentView = props => (
   <div>
@@ -20,7 +21,7 @@ const SellerAssessmentView = props => (
           href="https://marketplace1.zendesk.com/hc/en-gb/requests/new"
           rel="noopener noreferrer"
           target="_blank"
-          className={styles.marginRight1}
+          className={main.marginRight1}
         >
           contact our support team.
         </a>
@@ -36,7 +37,7 @@ const SellerAssessmentView = props => (
           href="https://marketplace1.zendesk.com/hc/en-gb/requests/new"
           rel="noopener noreferrer"
           target="_blank"
-          className={styles.marginRight1}
+          className={main.marginRight1}
         >
           contact our support team.
         </a>
