@@ -84,7 +84,7 @@ export const handleLoadDomainEvidenceSuccess = response => ({
     criteria: response.data.criteria,
     evidence: response.data.evidence,
     status: response.data.status,
-    created_at: response.data.created_at
+    createdAt: response.data.created_at
   }
 })
 
