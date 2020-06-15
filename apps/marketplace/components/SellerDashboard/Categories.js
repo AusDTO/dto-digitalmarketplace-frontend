@@ -95,7 +95,12 @@ export class Categories extends Component {
             >
               Contact us to adjust your rate
             </a>
-            <a href={`${rootPath}/seller-assessment/${category.evidence_id}/view`}>View submitted evidence</a>
+            {!category.evidence_id && (
+               <a href={`${rootPath}/seller-assessment/${category.evidence_id}/view`}>View case study</a>
+            )}
+            {category.evidence_id && (
+               <a href={`${rootPath}/seller-assessment/${category.evidence_id}/view`}>View submitted evidence</a>
+            )}
           </React.Fragment>
         )
       case 'rejected':
