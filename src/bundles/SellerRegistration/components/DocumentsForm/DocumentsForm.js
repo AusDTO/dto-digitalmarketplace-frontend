@@ -42,6 +42,10 @@ class DocumentsForm extends BaseForm {
     
     state = {
         errors: {},
+        indemnity: {
+            newDocumentUploaded: this.props.documentsForm.documents.indemnity && 
+                this.props.documentsForm.documents.indemnity.expiry ? false : true
+        },
         liability: {
             newDocumentUploaded: this.props.documentsForm.documents.liability && 
                 this.props.documentsForm.documents.liability.expiry ? false : true
