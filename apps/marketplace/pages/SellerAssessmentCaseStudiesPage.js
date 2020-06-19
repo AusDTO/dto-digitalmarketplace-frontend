@@ -6,21 +6,19 @@ import { loadDomainEvidenceData } from '../actions/supplierActions'
 import SellerAssessmentCaseStudies from '../components/SellerAssessment/SellerAssessmentCaseStudies'
 
 class SellerAssessmentCaseStudiesPage extends Component {
-    constructor(props) {
-      super(props)
-      this.state = {
-        loading: false
-      }
-    }
-  
-  
-    render() {
-      if (this.state.loading) {
-        return <LoadingIndicatorFullPage />
-      }
-    return <SellerAssessmentCaseStudies></SellerAssessmentCaseStudies>
+  constructor(props) {
+    super(props)
+    this.state = {
+      loading: false
     }
   }
-  
-  
-  export default (SellerAssessmentCaseStudiesPage)
+
+  render() {
+    if (this.state.loading) {
+      return <LoadingIndicatorFullPage />
+    }
+    return <SellerAssessmentCaseStudies></SellerAssessmentCaseStudies>
+  }
+}
+
+export default SellerAssessmentCaseStudiesPage

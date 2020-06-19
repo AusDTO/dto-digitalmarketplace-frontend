@@ -95,9 +95,7 @@ export class Categories extends Component {
             >
               Contact us to adjust your rate
             </a>
-            {!category.evidence_id && (
-              <a href={`${rootPath}/case-studies/${category.id}`}>View case study</a>
-            )}
+            {!category.evidence_id && <a href={`${rootPath}/case-studies/${category.id}`}>View case study</a>}
             {category.evidence_id && (
               <a href={`${rootPath}/seller-assessment/${category.evidence_id}/view`}>View submitted evidence</a>
             )}
