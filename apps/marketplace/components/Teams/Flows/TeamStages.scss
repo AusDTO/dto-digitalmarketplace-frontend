@@ -43,3 +43,30 @@ a.removeLink {
         padding: 1rem 0.25rem;
     }
 }
+
+.selectedItemActionsContainer {
+    display: inline;
+
+    ul.selectedItemActions {
+        float: right;
+        padding: 0;
+
+        li {
+            border: 0;
+            margin: 0rem 0.25rem;
+            padding: 0;
+        }
+    }
+
+    @media (max-width: 575px) {
+        ul.selectedItemActions {
+            display: block;
+            float: none;
+
+            li {
+                display: block;
+                margin: 0;
+            }
+        }
+    }
+}
