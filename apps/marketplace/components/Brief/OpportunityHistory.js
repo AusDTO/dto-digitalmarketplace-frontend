@@ -41,7 +41,7 @@ const EditSummary = props => {
         Object.prototype.hasOwnProperty.call(edit, 'requirementsDocument')) && (
         <span className={`${styles.grey} ${styles.smallText}`}>{format(edit.editedAt, 'DD MMMM YYYY[,] h[:]mma')}</span>
       )}
-      <ul>
+      <ul className={localStyles.editSummaryList}>
         {Object.keys(edit).map(key => {
           if (key === 'title') {
             return (
