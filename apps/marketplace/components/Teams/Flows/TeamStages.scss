@@ -45,10 +45,9 @@ a.removeLink {
 }
 
 .selectedItemActionsContainer {
-    display: inline;
+    float: right;
 
     ul.selectedItemActions {
-        float: right;
         padding: 0;
 
         li {
@@ -57,8 +56,13 @@ a.removeLink {
             padding: 0;
         }
     }
+}
 
-    @media (max-width: 575px) {
+@media (max-width: 575px) {
+    .selectedItemActionsContainer {
+        display: inline;
+        float: none;
+
         ul.selectedItemActions {
             display: block;
             float: none;
