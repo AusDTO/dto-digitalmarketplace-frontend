@@ -1,0 +1,8 @@
+.pageAlert {
+    margin-bottom: 1rem;
+}
+
+.pageAlert .pageAlertContent {
+    margin-bottom: 0;
+    margin-top: 1rem;
+}

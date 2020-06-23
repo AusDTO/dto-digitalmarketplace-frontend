@@ -247,7 +247,8 @@ class Signup extends React.Component {
                   abn,
                   email,
                   representative,
-                  recruiter
+                  recruiter,
+                  supplier: this.props.application.supplier
                 },
                 this.elementProps
               );

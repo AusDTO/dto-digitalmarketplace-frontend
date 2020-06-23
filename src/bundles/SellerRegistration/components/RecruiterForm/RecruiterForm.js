@@ -15,10 +15,15 @@ import StatefulError from '../../../../shared/form/StatefulError';
 import StepNav       from '../StepNav';
 import { mapAustraliaState } from '../../../../helpers'
 
-import { validDate } from '../../../../validators';
+import { required, validDate } from '../../../../validators';
 
 import ValidationSummary from '../ValidationSummary';
-import '../SellerRegistration.css';
+
+import { AUcheckbox } from '@gov.au/control-input'
+import PageAlert from '@gov.au/page-alerts';
+
+import recruiterStyles from './RecruiterForm.css';
+import styles from '../SellerRegistration.css';
 
 const states = ['qld', 'sa', 'vic']
 
@@ -31,11 +36,29 @@ class RecruiterForm extends BaseForm {
     }
     
     state = {
+        checkboxLabel: '',
         recruiter: this.props[this.props.model].recruiter,
         loaded: false
     }
 
+    checkboxLabelWhenRecruiterConsultant = 'I understand that once my business is updated to both recruitment and consultancy in the Digital Marketplace, I will lose my current category approvals. I must request assessment from my dashboard and be approved in the relevant categories before I can respond to opportunities.'
+    checkboxLabelWhenConsultant = 'I understand that once my business is updated to a consultancy in the Digital Marketplace, I will lose my current category approvals. I must request assessment from my dashboard and be approved in the relevant categories before I can respond to opportunities.'
+
     componentDidMount() {
+        const { recruiter } = this.state
+
+        if (recruiter === 'both') {
+            this.setState({
+                checkboxLabel: this.checkboxLabelWhenRecruiterConsultant
+            })
+        }
+
+        if (recruiter === 'no') {
+            this.setState({
+                checkboxLabel: this.checkboxLabelWhenConsultant
+            })
+        }
+
         this.setState({loaded: true})
     }
 
@@ -46,10 +69,20 @@ class RecruiterForm extends BaseForm {
             recruiter: e.target.value
         })
 
+        if (e.target.value === 'both') {
+            this.setState({
+                checkboxLabel: this.checkboxLabelWhenRecruiterConsultant,
+            })
+        }
+
         if (e.target.value === 'no') {
             states.forEach(s => {
                 updateProperty(`${model}.labourHire.${s}.expiry`, null)
                 updateProperty(`${model}.labourHire.${s}.licenceNumber`, null)
+            })
+
+            this.setState({
+                checkboxLabel: this.checkboxLabelWhenConsultant,
             })
         }
     }
@@ -115,8 +148,34 @@ class RecruiterForm extends BaseForm {
         return validators
     }
 
+    showAssessmentWarning = () => {
+        const { supplier, type } = this.props
+        return type === 'edit' && supplier.recruiter === 'yes'
+    }
+
+    UnderstandsProcessCheckbox = props => {
+        const { checked } = props
+        const { model, updateProperty } = this.props
+        const { checkboxLabel } = this.state
+  
+        return (
+          <AUcheckbox
+            checked={checked}
+            id="understandsAssessmentProcess"
+            label={checkboxLabel}
+            name="understandsAssessmentProcess"
+            onChange={() => {}}
+            onClick={e => {
+              updateProperty(`${model}.understandsAssessmentProcess`, e.target.checked)
+            }}
+          />
+        )
+    }  
+
     render() {
         const {action, csrf_token, model, form, children, onSubmit, nextRoute, submitClicked, applicationErrors, type} = this.props;
+        const { recruiter } = this.props[model]
+
         let hasFocused = false
         const setFocus = e => {
           if (!hasFocused) {
@@ -151,13 +210,25 @@ class RecruiterForm extends BaseForm {
                         {csrf_token && (
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
                         )}
-                        <div styleName="content">
+                        <div styleName="styles.content">
                             <fieldset>
                                 <legend>
                                     <h1 className="au-display-xl" tabIndex="-1">Are you a recruiter?</h1>
                                 </legend>
                                 <p>Recruiters provide candidates for digital specialist roles, but are not directly responsible for their work, performance or deliverables.
                                     Examples include temporary and contract recruitment.</p>
+                                {this.showAssessmentWarning() && recruiter === 'both' && (
+                                    <PageAlert as="warning" styleName="recruiterStyles.pageAlert">
+                                        <h2 className="au-display-lg">Assessment process</h2>
+                                        <p styleName="recruiterStyles.pageAlertContent">Businesses that do both recruitment and consultancy must submit evidence and be approved for relevant categories before they can apply for opportunities.</p>
+                                    </PageAlert>
+                                )}
+                                {this.showAssessmentWarning() && recruiter === 'no' && (
+                                    <PageAlert as="warning" styleName="recruiterStyles.pageAlert">
+                                        <h2 className="au-display-lg">Assessment process</h2>
+                                        <p styleName="recruiterStyles.pageAlertContent">Businesses that provide services on a consultancy basis must submit evidence and be approved for relevant categories before they can apply for opportunities.</p>
+                                    </PageAlert>
+                                )}
                                 <Control.radio
                                     model={`${model}.recruiter`}
                                     onClick={this.onChangeState.bind(this)}
@@ -230,6 +301,26 @@ class RecruiterForm extends BaseForm {
                                 </fieldset>
                             )}
                             {children}
+                            {this.showAssessmentWarning() && (recruiter === 'both' || recruiter === 'no') && (
+                                <React.Fragment>
+                                    <StatefulError
+                                        id="understandsAssessmentProcess"
+                                        model={`${model}.understandsAssessmentProcess`}
+                                        messages={{
+                                            required: 'Confirm you understand that once you submit these updates, you cannot respond to opportunities until you request an assessment and are approved for the relevant categories.'
+                                        }}
+                                    />
+                                    <Control.checkbox
+                                        component={this.UnderstandsProcessCheckbox}
+                                        id="understandsAssessmentProcessControl"
+                                        mapProps={{
+                                            checked: prps => prps.modelValue
+                                        }}
+                                        model={`${model}.understandsAssessmentProcess`}
+                                        validators={{ required }}
+                                    />
+                                </React.Fragment>
+                            )}
                         </div>
                         <StepNav buttonText="Save and continue" to={nextRoute}/>
                     </Form>

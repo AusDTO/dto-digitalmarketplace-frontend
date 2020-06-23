@@ -186,6 +186,22 @@ export const validPrice = val => val.match(/^\d+(?:[.]\d+)*$/g)
 export const validPriceRange = max => val =>
   required(val) && validPrice(val) && (parseFloat(val) > 0 && parseFloat(max.replace(/,/g, '')) >= parseFloat(val))
 
+export const validCharacters = val => {
+  if (!val || typeof val !== 'string') {
+    return true
+  }
+
+  // eslint-disable-next-line no-control-regex
+  const regex = /[\000\x00\u0000]+/g
+  const match = val.match(regex)
+
+  if (match === null) {
+    return true
+  }
+
+  return match.length === 0
+}
+
 export default {
   required,
   minArrayLength,
@@ -203,6 +219,7 @@ export default {
   limitNumbers,
   passwordsMatch,
   passwordLength,
+  validCharacters,
   validPrice,
   validPriceRange
 }

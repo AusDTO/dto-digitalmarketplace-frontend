@@ -5,7 +5,7 @@ import { Control, controls } from 'react-redux-form';
 import StatefulError from './StatefulError';
 import TextareaComponent from '../Textarea';
 
-import { limitWords } from '../../validators';
+import { limitWords, validCharacters } from '../../validators';
 
 const Textarea = (props) => {
   let {
@@ -24,6 +24,18 @@ const Textarea = (props) => {
   if (controlProps.limit) {
     validators = { ...validators, limitWords: limitWords(controlProps.limit) }
     messages = { limitWords: `${label} has exceeded the word limit.`, ...messages }
+  }
+
+  validators = {
+    validCharacters,
+    ...validators
+  }
+
+  if (!messages || !messages.validCharacters) {
+    messages = {
+      validCharacters: `Your draft content for '${label}' contains invalid characters. This usually happens when you copy and paste from an external document. We recommend to type in your response.`,
+      ...messages
+    }
   }
 
   return (
