@@ -62,3 +62,7 @@ p.file-name {
   font-weight: 400;
   margin-bottom: 15px;
 }
+
+.document {
+  margin: 2.5rem 0;
+}

@@ -24,7 +24,7 @@ import { uploadDocument, submitApplication } from '../../redux/modules/applicati
 import { minObjectLength, validDate } from '../../../../validators';
 import ValidationSummary from '../ValidationSummary';
 
-import './DocumentsForm.css';
+import styles from './DocumentsForm.css';
 
 
 class DocumentsForm extends BaseForm {
@@ -200,7 +200,7 @@ class DocumentsForm extends BaseForm {
                             const url = doc.application_id ? `/sellers/application/${doc.application_id}/documents/${doc.filename}` : match.url.slice(1);
 
                             return (
-                                <div key={key} className="callout-no-margin">
+                                <div key={key} styleName="styles.document">
                                     <h3 styleName="question-heading">{field.label}</h3>
                                     <span>{field.description}</span>
 
