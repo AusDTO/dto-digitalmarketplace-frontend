@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import SellerAssessmentCaseStudies from '../components/SellerAssessment/SellerAssessmentCaseStudies'
 import { loadCaseStudiesData } from '../actions/supplierActions'
@@ -34,14 +34,14 @@ class SellerAssessmentCaseStudiesPage extends Component {
 }
 
 const mapStateToProps = state => ({
-//   domain: state.domain.domain
+  //   domain: state.domain.domain
 })
 
 const mapDispatchToProps = dispatch => ({
-loadCaseStudiesData: domainId => dispatch(loadCaseStudiesData(domainId)),
+  loadCaseStudiesData: domainId => dispatch(loadCaseStudiesData(domainId))
 })
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-) (SellerAssessmentCaseStudiesPage)
+  mapStateToProps,
+  mapDispatchToProps
+)(SellerAssessmentCaseStudiesPage)

@@ -16,7 +16,7 @@ const SellerAssessmentCaseStudies = props => (
 )
 
 SellerAssessmentCaseStudies.propTypes = {
-    domain:PropTypes.object.isRequired
+  domain: PropTypes.object.isRequired
 }
 
 export default SellerAssessmentCaseStudies
