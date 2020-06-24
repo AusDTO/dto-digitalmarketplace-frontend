@@ -201,7 +201,7 @@ class DocumentsForm extends BaseForm {
 
                             return (
                                 <div key={key} className="callout-no-margin">
-                                    <p styleName="question-heading">{field.label}</p>
+                                    <h3 styleName="question-heading">{field.label}</h3>
                                     <span>{field.description}</span>
 
                                     <div>
