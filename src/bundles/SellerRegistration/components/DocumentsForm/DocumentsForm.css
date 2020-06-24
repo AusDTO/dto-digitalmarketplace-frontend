@@ -66,3 +66,8 @@ p.file-name {
 .document {
   margin: 2.5rem 0;
 }
+
+.documentDescription {
+  display: inline-block;
+  margin: 1rem 0;
+}

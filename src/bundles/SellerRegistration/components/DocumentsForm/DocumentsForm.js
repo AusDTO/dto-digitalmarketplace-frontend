@@ -202,7 +202,7 @@ class DocumentsForm extends BaseForm {
                             return (
                                 <div key={key} styleName="styles.document">
                                     <h3 styleName="question-heading">{field.label}</h3>
-                                    <span>{field.description}</span>
+                                    <span styleName="styles.documentDescription">{field.description}</span>
 
                                     <div>
                                         {errors && <span className="validation-message">There was an error uploading the file</span>}
