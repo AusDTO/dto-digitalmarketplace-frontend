@@ -8,6 +8,8 @@ import isPast from 'date-fns/is_past';
 import isToday from 'date-fns/is_today';
 import parse from 'date-fns/parse';
 
+import { AUcheckbox } from '@gov.au/control-input'
+
 import Layout from '../../../../shared/Layout';
 import BaseForm from '../../../../shared/form/BaseForm';
 import SubmitForm from '../../../../shared/form/SubmitForm';
@@ -26,6 +28,28 @@ import ValidationSummary from '../ValidationSummary';
 
 import styles from './DocumentsForm.css';
 
+const InsuranceCheckbox = props => {
+    const { copyDocument, documents, id, label, model } = props
+    
+    let documentToCopy = {}
+    if (id === 'indemnity') {
+        documentToCopy = documents.liability
+    } else if (id === 'liability') {
+        documentToCopy = documents.indemnity
+    }
+
+    return (
+        <AUcheckbox
+            label={label}
+            id={`${id}-checkbox`}
+            name={`${id}-checkbox`}
+            defaultChecked={false}
+            onClick={() => {
+                copyDocument(model, id, documentToCopy)
+            }}
+        />
+    )
+}
 
 class DocumentsForm extends BaseForm {
 
@@ -148,7 +172,24 @@ class DocumentsForm extends BaseForm {
     }
 
     render() {
-        const { action, csrf_token, model, form, documentsForm, onSubmit, onSubmitFailed, match, buttonText, nextRoute, submitClicked, applicationErrors, type } = this.props;
+        const {
+            action,
+            applicationErrors,
+            buttonText,
+            copyDocument,
+            csrf_token,
+            documentsForm,
+            form,
+            match,
+            model,
+            nextRoute,
+            onSubmit,
+            onSubmitFailed,
+            submitClicked,
+            type
+        } = this.props
+        const { documents } = documentsForm
+
         let hasFocused = false
         const setFocus = e => {
             if (!hasFocused) {
@@ -199,6 +240,23 @@ class DocumentsForm extends BaseForm {
                             const errors = this.state.errors[key];
                             const url = doc.application_id ? `/sellers/application/${doc.application_id}/documents/${doc.filename}` : match.url.slice(1);
 
+                            let insuranceCheckboxLabel = ''
+                            if (key === 'indemnity') {
+                                insuranceCheckboxLabel = 'I have included the Professional Indemnity Insurance in the Public Liability Insurance document.'
+                            } else if (key === 'liability') {
+                                insuranceCheckboxLabel = 'I have included the Public Liability Insurance in the Professional Indemnity Insurance document.'
+                            }
+
+                            let showInsuranceCheckbox = false
+                            if (isEmpty(documents.indemnity) && isEmpty(documents.liability)) {
+                                showInsuranceCheckbox = false
+                            } else if (
+                                (key === 'indemnity' && isEmpty(documents.indemnity) && !isEmpty(documents.liability)) ||
+                                (key === 'liability' && isEmpty(documents.liability) && !isEmpty(documents.indemnity))) {
+
+                                showInsuranceCheckbox = true
+                            }
+
                             return (
                                 <div key={key} styleName="styles.document">
                                     <h3 styleName="question-heading">{field.label}</h3>
@@ -214,6 +272,16 @@ class DocumentsForm extends BaseForm {
                                                     <label id={`label_${key}`} htmlFor={key} styleName="custom-input"> {isEmpty(name) && "Choose file"} </label>
                                                 </p>
                                             </div>
+                                        }
+
+                                        {showInsuranceCheckbox && !fieldState.uploading && !fieldState.file &&
+                                            <InsuranceCheckbox
+                                                copyDocument={copyDocument}
+                                                documents={documents}
+                                                id={key}
+                                                label={insuranceCheckboxLabel}
+                                                model={model}
+                                            />
                                         }
 
                                         {!isEmpty(doc.filename) &&
@@ -305,6 +373,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        copyDocument: (model, id, value) => {
+            return dispatch(actions.change(`${model}.documents.${id}`, value))
+        },
         onUpload: (id, data) => {
             return dispatch(uploadDocument(id, data));
         },
