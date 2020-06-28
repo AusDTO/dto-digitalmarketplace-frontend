@@ -28,29 +28,6 @@ import ValidationSummary from '../ValidationSummary';
 
 import styles from './DocumentsForm.css';
 
-const InsuranceCheckbox = props => {
-    const { copyDocument, documents, id, label, model } = props
-    
-    let documentToCopy = {}
-    if (id === 'indemnity') {
-        documentToCopy = documents.liability
-    } else if (id === 'liability') {
-        documentToCopy = documents.indemnity
-    }
-
-    return (
-        <AUcheckbox
-            label={label}
-            id={`${id}-checkbox`}
-            name={`${id}-checkbox`}
-            defaultChecked={false}
-            onClick={() => {
-                copyDocument(model, id, documentToCopy)
-            }}
-        />
-    )
-}
-
 class DocumentsForm extends BaseForm {
 
     static propTypes = {
@@ -275,12 +252,33 @@ class DocumentsForm extends BaseForm {
                                         }
 
                                         {showInsuranceCheckbox && !fieldState.uploading && !fieldState.file &&
-                                            <InsuranceCheckbox
-                                                copyDocument={copyDocument}
-                                                documents={documents}
-                                                id={key}
+                                            <AUcheckbox
+                                                defaultChecked={false}
+                                                id={`${key}-checkbox`}
                                                 label={insuranceCheckboxLabel}
-                                                model={model}
+                                                name={`${key}-checkbox`}
+                                                onClick={() => {
+                                                    let documentToCopy = {}
+                                                    if (key === 'indemnity') {
+                                                        documentToCopy = documents.liability
+
+                                                        if (this.state.liability.newDocumentUploaded) {
+                                                            this.setState({
+                                                                [key]: Object.assign({}, this.state[key], { newDocumentUploaded: true })
+                                                            })
+                                                        }
+                                                    } else if (key === 'liability') {
+                                                        documentToCopy = documents.indemnity
+
+                                                        if (this.state.indemnity.newDocumentUploaded) {
+                                                            this.setState({
+                                                                [key]: Object.assign({}, this.state[key], { newDocumentUploaded: true })
+                                                            })
+                                                        }
+                                                    }
+                                                    
+                                                    copyDocument(model, key, documentToCopy)
+                                                }}
                                             />
                                         }
 
