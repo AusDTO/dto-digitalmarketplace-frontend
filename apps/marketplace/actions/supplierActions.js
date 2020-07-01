@@ -48,12 +48,12 @@ export const handleErrorFailure = response => dispatch => {
 
 export const handleCaseStudiesSuccess = response => ({
   type: CASE_STUDIES_LOAD_SUCCESS,
-  data: response
+  data: response.data
 })
 
 export const loadCaseStudiesData = domainId => dispatch => {
   dispatch(sendingRequest(true))
-  return dmapi({ url: `/case_studies/${domainId}` }).then(response => {
+  return dmapi({ url: `/case-studies/${domainId}` }).then(response => {
     if (!response || response.error) {
       dispatch(handleErrorFailure(response))
     } else {
