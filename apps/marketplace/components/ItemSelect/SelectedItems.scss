@@ -5,35 +5,12 @@
         list-style-type: none;
         padding-left: 0;
 
-        li {
+        li.selectedListItem {
             border-top: 1px solid gray;
             padding: 0.75rem 0;
 
             &:last-child {
                 border-bottom: 1px solid gray;
-            }
-        }
-
-        ul.selectedItemActions {
-            float: right;
-            padding: 0;
-
-            li {
-                border: 0;
-                margin: 0rem 0.25rem;
-                padding: 0;
-            }
-        }
-
-        @media (max-width: 575px) {
-            ul.selectedItemActions {
-                display: block;
-                float: none;
-
-                li {
-                    display: block;
-                    margin: 0;
-                }
             }
         }
     }
