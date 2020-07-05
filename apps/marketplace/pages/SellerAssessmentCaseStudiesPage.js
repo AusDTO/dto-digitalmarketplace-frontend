@@ -22,26 +22,39 @@ class SellerAssessmentCaseStudiesPage extends Component {
     this.setState({
       loading: true
     })
-    return this.props.loadCaseStudiesData(domainId).then(() => this.setState({ loading: false }))
+    return this.props.loadCaseStudiesData(this.props.match.params.domainId).then(response => {
+      this.setState({
+        loading: false
+      })
+      return response.data
+    })
   }
 
   render() {
     if (this.state.loading) {
       return <LoadingIndicatorFullPage />
     }
-    return <SellerAssessmentCaseStudies>domain={this.props.domain}</SellerAssessmentCaseStudies>
+    return <SellerAssessmentCaseStudies domain={this.props.domain} />
   }
 }
 
 const mapStateToProps = state => ({
-  //   domain: state.domain.domain
+  domain: state.domain.domain
 })
 
 const mapDispatchToProps = dispatch => ({
   loadCaseStudiesData: domainId => dispatch(loadCaseStudiesData(domainId))
+    // loadInitialData: domainId => dispatch(loadCaseStudiesData(domainId))
 })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(SellerAssessmentCaseStudiesPage)
+
+// return this.props.loadInitialData(this.props.match.params.domainId).then(response => {
+//   this.setState({
+//     loading: false
+//   })
+//   return response.data
+// })
