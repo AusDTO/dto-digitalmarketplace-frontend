@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUdirectionLink from '@gov.au/direction-links/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
-import SellerAssessmentCaseStudiesPage from '../../pages/SellerAssessmentCaseStudiesPage'
-
+import styles from './SellerAssessmentReviewStage.scss'
+import main from '../../main.scss'
 const SellerAssessmentCaseStudies = props => (
   <div>
     <AUdirectionLink link={`${rootPath}/seller-dashboard/categories`} text="back to dashboard" direction="left" />
@@ -16,7 +16,7 @@ const SellerAssessmentCaseStudies = props => (
 )
 
 SellerAssessmentCaseStudies.propTypes = {
-//   domain: PropTypes.object.isRequired
+  domain: PropTypes.object.isRequired
 }
 
 export default SellerAssessmentCaseStudies
