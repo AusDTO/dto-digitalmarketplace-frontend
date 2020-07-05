@@ -53,7 +53,7 @@ export const handleCaseStudiesSuccess = response => ({
 
 export const loadCaseStudiesData = domainId => dispatch => {
   dispatch(sendingRequest(true))
-  return dmapi({ url: `/case-studies/${domainId}` }).then(response => {
+  return dmapi({ url: `/case-studies/${domainId}/view` }).then(response => {
     if (!response || response.error) {
       dispatch(handleErrorFailure(response))
     } else {
