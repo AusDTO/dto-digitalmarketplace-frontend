@@ -22,7 +22,7 @@ class SellerAssessmentCaseStudiesPage extends Component {
     this.setState({
       loading: true
     })
-    return this.props.loadCaseStudiesData(this.props.match.params.domainId).then(response => {
+    return this.props.loadInitialData(this.props.match.params.domainId).then(response => {
       this.setState({
         loading: false
       })
@@ -43,18 +43,10 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  loadCaseStudiesData: domainId => dispatch(loadCaseStudiesData(domainId))
-    // loadInitialData: domainId => dispatch(loadCaseStudiesData(domainId))
+  loadInitialData: domainId => dispatch(loadCaseStudiesData(domainId))
 })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(SellerAssessmentCaseStudiesPage)
-
-// return this.props.loadInitialData(this.props.match.params.domainId).then(response => {
-//   this.setState({
-//     loading: false
-//   })
-//   return response.data
-// })
