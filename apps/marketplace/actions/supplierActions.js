@@ -48,7 +48,7 @@ export const handleErrorFailure = response => dispatch => {
 
 export const handleCaseStudiesSuccess = response => ({
   type: CASE_STUDIES_LOAD_SUCCESS,
-  data: response.data
+  data: { caseStudies: response.data.data, domain_id: response.data.domain_id }
 })
 
 export const loadCaseStudiesData = domainId => dispatch => {
