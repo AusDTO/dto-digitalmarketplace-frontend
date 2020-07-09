@@ -12,7 +12,7 @@ const SellerAssessmentCaseStudies = props => (
     <AUheading level="1" size="xl">
       Case Studies
     </AUheading>
-    {/* <p> {props}</p> */}
+    <p> {props.test}</p>
   </div>
 )
 
