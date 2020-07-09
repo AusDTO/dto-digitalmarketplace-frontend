@@ -10,9 +10,33 @@ const SellerAssessmentCaseStudies = props => (
     <AUdirectionLink link={`${rootPath}/seller-dashboard/categories`} text="back to dashboard" direction="left" />
 
     <AUheading level="1" size="xl">
-      Case Studies
+      {props.service} Case Studies
     </AUheading>
-    <p> {props.caseStudies}</p>
+    <div className={styles.spacer} />
+    <AUheading level="2" size="md">
+      {props.title}
+    </AUheading>
+
+    <AUheading level="2" size="md">
+      Client
+    </AUheading>
+    <p className={styles.reviewText}>{props.client}</p>
+
+    <AUheading level="2" size="md">
+      Challenge
+    </AUheading>
+    <p className={styles.reviewText}>{props.challenge}</p>
+
+    <AUheading level="2" size="md">
+      Timeframe
+    </AUheading>
+    <p className={styles.reviewText}>{props.timeframe}</p>
+
+    <AUheading level="2" size="md">
+      Approach
+    </AUheading>
+    <p className={styles.reviewText}>{props.approach}</p>
+    
   </div>
 )
 

@@ -34,15 +34,43 @@ class SellerAssessmentCaseStudiesPage extends Component {
     if (this.state.loading) {
       return <LoadingIndicatorFullPage />
     }
-    return <SellerAssessmentCaseStudies domain={this.props.domain} test={this.props.test} caseStudies={this.props.caseStudies}/>
+    return (
+      <SellerAssessmentCaseStudies
+        domain={this.props.domain}
+        approach={this.props.approach}
+        client={this.props.client}
+        opportunity={this.props.opportunity}
+        outcome={this.props.outcome}
+        project_links={this.props.project_links}
+        referee_contact={this.props.referee_contact}
+        referee_email={this.props.referee_email}
+        referee_name={this.props.referee_name}
+        referee_position={this.props.referee_position}
+        roles={this.props.roles}
+        service={this.props.service}
+        timeframes={this.props.timeframes}
+        title={this.props.title}
+      />
+    )
+    // test={this.props.test} caseStudies={this.props.caseStudies}/>
   }
 }
 
 const mapStateToProps = state => ({
   domain: state.domain.domain,
-  // caseStudies: state.caseStudies
-  caseStudies: state.evidence.caseStudies,
-  test: state.evidence.domain_id
+  approach: state.evidence.approach,
+  client: state.evidence.client,
+  opportunity: state.evidence.opportunity,
+  outcome: state.evidence.outcome,
+  project_links: state.evidence.project_links,
+  referee_contact: state.evidence.referee_contact,
+  referee_email: state.evidence.referee_email,
+  referee_name: state.evidence.referee_name,
+  referee_position: state.evidence.referee_position,
+  roles: state.evidence.roles,
+  service: state.evidence.service,
+  timeframes: state.evidence.timeframes,
+  title: state.evidence.title
 })
 
 const mapDispatchToProps = dispatch => ({
