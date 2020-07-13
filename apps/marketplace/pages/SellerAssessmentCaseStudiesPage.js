@@ -69,7 +69,7 @@ const mapStateToProps = state => ({
   referee_position: state.evidence.referee_position,
   roles: state.evidence.roles,
   service: state.evidence.service,
-  timeframes: state.evidence.timeframes,
+  timeframes: state.evidence.timeframe,
   title: state.evidence.title
 })
 
