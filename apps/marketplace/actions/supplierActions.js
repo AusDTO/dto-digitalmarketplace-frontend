@@ -61,7 +61,7 @@ export const handleCaseStudiesSuccess = response => ({
     referee_position: response.data.referee_position,
     roles: response.data.roles,
     service: response.data.service,
-    timeframes: response.data.timeframes,
+    timeframe: response.data.timeframe,
     title: response.data.title
   }
 })
