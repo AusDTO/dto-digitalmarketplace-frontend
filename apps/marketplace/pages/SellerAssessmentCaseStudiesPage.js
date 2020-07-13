@@ -48,7 +48,7 @@ class SellerAssessmentCaseStudiesPage extends Component {
         referee_position={this.props.referee_position}
         roles={this.props.roles}
         service={this.props.service}
-        timeframes={this.props.timeframe}
+        timeframe={this.props.timeframe}
         title={this.props.title}
       />
     )
