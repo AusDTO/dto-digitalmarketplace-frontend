@@ -34,44 +34,11 @@ class SellerAssessmentCaseStudiesPage extends Component {
     if (this.state.loading) {
       return <LoadingIndicatorFullPage />
     }
-    return (
-      <SellerAssessmentCaseStudies
-        evidence={this.props.evidence}
-        // domain={this.props.domain}
-        // approach={this.props.approach}
-        // client={this.props.client}
-        // opportunity={this.props.opportunity}
-        // outcome={this.props.outcome}
-        // project_links={this.props.project_links}
-        // referee_contact={this.props.referee_contact}
-        // referee_email={this.props.referee_email}
-        // referee_name={this.props.referee_name}
-        // referee_position={this.props.referee_position}
-        // roles={this.props.roles}
-        // service={this.props.service}
-        // timeframe={this.props.timeframe}
-        // title={this.props.title}
-      />
-    )
-    // test={this.props.test} caseStudies={this.props.caseStudies}/>
+    return <SellerAssessmentCaseStudies evidence={this.props.evidence} />
   }
 }
 
 const mapStateToProps = state => ({
-  // domain: state.domain.domain,
-  // approach: state.evidence.approach,
-  // client: state.evidence.client,
-  // opportunity: state.evidence.opportunity,
-  // outcome: state.evidence.outcome,
-  // project_links: state.evidence.project_links,
-  // referee_contact: state.evidence.referee_contact,
-  // referee_email: state.evidence.referee_email,
-  // referee_name: state.evidence.referee_name,
-  // referee_position: state.evidence.referee_position,
-  // roles: state.evidence.roles,
-  // service: state.evidence.service,
-  // timeframe: state.evidence.timeframe,
-  // title: state.evidence.title,
   evidence: state.evidence
 })
 
