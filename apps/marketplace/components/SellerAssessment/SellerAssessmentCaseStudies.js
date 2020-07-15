@@ -10,7 +10,6 @@ const SellerAssessmentCaseStudies = props => (
   <div>
     <AUdirectionLink link={`${rootPath}/seller-dashboard/categories`} text="back to dashboard" direction="left" />
 
-
     {props.evidence.evidence &&
       props.evidence.evidence.map(value => (
         <React.Fragment key={value}>
