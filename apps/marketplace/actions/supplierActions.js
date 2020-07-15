@@ -50,19 +50,7 @@ export const handleCaseStudiesSuccess = response => ({
   type: CASE_STUDIES_LOAD_SUCCESS,
   // data: { caseStudies: response.data.data, domain_id: response.data.domain_id }
   data: {
-    approach: response.data.approach,
-    client: response.data.client,
-    opportunity: response.data.opportunity,
-    outcome: response.data.outcome,
-    project_links: response.data.project_links,
-    referee_contact: response.data.referee_contact,
-    referee_email: response.data.referee_email,
-    referee_name: response.data.referee_name,
-    referee_position: response.data.referee_position,
-    roles: response.data.roles,
-    service: response.data.service,
-    timeframe: response.data.timeframe,
-    title: response.data.title
+    evidence: response.data
   }
 })
 
