@@ -57,8 +57,4 @@ const SellerAssessmentCaseStudies = props => (
   </div>
 )
 
-SellerAssessmentCaseStudies.propTypes = {
-  domain: PropTypes.object.isRequired
-}
-
 export default SellerAssessmentCaseStudies
