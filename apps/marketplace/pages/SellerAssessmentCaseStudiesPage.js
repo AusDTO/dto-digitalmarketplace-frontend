@@ -10,6 +10,7 @@ class SellerAssessmentCaseStudiesPage extends Component {
     this.state = {
       loading: false
     }
+    this.getCaseStudiesData = this.getCaseStudiesData.bind(this)
   }
 
   componentDidMount() {
