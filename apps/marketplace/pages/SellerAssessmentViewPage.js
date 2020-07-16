@@ -10,6 +10,7 @@ class SellerAssessmentViewPage extends Component {
     this.state = {
       loading: false
     }
+    this.getEvidenceData = this.getEvidenceData.bind(this)
   }
 
   componentDidMount() {
