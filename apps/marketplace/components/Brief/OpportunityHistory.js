@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import format from 'date-fns/format'
 import { Link } from 'react-router-dom'
 
-import AUheading from '@gov.au/headings/lib/js/react.js'
-
 import PageHeader from 'marketplace/components/PageHeader/PageHeader'
 import { rootPath } from 'marketplace/routes'
 
@@ -41,11 +39,9 @@ const EditSummary = props => {
         Object.prototype.hasOwnProperty.call(edit, 'attachments') ||
         Object.prototype.hasOwnProperty.call(edit, 'responseTemplate') ||
         Object.prototype.hasOwnProperty.call(edit, 'requirementsDocument')) && (
-        <AUheading level="2" size="xs">
-          {format(edit.editedAt, 'DD MMMM YYYY[,] h[:]mma')}
-        </AUheading>
+        <span className={`${styles.grey} ${styles.smallText}`}>{format(edit.editedAt, 'DD MMMM YYYY[,] h[:]mma')}</span>
       )}
-      <ul>
+      <ul className={localStyles.editSummaryList}>
         {Object.keys(edit).map(key => {
           if (key === 'title') {
             return (

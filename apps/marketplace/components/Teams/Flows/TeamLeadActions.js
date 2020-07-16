@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import AUlinklist from '@gov.au/link-list/lib/js/react.js'
 
 import commonStyles from './TeamStages.scss'
-import itemSelectStyles from '../../ItemSelect/SelectedItems.scss'
 
 const TeamLeadActions = props => {
   const { handleConvertToTeamMember, handleRemoveTeamLead, id, emailAddress, currentUserEmailAddress } = props
@@ -13,29 +12,31 @@ const TeamLeadActions = props => {
     return ''
   }
   return (
-    <AUlinklist
-      className={itemSelectStyles.selectedItemActions}
-      inline
-      items={[
-        {
-          link: '#change-to-member',
-          onClick: e => {
-            e.preventDefault()
-            handleConvertToTeamMember(id)
+    <div className={commonStyles.selectedItemActionsContainer}>
+      <AUlinklist
+        className={`${commonStyles.selectedItemActions}`}
+        inline
+        items={[
+          {
+            link: '#change-to-member',
+            onClick: e => {
+              e.preventDefault()
+              handleConvertToTeamMember(id)
+            },
+            text: 'Change to member'
           },
-          text: 'Change to member'
-        },
-        {
-          className: commonStyles.removeLink,
-          link: '#remove',
-          onClick: e => {
-            e.preventDefault()
-            handleRemoveTeamLead(id)
-          },
-          text: 'Remove'
-        }
-      ]}
-    />
+          {
+            className: commonStyles.removeLink,
+            link: '#remove',
+            onClick: e => {
+              e.preventDefault()
+              handleRemoveTeamLead(id)
+            },
+            text: 'Remove'
+          }
+        ]}
+      />
+    </div>
   )
 }
 
