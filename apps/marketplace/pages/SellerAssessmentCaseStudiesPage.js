@@ -35,12 +35,12 @@ class SellerAssessmentCaseStudiesPage extends Component {
     if (this.state.loading) {
       return <LoadingIndicatorFullPage />
     }
-    return <SellerAssessmentCaseStudies evidence={this.props.evidence} />
+    return <SellerAssessmentCaseStudies caseStudies={this.props.caseStudies} />
   }
 }
 
 const mapStateToProps = state => ({
-  evidence: state.evidence
+  caseStudies: state.evidence.caseStudies
 })
 
 const mapDispatchToProps = dispatch => ({
