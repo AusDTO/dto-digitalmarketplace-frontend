@@ -35,6 +35,11 @@ class SellerAssessmentViewPage extends Component {
     if (this.state.loading) {
       return <LoadingIndicatorFullPage />
     }
+    {
+      !this.props.evidence && (
+        <ErrorBox title="There was a problem retrieving your evidence" model={model} setFocus={setFocus} />
+      )
+    }
     return <SellerAssessmentView evidence={this.props.evidence} />
   }
 }
