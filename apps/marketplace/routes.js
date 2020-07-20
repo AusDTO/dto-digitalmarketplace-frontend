@@ -219,7 +219,6 @@ export const Routes = () => (
     />
     <PrivateRoute
       restrictedTo="supplier"
-      // path={`${rootPath}/case-studies/:domanId`}
       path={`${rootPath}/case-studies/:domainId/view`}
       component={SellerAssessmentCaseStudiesPage}
     />
