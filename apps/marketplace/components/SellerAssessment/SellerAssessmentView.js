@@ -46,7 +46,7 @@ const SellerAssessmentView = props => (
 
     {props.evidence.status === 'rejected' && (
       <p>
-        If your assessment is not approved, you can view the
+        If your assessment was not approved, you can view the
         <a href={`${rootPath}/seller-assessment/${props.evidence.id}/feedback/`}> feedback </a>
         and submit another request.
       </p>
