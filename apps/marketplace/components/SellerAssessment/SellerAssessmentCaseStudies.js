@@ -33,7 +33,7 @@ const SellerAssessmentCaseStudies = props => (
           <p className={styles.reviewText}>{value.data.timeframe}</p>
 
           <AUheading level="2" size="md">
-            Responisble for
+            Responsible for
           </AUheading>
           <p className={styles.reviewText}>{value.data.roles}</p>
 
