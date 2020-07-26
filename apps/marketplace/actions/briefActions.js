@@ -592,6 +592,7 @@ export const applyEditsToOpportunity = (briefId, data) => (dispatch, getState) =
 export const handleLoadOpportunityHistorySuccess = response => ({
   type: LOAD_OPPORTUNITY_EDIT_HISTORY_SUCCESS,
   brief: response.data.brief,
+  canRespond: response.data.can_respond,
   edits: response.data.edits
 })
 

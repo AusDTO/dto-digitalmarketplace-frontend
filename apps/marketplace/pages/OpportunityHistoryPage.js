@@ -42,7 +42,7 @@ class OpportunityHistoryPage extends Component {
   }
 
   render = () => {
-    const { brief, edits, errorMessage, loggedIn, userType } = this.props
+    const { brief, canRespond, edits, errorMessage, loggedIn, userType } = this.props
     const { dataLoaded, loading } = this.state
 
     let hasFocused = false
@@ -88,7 +88,13 @@ class OpportunityHistoryPage extends Component {
               <Route
                 path="/"
                 render={() => (
-                  <OpportunityHistory brief={brief} edits={edits} loggedIn={loggedIn} userType={userType} />
+                  <OpportunityHistory
+                    brief={brief}
+                    canRespond={canRespond}
+                    edits={edits}
+                    loggedIn={loggedIn}
+                    userType={userType}
+                  />
                 )}
               />
             </Switch>
@@ -103,6 +109,7 @@ class OpportunityHistoryPage extends Component {
 
 const mapResetStateToProps = state => ({
   brief: state.brief.brief,
+  canRespond: state.brief.canRespond,
   edits: state.brief.edits,
   errorMessage: state.app.errorMessage,
   loggedIn: state.app.loggedIn,
