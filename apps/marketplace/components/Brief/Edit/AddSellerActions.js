@@ -3,26 +3,28 @@ import PropTypes from 'prop-types'
 
 import AUlinklist from '@gov.au/link-list/lib/js/react.js'
 
-import itemSelectStyles from 'marketplace/components/ItemSelect/SelectedItems.scss'
+import styles from './AddSellerActions.scss'
 
 const AddSellerActions = props => {
   const { id, onRemoveSellerClick } = props
 
   return (
-    <AUlinklist
-      className={itemSelectStyles.selectedItemActions}
-      inline
-      items={[
-        {
-          link: '#remove',
-          onClick: e => {
-            e.preventDefault()
-            onRemoveSellerClick(id)
-          },
-          text: 'Remove'
-        }
-      ]}
-    />
+    <div className={styles.selectedItemActionsContainer}>
+      <AUlinklist
+        className={`${styles.selectedItemActions}`}
+        inline
+        items={[
+          {
+            link: '#remove',
+            onClick: e => {
+              e.preventDefault()
+              onRemoveSellerClick(id)
+            },
+            text: 'Remove'
+          }
+        ]}
+      />
+    </div>
   )
 }
 
