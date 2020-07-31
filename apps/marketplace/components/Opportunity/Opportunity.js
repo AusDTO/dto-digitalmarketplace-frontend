@@ -260,7 +260,7 @@ const Opportunity = props => {
                 <div className="col-xs-12 col-sm-4">
                   <strong>{brief.lotSlug === 'specialist' ? 'Category' : 'Panel category'}</strong>
                 </div>
-                <div className="col-xs-12 col-sm-8">{category}</div>
+                <div className="col-xs-12 col-sm-8">{brief.areaOfExpertise}</div>
               </div>
             )}
             {brief.comprehensiveTerms && (
