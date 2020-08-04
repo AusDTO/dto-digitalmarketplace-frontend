@@ -25,7 +25,7 @@ import PageAlert from '@gov.au/page-alerts';
 import recruiterStyles from './RecruiterForm.css';
 import styles from '../SellerRegistration.css';
 
-const states = ['qld', 'sa', 'vic']
+const states = ['qld', 'vic']
 
 class RecruiterForm extends BaseForm {
     static propTypes = {
