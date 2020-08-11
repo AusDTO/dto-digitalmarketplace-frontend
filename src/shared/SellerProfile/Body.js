@@ -283,7 +283,6 @@ const Body = (props) => {
             if (key!== 'sa') {
               return (
                 (labourHire[key]['licenceNumber'] || labourHire[key]['expiry']) && (
-                  // <Row title="Labour hire licence" show={!isEmpty(labourHire)}>
                   <React.Fragment key={i}>
                     <h4 className="au-display-sm">{mapAustraliaState(key)}</h4>
                     <div>
