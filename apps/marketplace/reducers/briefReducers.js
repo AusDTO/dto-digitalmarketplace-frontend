@@ -215,6 +215,7 @@ const briefReducer = (state = defaultBriefState, action) => {
       return {
         ...state,
         brief: action.brief,
+        canRespond: action.canRespond,
         edits: action.edits
       }
 
