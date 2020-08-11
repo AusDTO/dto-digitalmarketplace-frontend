@@ -130,8 +130,7 @@ const PrivateInfo = (props) => {
                       </div>
                     </div>
                   )
-                )
-                  }
+                )}
               })}
             </Row>
             <Row title="Recruiter Info" show={!isEmpty(recruiter_info)}>
