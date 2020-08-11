@@ -293,8 +293,7 @@ const Body = (props) => {
                     </div>
                   </React.Fragment>
                 )
-              )
-                }
+              )}
             })}
         </Row>
         <Row title="Signed agreement" show={true}>
