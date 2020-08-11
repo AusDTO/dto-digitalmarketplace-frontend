@@ -280,7 +280,7 @@ const Body = (props) => {
         </Row>
         <Row title="Labour hire licence" show={!isEmpty(labourHire)}>
           {Object.keys(labourHire).map((key, i) => {
-            if (key!== 'sa') {
+            if (key !== 'sa') {
               return (
                 (labourHire[key]['licenceNumber'] || labourHire[key]['expiry']) && (
                   <React.Fragment key={i}>
