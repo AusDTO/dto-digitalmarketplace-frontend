@@ -117,6 +117,7 @@ const PrivateInfo = (props) => {
             </Row>
             <Row title="Labour hire licence" show={!isEmpty(labourHire)}>
               {Object.keys(labourHire).map((key, i) => {
+                if (key!== 'sa') {
                 return (
                   (labourHire[key]['licenceNumber'] || labourHire[key]['expiry']) && (
                     <div key={i}>
@@ -130,6 +131,7 @@ const PrivateInfo = (props) => {
                     </div>
                   )
                 )
+                  }
               })}
             </Row>
             <Row title="Recruiter Info" show={!isEmpty(recruiter_info)}>
