@@ -44,10 +44,12 @@ class DocumentsForm extends BaseForm {
     state = {
         errors: {},
         indemnity: {
+            combinedInsurance: false,
             newDocumentUploaded: this.props.documentsForm.documents.indemnity && 
                 this.props.documentsForm.documents.indemnity.expiry ? false : true
         },
         liability: {
+            combinedInsurance: false,
             newDocumentUploaded: this.props.documentsForm.documents.liability && 
                 this.props.documentsForm.documents.liability.expiry ? false : true
         },
@@ -144,7 +146,10 @@ class DocumentsForm extends BaseForm {
         removeDocument(model, key);
         createDocument(model, key);
         this.setState({
-            [key]: Object.assign({}, this.state[key], { 'file': void 0 })
+            [key]: Object.assign({}, this.state[key], { 
+                combinedInsurance: false,
+                'file': void 0
+            })
         })
     }
 
@@ -277,6 +282,10 @@ class DocumentsForm extends BaseForm {
                                                         }
                                                     }
                                                     
+                                                    this.setState({
+                                                        [key]: Object.assign({}, this.state[key], { combinedInsurance: true })
+                                                    })
+
                                                     copyDocument(model, key, documentToCopy)
                                                 }}
                                             />
@@ -315,7 +324,9 @@ class DocumentsForm extends BaseForm {
                                                     label="Expiry date:"
                                                     updateOn="change"
                                                     validators={{validDate}}
-                                                    disabled={!this.state[key].newDocumentUploaded}
+                                                    disabled={
+                                                        !this.state[key].newDocumentUploaded && !this.state[key].combinedInsurance
+                                                    }
                                                     controlProps={{
                                                         id: expiry_date_field,
                                                         model: `${model}.documents.${key}.expiry`,
