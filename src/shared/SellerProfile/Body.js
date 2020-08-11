@@ -278,13 +278,12 @@ const Body = (props) => {
             ))}
           </ul>
         </Row>
-        {/* <Row title="Labour hire licence" show={!isEmpty(labourHire)}> */}
+        <Row title="Labour hire licence" show={!isEmpty(labourHire)}>
           {Object.keys(labourHire).map((key, i) => {
             if (key!== 'sa') {
               return (
                 (labourHire[key]['licenceNumber'] || labourHire[key]['expiry']) && (
                   <React.Fragment key={i}>
-                    <Row title="Labour hire licence" show={!isEmpty(labourHire)}></Row>
                     <h4 className="au-display-sm">{mapAustraliaState(key)}</h4>
                     <div>
                       Licence number: {labourHire[key]['licenceNumber']}
@@ -296,7 +295,7 @@ const Body = (props) => {
                 )
               )}
             })}
-        {/* </Row> */}
+        </Row>
         <Row title="Signed agreement" show={true}>
           {signed_agreements && signed_agreements.map((sa, i) => {
             const { htmlUrl, pdfUrl, signedAt } = sa
