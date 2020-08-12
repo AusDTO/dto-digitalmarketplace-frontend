@@ -52,22 +52,44 @@ const SellerAssessmentView = props => (
       </p>
     )}
 
-    <AUheading level="2" size="lg">
+    {/* <AUheading level="2" size="lg">
       Maximum daily rate
     </AUheading>
-    <p>${props.evidence.maxDailyRate} (including GST)</p>
+    <p>${props.evidence.maxDailyRate} (including GST)</p> */}
     <AUheading level="2" size="lg">
       Evidence
     </AUheading>
 
-    {props.evidence.criteria &&
-      props.evidence.criteria.map(criteriaId => (
-        <React.Fragment key={criteriaId}>
-          <AUheading level="2" size="md">
-            Criteria
+    {props.evidence &&
+      props.evidence.map(value => (
+        <React.Fragment key={value}>
+          <AUheading level="2" size="lg">
+            Max DILY RATE {value.domain_name}
           </AUheading>
-          <p className={styles.reviewText}>{props.evidence.domainCriteria[criteriaId].name}</p>
+          </React.Fragment>
+      ))
+      }
+
+
+    {props.evidence &&
+      props.evidence.map(value => (
+        <React.Fragment key={value}>
           <AUheading level="2" size="md">
+            {value.maxDailyRate}
+          </AUheading>
+        </React.Fragment>
+      ))}
+  </div>
+)
+
+SellerAssessmentView.propTypes = {
+  evidence: PropTypes.object.isRequired
+}
+
+export default SellerAssessmentView
+
+
+          {/* <AUheading level="2" size="md">
             Client
           </AUheading>
           <p className={styles.reviewText}>{props.evidence.evidence[criteriaId].client}</p>
@@ -89,18 +111,8 @@ const SellerAssessmentView = props => (
           <p className={styles.reviewText}>{props.evidence.evidence[criteriaId].background}</p>
           <AUheading level="2" size="md">
             Evidence of meeting the criteria
-          </AUheading>
-          <p className={styles.reviewText}>{props.evidence.evidence[criteriaId].response}</p>
+          </AUheading> */}
+          {/* <p className={styles.reviewText}>{props.evidence.evidence[criteriaId].response}</p>
           {props.evidence.criteria.indexOf(criteriaId) !== props.evidence.criteria.length - 1 && (
             <div className={styles.spacer} />
-          )}
-        </React.Fragment>
-      ))}
-  </div>
-)
-
-SellerAssessmentView.propTypes = {
-  evidence: PropTypes.object.isRequired
-}
-
-export default SellerAssessmentView
+          )} */}

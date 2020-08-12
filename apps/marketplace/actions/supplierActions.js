@@ -95,17 +95,18 @@ export const loadDomainData = domainId => dispatch => {
 export const handleLoadDomainEvidenceSuccess = response => ({
   type: DOMAIN_EVIDENCE_LOAD_SUCCESS,
   data: {
-    id: response.data.id,
-    domainId: response.data.domainId,
-    domainName: response.data.domain_name,
-    domainCriteria: response.data.domain_criteria,
-    supplierCode: response.data.supplierCode,
-    maxDailyRate: response.data.maxDailyRate,
-    submittedAt: response.data.submitted_at,
-    criteria: response.data.criteria,
-    evidence: response.data.evidence,
-    status: response.data.status,
-    createdAt: response.data.created_at
+    // id: response.data.id,
+    // domainId: response.data.domainId,
+    // domainName: response.data.domain_name,
+    // domainCriteria: response.data.domain_criteria,
+    // supplierCode: response.data.supplierCode,
+    // maxDailyRate: response.data.maxDailyRate,
+    // submittedAt: response.data.submitted_at,
+    // criteria: response.data.criteria,
+    // evidence: response.data.evidence,
+    // status: response.data.status,
+    // createdAt: response.data.created_at
+    evidence:response.data
   }
 })
 
