@@ -11,74 +11,12 @@ const SellerAssessmentView = props => (
     <AUdirectionLink link={`${rootPath}/seller-dashboard/categories`} text="back to dashboard" direction="left" />
 
     <AUheading level="1" size="xl">
-      {props.evidence.domainName} Assessment
+      Assessment
     </AUheading>
 
-    {props.evidence.status === 'assessed' && (
-      <p>
-        You cannot edit your request for approved categories. If you want to change your rate, please{' '}
-        <a
-          href="https://marketplace1.zendesk.com/hc/en-gb/requests/new"
-          rel="noopener noreferrer"
-          target="_blank"
-          className={main.marginRight1}
-        >
-          contact our support team.
-        </a>
-      </p>
-    )}
-
-    {props.evidence.status === 'submitted' && (
-      <p>
-        You cannot edit your request once you&apos;ve submitted a request for assessment.
-        <br />
-        If you have an issue,{' '}
-        <a
-          href="https://marketplace1.zendesk.com/hc/en-gb/requests/new"
-          rel="noopener noreferrer"
-          target="_blank"
-          className={main.marginRight1}
-        >
-          contact our support team.
-        </a>
-      </p>
-    )}
-
-    {props.evidence.status === 'rejected' && (
-      <p>
-        If your assessment was not approved, you can view the
-        <a href={`${rootPath}/seller-assessment/${props.evidence.id}/feedback/`}> feedback </a>
-        and submit another request.
-      </p>
-    )}
-
-    {/* <AUheading level="2" size="lg">
-      Maximum daily rate
-    </AUheading>
-    <p>${props.evidence.maxDailyRate} (including GST)</p> */}
     <AUheading level="2" size="lg">
       Evidence
     </AUheading>
-
-    {props.evidence &&
-      props.evidence.map(value => (
-        <React.Fragment key={value}>
-          <AUheading level="2" size="lg">
-            Max DILY RATE {value.domain_name}
-          </AUheading>
-          </React.Fragment>
-      ))
-      }
-
-
-    {props.evidence &&
-      props.evidence.map(value => (
-        <React.Fragment key={value}>
-          <AUheading level="2" size="md">
-            {value.maxDailyRate}
-          </AUheading>
-        </React.Fragment>
-      ))}
   </div>
 )
 
@@ -87,32 +25,3 @@ SellerAssessmentView.propTypes = {
 }
 
 export default SellerAssessmentView
-
-
-          {/* <AUheading level="2" size="md">
-            Client
-          </AUheading>
-          <p className={styles.reviewText}>{props.evidence.evidence[criteriaId].client}</p>
-          <AUheading level="2" size="md">
-            Referee&apos;s name and number
-          </AUheading>
-          <p className={styles.reviewText}>
-            {props.evidence.evidence[criteriaId].refereeName}: {props.evidence.evidence[criteriaId].refereeNumber}
-          </p>
-          <AUheading level="2" size="md">
-            Project date
-          </AUheading>
-          <p className={styles.reviewText}>
-            {props.evidence.evidence[criteriaId].startDate} - {props.evidence.evidence[criteriaId].endDate}
-          </p>
-          <AUheading level="2" size="md">
-            Background
-          </AUheading>
-          <p className={styles.reviewText}>{props.evidence.evidence[criteriaId].background}</p>
-          <AUheading level="2" size="md">
-            Evidence of meeting the criteria
-          </AUheading> */}
-          {/* <p className={styles.reviewText}>{props.evidence.evidence[criteriaId].response}</p>
-          {props.evidence.criteria.indexOf(criteriaId) !== props.evidence.criteria.length - 1 && (
-            <div className={styles.spacer} />
-          )} */}
