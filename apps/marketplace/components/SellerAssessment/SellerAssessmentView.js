@@ -23,8 +23,8 @@ const SellerAssessmentView = props => (
     </AUheading>
 
     {props.evidence.criteria &&
-      props.evidence.criteria.map(criteriaId => (
-        <React.Fragment key={criteriaId}>
+      props.evidence.criteria.map((criteriaId, index) => (
+        <React.Fragment key={index}>
           <AUheading level="2" size="md">
             Criteria
           </AUheading>
@@ -53,9 +53,7 @@ const SellerAssessmentView = props => (
             Evidence of meeting the criteria
           </AUheading>
           <p className={styles.reviewText}>{props.evidence.evidence[criteriaId].response}</p>
-          {props.evidence.criteria.indexOf(criteriaId) !== props.evidence.criteria.length - 1 && (
-            <div className={styles.spacer} />
-          )}
+          {index !== props.evidence.criteria.length - 1 && <div className={styles.spacer} />}
         </React.Fragment>
       ))}
   </div>
