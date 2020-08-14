@@ -13,8 +13,8 @@ const SellerAssessmentCaseStudies = props => (
     <div className={styles.spacer} />
 
     {props.caseStudies.caseStudiesId &&
-      props.caseStudies.caseStudiesId.map((id,index) => (
-        <React.Fragment key={index}>
+      props.caseStudies.caseStudiesId.map((id, index) => (
+        <React.Fragment key={id}>
           <AUheading level="2" size="lg">
             {props.caseStudies.data[id].title}
           </AUheading>

@@ -38,7 +38,7 @@ const SellerAssessmentView = props => (
 
     {props.evidence.criteria &&
       props.evidence.criteria.map((criteriaId, index) => (
-        <React.Fragment key={index}>
+        <React.Fragment key={criteriaId}>
           <AUheading level="2" size="md">
             Criteria
           </AUheading>
