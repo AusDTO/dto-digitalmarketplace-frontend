@@ -44,8 +44,6 @@ class SellerAssessmentViewPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  // might not need domain
-  domain: state.domain.domain,
   evidence: state.evidence
 })
 
