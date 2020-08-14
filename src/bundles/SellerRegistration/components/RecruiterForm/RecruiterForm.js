@@ -282,20 +282,22 @@ class RecruiterForm extends BaseForm {
                                                 label="Licence number"
                                                 description=""
                                             />
-                                            <Control
-                                                model={`${model}.labourHire.${s}.expiry`}
-                                                component={Datefield}
-                                                name={`${s}Expiry`}
-                                                id={`${s}Expiry`}
-                                                label="Expiry date"
-                                                updateOn="change"
-                                                controlProps={{
-                                                    id: `${s}Expiry`,
-                                                    model: `${model}.labourHire.${s}.expiry`,
-                                                    htmlFor: `${s}Expiry`,
-                                                    label: `Enter the expiry date of ${s}`
-                                                }}
-                                            />
+                                            <div styleName="recruiterStyles.expiryDate">
+                                                <Control
+                                                    model={`${model}.labourHire.${s}.expiry`}
+                                                    component={Datefield}
+                                                    name={`${s}Expiry`}
+                                                    id={`${s}Expiry`}
+                                                    label="Expiry date"
+                                                    updateOn="change"
+                                                    controlProps={{
+                                                        id: `${s}Expiry`,
+                                                        model: `${model}.labourHire.${s}.expiry`,
+                                                        htmlFor: `${s}Expiry`,
+                                                        label: `Enter the expiry date of ${s}`
+                                                    }}
+                                                />
+                                            </div>
                                         </React.Fragment>
                                     ))}
                                 </fieldset>

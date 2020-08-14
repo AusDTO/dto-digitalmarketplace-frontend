@@ -11,6 +11,7 @@ import './SellerProfile.css';
 
 const documentTitle = {
     financial: 'Financial Statement',
+    indemnity: 'Professional Indemnity Insurance',
     liability: 'Public Liability Insurance',
     workers: 'Workers Compensation Insurance'
 };

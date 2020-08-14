@@ -8,6 +8,8 @@ import isPast from 'date-fns/is_past';
 import isToday from 'date-fns/is_today';
 import parse from 'date-fns/parse';
 
+import { AUcheckbox } from '@gov.au/control-input'
+
 import Layout from '../../../../shared/Layout';
 import BaseForm from '../../../../shared/form/BaseForm';
 import SubmitForm from '../../../../shared/form/SubmitForm';
@@ -24,8 +26,7 @@ import { uploadDocument, submitApplication } from '../../redux/modules/applicati
 import { minObjectLength, validDate } from '../../../../validators';
 import ValidationSummary from '../ValidationSummary';
 
-import './DocumentsForm.css';
-
+import styles from './DocumentsForm.css';
 
 class DocumentsForm extends BaseForm {
 
@@ -42,7 +43,13 @@ class DocumentsForm extends BaseForm {
     
     state = {
         errors: {},
+        indemnity: {
+            combinedInsurance: false,
+            newDocumentUploaded: this.props.documentsForm.documents.indemnity && 
+                this.props.documentsForm.documents.indemnity.expiry ? false : true
+        },
         liability: {
+            combinedInsurance: false,
             newDocumentUploaded: this.props.documentsForm.documents.liability && 
                 this.props.documentsForm.documents.liability.expiry ? false : true
         },
@@ -56,11 +63,17 @@ class DocumentsForm extends BaseForm {
         {
             'label': 'Financial statement',
             'id': 'financial',
-            'description': 'Please provide an up-to-date financial statement. If you do not have this, ask your accountant for a letter confirming financial viability.',
+            'description': 'Please provide an up-to-date financial statement. If you do not have this, ask your accountant for a letter confirming financial viability. We will not accept an internal letter as proof of financial viability.',
             'expires': false
         },
         {
-            'label': 'Professional Indemnity and Public Liability Insurance',
+            'label': 'Professional Indemnity Insurance',
+            'id': 'indemnity',
+            'description': 'Your insurer can issue a certificate of currency.',
+            'expires': true
+        },
+        {
+            'label': 'Public Liability Insurance',
             'id': 'liability',
             'description': 'Your insurer can issue a certificate of currency.',
             'expires': true
@@ -133,12 +146,32 @@ class DocumentsForm extends BaseForm {
         removeDocument(model, key);
         createDocument(model, key);
         this.setState({
-            [key]: Object.assign({}, this.state[key], { 'file': void 0 })
+            [key]: Object.assign({}, this.state[key], { 
+                combinedInsurance: false,
+                'file': void 0
+            })
         })
     }
 
     render() {
-        const { action, csrf_token, model, form, documentsForm, onSubmit, onSubmitFailed, match, buttonText, nextRoute, submitClicked, applicationErrors, type } = this.props;
+        const {
+            action,
+            applicationErrors,
+            buttonText,
+            copyDocument,
+            csrf_token,
+            documentsForm,
+            form,
+            match,
+            model,
+            nextRoute,
+            onSubmit,
+            onSubmitFailed,
+            submitClicked,
+            type
+        } = this.props
+        const { documents } = documentsForm
+
         let hasFocused = false
         const setFocus = e => {
             if (!hasFocused) {
@@ -151,20 +184,8 @@ class DocumentsForm extends BaseForm {
                 <header>
                     <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'documents' && type === 'edit'} />
                     <h1 className="au-display-xl" tabIndex="-1">Upload your documents</h1>
-
                     <p>The details of your insurance documents and financial statement are not visible on your profile (other than the insurance expiry dates). These details may be shared with buyers on request, so make sure they are up to date.</p>
-                    <p>  Each should be no larger than 5MB and in PDF, PNG or JPEG format. If you have multiple files for a document, please scan and merge as one upload.
-                  </p>
-                    <br />
-                    <div className="calloutMistake">
-                        <b> Avoid common mistakes </b>
-                        <ul className="mistake-list">
-                            <li><b>Financial statement</b> - ensure it is up to date. A letter from your accountant confirming financial viability is acceptable. We will not accept an internal letter as proof of financial viability.</li>
-                            <li><b>Professional Indemnity and Public Liability Insurance</b> - check expiration dates match the uploaded documentation.</li>
-                            <li><b>Workers Compensation</b> - check expiration dates match the uploaded documentation.</li>
-                        </ul>
-                    </div><br />
-
+                    <p>Each should be no larger than 5MB and in PDF, PNG or JPEG format. If you have multiple files for a document, please scan and merge as one upload.</p>
                 </header>
                 <article role="main">
                     <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus} />
@@ -185,7 +206,7 @@ class DocumentsForm extends BaseForm {
                         onCustomSubmit={onSubmit}
                         onSubmitFailed={onSubmitFailed}
                         validators={{
-                            documents: (documents = {}) => minObjectLength(documents, 3) && documents.workers.noWorkersCompensation !== false
+                            documents: (documents = {}) => minObjectLength(documents, 4) && documents.workers.noWorkersCompensation !== false
                         }}
                     >
                         {csrf_token && (
@@ -201,10 +222,27 @@ class DocumentsForm extends BaseForm {
                             const errors = this.state.errors[key];
                             const url = doc.application_id ? `/sellers/application/${doc.application_id}/documents/${doc.filename}` : match.url.slice(1);
 
+                            let insuranceCheckboxLabel = ''
+                            if (key === 'indemnity') {
+                                insuranceCheckboxLabel = 'I have included the Professional Indemnity Insurance in the Public Liability Insurance document.'
+                            } else if (key === 'liability') {
+                                insuranceCheckboxLabel = 'I have included the Public Liability Insurance in the Professional Indemnity Insurance document.'
+                            }
+
+                            let showInsuranceCheckbox = false
+                            if (isEmpty(documents.indemnity) && isEmpty(documents.liability)) {
+                                showInsuranceCheckbox = false
+                            } else if (
+                                (key === 'indemnity' && isEmpty(documents.indemnity) && !isEmpty(documents.liability)) ||
+                                (key === 'liability' && isEmpty(documents.liability) && !isEmpty(documents.indemnity))) {
+
+                                showInsuranceCheckbox = true
+                            }
+
                             return (
-                                <div key={key} className="callout-no-margin">
-                                    <p styleName="question-heading">{field.label}</p>
-                                    <span>{field.description}</span>
+                                <div key={key} styleName="styles.document">
+                                    <h3 styleName="question-heading">{field.label}</h3>
+                                    <span styleName="styles.documentDescription">{field.description}</span>
 
                                     <div>
                                         {errors && <span className="validation-message">There was an error uploading the file</span>}
@@ -216,6 +254,41 @@ class DocumentsForm extends BaseForm {
                                                     <label id={`label_${key}`} htmlFor={key} styleName="custom-input"> {isEmpty(name) && "Choose file"} </label>
                                                 </p>
                                             </div>
+                                        }
+
+                                        {showInsuranceCheckbox && !fieldState.uploading && !fieldState.file &&
+                                            <AUcheckbox
+                                                defaultChecked={false}
+                                                id={`${key}-checkbox`}
+                                                label={insuranceCheckboxLabel}
+                                                name={`${key}-checkbox`}
+                                                onClick={() => {
+                                                    let documentToCopy = {}
+                                                    if (key === 'indemnity') {
+                                                        documentToCopy = documents.liability
+
+                                                        if (this.state.liability.newDocumentUploaded) {
+                                                            this.setState({
+                                                                [key]: Object.assign({}, this.state[key], { newDocumentUploaded: true })
+                                                            })
+                                                        }
+                                                    } else if (key === 'liability') {
+                                                        documentToCopy = documents.indemnity
+
+                                                        if (this.state.indemnity.newDocumentUploaded) {
+                                                            this.setState({
+                                                                [key]: Object.assign({}, this.state[key], { newDocumentUploaded: true })
+                                                            })
+                                                        }
+                                                    }
+                                                    
+                                                    this.setState({
+                                                        [key]: Object.assign({}, this.state[key], { combinedInsurance: true })
+                                                    })
+
+                                                    copyDocument(model, key, documentToCopy)
+                                                }}
+                                            />
                                         }
 
                                         {!isEmpty(doc.filename) &&
@@ -251,7 +324,9 @@ class DocumentsForm extends BaseForm {
                                                     label="Expiry date:"
                                                     updateOn="change"
                                                     validators={{validDate}}
-                                                    disabled={!this.state[key].newDocumentUploaded}
+                                                    disabled={
+                                                        !this.state[key].newDocumentUploaded && !this.state[key].combinedInsurance
+                                                    }
                                                     controlProps={{
                                                         id: expiry_date_field,
                                                         model: `${model}.documents.${key}.expiry`,
@@ -307,6 +382,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        copyDocument: (model, id, value) => {
+            return dispatch(actions.change(`${model}.documents.${id}`, value))
+        },
         onUpload: (id, data) => {
             return dispatch(uploadDocument(id, data));
         },

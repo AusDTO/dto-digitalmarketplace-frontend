@@ -42,7 +42,7 @@ class OpportunityHistoryPage extends Component {
   }
 
   render = () => {
-    const { brief, edits, errorMessage } = this.props
+    const { brief, canRespond, edits, errorMessage, loggedIn, userType } = this.props
     const { dataLoaded, loading } = this.state
 
     let hasFocused = false
@@ -85,7 +85,18 @@ class OpportunityHistoryPage extends Component {
                   />
                 )}
               />
-              <Route path="/" render={() => <OpportunityHistory brief={brief} edits={edits} />} />
+              <Route
+                path="/"
+                render={() => (
+                  <OpportunityHistory
+                    brief={brief}
+                    canRespond={canRespond}
+                    edits={edits}
+                    loggedIn={loggedIn}
+                    userType={userType}
+                  />
+                )}
+              />
             </Switch>
           </div>
         </BrowserRouter>
@@ -98,8 +109,11 @@ class OpportunityHistoryPage extends Component {
 
 const mapResetStateToProps = state => ({
   brief: state.brief.brief,
+  canRespond: state.brief.canRespond,
   edits: state.brief.edits,
-  errorMessage: state.app.errorMessage
+  errorMessage: state.app.errorMessage,
+  loggedIn: state.app.loggedIn,
+  userType: state.app.userType
 })
 
 const mapResetDispatchToProps = dispatch => ({

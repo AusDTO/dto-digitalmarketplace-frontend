@@ -88,18 +88,28 @@ const allEditDetailsRemoved = edit =>
 
 const OpportunityHistory = props => {
   window.scrollTo(0, 0)
-  const { brief, edits } = props
+  const { brief, canRespond, edits, loggedIn, userType } = props
+  const showSignedInOrInvitedMessage = !loggedIn || (loggedIn && userType === 'supplier' && !canRespond)
+
+  const showNoChangesMessage =
+    loggedIn &&
+    (['admin', 'buyer'].includes(userType) || (userType === 'supplier' && canRespond)) &&
+    (edits.length === 0 || edits.every(allEditDetailsRemoved))
+
+  const showEdits =
+    loggedIn &&
+    (['admin', 'buyer'].includes(userType) || (userType === 'supplier' && canRespond)) &&
+    edits.length > 0 &&
+    !edits.every(allEditDetailsRemoved)
 
   return (
     <React.Fragment>
       <PageHeader actions={[]} organisation={`${brief.title} (${brief.id})`} title="History of updates" />
-      {edits.length > 0 &&
-        !edits.every(allEditDetailsRemoved) &&
-        edits.map(edit => <EditSummary edit={edit} key={edit.editedAt} />)}
-      {edits.length > 0 && edits.every(allEditDetailsRemoved) && (
+      {showSignedInOrInvitedMessage && (
         <p>You must be signed in as a buyer or invited seller to view the history of updates.</p>
       )}
-      {edits.length === 0 && <p>No changes have been made to this opportunity.</p>}
+      {showNoChangesMessage && <p>No changes have been made to this opportunity.</p>}
+      {showEdits && edits.map(edit => <EditSummary edit={edit} key={edit.editedAt} />)}
       <div className={styles.marginTop2}>
         <a href={`${rootPath}/${brief.framework}/opportunities/${brief.id}`}>Return to opportunity</a>
       </div>
@@ -118,11 +128,14 @@ OpportunityHistory.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired
   }).isRequired,
+  canRespond: PropTypes.bool.isRequired,
   edits: PropTypes.arrayOf(
     PropTypes.shape({
       editedAt: PropTypes.string
     })
-  )
+  ),
+  loggedIn: PropTypes.bool.isRequired,
+  userType: PropTypes.string.isRequired
 }
 
 export default OpportunityHistory
