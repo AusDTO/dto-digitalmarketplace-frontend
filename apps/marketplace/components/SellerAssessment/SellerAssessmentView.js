@@ -11,12 +11,53 @@ const SellerAssessmentView = props => (
     <AUdirectionLink link={`${rootPath}/seller-dashboard/categories`} text="back to dashboard" direction="left" />
 
     <AUheading level="1" size="xl">
-      Assessment
+      {props.evidence.domainName} Assessment
     </AUheading>
 
     <AUheading level="2" size="lg">
+      Maximum daily rate
+    </AUheading>
+    <p>${props.evidence.maxDailyRate} (including GST)</p>
+    <AUheading level="2" size="lg">
       Evidence
     </AUheading>
+
+    {props.evidence.criteria &&
+      props.evidence.criteria.map(criteriaId => (
+        <React.Fragment key={criteriaId}>
+          <AUheading level="2" size="md">
+            Criteria
+          </AUheading>
+          <p className={styles.reviewText}>{props.evidence.domainCriteria[criteriaId].name}</p>
+          <AUheading level="2" size="md">
+            Client
+          </AUheading>
+          <p className={styles.reviewText}>{props.evidence.evidence[criteriaId].client}</p>
+          <AUheading level="2" size="md">
+            Referee&apos;s name and number
+          </AUheading>
+          <p className={styles.reviewText}>
+            {props.evidence.evidence[criteriaId].refereeName}: {props.evidence.evidence[criteriaId].refereeNumber}
+          </p>
+          <AUheading level="2" size="md">
+            Project date
+          </AUheading>
+          <p className={styles.reviewText}>
+            {props.evidence.evidence[criteriaId].startDate} - {props.evidence.evidence[criteriaId].endDate}
+          </p>
+          <AUheading level="2" size="md">
+            Background
+          </AUheading>
+          <p className={styles.reviewText}>{props.evidence.evidence[criteriaId].background}</p>
+          <AUheading level="2" size="md">
+            Evidence of meeting the criteria
+          </AUheading>
+          <p className={styles.reviewText}>{props.evidence.evidence[criteriaId].response}</p>
+          {props.evidence.criteria.indexOf(criteriaId) !== props.evidence.criteria.length - 1 && (
+            <div className={styles.spacer} />
+          )}
+        </React.Fragment>
+      ))}
   </div>
 )
 
