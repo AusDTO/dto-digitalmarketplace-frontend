@@ -100,7 +100,8 @@ export const handleLoadDomainEvidenceSuccess = response => ({
     domainCriteria: response.data.domain_criteria,
     domainName: response.data.domain_name,
     evidence: response.data.evidence_data,
-    maxDailyRate: response.data.maxDailyRate
+    maxDailyRate: response.data.maxDailyRate,
+    status: response.data.status
   }
 })
 
