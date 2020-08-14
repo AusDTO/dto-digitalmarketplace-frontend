@@ -14,6 +14,20 @@ const SellerAssessmentView = props => (
       {props.evidence.domainName} Assessment
     </AUheading>
 
+    {props.evidence.status === 'approved' && (
+      <p>
+        You cannot edit your request for approved categories. If you want to change your rate, please{' '}
+        <a
+          href="https://marketplace1.zendesk.com/hc/en-gb/requests/new"
+          rel="noopener noreferrer"
+          target="_blank"
+          className={main.marginRight1}
+        >
+          contact our support team.
+        </a>
+      </p>
+    )}
+
     <AUheading level="2" size="lg">
       Maximum daily rate
     </AUheading>
