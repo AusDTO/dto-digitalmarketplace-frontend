@@ -110,16 +110,12 @@ export class Categories extends Component {
             <a href={`${rootPath}/seller-assessment/create/${category.id}`} className={styles.marginRight1}>
               Resubmit{' '}
             </a>
-            <a href={`${rootPath}/seller-assessment/${category.evidence_id}/view`}>View submitted evidence</a>
           </React.Fragment>
         )
       case 'submitted':
         return (
           <React.Fragment>
             <p>The Digital Marketplace is reviewing your request for assessment.</p>
-            <a href={`${rootPath}/seller-assessment/${category.evidence_id}/view`} className={styles.marginRight1}>
-              View submitted evidence
-            </a>
           </React.Fragment>
         )
       default:
