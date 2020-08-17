@@ -451,7 +451,7 @@ const Opportunity = props => {
               <span>{'Only invited sellers and other buyers can view attached documents. '}</span>
             </div>
           )}
-          {loggedIn && (isOpenToAll || canRespond || isInvited || isBuyer) && (
+          {loggedIn && (isBuyer || canRespond) && (
             <div className={isBriefOwner ? styles.additionalInfoOwner : styles.additionalInfo}>
               {(brief.requirementsDocument.length > 0 || brief.attachments.length > 0) && (
                 <ul>
