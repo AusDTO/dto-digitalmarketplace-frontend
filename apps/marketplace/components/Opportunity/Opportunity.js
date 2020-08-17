@@ -623,7 +623,7 @@ const Opportunity = props => {
               questions={brief.clarificationQuestions}
               clarificationQuestionsAreClosed={brief.clarificationQuestionsAreClosed}
               briefId={brief.id}
-              showAskQuestionInfo={canRespond || isInvited}
+              showAskQuestionInfo={canRespond}
             />
           )}
         </div>
