@@ -9,7 +9,7 @@ const SellerAssessmentCaseStudies = props => (
     <AUdirectionLink link={`${rootPath}/seller-dashboard/categories`} text="back to dashboard" direction="left" />
     <AUheading level="1" size="xl">
       {/* find undefined */}
-      {console.log(props.caseStudies && props.caseStudies.find(element => element ==='service'))}
+      {console.log(props.caseStudies && props.caseStudies.find(element => element === 'service'))}
       case study
     </AUheading>
     <div className={styles.spacer} />
@@ -56,11 +56,10 @@ const SellerAssessmentCaseStudies = props => (
           <AUheading level="2" size="md">
             Outcomes and benefits
           </AUheading>
-          <p className={styles.reviewText}>{value.data.outcome}</p> 
+          <p className={styles.reviewText}>{value.data.outcome}</p>
         </React.Fragment>
       ))}
   </div>
-
 )
 
 export default SellerAssessmentCaseStudies
