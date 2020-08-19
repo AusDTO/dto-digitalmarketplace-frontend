@@ -40,7 +40,7 @@ class SellerAssessmentCaseStudiesPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  caseStudies: state.evidence
+  caseStudies: state.evidence.caseStudies
 })
 
 const mapDispatchToProps = dispatch => ({
