@@ -8,7 +8,8 @@ const SellerAssessmentCaseStudies = props => (
   <div>
     <AUdirectionLink link={`${rootPath}/seller-dashboard/categories`} text="back to dashboard" direction="left" />
     <AUheading level="1" size="xl">
-      {/* {Object.keys(props.caseStudies).map(key => {}} */}
+      {/* find undefined */}
+      {console.log(props.caseStudies && props.caseStudies.find(element => element ==='service'))}
       case study
     </AUheading>
     <div className={styles.spacer} />
