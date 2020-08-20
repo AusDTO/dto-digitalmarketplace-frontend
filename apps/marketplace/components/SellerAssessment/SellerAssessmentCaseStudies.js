@@ -7,20 +7,17 @@ import styles from './SellerAssessmentReviewStage.scss'
 const SellerAssessmentCaseStudies = props => (
   <div>
     <AUdirectionLink link={`${rootPath}/seller-dashboard/categories`} text="back to dashboard" direction="left" />
+
     {props.caseStudies &&
       props.caseStudies.map((value, index) => (
         <React.Fragment key={index}>
-          {index === 0 &&(
-            <p>{value.name}</p>
+          {index === 0 && (
+            <AUheading level="1" size="xl">
+              {value.name} case study
+              <div className={styles.spacer} />
+            </AUheading>
           )}
-        </React.Fragment>
-      ))}
-    <div className={styles.spacer} />
-
-    {props.caseStudies &&
-      props.caseStudies.map(value => (
-        <React.Fragment key={value}>
-          <AUheading level="2" size="lg">
+          <AUheading level="1" size="lg">
             {value.data.title}
           </AUheading>
 
@@ -60,6 +57,7 @@ const SellerAssessmentCaseStudies = props => (
             Outcomes and benefits
           </AUheading>
           <p className={styles.reviewText}>{value.data.outcome}</p>
+          <div className={styles.spacer} />
         </React.Fragment>
       ))}
   </div>
