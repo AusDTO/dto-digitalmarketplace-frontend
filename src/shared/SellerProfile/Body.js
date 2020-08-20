@@ -297,6 +297,28 @@ const Body = (props) => {
               )}
             })}
         </Row>
+{/* i think the below works */}
+        <Row title="Labour hire licence" show={!isEmpty(labourHire)}>
+          {Object.keys(labourHire).map((key, i) => {
+              return (
+                (labourHire[key]['licenceNumber'] || labourHire[key]['expiry']) && key!=='sa' &&(
+                  <React.Fragment key={i}>
+                       <h4 className="au-display-sm">{mapAustraliaState(key)}</h4>
+                       <div>
+                         Licence number: {labourHire[key]['licenceNumber']}
+                       </div>
+                       <h1> HIII </h1>
+                       <div>
+                         Expiry: {format(new Date(labourHire[key]['expiry']), 'DD/MM/YYYY')}
+                       </div>
+                  </React.Fragment>
+                )
+              )
+            })}
+        </Row>
+
+
+
         <Row title="Signed agreement" show={true}>
           {signed_agreements && signed_agreements.map((sa, i) => {
             const { htmlUrl, pdfUrl, signedAt } = sa
