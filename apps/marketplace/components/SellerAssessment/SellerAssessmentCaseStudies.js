@@ -7,16 +7,19 @@ import styles from './SellerAssessmentReviewStage.scss'
 const SellerAssessmentCaseStudies = props => (
   <div>
     <AUdirectionLink link={`${rootPath}/seller-dashboard/categories`} text="back to dashboard" direction="left" />
-    <AUheading level="1" size="xl">
-      {/* find undefined */}
-      {console.log(props.caseStudies && props.caseStudies.find(element => element === 'service'))}
-      case study
-    </AUheading>
+    {props.caseStudies &&
+      props.caseStudies.map((value, index) => (
+        <React.Fragment key={index}>
+          {index === 0 &&(
+            <p>{value.name}</p>
+          )}
+        </React.Fragment>
+      ))}
     <div className={styles.spacer} />
 
     {props.caseStudies &&
       props.caseStudies.map(value => (
-        <React.Fragment key={value.cs_id}>
+        <React.Fragment key={value}>
           <AUheading level="2" size="lg">
             {value.data.title}
           </AUheading>
