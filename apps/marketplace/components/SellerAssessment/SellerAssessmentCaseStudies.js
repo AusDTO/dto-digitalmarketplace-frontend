@@ -30,8 +30,8 @@ const SellerAssessmentCaseStudies = props => (
             Referee details
           </AUheading>
           <p className={styles.reviewText}>{value.data.referee_name}</p>
-          <p className={styles.reviewText}>{value.data.referee_email}</p>
           <p className={styles.reviewText}>{value.data.referee_position}</p>
+          <p className={styles.reviewText}>{value.data.referee_email}</p>
 
           <AUheading level="2" size="md">
             Project date
