@@ -49,9 +49,7 @@ export const handleErrorFailure = response => dispatch => {
 export const handleCaseStudiesSuccess = response => ({
   type: CASE_STUDIES_LOAD_SUCCESS,
   data: {
-    // caseStudiesId: response.data.case_study_id,
     caseStudies: response.data
-    // domainName: response.data.domain_name
   }
 })
 
@@ -97,13 +95,7 @@ export const loadDomainData = domainId => dispatch => {
 export const handleLoadDomainEvidenceSuccess = response => ({
   type: DOMAIN_EVIDENCE_LOAD_SUCCESS,
   data: {
-    criteria: response.data.criteria,
-    data: response.data.data,
-    domainCriteria: response.data.domain_criteria,
-    domainName: response.data.domain_name,
-    evidence: response.data.evidence_data,
-    maxDailyRate: response.data.maxDailyRate,
-    status: response.data.status
+    evidence: response.data
   }
 })
 

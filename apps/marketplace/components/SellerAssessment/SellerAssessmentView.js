@@ -10,11 +10,61 @@ const SellerAssessmentView = props => (
   <div>
     <AUdirectionLink link={`${rootPath}/seller-dashboard/categories`} text="back to dashboard" direction="left" />
 
-    <AUheading level="1" size="xl">
-      {props.evidence.domainName} Assessment
-    </AUheading>
+    {props.evidence &&
+      props.evidence.map((value, index) => (
+        <React.Fragment key={value}>
+          <AUheading level="1" size="xl">
+            {value.domain_name} Assessment
+          </AUheading>
+          {value.status === 'approved' && (
+            <p>
+              You cannot edit your request for approved categories. If you want to change your rate, please{' '}
+              <a
+                href="https://marketplace1.zendesk.com/hc/en-gb/requests/new"
+                rel="noopener noreferrer"
+                target="_blank"
+                className={main.marginRight1}
+              >
+                contact our support team.
+              </a>
+            </p>
+          )}
+          <AUheading level="2" size="lg">
+            Maximum daily rate
+          </AUheading>
+          <p>${value.maxDailyRate} (including GST)</p>
+          <AUheading level="2" size="lg">
+            Evidence
+          </AUheading>
+          <AUheading level="2" size="md">
+            Criteria
+          </AUheading>
+          <p className={styles.reviewText}>{value.domain_criteria[value.criteria[index]].name}</p>
+          <AUheading level="2" size="md">
+            Referee&apos;s name and number
+          </AUheading>
+          <p className={styles.reviewText}>
+            {value.evidence_data[value.criteria[index]].refereeName}: {value.evidence_data[value.criteria[index]].refereeNumber}
+          </p>
+          <AUheading level="2" size="md">
+            Project date
+          </AUheading>
+          <p className={styles.reviewText}>
+            {value.evidence_data[value.criteria[index]].startDate} - {value.evidence_data[value.criteria[index]].endDate}
+          </p>
+          <AUheading level="2" size="md">
+            Background
+          </AUheading>
+          <p className={styles.reviewText}>{value.evidence_data[value.criteria[index]].background}</p>
+          <AUheading level="2" size="md">
+            Evidence of meeting the criteria
+          </AUheading>
+          <p className={styles.reviewText}>{value.evidence_data[value.criteria[index]].response}</p>
+          {index !== value.criteria.length - 1 && <div className={styles.spacer} />}
+        </React.Fragment>
+      ))}
 
-    {props.evidence.status === 'approved' && (
+    {/* {props.evidence.status === 'approved' && (
       <p>
         You cannot edit your request for approved categories. If you want to change your rate, please{' '}
         <a
@@ -69,7 +119,7 @@ const SellerAssessmentView = props => (
           <p className={styles.reviewText}>{props.evidence.evidence[criteriaId].response}</p>
           {index !== props.evidence.criteria.length - 1 && <div className={styles.spacer} />}
         </React.Fragment>
-      ))}
+      ))} */}
   </div>
 )
 

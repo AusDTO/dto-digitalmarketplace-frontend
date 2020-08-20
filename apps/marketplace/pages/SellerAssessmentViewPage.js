@@ -44,7 +44,7 @@ class SellerAssessmentViewPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  evidence: state.evidence
+  evidence: state.evidence.evidence
 })
 
 const mapDispatchToProps = dispatch => ({
