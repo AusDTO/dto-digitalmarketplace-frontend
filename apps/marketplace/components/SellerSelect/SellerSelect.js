@@ -135,7 +135,9 @@ export class SellerSelect extends Component {
   }
 
   handleSearchChange(e) {
+    const { briefId } = this.props
     const keyword = e.target.value
+
     this.setState({
       inputValue: keyword,
       noResults: false
@@ -147,7 +149,7 @@ export class SellerSelect extends Component {
 
     timeoutHandle = setTimeout(() => {
       if (keyword && keyword.length >= this.props.minimumSearchChars && this.categoryIsValid()) {
-        findSuppliers(keyword, this.props.selectedCategory, this.props.allSuppliers ? 'true' : '')
+        findSuppliers(keyword, this.props.selectedCategory, this.props.allSuppliers ? 'true' : '', briefId)
           .then(data => {
             const noResults = !data.sellers.length > 0
             this.setState({
@@ -228,6 +230,7 @@ export class SellerSelect extends Component {
 }
 
 SellerSelect.defaultProps = {
+  briefId: null,
   id: 'seller-search',
   placeholder: '',
   label: '',
@@ -247,6 +250,7 @@ SellerSelect.defaultProps = {
 }
 
 SellerSelect.propTypes = {
+  briefId: PropTypes.number,
   id: PropTypes.string,
   placeholder: PropTypes.string,
   label: PropTypes.string,

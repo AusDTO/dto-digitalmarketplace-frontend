@@ -115,6 +115,7 @@ export class BuyerSpecialistSelectStage extends Component {
             {this.props[this.props.model].openTo === 'selected' && (
               <React.Fragment>
                 <SellerSelect
+                  briefId={this.props[this.props.model].id}
                   label="Seller name"
                   showSelected={false}
                   showSearchButton={false}
