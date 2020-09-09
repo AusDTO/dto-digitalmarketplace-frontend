@@ -118,19 +118,20 @@ const PrivateInfo = (props) => {
             </Row>
             <Row title="Labour hire licence" show={!isEmpty(labourHire)}>
               {Object.keys(labourHire).map((key, i) => {
-                return (
-                  (labourHire[key]['licenceNumber'] || labourHire[key]['expiry']) && (
-                    <div key={i}>
-                      <h4 className="au-display-sm">{mapAustraliaState(key)}</h4>
-                      <div>
-                        Licence number: {labourHire[key]['licenceNumber']}
+                if (key !== 'sa') {
+                  return (
+                    (labourHire[key]['licenceNumber'] || labourHire[key]['expiry']) && (
+                      <div key={i}>
+                        <h4 className="au-display-sm">{mapAustraliaState(key)}</h4>
+                        <div>
+                          Licence number: {labourHire[key]['licenceNumber']}
+                        </div>
+                        <div>
+                          Expiry: {format(new Date(labourHire[key]['expiry']), 'DD/MM/YYYY')}
+                        </div>
                       </div>
-                      <div>
-                        Expiry: {format(new Date(labourHire[key]['expiry']), 'DD/MM/YYYY')}
-                      </div>
-                    </div>
-                  )
-                )
+                    )
+                  )}
               })}
             </Row>
             <Row title="Recruiter Info" show={!isEmpty(recruiter_info)}>
