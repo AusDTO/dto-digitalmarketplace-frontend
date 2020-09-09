@@ -114,7 +114,7 @@ class EditOpportunitySellers extends Component {
     this.setState({
       timeoutId: setTimeout(() => {
         if (this.state.sellerName && this.state.sellerName.length >= 2) {
-          findSuppliers(this.state.sellerName, brief.sellerCategory, false, Object.keys(brief.sellers))
+          findSuppliers(this.state.sellerName, brief.sellerCategory, false, brief.id, Object.keys(brief.sellers))
             .then(data => {
               this.setState({
                 searchResults: data.sellers

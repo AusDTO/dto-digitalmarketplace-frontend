@@ -92,6 +92,7 @@ export class BuyerTrainingSelectStage extends Component {
           <div className="col-xs-12 col-sm-9">
             <div className={styles.selectSellers}>
               <SellerSelect
+                briefId={this.props[model].id}
                 label="Seller name"
                 description={
                   <span>
