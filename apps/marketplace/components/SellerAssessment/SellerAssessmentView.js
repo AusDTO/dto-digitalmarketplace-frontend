@@ -12,6 +12,64 @@ const SellerAssessmentView = props => (
 
     {props.evidence &&
       props.evidence.map((value, index) => (
+        <React.Fragment key={index}>
+          {index === 0 && (
+            <AUheading level="1" size="xl">
+              {value.category_name} Assessment
+              <div className={styles.spacer} />
+            </AUheading>
+          )}
+          {index === 0 && (
+            <p>
+              You cannot edit your request for approved categories. If you want to change your rate, please{' '}
+              <a
+                href="https://marketplace1.zendesk.com/hc/en-gb/requests/new"
+                rel="noopener noreferrer"
+                target="_blank"
+                className={main.marginRight1}
+              >
+                contact our support team.
+              </a>
+            </p>
+          )}
+          {index === 0 && (
+            <AUheading level="2" size="lg">
+              Maximum daily rate
+            </AUheading>
+          )}
+          {index === 0 && <p>${value.maxDailyRate} (including GST)</p>}
+          <AUheading level="2" size="lg">
+            Evidence
+          </AUheading>
+          <AUheading level="2" size="md">
+            Criteria
+          </AUheading>
+          <p className={styles.reviewText}>{value.domain_criteria_name}</p>
+          <AUheading level="2" size="md">
+            Referee&apos;s name and number
+          </AUheading>
+          <p className={styles.reviewText}>
+            {value.evidence_data.refereeName}: {value.evidence_data.refereeNumber}
+          </p>
+          <AUheading level="2" size="md">
+            Project date
+          </AUheading>
+          <p className={styles.reviewText}>
+            {value.evidence_data.startDate} - {value.evidence_data.endDate}
+          </p>
+          <AUheading level="2" size="md">
+            Background
+          </AUheading>
+          <p className={styles.reviewText}>{value.evidence_data.background}</p>
+          <AUheading level="2" size="md">
+            Evidence of meeting the criteria
+          </AUheading>
+          <p className={styles.reviewText}>{value.evidence_data.response}</p>
+          {<div className={styles.spacer} />}
+        </React.Fragment>
+      ))}
+    {/* {props.evidence &&
+      props.evidence.map((value, index) => (
         <React.Fragment key={value}>
           <AUheading level="1" size="xl">
             {value.domain_name} Assessment
@@ -62,7 +120,7 @@ const SellerAssessmentView = props => (
           <p className={styles.reviewText}>{value.evidence_data[value.criteria[index]].response}</p>
           {index !== value.criteria.length - 1 && <div className={styles.spacer} />}
         </React.Fragment>
-      ))}
+      ))} */}
 
     {/* {props.evidence.status === 'approved' && (
       <p>
