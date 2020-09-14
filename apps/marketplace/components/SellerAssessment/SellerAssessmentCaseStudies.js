@@ -10,7 +10,7 @@ const SellerAssessmentCaseStudies = props => (
 
     {props.caseStudies &&
       props.caseStudies.map((value, index) => (
-        <React.Fragment key={index}>
+        <React.Fragment key={value}>
           {index === 0 && (
             <AUheading level="1" size="xl">
               {value.name} case study

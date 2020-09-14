@@ -12,7 +12,7 @@ const SellerAssessmentView = props => (
 
     {props.evidence &&
       props.evidence.map((value, index) => (
-        <React.Fragment key={index}>
+        <React.Fragment key={value}>
           {index === 0 && (
             <AUheading level="1" size="xl">
               {value.category_name} Assessment
