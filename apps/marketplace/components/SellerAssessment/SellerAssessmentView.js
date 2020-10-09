@@ -15,7 +15,7 @@ const SellerAssessmentView = props => (
         <React.Fragment key={value}>
           {index === 0 && (
             <AUheading level="1" size="xl">
-              {value.category_name} Assessment
+              {value.category} Assessment
               <div className={styles.spacer} />
             </AUheading>
           )}
