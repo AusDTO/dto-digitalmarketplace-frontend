@@ -11,7 +11,7 @@ const NotFound = () => (
           Check you've entered the correct web address or start again on the <a href="/">Digital Marketplace homepage</a>.
         </p>
         <p>
-          If you can't find what you're looking for, email <a href="mailto:marketplace@digital.gov.au?subject=Marketplace%20feedback" title="Please send feedback to marketplace@digital.gov.au">marketplace@digital.gov.au</a>
+          If you can't find what you're looking for, email <a href="mailto:marketplace@dta.gov.au?subject=Marketplace%20feedback" title="Please send feedback to marketplace@dta.gov.au">marketplace@dta.gov.au</a>
         </p>
       </div>
     </div>

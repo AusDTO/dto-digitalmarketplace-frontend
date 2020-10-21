@@ -336,7 +336,7 @@ const Body = (props) => {
             </tbody>
           </table>
 
-          <p className="callout">Please <a href="mailto:marketplace@digital.gov.au">contact us</a> to view seller documents</p>
+          <p className="callout">Please <a href="mailto:marketplace@dta.gov.au">contact us</a> to view seller documents</p>
 
         </Row>
       </div>
