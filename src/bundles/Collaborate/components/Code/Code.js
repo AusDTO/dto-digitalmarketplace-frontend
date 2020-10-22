@@ -44,7 +44,7 @@ class Code extends React.Component {
                             You can learn how to <a href="https://opensource.guide/" rel="external noopener noreferrer" target="_blank">launch
                             and grow your project</a> or contact us if you would like some help.<br/>
 
-                            <a href="mailto:marketplace@digital.gov.au?subject=Open source projects"
+                            <a href="mailto:marketplace@dta.gov.au?subject=Open source projects"
                                className="button">Get in touch</a>
                         </article>
                     </div>
@@ -97,7 +97,7 @@ class Code extends React.Component {
                             <h2 >What features will help your team? </h2>
                             <p>
                                 Let us know what you would like to see in the library<br/>
-                                <a href="mailto:marketplace@digital.gov.au?subject=Feedback"
+                                <a href="mailto:marketplace@dta.gov.au?subject=Feedback"
                                    className="button">Get in touch</a></p>
                         </article>
                     </div>

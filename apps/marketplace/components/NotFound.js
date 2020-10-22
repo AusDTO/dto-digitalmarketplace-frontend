@@ -14,10 +14,10 @@ const NotFound = () => (
         <p>
           If you can&#39;t find what you&#39;re looking for, email{' '}
           <a
-            href="mailto:marketplace@digital.gov.au?subject=Marketplace%20feedback"
-            title="Please send feedback to marketplace@digital.gov.au"
+            href="mailto:marketplace@dta.gov.au?subject=Marketplace%20feedback"
+            title="Please send feedback to marketplace@dta.gov.au"
           >
-            marketplace@digital.gov.au
+            marketplace@dta.gov.au
           </a>
         </p>
       </div>

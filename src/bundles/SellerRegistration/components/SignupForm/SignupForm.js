@@ -291,7 +291,7 @@ class SignupForm extends BaseForm {
                 description={isBuyer
                 ? (
                     <span>If your email is different, request your account
-                  from <a href="mailto:marketplace@digital.gov.au">marketplace@digital.gov.au</a>.</span>
+                  from <a href="mailto:marketplace@dta.gov.au">marketplace@dta.gov.au</a>.</span>
                 )
                 : (<br/>)}
                 validators={emailValidators}

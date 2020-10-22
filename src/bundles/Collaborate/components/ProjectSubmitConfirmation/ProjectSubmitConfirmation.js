@@ -11,7 +11,7 @@ class ProjectSubmitConfirmation extends React.Component {
             <section>
                 <h1 className="au-display-xl"><Icon value="complete-tick" size={30}/><span styleName="callout-heading">Thanks for adding your project!</span></h1>
                 <p>Your project will be added to the new collaboration area on the Marketplace in the coming weeks.<br/>
-                    If you have any questions or feedback, email us at <a href="mailto:marketplace@digital.gov.au">marketplace@digital.gov.au</a>.</p>
+                    If you have any questions or feedback, email us at <a href="mailto:marketplace@dta.gov.au">marketplace@dta.gov.au</a>.</p>
             </section>
         )
     }
