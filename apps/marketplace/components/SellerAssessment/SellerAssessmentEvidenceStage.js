@@ -332,7 +332,7 @@ class SellerAssessmentEvidenceStage extends Component {
                   defaultValue={this.props[this.props.model].evidence[criteriaId].refereeName}
                   disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
                   label="Referee's full name"
-                  description="We may contact your referee to confirm your involvement in the project."
+                  description="The referee must be an employee of the client who can verify your involvement in the project."
                   name={`referee_name_${criteriaId}`}
                   id={`referee_name_${criteriaId}`}
                   htmlFor={`referee_name_${criteriaId}`}
