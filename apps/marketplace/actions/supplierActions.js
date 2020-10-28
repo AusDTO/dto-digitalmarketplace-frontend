@@ -98,7 +98,7 @@ export const loadDomainData = domainId => dispatch => {
 export const handleLoadDomainEvidenceSuccess = response => ({
   type: DOMAIN_EVIDENCE_LOAD_SUCCESS,
   data: {
-    evidence: response.data
+    evidence: response.data.evidence
   }
 })
 

@@ -9,35 +9,32 @@ import main from '../../main.scss'
 const SellerAssessmentView = props => (
   <div>
     <AUdirectionLink link={`${rootPath}/seller-dashboard/categories`} text="back to dashboard" direction="left" />
+{/* 
+    <AUheading level="1" size="xl">
+            {value.category} Assessment
+            <div className={styles.spacer} />
+          </AUheading> */}
+          <p>
+            You cannot edit your request for approved categories. If you want to change your rate, please{' '}
+            <a
+              href="https://marketplace1.zendesk.com/hc/en-gb/requests/new"
+              rel="noopener noreferrer"
+              target="_blank"
+              className={main.marginRight1}
+            >
+              contact our support team.
+            </a>
+          </p>
 
-    {props.evidence &&
-      props.evidence.map((value, index) => (
+
+
+    {props.evidence.evidence &&
+      props.evidence.evidence.map(value => (
         <React.Fragment key={value}>
-          {index === 0 && (
-            <AUheading level="1" size="xl">
-              {value.category} Assessment
-              <div className={styles.spacer} />
-            </AUheading>
-          )}
-          {index === 0 && (
-            <p>
-              You cannot edit your request for approved categories. If you want to change your rate, please{' '}
-              <a
-                href="https://marketplace1.zendesk.com/hc/en-gb/requests/new"
-                rel="noopener noreferrer"
-                target="_blank"
-                className={main.marginRight1}
-              >
-                contact our support team.
-              </a>
-            </p>
-          )}
-          {index === 0 && (
-            <AUheading level="2" size="lg">
-              Maximum daily rate
-            </AUheading>
-          )}
-          {index === 0 && <p>${value.maxDailyRate} (including GST)</p>}
+          <AUheading level="2" size="lg">
+            Maximum daily rate
+          </AUheading>
+          <p>${value.maxDailyRate} (including GST)</p>
           <AUheading level="2" size="lg">
             Evidence
           </AUheading>
