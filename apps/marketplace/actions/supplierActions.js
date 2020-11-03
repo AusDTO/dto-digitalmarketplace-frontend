@@ -52,7 +52,6 @@ export const handleCaseStudiesSuccess = response => ({
   data: {
     categoryName: response.data.category_name,
     caseStudiesData: response.data.cs_data
-    // caseStudies: response.data
   }
 })
 
@@ -98,7 +97,9 @@ export const loadDomainData = domainId => dispatch => {
 export const handleLoadDomainEvidenceSuccess = response => ({
   type: DOMAIN_EVIDENCE_LOAD_SUCCESS,
   data: {
-    evidence: response.data.evidence
+    categoryName: response.data.category,
+    evidence: response.data.evidence,
+    maxDailyRate: response.data.maxDailyRate
   }
 })
 
