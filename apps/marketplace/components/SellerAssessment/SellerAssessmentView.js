@@ -59,7 +59,7 @@ const SellerAssessmentView = props => (
             Evidence of meeting the criteria
           </AUheading>
           <p className={styles.reviewText}>{value.evidence_data.response}</p>
-          {<div className={styles.spacer} />}
+          <div className={styles.spacer} />
         </React.Fragment>
       ))}
   </div>
