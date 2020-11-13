@@ -52,7 +52,7 @@ class FileInput extends React.Component {
       <div key={fileField} className="callout-no-margin">
         {this.state.errors && (
           <div className="validation-message">
-            <span>There was an error uploading the file: {this.state.errors}</span>
+            <span>Incorrect file format. Documents must be in .DOC, .XLS, .PPT or .PDF format.</span>
           </div>
         )}
         {isEmpty(doc) && !this.state.uploading && (
