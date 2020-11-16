@@ -16,7 +16,7 @@ const SellerAssessmentCaseStudies = props => (
     {props.caseStudies.caseStudiesData &&
       props.caseStudies.caseStudiesData.map(value => (
         <React.Fragment key={value}>
-          <AUheading level="1" size="lg">
+          <AUheading level="2" size="lg">
             {value.data.title}
           </AUheading>
 
