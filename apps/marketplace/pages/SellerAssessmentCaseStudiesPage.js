@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import ErrorBox from 'shared/form/ErrorBox'
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import SellerAssessmentCaseStudies from '../components/SellerAssessment/SellerAssessmentCaseStudies'
 import { loadCaseStudiesData } from '../actions/supplierActions'
