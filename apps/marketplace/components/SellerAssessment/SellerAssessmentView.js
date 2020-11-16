@@ -21,7 +21,7 @@ const SellerAssessmentView = props => (
         target="_blank"
         className={main.marginRight1}
       >
-        contact our support team.
+        contact us.
       </a>
     </p>
     <AUheading level="2" size="lg">
