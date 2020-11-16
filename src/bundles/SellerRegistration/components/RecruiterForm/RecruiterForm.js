@@ -263,7 +263,7 @@ class RecruiterForm extends BaseForm {
                                         id="LabourHire"
                                         messages={this.generateLicenceMessages()}
                                     />
-                                    <p>Some states operate under a mandated Labour Hire Licensing Act. You will require a relevant licence if you are applying for specialist opportunities in Canberra, Victoria or Queensland.</p>
+                                    <p>Some states operate under a mandated Labour Hire Licensing Act. You will require a relevant licence if you are applying for specialist opportunities in Australian Capital Territory, Victoria or Queensland.</p>
                                     {states.map(s => (
                                         <React.Fragment key={s}>
                                             <h3 className="au-display-md" tabIndex="-1">{mapAustraliaState(s)}</h3>
