@@ -35,6 +35,9 @@ class SellerAssessmentCaseStudiesPage extends Component {
     if (this.state.loading) {
       return <LoadingIndicatorFullPage />
     }
+    if (!this.props.caseStudies) {
+      return <ErrorBox title="There was a problem retrieving your case studies" />
+    }
     return <SellerAssessmentCaseStudies caseStudies={this.props.caseStudies} />
   }
 }
