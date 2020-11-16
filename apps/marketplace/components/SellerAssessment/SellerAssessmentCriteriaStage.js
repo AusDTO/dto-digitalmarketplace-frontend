@@ -116,6 +116,7 @@ class SellerAssessmentCriteriaStage extends Component {
         <div className={styles.criteria}>
           {domain.criteria.map(criteria => (
             <CheckboxDetailsField
+              disabled={criteria.essential}
               key={criteria.id}
               model={`${this.props.model}.criteria[]`}
               id={`criteria_${criteria.id}`}
