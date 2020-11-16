@@ -38,7 +38,12 @@ export class SellerAssessmentFlowPage extends Component {
       this.setState({
         loading: true
       })
-      this.props.loadDomainData(domainId).then(() => this.setState({ loading: false }))
+      this.props.loadDomainData(domainId).then(() => {
+        this.setState({ loading: false })
+        const { domain, selectEssentialCriteria } = this.props
+        const essentialCriteria = domain.criteria.filter(criterion => criterion.essential)
+        essentialCriteria.map(criterion => selectEssentialCriteria(criterion.id))
+      })
     }
   }
 
@@ -167,7 +172,11 @@ const mapDispatchToProps = dispatch => ({
   saveEvidence: (evidenceId, data) => dispatch(saveEvidence(evidenceId, data)),
   loadInitialData: evidenceId => dispatch(loadEvidenceData(evidenceId)),
   loadDomainData: domainId => dispatch(loadDomainData(domainId)),
-  setError: message => dispatch(setErrorMessage(message))
+  setError: message => dispatch(setErrorMessage(message)),
+  selectEssentialCriteria: id => {
+    dispatch(actions.push(`${model}.criteria`, id))
+    dispatch(actions.merge(`${model}.evidence[${id}]`, { ...SellerAssessmentEvidenceReducer }))
+  }
 })
 
 export default connect(
