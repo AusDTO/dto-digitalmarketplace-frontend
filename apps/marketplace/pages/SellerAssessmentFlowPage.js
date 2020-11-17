@@ -42,11 +42,7 @@ export class SellerAssessmentFlowPage extends Component {
         this.setState({ loading: false })
         const { domain, selectEssentialCriteria } = this.props
         const essentialCriteria = domain.criteria.filter(criterion => criterion.essential)
-
-        essentialCriteria.map(criterion => {
-          
-          selectEssentialCriteria(criterion.id)
-        })
+        essentialCriteria.map(criterion => selectEssentialCriteria(criterion.id))
       })
     }
   }
@@ -181,6 +177,7 @@ const mapDispatchToProps = dispatch => ({
     if (!`${model}.criteria`.contains(id)) {
       dispatch(actions.push(`${model}.criteria`, id))
     }
+
     dispatch(actions.merge(`${model}.evidence[${id}]`, { ...SellerAssessmentEvidenceReducer }))
   }
 })
