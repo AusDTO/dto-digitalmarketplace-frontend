@@ -56,7 +56,9 @@ class BusinessInfoForm extends BaseForm {
                           validators={{
                             '': {
                                 smallEnoughForSME: formValues =>
-                                    !formValues.seller_type.start_up || formValues.number_of_employees !== '200+'
+                                       //!formValues.seller_type.start_up || formValues.number_of_employees !== '200+'
+                                       //formValues.number_of_employees
+                                    !formValues.seller_type.start_up || formValues.seller_type.start_up && formValues.age_of_abn === '5'
                             }
                           }}
                     >
@@ -176,7 +178,7 @@ class BusinessInfoForm extends BaseForm {
                                 model={model}
                                 id="start-up"
                                 messages={{
-                                    smallEnoughForSME: 'Your company has more than 200 employees and does not qualify as an SME'
+                                    smallEnoughForSME: 'ABN is old'
                                 }}
                             />
                             <Control.checkbox
