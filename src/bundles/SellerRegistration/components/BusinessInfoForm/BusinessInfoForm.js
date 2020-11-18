@@ -55,10 +55,10 @@ class BusinessInfoForm extends BaseForm {
                           onSubmitFailed={onSubmitFailed}
                           validators={{
                             '': {
+                                startUpValidator: formValues =>
+                                    !formValues.seller_type.start_up || formValues.seller_type.start_up && formValues.age_of_abn === '5',
                                 smallEnoughForSME: formValues =>
-                                       //!formValues.seller_type.start_up || formValues.number_of_employees !== '200+'
-                                       //formValues.number_of_employees
-                                    !formValues.seller_type.start_up || formValues.seller_type.start_up && formValues.age_of_abn === '5'
+                                                !formValues.seller_type.sme || formValues.number_of_employees !== '200+'
                             }
                           }}
                     >
@@ -178,7 +178,7 @@ class BusinessInfoForm extends BaseForm {
                                 model={model}
                                 id="start-up"
                                 messages={{
-                                    smallEnoughForSME: 'ABN is old'
+                                    startUpValidator: 'ABN is old'
                                 }}
                             />
                             <Control.checkbox
@@ -191,13 +191,13 @@ class BusinessInfoForm extends BaseForm {
                                 <p>Your business aims to disrupt an established market using technology. It is not listed
                                     on any stock exchange and is less than 5 years old.</p>
                             </label>
-                            {/* <StatefulError
+                            <StatefulError
                                 model={model}
                                 id="sme"
                                 messages={{
                                     smallEnoughForSME: 'Your company has more than 200 employees and does not qualify as an SME'
                                 }}
-                            /> */}
+                            />
                             <Control.checkbox
                                 model={`${model}.seller_type.sme`}
                                 id="sme"
