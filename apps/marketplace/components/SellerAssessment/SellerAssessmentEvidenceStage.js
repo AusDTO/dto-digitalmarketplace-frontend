@@ -13,6 +13,8 @@ import { rootPath } from 'marketplace/routes'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import format from 'date-fns/format'
+
+import mainStyles from '../../main.scss'
 import styles from './SellerAssessmentEvidenceStage.scss'
 
 export const getCriteriaName = (id, criteria) => {
@@ -220,6 +222,12 @@ class SellerAssessmentEvidenceStage extends Component {
   }
 
   render() {
+    const { meta } = this.props
+
+    const essentialCriteriaIds = meta.domain.criteria
+      .filter(criterion => criterion.essential)
+      .map(criterion => criterion.id)
+
     const previouslyFailedCriteria = this.getPreviousFailedCriteria()
 
     return (
@@ -288,6 +296,16 @@ class SellerAssessmentEvidenceStage extends Component {
                       and resubmit for assessment.
                     </p>
                   </AUpageAlert>
+                )}
+                {essentialCriteriaIds.includes(criteriaId) && (
+                  <div
+                    className={`
+                    ${mainStyles.badge}
+                    ${mainStyles.lightBlue}
+                    ${mainStyles.floatRight}`}
+                  >
+                    Essential
+                  </div>
                 )}
                 <AUheadings level="2" size="lg">
                   Criteria:
