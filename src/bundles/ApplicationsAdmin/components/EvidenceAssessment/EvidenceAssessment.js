@@ -141,6 +141,9 @@ class EvidenceAssessment extends React.Component {
 
   render() {
     const { evidence } = this.props
+    const essentialCriteriaIds = evidence.domain_criteria.filter(
+      criterion => criterion.essential
+    ).map(criterion => criterion.id)
 
     if (!evidence) {
       return (
@@ -208,6 +211,12 @@ class EvidenceAssessment extends React.Component {
                 <strong>Background:</strong>
               </p>
               <p styleName="reviewText">{evidence.data.evidence[criteriaId].background}</p>
+              {essentialCriteriaIds.includes(parseInt(criteriaId)) && (
+                <section class="au-callout">
+                  <h2 class="au-callout__heading au-callout__heading">Essential</h2>
+                  <p>This criterion is essential and must be demonstrated by the seller to be approved in this category.</p>
+                </section>
+              )}
               <p>
                 <strong>{this.getCriteriaName(criteriaId)}</strong>
               </p>
