@@ -8,6 +8,7 @@ import Layout from '../../../../shared/Layout';
 import BaseForm     from '../../../../shared/form/BaseForm';
 import SubmitForm   from '../../../../shared/form/SubmitForm';
 import ErrorBox     from '../../../../shared/form/ErrorBox';
+import Textfield    from '../../../../shared/form/Textfield';
 import StatefulError from '../../../../shared/form/StatefulError';
 import {required} from '../../../../validators';
 
@@ -65,6 +66,14 @@ class BusinessInfoForm extends BaseForm {
 
                         <fieldset>
                             <legend>Number of employees</legend>
+                            <Textfield
+                          model={`${model}.age_of_abn`}
+                          name="age_of_abn"
+                          id="age_of_abn"
+                          htmlFor="age_of_abn"
+                          label="age_of_abn"
+                          description=" Test"
+                        />
 
                             <StatefulError
                                 model={`${model}.number_of_employees`}
