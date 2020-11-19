@@ -228,7 +228,7 @@ class EvidenceAssessment extends React.Component {
               <p styleName="reviewText">{evidence.data.evidence[criteriaId].background}</p>
               {essentialCriteriaIds.includes(parseInt(criteriaId)) && (
                 <section class="au-callout">
-                  <h2 class="au-callout__heading au-callout__heading">Essential</h2>
+                  <h2 class="au-callout__heading">Essential</h2>
                   <p>This criterion is essential and must be demonstrated by the seller to be approved in this category.</p>
                 </section>
               )}
