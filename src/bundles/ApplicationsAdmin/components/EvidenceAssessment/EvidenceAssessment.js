@@ -30,6 +30,7 @@ class EvidenceAssessment extends React.Component {
 
     this.handleAssessmentApprove = this.handleAssessmentApprove.bind(this)
     this.handleAssessmentReject = this.handleAssessmentReject.bind(this)
+    this.hasMetAllEssentialCriteria = this.hasMetAllEssentialCriteria.bind(this)
   }
 
   hasReviewedAllCriteria() {
@@ -40,6 +41,20 @@ class EvidenceAssessment extends React.Component {
 
   hasReviewiedVFM() {
     return this.state.vfm !== undefined
+  }
+
+  hasMetAllEssentialCriteria = () => {
+    const { evidence } = this.props
+
+    const essentialCriteriaIds = evidence.domain_criteria
+      .filter(criterion => criterion.essential)
+      .map(criterion => criterion.id)
+    
+    const demonstratedCriteriaIds = Object.keys(this.state.criteria)
+      .filter(id => this.state.criteria[id].demonstrates === true)
+      .map(id => parseInt(id))
+
+    return essentialCriteriaIds.every(id => demonstratedCriteriaIds.includes(id))
   }
 
   hasMetEnoughCriteria() {
@@ -303,12 +318,12 @@ class EvidenceAssessment extends React.Component {
           )}
           <p>
             {this.hasReviewedAllCriteria() &&
-              (!this.hasMetEnoughCriteria() || this.state.vfm === false) && (
+              (!this.hasMetAllEssentialCriteria() || !this.hasMetEnoughCriteria() || this.state.vfm === false) && (
                 <button name="reject" styleName="actionButton rejectButton" onClick={this.handleAssessmentReject}>
                   Reject assessment
                 </button>
               )}
-            {this.hasReviewedAllCriteria() && this.hasMetEnoughCriteria() && this.hasReviewiedVFM() && this.state.vfm === true && (
+            {this.hasReviewedAllCriteria() && this.hasMetAllEssentialCriteria() && this.hasMetEnoughCriteria() && this.hasReviewiedVFM() && this.state.vfm === true && (
               <button name="reject" styleName="actionButton approveButton" onClick={this.handleAssessmentApprove}>
                 Approve assessment
               </button>
