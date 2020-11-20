@@ -6,30 +6,11 @@ import { Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import SellerAssessmentStages from './SellerAssessmentStages'
-import { getCriteriaName } from './SellerAssessmentEvidenceStage'
-
-import mainStyles from '../../main.scss'
 import styles from './SellerAssessmentReviewStage.scss'
-
-const CriterionBlock = props => {
-  const { criteria, criteriaId } = props
-
-  return (
-    <React.Fragment>
-      <AUheading level="2" size="md">
-        Criteria
-      </AUheading>
-      <p className={styles.reviewText}>{getCriteriaName(criteriaId, criteria)}</p>
-    </React.Fragment>
-  )
-}
+import { getCriteriaName } from './SellerAssessmentEvidenceStage'
 
 const SellerAssessmentReviewStage = props => {
   const { formButtons, meta, model, onSubmit, stagesTodo } = props
-
-  const essentialCriteriaIds = meta.domain.criteria
-    .filter(criterion => criterion.essential)
-    .map(criterion => criterion.id)
 
   return (
     <Form model={model} onSubmit={onSubmit}>
@@ -68,21 +49,10 @@ const SellerAssessmentReviewStage = props => {
           </AUheading>
           {props[model].criteria.map(criteriaId => (
             <React.Fragment key={criteriaId}>
-              {essentialCriteriaIds.includes(criteriaId) ? (
-                <div>
-                  <div
-                    className={`
-                        ${mainStyles.badge}
-                        ${mainStyles.lightBlue}
-                        ${mainStyles.floatRight}`}
-                  >
-                    Essential
-                  </div>
-                  <CriterionBlock criteria={meta.domain.criteria} criteriaId={criteriaId} />
-                </div>
-              ) : (
-                <CriterionBlock criteria={meta.domain.criteria} criteriaId={criteriaId} />
-              )}
+              <AUheading level="2" size="md">
+                Criteria
+              </AUheading>
+              <p className={styles.reviewText}>{getCriteriaName(criteriaId, meta.domain.criteria)}</p>
               <AUheading level="2" size="md">
                 Client
               </AUheading>
