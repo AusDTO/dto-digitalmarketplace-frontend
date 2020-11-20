@@ -115,7 +115,14 @@ class SellerAssessmentCriteriaStage extends Component {
           }}
         />
         <p>
-          <strong>For this assessment, you must submit at least {criteriaNeeded} criteria.</strong>
+          {essentialCriteria.length > 0 ? (
+            <strong>
+              For this assessment, you must submit all essential criteria and at least{' '}
+              {criteriaNeeded - essentialCriteria.length} other criteria.
+            </strong>
+          ) : (
+            <strong>For this assessment, you must submit at least {criteriaNeeded} criteria.</strong>
+          )}
         </p>
         {essentialCriteria.length > 0 && (
           <React.Fragment>
