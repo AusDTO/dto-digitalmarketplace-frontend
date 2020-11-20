@@ -275,7 +275,7 @@ class EvidenceAssessment extends React.Component {
               </p>
             </React.Fragment>
           ))}
-          {this.hasMetEnoughCriteria() && this.hasReviewedAllCriteria() && (
+          {this.hasMetAllEssentialCriteria(essentialCriteriaIds) && this.hasMetEnoughCriteria() && this.hasReviewedAllCriteria() && (
             <React.Fragment>
               <p>
                 <strong>Considering the maximum daily rate provided by the seller, and based on your assessment of the seller&apos;s technical capabilities, does this seller&apos;s application represent VFM to the Commonwealth?</strong>
