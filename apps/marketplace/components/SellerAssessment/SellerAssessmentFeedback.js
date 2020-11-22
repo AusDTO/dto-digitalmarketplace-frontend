@@ -54,8 +54,8 @@ const SellerAssessmentFeedback = props => {
                     <Cross colour="#FF0000" className={styles.icon} />
                   </span>
                   <span className={styles.iconBlock}>
-                    You have been assessed as not offering value for money. Your maximum daily rate is considered too high
-                    for {feedback.domainName}.
+                    You have been assessed as not offering value for money. Your maximum daily rate is considered too
+                    high for {feedback.domainName}.
                   </span>
                 </span>
               </li>
@@ -130,25 +130,21 @@ const SellerAssessmentFeedback = props => {
               for each category.
             </p>
           )}
-          {!allCriteriaPassed(feedback.criteria) &&
-            feedback.vfm !== false &&
-            !feedback.currentEvidenceId && (
-              <p>
-                You can incorporate the assessment team&apos;s feedback and{' '}
-                <a href={`${rootPath}/seller-assessment/create/${feedback.domainId}`}>resubmit your request</a>.
-              </p>
-            )}
-          {!allCriteriaPassed(feedback.criteria) &&
-            feedback.vfm !== false &&
-            feedback.currentEvidenceId && (
-              <p>
-                You can incorporate the assessment team&apos;s feedback and{' '}
-                <a href={`${rootPath}/seller-assessment/${feedback.currentEvidenceId}/introduction`}>
-                  resubmit your request
-                </a>
-                .
-              </p>
-            )}
+          {!allCriteriaPassed(feedback.criteria) && feedback.vfm !== false && !feedback.currentEvidenceId && (
+            <p>
+              You can incorporate the assessment team&apos;s feedback and{' '}
+              <a href={`${rootPath}/seller-assessment/create/${feedback.domainId}`}>resubmit your request</a>.
+            </p>
+          )}
+          {!allCriteriaPassed(feedback.criteria) && feedback.vfm !== false && feedback.currentEvidenceId && (
+            <p>
+              You can incorporate the assessment team&apos;s feedback and{' '}
+              <a href={`${rootPath}/seller-assessment/${feedback.currentEvidenceId}/introduction`}>
+                resubmit your request
+              </a>
+              .
+            </p>
+          )}
         </React.Fragment>
       )}
     </div>
