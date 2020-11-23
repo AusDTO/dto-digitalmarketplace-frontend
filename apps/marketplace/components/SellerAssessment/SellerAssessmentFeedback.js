@@ -5,6 +5,8 @@ import AUdirectionLink from '@gov.au/direction-links/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
 import Tick from 'marketplace/components/Icons/Tick/Tick'
 import Cross from 'marketplace/components/Icons/Cross/Cross'
+
+import mainStyles from '../../main.scss'
 import styles from './SellerAssessmentFeedback.scss'
 
 const renderCriteriaFeedback = (criteriaId, criteria) => {
@@ -107,13 +109,17 @@ const SellerAssessmentFeedback = props => {
               <React.Fragment>
                 {essentialCriteriaIds.length > 0 && (
                   <React.Fragment>
-                    <AUheading level="3" size="md">
-                      Essential criteria
-                    </AUheading>
+                    <div className={mainStyles.marginBottom1}>
+                      <AUheading level="3" size="md">
+                        Essential criteria
+                      </AUheading>
+                    </div>
                     {renderCriteriaListItems(feedback.criteria, essentialCriteriaIds)}
-                    <AUheading level="3" size="md">
-                      Other criteria
-                    </AUheading>
+                    <div className={mainStyles.marginBottom1}>
+                      <AUheading level="3" size="md">
+                        Other criteria
+                      </AUheading>
+                    </div>
                   </React.Fragment>
                 )}
                 {otherCriteriaIds.length > 0 && renderCriteriaListItems(feedback.criteria, otherCriteriaIds)}
