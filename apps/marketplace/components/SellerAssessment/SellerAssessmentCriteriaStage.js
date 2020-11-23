@@ -117,7 +117,7 @@ class SellerAssessmentCriteriaStage extends Component {
         <p>
           {essentialCriteria.length > 0 ? (
             <strong>
-              For this assessment, you must submit all essential criteria and at least{' '}
+              For this assessment, you must submit evidence for all essential criteria and at least{' '}
               {criteriaNeeded - essentialCriteria.length} other criteria.
             </strong>
           ) : (
