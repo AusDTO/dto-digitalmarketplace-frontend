@@ -30,10 +30,39 @@ const renderCriteriaFeedback = (criteriaId, criteria) => {
   return output
 }
 
+const renderCriteriaListItems = (criteria, ids) =>
+  ids.map(id => (
+    <li key={id}>
+      <span className={styles.feedbackFlex}>
+        <span className={styles.iconBlock}>
+          {criteria[id].has_feedback ? (
+            <Cross colour="#FF0000" className={styles.icon} />
+          ) : (
+            <Tick colour="#17788D" className={styles.icon} />
+          )}
+        </span>
+        <span className={styles.iconBlock}>
+          {criteria[id].has_feedback
+            ? `Evidence does not demonstrate '${criteria[id].name}'`
+            : `Evidence demonstrates '${criteria[id].name}'`}
+        </span>
+      </span>
+      {criteria[id].has_feedback && renderCriteriaFeedback(id, criteria)}
+    </li>
+  ))
+
 const allCriteriaPassed = criteria => Object.keys(criteria).every(id => !criteria[id].has_feedback)
 
 const SellerAssessmentFeedback = props => {
   const { feedback } = props
+
+  const essentialCriteriaIds = Object.keys(feedback.criteria)
+    .filter(id => feedback.criteria[id].essential)
+    .map(id => parseInt(id, 10))
+
+  const otherCriteriaIds = Object.keys(feedback.criteria)
+    .filter(id => !feedback.criteria[id].essential)
+    .map(id => parseInt(id, 10))
 
   return (
     <div>
@@ -61,37 +90,18 @@ const SellerAssessmentFeedback = props => {
               </li>
             ) : (
               <React.Fragment>
-                {Object.keys(feedback.criteria).map(criteriaId => (
-                  <li key={criteriaId}>
-                    {!feedback.criteria[criteriaId].has_feedback && (
-                      <span className={styles.feedbackFlex}>
-                        <span className={styles.iconBlock}>
-                          <Tick colour="#17788D" className={styles.icon} />
-                        </span>
-                        <span className={styles.iconBlock}>
-                          Evidence demonstrates &quot;{feedback.criteria[criteriaId].name}&quot;
-                        </span>
-                      </span>
-                    )}
-                  </li>
-                ))}
-                {Object.keys(feedback.criteria).map(criteriaId => (
-                  <li key={criteriaId}>
-                    {feedback.criteria[criteriaId].has_feedback && (
-                      <React.Fragment>
-                        <span className={styles.feedbackFlex}>
-                          <span className={styles.iconBlock}>
-                            <Cross colour="#FF0000" className={styles.icon} />
-                          </span>
-                          <span className={styles.iconBlock}>
-                            Evidence does not demonstrate &quot;{feedback.criteria[criteriaId].name}&quot;
-                          </span>
-                        </span>
-                        {renderCriteriaFeedback(criteriaId, feedback.criteria)}
-                      </React.Fragment>
-                    )}
-                  </li>
-                ))}
+                {essentialCriteriaIds.length > 0 && (
+                  <React.Fragment>
+                    <AUheading level="3" size="md">
+                      Essential criteria
+                    </AUheading>
+                    {renderCriteriaListItems(feedback.criteria, essentialCriteriaIds)}
+                    <AUheading level="3" size="md">
+                      Other criteria
+                    </AUheading>
+                  </React.Fragment>
+                )}
+                {otherCriteriaIds.length > 0 && renderCriteriaListItems(feedback.criteria, otherCriteriaIds)}
               </React.Fragment>
             )}
           </ul>
