@@ -146,10 +146,6 @@ class SellerAssessmentCriteriaStage extends Component {
                 />
               ))}
             </div>
-          </React.Fragment>
-        )}
-        {essentialCriteria.length > 0 && (
-          <React.Fragment>
             <AUheadings level="2" size="lg">
               Other criteria
             </AUheadings>
