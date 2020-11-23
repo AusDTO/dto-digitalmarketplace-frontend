@@ -53,15 +53,30 @@ const renderCriteriaListItems = (criteria, ids) =>
 
 const allCriteriaPassed = criteria => Object.keys(criteria).every(id => !criteria[id].has_feedback)
 
+const compareCriteria = (a, b) => {
+  // Criteria that have been demonstrated appear first
+  if (!a.has_feedback && b.has_feedback) {
+    return -1
+  }
+
+  if (!b.has_feedback && a.has_feedback) {
+    return 1
+  }
+
+  return 0
+}
+
 const SellerAssessmentFeedback = props => {
   const { feedback } = props
 
   const essentialCriteriaIds = Object.keys(feedback.criteria)
     .filter(id => feedback.criteria[id].essential)
+    .sort((a, b) => compareCriteria(feedback.criteria[a], feedback.criteria[b]))
     .map(id => parseInt(id, 10))
 
   const otherCriteriaIds = Object.keys(feedback.criteria)
     .filter(id => !feedback.criteria[id].essential)
+    .sort((a, b) => compareCriteria(feedback.criteria[a], feedback.criteria[b]))
     .map(id => parseInt(id, 10))
 
   return (
