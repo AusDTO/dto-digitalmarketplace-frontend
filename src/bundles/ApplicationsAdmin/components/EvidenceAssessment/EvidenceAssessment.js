@@ -107,7 +107,7 @@ class EvidenceAssessment extends React.Component {
     })
   }
 
-  handleAssessmentReject() {
+  handleAssessmentReject = essentialCriteriaIds => {
     const evidenceId = this.props.match.params.id
     const failed_criteria = {}
     Object.keys(this.state.criteria).map(criteriaId => {
@@ -118,7 +118,13 @@ class EvidenceAssessment extends React.Component {
         }
       }
     })
-    const vfm = this.state.vfm
+
+    // This resets the value of vfm if it's been rejected but the assessor has changed their mind and rejected criteria
+    let vfm = this.state.vfm
+    if (!this.hasMetAllEssentialCriteria(essentialCriteriaIds) || !this.hasMetEnoughCriteria()) {
+      vfm = null
+    }
+
     this.props.rejectEvidence(evidenceId, failed_criteria, vfm).then(res => {
       this.setState({
         wasApproved: false,
@@ -313,7 +319,7 @@ class EvidenceAssessment extends React.Component {
           <p>
             {this.hasReviewedAllCriteria() &&
               (!this.hasMetAllEssentialCriteria(essentialCriteriaIds) || !this.hasMetEnoughCriteria() || this.state.vfm === false) && (
-                <button name="reject" styleName="actionButton rejectButton" onClick={this.handleAssessmentReject}>
+                <button name="reject" styleName="actionButton rejectButton" onClick={() => this.handleAssessmentReject(essentialCriteriaIds)}>
                   Reject assessment
                 </button>
               )}
