@@ -30,6 +30,7 @@ class EvidenceAssessment extends React.Component {
 
     this.handleAssessmentApprove = this.handleAssessmentApprove.bind(this)
     this.handleAssessmentReject = this.handleAssessmentReject.bind(this)
+    this.hasMetAllEssentialCriteria = this.hasMetAllEssentialCriteria.bind(this)
   }
 
   hasReviewedAllCriteria() {
@@ -40,6 +41,14 @@ class EvidenceAssessment extends React.Component {
 
   hasReviewiedVFM() {
     return this.state.vfm !== undefined
+  }
+
+  hasMetAllEssentialCriteria = essentialCriteriaIds => {
+    const demonstratedCriteriaIds = Object.keys(this.state.criteria)
+      .filter(id => this.state.criteria[id].demonstrates === true)
+      .map(id => parseInt(id))
+
+    return essentialCriteriaIds.every(id => demonstratedCriteriaIds.includes(id))
   }
 
   hasMetEnoughCriteria() {
@@ -98,7 +107,7 @@ class EvidenceAssessment extends React.Component {
     })
   }
 
-  handleAssessmentReject() {
+  handleAssessmentReject = essentialCriteriaIds => {
     const evidenceId = this.props.match.params.id
     const failed_criteria = {}
     Object.keys(this.state.criteria).map(criteriaId => {
@@ -109,7 +118,13 @@ class EvidenceAssessment extends React.Component {
         }
       }
     })
-    const vfm = this.state.vfm
+
+    // This resets the value of vfm if it's been rejected but the assessor has changed their mind and rejected criteria
+    let vfm = this.state.vfm
+    if (!this.hasMetAllEssentialCriteria(essentialCriteriaIds) || !this.hasMetEnoughCriteria()) {
+      vfm = null
+    }
+
     this.props.rejectEvidence(evidenceId, failed_criteria, vfm).then(res => {
       this.setState({
         wasApproved: false,
@@ -141,6 +156,9 @@ class EvidenceAssessment extends React.Component {
 
   render() {
     const { evidence } = this.props
+    const essentialCriteriaIds = evidence.domain_criteria.filter(
+      criterion => criterion.essential
+    ).map(criterion => criterion.id)
 
     if (!evidence) {
       return (
@@ -208,6 +226,12 @@ class EvidenceAssessment extends React.Component {
                 <strong>Background:</strong>
               </p>
               <p styleName="reviewText">{evidence.data.evidence[criteriaId].background}</p>
+              {essentialCriteriaIds.includes(parseInt(criteriaId)) && (
+                <section styleName="callout">
+                  <h2 styleName="callout-heading">Essential</h2>
+                  <p styleName="callout-description">This criterion is essential and must be demonstrated by the seller to be approved in this category.</p>
+                </section>
+              )}
               <p>
                 <strong>{this.getCriteriaName(criteriaId)}</strong>
               </p>
@@ -257,7 +281,7 @@ class EvidenceAssessment extends React.Component {
               </p>
             </React.Fragment>
           ))}
-          {this.hasMetEnoughCriteria() && this.hasReviewedAllCriteria() && (
+          {this.hasMetAllEssentialCriteria(essentialCriteriaIds) && this.hasMetEnoughCriteria() && this.hasReviewedAllCriteria() && (
             <React.Fragment>
               <p>
                 <strong>Considering the maximum daily rate provided by the seller, and based on your assessment of the seller&apos;s technical capabilities, does this seller&apos;s application represent VFM to the Commonwealth?</strong>
@@ -294,12 +318,12 @@ class EvidenceAssessment extends React.Component {
           )}
           <p>
             {this.hasReviewedAllCriteria() &&
-              (!this.hasMetEnoughCriteria() || this.state.vfm === false) && (
-                <button name="reject" styleName="actionButton rejectButton" onClick={this.handleAssessmentReject}>
+              (!this.hasMetAllEssentialCriteria(essentialCriteriaIds) || !this.hasMetEnoughCriteria() || this.state.vfm === false) && (
+                <button name="reject" styleName="actionButton rejectButton" onClick={() => this.handleAssessmentReject(essentialCriteriaIds)}>
                   Reject assessment
                 </button>
               )}
-            {this.hasReviewedAllCriteria() && this.hasMetEnoughCriteria() && this.hasReviewiedVFM() && this.state.vfm === true && (
+            {this.hasReviewedAllCriteria() && this.hasMetAllEssentialCriteria(essentialCriteriaIds) && this.hasMetEnoughCriteria() && this.hasReviewiedVFM() && this.state.vfm === true && (
               <button name="reject" styleName="actionButton approveButton" onClick={this.handleAssessmentApprove}>
                 Approve assessment
               </button>

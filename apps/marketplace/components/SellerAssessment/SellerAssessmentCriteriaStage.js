@@ -85,6 +85,10 @@ class SellerAssessmentCriteriaStage extends Component {
       domain.priceMaximum,
       this.props[this.props.model].maxDailyRate
     )
+
+    const essentialCriteria = domain.criteria.filter(criterion => criterion.essential)
+    const otherCriteria = domain.criteria.filter(criterion => !criterion.essential)
+
     return (
       <Form
         model={this.props.model}
@@ -111,10 +115,51 @@ class SellerAssessmentCriteriaStage extends Component {
           }}
         />
         <p>
-          <strong>For this assessment, you must submit at least {criteriaNeeded} criteria.</strong>
+          {essentialCriteria.length > 0 ? (
+            <React.Fragment>
+              <span>For this assessment, you must submit evidence for:</span>
+              <ul>
+                <li>
+                  all &apos;<strong>Essential criteria</strong>&apos;
+                </li>
+                <li>
+                  at least {criteriaNeeded - essentialCriteria.length} &apos;<strong>Other criteria</strong>&apos;
+                </li>
+              </ul>
+            </React.Fragment>
+          ) : (
+            <strong>For this assessment, you must submit at least {criteriaNeeded} criteria.</strong>
+          )}
         </p>
+        {essentialCriteria.length > 0 && (
+          <React.Fragment>
+            <AUheadings level="2" size="lg">
+              Essential criteria
+            </AUheadings>
+            <div className={styles.criteria}>
+              {essentialCriteria.map(criteria => (
+                <CheckboxDetailsField
+                  disabled
+                  key={criteria.id}
+                  model={`${this.props.model}.criteria[]`}
+                  id={`criteria_${criteria.id}`}
+                  name={`criteria_${criteria.id}`}
+                  label={criteria.name}
+                  value={criteria.id}
+                  detailsModel={this.props.model}
+                  onClick={this.handleClick}
+                  validators={{}}
+                  messages={{}}
+                />
+              ))}
+            </div>
+            <AUheadings level="2" size="lg">
+              Other criteria
+            </AUheadings>
+          </React.Fragment>
+        )}
         <div className={styles.criteria}>
-          {domain.criteria.map(criteria => (
+          {otherCriteria.map(criteria => (
             <CheckboxDetailsField
               key={criteria.id}
               model={`${this.props.model}.criteria[]`}
