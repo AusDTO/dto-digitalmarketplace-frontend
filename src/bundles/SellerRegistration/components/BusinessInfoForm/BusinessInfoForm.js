@@ -171,7 +171,7 @@ class BusinessInfoForm extends BaseForm {
                                 model={model}
                                 id="start-up"
                                 messages={{
-                                    startUpValidation: 'ABN is old'
+                                    startUpValidation: 'Your ABN has been active for more than 5 years and does not qualify as a start-up.'
                                 }}
                             />
                             <Control.checkbox
