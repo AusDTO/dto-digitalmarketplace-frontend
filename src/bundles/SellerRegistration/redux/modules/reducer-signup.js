@@ -30,7 +30,6 @@ export default combineReducers({
       contact_email: ''
     },
     businessInfoForm: {
-      age_of_abn: '',
       seller_type: {},
       number_of_employees: '',
       other_panels: '',
