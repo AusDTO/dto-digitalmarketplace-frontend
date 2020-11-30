@@ -8,7 +8,6 @@ import Layout from '../../../../shared/Layout';
 import BaseForm     from '../../../../shared/form/BaseForm';
 import SubmitForm   from '../../../../shared/form/SubmitForm';
 import ErrorBox     from '../../../../shared/form/ErrorBox';
-import Textfield    from '../../../../shared/form/Textfield';
 import StatefulError from '../../../../shared/form/StatefulError';
 import {required} from '../../../../validators';
 
@@ -18,6 +17,11 @@ import ValidationSummary from '../ValidationSummary';
 
 import '../SellerRegistration.css';
 
+export const smallEnoughForSME= formValues =>
+!formValues.seller_type.sme || formValues.number_of_employees !== '200+'
+
+export const startUpValidation= formValues =>
+!formValues.seller_type.start_up || formValues.seller_type.start_up && parseInt(formValues.age_of_abn) > 5
 
 class BusinessInfoForm extends BaseForm {
 
@@ -55,10 +59,7 @@ class BusinessInfoForm extends BaseForm {
                           onSubmitFailed={onSubmitFailed}
                           validators={{
                             '': {
-                                startUpValidator: formValues =>
-                                    !formValues.seller_type.start_up || formValues.seller_type.start_up && formValues.age_of_abn === '5',
-                                smallEnoughForSME: formValues =>
-                                                !formValues.seller_type.sme || formValues.number_of_employees !== '200+'
+                                smallEnoughForSME, startUpValidation
                             }
                           }}
                     >
@@ -68,14 +69,6 @@ class BusinessInfoForm extends BaseForm {
 
                         <fieldset>
                             <legend>Number of employees</legend>
-                            {/* <Textfield
-                          model={`${model}.age_of_abn`}
-                          name="age_of_abn"
-                          id="age_of_abn"
-                          htmlFor="age_of_abn"
-                          label="age_of_abn"
-                          description=" Test"
-                        /> */}
 
                             <StatefulError
                                 model={`${model}.number_of_employees`}
@@ -178,7 +171,7 @@ class BusinessInfoForm extends BaseForm {
                                 model={model}
                                 id="start-up"
                                 messages={{
-                                    startUpValidator: 'ABN is old'
+                                    startUpValidation: 'ABN is old'
                                 }}
                             />
                             <Control.checkbox
