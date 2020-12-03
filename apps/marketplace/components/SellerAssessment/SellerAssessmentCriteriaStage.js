@@ -21,6 +21,9 @@ const getCriteriaAllowed = (criteriaNeeded, priceMaximum, maxDailyRate) =>
   getCriteriaNeeded(criteriaNeeded, priceMaximum, maxDailyRate) + 2
 
 const minimumCriteriaMet = (v, d) =>
+// check the domain is platforms integration
+// if not use the normal method
+// check the api s3 files
   d.criteriaNeeded &&
   v.criteria &&
   v.criteria.length &&
