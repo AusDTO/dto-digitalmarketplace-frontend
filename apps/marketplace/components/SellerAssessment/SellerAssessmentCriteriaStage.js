@@ -88,6 +88,8 @@ class SellerAssessmentCriteriaStage extends Component {
 
     const essentialCriteria = domain.criteria.filter(criterion => criterion.essential)
     const otherCriteria = domain.criteria.filter(criterion => !criterion.essential)
+    const otherCriteriaToRespondTo =
+      criteriaNeeded - essentialCriteria.length > 0 ? criteriaNeeded - essentialCriteria.length : null
 
     return (
       <Form
@@ -122,9 +124,11 @@ class SellerAssessmentCriteriaStage extends Component {
                 <li>
                   all &apos;<strong>Essential criteria</strong>&apos;
                 </li>
-                <li>
-                  at least {criteriaNeeded - essentialCriteria.length} &apos;<strong>Other criteria</strong>&apos;
-                </li>
+                {otherCriteriaToRespondTo && otherCriteriaToRespondTo > 0 && (
+                  <li>
+                    at least {otherCriteriaToRespondTo} &apos;<strong>Other criteria</strong>&apos;
+                  </li>
+                )}
               </ul>
             </React.Fragment>
           ) : (
