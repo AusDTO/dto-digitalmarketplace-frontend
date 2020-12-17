@@ -88,6 +88,8 @@ class SellerAssessmentCriteriaStage extends Component {
 
     const essentialCriteria = domain.criteria.filter(criterion => criterion.essential)
     const otherCriteria = domain.criteria.filter(criterion => !criterion.essential)
+    const otherCriteriaToRespondTo =
+      criteriaNeeded - essentialCriteria.length > 0 ? criteriaNeeded - essentialCriteria.length : null
 
     return (
       <Form
@@ -122,9 +124,11 @@ class SellerAssessmentCriteriaStage extends Component {
                 <li>
                   all &apos;<strong>Essential criteria</strong>&apos;
                 </li>
-                <li>
-                  at least {criteriaNeeded - essentialCriteria.length} &apos;<strong>Other criteria</strong>&apos;
-                </li>
+                {otherCriteriaToRespondTo && otherCriteriaToRespondTo > 0 && (
+                  <li>
+                    at least {otherCriteriaToRespondTo} &apos;<strong>Other criteria</strong>&apos;
+                  </li>
+                )}
               </ul>
             </React.Fragment>
           ) : (
@@ -137,21 +141,33 @@ class SellerAssessmentCriteriaStage extends Component {
               Essential criteria
             </AUheadings>
             <div className={styles.criteria}>
-              {essentialCriteria.map(criteria => (
-                <CheckboxDetailsField
-                  disabled
-                  key={criteria.id}
-                  model={`${this.props.model}.criteria[]`}
-                  id={`criteria_${criteria.id}`}
-                  name={`criteria_${criteria.id}`}
-                  label={criteria.name}
-                  value={criteria.id}
-                  detailsModel={this.props.model}
-                  onClick={this.handleClick}
-                  validators={{}}
-                  messages={{}}
-                />
-              ))}
+              {essentialCriteria.map(criteria => {
+                let splitCriteria = []
+                let mainCriteria = criteria.name
+                let subCriteria = []
+
+                if (criteria.id === 2101) {
+                  splitCriteria = criteria.name.split(':', 2)
+
+                  if (splitCriteria.length > 0) {
+                    mainCriteria = `${splitCriteria[0]}:`
+                    subCriteria = splitCriteria[1].split(';')
+                  }
+                }
+
+                return (
+                  <React.Fragment key={criteria.id}>
+                    <p className={styles.essential}>{criteria.id === 2101 ? mainCriteria : criteria.name}</p>
+                    {criteria.id === 2101 && (
+                      <ul>
+                        {subCriteria.map(subCriterion => (
+                          <li>{subCriterion.trim()}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </React.Fragment>
+                )
+              })}
             </div>
             <AUheadings level="2" size="lg">
               Other criteria
