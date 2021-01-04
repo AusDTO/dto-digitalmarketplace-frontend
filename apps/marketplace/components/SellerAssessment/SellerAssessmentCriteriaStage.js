@@ -20,7 +20,6 @@ const getCriteriaNeeded = (criteriaNeeded, priceMaximum, maxDailyRate) => {
 const getCriteriaAllowed = (criteriaNeeded, priceMaximum, maxDailyRate) =>
   getCriteriaNeeded(criteriaNeeded, priceMaximum, maxDailyRate) + 2
 
-
 const getMinimumMessage = (criteriaNeeded, essentialCriteria) => {
   if (essentialCriteria.length > 0) {
     return (
