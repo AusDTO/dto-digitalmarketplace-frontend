@@ -20,6 +20,35 @@ const getCriteriaNeeded = (criteriaNeeded, priceMaximum, maxDailyRate) => {
 const getCriteriaAllowed = (criteriaNeeded, priceMaximum, maxDailyRate) =>
   getCriteriaNeeded(criteriaNeeded, priceMaximum, maxDailyRate) + 2
 
+const getMinimumMessage = (criteriaNeeded, essentialCriteria) => {
+  if (essentialCriteria.length > 0) {
+    return (
+      <span>
+        You must select at least {criteriaNeeded - essentialCriteria.length} <strong>&apos;Other criteria&apos;</strong>
+      </span>
+    )
+  }
+
+  return (
+    <span>
+      You must submit evidence for at least {criteriaNeeded} {criteriaNeeded === 1 ? 'criterion' : 'criteria'}
+    </span>
+  )
+}
+
+const getMaximumMessage = (criteriaAllowed, essentialCriteria) => {
+  if (essentialCriteria.length > 0) {
+    return (
+      <span>
+        You can only select a maximum of {criteriaAllowed - essentialCriteria.length}{' '}
+        <strong>&apos;Other criteria&apos;</strong>
+      </span>
+    )
+  }
+
+  return <span>You cannot submit evidence for more than ${criteriaAllowed} criteria.</span>
+}
+
 const minimumCriteriaMet = (v, d) =>
   d.criteriaNeeded &&
   v.criteria &&
@@ -110,10 +139,8 @@ class SellerAssessmentCriteriaStage extends Component {
         <ErrorAlert
           model={this.props.model}
           messages={{
-            requiredMinimal: `You must submit evidence for at least ${criteriaNeeded} ${
-              criteriaNeeded === 1 ? 'criterion' : 'criteria'
-            }.`,
-            requiredMaximum: `You cannot submit evidence for more than ${criteriaAllowed} criteria.`
+            requiredMinimal: getMinimumMessage(criteriaNeeded, essentialCriteria),
+            requiredMaximum: getMaximumMessage(criteriaAllowed, essentialCriteria)
           }}
         />
         <p>
@@ -154,7 +181,6 @@ class SellerAssessmentCriteriaStage extends Component {
                     subCriteria = splitCriteria[1].split(';')
                   }
                 }
-
                 return (
                   <React.Fragment key={criteria.id}>
                     <p className={styles.essential}>{criteria.id === 2101 ? mainCriteria : criteria.name}</p>
