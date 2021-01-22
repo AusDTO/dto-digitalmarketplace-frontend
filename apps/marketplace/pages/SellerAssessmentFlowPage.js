@@ -25,6 +25,7 @@ export class SellerAssessmentFlowPage extends Component {
 
     this.saveEvidence = this.saveEvidence.bind(this)
     this.handleStageMount = this.handleStageMount.bind(this)
+    this.setEssentialCriteria = this.setEssentialCriteria.bind(this)
   }
 
   componentDidMount() {
@@ -38,7 +39,13 @@ export class SellerAssessmentFlowPage extends Component {
       this.setState({
         loading: true
       })
-      this.props.loadDomainData(domainId).then(() => this.setState({ loading: false }))
+      this.props.loadDomainData(domainId).then(() => {
+        this.setState({ loading: false })
+        const { domain } = this.props
+        domain.criteria
+          .filter(criterion => criterion.essential)
+          .map(criterion => this.setEssentialCriteria(criterion.id))
+      })
     }
   }
 
@@ -83,6 +90,19 @@ export class SellerAssessmentFlowPage extends Component {
 
       return data
     })
+  }
+
+  setEssentialCriteria = id => {
+    const { addCriteriaId, initialiseEvidence } = this.props
+    const formData = { ...this.props[model] }
+
+    if (!formData.criteria.includes(id)) {
+      addCriteriaId(id)
+    }
+
+    if (!Object.prototype.hasOwnProperty.call(formData.evidence, id)) {
+      initialiseEvidence(id)
+    }
   }
 
   saveEvidence(publish = false) {
@@ -162,9 +182,11 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+  addCriteriaId: id => dispatch(actions.push(`${model}.criteria`, id)),
   changeFormModel: data => dispatch(actions.merge(model, data)),
   resetFormValidity: () => dispatch(actions.resetValidity(model)),
   saveEvidence: (evidenceId, data) => dispatch(saveEvidence(evidenceId, data)),
+  initialiseEvidence: id => dispatch(actions.merge(`${model}.evidence[${id}]`, { ...SellerAssessmentEvidenceReducer })),
   loadInitialData: evidenceId => dispatch(loadEvidenceData(evidenceId)),
   loadDomainData: domainId => dispatch(loadDomainData(domainId)),
   setError: message => dispatch(setErrorMessage(message))
