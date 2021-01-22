@@ -20,6 +20,35 @@ const getCriteriaNeeded = (criteriaNeeded, priceMaximum, maxDailyRate) => {
 const getCriteriaAllowed = (criteriaNeeded, priceMaximum, maxDailyRate) =>
   getCriteriaNeeded(criteriaNeeded, priceMaximum, maxDailyRate) + 2
 
+const getMinimumMessage = (criteriaNeeded, essentialCriteria) => {
+  if (essentialCriteria.length > 0) {
+    return (
+      <span>
+        You must select at least {criteriaNeeded - essentialCriteria.length} <strong>&apos;Other criteria&apos;</strong>
+      </span>
+    )
+  }
+
+  return (
+    <span>
+      You must submit evidence for at least {criteriaNeeded} {criteriaNeeded === 1 ? 'criterion' : 'criteria'}
+    </span>
+  )
+}
+
+const getMaximumMessage = (criteriaAllowed, essentialCriteria) => {
+  if (essentialCriteria.length > 0) {
+    return (
+      <span>
+        You can only select a maximum of {criteriaAllowed - essentialCriteria.length}{' '}
+        <strong>&apos;Other criteria&apos;</strong>
+      </span>
+    )
+  }
+
+  return <span>You cannot submit evidence for more than ${criteriaAllowed} criteria.</span>
+}
+
 const minimumCriteriaMet = (v, d) =>
   d.criteriaNeeded &&
   v.criteria &&
@@ -85,6 +114,12 @@ class SellerAssessmentCriteriaStage extends Component {
       domain.priceMaximum,
       this.props[this.props.model].maxDailyRate
     )
+
+    const essentialCriteria = domain.criteria.filter(criterion => criterion.essential)
+    const otherCriteria = domain.criteria.filter(criterion => !criterion.essential)
+    const otherCriteriaToRespondTo =
+      criteriaNeeded - essentialCriteria.length > 0 ? criteriaNeeded - essentialCriteria.length : null
+
     return (
       <Form
         model={this.props.model}
@@ -104,17 +139,69 @@ class SellerAssessmentCriteriaStage extends Component {
         <ErrorAlert
           model={this.props.model}
           messages={{
-            requiredMinimal: `You must submit evidence for at least ${criteriaNeeded} ${
-              criteriaNeeded === 1 ? 'criterion' : 'criteria'
-            }.`,
-            requiredMaximum: `You cannot submit evidence for more than ${criteriaAllowed} criteria.`
+            requiredMinimal: getMinimumMessage(criteriaNeeded, essentialCriteria),
+            requiredMaximum: getMaximumMessage(criteriaAllowed, essentialCriteria)
           }}
         />
         <p>
-          <strong>For this assessment, you must submit at least {criteriaNeeded} criteria.</strong>
+          {essentialCriteria.length > 0 ? (
+            <React.Fragment>
+              <span>For this assessment, you must submit evidence for:</span>
+              <ul>
+                <li>
+                  all &apos;<strong>Essential criteria</strong>&apos;
+                </li>
+                {otherCriteriaToRespondTo && otherCriteriaToRespondTo > 0 && (
+                  <li>
+                    at least {otherCriteriaToRespondTo} &apos;<strong>Other criteria</strong>&apos;
+                  </li>
+                )}
+              </ul>
+            </React.Fragment>
+          ) : (
+            <strong>For this assessment, you must submit at least {criteriaNeeded} criteria.</strong>
+          )}
         </p>
+        {essentialCriteria.length > 0 && (
+          <React.Fragment>
+            <AUheadings level="2" size="lg">
+              Essential criteria
+            </AUheadings>
+            <div className={styles.criteria}>
+              {essentialCriteria.map(criteria => {
+                let splitCriteria = []
+                let mainCriteria = criteria.name
+                let subCriteria = []
+
+                if (criteria.id === 2101) {
+                  splitCriteria = criteria.name.split(':', 2)
+
+                  if (splitCriteria.length > 0) {
+                    mainCriteria = `${splitCriteria[0]}:`
+                    subCriteria = splitCriteria[1].split(';')
+                  }
+                }
+                return (
+                  <React.Fragment key={criteria.id}>
+                    <p className={styles.essential}>{criteria.id === 2101 ? mainCriteria : criteria.name}</p>
+                    {criteria.id === 2101 && (
+                      <ul>
+                        {subCriteria.map(subCriterion => (
+                          <li>{subCriterion.trim()}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </React.Fragment>
+                )
+              })}
+            </div>
+            <AUheadings level="2" size="lg">
+              Other criteria
+            </AUheadings>
+          </React.Fragment>
+        )}
         <div className={styles.criteria}>
-          {domain.criteria.map(criteria => (
+          {otherCriteria.map(criteria => (
             <CheckboxDetailsField
               key={criteria.id}
               model={`${this.props.model}.criteria[]`}
