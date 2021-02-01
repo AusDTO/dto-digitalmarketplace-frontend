@@ -58,7 +58,7 @@ test('DocumentsForm renders links when documents are present', () => {
   )
 
   let links = wrapper.find('ul.bordered-list');
-  expect(links.length).toBe(3);
+  expect(links.length).toBe(2);
 });
 
 describe('DocumentsForm expiry dates', () => {
