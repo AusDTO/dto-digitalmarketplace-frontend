@@ -37,7 +37,7 @@ test('DocumentsForm renders links when documents are present', () => {
       },
       liability: {
         filename: 'financial_2.pdf',
-        expiry: '2021-02-01'
+        expiry: '2021-03-01'
       },
       workers: {
         filename: 'financial1.pdf'
@@ -58,7 +58,7 @@ test('DocumentsForm renders links when documents are present', () => {
   )
 
   let links = wrapper.find('ul.bordered-list');
-  expect(links.length).toBe(2);
+  expect(links.length).toBe(3);
 });
 
 describe('DocumentsForm expiry dates', () => {
