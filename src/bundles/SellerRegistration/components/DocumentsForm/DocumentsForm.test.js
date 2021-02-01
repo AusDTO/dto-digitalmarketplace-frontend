@@ -67,7 +67,7 @@ describe('DocumentsForm expiry dates', () => {
       documentsForm: {
         documents: {
           liability: {
-            expiry: '2021-02-01',
+            expiry: '2021-03-01',
             filename: 'liability.pdf'
           }
         }
