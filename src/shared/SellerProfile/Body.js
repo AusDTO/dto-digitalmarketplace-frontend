@@ -206,6 +206,16 @@ const Body = (props) => {
             </div>
           )}
 
+          {abn && (
+            <div>
+              <p styleName="bold-noMargin">ABN</p>
+              <p>
+                <a href={`https://abr.business.gov.au/SearchByAbn.aspx?SearchText=${abn}`} rel="external noopener noreferrer"
+                  target="_blank">{abn}</a>
+              </p>
+            </div>
+          )}
+
           {!isEmpty(certifications) && (
             <div>
               <p styleName="bold-noMargin">Accreditations</p>
