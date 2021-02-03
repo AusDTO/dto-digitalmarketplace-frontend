@@ -133,15 +133,6 @@ const Body = (props) => {
               return (
                 <div key={`product.${i}`} styleName="product">
                   <div className="col-xs-12">
-                  {abn && (
-            <div>
-              <p styleName="bold-noMargin">ABN</p>
-              <p>
-                <a href={`https://abr.business.gov.au/SearchByAbn.aspx?SearchText=${abn}`} rel="external noopener noreferrer"
-                  target="_blank">{abn}</a>
-              </p>
-            </div>
-          )}
                     {validURL(product.website) && (
                       <h3 className="au-display-md" styleName="product-heading">
                         <a  href={product.website} target="_blank"
