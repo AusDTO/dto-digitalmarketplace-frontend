@@ -49,7 +49,7 @@ const ReviewHeader = (props) => {
                 <h2 className="au-display-lg">ABN</h2>
               </div>
               <div className="col-xs-12 col-sm-8 col-sm-push-1">
-                <p><a href={`https://abr.business.gov.au/SearchByAbn.aspx?SearchText=`} target="_blank" rel="external noopener noreferrer" styleName="external-link">{abn}</a></p>
+                <p><a href={`https://abr.business.gov.au/SearchByAbn.aspx?SearchText=${abn}`} target="_blank" rel="external noopener noreferrer" styleName="external-link">{abn}</a></p>
               </div>
             </div>
             )}
