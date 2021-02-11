@@ -9,6 +9,7 @@ import styles from './SellerProfile.css'; // eslint-disable-line no-unused-vars
 const ReviewHeader = (props) => {
 
   const {
+    abn,
     name,
     seller_type,
     summary,
@@ -41,6 +42,17 @@ const ReviewHeader = (props) => {
             <div styleName="styles.seller-profile-summary">
               <p>{summary}</p>
             </div>
+
+            {abn && (
+            <div className="row" styleName="styles.meta-row">
+              <div className="col-xs-12 col-sm-3">
+                <h2 className="au-display-lg">ABN</h2>
+              </div>
+              <div className="col-xs-12 col-sm-8 col-sm-push-1">
+                <p><a href={`https://abr.business.gov.au/SearchByAbn.aspx?SearchText=${abn}`} target="_blank" rel="external noopener noreferrer" styleName="external-link">{abn}</a></p>
+              </div>
+            </div>
+            )}
 
             <div className="row" styleName="styles.meta-row">
               <div className="col-xs-12 col-sm-3">
@@ -127,6 +139,7 @@ ReviewHeader.defaultProps = {
 }
 
 ReviewHeader.propTypes = {
+  abn: PropTypes.string,
   name: PropTypes.string,
   seller_type: PropTypes.objectOf(PropTypes.bool),
   summary: PropTypes.string,
