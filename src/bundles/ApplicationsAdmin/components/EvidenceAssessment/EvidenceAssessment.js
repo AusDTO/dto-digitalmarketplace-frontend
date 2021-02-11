@@ -133,9 +133,25 @@ class EvidenceAssessment extends React.Component {
     })
   }
 
-  handleAssessmentApprove() {
+  handleAssessmentApprove= essentialCriteriaIds => {
     const evidenceId = this.props.match.params.id
-    this.props.approveEvidence(evidenceId).then(res => {
+    // adding failed criteria
+    const failed_criteria = {}
+    Object.keys(this.state.criteria).map(criteriaId => {
+      if (this.state.criteria[criteriaId].demonstrates === false && this.state.criteria[criteriaId].reason) {
+        failed_criteria[criteriaId] = {
+          reason: this.state.criteria[criteriaId].reason,
+          feedback: this.state.criteria[criteriaId].feedback
+        }
+      }
+    })
+
+    let vfm = this.state.vfm
+    if (!this.hasMetAllEssentialCriteria(essentialCriteriaIds) || !this.hasMetEnoughCriteria()) {
+      vfm = null
+    }
+
+    this.props.approveEvidence(evidenceId, failed_criteria, vfm).then(res => {
       this.setState({
         wasApproved: true,
         wasRejected: false
@@ -324,7 +340,7 @@ class EvidenceAssessment extends React.Component {
                 </button>
               )}
             {this.hasReviewedAllCriteria() && this.hasMetAllEssentialCriteria(essentialCriteriaIds) && this.hasMetEnoughCriteria() && this.hasReviewiedVFM() && this.state.vfm === true && (
-              <button name="reject" styleName="actionButton approveButton" onClick={this.handleAssessmentApprove}>
+              <button name="reject" styleName="actionButton approveButton" onClick={this.handleAssessmentApprove(essentialCriteriaIds)}>
                 Approve assessment
               </button>
             )}
@@ -343,7 +359,7 @@ const mapStateToProps = ({ evidence, meta }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    approveEvidence: id => dispatch(approveEvidence(id)),
+    approveEvidence:  (id, feedback, vfm) => dispatch(approveEvidence(id, feedback, vfm)),
     rejectEvidence: (id, feedback, vfm) => dispatch(rejectEvidence(id, feedback, vfm))
   }
 }
