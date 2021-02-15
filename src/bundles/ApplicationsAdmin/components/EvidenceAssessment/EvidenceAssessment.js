@@ -133,7 +133,7 @@ class EvidenceAssessment extends React.Component {
     })
   }
 
-  handleAssessmentApprove= essentialCriteriaIds => {
+  handleAssessmentApprove = essentialCriteriaIds => {
     const evidenceId = this.props.match.params.id
     // adding failed criteria
     const failed_criteria = {}
@@ -340,7 +340,7 @@ class EvidenceAssessment extends React.Component {
                 </button>
               )}
             {this.hasReviewedAllCriteria() && this.hasMetAllEssentialCriteria(essentialCriteriaIds) && this.hasMetEnoughCriteria() && this.hasReviewiedVFM() && this.state.vfm === true && (
-              <button name="reject" styleName="actionButton approveButton" onClick={() => this.handleAssessmentApprove(essentialCriteriaIds)}>
+              <button name="approve" styleName="actionButton approveButton" onClick={() => this.handleAssessmentApprove(essentialCriteriaIds)}>
                 Approve assessment
               </button>
             )}
@@ -359,7 +359,7 @@ const mapStateToProps = ({ evidence, meta }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    approveEvidence:  (id, feedback, vfm) => dispatch(approveEvidence(id, feedback, vfm)),
+    approveEvidence:(id, feedback, vfm) => dispatch(approveEvidence(id, feedback, vfm)),
     rejectEvidence: (id, feedback, vfm) => dispatch(rejectEvidence(id, feedback, vfm))
   }
 }
