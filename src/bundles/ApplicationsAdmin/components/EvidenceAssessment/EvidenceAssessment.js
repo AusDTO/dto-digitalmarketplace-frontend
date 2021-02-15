@@ -133,7 +133,7 @@ class EvidenceAssessment extends React.Component {
     })
   }
 
-  handleAssessmentApprove () {
+  handleAssessmentApprove() {
     const evidenceId = this.props.match.params.id
     const failed_criteria = {}
     Object.keys(this.state.criteria).map(criteriaId => {
