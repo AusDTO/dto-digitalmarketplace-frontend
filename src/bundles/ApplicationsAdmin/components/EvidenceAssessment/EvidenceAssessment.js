@@ -340,7 +340,7 @@ class EvidenceAssessment extends React.Component {
                 </button>
               )}
             {this.hasReviewedAllCriteria() && this.hasMetAllEssentialCriteria(essentialCriteriaIds) && this.hasMetEnoughCriteria() && this.hasReviewiedVFM() && this.state.vfm === true && (
-              <button name="reject" styleName="actionButton approveButton" onClick={this.handleAssessmentApprove(essentialCriteriaIds)}>
+              <button name="reject" styleName="actionButton approveButton" onClick={() => this.handleAssessmentApprove(essentialCriteriaIds)}>
                 Approve assessment
               </button>
             )}
