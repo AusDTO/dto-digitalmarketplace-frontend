@@ -15,12 +15,14 @@ export default function reducer(state = {}, action = {}) {
 
 export const approvedEvidence = () => ({ type: APPROVED_EVIDENCE });
 
-export const approveEvidence = (id, failed_criteria, vfm) => {
+export const approvedEvidence = (id, failed_criteria, vfm) => {
   return (dispatch, getState, api) => {
     const state = getState();
+    console.log("state hi")
+    console.log(state)
     return api(state.meta.url_approve, {
       method: 'POST',
-      body: JSON.stringify({id,failed_criteria, vfm}),
+      body: JSON.stringify({id, failed_criteria, vfm}),
       headers: {
         // Flask expects the token as a header.
         'X-CSRFToken': state.form_options.csrf_token
