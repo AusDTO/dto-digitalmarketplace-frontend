@@ -69,6 +69,7 @@ const mapStateToProps = (state, {documentsUrl, onClick, ...rest}) => {
   let {
     id,
     type,
+    abn,
     name,
     seller_type,
     summary,
@@ -157,6 +158,7 @@ const mapStateToProps = (state, {documentsUrl, onClick, ...rest}) => {
     header: {
       id,
       type,
+      abn,
       name,
       seller_type,
       summary,
