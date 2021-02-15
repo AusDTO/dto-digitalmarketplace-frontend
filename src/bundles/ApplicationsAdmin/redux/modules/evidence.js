@@ -15,7 +15,7 @@ export default function reducer(state = {}, action = {}) {
 
 export const approvedEvidence = () => ({ type: APPROVED_EVIDENCE });
 
-export const approvedEvidence = (id, failed_criteria, vfm) => {
+export const approveEvidence = (id, failed_criteria, vfm) => {
   return (dispatch, getState, api) => {
     const state = getState();
     console.log("state hi")
