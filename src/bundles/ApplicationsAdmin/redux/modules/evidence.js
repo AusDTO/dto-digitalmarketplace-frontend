@@ -31,7 +31,7 @@ export const approveEvidence = (id, failed_criteria, vfm) => {
   }
 };
 
-export const rejectedEvidence = () => ({ type: APPROVED_EVIDENCE });
+export const rejectedEvidence = () => ({ type: REJECTED_EVIDENCE });
 
 export const rejectEvidence = (id, failed_criteria, vfm) => {
   return (dispatch, getState, api) => {
