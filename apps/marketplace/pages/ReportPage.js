@@ -78,7 +78,8 @@ const itemData = {
           image: '768 Opportunities by phase.svg',
           mobileImage: '767 Opportunities by phase.svg',
           imageAlt: '',
-          imageCaption: 'Opportunities by phase, 16% Pre-discovery, 34% Discovery, 13% Alpha, 13% Beta, 8% Live and 16% Other'
+          imageCaption:
+            'Opportunities by phase, 16% Pre-discovery, 34% Discovery, 13% Alpha, 13% Beta, 8% Live and 16% Other'
         },
         {
           text: null,
