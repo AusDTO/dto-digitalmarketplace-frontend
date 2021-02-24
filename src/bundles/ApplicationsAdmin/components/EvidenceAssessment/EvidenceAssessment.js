@@ -138,7 +138,7 @@ class EvidenceAssessment extends React.Component {
     const failedCriteria = {}
     Object.keys(this.state.criteria).map(criteriaId => {
       if (this.state.criteria[criteriaId].demonstrates === false && this.state.criteria[criteriaId].reason) {
-        failed_criteria[criteriaId] = {
+        failedCriteria[criteriaId] = {
           reason: this.state.criteria[criteriaId].reason,
           feedback: this.state.criteria[criteriaId].feedback
         }
