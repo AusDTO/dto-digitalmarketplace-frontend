@@ -144,7 +144,7 @@ class EvidenceAssessment extends React.Component {
         }
       }
     })
-    this.props.approveEvidence(evidenceId, failed_criteria).then(res => {
+    this.props.approveEvidence(evidenceId, failedCriteria).then(res => {
       this.setState({
         wasApproved: true,
         wasRejected: false
