@@ -15,7 +15,7 @@ export default function reducer(state = {}, action = {}) {
 
 export const approvedEvidence = () => ({ type: APPROVED_EVIDENCE });
 
-export const approveEvidence = (id, failed_criteria) => {
+export const approveEvidence = (id, failedCriteria) => {
   return (dispatch, getState, api) => {
     const state = getState();
     return api(state.meta.url_approve, {
