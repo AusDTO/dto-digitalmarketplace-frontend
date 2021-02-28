@@ -114,7 +114,7 @@ export default combineReducers({
     },
     recruiterForm: {
       recruiter: '',
-      labourHire: {},
+      labourHire: {qld: {expiry: '', licenceNumber: ''}, vic: {expiry: '', licenceNumber: ''}, act: {expiry: '', licenceNumber: ''}},
       understandsAssessmentProcess: false
     },
     candidatesForm: {
