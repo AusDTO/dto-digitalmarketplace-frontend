@@ -276,12 +276,10 @@ class SignupForm extends Component {
                               htmlFor="abn"
                               label="ABN"
                               validators={{
-                                required: v => required(v),
-                                validABN: v => !v || validABN(v)
+                                required: v => required(v)
                               }}
                               messages={{
-                                required: 'You must supply an ABN',
-                                validABN: 'The ABN supplied is not valid'
+                                required: 'You must supply an ABN'
                               }}
                             />
                           )}
