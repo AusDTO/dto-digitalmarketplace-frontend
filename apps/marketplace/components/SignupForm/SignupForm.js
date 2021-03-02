@@ -7,7 +7,7 @@ import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import AUselect from '@gov.au/select/lib/js/react.js'
 import DocumentTitle from 'react-document-title'
 
-import { required, validEmail, validABN } from 'shared/validators'
+import { required, validEmail } from 'shared/validators'
 import { EMAIL_NOT_WHITELISTED, GENERAL_ERROR } from 'marketplace/constants/messageConstants'
 import Layout from 'shared/Layout'
 import ErrorBox from 'shared/form/ErrorBox'
