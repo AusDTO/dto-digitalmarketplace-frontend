@@ -21,7 +21,7 @@ const BuyerSpecialistCompleted = props => (
     <ul>
       <li>
         While your opportunity is live, you&apos;ll need to{' '}
-        <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000583195#live" rel="noopener noreferrer">
+        <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000583195#while-open" rel="noopener noreferrer">
           answer seller questions
         </a>
         .

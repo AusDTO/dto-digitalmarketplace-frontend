@@ -25,7 +25,7 @@ import PageAlert from '@gov.au/page-alerts';
 import recruiterStyles from './RecruiterForm.css';
 import styles from '../SellerRegistration.css';
 
-const states = ['qld', 'vic']
+const states = ['qld', 'vic', 'act']
 
 class RecruiterForm extends BaseForm {
     static propTypes = {
@@ -263,7 +263,7 @@ class RecruiterForm extends BaseForm {
                                         id="LabourHire"
                                         messages={this.generateLicenceMessages()}
                                     />
-                                    <p>Some states operate under a mandated Labour Hire Licensing Act. You will require a relevant licence if you are applying for specialist opportunities in Victoria or Queensland.</p>
+                                    <p>Some states operate under a mandated Labour Hire Licensing Act. You will require a relevant licence if you are applying for specialist opportunities in Australian Capital Territory, Victoria or Queensland.</p>
                                     {states.map(s => (
                                         <React.Fragment key={s}>
                                             <h3 className="au-display-md" tabIndex="-1">{mapAustraliaState(s)}</h3>
