@@ -32,6 +32,7 @@ const LoginForm = props => {
             />
             <header className="page-heading page-heading-without-breadcrumb">
               <h1 className="au-display-xl">Sign in to the Marketplace</h1>
+              <h2 className="au-display-m">New to the Marketplace? Create your account</h2>
             </header>
             <Form model={model} id="login" onSubmit={data => handleSubmit(data)}>
               <Textfield
