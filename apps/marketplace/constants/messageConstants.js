@@ -12,7 +12,7 @@ export const ACCOUNT_TAKEN =
 export const UNABLE_TO_RESET = 'The Digital Marketplace encountered an error trying to reset your password.'
 export const UNABLE_TO_SEND = 'The Digital Marketplace encountered an error trying to send the reset password email.'
 export const LOGIN_FAILED =
-  "Make sure you've entered the right email address and password. Accounts are locked after 5 failed attempts."
+  "Make sure you've entered the right email address and password. Accounts are locked after 5 failed attempts. Forgotten your password?<https://marketplace.service.gov.au/2/reset-password> Please contact our support team<https://marketplace1.zendesk.com/hc/en-gb/articles/360001050936> to unlock your account."
 export const EMAIL_NOT_WHITELISTED =
   'Your email domain is not registered for use on Digital Marketplace. ' +
   'Please request approval from marketplace@dta.gov.au'
