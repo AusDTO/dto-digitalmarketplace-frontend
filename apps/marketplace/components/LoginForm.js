@@ -61,8 +61,9 @@ const LoginForm = props => {
                 validators={{ passwordLength }}
                 messages={{
                   passwordLength: 'Your password should be at least 10 characters'
-                }}
-              />
+                }} />
+
+                <a href = "/2/reset-password">Forgot your password?"</a>
               {currentlySending ? (
                 <LoadingButton />
               ) : (
