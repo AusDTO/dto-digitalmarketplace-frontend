@@ -63,8 +63,8 @@ const LoginForm = props => {
                   passwordLength: 'Your password should be at least 10 characters'
                 }}
               />
-
               <a href="/2/reset-password">Forgot your password?</a>
+              <br/>
               {currentlySending ? (
                 <LoadingButton />
               ) : (
