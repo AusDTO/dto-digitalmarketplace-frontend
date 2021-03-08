@@ -64,7 +64,7 @@ const LoginForm = props => {
                 }}
               />
 
-              <a href="/2/reset-password">Forgot your password?"</a>
+              <a href="/2/reset-password">Forgot your password?</a>
               {currentlySending ? (
                 <LoadingButton />
               ) : (
