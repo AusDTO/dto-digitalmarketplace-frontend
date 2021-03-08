@@ -33,8 +33,8 @@ const LoginForm = props => {
             <header className="page-heading page-heading-without-breadcrumb">
               <h1 className="au-display-xl">Sign in to the Marketplace</h1>
               <p>
-  New to the Marketplace? <a href="/2/signup">Create your account</a>.
-</p>
+                New to the Marketplace? <a href="/2/signup">Create your account</a>.
+              </p>
             </header>
             <Form model={model} id="login" onSubmit={data => handleSubmit(data)}>
               <Textfield
@@ -61,9 +61,10 @@ const LoginForm = props => {
                 validators={{ passwordLength }}
                 messages={{
                   passwordLength: 'Your password should be at least 10 characters'
-                }} />
+                }}
+              />
 
-                <a href = "/2/reset-password">Forgot your password?"</a>
+              <a href="/2/reset-password">Forgot your password?"</a>
               {currentlySending ? (
                 <LoadingButton />
               ) : (
