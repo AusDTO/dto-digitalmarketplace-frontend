@@ -70,6 +70,7 @@ const LoginForm = props => {
               ) : (
                 <input className="au-btn" type="submit" value="Sign in" onClick={submitClicked} />
               )}
+              <br />
             </Form>
           </article>
         </div>
