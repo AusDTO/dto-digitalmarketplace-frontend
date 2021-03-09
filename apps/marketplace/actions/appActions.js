@@ -91,7 +91,7 @@ export const login = data => (dispatch, getState) => {
     data: JSON.stringify(data)
   }).then(response => {
     if (response.error) {
-      dispatch(setSignupErrorCode(response.status))
+      dispatch(setLoginErrorCode(response.status))
     } else {
       dispatch(handleLoginSuccess(response))
       // dispatch(clearErrorMessages())
