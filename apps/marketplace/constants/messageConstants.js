@@ -1,4 +1,5 @@
 import React from 'react'
+
 export const BRIEF_ID_NOT_FOUND = 'Brief does not exist.'
 export const BRIEF_LOT_NOT_SUPPORTED = 'Lot not supported.'
 export const BRIEF_MUST_BE_DRAFT = 'Only draft briefs can be deleted.'
@@ -15,15 +16,14 @@ export const UNABLE_TO_SEND = 'The Digital Marketplace encountered an error tryi
 export const LOGIN_FAILED = (
   <React.Fragment>
     <p>
-      Make sure you've entered the right email address and password. Accounts are locked after 5 failed attempts.
+      Make sure you &apos;ve entered the right email address and password. Accounts are locked after 5 failed attempts.
       <br />
       <br />
       <li>
-      Please <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360001050936">contact our support team </a>
-      if you need to unlock your account
-        </li>
+        Please <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360001050936">contact our support team </a>
+        if you need to unlock your account
+      </li>
     </p>
-
   </React.Fragment>
 )
 export const EMAIL_NOT_WHITELISTED =
