@@ -73,10 +73,6 @@ export const fetchAuth = () => dispatch => {
 }
 
 export const login = data => (dispatch, getState) => {
-  const message = <span>Make sure you've entered the right email address and password. Accounts are locked after 5 failed attempts
-    <br/>
-    Please <a href ="https://marketplace1.zendesk.com/hc/en-gb/articles/360001050936">contact our support team</a> to unlock your account.
-  </span>
   dispatch(sendingRequest(true))
   dispatch(setAuthFrameworkError(false))
   dmapi({
@@ -89,7 +85,7 @@ export const login = data => (dispatch, getState) => {
     data: JSON.stringify(data)
   }).then(response => {
     if (response.error) {
-      dispatch(setErrorMessage(message))
+      dispatch(setErrorMessage(LOGIN_FAILED))
     } else {
       dispatch(clearErrorMessages())
       if (response.data.framework && response.data.framework !== 'digital-marketplace') {
