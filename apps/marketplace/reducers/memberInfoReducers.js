@@ -35,6 +35,20 @@ const userReducer = (state = defaultUserState, action) => {
         ...state,
         signupErrorCode: action.errorCode
       }
+    
+      case LOGIN_SUCCESS:
+        return {
+          ...state,
+          loginSuccess: true,
+          loginErrored: false
+        }
+  
+      case LOGIN_ERROR:
+        return {
+          ...state,
+          loginErrorCode: action.errorCode
+        }
+  
 
     case SIGNUP_ABN:
       return {

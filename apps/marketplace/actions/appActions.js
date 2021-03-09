@@ -24,6 +24,8 @@
  */
 
 import {
+  LOGIN_SUCCESS,
+  LOGIN_ERROR,
   SENDING_REQUEST,
   SET_ERROR_MESSAGE,
   CLEAR_ERROR_MESSAGES,
@@ -56,6 +58,10 @@ export function setAuthFrameworkError(frameworkError) {
   return { type: SET_AUTH_FRAMEWORK_ERROR, frameworkError }
 }
 
+export const setloginErrorCode = errorCode => ({ type: LOGIN_ERROR, errorCode })
+
+export const handleLoginSuccess = () => ({ type: LOGIN_SUCCESS })
+
 export const fetchAuth = () => dispatch => {
   dispatch(sendingRequest(true))
   dispatch(setAuthFrameworkError(false))
@@ -85,9 +91,10 @@ export const login = data => (dispatch, getState) => {
     data: JSON.stringify(data)
   }).then(response => {
     if (response.error) {
-      dispatch(setErrorMessage(LOGIN_FAILED))
+      dispatch(setSignupErrorCode(response.status))
     } else {
-      dispatch(clearErrorMessages())
+      dispatch(handleLoginSuccess(response))
+      // dispatch(clearErrorMessages())
       if (response.data.framework && response.data.framework !== 'digital-marketplace') {
         dispatch(setAuthFrameworkError(true))
       }
