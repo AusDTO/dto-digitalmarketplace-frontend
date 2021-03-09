@@ -33,7 +33,7 @@ export class LoginPageComponent extends BaseForm {
   }
 
   render() {
-    const { model, loggedIn, handleSubmit, currentlySending, isPartOfTeam, mustJoinTeam } = this.props
+    const { model, loggedIn, handleSubmit, currentlySending, isPartOfTeam, mustJoinTeam, loginErrorCode, loginSuccess } = this.props
     const { from } = this.props.location.state || { from: { pathname: `${rootPath}/opportunities` } }
 
     if (loggedIn && !isPartOfTeam && mustJoinTeam) {
@@ -66,7 +66,9 @@ const mapStateToProps = state => ({
   loggedIn: state.app.loggedIn,
   currentlySending: state.app.currentlySending,
   isPartOfTeam: state.app.isPartOfTeam,
-  mustJoinTeam: state.app.mustJoinTeam
+  mustJoinTeam: state.app.mustJoinTeam,
+  loginSuccess: state.user.loginSuccess,
+  loginErrorCode: state.user.loginErrorCode
 })
 
 const mapDispatchToProps = dispatch => ({
