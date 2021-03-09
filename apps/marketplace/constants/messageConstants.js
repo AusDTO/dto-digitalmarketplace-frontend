@@ -23,6 +23,7 @@ export const LOGIN_FAILED = (
       if you need to unlock your account
         </li>
     </p>
+
   </React.Fragment>
 )
 export const EMAIL_NOT_WHITELISTED =
