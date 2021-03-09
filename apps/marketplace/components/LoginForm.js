@@ -7,6 +7,7 @@ import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
 import { required, validEmail, passwordLength } from '../components/validators'
 import LoadingButton from './LoadingButton/LoadingButton'
+import style from '../../marketplace/main.scss'
 
 const LoginForm = props => {
   const { model, submitClicked, handleSubmit, currentlySending } = props
@@ -63,8 +64,9 @@ const LoginForm = props => {
                   passwordLength: 'Your password should be at least 10 characters'
                 }}
               />
-
-              <a href="/2/reset-password">Forgot your password?</a>
+              <p className={style.paddingBottom2}>
+                <a href="/2/reset-password">Forgot your password?</a>
+              </p>
               {currentlySending ? (
                 <LoadingButton />
               ) : (
