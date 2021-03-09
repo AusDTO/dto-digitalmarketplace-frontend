@@ -15,7 +15,8 @@ export class LoginPageComponent extends BaseForm {
     model: PropTypes.string.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     loggedIn: PropTypes.bool.isRequired,
-    currentlySending: PropTypes.bool.isRequired
+    currentlySending: PropTypes.bool.isRequired,
+    loginSuccess: PropTypes.bool
   }
 
   constructor(props) {
