@@ -15,14 +15,13 @@ export const UNABLE_TO_RESET = 'The Digital Marketplace encountered an error try
 export const UNABLE_TO_SEND = 'The Digital Marketplace encountered an error trying to send the reset password email.'
 export const LOGIN_FAILED = (
   <React.Fragment>
-      <li>
-        Make sure you&apos;ve entered the right email address and password. Accounts are locked after 5 failed
-        attempts.
-      </li>
-      <li>
-        Please <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360001050936">contact our support team </a>
-        if you need to unlock your account
-      </li>
+    <li>
+      Make sure you&apos;ve entered the right email address and password. Accounts are locked after 5 failed attempts.
+    </li>
+    <li>
+      Please <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360001050936">contact our support team </a>
+      if you need to unlock your account
+    </li>
   </React.Fragment>
 )
 export const EMAIL_NOT_WHITELISTED =
