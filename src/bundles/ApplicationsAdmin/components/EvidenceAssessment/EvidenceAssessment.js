@@ -165,9 +165,10 @@ class EvidenceAssessment extends React.Component {
 
   render() {
     const { evidence } = this.props
+    const essentialCriteriaIds = evidence.domain_criteria
     // add check here? how do I replicate this issue?
-    if(evidence.domain_criteria){
-      const essentialCriteriaIds = evidence.domain_criteria.filter(
+    if(essentialCriteriaIds){
+      essentialCriteriaIds.filter(
         criterion => criterion.essential
       ).map(criterion => criterion.id)
     }
