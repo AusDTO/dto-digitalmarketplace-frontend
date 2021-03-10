@@ -16,7 +16,7 @@ export const UNABLE_TO_SEND = 'The Digital Marketplace encountered an error tryi
 export const LOGIN_FAILED = (
   <React.Fragment>
     <p>
-      Make sure you &apos;ve entered the right email address and password. Accounts are locked after 5 failed attempts.
+      Make sure you&apos;ve entered the right email address and password. Accounts are locked after 5 failed attempts.
       <br />
       <br />
       <li>
