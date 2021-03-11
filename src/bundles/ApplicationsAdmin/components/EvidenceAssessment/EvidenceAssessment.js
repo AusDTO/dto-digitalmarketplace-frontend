@@ -171,7 +171,7 @@ class EvidenceAssessment extends React.Component {
       essentialCriteriaIds = evidence.domain_criteria.filter(criterion => criterion.essential).map(criterion => criterion.id)
     }
     console.log("v value after if")
-    console.log(v)
+    console.log(essentialCriteriaIds)
 
     if (!evidence) {
       return (
