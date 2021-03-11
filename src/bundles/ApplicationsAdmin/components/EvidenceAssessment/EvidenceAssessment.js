@@ -167,7 +167,7 @@ class EvidenceAssessment extends React.Component {
     const { evidence } = this.props
 
     let essentialCriteriaIds;
-    if(evidence.domain_criteria !== null){
+    if(evidence.domain_criteria){
       essentialCriteriaIds = evidence.domain_criteria.filter(criterion => criterion.essential).map(criterion => criterion.id)
     }
 
