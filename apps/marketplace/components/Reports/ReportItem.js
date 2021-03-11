@@ -21,7 +21,7 @@ const ReportItem = props => {
         '768 Opportunities by phase',
         '767 Opportunities by phase',
         '768 Average responses per opportunity',
-        '767 Average responses per oppportunity',
+        '767 Average responses per opportunity',
         '768 Number of sellers per area of expertise',
         '767 Number of sellers per area of expertise'
       ],

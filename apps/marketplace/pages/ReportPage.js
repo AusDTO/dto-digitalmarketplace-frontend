@@ -36,14 +36,14 @@ const itemData = {
       subitems: [
         {
           text: null,
-          image: 'Percentage of opportunities open to all.svg',
-          mobileImage: 'Percentage of opportunities open to all.svg',
+          image: 'Percentage of briefs open to all.svg',
+          mobileImage: 'Percentage of briefs open to all.svg',
           imageAlt: '68% of all opportunities have been open to all'
         },
         {
           text: null,
-          image: 'Percentage of opportunities for digital specialists.svg',
-          mobileImage: 'Percentage of opportunities for digital specialists.svg',
+          image: 'Percentage of briefs for digital specialists.svg',
+          mobileImage: 'Percentage of briefs for digital specialists.svg',
           imageAlt: '63% of opportunities have been for digital specialists'
         },
         {
@@ -75,8 +75,8 @@ const itemData = {
         {
           text: null,
           fullWidth: true,
-          image: '768 Opportunities by phase.svg',
-          mobileImage: '767 Opportunities by phase.svg',
+          image: '768 Briefs by phase.svg',
+          mobileImage: '767 Briefs by phase.svg',
           imageAlt: '',
           imageCaption:
             'Opportunities by phase, 16% Pre-discovery, 34% Discovery, 13% Alpha, 13% Beta, 8% Live and 16% Other'
@@ -135,8 +135,8 @@ const itemData = {
         {
           text: null,
           fullWidth: true,
-          image: '768 Average responses per opportunity.svg',
-          mobileImage: '767 Average responses per opportunity.svg',
+          image: '768 Average responses per brief.svg',
+          mobileImage: '767 Average responses per brief.svg',
           imageAlt: 'Buyers receive on average 12 responses per opportunity as of January 2018'
         }
       ]
