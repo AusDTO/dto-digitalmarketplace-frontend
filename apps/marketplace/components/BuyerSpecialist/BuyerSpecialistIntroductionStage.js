@@ -14,9 +14,9 @@ const BuyerSpecialistIntroductionStage = props => (
     </AUheadings>
     <ul>
       <li>
-        Download the{' '}
+        You can{' '}
         <a href="/api/2/r/specialist-questions-template.docx" rel="noopener noreferrer" target="_blank">
-          questions template (xlsx 113KB)
+          download the list of questions (DOCX 92KB)
         </a>{' '}
         to prepare offline before publishing.
       </li>
