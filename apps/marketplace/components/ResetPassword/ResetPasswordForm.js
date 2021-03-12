@@ -7,6 +7,7 @@ import DocumentTitle from 'react-document-title'
 import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
 import { passwordLength } from '../validators'
+import {rootPath} from '../../routes'
 
 const ResetPasswordForm = props => {
   const { model, user, submitClicked, handleSubmit } = props
@@ -30,7 +31,7 @@ const ResetPasswordForm = props => {
                 <h2 className="au-display-lg">You have successfully changed your password</h2>
                 <span>
                   <p>
-                    Please <a href="/login"> login </a> to continue.
+                    Please <a href={`${rootPath}/login`}> login </a> to continue.
                   </p>
                 </span>
               </AUpageAlert>
