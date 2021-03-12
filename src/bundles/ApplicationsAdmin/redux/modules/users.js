@@ -1,5 +1,6 @@
 export const MOVED_USER = 'MOVED_USER';
 export const INVITED_USER = 'INVITED_USER';
+export const EDIT_BUYER_USER_NAME = 'EDIT_BUYER_USER_NAME';
 
 export default function reducer(state = {}, action = {}) {
   const { type, user } = action;
