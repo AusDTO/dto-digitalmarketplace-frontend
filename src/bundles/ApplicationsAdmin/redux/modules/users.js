@@ -9,6 +9,8 @@ export default function reducer(state = {}, action = {}) {
       return [...state, user];
     case INVITED_USER:
       return [...state, Object.assign({}, {invited: true}, user)];
+    case EDIT_BUYER_USER_NAME = 'EDIT_BUYER_USER_NAME':
+      return [...state, user];
     default:
       return state;
   }
