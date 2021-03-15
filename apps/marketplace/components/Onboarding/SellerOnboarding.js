@@ -12,4 +12,5 @@ const SellerOnboarding = () => (
     </div>
   </div>
 )
+
 export default SellerOnboarding
