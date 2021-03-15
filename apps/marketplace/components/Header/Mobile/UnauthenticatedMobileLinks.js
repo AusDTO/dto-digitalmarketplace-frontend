@@ -1,5 +1,5 @@
 import React from 'react'
-import { rootPath } from '../../../routes'
+// import { rootPath } from '../../../routes'
 
 import CommonMobileLinks from './CommonMobileLinks'
 
