@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import DocumentTitle from 'react-document-title'
+import { rootPath } from 'marketplace/routes'
 
 import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
@@ -30,7 +31,7 @@ const ResetPasswordForm = props => {
                 <h2 className="au-display-lg">You have successfully changed your password</h2>
                 <span>
                   <p>
-                    Please <a href="/2/login"> login </a> to continue.
+                    Please <a href={`${rootPath}/login`}>login</a> to continue.
                   </p>
                 </span>
               </AUpageAlert>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { rootPath } from 'marketplace/routes'
 
 const SellerOnboarding = () => (
   <div className="row">
@@ -7,7 +8,7 @@ const SellerOnboarding = () => (
         Welcome to the Marketplace
       </h1>
       <p>
-        <a href="/2/login">Log in</a> to set up your seller profile on the Marketplace.
+        <a href={`${rootPath}/login`}>Log in</a> to set up your seller profile on the Marketplace.
       </p>
     </div>
   </div>
