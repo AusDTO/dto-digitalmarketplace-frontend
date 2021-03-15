@@ -1,5 +1,5 @@
 import React from 'react'
-import {rootPath} from '../../routes'
+import { rootPath } from '../../routes'
 
 const UnauthenticatedHeaderActions = () => (
   <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">

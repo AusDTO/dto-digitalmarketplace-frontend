@@ -7,7 +7,7 @@ import DocumentTitle from 'react-document-title'
 import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
 import { passwordLength } from '../validators'
-import {rootPath} from '../../routes'
+import { rootPath } from '../../routes'
 
 const ResetPasswordForm = props => {
   const { model, user, submitClicked, handleSubmit } = props
