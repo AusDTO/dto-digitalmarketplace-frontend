@@ -8,7 +8,7 @@ const SellerOnboarding = () => (
         Welcome to the Marketplace
       </h1>
       <p>
-        <a href='/2/login'>Log in</a> to set up your seller profile on the Marketplace.
+        <a href="/2/login">Log in</a> to set up your seller profile on the Marketplace.
       </p>
     </div>
   </div>

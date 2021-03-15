@@ -31,7 +31,7 @@ const ResetPasswordForm = props => {
                 <h2 className="au-display-lg">You have successfully changed your password</h2>
                 <span>
                   <p>
-                    Please <a href='/2/login'> login </a> to continue.
+                    Please <a href="/2/login"> login </a> to continue.
                   </p>
                 </span>
               </AUpageAlert>
