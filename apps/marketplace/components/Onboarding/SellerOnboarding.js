@@ -1,5 +1,4 @@
 import React from 'react'
-// import { rootPath } from '../../routes'
 
 const SellerOnboarding = () => (
   <div className="row">

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import AUlinklist from '@gov.au/link-list/lib/js/react.js'
 
 import styles from './BriefOverviewSectionList.scss'
-import { rootPath } from '../../../routes'
 
 export class BriefOverviewSectionListComponent extends Component {
   static propTypes = {
