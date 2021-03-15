@@ -1,5 +1,4 @@
 import React from 'react'
-import { rootPath } from '../../routes'
 
 const UnauthenticatedHeaderActions = () => (
   <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
@@ -9,7 +8,7 @@ const UnauthenticatedHeaderActions = () => (
       </a>
     </li>
     <li>
-      <a href={`${rootPath}/login`} className="au-btn au-btn--dark">
+      <a href="/2/login" className="au-btn au-btn--dark">
         Log in
       </a>
     </li>
