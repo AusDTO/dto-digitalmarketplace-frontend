@@ -8,7 +8,7 @@ export const titleMap = {
   recruiter_only: 'Recruiter',
   recruitment: 'Recruiter',
   consultant_only: 'Consultant',
-  recruiter_both: 'Recruiter and Consultant',
+  recruiter_both: 'Consultant and Recruiter',
   indigenous: 'Indigenous business',
   disability: 'Australian disability enterprise',
   nfp_social_enterprise: 'Not-for-profit',

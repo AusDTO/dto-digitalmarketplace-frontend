@@ -15,7 +15,7 @@ exports[`Test suite for UserOnboarding container component Because snaphots 1`] 
     </h1>
     <p>
       <a
-        href="/login"
+        href="/2/login"
       >
         Log in
       </a>

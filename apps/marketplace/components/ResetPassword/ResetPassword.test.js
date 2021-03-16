@@ -11,6 +11,8 @@ import RequestResetEmailForm from './RequestResetEmailForm'
 
 Enzyme.configure({ adapter: new Adapter() })
 
+jest.mock('shared/Icon/_getIcons')
+
 describe('Test suite for ResetPasswordForm component', () => {
   const state = {
     model: 'resetPasswordForm',
