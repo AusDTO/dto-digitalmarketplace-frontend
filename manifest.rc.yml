@@ -3,7 +3,7 @@ applications:
   command:  ./scripts/cf_run_app.sh
   buildpacks: 
   - nodejs_buildpack
-  - Staticfile
+  - staticfile
   memory: 256M
   disk_quota: 512M
   instances: 1
