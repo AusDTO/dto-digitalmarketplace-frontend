@@ -66,7 +66,7 @@ const LoginForm = props => {
                 }}
               />
               <p className={style.paddingBottom2}>
-                <a href="/2/reset-password">Forgot your password?</a>
+                <a href={`${rootPath}/reset-password`} >Forgot your password?</a>
               </p>
               {currentlySending ? (
                 <LoadingButton />
