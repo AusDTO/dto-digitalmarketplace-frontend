@@ -37,13 +37,13 @@ const BuyerTrainingIntroductionStage = props => (
       <li>
         Download the{' '}
         <a href="/api/2/r/training-draft-questions" rel="noopener noreferrer" target="_blank">
-          draft questions
+          list of questions (DOCX 68KB)
         </a>{' '}
         and{' '}
         <a href="/api/2/r/training-requirement-documents" rel="noopener noreferrer" target="_blank">
           requirement documents
         </a>{' '}
-        to prepare your request offline before publishing.
+        to prepare offline before publishing.
       </li>
       <li>
         Read the{' '}
