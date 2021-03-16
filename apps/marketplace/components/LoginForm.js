@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
+import { rootPath } from 'marketplace/routes'
 import DocumentTitle from 'react-document-title'
 
 import ErrorBox from 'shared/form/ErrorBox'
@@ -8,7 +9,6 @@ import Textfield from 'shared/form/Textfield'
 import { required, validEmail, passwordLength } from '../components/validators'
 import LoadingButton from './LoadingButton/LoadingButton'
 import style from '../../marketplace/main.scss'
-import { rootPath } from 'marketplace/routes'
 
 const LoginForm = props => {
   const { model, submitClicked, handleSubmit, currentlySending } = props
