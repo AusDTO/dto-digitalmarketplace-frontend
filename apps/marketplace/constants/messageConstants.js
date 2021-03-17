@@ -20,7 +20,7 @@ export const LOGIN_FAILED = (
       Make sure you&apos;ve entered the right email address and password. Accounts are locked after 5 failed attempts.
     </li>
     <li>
-      <a href ={`${rootPath}/reset-password`}>Forgotten your password?</a>
+      <a href={`${rootPath}/reset-password`}>Forgotten your password?</a>
     </li>
     <li>
       Please <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360001050936">contact our support team </a>
