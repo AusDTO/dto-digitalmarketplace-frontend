@@ -5,7 +5,6 @@ import sinon from 'sinon'
 import SellerSelect from './SellerSelect'
 
 Enzyme.configure({ adapter: new Adapter() })
-jest.mock('../../shared/Icon/_getIcons')
 
 test('component mounts with a id attribute for its text input', () => {
   const component = mount(<SellerSelect id="test-1" />)

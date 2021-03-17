@@ -1,5 +1,4 @@
 import React from 'react'
-import { rootPath } from 'marketplace/routes'
 
 export const BRIEF_ID_NOT_FOUND = 'Brief does not exist.'
 export const BRIEF_LOT_NOT_SUPPORTED = 'Lot not supported.'
@@ -20,7 +19,7 @@ export const LOGIN_FAILED = (
       Make sure you&apos;ve entered the right email address and password. Accounts are locked after 5 failed attempts.
     </li>
     <li>
-      <a href={`${rootPath}/reset-password`}>Forgot your password?</a>
+      <a href="/2/reset-password">Forgotten your password?</a>
     </li>
     <li>
       Please <a href="https://marketplace1.zendesk.com/hc/en-gb/articles/360001050936">contact our support team </a>
