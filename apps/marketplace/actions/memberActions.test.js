@@ -2,7 +2,7 @@ import expect from 'expect'
 import { handleSignupSuccess, handleCreateUserSuccess } from './memberActions'
 import { SIGNUP_SUCCESS, CREATE_USER_SUCCESS } from '../constants/constants'
 
-jest.mock('../../shared/Icon/_getIcons');
+jest.mock('../../shared/Icon/_getIcons')
 // Test a sync action
 describe('Member Actions', () => {
   describe('Signup new user form submit', () => {
