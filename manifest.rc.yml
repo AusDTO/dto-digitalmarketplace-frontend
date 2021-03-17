@@ -1,9 +1,9 @@
 applications:
 - name: dm-rc-frontend
   command:  ./scripts/cf_run_app.sh
-  buildpacks: 
-  - nodejs_buildpack
-  - staticfile_buildpack
+  buildpacks:
+  - https://github.com/cloudfoundry/nodejs-buildpack
+  - https://github.com/cloudfoundry/staticfile-buildpack
   memory: 256M
   disk_quota: 512M
   instances: 1
