@@ -1,7 +1,7 @@
 applications:
 - name: dm-rc-frontend
   command:  ./scripts/cf_run_app.sh
-  buildpacks: 
+  buildpack: 
     - nodejs_buildpack
     - staticfile_buildpack
   memory: 256M
