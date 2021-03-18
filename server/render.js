@@ -31,6 +31,7 @@ var argv = require('yargs')
   .argv;
 
 var app = express();
+const helmet = require("helmet");
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(compression());
 app.use('/bundle', express.static('build'));
@@ -40,6 +41,16 @@ app.use(function errorHandler(err, request, response, next) {
   console.log('[' + new Date().toISOString() + '] ' + err.stack);
   response.status(500).send(argv.debug ? err.stack : err.toString());
 });
+
+// use helmet to add HSTS
+// Sets "Strict-Transport-Security: max-age=300"
+app.use(
+  helmet.hsts({
+    maxAge: 300,
+    includeSubDomains: false,
+  })
+);
+
 // Use the rollbar error handler to send exceptions to your rollbar account
 app.use(rollbar.errorHandler());
 
