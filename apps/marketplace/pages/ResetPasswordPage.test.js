@@ -6,6 +6,8 @@ import { Provider } from 'react-redux'
 import configureStore from '../store'
 import { ResetPasswordPageComponent } from './ResetPasswordPage'
 
+jest.mock('shared/Icon/_getIcons')
+
 describe('Test suite for Reset Password Page Container Component', () => {
   const state = {
     user: {

@@ -1,12 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-redux-form'
+import { rootPath } from 'marketplace/routes'
 import DocumentTitle from 'react-document-title'
 
 import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
 import { required, validEmail, passwordLength } from '../components/validators'
 import LoadingButton from './LoadingButton/LoadingButton'
+import style from '../../marketplace/main.scss'
 
 const LoginForm = props => {
   const { model, submitClicked, handleSubmit, currentlySending } = props
@@ -32,6 +34,9 @@ const LoginForm = props => {
             />
             <header className="page-heading page-heading-without-breadcrumb">
               <h1 className="au-display-xl">Sign in to the Marketplace</h1>
+              <p>
+                New to the Marketplace? <a href={`${rootPath}/signup`}>Create your account</a>
+              </p>
             </header>
             <Form model={model} id="login" onSubmit={data => handleSubmit(data)}>
               <Textfield
@@ -60,6 +65,9 @@ const LoginForm = props => {
                   passwordLength: 'Your password should be at least 10 characters'
                 }}
               />
+              <p className={style.paddingBottom2}>
+                <a href={`${rootPath}/reset-password`}>Forgot your password?</a>
+              </p>
               {currentlySending ? (
                 <LoadingButton />
               ) : (
