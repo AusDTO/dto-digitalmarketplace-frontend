@@ -46,9 +46,8 @@ app.use(function errorHandler(err, request, response, next) {
 // Sets "Strict-Transport-Security: max-age=300"
 app.use(
   helmet.hsts({
-    // 300 is 5 minutes
     maxAge: 300,
-    // includeSubDomains: false,
+    includeSubDomains: false,
   })
 );
 
