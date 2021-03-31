@@ -135,7 +135,16 @@ class EvidenceAssessment extends React.Component {
 
   handleAssessmentApprove() {
     const evidenceId = this.props.match.params.id
-    this.props.approveEvidence(evidenceId).then(res => {
+    const failedCriteria = {}
+    Object.keys(this.state.criteria).map(criteriaId => {
+      if (this.state.criteria[criteriaId].demonstrates === false && this.state.criteria[criteriaId].reason) {
+        failedCriteria[criteriaId] = {
+          reason: this.state.criteria[criteriaId].reason,
+          feedback: this.state.criteria[criteriaId].feedback
+        }
+      }
+    })
+    this.props.approveEvidence(evidenceId, failedCriteria).then(res => {
       this.setState({
         wasApproved: true,
         wasRejected: false
@@ -156,9 +165,10 @@ class EvidenceAssessment extends React.Component {
 
   render() {
     const { evidence } = this.props
-    const essentialCriteriaIds = evidence.domain_criteria.filter(
-      criterion => criterion.essential
-    ).map(criterion => criterion.id)
+    let essentialCriteriaIds = [];
+    if (evidence.domain_criteria) {
+      essentialCriteriaIds = evidence.domain_criteria.filter(criterion => criterion.essential).map(criterion => criterion.id)
+    }
 
     if (!evidence) {
       return (
@@ -324,7 +334,7 @@ class EvidenceAssessment extends React.Component {
                 </button>
               )}
             {this.hasReviewedAllCriteria() && this.hasMetAllEssentialCriteria(essentialCriteriaIds) && this.hasMetEnoughCriteria() && this.hasReviewiedVFM() && this.state.vfm === true && (
-              <button name="reject" styleName="actionButton approveButton" onClick={this.handleAssessmentApprove}>
+              <button name="approve" styleName="actionButton approveButton" onClick={this.handleAssessmentApprove}>
                 Approve assessment
               </button>
             )}
@@ -343,7 +353,7 @@ const mapStateToProps = ({ evidence, meta }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    approveEvidence: id => dispatch(approveEvidence(id)),
+    approveEvidence:(id, feedback) => dispatch(approveEvidence(id, feedback)),
     rejectEvidence: (id, feedback, vfm) => dispatch(rejectEvidence(id, feedback, vfm))
   }
 }
