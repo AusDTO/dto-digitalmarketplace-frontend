@@ -50,7 +50,8 @@ const BriefSpecialistResponseForm2 = ({
   onRateChange,
   fileCount,
   addOtherDocument,
-  supplierContact
+  supplierContact,
+  buttonAddedCount
 }) => (
   <div className="row">
     <DocumentTitle title="Brief Response - Digital Marketplace">
@@ -367,7 +368,7 @@ const BriefSpecialistResponseForm2 = ({
                       addOtherDocument()
                     }}
                   >
-                    Add another
+                    Add another{buttonAddedCount}
                   </a>
                 </p>
               )}
@@ -465,7 +466,8 @@ BriefSpecialistResponseForm2.propTypes = {
   loadingText: PropTypes.string,
   onRateChange: PropTypes.func,
   fileCount: PropTypes.number,
-  addOtherDocument: PropTypes.func
+  addOtherDocument: PropTypes.func,
+  buttonAddedCount: PropTypes.number
 }
 
 export default BriefSpecialistResponseForm2

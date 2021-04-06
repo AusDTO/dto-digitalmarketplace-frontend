@@ -248,6 +248,7 @@ class BriefResponsePage extends Component {
                       this.props.changeModel(`${this.props.model}.${field}`, `${withGst}`)
                     }}
                     fileCount={this.state.otherDocumentFileCount}
+                    buttonAddedCount={this.state.otherDocumentFileCount}
                     addOtherDocument={() => {
                       this.setState(curState => {
                         const newState = { ...curState }
