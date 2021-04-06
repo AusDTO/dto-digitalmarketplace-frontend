@@ -30,7 +30,7 @@ class SubmitConfirmation extends React.Component {
                             <span styleName="callout-heading">You have been prioritised for assessment</span>
                         </h1>
                         <p>
-                            Before you can respond to this opportunities we need to assess your expertise in {domain}.
+                            Before you can respond to this opportunity we need to assess your expertise in {domain}.
                         </p>
 
                         <p>
