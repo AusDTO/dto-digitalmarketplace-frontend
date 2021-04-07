@@ -33,7 +33,7 @@ export class BriefTrainingResponseForm2 extends Component {
     this.updateAttachedFileCount()
   }
 
-  // returns the types of evaluations in the brief that require a file upload response
+  // returns the types of evaluations in the opportunity that require a file upload response
   getBriefEvaluationTypesForUpload() {
     let types = []
     if (this.props.brief && this.props.brief.evaluationType) {
@@ -105,7 +105,7 @@ export class BriefTrainingResponseForm2 extends Component {
 
     return (
       <div className="row">
-        <DocumentTitle title="Brief Response - Digital Marketplace">
+        <DocumentTitle title="Opportunity Response - Digital Marketplace">
           <div className="col-sm-push-2 col-sm-8 col-xs-12">
             <article role="main">
               {briefResponseSuccess && !briefResponseSave && (

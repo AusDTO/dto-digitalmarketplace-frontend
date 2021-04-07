@@ -55,7 +55,7 @@ export class BuyerRFXFlowPage extends Component {
         }
 
         if (response.data.brief.lotSlug !== 'rfx') {
-          this.props.setError('You can only edit RFX briefs using this flow.')
+          this.props.setError('You can only edit RFX opportunities using this flow.')
         }
 
         this.props.changeFormModel(data)
@@ -101,7 +101,7 @@ export class BuyerRFXFlowPage extends Component {
       }
       return (
         <ErrorBoxComponent
-          title="A problem occurred when loading the brief details"
+          title="A problem occurred when loading the opportunity details"
           errorMessage={this.props.errorMessage}
           setFocus={setFocus}
           form={{}}

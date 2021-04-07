@@ -7,7 +7,7 @@ import DocumentTitle from 'react-document-title'
 
 const BriefSubmitted = props => (
   <div className="row">
-    <DocumentTitle title="Brief Published - Digital Marketplace">
+    <DocumentTitle title="Opportunity Published - Digital Marketplace">
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
         <article role="main">
           <AUpageAlert as="success" setFocus={props.setFocus}>
@@ -49,8 +49,8 @@ const BriefSubmitted = props => (
           <Feedback
             app={props.app}
             handleSubmit={props.handleSubmit}
-            difficultyQuestion="How easy or difficult was it for you to publish this brief?"
-            commentQuestion="How would you improve publishing a brief?"
+            difficultyQuestion="How easy or difficult was it for you to publish this opportunity?"
+            commentQuestion="How would you improve publishing an opportunity?"
             objectAction="published"
           />
         </article>
