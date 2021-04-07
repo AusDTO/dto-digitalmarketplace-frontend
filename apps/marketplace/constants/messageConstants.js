@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const BRIEF_ID_NOT_FOUND = 'Brief does not exist.'
+export const BRIEF_ID_NOT_FOUND = 'Opportunity does not exist.'
 export const BRIEF_LOT_NOT_SUPPORTED = 'Lot not supported.'
 export const BRIEF_MUST_BE_DRAFT = 'Only draft briefs can be deleted.'
 export const DUPLICATE_USER = 'An account with this email address already exists.'
