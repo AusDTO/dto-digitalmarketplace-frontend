@@ -83,7 +83,7 @@ export class BriefOverview extends Component {
       <div className="row">
         <div className="col-xs-12">
           {deleteBriefSuccess && <Redirect to={`${rootPath}/buyer-dashboard`} />}
-          {!deleteBriefSuccess && <ErrorBox title="There was a problem deleting the brief" setFocus={setFocus} />}
+          {!deleteBriefSuccess && <ErrorBox title="There was a problem deleting the opportunity" setFocus={setFocus} />}
           {lotSlug === 'digital-professionals' && status === 'draft' && (
             <AUpageAlert as="warning">
               <h2>This page has been retired.</h2>
@@ -107,8 +107,8 @@ export class BriefOverview extends Component {
                 }}
               >
                 <AUpageAlert as="warning">
-                  <p>Are you sure you want to delete this brief?</p>
-                  <AUbutton onClick={() => deleteBrief(briefId)}>Yes, delete brief</AUbutton>
+                  <p>Are you sure you want to delete this opportunity?</p>
+                  <AUbutton onClick={() => deleteBrief(briefId)}>Yes, delete opportunity</AUbutton>
                   <AUbutton as="secondary" className={styles.cancelDeleteButton} onClick={this.toggleDeleteAlert}>
                     Do not delete
                   </AUbutton>

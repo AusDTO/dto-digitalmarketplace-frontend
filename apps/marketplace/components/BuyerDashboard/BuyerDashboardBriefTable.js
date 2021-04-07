@@ -99,7 +99,7 @@ export class BuyerDashboardBriefTable extends Component {
           <div className="row">
             <div className="col-xs-12">
               <span />
-              <p>You don&apos;t have any briefs. Create a new request to get started.</p>
+              <p>You don&apos;t have any opportunities. Create a new request to get started.</p>
             </div>
           </div>
           <div className="row">

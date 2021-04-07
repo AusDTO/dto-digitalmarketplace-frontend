@@ -33,10 +33,10 @@ const BuyerATMAboutStage = props => (
     <ErrorAlert
       model={props.model}
       messages={{
-        requiredTitle: 'Enter the title for your brief',
+        requiredTitle: 'Enter the title for your opportunity',
         requiredOrg: 'Enter the name of your organisation',
-        requiredSummary: 'Enter a summary of your brief',
-        requiredWorkingArrangements: 'Enter the working arrangements for your brief',
+        requiredSummary: 'Enter a summary of your opportunity',
+        requiredWorkingArrangements: 'Enter the working arrangements for your opportunity',
         atLeastOneLocation: 'You must select at least one location'
       }}
     />

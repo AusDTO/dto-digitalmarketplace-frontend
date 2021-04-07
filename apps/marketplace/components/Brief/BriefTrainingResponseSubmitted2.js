@@ -7,7 +7,7 @@ import { rootPath } from 'marketplace/routes'
 
 const BriefTrainingResponseSubmitted2 = props => (
   <div className="row">
-    <DocumentTitle title="Brief Response Submitted - Digital Marketplace">
+    <DocumentTitle title="Opportunity Response Submitted - Digital Marketplace">
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
         <article role="main">
           {!props.app.feedbackSuccess && (

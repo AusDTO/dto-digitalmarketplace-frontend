@@ -16,7 +16,7 @@ describe('BriefSpecialistResponseForm2', () => {
     const tree = mount(
       <Provider store={store}>
         <BriefSpecialistResponseForm2
-          brief={{ title: 'test brief', applicationsClosedAt: '1/15/2018', numberOfSuppliers: '3' }}
+          brief={{ title: 'test opportunity', applicationsClosedAt: '1/15/2018', numberOfSuppliers: '3' }}
           briefResponseStatus="draft"
           supplierContact={{ email: 'jd@foobar.com' }}
           specialistNumber={1}
@@ -46,7 +46,7 @@ describe('BriefSpecialistResponseForm2', () => {
         .find('h1')
         .first()
         .text()
-    ).toEqual('Submit candidate for ‘test brief’')
+    ).toEqual('Submit candidate for ‘test opportunity’')
     expect(
       tree
         .find('input.au-btn')
@@ -59,7 +59,7 @@ describe('BriefSpecialistResponseForm2', () => {
     const tree = mount(
       <Provider store={store}>
         <BriefSpecialistResponseForm2
-          brief={{ title: 'test brief', applicationsClosedAt: '1/15/2018', numberOfSuppliers: '1' }}
+          brief={{ title: 'test opportunity', applicationsClosedAt: '1/15/2018', numberOfSuppliers: '1' }}
           briefResponseStatus="draft"
           supplierContact={{ email: 'jd@foobar.com' }}
           specialistNumber={1}
@@ -89,7 +89,7 @@ describe('BriefSpecialistResponseForm2', () => {
         .find('h1')
         .first()
         .text()
-    ).toEqual('Submit candidate for ‘test brief’')
+    ).toEqual('Submit candidate for ‘test opportunity’')
     expect(
       tree
         .find('input.au-btn')

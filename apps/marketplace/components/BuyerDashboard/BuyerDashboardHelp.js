@@ -9,7 +9,7 @@ const BuyerDashboardHelp = () => (
         <a href="/buyers-guide" target="_blank" rel="noopener noreferrer">
           Read the buyers guide
         </a>{' '}
-        or <a href="/contact-us">contact us</a> - we can help you write your brief.
+        or <a href="/contact-us">contact us</a> - we can help you write your opportunity.
       </p>
     </div>
   </div>

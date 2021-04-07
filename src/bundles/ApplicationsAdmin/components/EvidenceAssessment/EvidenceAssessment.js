@@ -216,7 +216,7 @@ class EvidenceAssessment extends React.Component {
           )}
           {evidence.brief_id && (
             <p>
-              For brief "<a href={`//${this.props.meta.server_name}/2/digital-marketplace/opportunities/${evidence.brief_id}`}>
+              For opportunity "<a href={`//${this.props.meta.server_name}/2/digital-marketplace/opportunities/${evidence.brief_id}`}>
                 {evidence.brief_title}
               </a>" (ID: {evidence.brief_id}) closing on {format(evidence.brief_closed_at, 'DD-MM-YYYY')}
             </p>

@@ -13,13 +13,13 @@ class SubmitConfirmation extends React.Component {
             closingDate,
             previewUrl,
             profileUrl,
-            initial,        // arrives via brief response check that found no casestudies
+            initial,        // arrives via opportunity response check that found no casestudies
             inReview,       // supplier arrives after initiating a casestudy assessment
             isRecruiter,
             created         // if an assessment has been created
         } = this.props;
 
-        // domain will be undefined for training briefs because they don't have an area of expertise
+        // domain will be undefined for training opportunities because they don't have an area of expertise
         const domain = briefLot == 'training' ? 'Training, Learning and Development' : this.props.domain
 
         return (
@@ -30,7 +30,7 @@ class SubmitConfirmation extends React.Component {
                             <span styleName="callout-heading">You have been prioritised for assessment</span>
                         </h1>
                         <p>
-                            Before you can respond to this brief we need to assess your expertise in {domain}.
+                            Before you can respond to this opportunity we need to assess your expertise in {domain}.
                         </p>
 
                         <p>

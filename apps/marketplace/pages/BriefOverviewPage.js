@@ -34,7 +34,7 @@ export class BriefOverviewPageComponent extends Component {
         {!currentlySending && loadBriefOverviewSuccess ? (
           <BriefOverview setFocus={setFocus} briefId={match.params.briefId} {...this.props} />
         ) : (
-          <ErrorBox title="There was a problem loading the brief" setFocus={setFocus} />
+          <ErrorBox title="There was a problem loading the opportunity" setFocus={setFocus} />
         )}
       </div>
     )

@@ -54,7 +54,7 @@ export class BuyerSpecialistFlowPage extends Component {
         }
 
         if (response.data.brief.lotSlug !== 'specialist') {
-          this.props.setError('You can only edit specialist briefs using this flow.')
+          this.props.setError('You can only edit specialist opportunities using this flow.')
         }
 
         this.props.changeFormModel(data)
@@ -100,7 +100,7 @@ export class BuyerSpecialistFlowPage extends Component {
       }
       return (
         <ErrorBoxComponent
-          title="A problem occurred when loading the brief details"
+          title="A problem occurred when loading the opportunity details"
           errorMessage={this.props.errorMessage}
           setFocus={setFocus}
           form={{}}

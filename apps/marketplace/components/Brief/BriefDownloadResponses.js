@@ -35,7 +35,7 @@ export class BriefDownloadResponses extends Component {
       return (
         <span>
           <AUheading size="xl" level="1">
-            This brief has not received any responses.
+            This opportunity has not received any responses.
           </AUheading>
           <p>
             <a href={`${rootPath}/buyer-dashboard`}>Return to dashboard</a>
@@ -48,7 +48,7 @@ export class BriefDownloadResponses extends Component {
       return (
         <AUpageAlert as="error">
           <AUheading size="md" level="1">
-            This brief does not have a responses file available for download.
+            This opportunity does not have a responses file available for download.
           </AUheading>
           <p>
             <a href={`${rootPath}/buyer-dashboard`}>Return to dashboard</a>
