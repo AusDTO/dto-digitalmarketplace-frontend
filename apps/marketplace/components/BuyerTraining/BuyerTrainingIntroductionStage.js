@@ -77,7 +77,8 @@ const BuyerTrainingIntroductionStage = props => (
         </ul>
       </li>
       <li>
-        Remember to request that sellers provide an offer of discount(s) and to seek better rates of longer-term contracts.
+        Remember to request that sellers provide an offer of discount(s) and to seek better rates of longer-term
+        contracts.
       </li>
     </ul>
     <p>All fields are mandatory unless marked optional.</p>
