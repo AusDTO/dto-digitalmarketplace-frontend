@@ -51,6 +51,9 @@ const BuyerSpecialistIntroductionStage = props => (
           </li>
         </ul>
       </li>
+      <li>
+        Remember to request that sellers provide an offer of discount(s) and to seek better rates of longer-term contracts.
+      </li>
     </ul>
     <AUheadings level="2" size="lg">
       Getting help

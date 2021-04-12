@@ -252,7 +252,7 @@ const BuyerSpecialistResponseFormatsStage = props => (
     />
     <Textfield
       model={`${props.model}.budgetRange`}
-      label="Additional budget information (optional)"
+      label="Additional budget information (optional) Remember to request that sellers provide an offer of discount(s) and to seek better rates of longer-term contracts."
       name="budgetRange"
       id="budgetRange"
       htmlFor="budgetRange"
