@@ -253,7 +253,7 @@ const BuyerSpecialistResponseFormatsStage = props => (
     <Textarea
       model={`${props.model}.budgetRange`}
       label="Additional budget information (optional)"
-      description="Remember to request that sellers provide an offer of discount(s) and to seek better rates of longer-term contracts."
+      description="Remember to negotiate discounts and seek better rates for longer-term contracts."
       name="budgetRange"
       id="budgetRange"
       htmlFor="budgetRange"
