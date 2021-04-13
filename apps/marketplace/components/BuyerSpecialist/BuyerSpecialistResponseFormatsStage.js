@@ -250,15 +250,19 @@ const BuyerSpecialistResponseFormatsStage = props => (
         </a>
       }
     />
-    <Textfield
+    <Textarea
       model={`${props.model}.budgetRange`}
       label="Additional budget information (optional)"
+      description="Remember to negotiate discounts and seek better rates for longer-term contracts."
       name="budgetRange"
       id="budgetRange"
       htmlFor="budgetRange"
       defaultValue={props[props.model].budgetRange}
-      maxLength={100}
+      controlProps={{ limit: 50 }}
       validators={{}}
+      messages={{
+        limitWords: 'Additional budget information has exceeded the 50 word limit'
+      }}
     />
     <RadioList
       id="securityClearance"
