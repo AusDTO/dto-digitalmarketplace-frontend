@@ -261,7 +261,7 @@ const BuyerSpecialistResponseFormatsStage = props => (
       controlProps={{ limit: 50 }}
       validators={{}}
       messages={{
-        limitWords: 'Additional budget has exceeded the 50 word limit'
+        limitWords: 'Additional budget information has exceeded the 50 word limit'
       }}
     />
     <RadioList

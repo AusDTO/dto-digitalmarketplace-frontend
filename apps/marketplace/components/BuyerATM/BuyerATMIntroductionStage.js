@@ -59,7 +59,7 @@ const BuyerATMIntroductionStage = props => (
         </ul>
       </li>
       <li>
-        Remember to request that sellers provide an offer of discount(s) and to seek better rates of longer-term
+        Remember to request that sellers provide an offer of discount(s) and to seek better rates for longer-term
         contracts.
       </li>
     </ul>
