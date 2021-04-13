@@ -250,21 +250,21 @@ const BuyerSpecialistResponseFormatsStage = props => (
         </a>
       }
     />
-    
+
     <Textarea
-        model={`${props.model}.budgetRange`}
-        label="Additional budget information (optional)"
-        description="Remember to request that sellers provide an offer of discount(s) and to seek better rates of longer-term contracts."
-        name="budgetRange"
-        id="budgetRange"
-        htmlFor="budgetRange"
-        defaultValue={props[props.model].budgetRange}
-        controlProps={{ limit: 50 }}
-        validators={{}}
-        messages={{
-          limitWords: 'Additional budget has exceeded the 50 word limit'
-        }}
-      />
+      model={`${props.model}.budgetRange`}
+      label="Additional budget information (optional)"
+      description="Remember to request that sellers provide an offer of discount(s) and to seek better rates of longer-term contracts."
+      name="budgetRange"
+      id="budgetRange"
+      htmlFor="budgetRange"
+      defaultValue={props[props.model].budgetRange}
+      controlProps={{ limit: 50 }}
+      validators={{}}
+      messages={{
+        limitWords: 'Additional budget has exceeded the 50 word limit'
+      }}
+    />
     <RadioList
       id="securityClearance"
       label="What are the security clearance requirements?"
