@@ -250,7 +250,6 @@ const BuyerSpecialistResponseFormatsStage = props => (
         </a>
       }
     />
-
     <Textarea
       model={`${props.model}.budgetRange`}
       label="Additional budget information (optional)"
