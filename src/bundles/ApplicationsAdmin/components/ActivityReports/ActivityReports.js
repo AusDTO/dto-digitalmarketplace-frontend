@@ -14,7 +14,7 @@ import PropTypes from 'prop-types'
 //import { Form, actions } from 'react-redux-form'
 import { AUcheckbox } from '@gov.au/control-input'
 
-import styles from '../../main.scss'
+//import styles from '../../main.scss'
 
 import { saveAgency } from '../../redux/modules/agency'
 
@@ -26,7 +26,7 @@ const startAndEndIsValid = v =>
   (v.reportType === 'sellersCatalogue' || startDateIsBeforeEndDate(v.startDate, v.endDate))
 
 const handleSubmit = values => {
-    const url = `/api/2/buyer/download/reports?reportType=`
+    const url = `/api/2/admin/download/reports?reportType=`
     window.location.href = url
   }
   
@@ -39,30 +39,37 @@ export class ActivityReports extends React.Component {
     super(props)
 
     this.state = {
-      acceptEnabled: true,
-      errorMessage: ''
+      reportType: '',
+      acceptEnabled: false
     }
-    this.handleDateChange = this.handleDateChange.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
-  handleDateChange(prop, date) {
-    this.props.setDate(prop, `${date.year}-${date.month}-${date.day}`)
+  handleSubmit(event){
+    event.preventDefault();
+    alert('You are submitting ' + this.state.reportType)
+  }
+  handleChange(event) {
+    this.setState({
+      reportType: event.target.value,
+      acceptEnabled: true
+    })
   }
   render() {
       return (
-        <div>
+        <form onSubmit={this.handleSubmit}>
         <AUheading size="xl" level="1">
           Activity reports
         </AUheading>
         <p>Download opportunity report data for your agency or a current list of approved sellers.</p>
-        <AUcheckbox
-          id="cb-declaration1"
-          name="procurementAccessCB"
-          label="I am authorised to access procurement reporting documents across my organisation and I will store, transmit and use the report in line with my agency's privacy and data policies."
-        />
+        <input type="radio" id="report1" name="reportType" value="report1" onChange={this.handleChange}/>
+        <label htmlFor="report1">All Sellers Category Max Daily Rates</label>
+        <input type="radio" id="report2" name="reportType" value="report2" onChange={this.handleChange}/>
+        <label htmlFor="report2">All Sellers Approved in a Category</label>
         <AUbutton type="submit" disabled={!this.state.acceptEnabled}>
           Download reports
         </AUbutton>
-        </div>
+        </form>
       )
   }
 }
