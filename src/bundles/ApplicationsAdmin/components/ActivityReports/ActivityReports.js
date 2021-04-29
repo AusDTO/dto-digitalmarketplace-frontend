@@ -17,7 +17,7 @@ import { AUcheckbox } from '@gov.au/control-input'
 //import styles from '../../main.scss'
 
 import { saveAgency } from '../../redux/modules/agency'
-
+import { downloadReports } from '../../redux/modules/activity_reports'
 const model = 'downloadReports'
 const startDateIsValid = v => v.reportType === 'sellersCatalogue' || validDate(v.startDate, false)
 const endDateIsValid = v => v.reportType === 'sellersCatalogue' || validDate(v.endDate, false)
@@ -47,7 +47,11 @@ export class ActivityReports extends React.Component {
   }
   handleSubmit(event){
     event.preventDefault();
-    alert('You are submitting ' + this.state.reportType)
+    // alert('You are submitting ' + this.state.reportType)
+    //onst url = `/api/2/admin/download/reports?reportType=kkkkkk`
+    //window.location.href = url
+    this.props.downloadReports(this.state.reportType)
+    
   }
   handleChange(event) {
     this.setState({
@@ -80,7 +84,7 @@ const mapStateToProps = ({ loading}) => {
 
   const mapDispatchToProps = dispatch => {
     return {
-      saveAgency: data => dispatch(saveAgency(data))
+      downloadReports: reportType => dispatch(downloadReports(reportType))
     }
   }
   
