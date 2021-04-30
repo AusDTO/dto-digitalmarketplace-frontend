@@ -26,7 +26,7 @@ const startAndEndIsValid = v =>
   (v.reportType === 'sellersCatalogue' || startDateIsBeforeEndDate(v.startDate, v.endDate))
 
 const handleSubmit = values => {
-    const url = `/api/2/admin/download/reports?reportType=`
+    const url = '/api/2/admin/download/reports/' + this.state.reportType
     window.location.href = url
   }
   
@@ -48,9 +48,9 @@ export class ActivityReports extends React.Component {
   handleSubmit(event){
     event.preventDefault();
     // alert('You are submitting ' + this.state.reportType)
-    //onst url = `/api/2/admin/download/reports?reportType=kkkkkk`
-    //window.location.href = url
-    this.props.downloadReports(this.state.reportType)
+    const url = `/admin/download_reports/${this.state.reportType}`
+    window.location.href = url
+    //this.props.downloadReports(this.state.reportType)
     
   }
   handleChange(event) {
