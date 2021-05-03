@@ -35,10 +35,10 @@ export class ActivityReports extends React.Component {
           Activity reports
         </AUheading>
         <p>Download opportunity report data for your agency or a current list of approved sellers.</p>
-        <input type="radio" id="report1" name="reportType" value="report1" onChange={this.handleChange}/>
-        <label htmlFor="report1">All Sellers Category Max Daily Rates</label>
-        <input type="radio" id="report2" name="reportType" value="report2" onChange={this.handleChange}/>
-        <label htmlFor="report2">All Sellers Approved in a Category</label>
+        <input type="radio" id="allSellersCategoryMaxDailyRates" name="reportType" value="allSellersCategoryMaxDailyRates" onChange={this.handleChange}/>
+        <label htmlFor="allSellersCategoryMaxDailyRates">All Sellers Category Max Daily Rates</label>
+        <input type="radio" id="allSellersApprovedInCategory" name="reportType" value="allSellersApprovedInCategory" onChange={this.handleChange}/>
+        <label htmlFor="allSellersApprovedInCategory">All Sellers Approved in a Category</label>
         <AUbutton type="submit" disabled={!this.state.acceptEnabled}>
           Download reports
         </AUbutton>
