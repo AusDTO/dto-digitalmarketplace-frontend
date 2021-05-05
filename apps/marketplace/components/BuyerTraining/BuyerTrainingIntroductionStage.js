@@ -76,7 +76,7 @@ const BuyerTrainingIntroductionStage = props => (
           </li>
         </ul>
       </li>
-      <li>You should consider approaching multiple Sellers wherever possible.</li>
+      <li>You should consider approaching multiple sellers wherever possible.</li>
       <li>
         Remember to request that sellers provide an offer of discount(s) and to seek better rates for longer-term
         contracts.

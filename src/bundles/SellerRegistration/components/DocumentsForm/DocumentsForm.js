@@ -352,17 +352,6 @@ class DocumentsForm extends BaseForm {
                                 </div>
                             )
                         })}
-                        {documentsForm.documents.workers && documentsForm.documents.workers.filename ?
-                          '' :
-                          <CheckboxDetailsField
-                            id="compensation"
-                            name="compensation"
-                            value="compensation"
-                            label="I am not required to hold Workers Compensation Insurance"
-                            model={`${model}.documents.workers.noWorkersCompensation`}
-                            detailsModel={model}
-                          />
-                        }
                         <StepNav buttonText={buttonText} to={nextRoute} />
                     </Form>
                 </article>
