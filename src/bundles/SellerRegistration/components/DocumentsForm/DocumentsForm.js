@@ -81,7 +81,7 @@ class DocumentsForm extends BaseForm {
         {
             'label': 'Workers Compensation Insurance',
             'id': 'workers',
-            'description': 'Your insurer can issue a certificate of currency.',
+            'description': 'Please upload your certificate of currency, as provided by your insurer.  If you are not required to hold Workers Compensation, please upload a signed declaration citing the relevant state or territory legislation.',
             'expires': true
         }
     ]
@@ -243,7 +243,6 @@ class DocumentsForm extends BaseForm {
                                 <div key={key} styleName="styles.document">
                                     <h3 styleName="question-heading">{field.label}</h3>
                                     <span styleName="styles.documentDescription">{field.description}</span>
-
                                     <div>
                                         {errors && <span className="validation-message">There was an error uploading the file</span>}
 
