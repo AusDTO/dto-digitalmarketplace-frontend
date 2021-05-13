@@ -5,11 +5,17 @@ import AUselect from '@gov.au/select'
 import AUtextInput from '@gov.au/text-inputs'
 import { createAgency } from '../../redux/modules/agency'
 import format from 'date-fns/format'
+import { Redirect, userHistory } from 'react-router'
+import { min } from 'lodash'
 
 class NewAgency extends React.Component {
+   
   constructor(props) {
     super(props)
     this.state = {
+      redirect: false,
+      created: '',
+      loading: false,
       agency: null
     }
 
@@ -21,7 +27,7 @@ class NewAgency extends React.Component {
       agency: this.props.agency
     })
   }
-
+  
   handleSubmit(event) {
     event.preventDefault()
     console.log('handlerSubmit')
@@ -52,35 +58,36 @@ class NewAgency extends React.Component {
     data.domains = data.domains.map(x => x.trim())
     data.domains = data.domains.filter(x => x)
 
-    this.setState({
-      loading: true
-    })
+  
     console.log(data)
     this.props.createAgency(data)
     .then(r => {
       if (r.status === 200) {
+        console.log('suuuuuuuusss')
         return r.json()
       }
       return Promise.reject()
     })
     .then(r => {
       this.setState({
-        loading: false,
-        agency: r,
-        saved: format(new Date(), 'DD-MM-YYYY HH:mm:ss')
+        redirect: true
       })
+      this.props.history.push('/admin/agency');
     }, () => {
       this.setState({
-        loading: false,
-        saved: 'Error has occured'
+        redirect: false,
+        created: 'Unable to create a new agency. Please consult your administrator.'
       })
     })
   }
 
 
   render() {
-    const { agency, loading, saved } = this.state
-    
+    const redirect = this.state.redirect
+    if (redirect){
+      window.location = "/admin/agency"
+    }
+   
     return (
         <form onSubmit={this.handleSubmit}>
           <h1 className="au-display-xl">Create Agency</h1>
@@ -173,14 +180,13 @@ class NewAgency extends React.Component {
             id="must_join_team"
             name="must_join_team"
           />
-          {loading ?
-            <p>Loading</p> :
+  
             <p>
               <input type="submit" value="Create" />
               <input type="submit" value="Clear" />
               <input type="submit" value="Cancel" />
             </p>
-          }
+          
         </form>
     )
   }

@@ -7,6 +7,7 @@ export default function reducer(state = {}, action = {}) {
 }
 
 export const saveAgency = data => {
+  console.log('redux save agency')
   return (dispatch, getState, api) => {
     const state = getState();
     return api(state.meta.url_save_agency, {
@@ -32,7 +33,7 @@ export const createAgency = data => {
   console.log('createAgencyqqqqqq')
   return (dispatch, getState, api) => {
     const state = getState();
-    return api(state.meta.url_create_agency, {
+    return api(state.meta.url_insert_agency, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
