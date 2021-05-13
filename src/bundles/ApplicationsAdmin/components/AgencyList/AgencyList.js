@@ -44,7 +44,12 @@ class AgencyList extends React.Component {
     }
     return (
       <React.Fragment>
-        <h1 className="au-display-xl">Agencies</h1>
+        <div>
+        <div className="au-display-xl" style={{float:"left"}}>Agencies</div>
+        <div style={{float:"right"}}>
+        <a href="/admin/create_agency">Create Agency</a>
+        </div>
+        </div>
         <table className="content-table">
           <thead>
             <tr>
