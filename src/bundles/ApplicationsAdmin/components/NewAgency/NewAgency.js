@@ -16,28 +16,52 @@ class NewAgency extends React.Component {
       redirect: false,
       created: '',
       loading: false,
-      agency: null
+      fields:{},
+      errors: {}
     }
 
-    this.handleSubmit = this.handleSubmit.bind(this)
+    //this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
-    this.setState({
-      agency: this.props.agency
-    })
+    //this.setState({
+    //  agency: this.props.agency
+    //)
+  }
+
+  handleChange(field, e){
+    console.log('handlechange')
+    console.log(e.target.value)
+    let fields = this.state.fields;
+    fields[field] = e.target.value;
+    this.setState({fields})
+  }
+  validate(data){
+    if (data['name'] === ''){
+      this.setState({
+        errors:{
+          name: 'required'
+        }
+      })
+    }
+    
+
   }
   
   handleSubmit(event) {
     event.preventDefault()
     console.log('handlerSubmit')
+    
     const formData = new FormData(event.target)
     let data = [...formData].reduce((obj, [key, val]) => {
       obj[key] = val
       return obj
     }, {})
-    const { agency } = this.state
-    data.id = agency.id
+    console.log('eeeeeeeee')
+    this.validate(data)
+    return false;
+    //const { agency } = this.state
+    //data.id = agency.id
     if (data.reports === "on") {
       data.reports = true
     } else {
@@ -63,7 +87,6 @@ class NewAgency extends React.Component {
     this.props.createAgency(data)
     .then(r => {
       if (r.status === 200) {
-        console.log('suuuuuuuusss')
         return r.json()
       }
       return Promise.reject()
@@ -89,7 +112,7 @@ class NewAgency extends React.Component {
     }
    
     return (
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit.bind(this)}>
           <h1 className="au-display-xl">Create Agency</h1>
           <a href="/admin/agency">Back to agency list</a>
           <p>
@@ -98,8 +121,8 @@ class NewAgency extends React.Component {
               id="name"
               name="name"
               block
-              defaultValue="MyAgency"
-            />
+              defaultValue=""
+            />;{ this.state.errors.name };
           </p>
           <p>
             <label htmlFor="domain">Domains (One per line)</label>
@@ -108,7 +131,7 @@ class NewAgency extends React.Component {
               id="domains"
               name="domains"
               block
-              defaultValue="b.com"
+              defaultValue=""
             />
           </p>
           <p>
@@ -118,6 +141,7 @@ class NewAgency extends React.Component {
               name="bodyType"
               block
               options={[
+                { value: '', text: 'Please select a type of body'},
                 { value: 'ncce', text: 'Non-corporate Commonwealth entity', },
                 { value: 'cce', text: 'Corporate Commonwealth entity', },
                 { value: 'cc', text: 'Commonwealth company', },
@@ -125,7 +149,6 @@ class NewAgency extends React.Component {
                 { value: 'state', text: 'State', },
                 { value: 'other', text: 'Other' }
               ]}
-              defaultValue="ncce"
             />
           </p>
           <p>
@@ -135,6 +158,7 @@ class NewAgency extends React.Component {
               name="category"
               block
               options={[
+                { value: '', text: 'Please select a category'},
                 { value: 'Education', text: 'Education' },
                 { value: 'Corporate', text: 'Corporate' },
                 { value: 'Enterprise', text: 'Enterprise' },
@@ -143,7 +167,6 @@ class NewAgency extends React.Component {
                 { value: 'Organisation', text: 'Organisation' },
                 { value: 'Local', text: 'Local' }
               ]}
-              defaultValue="Education"
             />
           </p>
           <p>
@@ -153,6 +176,7 @@ class NewAgency extends React.Component {
               name="state"
               block
               options={[
+                { value: '', text: 'Please select a state'},
                 { value: 'SA', text: 'SA' },
                 { value: 'QLD', text: 'QLD' },
                 { value: 'VIC', text: 'VIC' },
@@ -162,7 +186,6 @@ class NewAgency extends React.Component {
                 { value: 'ACT', text: 'ACT' },
                 { value: 'WA', text: 'WA' }
               ]}
-              defaultValue="SA"
             />
           </p>
           <AUcheckbox
@@ -202,4 +225,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewAgency)
+export default connect(null, mapDispatchToProps)(NewAgency)
