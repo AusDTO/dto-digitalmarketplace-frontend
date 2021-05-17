@@ -6,7 +6,7 @@ import AUtextInput from '@gov.au/text-inputs'
 import { createAgency } from '../../redux/modules/agency'
 import format from 'date-fns/format'
 import { Redirect, userHistory } from 'react-router'
-import { min } from 'lodash'
+import { fromPairs, min } from 'lodash'
 
 class NewAgency extends React.Component {
    
@@ -17,51 +17,111 @@ class NewAgency extends React.Component {
       created: '',
       loading: false,
       fields:{},
-      errors: {}
+      errors: {},
+      valid: false
     }
 
     //this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
-    //this.setState({
-    //  agency: this.props.agency
-    //)
+   console.log('name validateion')
+   this.setState({
+     errors:{
+       name: '',
+       domains: '',
+       body_type: '',
+       category: ''
+     }
+   })
   }
 
   handleChange(field, e){
-    console.log('handlechange')
-    console.log(e.target.value)
     let fields = this.state.fields;
     fields[field] = e.target.value;
     this.setState({fields})
   }
   validate(data){
+    let validForm = this.state.valid
+    let formErrors = this.state.errors
     if (data['name'] === ''){
-      this.setState({
-        errors:{
-          name: 'required'
-        }
-      })
+      formErrors.name = "*Name is required"
+      validForm = false
+      console.log('dd1')
+    }else{  
+      formErrors.name = ''
+      validForm = true
     }
-    
+    console.log('name')
+    console.log(validForm)
+    if(data['domains'] === ''){
+      formErrors.domains = '*Domains is required'
+      validForm = false
+      console.log('dd1111')
+    }else{
+      var re = /^[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/gm;
+      var domainLines = data['domains'].split('\n') 
+     
+      for (var indx=0; indx <  domainLines.length; indx++){
+        if( re.test(domainLines[indx])){
+          formErrors.domains = ""
+          validForm = true
+          console.log('dd11111')
+        }else{
+          formErrors.domains = "*Please enter valid domain pattern"
+          validForm = false
+        }
+      }
+    }
+
+    console.log('domains')
+    console.log(validForm)
+
+    if (data['bodyType'] === ''){
+      formErrors.body_type = '*Please select a body type'
+      validForm  = false
+      console.log('dd11')
+    }else{
+      formErrors.body_type = ''
+      validForm = true
+    }
+
+    console.log('bodyType')
+    console.log(validForm)
+    if (data['category'] === ''){
+      formErrors.category = '*Please select a category'
+      validForm = false
+      console.log('dd111')
+    }else{
+      formErrors.category = ''
+      validForm = true
+    }
+    console.log('categoty')
+    console.log(validForm)
+    this.setState({
+      erorors: formErrors,
+      valid: validForm
+    })
+
+    console.log('final')
+    console.log(this.state.valid)
 
   }
   
   handleSubmit(event) {
     event.preventDefault()
-    console.log('handlerSubmit')
-    
+   
     const formData = new FormData(event.target)
     let data = [...formData].reduce((obj, [key, val]) => {
       obj[key] = val
       return obj
     }, {})
-    console.log('eeeeeeeee')
+
     this.validate(data)
-    return false;
-    //const { agency } = this.state
-    //data.id = agency.id
+    console.log('valid')
+    console.log(this.state.valid)
+    if (!this.state.valid) return false
+
     if (data.reports === "on") {
       data.reports = true
     } else {
@@ -122,8 +182,9 @@ class NewAgency extends React.Component {
               name="name"
               block
               defaultValue=""
-            />;{ this.state.errors.name };
+            />
           </p>
+          <p style={{color: "red"}}>{ this.state.errors.name }</p>
           <p>
             <label htmlFor="domain">Domains (One per line)</label>
             <AUtextInput
@@ -134,6 +195,7 @@ class NewAgency extends React.Component {
               defaultValue=""
             />
           </p>
+          <p style={{color: "red"}}>{ this.state.errors.domains }</p>
           <p>
             <label htmlFor="bodyType">Type of body</label>
             <AUselect
@@ -151,6 +213,7 @@ class NewAgency extends React.Component {
               ]}
             />
           </p>
+          <p style={{color: "red"}}>{ this.state.errors.body_type}</p>
           <p>
             <label htmlFor="category">Category</label>
             <AUselect
@@ -169,6 +232,7 @@ class NewAgency extends React.Component {
               ]}
             />
           </p>
+          <p style={{color: "red"}}>{ this.state.errors.category}</p>
           <p>
             <label htmlFor="state">State</label>
             <AUselect

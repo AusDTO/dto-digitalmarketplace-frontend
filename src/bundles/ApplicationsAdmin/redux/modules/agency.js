@@ -31,6 +31,7 @@ export const loadAgencies = () => {
 
 export const createAgency = data => {
   console.log('createAgencyqqqqqq')
+  console.log(data)
   return (dispatch, getState, api) => {
     const state = getState();
     return api(state.meta.url_insert_agency, {
