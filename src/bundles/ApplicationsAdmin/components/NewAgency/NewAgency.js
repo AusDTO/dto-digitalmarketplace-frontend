@@ -14,18 +14,16 @@ class NewAgency extends React.Component {
     super(props)
     this.state = {
       redirect: false,
-      created: '',
+      created: false,
       loading: false,
       fields:{},
-      errors: {},
-      valid: false
+      errors: {}
     }
 
     //this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
-   console.log('name validateion')
    this.setState({
      errors:{
        name: '',
@@ -42,70 +40,49 @@ class NewAgency extends React.Component {
     this.setState({fields})
   }
   validate(data){
-    let validForm = this.state.valid
+    let errors =  [] 
     let formErrors = this.state.errors
     if (data['name'] === ''){
       formErrors.name = "*Name is required"
-      validForm = false
-      console.log('dd1')
+      errors.push('name')
     }else{  
       formErrors.name = ''
-      validForm = true
     }
-    console.log('name')
-    console.log(validForm)
+    
     if(data['domains'] === ''){
       formErrors.domains = '*Domains is required'
-      validForm = false
-      console.log('dd1111')
+      errors.push('domains')
     }else{
-      var re = /^[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/gm;
       var domainLines = data['domains'].split('\n') 
-     
       for (var indx=0; indx <  domainLines.length; indx++){
-        if( re.test(domainLines[indx])){
+        if (/([a-z0-9]+\.)*[a-z0-9]+\.[a-z]+/.test(domainLines[indx])){
           formErrors.domains = ""
-          validForm = true
-          console.log('dd11111')
         }else{
           formErrors.domains = "*Please enter valid domain pattern"
-          validForm = false
+          errors.push(domainLines[indx])
         }
       }
     }
 
-    console.log('domains')
-    console.log(validForm)
-
     if (data['bodyType'] === ''){
       formErrors.body_type = '*Please select a body type'
-      validForm  = false
-      console.log('dd11')
+      errors.push('bodyType')
     }else{
       formErrors.body_type = ''
-      validForm = true
     }
 
-    console.log('bodyType')
-    console.log(validForm)
     if (data['category'] === ''){
       formErrors.category = '*Please select a category'
-      validForm = false
-      console.log('dd111')
+      errors.push('category')
     }else{
       formErrors.category = ''
-      validForm = true
     }
-    console.log('categoty')
-    console.log(validForm)
     this.setState({
       erorors: formErrors,
-      valid: validForm
     })
-
-    console.log('final')
-    console.log(this.state.valid)
-
+  
+    return (errors.length > 0 ) ? false : true
+    
   }
   
   handleSubmit(event) {
@@ -117,10 +94,10 @@ class NewAgency extends React.Component {
       return obj
     }, {})
 
-    this.validate(data)
-    console.log('valid')
-    console.log(this.state.valid)
-    if (!this.state.valid) return false
+    if (!this.validate(data)){
+      return false
+    }
+  
 
     if (data.reports === "on") {
       data.reports = true
@@ -130,7 +107,7 @@ class NewAgency extends React.Component {
     if (data.whitelisted === "on") {
       data.whitelisted = true
     } else {
-      data.whitelisted = false
+      data.whitelisted = false  
     }
     if (data.must_join_team === "on") {
       data.must_join_team = true
@@ -142,8 +119,6 @@ class NewAgency extends React.Component {
     data.domains = data.domains.map(x => x.trim())
     data.domains = data.domains.filter(x => x)
 
-  
-    console.log(data)
     this.props.createAgency(data)
     .then(r => {
       if (r.status === 200) {
@@ -153,13 +128,14 @@ class NewAgency extends React.Component {
     })
     .then(r => {
       this.setState({
-        redirect: true
+        redirect: true,
+        created: true
       })
       this.props.history.push('/admin/agency');
     }, () => {
       this.setState({
         redirect: false,
-        created: 'Unable to create a new agency. Please consult your administrator.'
+        created: false
       })
     })
   }
@@ -167,6 +143,7 @@ class NewAgency extends React.Component {
 
   render() {
     const redirect = this.state.redirect
+    const created = this.state.created
     if (redirect){
       window.location = "/admin/agency"
     }
@@ -175,6 +152,9 @@ class NewAgency extends React.Component {
         <form onSubmit={this.handleSubmit.bind(this)}>
           <h1 className="au-display-xl">Create Agency</h1>
           <a href="/admin/agency">Back to agency list</a>
+          { !this.state.created &&
+              <div style={{'color':'red'}}>Due to duplication of domain name, unable to create a agency</div>
+          }
           <p>
             <label htmlFor="name">Name</label>
             <AUtextInput
