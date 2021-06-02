@@ -117,7 +117,10 @@ class AppList extends Component {
           </thead>
 
           <tbody>
-
+          { applications.length === 0 &&
+          <tr><td colSpan='6'>No results for this seach</td></tr>
+          }
+         
           {(this.sortDate(applications) || applications).map((a, i) => {
             return (
               <tr key={i}>
