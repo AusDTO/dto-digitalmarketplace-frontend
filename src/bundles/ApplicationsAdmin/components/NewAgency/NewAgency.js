@@ -15,12 +15,9 @@ class NewAgency extends React.Component {
     this.state = {
       redirect: false,
       created: false,
-      loading: false,
       fields:{},
       errors: {}
     }
-
-    //this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -152,9 +149,6 @@ class NewAgency extends React.Component {
         <form onSubmit={this.handleSubmit.bind(this)}>
           <h1 className="au-display-xl">Create Agency</h1>
           <a href="/admin/agency">Back to agency list</a>
-          { !this.state.created &&
-              <div style={{'color':'red'}}>Due to duplication of domain name, unable to create a agency</div>
-          }
           <p>
             <label htmlFor="name">Name</label>
             <AUtextInput
