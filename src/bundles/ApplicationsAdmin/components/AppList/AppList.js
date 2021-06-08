@@ -8,6 +8,7 @@ import format from 'date-fns/format';
 
 import {templateString} from '../../revertEmailTemplate';
 import './AppList.css'
+import { min } from 'lodash';
 
 class AppList extends Component {
 
@@ -28,7 +29,7 @@ class AppList extends Component {
       msg: '',
       updated: false,
       responseModalOpen: false,
-      keyword: 'ddddddd'
+      keyword: 'all'
     };
   }
 
@@ -70,8 +71,10 @@ class AppList extends Component {
     } = this.props;
 
     let revertedAppID = this.state.applicationID || null;
-    let revertedApp = (!revertedAppID ? null : applications.filter(x => x.id === revertedAppID)[0]);
 
+
+    let revertedApp = (!revertedAppID ? null : applications.filter(x => x.id === revertedAppID)[0]);
+    
     let {revertStatus, name: revertName} = (!revertedApp ? {} : revertedApp);
 
     return (
@@ -85,9 +88,11 @@ class AppList extends Component {
               <input id="keyword" type="text" size="30" placeholder="id or name" onChange={this.handleOnChange}/>
             </div>
         </div>
+       
         <div className="row">
-          {this.state.keyword}
+          <a href={meta.url_export_results_application.concat(this.state.keyword)}>Export results</a>
         </div>
+     
         <Modal show={this.state.responseModalOpen}>
           <div styleName={`callout--${(revertStatus ? 'info' : 'warning')}`}>
             {(revertStatus ? (this.state.msg !== '' ?
