@@ -18,6 +18,7 @@ class AppList extends Component {
     onAcceptClick: PropTypes.func.isRequired,
     onKeywordChange: PropTypes.func.isRequired,
     onDeleteClick: PropTypes.func.isRequired,
+    keyword: PropTypes.string
   };
 
   constructor(props) {
@@ -26,7 +27,8 @@ class AppList extends Component {
       modalOpen: false,
       msg: '',
       updated: false,
-      responseModalOpen: false
+      responseModalOpen: false,
+      keyword: 'ddddddd'
     };
   }
 
@@ -43,11 +45,18 @@ class AppList extends Component {
       msg: msg
     });
   };
-
+ 
   toggleResponseModal() {
     this.setState({
       responseModalOpen: !this.state.responseModalOpen
     })
+  }
+
+  handleOnChange = event =>{
+    this.setState({
+      keyword: event.target.value
+    })
+    this.props.onKeywordChange(event)
   }
 
   render() {
@@ -73,8 +82,11 @@ class AppList extends Component {
             </div>
             <div className="col-sm-4 col-xs-12">
               <label htmlFor="keyword">Search:</label>
-              <input id="keyword" type="text" size="30" placeholder="id or name" onChange={onKeywordChange}/>
+              <input id="keyword" type="text" size="30" placeholder="id or name" onChange={this.handleOnChange}/>
             </div>
+        </div>
+        <div className="row">
+          {this.state.keyword}
         </div>
         <Modal show={this.state.responseModalOpen}>
           <div styleName={`callout--${(revertStatus ? 'info' : 'warning')}`}>
