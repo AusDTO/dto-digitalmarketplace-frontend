@@ -96,7 +96,7 @@ class AppList extends Component {
         <div className="row">
         <a href="#rrrr" onClick={e => {
                     e.preventDefault();
-                  
+                    console.log("ddd")
                   }} name="Rejectw" styleName="actionw">Rejectwwwwwwww</a>
         </div>
      
