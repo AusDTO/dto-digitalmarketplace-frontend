@@ -60,9 +60,7 @@ class AppList extends Component {
     this.props.onKeywordChange(event)
   }
 
-  handleOnClick(id){
-    
-  }
+ 
 
   render() {
     const {
@@ -94,10 +92,11 @@ class AppList extends Component {
         </div>
        
         <div className="row">
-        <a href="#rrrr" onClick={e => {
-                    e.preventDefault();
-                    console.log("ddd")
-                  }} name="Rejectw" styleName="actionw">Rejectwwwwwwww</a>
+        <a href="#" onClick={ e => {
+             e.preventDefault(); 
+             console.log('ddddeeeee')
+             console.log(this.state.keyword)
+        }} name="Exports">Export results</a>
         </div>
      
         <Modal show={this.state.responseModalOpen}>
