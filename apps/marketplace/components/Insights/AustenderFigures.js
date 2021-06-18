@@ -12,7 +12,7 @@ const AustenderFigures = props => (
           <p className={insightStyles['big-text']}>
             {numeral(props.insightData.austenderData.smeContractsPercentageThisMonth).format('(0%)')}
           </p>
-          of contracts have been <b>awarded by volume to SME sellers</b> this month*
+          of contracts have been <b>awarded by volume to SME sellers (self-reported)</b> this month*
         </div>
       </div>
       <div className="col-xs-12 col-md-5">
