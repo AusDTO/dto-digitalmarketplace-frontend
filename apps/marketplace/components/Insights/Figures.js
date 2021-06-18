@@ -13,7 +13,7 @@ const Figures = props => (
             {numeral(props.insightData.austenderData.smePercentage).format('(0%)')}
           </p>
           of the <b>dollar value</b> contracted through the Marketplace since 29 August 2016 has been{' '}
-          <b>Awarded to SMEs</b>* (self-reported)
+          <b>awarded to SMEs</b>* (self-reported)
         </div>
       </div>
       <div className="col-xs-12 col-md-5">
