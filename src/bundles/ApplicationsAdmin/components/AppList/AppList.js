@@ -74,7 +74,7 @@ class AppList extends Component {
             <div className="col-sm-4 col-xs-12">
               <label htmlFor="keyword">Search:</label>
               <input id="keyword" type="text" size="30" onChange={onKeywordChange}/>
-              <p style={{'font-size':'10px'}}>Search by: Profile Name, Application ID, Email Domain</p>
+              <p style={{'font-size':'13px'}}>Search by: Profile Name, Application ID, Email Domain</p>
             </div>
         </div>
         <Modal show={this.state.responseModalOpen}>
