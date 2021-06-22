@@ -94,9 +94,7 @@ class AppList extends Component {
         <div className="row">
         <a href="#" onClick={ e => {
              e.preventDefault(); 
-             //console.log('ddddeeeee')
-             //console.log(this.state.keyword)
-             const url = `/admin/download_reports/csv`
+             const url = `/admin/export/results/${this.state.keyword}/applications`
              window.location.href = url
         }} name="Exports">Export results</a>
         </div>
