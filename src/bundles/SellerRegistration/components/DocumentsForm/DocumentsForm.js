@@ -81,7 +81,7 @@ class DocumentsForm extends BaseForm {
         {
             'label': 'Workers Compensation Insurance',
             'id': 'workers',
-            'description': 'Please upload your certificate of currency, as provided by your insurer.  If you are not required to hold Workers Compensation, please upload a signed declaration citing the relevant state or territory legislation.',
+            'description': 'Your insurer can issue a certificate of currency.',
             'expires': true
         }
     ]
@@ -243,7 +243,7 @@ class DocumentsForm extends BaseForm {
                                 <div key={key} styleName="styles.document">
                                     <h3 styleName="question-heading">{field.label}</h3>
                                     <span styleName="styles.documentDescription">{field.description}</span>
-                                    
+
                                     <div>
                                         {errors && <span className="validation-message">There was an error uploading the file</span>}
 
@@ -352,6 +352,17 @@ class DocumentsForm extends BaseForm {
                                 </div>
                             )
                         })}
+                        {documentsForm.documents.workers && documentsForm.documents.workers.filename ?
+                          '' :
+                          <CheckboxDetailsField
+                            id="compensation"
+                            name="compensation"
+                            value="compensation"
+                            label="I am not required to hold Workers Compensation Insurance"
+                            model={`${model}.documents.workers.noWorkersCompensation`}
+                            detailsModel={model}
+                          />
+                        }
                         <StepNav buttonText={buttonText} to={nextRoute} />
                     </Form>
                 </article>
