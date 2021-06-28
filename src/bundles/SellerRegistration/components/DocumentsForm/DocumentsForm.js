@@ -15,7 +15,6 @@ import BaseForm from '../../../../shared/form/BaseForm';
 import SubmitForm from '../../../../shared/form/SubmitForm';
 import Datefield from '../../../../shared/form/Datefield';
 import ErrorBox from '../../../../shared/form/ErrorBox';
-import CheckboxDetailsField from '../../../../shared/form/CheckboxDetailsField';
 import StepNav from '../StepNav';
 
 import StatefulError from '../../../../shared/form/StatefulError';
@@ -81,7 +80,7 @@ class DocumentsForm extends BaseForm {
         {
             'label': 'Workers Compensation Insurance',
             'id': 'workers',
-            'description': 'Your insurer can issue a certificate of currency.',
+            'description': 'Please upload your certificate of currency, as provided by your insurer.  If you are not required to hold Workers Compensation, please upload a signed declaration citing the relevant state or territory legislation.',
             'expires': true
         }
     ]
@@ -243,7 +242,7 @@ class DocumentsForm extends BaseForm {
                                 <div key={key} styleName="styles.document">
                                     <h3 styleName="question-heading">{field.label}</h3>
                                     <span styleName="styles.documentDescription">{field.description}</span>
-
+                                    
                                     <div>
                                         {errors && <span className="validation-message">There was an error uploading the file</span>}
 
@@ -352,17 +351,6 @@ class DocumentsForm extends BaseForm {
                                 </div>
                             )
                         })}
-                        {documentsForm.documents.workers && documentsForm.documents.workers.filename ?
-                          '' :
-                          <CheckboxDetailsField
-                            id="compensation"
-                            name="compensation"
-                            value="compensation"
-                            label="I am not required to hold Workers Compensation Insurance"
-                            model={`${model}.documents.workers.noWorkersCompensation`}
-                            detailsModel={model}
-                          />
-                        }
                         <StepNav buttonText={buttonText} to={nextRoute} />
                     </Form>
                 </article>
