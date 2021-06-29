@@ -8,6 +8,7 @@ import format from 'date-fns/format';
 
 import {templateString} from '../../revertEmailTemplate';
 import './AppList.css'
+import { min } from 'lodash';
 
 class AppList extends Component {
 
@@ -18,6 +19,7 @@ class AppList extends Component {
     onAcceptClick: PropTypes.func.isRequired,
     onKeywordChange: PropTypes.func.isRequired,
     onDeleteClick: PropTypes.func.isRequired,
+    keyword: PropTypes.string
   };
 
   constructor(props) {
@@ -26,7 +28,8 @@ class AppList extends Component {
       modalOpen: false,
       msg: '',
       updated: false,
-      responseModalOpen: false
+      responseModalOpen: false,
+      keyword: 'all'
     };
   }
 
@@ -43,12 +46,21 @@ class AppList extends Component {
       msg: msg
     });
   };
-
+ 
   toggleResponseModal() {
     this.setState({
       responseModalOpen: !this.state.responseModalOpen
     })
   }
+
+  handleOnChange = event =>{
+    this.setState({
+      keyword: event.target.value
+    })
+    this.props.onKeywordChange(event)
+  }
+
+ 
 
   render() {
     const {
@@ -61,8 +73,10 @@ class AppList extends Component {
     } = this.props;
 
     let revertedAppID = this.state.applicationID || null;
-    let revertedApp = (!revertedAppID ? null : applications.filter(x => x.id === revertedAppID)[0]);
 
+
+    let revertedApp = (!revertedAppID ? null : applications.filter(x => x.id === revertedAppID)[0]);
+    
     let {revertStatus, name: revertName} = (!revertedApp ? {} : revertedApp);
 
     return (
@@ -73,9 +87,18 @@ class AppList extends Component {
             </div>
             <div className="col-sm-4 col-xs-12">
               <label htmlFor="keyword">Search:</label>
-              <input id="keyword" type="text" size="30" placeholder="id or name" onChange={onKeywordChange}/>
+              <input id="keyword" type="text" size="30" placeholder="id or name" onChange={this.handleOnChange}/>
             </div>
         </div>
+       
+        <div className="row">
+        <a href="#" onClick={ e => {
+             e.preventDefault(); 
+             const url = `/admin/export/results/${this.state.keyword}/applications`
+             window.location.href = url
+        }} name="Exports">Export results</a>
+        </div>
+     
         <Modal show={this.state.responseModalOpen}>
           <div styleName={`callout--${(revertStatus ? 'info' : 'warning')}`}>
             {(revertStatus ? (this.state.msg !== '' ?
