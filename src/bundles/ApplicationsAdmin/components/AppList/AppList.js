@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
 import {convertApplicationToSeller, rejectApplication, searchApplications, deleteApplication} from '../../redux/modules/applications';
 import {Modal} from '../../../../shared/Modal/Modal';
+import LoadingIndicatorFullPage from './LoadingIndicatorFullPage'
+import LoadingIndicator from './LoadingIndicator'
 import {ConnectedRevertedForm} from '../RevertNotification/RevertNotification'
 import format from 'date-fns/format';
 
@@ -26,8 +28,16 @@ class AppList extends Component {
       modalOpen: false,
       msg: '',
       updated: false,
-      responseModalOpen: false
+      responseModalOpen: false,
+      loading: true
     };
+  }
+
+  componentDidMount() {
+    console.log('dddddeeesdd')
+    this.setState({
+      loading: false
+    })
   }
 
   sortDate(applications) {
@@ -59,6 +69,9 @@ class AppList extends Component {
       onKeywordChange,
       onDeleteClick
     } = this.props;
+    if (this.state.loading) {
+      return (<LoadingIndicator/>)
+    }
 
     let revertedAppID = this.state.applicationID || null;
     let revertedApp = (!revertedAppID ? null : applications.filter(x => x.id === revertedAppID)[0]);
@@ -104,6 +117,7 @@ class AppList extends Component {
             />
           </Modal>
         </div>}
+   
         <table className="content-table">
 
           <thead>
@@ -118,7 +132,10 @@ class AppList extends Component {
           </thead>
 
           <tbody>
-
+          { applications.length === 0 &&
+          <tr><td colSpan='6'>No results for this seach</td></tr>
+          }
+         
           {(this.sortDate(applications) || applications).map((a, i) => {
             return (
               <tr key={i}>

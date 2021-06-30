@@ -1,0 +1,106 @@
+.loadingIndicator {
+    position: relative;
+    width: 60px; 
+    height: 60px;
+    color:#ccc;
+  }
+  
+  .loadingInner, .loadingIndicator:after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  .loadingIndicator:after {
+    content:" ";
+    margin: 15%;
+    border-radius: 100%;
+    background: #fff;
+  }
+  
+  .loadingInner {
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+  }
+  
+  .loadingInner {
+    animation-name: rotate-inner;
+    -webkit-animation-name: rotate-inner;
+  }
+  
+  .loadingInner:before, .loadingInner:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    content:" ";
+  }
+  
+  .loadingInner:before {
+    left: 0;
+    right: 50%;
+    border-radius: 60px 0 0 60px;
+  }
+  
+  .loadingInner:after {
+      left: 50%;
+      right: 0;
+      border-radius: 0 26px 26px 0;
+  }
+  
+  .loadingInner:before {
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), #ffffff);
+    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0), #ffffff);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ffffff);
+  }
+  
+  .loadingInner:after {
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), #ffffff);
+    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0), #ffffff);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ffffff);
+  }
+  
+  @keyframes rotate-inner {
+    0% {
+      transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  
+  @-webkit-keyframes rotate-inner {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  
+  .buttonLoadingIndicator {
+    width: 26px;
+    height: 26px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+    margin-top: -2px;
+  }
+  
+  .buttonLoadingIndicator:after {
+    margin: 23%;
+    background: #1B7991;
+  }
+  
+  .buttonLoadingInner:before {
+    border-radius: 26px 0 0 26px;
+  }
