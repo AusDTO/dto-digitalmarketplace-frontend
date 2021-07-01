@@ -79,7 +79,6 @@ class NewAgency extends React.Component {
     })
   
     return (errors.length > 0 ) ? false : true
-    
   }
   
   handleSubmit(event) {
