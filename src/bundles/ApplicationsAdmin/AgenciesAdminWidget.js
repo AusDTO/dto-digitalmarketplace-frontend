@@ -18,7 +18,7 @@ const AgenciesAdminWidget = (props) => {
       <Switch>
         <Route exact path="/admin/agency/:id" component={Agency} />
         <Route exact path="/admin/agency" component={AgencyList} />
-        <Route exact path="/admin/create_agency" component={NewAgency} />
+        <Route exact path="/admin/agency/create" component={NewAgency} />
       </Switch>
     </Provider>
   )
