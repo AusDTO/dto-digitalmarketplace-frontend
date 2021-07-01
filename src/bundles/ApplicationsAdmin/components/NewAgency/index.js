@@ -1,3 +1,3 @@
-import NewAgency from './NewAgency';
+import CreateAgency from './CreateAgency';
 
-export default NewAgency;
+export default CreateAgency;
