@@ -92,12 +92,12 @@ const PrivateInfo = (props) => {
                     </thead>
                     <tbody>
                     {Object.keys(documents).map((key, val) => {
-                        const {filename, expiry, application_id, noWorkersCompensation} = documents[key];
+                        const {filename, expiry, application_id} = documents[key];
                         const url = application_id ? `/admin/application/${application_id}/documents/` : documentsUrl
                         return (
                             <tr key={val}>
                                 <td>
-                                    {key == 'workers' && noWorkersCompensation
+                                    {key == 'workers'
                                         ? documentTitle[key]
                                         : <a href={`${url}${filename}`}>{documentTitle[key]}</a>
                                     }
@@ -110,11 +110,6 @@ const PrivateInfo = (props) => {
                     })}
                     </tbody>
                 </table>
-                {documents && documents.workers && documents.workers.noWorkersCompensation && 
-                    <p>
-                        <b>Workers compensation insurance not held by this seller</b>
-                    </p>
-                }
             </Row>
             <Row title="Labour hire licence" show={!isEmpty(labourHire)}>
               {Object.keys(labourHire).map((key, i) => {
