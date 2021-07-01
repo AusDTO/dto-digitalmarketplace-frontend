@@ -7,7 +7,6 @@ export default function reducer(state = {}, action = {}) {
 }
 
 export const saveAgency = data => {
-  console.log('redux save agency')
   return (dispatch, getState, api) => {
     const state = getState();
     return api(state.meta.url_save_agency, {
