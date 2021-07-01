@@ -15,7 +15,6 @@ import BaseForm from '../../../../shared/form/BaseForm';
 import SubmitForm from '../../../../shared/form/SubmitForm';
 import Datefield from '../../../../shared/form/Datefield';
 import ErrorBox from '../../../../shared/form/ErrorBox';
-import CheckboxDetailsField from '../../../../shared/form/CheckboxDetailsField';
 import StepNav from '../StepNav';
 
 import StatefulError from '../../../../shared/form/StatefulError';
@@ -206,7 +205,7 @@ class DocumentsForm extends BaseForm {
                         onCustomSubmit={onSubmit}
                         onSubmitFailed={onSubmitFailed}
                         validators={{
-                            documents: (documents = {}) => minObjectLength(documents, 4) && documents.workers.noWorkersCompensation !== false
+                            documents: (documents = {}) => minObjectLength(documents, 4)  !== false
                         }}
                     >
                         {csrf_token && (
@@ -243,6 +242,7 @@ class DocumentsForm extends BaseForm {
                                 <div key={key} styleName="styles.document">
                                     <h3 styleName="question-heading">{field.label}</h3>
                                     <span styleName="styles.documentDescription">{field.description}</span>
+                                    
                                     <div>
                                         {errors && <span className="validation-message">There was an error uploading the file</span>}
 
