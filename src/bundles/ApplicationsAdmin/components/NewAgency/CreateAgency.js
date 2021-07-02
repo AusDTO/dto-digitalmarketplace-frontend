@@ -16,7 +16,7 @@ class NewAgency extends React.Component {
       redirect: false,
       created: false,
       fields:{},
-      errors: {}
+      errors:{}
     }
   }
 
@@ -75,7 +75,7 @@ class NewAgency extends React.Component {
       formErrors.category = ''
     }
     this.setState({
-      erorors: formErrors,
+      errors: formErrors,
     })
   
     return (errors.length > 0 ) ? false : true
@@ -243,8 +243,7 @@ class NewAgency extends React.Component {
   
             <p>
               <input type="submit" value="Create" />
-              <input type="submit" value="Clear" />
-              <input type="submit" value="Cancel" />
+              <input type="button" value="Cancel" onclick="window.location.href='{{ url_for( '/admin/agency')}}'"/>
             </p>
           
         </form>
