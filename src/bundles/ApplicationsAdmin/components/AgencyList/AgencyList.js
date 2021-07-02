@@ -47,7 +47,7 @@ class AgencyList extends React.Component {
         <div>
         <div className="au-display-xl" style={{float:"left"}}>Agencies</div>
         <div style={{float:"right"}}>
-        <a href="/admin/agency/create">Create Agency</a>
+        <a href="/admin/create/agency">Create Agency</a>
         </div>
         </div>
         <table className="content-table">

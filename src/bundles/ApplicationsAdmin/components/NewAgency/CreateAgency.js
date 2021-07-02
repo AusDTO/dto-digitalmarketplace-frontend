@@ -136,6 +136,10 @@ class NewAgency extends React.Component {
     })
   }
 
+  onCancelClick(){
+    window.location.href = '/admin/agency'
+  }
+
 
   render() {
     const redirect = this.state.redirect
@@ -243,7 +247,7 @@ class NewAgency extends React.Component {
   
             <p>
               <input type="submit" value="Create" />
-              <input type="button" value="Cancel" onclick="window.location.href='{{ url_for( '/admin/agency')}}'"/>
+              <input type="button" value="Cancel" onClick={this.onCancelClick}/>
             </p>
           
         </form>
