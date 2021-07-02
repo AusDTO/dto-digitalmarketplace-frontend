@@ -74,6 +74,7 @@ class NewAgency extends React.Component {
     }else{
       formErrors.category = ''
     }
+    
     this.setState({
       errors: formErrors,
     })
@@ -152,18 +153,19 @@ class NewAgency extends React.Component {
         <form onSubmit={this.handleSubmit.bind(this)}>
           <h1 className="au-display-xl">Create Agency</h1>
           <a href="/admin/agency">Back to agency list</a>
-          <p>
+          <div>
             <label htmlFor="name">Name</label>
+            {this.state.errors.name && <p style={{color: "red"}}>{this.state.errors.name}</p>}
             <AUtextInput
               id="name"
               name="name"
               block
               defaultValue=""
             />
-          </p>
-          <p style={{color: "red"}}>{ this.state.errors.name }</p>
-          <p>
+          </div>
+          <div>
             <label htmlFor="domain">Domains (One per line)</label>
+            {this.state.errors.domains && <p style={{color: "red"}}>{this.state.errors.domains}</p>}
             <AUtextInput
               as="textarea"
               id="domains"
@@ -171,10 +173,10 @@ class NewAgency extends React.Component {
               block
               defaultValue=""
             />
-          </p>
-          <p style={{color: "red"}}>{ this.state.errors.domains }</p>
-          <p>
+          </div>
+          <div>
             <label htmlFor="bodyType">Type of body</label>
+            {this.state.errors.body_type && <p style={{color: "red"}}>{this.state.errors.body_type}</p>}
             <AUselect
               id="bodyType"
               name="bodyType"
@@ -189,10 +191,10 @@ class NewAgency extends React.Component {
                 { value: 'other', text: 'Other' }
               ]}
             />
-          </p>
-          <p style={{color: "red"}}>{ this.state.errors.body_type}</p>
-          <p>
+          </div>
+          <div>
             <label htmlFor="category">Category</label>
+            {this.state.errors.category && <p style={{color: "red"}}>{this.state.errors.category}</p>}
             <AUselect
               id="category"
               name="category"
@@ -208,9 +210,8 @@ class NewAgency extends React.Component {
                 { value: 'Local', text: 'Local' }
               ]}
             />
-          </p>
-          <p style={{color: "red"}}>{ this.state.errors.category}</p>
-          <p>
+          </div>
+          <div>
             <label htmlFor="state">State</label>
             <AUselect
               id="state"
@@ -228,7 +229,7 @@ class NewAgency extends React.Component {
                 { value: 'WA', text: 'WA' }
               ]}
             />
-          </p>
+          </div>
           <AUcheckbox
             label="Reports"
             id="reports"
