@@ -27,3 +27,16 @@ export const loadAgencies = () => {
     })
   }
 };
+
+export const createAgency = data => {
+  return (dispatch, getState, api) => {
+    const state = getState();
+    return api(state.meta.url_insert_agency, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'X-CSRFToken': state.form_options.csrf_token
+      }
+    })
+  }
+};
