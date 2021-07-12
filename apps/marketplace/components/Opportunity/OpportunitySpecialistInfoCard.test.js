@@ -71,7 +71,7 @@ describe('OpportunitySpecialistInfoCard', () => {
     )
   })
 
-  test('brief is not open to all', () => {
+  test('opportunity is not open to all', () => {
     expect(
       mount(
         OpportunitySpecialistInfoCard({

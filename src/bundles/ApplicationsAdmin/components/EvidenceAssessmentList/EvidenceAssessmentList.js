@@ -16,7 +16,7 @@ class EvidenceAssessmentList extends React.Component {
               <tr>
                 <th>submitted_at</th>
                 <th>supplier</th>
-                <th>brief</th>
+                <th>opportunity</th>
                 <th>domain</th>
                 <th>actions</th>
               </tr>

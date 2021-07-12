@@ -72,7 +72,7 @@ export class BriefAssessorsPage extends Component {
             {...this.props}
           />
         ) : (
-          <ErrorBox title="There was a problem loading the brief" setFocus={setFocus} />
+          <ErrorBox title="There was a problem loading the opportunity" setFocus={setFocus} />
         )}
       </div>
     )
