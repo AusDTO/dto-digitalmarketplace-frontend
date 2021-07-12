@@ -367,7 +367,7 @@ const BriefSpecialistResponseForm2 = ({
                       addOtherDocument()
                     }}
                   >
-                    Add another{buttonAddedCount}
+                    Add another
                   </a>
                 </p>
               )}
