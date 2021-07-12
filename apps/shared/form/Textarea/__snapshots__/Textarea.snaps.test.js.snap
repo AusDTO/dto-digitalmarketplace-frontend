@@ -14,7 +14,7 @@ exports[`Textarea with limit 5, 10 words 1`] = `
     aria-live="polite"
     className="word-count-counter wordCount invalid"
   >
-    5 words too many
+    
   </span>
 </div>
 `;

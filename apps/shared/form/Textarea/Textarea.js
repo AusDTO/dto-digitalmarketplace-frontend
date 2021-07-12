@@ -71,7 +71,9 @@ class Textarea extends Component {
     if (wordsLeft < 0) {
       affix = 'too many'
     }
-
+    if (affix === 'too many'){
+      return ""
+    }
     return `${counter} ${words} ${affix}`
   }
 
