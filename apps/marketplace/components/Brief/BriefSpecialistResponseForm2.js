@@ -50,8 +50,7 @@ const BriefSpecialistResponseForm2 = ({
   onRateChange,
   fileCount,
   addOtherDocument,
-  supplierContact,
-  buttonAddedCount
+  supplierContact
 }) => (
   <div className="row">
     <DocumentTitle title="Opportunity Response - Digital Marketplace">
