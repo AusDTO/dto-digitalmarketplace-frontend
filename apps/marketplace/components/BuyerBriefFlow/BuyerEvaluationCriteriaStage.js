@@ -194,9 +194,7 @@ class BuyerEvaluationCriteriaStage extends Component {
                       htmlFor={`essential_criteria_${i}`}
                       defaultValue={essentialRequirements.criteria}
                       controlProps={{ limit: 50 }}
-                      messages={{
-                        limitWords: 'Your criteria has exceeded the 50 word limit'
-                      }}
+                      messages={{}}
                     />
                   </div>
                   {this.props[this.props.model].includeWeightingsEssential && (
@@ -285,9 +283,7 @@ class BuyerEvaluationCriteriaStage extends Component {
                       htmlFor={`nice_to_have_criteria_${i}`}
                       defaultValue={niceToHaveRequirements.criteria}
                       controlProps={{ limit: 50 }}
-                      messages={{
-                        limitWords: 'Your criteria has exceeded the 50 word limit'
-                      }}
+                      messages={{}}
                     />
                   </div>
                   {this.props[this.props.model].includeWeightingsNiceToHave && (
