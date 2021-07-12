@@ -22,7 +22,7 @@ const BuyerTrainingIntroductionStage = props => (
     <ul>
       <li>
         The{' '}
-        <a href="/api/2/r/learning-design-standards" rel="noopener noreferrer" target="_blank">
+        <a href="https://www.dta.gov.au/help-and-advice/digital-profession/learning-design-standards-digital" rel="noopener noreferrer" target="_blank">
           Learning Design Standards
         </a>{' '}
         can be used to help structure your training approach.
@@ -58,7 +58,7 @@ const BuyerTrainingIntroductionStage = props => (
         <ul>
           <li>
             <a
-              href="https://ictprocurement.service-now.com/policy?id=consider_first"
+              href="https://www.buyict.gov.au/sp?id=resources_and_policies&kb=KB0010637"
               rel="external noopener noreferrer"
               target="_blank"
             >
@@ -67,7 +67,7 @@ const BuyerTrainingIntroductionStage = props => (
           </li>
           <li>
             <a
-              href="https://ictprocurement.service-now.com/policy?id=fair_criteria"
+              href="https://www.buyict.gov.au/sp?id=resources_and_policies&kb=KB0010639&kb_parent=KB0010683#fair-criteria-checklist"
               rel="external noopener noreferrer"
               target="_blank"
             >

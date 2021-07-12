@@ -33,7 +33,7 @@ const BuyerSpecialistIntroductionStage = props => (
         <ul>
           <li>
             <a
-              href="https://ictprocurement.service-now.com/policy?id=consider_first"
+              href="https://www.buyict.gov.au/sp?id=resources_and_policies&kb=KB0010637"
               rel="external noopener noreferrer"
               target="_blank"
             >
@@ -42,7 +42,7 @@ const BuyerSpecialistIntroductionStage = props => (
           </li>
           <li>
             <a
-              href="https://ictprocurement.service-now.com/policy?id=fair_criteria"
+              href="https://www.buyict.gov.au/sp?id=resources_and_policies&kb=KB0010639&kb_parent=KB0010683#fair-criteria-checklist"
               rel="external noopener noreferrer"
               target="_blank"
             >
