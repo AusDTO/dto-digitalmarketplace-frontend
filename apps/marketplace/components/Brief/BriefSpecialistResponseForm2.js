@@ -466,8 +466,7 @@ BriefSpecialistResponseForm2.propTypes = {
   loadingText: PropTypes.string,
   onRateChange: PropTypes.func,
   fileCount: PropTypes.number,
-  addOtherDocument: PropTypes.func,
-  buttonAddedCount: PropTypes.number
+  addOtherDocument: PropTypes.func
 }
 
 export default BriefSpecialistResponseForm2
