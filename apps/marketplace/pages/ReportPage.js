@@ -23,11 +23,11 @@ const itemData = {
           mobileImage: '767 Top 5 buyers.svg',
           imageAlt: '',
           imageCaption:
-            'Top 5 agencies listing briefs on the Marketplace for February 2018 were the ' +
-            'DTA (18 briefs), Department of Human Services (14 briefs), ' +
-            'Australian Transaction Reports & Analysis Centre (5 briefs), ' +
-            'Australian Digital Health Agency (3 briefs) ' +
-            'and National Health and Medical Research Council (2 briefs)'
+            'Top 5 agencies listing opportunities on the Marketplace for February 2018 were the ' +
+            'DTA (18 opportunities), Department of Human Services (14 opportunities), ' +
+            'Australian Transaction Reports & Analysis Centre (5 opportunities), ' +
+            'Australian Digital Health Agency (3 opportunities) ' +
+            'and National Health and Medical Research Council (2 opportunities)'
         }
       ]
     },
@@ -38,13 +38,13 @@ const itemData = {
           text: null,
           image: 'Percentage of briefs open to all.svg',
           mobileImage: 'Percentage of briefs open to all.svg',
-          imageAlt: '68% of all briefs have been open to all'
+          imageAlt: '68% of all opportunities have been open to all'
         },
         {
           text: null,
           image: 'Percentage of briefs for digital specialists.svg',
           mobileImage: 'Percentage of briefs for digital specialists.svg',
-          imageAlt: '63% of briefs have been for digital specialists'
+          imageAlt: '63% of opportunities have been for digital specialists'
         },
         {
           image: '768 Percentage of dollar value contracted awarded to SMEs.svg',
@@ -65,7 +65,7 @@ const itemData = {
         {
           image: '768 total opportunities.svg',
           mobileImage: '767 total opportunities.svg',
-          imageAlt: '541 total opportunities since 29 August 2016, 67 new briefs this month'
+          imageAlt: '541 total opportunities since 29 August 2016, 67 new opportunities this month'
         }
       ]
     },
@@ -78,7 +78,8 @@ const itemData = {
           image: '768 Briefs by phase.svg',
           mobileImage: '767 Briefs by phase.svg',
           imageAlt: '',
-          imageCaption: 'Briefs by phase, 16% Pre-discovery, 34% Discovery, 13% Alpha, 13% Beta, 8% Live and 16% Other'
+          imageCaption:
+            'Opportunities by phase, 16% Pre-discovery, 34% Discovery, 13% Alpha, 13% Beta, 8% Live and 16% Other'
         },
         {
           text: null,
@@ -98,13 +99,13 @@ const itemData = {
           imageAlt: '',
           imageCaption:
             'Top 5 areas of expertise since 29 August 2016: ' +
-            '96 briefs published for Software engineering and development, ' +
-            '73 briefs published for User research and design, ' +
-            '68 briefs published for Agile delivery and governance, ' +
-            '20 briefs published for Content and Publishing, ' +
-            '20 briefs published for Cyber security,' +
-            '60 briefs published for Other areas of expertise and ' +
-            '204 briefs published for Outcomes (area not specified)'
+            '96 opportunities published for Software engineering and development, ' +
+            '73 opportunities published for User research and design, ' +
+            '68 opportunities published for Agile delivery and governance, ' +
+            '20 opportunities published for Content and Publishing, ' +
+            '20 opportunities published for Cyber security,' +
+            '60 opportunities published for Other areas of expertise and ' +
+            '204 opportunities published for Outcomes (area not specified)'
         }
       ]
     },
@@ -136,7 +137,7 @@ const itemData = {
           fullWidth: true,
           image: '768 Average responses per brief.svg',
           mobileImage: '767 Average responses per brief.svg',
-          imageAlt: 'Buyers receive on average 12 responses per brief as of January 2018'
+          imageAlt: 'Buyers receive on average 12 responses per opportunity as of January 2018'
         }
       ]
     },
@@ -173,7 +174,7 @@ const itemData = {
           text: null,
           image: 'Number of contracts awarded this month.svg',
           mobileImage: 'Number of contracts awarded this month.svg',
-          imageAlt: '50 briefs have been contracted this month'
+          imageAlt: '50 opportunities have been contracted this month'
         }
       ]
     }

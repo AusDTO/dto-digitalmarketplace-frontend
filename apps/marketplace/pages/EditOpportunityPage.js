@@ -116,7 +116,7 @@ class EditOpportunityPage extends Component {
       hasFocused = false
       return (
         <ErrorBoxComponent
-          title="A problem occurred when loading the brief details"
+          title="A problem occurred when loading the opportunity details"
           errorMessage={errorMessage}
           setFocus={setFocus}
           form={{}}

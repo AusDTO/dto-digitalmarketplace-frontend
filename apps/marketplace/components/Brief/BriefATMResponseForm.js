@@ -113,7 +113,7 @@ export class BriefATMResponseForm extends Component {
 
     return (
       <div className="row">
-        <DocumentTitle title="Brief Response - Digital Marketplace">
+        <DocumentTitle title="Opportunity Response - Digital Marketplace">
           <div className="col-sm-push-2 col-sm-8 col-xs-12">
             <article role="main">
               {briefResponseSuccess && !briefResponseSave && (

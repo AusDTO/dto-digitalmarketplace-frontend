@@ -178,7 +178,7 @@ const OpportunityInfoCard = props => {
                   <span>
                     {' '}
                     You must edit your profile to indicate you are a consultancy (or both a consultancy and a recruiter)
-                    to be able to apply for this brief.
+                    to be able to apply for this opportunity.
                   </span>
                 )}
               </p>

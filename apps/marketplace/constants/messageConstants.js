@@ -1,8 +1,8 @@
 import React from 'react'
 
-export const BRIEF_ID_NOT_FOUND = 'Brief does not exist.'
+export const BRIEF_ID_NOT_FOUND = 'Opportunity does not exist.'
 export const BRIEF_LOT_NOT_SUPPORTED = 'Lot not supported.'
-export const BRIEF_MUST_BE_DRAFT = 'Only draft briefs can be deleted.'
+export const BRIEF_MUST_BE_DRAFT = 'Only draft opportunities can be deleted.'
 export const DUPLICATE_USER = 'An account with this email address already exists.'
 export const USER_NOT_CREATED = 'The Digital Marketplace encountered an error trying to create your account.'
 export const INVITE_NOT_SENT = 'The Digital Marketplace encountered an error trying to send the invite.'
