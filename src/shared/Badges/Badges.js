@@ -13,7 +13,7 @@ export const titleMap = {
   disability: 'Australian disability enterprise',
   nfp_social_enterprise: 'Not-for-profit',
   start_up: 'Start-up',
-  sme: 'SME',
+  sme: 'SME (self-reported)',
   product: 'Products'
 };
 
