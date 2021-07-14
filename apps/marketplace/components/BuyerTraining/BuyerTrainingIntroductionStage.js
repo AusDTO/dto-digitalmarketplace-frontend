@@ -22,11 +22,7 @@ const BuyerTrainingIntroductionStage = props => (
     <ul>
       <li>
         The{' '}
-        <a
-          href="https://www.dta.gov.au/help-and-advice/digital-profession/learning-design-standards-digital"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
+        <a href="/api/2/r/learning-design-standards" rel="noopener noreferrer" target="_blank">
           Learning Design Standards
         </a>{' '}
         can be used to help structure your training approach.
