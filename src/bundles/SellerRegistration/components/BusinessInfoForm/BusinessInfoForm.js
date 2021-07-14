@@ -156,7 +156,7 @@ class BusinessInfoForm extends BaseForm {
                               <li><b>start up</b> - your business must have been
                                 registered in the last five years only.
                               </li>
-                              <li><b>SME</b> - your business cannot have more
+                              <li><b>SME (self-reported)</b> - your business cannot have more
                                 than 200 employees worldwide.
                               </li>
                             </ul>
@@ -186,7 +186,7 @@ class BusinessInfoForm extends BaseForm {
                                 name="sme"
                                 value="SME"
                             />
-                            <label htmlFor="sme">Small to medium-sized enterprise (SME)
+                            <label htmlFor="sme">Small to medium-sized enterprise (SME (self-reported))
                                 <p>You have less than 200 employees and are independent of any parent organisation for
                                     taxation purposes.</p>
                             </label>
