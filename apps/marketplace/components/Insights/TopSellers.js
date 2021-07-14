@@ -22,12 +22,12 @@ export class TopSellers extends Component {
       data: {
         datasets: [
           {
-            label: 'SME',
+            label: 'SME (self-reported)',
             data: counts.map(a => (a.contractSupplierMarketplaceSMEStatus === 'SME' ? a.count : 0)),
             backgroundColor: '#065688'
           },
           {
-            label: 'Non SME',
+            label: 'Non SME (self-reported)',
             data: counts.map(a => (a.contractSupplierMarketplaceSMEStatus === 'Non SME' ? a.count : 0)),
             backgroundColor: '#757575'
           }

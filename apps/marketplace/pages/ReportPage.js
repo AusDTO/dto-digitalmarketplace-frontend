@@ -168,7 +168,7 @@ const itemData = {
           text: null,
           image: 'Percentage of contracts awarded by volume to SMEs.svg',
           mobileImage: 'Percentage of contracts awarded by volume to SMEs.svg',
-          imageAlt: '80% of contracts have been awarded by volume to SME sellers this month'
+          imageAlt: '80% of contracts have been awarded by volume to SME sellers (self-reported) this month'
         },
         {
           text: null,
