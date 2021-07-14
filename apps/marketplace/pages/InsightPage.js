@@ -113,7 +113,7 @@ class InsightPage extends Component {
           <div className={`row ${styles.marginBottom5}`}>
             <div className="col-xs-12">
               The Digital Marketplace is a simple and fast way to buy and sell with government.{' '}
-              <b>It breaks down the barriers of entry for SMEs</b> (a small to medium enterprise with less than 200
+              <b>It breaks down the barriers of entry for SMEs (self-reported)</b> (a small to medium enterprise with less than 200
               employees) and makes it <b>easier to compete for the Australian Government’s annual ICT spend</b>.
             </div>
           </div>
