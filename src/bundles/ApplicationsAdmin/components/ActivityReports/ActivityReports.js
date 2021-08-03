@@ -7,8 +7,7 @@ export class ActivityReports extends React.Component {
     super(props)
 
     this.state = {
-      reportType: '',
-      acceptEnabled: false
+      reportType: 'allSellersCategoryMaxDailyRates'
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -16,30 +15,29 @@ export class ActivityReports extends React.Component {
 
   handleSubmit(event){
     event.preventDefault();
+    //const url = `/admin/agency/1`
     const url = `/admin/download_reports/${this.state.reportType}`
     window.location.href = url
-    
   }
 
   handleChange(event) {
     this.setState({
-      reportType: event.target.value,
-      acceptEnabled: true
+      reportType: event.target.value
     })
   }
 
   render() {
       return (
-        <form onSubmit={this.handleSubmit}>
+        <form>
         <AUheading size="xl" level="1">
-          Activity reports
+          Activity reportsw
         </AUheading>
         <p>Download opportunity report data for your agency or a current list of approved sellers.</p>
-        <input type="radio" id="allSellersCategoryMaxDailyRates" name="reportType" value="allSellersCategoryMaxDailyRates" onChange={this.handleChange}/>
+        <input type="radio" id="allSellersCategoryMaxDailyRates" name="reportType" value="allSellersCategoryMaxDailyRates" onChange={this.handleChange} checked/>
         <label htmlFor="allSellersCategoryMaxDailyRates">All Sellers Category Max Daily Rates</label>
         <input type="radio" id="allSellersApprovedInCategory" name="reportType" value="allSellersApprovedInCategory" onChange={this.handleChange}/>
         <label htmlFor="allSellersApprovedInCategory">All Sellers Approved in a Category</label>
-        <AUbutton type="submit" disabled={!this.state.acceptEnabled}>
+        <AUbutton  onClick={this.handleSubmit}>
           Download reports
         </AUbutton>
         </form>
