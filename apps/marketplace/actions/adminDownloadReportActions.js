@@ -3,7 +3,7 @@ import dmapi from '../services/apiClient'
 
 export const sendingRequest = sending => ({ type: SENDING_REQUEST, sending })
 
-export const downloadReports = (reportType, data) => (dispatch) => {
+export const downloadReports = (reportType, data) => dispatch => {
   dispatch(sendingRequest(true))
   return dmapi({
     url: `/downloadReports/${reportType}`,
