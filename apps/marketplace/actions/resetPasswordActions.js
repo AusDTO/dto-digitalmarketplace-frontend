@@ -1,4 +1,8 @@
-import { RESET_PASSWORD_EMAIL_SUCCESS, RESET_PASSWORD_SUCCESS } from '../constants/constants'
+import {
+  RESET_PASSWORD_EMAIL_INITIAL,
+  RESET_PASSWORD_EMAIL_SUCCESS,
+  RESET_PASSWORD_SUCCESS
+} from '../constants/constants'
 
 import { INVALID_CSRF, UNABLE_TO_RESET, UNABLE_TO_SEND } from '../constants/messageConstants'
 
@@ -6,9 +10,11 @@ import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
 
 export const handleResetPasswordSuccess = () => ({ type: RESET_PASSWORD_EMAIL_SUCCESS })
+const initialiseResetPasswordEmail = () => ({ type: RESET_PASSWORD_EMAIL_INITIAL })
 
 export const sendResetPasswordEmail = values => (dispatch, getState) => {
   dispatch(sendingRequest(true))
+  dispatch(initialiseResetPasswordEmail())
   dmapi({
     method: 'post',
     url: `/reset-password`,

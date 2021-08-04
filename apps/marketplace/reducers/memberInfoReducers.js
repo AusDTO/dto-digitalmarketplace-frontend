@@ -7,6 +7,7 @@ import {
   SET_ERROR_MESSAGE,
   GET_RESET_DATA_SUCCESS,
   GET_RESET_DATA_FAILURE,
+  RESET_PASSWORD_EMAIL_INITIAL,
   RESET_PASSWORD_EMAIL_SUCCESS,
   RESET_PASSWORD_SUCCESS
 } from '../constants/constants'
@@ -75,6 +76,13 @@ const userReducer = (state = defaultUserState, action) => {
       return {
         ...state,
         resetPasswordSuccess: false
+      }
+
+    case RESET_PASSWORD_EMAIL_INITIAL:
+      return {
+        ...state,
+        resetPasswordEmailSuccess: false,
+        errorMessage: false
       }
 
     case RESET_PASSWORD_EMAIL_SUCCESS:
