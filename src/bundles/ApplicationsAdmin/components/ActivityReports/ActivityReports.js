@@ -13,7 +13,7 @@ export class ActivityReports extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleSubmit(event){
+  handleSubmit(event) {
     event.preventDefault();
     const url = `/admin/download_reports/${this.state.reportType}`
     window.location.href = url
