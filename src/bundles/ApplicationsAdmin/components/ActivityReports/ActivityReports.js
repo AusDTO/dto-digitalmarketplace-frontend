@@ -31,7 +31,6 @@ export class ActivityReports extends React.Component {
         <AUheading size="xl" level="1">
           Activity reports
         </AUheading>
-        <p>Download opportunity report data for your agency or a current list of approved sellers.</p>
         <input type="radio" id="allSellersCategoryMaxDailyRates" name="reportType" value="allSellersCategoryMaxDailyRates" onChange={this.handleChange} checked/>
         <label htmlFor="allSellersCategoryMaxDailyRates">All sellers category max daily rates</label>
         <input type="radio" id="allSellersApprovedInCategory" name="reportType" value="allSellersApprovedInCategory" onChange={this.handleChange}/>
@@ -46,4 +45,3 @@ export class ActivityReports extends React.Component {
 
 
 export default ActivityReports
-
