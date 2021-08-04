@@ -9,7 +9,6 @@ export const downloadReports = (reportType, data) => (dispatch, getState) => {
     url: `/downloadReports/${reportType}`,
     method: 'GET',
     headers: {
-      'X-CSRFToken': getState().app.csrfToken,
       'Content-Type': 'application/json'
     },
     data: JSON.stringify(data)
