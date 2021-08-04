@@ -30,3 +30,4 @@ export const LOGIN_FAILED = (
 export const EMAIL_NOT_WHITELISTED =
   'Your email domain is not registered for use on Digital Marketplace. ' +
   'Please request approval from marketplace@dta.gov.au'
+export const INVALID_CSRF = 'Invalid CSRF token. Please refresh the page and try again.'

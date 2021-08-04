@@ -31,7 +31,7 @@ import {
   FEEDBACK_SUCCESS,
   SET_AUTH_FRAMEWORK_ERROR
 } from '../constants/constants'
-import { GENERAL_ERROR, LOGIN_FAILED } from '../constants/messageConstants'
+import { GENERAL_ERROR, INVALID_CSRF, LOGIN_FAILED } from '../constants/messageConstants'
 import dmapi from '../services/apiClient'
 
 /**
@@ -85,7 +85,11 @@ export const login = data => (dispatch, getState) => {
     data: JSON.stringify(data)
   }).then(response => {
     if (response.error) {
-      dispatch(setErrorMessage(LOGIN_FAILED))
+      if (response.data.message && response.data.message.toLowerCase().includes('invalid csrf')) {
+        dispatch(setErrorMessage(INVALID_CSRF))
+      } else {
+        dispatch(setErrorMessage(LOGIN_FAILED))
+      }
     } else {
       dispatch(clearErrorMessages())
       if (response.data.framework && response.data.framework !== 'digital-marketplace') {
