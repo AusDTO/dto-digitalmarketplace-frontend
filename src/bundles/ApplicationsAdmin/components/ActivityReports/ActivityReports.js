@@ -28,16 +28,16 @@ export class ActivityReports extends React.Component {
   render() {
       return (
         <form>
-        <AUheading size="xl" level="1">
+          <AUheading size="xl" level="1">
           Activity reports
-        </AUheading>
-        <input type="radio" id="allSellersCategoryMaxDailyRates" name="reportType" value="allSellersCategoryMaxDailyRates" onChange={this.handleChange} checked/>
-        <label htmlFor="allSellersCategoryMaxDailyRates">All sellers category max daily rates</label>
-        <input type="radio" id="allSellersApprovedInCategory" name="reportType" value="allSellersApprovedInCategory" onChange={this.handleChange}/>
-        <label htmlFor="allSellersApprovedInCategory">All sellers approved in a category</label>
-        <AUbutton  onClick={this.handleSubmit}>
+          </AUheading>
+          <input type="radio" id="allSellersCategoryMaxDailyRates" name="reportType" value="allSellersCategoryMaxDailyRates" onChange={this.handleChange} checked/>
+          <label htmlFor="allSellersCategoryMaxDailyRates">All sellers category max daily rates</label>
+          <input type="radio" id="allSellersApprovedInCategory" name="reportType" value="allSellersApprovedInCategory" onChange={this.handleChange}/>
+          <label htmlFor="allSellersApprovedInCategory">All sellers approved in a category</label>
+          <AUbutton  onClick={this.handleSubmit}>
           Download reports
-        </AUbutton>
+          </AUbutton>
         </form>
       )
   }
