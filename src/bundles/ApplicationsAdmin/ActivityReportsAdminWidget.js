@@ -7,7 +7,6 @@ import ActivityReports from './components/ActivityReports'
 
 
 const ActivityReportsAdminWidget = (props) => {
-
   const store = createStore(props)
   
   return (
