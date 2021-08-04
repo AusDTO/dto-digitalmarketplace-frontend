@@ -1,6 +1,6 @@
 import { RESET_PASSWORD_EMAIL_SUCCESS, RESET_PASSWORD_SUCCESS } from '../constants/constants'
 
-import { UNABLE_TO_RESET, UNABLE_TO_SEND } from '../constants/messageConstants'
+import { INVALID_CSRF, UNABLE_TO_RESET, UNABLE_TO_SEND } from '../constants/messageConstants'
 
 import dmapi from '../services/apiClient'
 import { sendingRequest, setErrorMessage } from './appActions'
@@ -19,7 +19,11 @@ export const sendResetPasswordEmail = values => (dispatch, getState) => {
     data: JSON.stringify(values)
   }).then(response => {
     if (response.error) {
-      dispatch(setErrorMessage(UNABLE_TO_SEND))
+      if (response.data.message && response.data.message.toLowerCase().includes('invalid csrf')) {
+        dispatch(setErrorMessage(INVALID_CSRF))
+      } else {
+        dispatch(setErrorMessage(UNABLE_TO_SEND))
+      }
     } else {
       dispatch(handleResetPasswordSuccess())
     }
