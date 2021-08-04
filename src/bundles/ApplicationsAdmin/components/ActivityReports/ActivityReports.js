@@ -30,7 +30,7 @@ export class ActivityReports extends React.Component {
       return (
         <form>
         <AUheading size="xl" level="1">
-          Activity reportsw
+          Activity reports
         </AUheading>
         <p>Download opportunity report data for your agency or a current list of approved sellers.</p>
         <input type="radio" id="allSellersCategoryMaxDailyRates" name="reportType" value="allSellersCategoryMaxDailyRates" onChange={this.handleChange} checked/>
