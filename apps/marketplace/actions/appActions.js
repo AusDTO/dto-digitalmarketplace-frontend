@@ -111,11 +111,19 @@ export const logout = () => (dispatch, getState) => {
 }
 
 export const handleErrorFailure = response => dispatch => {
-  dispatch(
-    setErrorMessage(
-      response && response.data && response.data.errorMessage ? response.data.errorMessage : GENERAL_ERROR
-    )
-  )
+  let error = GENERAL_ERROR
+
+  if (response && response.data) {
+    if (response.data.errorMessage) {
+      error = response.data.errorMessage
+    }
+
+    if (response.data.message) {
+      error = response.data.message
+    }
+  }
+
+  dispatch(setErrorMessage(error))
 }
 
 export const handleFeedbackSuccess = () => ({ type: FEEDBACK_SUCCESS })
