@@ -27,9 +27,12 @@ export const handleSignupSubmit = model => (dispatch, getState) => {
     data: JSON.stringify(model)
   }).then(response => {
     if (response.error) {
-      dispatch(setSignupErrorCode(response.status))
-      if (response.data.abn) {
+      if (response.data && response.data.message) {
+        dispatch(setErrorMessage(response.data.message))
+      } else if (response.data.abn) {
         dispatch(setSignupABN(response.data.abn))
+      } else {
+        dispatch(setSignupErrorCode(response.status))
       }
     } else {
       dispatch(handleSignupSuccess(response))
