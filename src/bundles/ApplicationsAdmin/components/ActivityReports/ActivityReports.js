@@ -7,7 +7,7 @@ export class ActivityReports extends React.Component {
     super(props)
 
     this.state = {
-      reportType: 'allSellersCategoryMaxDailyRates'
+      reportType: 'maxDailyRates'
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -31,9 +31,9 @@ export class ActivityReports extends React.Component {
           <AUheading size="xl" level="1">
           Activity reports
           </AUheading>
-          <input type="radio" id="allSellersCategoryMaxDailyRates" name="reportType" value="allSellersCategoryMaxDailyRates" onChange={this.handleChange} checked/>
+          <input type="radio" id="allSellersCategoryMaxDailyRates" name="reportType" value="maxDailyRates" onChange={this.handleChange} checked/>
           <label htmlFor="allSellersCategoryMaxDailyRates">All sellers category max daily rates</label>
-          <input type="radio" id="allSellersApprovedInCategory" name="reportType" value="allSellersApprovedInCategory" onChange={this.handleChange}/>
+          <input type="radio" id="allSellersApprovedInCategory" name="reportType" value="approvedInCategory" onChange={this.handleChange}/>
           <label htmlFor="allSellersApprovedInCategory">All sellers approved in a category</label>
           <AUbutton  onClick={this.handleSubmit}>
           Download reports
