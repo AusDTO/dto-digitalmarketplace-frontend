@@ -27,9 +27,9 @@ export class ActivityReports extends React.Component {
 
   render() {
       return (
-        <form>
+        <form method="GET">
           <AUheading size="xl" level="1">
-          Activity reports1
+          Activity reports
           </AUheading>
           <input type="radio" id="allSellersCategoryMaxDailyRates" name="reportType" value="allSellersCategoryMaxDailyRates" onChange={this.handleChange} checked/>
           <label htmlFor="allSellersCategoryMaxDailyRates">All sellers category max daily rates</label>
