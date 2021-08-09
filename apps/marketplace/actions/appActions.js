@@ -101,11 +101,11 @@ export const login = data => (dispatch, getState) => {
   })
 }
 
-export const logout = () => (dispatch, getState) => {
+export const logout = () => dispatch => {
   dispatch(sendingRequest(true))
   dmapi({ url: '/logout' }).then(() => {
     dispatch(clearErrorMessages())
-    dispatch(setAuthState({ isAuthenticated: false, userType: '', csrfToken: getState().app.csrfToken }))
+    dispatch(setAuthState({ isAuthenticated: false, userType: '', csrfToken: '' }))
     dispatch(sendingRequest(false))
   })
 }
