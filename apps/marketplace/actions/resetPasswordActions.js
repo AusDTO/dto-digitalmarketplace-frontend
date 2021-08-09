@@ -7,7 +7,7 @@ import {
 import { INVALID_CSRF, UNABLE_TO_RESET, UNABLE_TO_SEND } from '../constants/messageConstants'
 
 import dmapi from '../services/apiClient'
-import { sendingRequest, setErrorMessage } from './appActions'
+import { logout, sendingRequest, setErrorMessage } from './appActions'
 
 export const handleResetPasswordSuccess = () => ({ type: RESET_PASSWORD_EMAIL_SUCCESS })
 const initialiseResetPasswordEmail = () => ({ type: RESET_PASSWORD_EMAIL_INITIAL })
@@ -32,6 +32,7 @@ export const sendResetPasswordEmail = values => (dispatch, getState) => {
       }
     } else {
       dispatch(handleResetPasswordSuccess())
+      dispatch(logout())
     }
     dispatch(sendingRequest(false))
   })
