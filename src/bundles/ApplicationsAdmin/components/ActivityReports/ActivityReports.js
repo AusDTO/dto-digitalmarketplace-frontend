@@ -2,11 +2,12 @@ import React from 'react'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import { useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 export class ActivityReports extends React.Component {
   
   constructor(props) {
     super(props)
-    history = useHistory();
+    
     this.state = {
       reportType: 'maxDailyRates'
     }
@@ -16,10 +17,11 @@ export class ActivityReports extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const url = `/admin/download_activity_reports/${this.state.reportType}`
-    console.log(url)
-    //window.location.href = url
-    this.history.push(url)
+    const url = `./download_activity_reports/${this.state.reportType}`
+    window.location.href = url
+    this.props.history.push('./activity_reports')
+
+
   }
 
   handleChange(event) {
