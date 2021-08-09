@@ -1,11 +1,12 @@
 import React from 'react'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-  
+import { useHistory } from 'react-router-dom';
 export class ActivityReports extends React.Component {
+  
   constructor(props) {
     super(props)
-
+    history = useHistory();
     this.state = {
       reportType: 'maxDailyRates'
     }
@@ -16,7 +17,9 @@ export class ActivityReports extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const url = `/admin/download_activity_reports/${this.state.reportType}`
-    window.location.href = url
+    console.log(url)
+    //window.location.href = url
+    this.history.push(url)
   }
 
   handleChange(event) {
@@ -29,7 +32,7 @@ export class ActivityReports extends React.Component {
       return (
         <form method="GET">
           <AUheading size="xl" level="1">
-          Activity reports1
+          Activity reports
           </AUheading>
           <input type="radio" id="allSellersCategoryMaxDailyRates" name="reportType" value="maxDailyRates" onChange={this.handleChange} checked/>
           <label htmlFor="allSellersCategoryMaxDailyRates">All sellers category max daily rates</label>
