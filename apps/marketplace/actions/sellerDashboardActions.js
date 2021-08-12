@@ -183,7 +183,11 @@ export const removeUser = userId => (dispatch, getState) => {
     }
   }).then(response => {
     if (!response || response.error) {
-      dispatch(setErrorMessage(GENERAL_ERROR))
+      if (response.data && response.data.message) {
+        dispatch(setErrorMessage(response.data.message))
+      } else {
+        dispatch(setErrorMessage(GENERAL_ERROR))
+      }
     } else {
       dispatch(removeUserSuccess(response))
       dispatch(loadTeam())

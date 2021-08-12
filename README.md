@@ -9,7 +9,7 @@ Read the documentation
 
 This project is an ejected [CRA](https://github.com/facebookincubator/create-react-app) project, with some heavy modifications to the build scripts to allow integrated and local development
 
-### Local Development
+#### Local Development
 
 The local environment is the basic webpack dev server (watching included), with some baked in routing config to allow easier integration with [React Router v4](https://github.com/ReactTraining/react-router/tree/v4)
 
