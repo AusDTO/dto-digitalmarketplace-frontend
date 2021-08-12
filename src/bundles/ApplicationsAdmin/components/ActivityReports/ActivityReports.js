@@ -15,7 +15,7 @@ export class ActivityReports extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleSubmit(event) {
+  handleSubmit_old(event) {
     //event.preventDefault();
     //const url = `./download_activity_reports/${this.state.reportType}`
     //window.location.href = url
@@ -34,7 +34,12 @@ export class ActivityReports extends React.Component {
 
     this.props.history.push('./activity_reports')
     //this.props.history.push(fullurl)
+  }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    const url = `/download_activity_reports/${this.state.reportType}`
+    window.location.href = url
 
   }
 
