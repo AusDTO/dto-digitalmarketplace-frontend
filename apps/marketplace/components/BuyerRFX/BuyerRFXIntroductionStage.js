@@ -22,7 +22,7 @@ const BuyerRFXIntroductionStage = props => (
       <li>
         Read the{' '}
         <a
-          href="https://www.dta.gov.au/help-and-advice/ict-procurement/digital-sourcing-framework-ict-procurement/digital-sourcing-policies"
+          href="https://www.buyict.gov.au/sp?id=resources_and_policies&kb=KB0010683"
           rel="external noopener noreferrer"
           target="_blank"
         >
