@@ -61,7 +61,6 @@ export class ActivityReports extends React.Component {
         <AUbutton  onClick={this.handleSubmit}>
           Download reports
         </AUbutton>
-      
       </form>
     )
   }
