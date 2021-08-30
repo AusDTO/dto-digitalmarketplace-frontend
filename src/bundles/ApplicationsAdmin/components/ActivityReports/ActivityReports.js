@@ -1,8 +1,7 @@
 import React from 'react'
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import { useHistory } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+
 export class ActivityReports extends React.Component {
   
   constructor(props) {
