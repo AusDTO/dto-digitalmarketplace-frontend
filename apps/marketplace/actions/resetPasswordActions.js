@@ -26,7 +26,7 @@ export const sendResetPasswordEmail = values => (dispatch, getState) => {
   }).then(response => {
     if (response.error) {
       if (response.data && response.data.message && response.data.message.toLowerCase().includes('invalid csrf')) {
-        dispatch(setAuthState({ csrfToken: '' }))
+        dispatch(setAuthState({ isAuthenticated: false, userType: '', csrfToken: '' }))
         dispatch(setErrorMessage(INVALID_CSRF))
       } else {
         dispatch(setErrorMessage(UNABLE_TO_SEND))
