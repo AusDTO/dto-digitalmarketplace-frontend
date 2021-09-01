@@ -1,6 +1,10 @@
 import React from 'react'
+
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import { AUradio } from '@gov.au/control-input'
+
+import styles from './ActivityReports.css'
 
 export class ActivityReports extends React.Component {
   
@@ -50,18 +54,32 @@ export class ActivityReports extends React.Component {
 
   render() {
     return (
-      <form method="GET">
+      <React.Fragment>
         <AUheading size="xl" level="1">
           Activity reports
         </AUheading>
-        <input type="radio" id="allSellersCategoryMaxDailyRates" name="reportType" value="maxDailyRates" onChange={this.handleChange} checked/>
-        <label htmlFor="allSellersCategoryMaxDailyRates">All sellers category max daily rates</label>
-        <input type="radio" id="allSellersApprovedInCategory" name="reportType" value="approvedInCategory" onChange={this.handleChange}/>
-        <label htmlFor="allSellersApprovedInCategory">All sellers approved in a category</label>
+        <div styleName="radio-block">
+          <AUradio
+            label="All sellers category max daily rates"
+            name="reportType"
+            id="allSellersCategoryMaxDailyRates"
+            value="maxDailyRates"
+            onChange={this.handleChange}
+            block
+          />
+          <AUradio
+            label="All sellers approved in a category"
+            name="reportType"
+            id="allSellersApprovedInCategory"
+            value="approvedInCategory"
+            onChange={this.handleChange}
+            block
+          />
+        </div>
         <AUbutton  onClick={this.handleSubmit}>
           Download reports
         </AUbutton>
-      </form>
+      </React.Fragment>
     )
   }
 }
