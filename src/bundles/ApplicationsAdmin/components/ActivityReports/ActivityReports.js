@@ -35,7 +35,7 @@ export class ActivityReports extends React.Component {
     return (
       <React.Fragment>
         <AUheading size="xl" level="1">
-          Activity reports
+          Reports
         </AUheading>
         <div styleName="radio-block">
           <AUradio
