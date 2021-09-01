@@ -6,7 +6,7 @@ import createStore from './redux/create'
 import ActivityReports from './components/ActivityReports'
 
 
-const ActivityReportsAdminWidget = (props) => {
+const AdminReportsWidget = (props) => {
   const store = createStore(props)
   
   return (
@@ -18,4 +18,4 @@ const ActivityReportsAdminWidget = (props) => {
   )
 }
                                                                  
-export default new RegisterComponent({ 'activity-reports-admin': ActivityReportsAdminWidget })
+export default new RegisterComponent({ 'activity-reports-admin': AdminReportsWidget })
