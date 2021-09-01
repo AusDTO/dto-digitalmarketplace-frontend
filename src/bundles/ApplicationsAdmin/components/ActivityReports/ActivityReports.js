@@ -4,7 +4,7 @@ import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import { AUradio } from '@gov.au/control-input'
 
-import styles from './ActivityReports.css'
+import styles from './AdminReports.css'
 
 export class ActivityReports extends React.Component {
   
