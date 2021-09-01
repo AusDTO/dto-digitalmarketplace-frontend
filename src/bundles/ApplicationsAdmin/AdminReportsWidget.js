@@ -18,4 +18,4 @@ const AdminReportsWidget = (props) => {
   )
 }
                                                                  
-export default new RegisterComponent({ 'activity-reports-admin': AdminReportsWidget })
+export default new RegisterComponent({ 'reports-admin': AdminReportsWidget })
