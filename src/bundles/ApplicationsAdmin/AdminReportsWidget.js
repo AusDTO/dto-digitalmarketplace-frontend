@@ -12,7 +12,7 @@ const AdminReportsWidget = (props) => {
   return (
     <Provider store={store} >
       <Switch>
-        <Route exact path="/admin/activity_reports" component={ActivityReports} />
+        <Route exact path="/admin/reports" component={ActivityReports} />
       </Switch>
     </Provider>
   )
