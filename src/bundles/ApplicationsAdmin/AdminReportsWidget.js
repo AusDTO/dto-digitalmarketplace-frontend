@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
 import RegisterComponent from '../../RegisterComponent'
 import createStore from './redux/create'
-import ActivityReports from './components/ActivityReports'
+import AdminReports from './components/AdminReports'
 
 
 const AdminReportsWidget = (props) => {
@@ -12,7 +12,7 @@ const AdminReportsWidget = (props) => {
   return (
     <Provider store={store} >
       <Switch>
-        <Route exact path="/admin/reports" component={ActivityReports} />
+        <Route exact path="/admin/reports" component={AdminReports} />
       </Switch>
     </Provider>
   )

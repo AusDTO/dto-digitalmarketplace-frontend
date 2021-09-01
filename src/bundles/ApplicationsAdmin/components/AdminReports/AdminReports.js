@@ -6,7 +6,7 @@ import { AUradio } from '@gov.au/control-input'
 
 import styles from './AdminReports.css'
 
-export class ActivityReports extends React.Component {
+export class AdminReports extends React.Component {
   
   constructor(props) {
     super(props)
@@ -64,4 +64,4 @@ export class ActivityReports extends React.Component {
 }
 
 
-export default ActivityReports
+export default AdminReports
