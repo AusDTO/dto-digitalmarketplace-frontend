@@ -1,8 +1,10 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import { AUradio } from '@gov.au/control-input'
+import { downloadReport } from '../../redux/modules/report'
 
 import styles from './AdminReports.css'
 
@@ -18,11 +20,8 @@ export class AdminReports extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    const url = `/download_activity_reports/${this.state.reportType}`
-    window.location.href = url
-
+  handleSubmit() {
+    this.props.downloadReport(this.state.reportType)
   }
 
   handleChange(event) {
@@ -63,5 +62,14 @@ export class AdminReports extends React.Component {
   }
 }
 
+const mapStateToProps = ({ meta }) => {
+  return { meta }
+}
 
-export default AdminReports
+const mapDispatchToProps = dispatch => {
+  return {
+    downloadReport: reportType => dispatch(downloadReport(reportType))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdminReports)
