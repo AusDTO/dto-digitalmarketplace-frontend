@@ -38,7 +38,7 @@ export class AdminReports extends React.Component {
         </AUheading>
         <div styleName="radio-block">
           <AUradio
-            label="All sellers category max daily rates"
+            label="All sellers category max daily rates (consultants and hybrids)"
             name="reportType"
             id="allSellersCategoryMaxDailyRates"
             value="maxDailyRates"
