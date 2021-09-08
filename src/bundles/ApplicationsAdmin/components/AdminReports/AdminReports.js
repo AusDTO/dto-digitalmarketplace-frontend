@@ -41,7 +41,7 @@ export class AdminReports extends React.Component {
             label="All sellers category max daily rates (consultants and hybrids)"
             name="reportType"
             id="allSellersCategoryMaxDailyRates"
-            value="maxDailyRates"
+            value="rates"
             onChange={this.handleChange}
             block
           />
@@ -49,7 +49,7 @@ export class AdminReports extends React.Component {
             label="All sellers approved in a category"
             name="reportType"
             id="allSellersApprovedInCategory"
-            value="approvedInCategory"
+            value="categories"
             onChange={this.handleChange}
             block
           />
