@@ -14,8 +14,9 @@ export class AdminReports extends React.Component {
     super(props)
     
     this.state = {
-      reportType: 'maxDailyRates'
+      reportType: 'rates'
     }
+
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
