@@ -44,6 +44,7 @@ export class AdminReports extends React.Component {
             value="rates"
             onChange={this.handleChange}
             block
+            defaultChecked
           />
           <AUradio
             label="All sellers approved in a category"
