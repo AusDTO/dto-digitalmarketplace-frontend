@@ -1,3 +1,5 @@
+import format from 'date-fns/format'
+
 const ADMIN_DOWNLOADED_REPORT = 'ADMIN_DOWNLOADED_REPORT';
 
 export default function reducer(state = {}, action = {}) {
@@ -13,6 +15,19 @@ export default function reducer(state = {}, action = {}) {
 
 const downloadedReport = () => ({ type: ADMIN_DOWNLOADED_REPORT });
 
+const downloadFile = response => {
+  response.blob()
+  .then(blob => {
+    const url = URL.createObjectURL(blob)
+    const timestamp = format(new Date(), 'YYYY-MM-DD-HHmmssSSS')
+    const link = document.createElement('a')
+    link.href = url
+    link.download = 'seller-rates-' + timestamp + '.csv'
+    link.click()
+    URL.revokeObjectURL(url)
+  })
+}
+
 export const downloadReport = reportType => {
   return (dispatch, getState, api) => {
     const state = getState()
@@ -22,6 +37,7 @@ export const downloadReport = reportType => {
     return api(url, {
       method: 'GET'
     })
+    .then(response => downloadFile(response))
     .then(() => dispatch(downloadedReport()))
   }
 }
