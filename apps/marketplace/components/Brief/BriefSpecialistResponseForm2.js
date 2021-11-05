@@ -317,20 +317,25 @@ const BriefSpecialistResponseForm2 = ({
                 brief.niceToHaveRequirements.some(criterion => criterion.criteria !== '') && (
                   <React.Fragment>
                     <h2 className="au-display-lg">Desirable selection criteria</h2>
-                    {brief.niceToHaveRequirements.map((requirement, i) => (
-                      <Textarea
-                        key={requirement.criteria}
-                        model={`${model}.niceToHaveRequirements['${escapeQuote(requirement.criteria)}']`}
-                        name={`niceToHaveRequirement.${requirement.criteria}`}
-                        id={`niceToHaveRequirement.${i}`}
-                        controlProps={{
-                          limit: 500,
-                          rows: '8'
-                        }}
-                        label={`${requirement.criteria} (optional)`}
-                        description={brief.includeWeightingsNiceToHave ? `Weighting: ${requirement.weighting}%` : ''}
-                      />
-                    ))}
+                    {brief.niceToHaveRequirements.map(
+                      (requirement, i) =>
+                        requirement.criteria && (
+                          <Textarea
+                            key={requirement.criteria}
+                            model={`${model}.niceToHaveRequirements['${escapeQuote(requirement.criteria)}']`}
+                            name={`niceToHaveRequirement.${requirement.criteria}`}
+                            id={`niceToHaveRequirement.${i}`}
+                            controlProps={{
+                              limit: 500,
+                              rows: '8'
+                            }}
+                            label={`${requirement.criteria} (optional)`}
+                            description={
+                              brief.includeWeightingsNiceToHave ? `Weighting: ${requirement.weighting}%` : ''
+                            }
+                          />
+                        )
+                    )}
                   </React.Fragment>
                 )}
               <AUheadings level="2" size="sm">
