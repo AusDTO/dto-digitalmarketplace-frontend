@@ -40,7 +40,7 @@ export class WhoIsBuying extends Component {
             ]
           }
         ],
-        labels: counts.map(a => a.name)
+        labels: counts.map(a => `${a.name} (${a.count})`)
       },
       options: {
         plugins: {
