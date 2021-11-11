@@ -38,7 +38,9 @@ export class NumberOfSellersPerCategory extends Component {
               '#FEAB85',
               '#A15E9A',
               '#27809B',
-              '#DFBFBF'
+              '#DFBFBF',
+              '#00B8A9',
+              '#85000B'
             ]
           }
         ],
