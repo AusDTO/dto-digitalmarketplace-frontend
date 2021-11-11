@@ -70,6 +70,7 @@ var config = {
     'brief-admin': [resolveApp('src/bundles/ApplicationsAdmin/BriefAdminWidget')],
     'assessments-admin': [resolveApp('src/bundles/ApplicationsAdmin/AssessmentsAdminWidget')],
     'evidence-assessments-admin': [resolveApp('src/bundles/ApplicationsAdmin/EvidenceAssessmentsAdminWidget')],
+    'reports-admin': [resolveApp('src/bundles/ApplicationsAdmin/AdminReportsWidget')],
     'application-preview': [resolveApp('src/bundles/SellerRegistration/ApplicationPreviewWidget')],
     'search': [resolveApp('src/bundles/Search/SearchWidget')],
     'auth-header': [resolveApp('src/bundles/Header/AuthWidget')],
