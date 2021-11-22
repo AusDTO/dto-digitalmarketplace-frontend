@@ -48,6 +48,7 @@ class RecruiterForm extends BaseForm {
     checkboxLabelWhenConsultant = 'I understand that once my business is updated to a consultancy in the Digital Marketplace, I will lose my current category approvals. I must request assessment from my dashboard and be approved in the relevant categories before I can respond to opportunities.'
 
     componentDidMount() {
+        const { labourHire } = this.props[this.props.model]
         const { recruiter } = this.state
 
         if (recruiter === 'both') {
@@ -59,6 +60,42 @@ class RecruiterForm extends BaseForm {
         if (recruiter === 'no') {
             this.setState({
                 checkboxLabel: this.checkboxLabelWhenConsultant
+            })
+        }
+
+        if (labourHire
+            && labourHire.act
+            && labourHire.act.expiry
+            && labourHire.act.expiry.length > 0
+            && labourHire.act.licenceNumber
+            && labourHire.act.licenceNumber.length > 0
+        ) {
+            this.setState({
+                hasLabourHireLicenceACT: true
+            })
+        }
+
+        if (labourHire
+            && labourHire.qld
+            && labourHire.qld.expiry
+            && labourHire.qld.expiry.length > 0
+            && labourHire.qld.licenceNumber
+            && labourHire.qld.licenceNumber.length > 0
+        ) {
+            this.setState({
+                hasLabourHireLicenceQLD: true
+            })
+        }
+
+        if (labourHire
+            && labourHire.vic
+            && labourHire.vic.expiry
+            && labourHire.vic.expiry.length > 0
+            && labourHire.vic.licenceNumber
+            && labourHire.vic.licenceNumber.length > 0
+        ) {
+            this.setState({
+                hasLabourHireLicenceVIC: true
             })
         }
 
