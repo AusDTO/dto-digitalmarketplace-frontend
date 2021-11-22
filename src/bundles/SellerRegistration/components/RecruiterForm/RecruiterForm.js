@@ -293,7 +293,7 @@ class RecruiterForm extends BaseForm {
                                     value="both"/>
                                 <label htmlFor="both">My business does both recruitment and consultancy</label>
                             </fieldset>
-                            {this.props[model].recruiter && (
+                            {this.props[model].recruiter && this.props[model].recruiter !== 'no' && (
                                 <fieldset>
                                     <legend>
                                         <h2 id="LabourHire" className="au-display-lg" tabIndex="-1">Labour hire licence</h2>
