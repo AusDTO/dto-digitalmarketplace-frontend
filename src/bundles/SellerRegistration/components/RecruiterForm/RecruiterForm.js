@@ -38,6 +38,9 @@ class RecruiterForm extends BaseForm {
     state = {
         checkboxLabel: '',
         recruiter: this.props[this.props.model].recruiter,
+        hasLabourHireLicenceACT: false,
+        hasLabourHireLicenceQLD: false,
+        hasLabourHireLicenceVIC: false,
         loaded: false
     }
 
