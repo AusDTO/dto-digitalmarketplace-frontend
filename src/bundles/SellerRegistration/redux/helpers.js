@@ -22,8 +22,7 @@ export const dispatchFormState = (dispatch, schemas = {}, data) => {
            result[key] = data[key];
           return result;
         }, {})
-      
-      //console.log('DEBUG mappedFields=',mappedFields || 'NONE');
+
       // Only dispatch if we have values, dont override defaults.
       if (!isEmpty(mappedFields)) {
         dispatch(actions.change(form, mappedFields));
@@ -49,10 +48,7 @@ export const pruneModel = (model) => {
   const pruneObject = (obj) => {
     return Object.keys(obj)
       .filter((key) => {
-        // Replaced current service setting with this because otherwise causes error
-        // TODO: Test impact
-        const service = String(obj[key]).indexOf('service') != -1 ? obj[key].service : key
-        //const service = 'service' in obj[key] ? obj[key].service : key
+        const service = 'service' in obj[key] ? obj[key].service : key
         return service in newModel.services;
       })
       .reduce((o, key) => {
@@ -78,46 +74,12 @@ export const pruneModel = (model) => {
   if (products) {
     newModel = { ...newModel, products: omitBy(products, product => isEmpty(product)) }
   }
-  // TEMPORARILY DISABLING THE PRUNING HERE
-  // This part strips off any extra non-domain specific recruiter_info for some reason
-  // e.g.
-  /*
-  "recruiter_info": {
-        "Software engineering and Development": {
-            "active_candidates": "5",
-            "database_size": "1",
-            "margin": "5",
-            "markup": "5",
-            "placed_candidates": "5"
-        },
-        "database_size": "123",
-        "active_candidates": "123",
-        "placed_candidates": "123",
-        "markup": "123",
-        "margin": "123"
-    },
 
-    gets stripped into 
-    "recruiter_info": {
-        "Software engineering and Development": {
-            "active_candidates": "5",
-            "database_size": "1",
-            "margin": "5",
-            "markup": "5",
-            "placed_candidates": "5"
-        }
-    },
-  //TODO: Probably a better way to rewrite this
-  /*
   if (recruiter_info) {
-    //console.log('BEFORE PRUNE recruiter_info',JSON.stringify(newModel['recruiter_info']))
     delete newModel['recruiter_info'];
     let recruiter_information = model['recruiter'] === 'no' ? {} : pruneObject(recruiter_info)
-
-    //console.log('AFTER PRUNE recruiter_info',JSON.stringify(recruiter_information))
     newModel = { ...newModel, recruiter_info: recruiter_information }
-  }*/
-  
+  }
 
   return newModel;
 }
@@ -128,7 +90,7 @@ export const flattenStateForms = (state = {}) => {
     .reduce((flat, key) => {
       return Object.assign({}, flat, forms[key])
     }, {});
-  console.log('DEBUG flatState (before pruning)=',flatState);
+
   return pruneModel(flatState);
 }
 

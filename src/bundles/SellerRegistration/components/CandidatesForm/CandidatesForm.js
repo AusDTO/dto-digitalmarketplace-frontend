@@ -57,7 +57,7 @@ class CandidatesForm extends BaseForm {
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token} />
                         )}
                         <Textfield
-                            model={`${model}.recruiter_info.database_size`}
+                            model={`${model}.candidates.database_size`}
                             name={`recruiter-database_size`}
                             id={`recruiter-database_size`}
                             htmlFor={`recruiter-database_size`}
@@ -72,7 +72,7 @@ class CandidatesForm extends BaseForm {
                             }}
                         />
                         <Textfield
-                            model={`${model}.recruiter_info.active_candidates`}
+                            model={`${model}.candidates.active_candidates`}
                             name={`recruiter-active_candidates`}
                             id={`recruiter-active_candidates`}
                             htmlFor={`recruiter-active_candidates`}
@@ -87,7 +87,7 @@ class CandidatesForm extends BaseForm {
                             }}
                         />
                         <Textfield
-                            model={`${model}.recruiter_info.placed_candidates`}
+                            model={`${model}.candidates.placed_candidates`}
                             name={`recruiter-placed_candidates`}
                             id={`recruiter-placed_candidates`}
                             htmlFor={`recruiter-placed_candidates`}
@@ -102,7 +102,7 @@ class CandidatesForm extends BaseForm {
                             }}
                         />
                         <Textfield
-                            model={`${model}.recruiter_info.markup`}
+                            model={`${model}.candidates.markup`}
                             name={`recruiter-markup`}
                             id={`recruiter-markup`}
                             htmlFor={`recruiter-markup`}
@@ -115,7 +115,7 @@ class CandidatesForm extends BaseForm {
                             validators={{ required, validPercentage }}
                         />
                         <Textfield
-                            model={`${model}.recruiter_info.margin`}
+                            model={`${model}.candidates.margin`}
                             name={`recruiter-margin`}
                             id={`recruiter-margin`}
                             htmlFor={`recruiter-margin`}

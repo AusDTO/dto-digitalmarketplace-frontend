@@ -119,6 +119,7 @@ export default combineReducers({
     },
     candidatesForm: {
       recruiter_info: {},
+      candidates: {}
     }
   })
 })
