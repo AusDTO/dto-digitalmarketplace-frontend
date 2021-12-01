@@ -15,6 +15,7 @@
 }
 .privateInfo {
   border: red 5px solid;
+  padding:10px;
 }
 .row hr {
   margin-bottom: 3rem;
