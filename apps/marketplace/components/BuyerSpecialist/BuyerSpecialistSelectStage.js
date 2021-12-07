@@ -12,7 +12,7 @@ import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 const requiredCategory = v => v.sellerCategory
 const requiredChoice = v => !v.sellerCategory || v.openTo
 const atLeastOneSeller = v =>
-  !v.openTo || v.openTo === 'all' || (v.openTo === 'selected' && v.sellers && Object.keys(v.sellers).length > 0)
+  !v.openTo || v.openTo === 'all' || ((v.openTo === 'selected' || v.openTo === 'selected-labour-hire') && v.sellers && Object.keys(v.sellers).length > 0)
 
 export const done = v => requiredCategory(v) && requiredChoice(v) && atLeastOneSeller(v)
 
@@ -27,6 +27,11 @@ export class BuyerSpecialistSelectStage extends Component {
     const newState = { ...this.props[this.props.model].sellers }
     newState[seller.code] = { name: seller.name }
     this.props.updateSelectedSellers(newState)
+  }
+
+  handleLabourHireSellerSelect(seller){
+    this.props.
+    this.handleSellerSelect(seller);
   }
 
   handleSellerCategorySelect(category) {
@@ -106,13 +111,17 @@ export class BuyerSpecialistSelectStage extends Component {
                   {
                     label: 'Specific sellers in the category',
                     value: 'selected'
+                  },
+                  {
+                    label: 'Specific labour hire sellers',
+                    value: 'selected-labour-hire'
                   }
                 ]}
                 messages={{}}
                 onChange={() => this.props.resetSelectedSellers()}
               />
             </div>
-            {this.props[this.props.model].openTo === 'selected' && (
+            {(this.props[this.props.model].openTo === 'selected' || this.props[this.props.model].openTo === 'selected-labour-hire') && (
               <React.Fragment>
                 <SellerSelect
                   briefId={this.props[this.props.model].id}
@@ -124,7 +133,7 @@ export class BuyerSpecialistSelectStage extends Component {
                   onSellerCategorySelect={this.handleSellerCategorySelect}
                   showCategorySelect={false}
                   notFoundMessage="Seller is not on the Digital Marketplace"
-                  selectedCategory={this.props[this.props.model].sellerCategory}
+                  selectedCategory={this.props[this.props.model].openTo==='selected-labour-hire'?'':this.props[this.props.model].sellerCategory}
                   showSellerCatalogueLink
                 />
                 <br />
