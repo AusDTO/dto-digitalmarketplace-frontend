@@ -46,7 +46,6 @@ const OpportunitySpecialistInfoCard = props => {
   } = props
 
   const closedEarly = isBefore(parse(closingDate), parse(originalClosedAt))
-
   return (
     <div className={styles.container}>
       <div className="row">
@@ -80,7 +79,7 @@ const OpportunitySpecialistInfoCard = props => {
       {isOpen && (
         <div className="row">
           <div className="col-xs-12">
-            {isApprovedSeller && isInvited && isAssessedForCategory ? (
+            {isApprovedSeller && isInvited && canRespond  ? (
               <p>
                 You can submit up to {numberOfSuppliers} candidate{numberOfSuppliers > 1 && 's'} before the opportunity
                 closes.
@@ -193,7 +192,7 @@ const OpportunitySpecialistInfoCard = props => {
           {isOpen && loggedIn && isApplicant && (
             <span>
               <p className={styles.invitedStatus}>
-                You must complete your profile and be approved in {category} to respond.
+                You must complete your profile and indicate you are both a consultancy and a recruiter to be able to apply for this opportunity.
                 {isAwaitingApplicationAssessment && <span> Your application is currently being assessed.</span>}
               </p>
               {!isAwaitingApplicationAssessment && (
@@ -222,10 +221,10 @@ const OpportunitySpecialistInfoCard = props => {
               <p>Only invited sellers can apply.</p>
             </div>
           )}
-          {isOpen && loggedIn && isApprovedSeller && hasSignedCurrentAgreement && isInvited && !isAssessedForCategory && (
+          {isOpen && loggedIn && isApprovedSeller && hasSignedCurrentAgreement && isInvited && !isAssessedForCategory && !canRespond && (
             <span>
               <p className={styles.invitedStatus}>
-                Only sellers assessed and approved by the Marketplace in &quot;{category}&quot; can apply.
+                You must update your profile to indicate you are both a consultancy and a recruiter to be able to apply for this opportunity.
                 {isRecruiterOnly && !isAwaitingDomainAssessment && (
                   <span>
                     {' '}
@@ -256,10 +255,10 @@ const OpportunitySpecialistInfoCard = props => {
                 !isRecruiterOnly && (
                   <p>
                     <a
-                      href={`${rootPath}/seller-assessment/create/${sellerCategory}/${briefId}`}
+                      href="/sellers/edit"
                       className={`au-btn au-btn--block ${styles.redBtn}`}
                     >
-                      Request assessment
+                      Update profile
                     </a>
                   </p>
                 )}
@@ -276,8 +275,7 @@ const OpportunitySpecialistInfoCard = props => {
             </span>
           )}
           {isOpen &&
-            isApprovedSeller &&
-            isAssessedForCategory &&
+            isApprovedSeller && canRespond &&
             (hasSignedCurrentAgreement || (!hasSignedCurrentAgreement && hasResponded)) &&
             canRespond && (
               <div>
