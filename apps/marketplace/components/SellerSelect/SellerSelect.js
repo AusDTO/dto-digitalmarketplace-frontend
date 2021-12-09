@@ -78,8 +78,9 @@ const SellerSelectView = props => (
 )
 
 const SellerSelectResultsView = props => {
-  const { category } = props
-  const searchUri = category ? `/search/sellers?role=${encodeURIComponent(category)}&sort_by=a-z` : '/search/sellers'
+  const { category } = props;
+
+  const searchUri = category ? `/search/sellers?role=${encodeURIComponent(category)}&sort_by=a-z` : '/search/sellers';
 
   return (
     <ul
@@ -183,7 +184,13 @@ export class SellerSelect extends Component {
 
   render() {
     const categoryData = this.props.categories.find(category => category.value === this.props.selectedCategory)
-    const category = categoryData ? categoryData.text : null
+    let categoryTemp = null;
+    if(categoryData.value ==''){
+      categoryTemp = null;
+    }else{
+      categoryTemp = categoryData ? categoryData.text : null;
+    }
+    const category = categoryTemp;
 
     return (
       <div className={styles.container}>
