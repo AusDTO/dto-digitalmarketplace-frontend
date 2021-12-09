@@ -158,96 +158,111 @@ class Header extends React.Component {
       </React.Fragment>
 
     return (
-      <section className="au-marketplace-header">
-        <div className="wrapper">
-          <div className="row">
-            <div className="col-md-8 col-sm-8 col-xs-12 au-marketplace-header-logo-section">
-              <a href="/" title="Go to the Marketplace homepage">
-                <span className="au-marketplace-header-goverment-logo" dangerouslySetInnerHTML={{ __html: logoGovCrest }} />
-                <span className="au-marketplace-header-title">
-                  <span className="au-marketplace-header-logo">
-                    <span>Digital Marketplace</span>
+      <React.Fragment>
+        <section>
+          <div className="maintenance-banner">
+            <div className="wrapper">
+              <div className="row">
+                  <span className="maintenance-warning">Important</span>
+                  <span className="maintenance-message">
+                    The Digital Marketplace will be undergoing maintenance at 9pm on 13 December 2021.{` `}
+                    <a href="/contact-us">Contact</a> our support team for any questions.
                   </span>
-                </span>
-              </a>
+                </div>
             </div>
-            <div className="col-md-4 col-sm-4 col-xs-12 hide-mobile no-padding-tablet">
-              <div className="au-marketplace-header-user-nav">
-                <div className="au-marketplace-header-actions">
-                  {this.props.isAuthenticated ? (
-                    (this.props.userType === 'admin' && <AdminHeaderActions />) ||
-                    (this.props.userType === 'applicant' && <ApplicantHeaderActions />) ||
-                    (this.props.userType === 'buyer' && <BuyerHeaderActions />) ||
-                    (this.props.userType === 'supplier' && <SellerHeaderActions />)
-                  ) : (
-                    <UnauthenticatedHeaderActions />
-                  )}
+          </div>
+        </section>
+        <section className="au-marketplace-header">
+          <div className="wrapper">
+            <div className="row">
+              <div className="col-md-8 col-sm-8 col-xs-12 au-marketplace-header-logo-section">
+                <a href="/" title="Go to the Marketplace homepage">
+                  <span className="au-marketplace-header-goverment-logo" dangerouslySetInnerHTML={{ __html: logoGovCrest }} />
+                  <span className="au-marketplace-header-title">
+                    <span className="au-marketplace-header-logo">
+                      <span>Digital Marketplace</span>
+                    </span>
+                  </span>
+                </a>
+              </div>
+              <div className="col-md-4 col-sm-4 col-xs-12 hide-mobile no-padding-tablet">
+                <div className="au-marketplace-header-user-nav">
+                  <div className="au-marketplace-header-actions">
+                    {this.props.isAuthenticated ? (
+                      (this.props.userType === 'admin' && <AdminHeaderActions />) ||
+                      (this.props.userType === 'applicant' && <ApplicantHeaderActions />) ||
+                      (this.props.userType === 'buyer' && <BuyerHeaderActions />) ||
+                      (this.props.userType === 'supplier' && <SellerHeaderActions />)
+                    ) : (
+                      <UnauthenticatedHeaderActions />
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="row hide-mobile">
+              <div className="col-md-12">
+                <nav className="au-marketplace-header-navigation">
+                  <ul className="au-link-list au-link-list--inline">
+                    <li className="au-marketplace-header-link-list">
+                      <a
+                        styleName={this.props.location.pathname === '/2/opportunities' ? 'au-marketplace-header-active' : ''}
+                        href="/2/opportunities"
+                      >
+                        Opportunities
+                      </a>
+                    </li>
+                    <li className="au-marketplace-header-link-list">
+                      <a
+                        styleName={this.props.location.pathname === '/search/sellers' ? 'au-marketplace-header-active' : ''}
+                        href="/search/sellers"
+                      >
+                        Seller Catalogue
+                      </a>
+                    </li>
+                    <li className="au-marketplace-header-link-list">
+                      <a href="/2/insights">
+                        Insights
+                      </a>
+                    </li>
+                    <li className="au-marketplace-header-link-list">
+                      <a href="https://marketplace1.zendesk.com/hc/en-gb">
+                        Support
+                      </a>
+                    </li>
+                    <li className="au-marketplace-header-link-list">
+                      <a
+                        styleName={this.props.location.pathname === '/contact-us' ? 'au-marketplace-header-active' : ''} 
+                        href="/contact-us"
+                      >
+                        Contact
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+            <div className="row hide-desktop">
+              <div className="col-md-12">
+                <div className="au-marketplace-header-mobile-menu">
+                  <AUaccordion
+                    header={ this.state.accordionClosed ? "Open menu" : "Close menu" }
+                    closed={ this.state.accordionClosed }
+                    onOpen={ () => { this.openAccordion() } }
+                    onClose={ () => { this.closeAccordion() } }
+                  >
+                    <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
+                      {this.props.isAuthenticated
+                        ? <AuthenticatedMobileLinks userType={this.props.userType} />
+                        : <UnauthenticatedMobileLinks />}
+                    </div>
+                  </AUaccordion>
                 </div>
               </div>
             </div>
           </div>
-          <div className="row hide-mobile">
-            <div className="col-md-12">
-              <nav className="au-marketplace-header-navigation">
-                <ul className="au-link-list au-link-list--inline">
-                  <li className="au-marketplace-header-link-list">
-                    <a
-                      styleName={this.props.location.pathname === '/2/opportunities' ? 'au-marketplace-header-active' : ''}
-                      href="/2/opportunities"
-                    >
-                      Opportunities
-                    </a>
-                  </li>
-                  <li className="au-marketplace-header-link-list">
-                    <a
-                      styleName={this.props.location.pathname === '/search/sellers' ? 'au-marketplace-header-active' : ''}
-                      href="/search/sellers"
-                    >
-                      Seller Catalogue
-                    </a>
-                  </li>
-                  <li className="au-marketplace-header-link-list">
-                    <a href="/2/insights">
-                      Insights
-                    </a>
-                  </li>
-                  <li className="au-marketplace-header-link-list">
-                    <a href="https://marketplace1.zendesk.com/hc/en-gb">
-                      Support
-                    </a>
-                  </li>
-                  <li className="au-marketplace-header-link-list">
-                    <a
-                      styleName={this.props.location.pathname === '/contact-us' ? 'au-marketplace-header-active' : ''} 
-                      href="/contact-us"
-                    >
-                      Contact
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-          <div className="row hide-desktop">
-            <div className="col-md-12">
-              <div className="au-marketplace-header-mobile-menu">
-                <AUaccordion
-                  header={ this.state.accordionClosed ? "Open menu" : "Close menu" }
-                  closed={ this.state.accordionClosed }
-                  onOpen={ () => { this.openAccordion() } }
-                  onClose={ () => { this.closeAccordion() } }
-                >
-                  <div className="au-accordion__body" id="accordion-default" aria-hidden="false">
-                    {this.props.isAuthenticated
-                      ? <AuthenticatedMobileLinks userType={this.props.userType} />
-                      : <UnauthenticatedMobileLinks />}
-                  </div>
-                </AUaccordion>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
+      </React.Fragment>
     )
   }
 }
