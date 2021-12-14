@@ -38,6 +38,9 @@ class RecruiterForm extends BaseForm {
     state = {
         checkboxLabel: '',
         recruiter: this.props[this.props.model].recruiter,
+        hasLabourHireLicenceACT: false,
+        hasLabourHireLicenceQLD: false,
+        hasLabourHireLicenceVIC: false,
         loaded: false
     }
 
@@ -45,6 +48,7 @@ class RecruiterForm extends BaseForm {
     checkboxLabelWhenConsultant = 'I understand that once my business is updated to a consultancy in the Digital Marketplace, I will lose my current category approvals. I must request assessment from my dashboard and be approved in the relevant categories before I can respond to opportunities.'
 
     componentDidMount() {
+        const { labourHire } = this.props[this.props.model]
         const { recruiter } = this.state
 
         if (recruiter === 'both') {
@@ -56,6 +60,42 @@ class RecruiterForm extends BaseForm {
         if (recruiter === 'no') {
             this.setState({
                 checkboxLabel: this.checkboxLabelWhenConsultant
+            })
+        }
+
+        if (labourHire
+            && labourHire.act
+            && labourHire.act.expiry
+            && labourHire.act.expiry.length > 0
+            && labourHire.act.licenceNumber
+            && labourHire.act.licenceNumber.length > 0
+        ) {
+            this.setState({
+                hasLabourHireLicenceACT: true
+            })
+        }
+
+        if (labourHire
+            && labourHire.qld
+            && labourHire.qld.expiry
+            && labourHire.qld.expiry.length > 0
+            && labourHire.qld.licenceNumber
+            && labourHire.qld.licenceNumber.length > 0
+        ) {
+            this.setState({
+                hasLabourHireLicenceQLD: true
+            })
+        }
+
+        if (labourHire
+            && labourHire.vic
+            && labourHire.vic.expiry
+            && labourHire.vic.expiry.length > 0
+            && labourHire.vic.licenceNumber
+            && labourHire.vic.licenceNumber.length > 0
+        ) {
+            this.setState({
+                hasLabourHireLicenceVIC: true
             })
         }
 
@@ -253,7 +293,7 @@ class RecruiterForm extends BaseForm {
                                     value="both"/>
                                 <label htmlFor="both">My business does both recruitment and consultancy</label>
                             </fieldset>
-                            {this.props[model].recruiter && (
+                            {this.props[model].recruiter && this.props[model].recruiter !== 'no' && (
                                 <fieldset>
                                     <legend>
                                         <h2 id="LabourHire" className="au-display-lg" tabIndex="-1">Labour hire licence</h2>
@@ -264,42 +304,179 @@ class RecruiterForm extends BaseForm {
                                         messages={this.generateLicenceMessages()}
                                     />
                                     <p>Some states operate under a mandated Labour Hire Licensing Act. You will require a relevant licence if you are applying for specialist opportunities in Australian Capital Territory, Victoria or Queensland.</p>
-                                    {states.map(s => (
-                                        <React.Fragment key={s}>
-                                            <h3 className="au-display-md" tabIndex="-1">{mapAustraliaState(s)}</h3>
+                                    <p>
+                                        <span styleName="recruiterStyles.bold">I have a labour hire licence for:</span> (optional)
+                                    </p>
+                                    <div>
+                                        <AUcheckbox
+                                            block
+                                            checked={this.state.hasLabourHireLicenceACT}
+                                            id="act-licence"
+                                            label="Australian Capital Territory"
+                                            name="act-licence"
+                                            onChange={() => {
+                                                const { model, updateProperty } = this.props
+
+                                                if (!this.state.hasLabourHireLicenceACT) {
+                                                    updateProperty(`${model}.labourHire.act.expiry`, null)
+                                                    updateProperty(`${model}.labourHire.act.licenceNumber`, null)
+                                                }
+                                            }}
+                                            onClick={() => {
+                                                this.setState({
+                                                    hasLabourHireLicenceACT: !this.state.hasLabourHireLicenceACT
+                                                })
+                                            }}
+                                        />
+                                        <AUcheckbox
+                                            block
+                                            checked={this.state.hasLabourHireLicenceQLD}
+                                            id="qld-licence"
+                                            label="Queensland"
+                                            name="qld-licence"
+                                            onChange={() => {
+                                                const { model, updateProperty } = this.props
+
+                                                if (!this.state.hasLabourHireLicenceQLD) {
+                                                    updateProperty(`${model}.labourHire.qld.expiry`, null)
+                                                    updateProperty(`${model}.labourHire.qld.licenceNumber`, null)
+                                                }
+                                            }}
+                                            onClick={() => {
+                                                this.setState({
+                                                    hasLabourHireLicenceQLD: !this.state.hasLabourHireLicenceQLD
+                                                })
+                                            }}
+                                        />
+                                        <AUcheckbox
+                                            block
+                                            checked={this.state.hasLabourHireLicenceVIC}
+                                            id="vic-licence"
+                                            label="Victoria"
+                                            name="vic-licence"
+                                            onChange={() => {
+                                                const { model, updateProperty } = this.props
+
+                                                if (!this.state.hasLabourHireLicenceVIC) {
+                                                    updateProperty(`${model}.labourHire.vic.expiry`, null)
+                                                    updateProperty(`${model}.labourHire.vic.licenceNumber`, null)
+                                                }
+                                            }}
+                                            onClick={() => {
+                                                this.setState({
+                                                    hasLabourHireLicenceVIC: !this.state.hasLabourHireLicenceVIC
+                                                })
+                                            }}
+                                        />
+                                    </div>
+                                    {this.state.hasLabourHireLicenceACT && (
+                                        <React.Fragment key="act">
+                                            <h3 className="au-display-md" tabIndex="-1">{mapAustraliaState("act")}</h3>
                                             <br />
                                             <p>
                                                 Read the{' '}
-                                                <a href={`/api/2/r/labour-hire-licensing-act-${s}`} rel="external noopener noreferrer" target="_blank">
-                                                    Labour Hire Licensing Act for { mapAustraliaState(s) }
+                                                <a href="/api/2/r/labour-hire-licensing-act-act" rel="external noopener noreferrer" target="_blank">
+                                                    Labour Hire Licensing Act for { mapAustraliaState("act") }
                                                 </a>
                                             </p>
                                             <Textfield
-                                                model={`${model}.labourHire.${s}.licenceNumber`}
-                                                name={`${s}LicenceNumber`}
-                                                id={`${s}LicenceNumber`}
-                                                htmlFor={`${s}LicenceNumber`}
+                                                model={`${model}.labourHire.act.licenceNumber`}
+                                                name="actLicenceNumber"
+                                                id="actLicenceNumber"
+                                                htmlFor="actLicenceNumber"
                                                 label="Licence number"
                                                 description=""
                                             />
                                             <div styleName="recruiterStyles.expiryDate">
                                                 <Control
-                                                    model={`${model}.labourHire.${s}.expiry`}
+                                                    model={`${model}.labourHire.act.expiry`}
                                                     component={Datefield}
-                                                    name={`${s}Expiry`}
-                                                    id={`${s}Expiry`}
+                                                    name="actExpiry"
+                                                    id="actExpiry"
                                                     label="Expiry date"
                                                     updateOn="change"
                                                     controlProps={{
-                                                        id: `${s}Expiry`,
-                                                        model: `${model}.labourHire.${s}.expiry`,
-                                                        htmlFor: `${s}Expiry`,
-                                                        label: `Enter the expiry date of ${s}`
+                                                        id: "actExpiry",
+                                                        model: `${model}.labourHire.act.expiry`,
+                                                        htmlFor: "actExpiry",
+                                                        label: `Enter the expiry date for ${ mapAustraliaState("act") }`
                                                     }}
                                                 />
                                             </div>
                                         </React.Fragment>
-                                    ))}
+                                    )}
+                                    {this.state.hasLabourHireLicenceQLD && (
+                                        <React.Fragment key="qld">
+                                            <h3 className="au-display-md" tabIndex="-1">{mapAustraliaState("qld")}</h3>
+                                            <br />
+                                            <p>
+                                                Read the{' '}
+                                                <a href="/api/2/r/labour-hire-licensing-act-qld" rel="external noopener noreferrer" target="_blank">
+                                                    Labour Hire Licensing Act for { mapAustraliaState("qld") }
+                                                </a>
+                                            </p>
+                                            <Textfield
+                                                model={`${model}.labourHire.qld.licenceNumber`}
+                                                name="qldLicenceNumber"
+                                                id="qldLicenceNumber"
+                                                htmlFor="qldLicenceNumber"
+                                                label="Licence number"
+                                                description=""
+                                            />
+                                            <div styleName="recruiterStyles.expiryDate">
+                                                <Control
+                                                    model={`${model}.labourHire.qld.expiry`}
+                                                    component={Datefield}
+                                                    name="qldExpiry"
+                                                    id="qldExpiry"
+                                                    label="Expiry date"
+                                                    updateOn="change"
+                                                    controlProps={{
+                                                        id: "qldExpiry",
+                                                        model: `${model}.labourHire.qld.expiry`,
+                                                        htmlFor: "qldExpiry",
+                                                        label: `Enter the expiry date for ${ mapAustraliaState("qld") }`
+                                                    }}
+                                                />
+                                            </div>
+                                        </React.Fragment>
+                                    )}
+                                    {this.state.hasLabourHireLicenceVIC && (
+                                        <React.Fragment key="vic">
+                                            <h3 className="au-display-md" tabIndex="-1">{mapAustraliaState("vic")}</h3>
+                                            <br />
+                                            <p>
+                                                Read the{' '}
+                                                <a href="/api/2/r/labour-hire-licensing-act-vic" rel="external noopener noreferrer" target="_blank">
+                                                    Labour Hire Licensing Act for { mapAustraliaState("vic") }
+                                                </a>
+                                            </p>
+                                            <Textfield
+                                                model={`${model}.labourHire.vic.licenceNumber`}
+                                                name="vicLicenceNumber"
+                                                id="vicLicenceNumber"
+                                                htmlFor="vicLicenceNumber"
+                                                label="Licence number"
+                                                description=""
+                                            />
+                                            <div styleName="recruiterStyles.expiryDate">
+                                                <Control
+                                                    model={`${model}.labourHire.vic.expiry`}
+                                                    component={Datefield}
+                                                    name="vicExpiry"
+                                                    id="vicExpiry"
+                                                    label="Expiry date"
+                                                    updateOn="change"
+                                                    controlProps={{
+                                                        id: "vicExpiry",
+                                                        model: `${model}.labourHire.vic.expiry`,
+                                                        htmlFor: "vicExpiry",
+                                                        label: `Enter the expiry date for ${ mapAustraliaState("vic") }`
+                                                    }}
+                                                />
+                                            </div>
+                                        </React.Fragment>
+                                    )}
                                 </fieldset>
                             )}
                             {children}
