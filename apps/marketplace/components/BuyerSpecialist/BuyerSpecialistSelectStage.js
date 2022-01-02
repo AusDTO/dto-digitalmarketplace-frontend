@@ -9,10 +9,17 @@ import SelectedSellersControl from 'marketplace/components/BuyerBriefFlow/Select
 import RadioList from 'shared/form/RadioList'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 
+// For grabbing count of ICT Labour Hire sellers
+import { labourHireSupplierCount } from 'marketplace/actions/supplierActions'
+
+// For warning  message
+import mainStyles from '../../main.scss'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
+
 const requiredCategory = v => v.sellerCategory
 const requiredChoice = v => !v.sellerCategory || v.openTo
 const atLeastOneSeller = v =>
-  !v.openTo || v.openTo === 'all' || ((v.openTo === 'selected' || v.openTo === 'selected-labour-hire') && v.sellers && Object.keys(v.sellers).length > 0)
+  !v.openTo || v.openTo === 'all' || (v.openTo === 'selected' && v.sellers && Object.keys(v.sellers).length > 0)
 
 export const done = v => requiredCategory(v) && requiredChoice(v) && atLeastOneSeller(v)
 
@@ -21,6 +28,13 @@ export class BuyerSpecialistSelectStage extends Component {
     super(props)
     this.handleSellerSelect = this.handleSellerSelect.bind(this)
     this.handleSellerCategorySelect = this.handleSellerCategorySelect.bind(this)
+    
+    this.setState({ sellerCount: 0 });
+
+    labourHireSupplierCount()
+      .then(data => {
+        this.setState({ sellerCount: data });
+      }).catch(() => { });
   }
 
   handleSellerSelect(seller) {
@@ -29,9 +43,9 @@ export class BuyerSpecialistSelectStage extends Component {
     this.props.updateSelectedSellers(newState)
   }
 
-  handleLabourHireSellerSelect(seller){
+  handleLabourHireSellerSelect(seller) {
     this.props.
-    this.handleSellerSelect(seller);
+      this.handleSellerSelect(seller);
   }
 
   handleSellerCategorySelect(category) {
@@ -63,6 +77,13 @@ export class BuyerSpecialistSelectStage extends Component {
       return true
     })
 
+    categories.push({
+      value: '0000000',
+      text: 'labour_hire'
+    });
+
+    this.handleSellerCategorySelect('labour_hire');
+
     return (
       <Form
         model={this.props.model}
@@ -88,14 +109,7 @@ export class BuyerSpecialistSelectStage extends Component {
             atLeastOneSeller: 'You must add at least one seller'
           }}
         />
-        <PanelCategorySelect
-          id="select-seller"
-          categories={categories}
-          onChange={e => this.handleSellerCategorySelect(e.target.value)}
-          selectedCategory={this.props[this.props.model].sellerCategory}
-          label="Category"
-        />
-        {this.props[this.props.model].sellerCategory && (
+        {
           <div>
             <div>
               <RadioList
@@ -105,23 +119,36 @@ export class BuyerSpecialistSelectStage extends Component {
                 model={`${this.props.model}.openTo`}
                 options={[
                   {
-                    label: 'Any seller in the category',
+                    label: 'Any seller that provides ICT Labour Hire',
                     value: 'all'
                   },
                   {
-                    label: 'Specific sellers in the category',
+                    label: 'Specific ICT Labour Hire sellers',
                     value: 'selected'
-                  },
-                  {
-                    label: 'Specific labour hire sellers',
-                    value: 'selected-labour-hire'
                   }
                 ]}
                 messages={{}}
                 onChange={() => this.props.resetSelectedSellers()}
               />
             </div>
-            {(this.props[this.props.model].openTo === 'selected' || this.props[this.props.model].openTo === 'selected-labour-hire') && (
+            {(this.props[this.props.model].openTo === 'all') && (
+              <AUpageAlert
+                as="warning"
+                className={`${mainStyles.pageAlert} ${mainStyles.marginTop2} ${mainStyles.marginRight2}`}
+              >
+                <AUheading level="2" size="lg">
+                  You are about to invite all {this.state.sellerCount} sellers.
+                </AUheading>
+                <div className={`${mainStyles.marginTop1} ${mainStyles.noMaxWidth}`}>
+                  <p className={mainStyles.noMaxWidth}>
+                    You will need to reply to all seller questions, evaluate all quotes and debrief all unsuccessful sellers (where requested).<br></br>
+                    You should only invite all sellers if there is a business need for this approach. If you have questions, please <a href="/contact-us" rel="noopener noreferrer" target="_blank">
+                      contact us
+                    </a>.
+                  </p>
+                </div>
+              </AUpageAlert>)}
+            {(this.props[this.props.model].openTo === 'selected') && (
               <React.Fragment>
                 <SellerSelect
                   briefId={this.props[this.props.model].id}
@@ -133,7 +160,9 @@ export class BuyerSpecialistSelectStage extends Component {
                   onSellerCategorySelect={this.handleSellerCategorySelect}
                   showCategorySelect={false}
                   notFoundMessage="Seller is not on the Digital Marketplace"
-                  selectedCategory={this.props[this.props.model].openTo==='selected-labour-hire'?'':this.props[this.props.model].sellerCategory}
+                  selectedCategory={'labour_hire'}
+                  allSuppliers={true}
+                  searchParams={"?type=ICT Labour Hire&sort_by=a-z&view=sellers&user_role=buyer"}
                   showSellerCatalogueLink
                 />
                 <br />
@@ -145,7 +174,7 @@ export class BuyerSpecialistSelectStage extends Component {
               </React.Fragment>
             )}
           </div>
-        )}
+        }
         {this.props.formButtons}
       </Form>
     )
@@ -153,8 +182,8 @@ export class BuyerSpecialistSelectStage extends Component {
 }
 
 BuyerSpecialistSelectStage.defaultProps = {
-  onSubmit: () => {},
-  onSubmitFailed: () => {}
+  onSubmit: () => { },
+  onSubmitFailed: () => { }
 }
 
 BuyerSpecialistSelectStage.propTypes = {

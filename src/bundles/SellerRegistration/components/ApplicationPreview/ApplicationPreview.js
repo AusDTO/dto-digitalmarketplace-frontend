@@ -121,12 +121,27 @@ const mapStateToProps = (state, {documentsUrl, onClick, ...rest}) => {
   // filter out services that have been de-selected
   assessed = assessed.filter(key => Object.keys(services).includes(key))
 
+  let candidatesProvided = false;
+  if (candidates){
+    if (
+      candidates.active_candidates &&
+      candidates.database_size &&
+      candidates.margin &&
+      candidates.markup &&
+      candidates.placed_candidates
+    ){
+      candidatesProvided = true
+    }
+  }
+  console.log('candidates=',candidates);
   // calculate badges
   seller_type = Object.assign({}, {
     product: !isEmpty(state.application.products),
     recruiter_only: recruiter === 'yes',
     consultant_only: recruiter === 'no',
-    recruiter_both: recruiter === 'both'
+    recruiter_both: recruiter === 'both',
+    consultant: recruiter === 'both' || recruiter === 'no',
+    labour_hire: (recruiter === 'both' || recruiter === 'yes') && candidatesProvided
   }, seller_type);
 
   let caseStudyLink = null;
