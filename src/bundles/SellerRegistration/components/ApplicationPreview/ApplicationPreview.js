@@ -133,7 +133,7 @@ const mapStateToProps = (state, {documentsUrl, onClick, ...rest}) => {
       candidatesProvided = true
     }
   }
-  console.log('candidates=',candidates);
+  
   // calculate badges
   seller_type = Object.assign({}, {
     product: !isEmpty(state.application.products),
