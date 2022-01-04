@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component} from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
@@ -16,6 +16,9 @@ import { labourHireSupplierCount } from 'marketplace/actions/supplierActions'
 import mainStyles from '../../main.scss'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 
+// Components outside of the React Component so they are not crontrolled by strict javascript variable requirement
+let isBuyerSpecialistSelectStageMounted = false // Allows to tell if we can set the state so we dont get React errors setting sellerCOunt
+
 const requiredCategory = v => v.sellerCategory
 const requiredChoice = v => !v.sellerCategory || v.openTo
 const atLeastOneSeller = v =>
@@ -28,13 +31,6 @@ export class BuyerSpecialistSelectStage extends Component {
     super(props)
     this.handleSellerSelect = this.handleSellerSelect.bind(this)
     this.handleSellerCategorySelect = this.handleSellerCategorySelect.bind(this)
-    
-    this.setState({ sellerCount: 0 });
-
-    labourHireSupplierCount()
-      .then(data => {
-        this.setState({ sellerCount: data });
-      }).catch(() => { });
   }
 
   handleSellerSelect(seller) {
@@ -62,7 +58,27 @@ export class BuyerSpecialistSelectStage extends Component {
     this.props.updateSelectedSellers(newState)
   }
 
+  // For some reason this gets called twice but a not big issue because this is called once per page load for a buyer making a whole new opportunity
+  componentDidMount() {
+    isBuyerSpecialistSelectStageMounted = true;
+
+    labourHireSupplierCount()
+      .then(data => {
+        if (isBuyerSpecialistSelectStageMounted){
+          this.setState({ sellerCount: data });
+        }
+      }).catch(() => { });
+      
+      // This is our dummy category since we dont need an actual category anymore because there is no category picker
+      this.handleSellerCategorySelect('labour_hire');
+  }
+
+  componentWillUnmount() {
+    isBuyerSpecialistSelectStageMounted = false;
+  }
+
   render() {
+
     const categories = [
       {
         value: '',
@@ -77,12 +93,11 @@ export class BuyerSpecialistSelectStage extends Component {
       return true
     })
 
+    // This is our dummy category which allows us to have the filter not use category and use seller_types.labour_hire 
     categories.push({
       value: '0000000',
       text: 'labour_hire'
     });
-
-    this.handleSellerCategorySelect('labour_hire');
 
     return (
       <Form
@@ -131,13 +146,13 @@ export class BuyerSpecialistSelectStage extends Component {
                 onChange={() => this.props.resetSelectedSellers()}
               />
             </div>
-            {(this.props[this.props.model].openTo === 'all') && (
+            {(this.props[this.props.model].openTo === 'all') && this.state != null && (
               <AUpageAlert
                 as="warning"
                 className={`${mainStyles.pageAlert} ${mainStyles.marginTop2} ${mainStyles.marginRight2}`}
               >
                 <AUheading level="2" size="lg">
-                  You are about to invite all {this.state.sellerCount} sellers.
+                  You are about to invite all {this.state.sellerCount || ''} sellers.
                 </AUheading>
                 <div className={`${mainStyles.marginTop1} ${mainStyles.noMaxWidth}`}>
                   <p className={mainStyles.noMaxWidth}>
