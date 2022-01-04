@@ -40,8 +40,6 @@ const PrivateInfo = (props) => {
         all_domains = []
     } = props;
 
-    console.log('PROPS=',props);
-
     let price_statuses = {};
     all_domains.forEach(d => price_statuses[d.domain_name] = d.price_status);
 
