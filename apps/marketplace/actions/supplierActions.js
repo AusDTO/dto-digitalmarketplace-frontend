@@ -28,15 +28,14 @@ export const findSuppliers = (keyword, category, all, briefId, codesToExclude = 
   })
 }
 
-export const labourHireSupplierCount = () => {
-  return dmapi({ url: `/labour_hire_supplier_count`}).then(response => {
+export const labourHireSupplierCount = () =>
+  dmapi({ url: `/labour_hire_supplier_count` }).then(response => {
     if (!response || response.error) {
       throw response.errorMessage
     } else {
       return response.data
     }
   })
-}
 
 export const handleErrorFailure = response => dispatch => {
   if (!response) {

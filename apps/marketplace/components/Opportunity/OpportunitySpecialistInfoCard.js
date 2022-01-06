@@ -36,7 +36,6 @@ const OpportunitySpecialistInfoCard = props => {
     numberOfSuppliers,
     originalClosedAt,
     rejectedEvidenceId,
-    sellerCategory,
     sellerResponses,
     sellersApplied,
     sellersInvited,
@@ -79,7 +78,7 @@ const OpportunitySpecialistInfoCard = props => {
       {isOpen && (
         <div className="row">
           <div className="col-xs-12">
-            {isApprovedSeller && isInvited && canRespond  ? (
+            {isApprovedSeller && isInvited && canRespond ? (
               <p>
                 You can submit up to {numberOfSuppliers} candidate{numberOfSuppliers > 1 && 's'} before the opportunity
                 closes.
@@ -192,7 +191,8 @@ const OpportunitySpecialistInfoCard = props => {
           {isOpen && loggedIn && isApplicant && (
             <span>
               <p className={styles.invitedStatus}>
-                You must complete your profile and indicate you are both a consultancy and a recruiter to be able to apply for this opportunity.
+                You must complete your profile and indicate you are both a consultancy and a recruiter to be able to
+                apply for this opportunity.
                 {isAwaitingApplicationAssessment && <span> Your application is currently being assessed.</span>}
               </p>
               {!isAwaitingApplicationAssessment && (
@@ -221,61 +221,66 @@ const OpportunitySpecialistInfoCard = props => {
               <p>Only invited sellers can apply.</p>
             </div>
           )}
-          {isOpen && loggedIn && isApprovedSeller && hasSignedCurrentAgreement && isInvited && !isAssessedForCategory && !canRespond && (
-            <span>
-              <p className={styles.invitedStatus}>
-                You must update your profile to indicate you are both a consultancy and a recruiter to be able to apply for this opportunity.
-                {isRecruiterOnly && !isAwaitingDomainAssessment && (
-                  <span>
-                    {' '}
-                    You must <a href="/sellers/edit">edit your profile</a> to add this category before you can apply.
-                  </span>
-                )}
-                {isRecruiterOnly && isAwaitingApplicationAssessment && (
-                  <span> Your application is currently being assessed.</span>
-                )}
-                {isAwaitingDomainAssessment && (
-                  <span> Your application for this category is currently being assessed.</span>
-                )}
-                {!isAwaitingDomainAssessment && hasEvidenceInDraftForCategory && !isRecruiterOnly && draftEvidenceId && (
-                  <span>
-                    {' '}
-                    You currently have a{' '}
-                    <a href={`${rootPath}/seller-assessment/${draftEvidenceId}/introduction`}>draft submission</a> for
-                    assessment in this category.
-                  </span>
-                )}
+          {isOpen &&
+            loggedIn &&
+            isApprovedSeller &&
+            hasSignedCurrentAgreement &&
+            isInvited &&
+            !isAssessedForCategory &&
+            !canRespond && (
+              <span>
+                <p className={styles.invitedStatus}>
+                  You must update your profile to indicate you are both a consultancy and a recruiter to be able this
+                  opportunity.
+                  {isRecruiterOnly && !isAwaitingDomainAssessment && (
+                    <span>
+                      {' '}
+                      You must <a href="/sellers/edit">edit your profile</a> to add this category before you can apply.
+                    </span>
+                  )}
+                  {isRecruiterOnly && isAwaitingApplicationAssessment && (
+                    <span> Your application is currently being assessed.</span>
+                  )}
+                  {isAwaitingDomainAssessment && (
+                    <span> Your application for this category is currently being assessed.</span>
+                  )}
+                  {!isAwaitingDomainAssessment && hasEvidenceInDraftForCategory && !isRecruiterOnly && draftEvidenceId && (
+                    <span>
+                      {' '}
+                      You currently have a{' '}
+                      <a href={`${rootPath}/seller-assessment/${draftEvidenceId}/introduction`}>draft submission</a> for
+                      assessment in this category.
+                    </span>
+                  )}
+                  {!isAwaitingDomainAssessment && hasLatestEvidenceRejectedForCategory && rejectedEvidenceId && (
+                    <span> Your submitted assessment has been reviewed by the Marketplace and was not successful.</span>
+                  )}
+                </p>
+                {!isAwaitingDomainAssessment &&
+                  !hasEvidenceInDraftForCategory &&
+                  !hasLatestEvidenceRejectedForCategory &&
+                  !isRecruiterOnly && (
+                    <p>
+                      <a href="/sellers/edit" className={`au-btn au-btn--block ${styles.redBtn}`}>
+                        Update profile
+                      </a>
+                    </p>
+                  )}
                 {!isAwaitingDomainAssessment && hasLatestEvidenceRejectedForCategory && rejectedEvidenceId && (
-                  <span> Your submitted assessment has been reviewed by the Marketplace and was not successful.</span>
-                )}
-              </p>
-              {!isAwaitingDomainAssessment &&
-                !hasEvidenceInDraftForCategory &&
-                !hasLatestEvidenceRejectedForCategory &&
-                !isRecruiterOnly && (
                   <p>
                     <a
-                      href="/sellers/edit"
+                      href={`${rootPath}/seller-assessment/${rejectedEvidenceId}/feedback`}
                       className={`au-btn au-btn--block ${styles.redBtn}`}
                     >
-                      Update profile
+                      View assessment feedback
                     </a>
                   </p>
                 )}
-              {!isAwaitingDomainAssessment && hasLatestEvidenceRejectedForCategory && rejectedEvidenceId && (
-                <p>
-                  <a
-                    href={`${rootPath}/seller-assessment/${rejectedEvidenceId}/feedback`}
-                    className={`au-btn au-btn--block ${styles.redBtn}`}
-                  >
-                    View assessment feedback
-                  </a>
-                </p>
-              )}
-            </span>
-          )}
+              </span>
+            )}
           {isOpen &&
-            isApprovedSeller && canRespond &&
+            isApprovedSeller &&
+            canRespond &&
             (hasSignedCurrentAgreement || (!hasSignedCurrentAgreement && hasResponded)) &&
             canRespond && (
               <div>
@@ -380,7 +385,6 @@ OpportunitySpecialistInfoCard.propTypes = {
   briefId: PropTypes.number.isRequired,
   briefStatus: PropTypes.string.isRequired,
   category: PropTypes.string,
-  sellerCategory: PropTypes.string.isRequired,
   numberOfSuppliers: PropTypes.string,
   hasSupplierErrors: PropTypes.bool,
   isInvited: PropTypes.bool,
