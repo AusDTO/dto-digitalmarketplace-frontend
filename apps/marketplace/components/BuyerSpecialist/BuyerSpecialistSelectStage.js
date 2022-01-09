@@ -161,7 +161,7 @@ export class BuyerSpecialistSelectStage extends Component {
                     You should only invite all sellers if there is a business need for this approach. If you have
                     questions, please
                     <a href="/contact-us" rel="noopener noreferrer" target="_blank">
-                      contact us
+                      &nbsp;contact us
                     </a>
                     .
                   </p>
