@@ -41,7 +41,8 @@ class RecruiterForm extends BaseForm {
         hasLabourHireLicenceACT: false,
         hasLabourHireLicenceQLD: false,
         hasLabourHireLicenceVIC: false,
-        loaded: false
+        loaded: false,
+        checked: false
     }
 
     checkboxLabelWhenRecruiterConsultant = 'I understand that once my business is updated to both recruitment and consultancy in the Digital Marketplace, I will lose my current category approvals. I must request assessment from my dashboard and be approved in the relevant categories before I can respond to opportunities.'
@@ -210,7 +211,46 @@ class RecruiterForm extends BaseForm {
             }}
           />
         )
-    }  
+    }
+
+    handleCheckboxClickACT = () => {
+        this.setState({ hasLabourHireLicenceACT: !this.state.hasLabourHireLicenceACT });
+    }
+
+    handleCheckboxChangeACT = e => {
+        const { model, updateProperty } = this.props
+
+        if (!e.target.checked) {
+            updateProperty(`${model}.labourHire.act.expiry`, null)
+            updateProperty(`${model}.labourHire.act.licenceNumber`, null)
+        }
+    }
+
+    handleCheckboxClickQLD = () => {
+        this.setState({ hasLabourHireLicenceQLD: !this.state.hasLabourHireLicenceQLD });
+    }
+
+    handleCheckboxChangeQLD = e => {
+        const { model, updateProperty } = this.props
+
+        if (!e.target.checked) {
+            updateProperty(`${model}.labourHire.qld.expiry`, null)
+            updateProperty(`${model}.labourHire.qld.licenceNumber`, null)
+        }
+    }
+
+    handleCheckboxClickVIC = () => {
+        this.setState({ hasLabourHireLicenceVIC: !this.state.hasLabourHireLicenceVIC });
+    }
+
+    handleCheckboxChangeVIC = e => {
+        const { model, updateProperty } = this.props
+
+        if (!e.target.checked) {
+            updateProperty(`${model}.labourHire.vic.expiry`, null)
+            updateProperty(`${model}.labourHire.vic.licenceNumber`, null)
+        }
+    }
 
     render() {
         const {action, csrf_token, model, form, children, onSubmit, nextRoute, submitClicked, applicationErrors, type} = this.props;
@@ -307,67 +347,53 @@ class RecruiterForm extends BaseForm {
                                     <p>
                                         <span styleName="recruiterStyles.bold">I have a labour hire licence for:</span> (optional)
                                     </p>
-                                    <div>
-                                        <AUcheckbox
-                                            block
+                                    <div className="au-control-input au-control-input--block">
+                                        <input
                                             checked={this.state.hasLabourHireLicenceACT}
+                                            className="au-control-input__input"
                                             id="act-licence"
-                                            label="Australian Capital Territory"
-                                            name="act-licence"
-                                            onChange={() => {
-                                                const { model, updateProperty } = this.props
-
-                                                if (!this.state.hasLabourHireLicenceACT) {
-                                                    updateProperty(`${model}.labourHire.act.expiry`, null)
-                                                    updateProperty(`${model}.labourHire.act.licenceNumber`, null)
-                                                }
-                                            }}
-                                            onClick={() => {
-                                                this.setState({
-                                                    hasLabourHireLicenceACT: !this.state.hasLabourHireLicenceACT
-                                                })
-                                            }}
+                                            onChange={this.handleCheckboxChangeACT.bind(this)}
+                                            onClick={this.handleCheckboxClickACT.bind(this)}
+                                            type="checkbox"
                                         />
-                                        <AUcheckbox
-                                            block
+                                        <label
+                                            className="au-control-input__text"
+                                            htmlFor="act-licence"
+                                            styleName="recruiterStyles.noBackgroundImage">
+                                                Australian Capital Territory
+                                        </label>
+                                    </div>
+                                    <div className="au-control-input au-control-input--block">
+                                        <input
                                             checked={this.state.hasLabourHireLicenceQLD}
+                                            className="au-control-input__input"
                                             id="qld-licence"
-                                            label="Queensland"
-                                            name="qld-licence"
-                                            onChange={() => {
-                                                const { model, updateProperty } = this.props
-
-                                                if (!this.state.hasLabourHireLicenceQLD) {
-                                                    updateProperty(`${model}.labourHire.qld.expiry`, null)
-                                                    updateProperty(`${model}.labourHire.qld.licenceNumber`, null)
-                                                }
-                                            }}
-                                            onClick={() => {
-                                                this.setState({
-                                                    hasLabourHireLicenceQLD: !this.state.hasLabourHireLicenceQLD
-                                                })
-                                            }}
+                                            onChange={this.handleCheckboxChangeQLD.bind(this)}
+                                            onClick={this.handleCheckboxClickQLD.bind(this)}
+                                            type="checkbox"
                                         />
-                                        <AUcheckbox
-                                            block
+                                        <label
+                                            className="au-control-input__text"
+                                            htmlFor="qld-licence"
+                                            styleName="recruiterStyles.noBackgroundImage">
+                                                Queensland
+                                        </label>
+                                    </div>
+                                    <div className="au-control-input au-control-input--block">
+                                        <input
                                             checked={this.state.hasLabourHireLicenceVIC}
+                                            className="au-control-input__input"
                                             id="vic-licence"
-                                            label="Victoria"
-                                            name="vic-licence"
-                                            onChange={() => {
-                                                const { model, updateProperty } = this.props
-
-                                                if (!this.state.hasLabourHireLicenceVIC) {
-                                                    updateProperty(`${model}.labourHire.vic.expiry`, null)
-                                                    updateProperty(`${model}.labourHire.vic.licenceNumber`, null)
-                                                }
-                                            }}
-                                            onClick={() => {
-                                                this.setState({
-                                                    hasLabourHireLicenceVIC: !this.state.hasLabourHireLicenceVIC
-                                                })
-                                            }}
+                                            onChange={this.handleCheckboxChangeVIC.bind(this)}
+                                            onClick={this.handleCheckboxClickVIC.bind(this)}
+                                            type="checkbox"
                                         />
+                                        <label
+                                            className="au-control-input__text"
+                                            htmlFor="vic-licence"
+                                            styleName="recruiterStyles.noBackgroundImage">
+                                                Victoria
+                                        </label>
                                     </div>
                                     {this.state.hasLabourHireLicenceACT && (
                                         <React.Fragment key="act">
