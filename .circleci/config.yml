@@ -208,10 +208,9 @@ workflows:
             branches:
               ignore: /.*/
       - deploy_to_production_clone:
-          requires:
-            - approval
+          <<: *required_for_deploy
           filters:
             tags:
-              only: /[0-9]+(\.[0-9]+)*/
-            branches:
               ignore: /.*/
+            branches:
+              only: pc
