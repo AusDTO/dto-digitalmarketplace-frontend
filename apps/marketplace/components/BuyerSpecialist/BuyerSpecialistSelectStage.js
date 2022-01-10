@@ -4,10 +4,20 @@ import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import SellerSelect, { PanelCategorySelect } from 'marketplace/components/SellerSelect/SellerSelect'
+import SellerSelect from 'marketplace/components/SellerSelect/SellerSelect'
 import SelectedSellersControl from 'marketplace/components/BuyerBriefFlow/SelectedSellersControl'
 import RadioList from 'shared/form/RadioList'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
+
+// For grabbing count of ICT Labour Hire sellers
+import { labourHireSupplierCount } from 'marketplace/actions/supplierActions'
+
+// For warning  message
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
+import mainStyles from '../../main.scss'
+
+// Components outside of the React Component so they are not crontrolled by strict javascript variable requirement
+let isBuyerSpecialistSelectStageMounted = false // Allows to tell if we can set the state so we dont get React errors setting sellerCOunt
 
 const requiredCategory = v => v.sellerCategory
 const requiredChoice = v => !v.sellerCategory || v.openTo
@@ -23,10 +33,34 @@ export class BuyerSpecialistSelectStage extends Component {
     this.handleSellerCategorySelect = this.handleSellerCategorySelect.bind(this)
   }
 
+  // For some reason this gets called twice but a not big issue because this is called once per page load for a buyer making a whole new opportunity
+  componentDidMount() {
+    isBuyerSpecialistSelectStageMounted = true
+
+    labourHireSupplierCount()
+      .then(data => {
+        if (isBuyerSpecialistSelectStageMounted) {
+          this.setState({ sellerCount: data })
+        }
+      })
+      .catch(() => {})
+
+    // This is our dummy category since we dont need an actual category anymore because there is no category picker
+    this.handleSellerCategorySelect('labour_hire')
+  }
+
+  componentWillUnmount() {
+    isBuyerSpecialistSelectStageMounted = false
+  }
+
   handleSellerSelect(seller) {
     const newState = { ...this.props[this.props.model].sellers }
     newState[seller.code] = { name: seller.name }
     this.props.updateSelectedSellers(newState)
+  }
+
+  handleLabourHireSellerSelect(seller) {
+    this.handleSellerSelect(seller)
   }
 
   handleSellerCategorySelect(category) {
@@ -58,6 +92,12 @@ export class BuyerSpecialistSelectStage extends Component {
       return true
     })
 
+    // This is our dummy category which allows us to have the filter not use category and use seller_types.labour_hire
+    categories.push({
+      value: '0000000',
+      text: 'labour_hire'
+    })
+
     return (
       <Form
         model={this.props.model}
@@ -83,14 +123,7 @@ export class BuyerSpecialistSelectStage extends Component {
             atLeastOneSeller: 'You must add at least one seller'
           }}
         />
-        <PanelCategorySelect
-          id="select-seller"
-          categories={categories}
-          onChange={e => this.handleSellerCategorySelect(e.target.value)}
-          selectedCategory={this.props[this.props.model].sellerCategory}
-          label="Category"
-        />
-        {this.props[this.props.model].sellerCategory && (
+        {
           <div>
             <div>
               <RadioList
@@ -100,11 +133,11 @@ export class BuyerSpecialistSelectStage extends Component {
                 model={`${this.props.model}.openTo`}
                 options={[
                   {
-                    label: 'Any seller in the category',
+                    label: 'Any seller that provides ICT Labour Hire',
                     value: 'all'
                   },
                   {
-                    label: 'Specific sellers in the category',
+                    label: 'Specific ICT Labour Hire sellers',
                     value: 'selected'
                   }
                 ]}
@@ -112,6 +145,29 @@ export class BuyerSpecialistSelectStage extends Component {
                 onChange={() => this.props.resetSelectedSellers()}
               />
             </div>
+            {this.props[this.props.model].openTo === 'all' && this.state != null && (
+              <AUpageAlert
+                as="warning"
+                className={`${mainStyles.pageAlert} ${mainStyles.marginTop2} ${mainStyles.marginRight2}`}
+              >
+                <AUheading level="2" size="lg">
+                  You are about to invite all {this.state.sellerCount || ''} sellers.
+                </AUheading>
+                <div className={`${mainStyles.marginTop1} ${mainStyles.noMaxWidth}`}>
+                  <p className={mainStyles.noMaxWidth}>
+                    You will need to reply to all seller questions, evaluate all quotes and debrief all unsuccessful
+                    sellers (where requested).
+                    <br />
+                    You should only invite all sellers if there is a business need for this approach. If you have
+                    questions, please
+                    <a href="/contact-us" rel="noopener noreferrer" target="_blank">
+                      &nbsp;contact us
+                    </a>
+                    .
+                  </p>
+                </div>
+              </AUpageAlert>
+            )}
             {this.props[this.props.model].openTo === 'selected' && (
               <React.Fragment>
                 <SellerSelect
@@ -124,7 +180,9 @@ export class BuyerSpecialistSelectStage extends Component {
                   onSellerCategorySelect={this.handleSellerCategorySelect}
                   showCategorySelect={false}
                   notFoundMessage="Seller is not on the Digital Marketplace"
-                  selectedCategory={this.props[this.props.model].sellerCategory}
+                  selectedCategory={'labour_hire'}
+                  allSuppliers
+                  searchParams={'?type=ICT Labour Hire&sort_by=a-z&view=sellers&user_role=buyer'}
                   showSellerCatalogueLink
                 />
                 <br />
@@ -136,7 +194,7 @@ export class BuyerSpecialistSelectStage extends Component {
               </React.Fragment>
             )}
           </div>
-        )}
+        }
         {this.props.formButtons}
       </Form>
     )

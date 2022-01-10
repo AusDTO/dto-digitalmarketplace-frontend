@@ -34,6 +34,7 @@ const PrivateInfo = (props) => {
         other_panels,
         signed_agreements = [],
         recruiter_info = {},
+        candidates = {},
         labourHire = {},
         pricing = {},
         all_domains = []
@@ -150,6 +151,15 @@ const PrivateInfo = (props) => {
                 )
               })}
             </Row>
+            <Row title="Candidate Info" show={!isEmpty(candidates)}>
+            {Object.keys(candidates).map((key, i) => {
+                return (
+                  <div>
+                  {startCase(key)}:{candidates[key]}
+                  </div>
+                )
+              })}
+            </Row>
             <Row title="Pricing" show={!isEmpty(pricing)}>
               {Object.keys(pricing).map((key, i) => {
                 return (
@@ -157,6 +167,7 @@ const PrivateInfo = (props) => {
                 )
               })}
             </Row>
+            <br></br>
         </article>
     )
 };
@@ -171,6 +182,7 @@ PrivateInfo.propTypes = {
     disclosures: PropTypes.object,
     signed_agreements: PropTypes.array,
     recruiter_info: PropTypes.object,
+    candidates: PropTypes.object,
     labourHire: PropTypes.object,
     pricing: PropTypes.object,
     all_domains: PropTypes.array

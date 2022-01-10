@@ -280,7 +280,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates submittedSellers can submit up to 6 candidates for this role.You must complete your profile and be approved in software to respond.Continue application'
+      'candidates submittedSellers can submit up to 6 candidates for this role.You must complete your profile and indicate you are both a consultancy and a recruiter to be able to apply for this opportunity.Continue application'
     )
   })
 
@@ -310,7 +310,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates submittedSellers can submit up to 6 candidates for this role.You must complete your profile and be approved in software to respond. Your application is currently being assessed.'
+      'candidates submittedSellers can submit up to 6 candidates for this role.You must complete your profile and indicate you are both a consultancy and a recruiter to be able to apply for this opportunity. Your application is currently being assessed.'
     )
   })
 
@@ -335,7 +335,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates submittedSellers can submit up to 6 candidates for this role.You must complete your profile and be approved in software to respond.Continue application'
+      'candidates submittedSellers can submit up to 6 candidates for this role.You must complete your profile and indicate you are both a consultancy and a recruiter to be able to apply for this opportunity.Continue application'
     )
   })
 
@@ -364,7 +364,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates submittedSellers can submit up to 6 candidates for this role.Only sellers assessed and approved by the Marketplace in "software" can apply.Request assessment'
+      'candidates submittedYou can submit up to 6 candidates before the opportunity closes.Apply for opportunity'
     )
   })
 
@@ -394,7 +394,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates submittedSellers can submit up to 6 candidates for this role.Only sellers assessed and approved by the Marketplace in "software" can apply. Your application for this category is currently being assessed.'
+      'candidates submittedYou can submit up to 6 candidates before the opportunity closes.Apply for opportunity'
     )
   })
 

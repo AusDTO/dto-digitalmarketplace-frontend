@@ -56,7 +56,12 @@ const SellerSelectView = props => (
   <div className={styles.sellerSelectView}>
     <label htmlFor={props.id}>{props.label}</label>
     {props.showSellerCatalogueLink && (
-      <a href="/search/sellers" rel="noopener noreferrer" target="_blank" className={styles.searchAllLink}>
+      <a
+        href={props.searchParams ? `/search/sellers${props.searchParams}` : '/search/sellers'}
+        rel="noopener noreferrer"
+        target="_blank"
+        className={styles.searchAllLink}
+      >
         View seller catalogue
       </a>
     )}
@@ -78,9 +83,11 @@ const SellerSelectView = props => (
 )
 
 const SellerSelectResultsView = props => {
-  const { category } = props
-  const searchUri = category ? `/search/sellers?role=${encodeURIComponent(category)}&sort_by=a-z` : '/search/sellers'
+  const { category, searchParams } = props
 
+  let searchUriTemp = category ? `/search/sellers?role=${encodeURIComponent(category)}&sort_by=a-z` : '/search/sellers'
+  searchUriTemp = category === 'labour_hire' ? '/search/sellers' : searchUriTemp
+  const searchUri = searchParams ? searchUriTemp + searchParams : searchUriTemp
   return (
     <ul
       className={`${props.className} ${!props.noResults ? props.hasResultsClassName : ''} ${
@@ -183,7 +190,19 @@ export class SellerSelect extends Component {
 
   render() {
     const categoryData = this.props.categories.find(category => category.value === this.props.selectedCategory)
-    const category = categoryData ? categoryData.text : null
+    let categoryTemp = null
+    if (this.props.selectedCategory === 'labour_hire') {
+      categoryTemp = this.props.selectedCategory
+    } else if (categoryData) {
+      if (categoryData.value === '') {
+        categoryTemp = null
+      } else {
+        categoryTemp = categoryData ? categoryData.text : null
+      }
+    }
+
+    const category = categoryTemp
+    const searchParams = this.props.searchParams || undefined
 
     return (
       <div className={styles.container}>
@@ -208,6 +227,7 @@ export class SellerSelect extends Component {
               showSearchButton={this.props.showSearchButton}
               handleSearchClick={this.handleSearchClick}
               showSellerCatalogueLink={this.props.showSellerCatalogueLink}
+              searchParams={searchParams}
             />
             {this.state.inputValue.length >= this.props.minimumSearchChars && (
               <SellerSelectResultsView
@@ -220,6 +240,7 @@ export class SellerSelect extends Component {
                 searchFor={this.state.inputValue}
                 notFoundMessage={this.props.notFoundMessage}
                 handleSellerSelectClick={this.handleSellerSelectClick}
+                searchParams={searchParams}
               />
             )}
           </div>

@@ -24,7 +24,9 @@ export class Catalogue extends React.Component {
     const cards = search.view === 'sellers' ? search.results : search[search.view];
     let nullCaseStudies = search['casestudies'] === null && search.view === 'casestudies';
     let returnOnSignInURL = buildNextURL(search);
-
+    // There filter options are no longer used
+    delete search.type["Recruiter"];
+    delete search.type["Consultant and Recruiter"];
     return (
       <section>
         <form onSubmit={e => {

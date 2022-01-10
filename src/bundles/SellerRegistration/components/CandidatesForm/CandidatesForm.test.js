@@ -11,7 +11,7 @@ import { StaticRouter } from 'react-router-dom';
 import CandidatesForm from './CandidatesForm'
 import createStore from '../../redux/create-signup'
 
-test('Candidates form displays list of domains', () => {
+test('Candidates form NO LONGER displays list of domains', () => {
   const store = createStore({
     form_options: {
       csrf_token: 'abc',
@@ -27,5 +27,5 @@ test('Candidates form displays list of domains', () => {
     </StaticRouter>
   )
   let inputs = wrapper.find('h2');
-  expect(inputs.length).toBe(2);
+  expect(inputs.length).toBe(0);
 });
