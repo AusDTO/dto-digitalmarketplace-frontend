@@ -179,13 +179,55 @@ class RecruiterForm extends BaseForm {
 
     generateLicenceValidators() {
         let validators = {}
-        states.map(s => {
-            const validator = {}
-            validator[`requiredLicenceNumber_${s}`] = formValues => this.validLicenceNumber(formValues, s)
-            validator[`requiredLicenceExpiry_${s}`] = formValues => this.validLicenceExpiry(formValues, s)
-            validators = { ...validators, ...validator }
-            return true
-        })
+
+        validators['requiredLicenceExpiry_act'] = formValues => {
+            if (!this.state.hasLabourHireLicenceACT) {
+                return true
+            }
+
+            return this.validLicenceExpiry(formValues, 'act')
+        }
+
+        validators['requiredLicenceNumber_act'] = formValues => {
+            if (!this.state.hasLabourHireLicenceACT) {
+                return true
+            }
+
+            return this.validLicenceNumber(formValues, 'act')
+        }
+
+        validators['requiredLicenceExpiry_qld'] = formValues => {
+            if (!this.state.hasLabourHireLicenceQLD) {
+                return true
+            }
+
+            return this.validLicenceExpiry(formValues, 'qld')
+        }
+
+        validators['requiredLicenceNumber_qld'] = formValues => {
+            if (!this.state.hasLabourHireLicenceQLD) {
+                return true
+            }
+
+            return this.validLicenceNumber(formValues, 'qld')
+        }
+
+        validators['requiredLicenceExpiry_vic'] = formValues => {
+            if (!this.state.hasLabourHireLicenceVIC) {
+                return true
+            }
+
+            return this.validLicenceExpiry(formValues, 'vic')
+        }
+
+        validators['requiredLicenceNumber_vic'] = formValues => {
+            if (!this.state.hasLabourHireLicenceVIC) {
+                return true
+            }
+
+            return this.validLicenceNumber(formValues, 'vic')
+        }
+
         return validators
     }
 
