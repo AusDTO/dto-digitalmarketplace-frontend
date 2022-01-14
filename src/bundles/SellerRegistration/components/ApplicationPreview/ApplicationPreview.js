@@ -94,6 +94,7 @@ const mapStateToProps = (state, {documentsUrl, onClick, ...rest}) => {
     signed_agreements,
     recruiter,
     recruiter_info,
+    candidates,
     labourHire,
     digital_marketplace_panel,
     dsp_panel,
@@ -120,12 +121,25 @@ const mapStateToProps = (state, {documentsUrl, onClick, ...rest}) => {
   // filter out services that have been de-selected
   assessed = assessed.filter(key => Object.keys(services).includes(key))
 
+  let providedCandidates = false;
+  if (candidates &&
+    candidates.active_candidates &&
+    candidates.database_size &&
+    candidates.margin &&
+    candidates.markup &&
+    candidates.placed_candidates
+  ) {
+    providedCandidates = true;
+  }
+
   // calculate badges
   seller_type = Object.assign({}, {
     product: !isEmpty(state.application.products),
     recruiter_only: recruiter === 'yes',
     consultant_only: recruiter === 'no',
-    recruiter_both: recruiter === 'both'
+    recruiter_both: recruiter === 'both',
+    consultant: recruiter === 'both' || recruiter === 'no',
+    labourHire: (recruiter === 'both' || recruiter === 'yes') && providedCandidates
   }, seller_type);
 
   let caseStudyLink = null;
@@ -201,6 +215,7 @@ const mapStateToProps = (state, {documentsUrl, onClick, ...rest}) => {
         disclosures,
         signed_agreements,
         recruiter_info,
+        candidates,
         labourHire,
         pricing,
         all_domains
