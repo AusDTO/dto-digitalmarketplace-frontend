@@ -100,11 +100,11 @@ export class BuyerSpecialistSelectStage extends Component {
                 model={`${this.props.model}.openTo`}
                 options={[
                   {
-                    label: 'Any seller in the category',
+                    label: 'Any seller that provides ICT Labour Hire',
                     value: 'all'
                   },
                   {
-                    label: 'Specific sellers in the category',
+                    label: 'Specific ICT Labour Hire sellers',
                     value: 'selected'
                   }
                 ]}
