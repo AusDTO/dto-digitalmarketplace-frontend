@@ -4,10 +4,14 @@ import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import SellerSelect, { PanelCategorySelect } from 'marketplace/components/SellerSelect/SellerSelect'
 import SelectedSellersControl from 'marketplace/components/BuyerBriefFlow/SelectedSellersControl'
 import RadioList from 'shared/form/RadioList'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
+import { countLabourHireSellers } from 'marketplace/actions/supplierActions'
+
+import mainStyles from '../../main.scss'
 
 const requiredCategory = v => v.sellerCategory
 const requiredChoice = v => !v.sellerCategory || v.openTo
@@ -19,8 +23,30 @@ export const done = v => requiredCategory(v) && requiredChoice(v) && atLeastOneS
 export class BuyerSpecialistSelectStage extends Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      totalLabourHireSellers: 0
+    }
+
     this.handleSellerSelect = this.handleSellerSelect.bind(this)
     this.handleSellerCategorySelect = this.handleSellerCategorySelect.bind(this)
+  }
+
+  componentDidMount() {
+    this.props
+      .countSellers()
+      .then(response => {
+        if (response.status === 200) {
+          this.setState({
+            totalLabourHireSellers: response.data
+          })
+        }
+      })
+      .catch(() => {
+        this.setState({
+          totalLabourHireSellers: 0
+        })
+      })
   }
 
   handleSellerSelect(seller) {
@@ -112,6 +138,29 @@ export class BuyerSpecialistSelectStage extends Component {
                 onChange={() => this.props.resetSelectedSellers()}
               />
             </div>
+            {this.props[this.props.model].openTo === 'all' && (
+              <AUpageAlert as="warning">
+                <AUheading level="2" size="lg">
+                  You are about to invite{' '}
+                  {this.state.totalLabourHireSellers >= 1 ? this.state.totalLabourHireSellers : 'all'} seller
+                  {this.state.totalLabourHireSellers === 1 ? '' : 's'}.
+                </AUheading>
+                <div className={mainStyles.marginTop1}>
+                  <p>
+                    You will need to reply to all seller questions, evaluate all quotes and debrief all unsuccessful
+                    sellers (where requested).
+                  </p>
+                  <p>
+                    You should only invite all sellers if there is a business need for this approach. If you have
+                    questions, please{' '}
+                    <a href="/contact-us" rel="noopener noreferrer" target="_blank">
+                      contact us
+                    </a>
+                    .
+                  </p>
+                </div>
+              </AUpageAlert>
+            )}
             {this.props[this.props.model].openTo === 'selected' && (
               <React.Fragment>
                 <SellerSelect
@@ -161,6 +210,7 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
+  countSellers: () => dispatch(countLabourHireSellers()),
   resetSelectedSellers: () => dispatch(actions.change(`${props.model}.sellers`, {})),
   updateSelectedSellers: sellers => dispatch(actions.change(`${props.model}.sellers`, sellers)),
   resetOpenTo: () => dispatch(actions.change(`${props.model}.openTo`, '')),
