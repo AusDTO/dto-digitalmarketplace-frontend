@@ -18,7 +18,6 @@ const OpportunitySpecialistInfoCard = props => {
     hasSupplierErrors,
     isApplicant,
     isApprovedSeller,
-    isAssessedForCategory,
     isAwaitingApplicationAssessment,
     isBriefOwner,
     isBuyer,
@@ -72,7 +71,7 @@ const OpportunitySpecialistInfoCard = props => {
       {isOpen && (
         <div className="row">
           <div className="col-xs-12">
-            {isApprovedSeller && isInvited && isAssessedForCategory ? (
+            {isApprovedSeller && isInvited && canRespond ? (
               <p>
                 You can submit up to {numberOfSuppliers} candidate{numberOfSuppliers > 1 && 's'} before the opportunity
                 closes.
@@ -220,7 +219,6 @@ const OpportunitySpecialistInfoCard = props => {
           )}
           {isOpen &&
             isApprovedSeller &&
-            isAssessedForCategory &&
             (hasSignedCurrentAgreement || (!hasSignedCurrentAgreement && hasResponded)) &&
             canRespond && (
               <div>
@@ -271,7 +269,6 @@ OpportunitySpecialistInfoCard.defaultProps = {
   supplierBriefResponseCountSubmitted: 0,
   supplierBriefResponseCountDraft: 0,
   canRespond: false,
-  isAssessedForCategory: false,
   hasEvidenceInDraftForCategory: false,
   hasLatestEvidenceRejectedForCategory: false,
   draftEvidenceId: undefined,
@@ -304,7 +301,6 @@ OpportunitySpecialistInfoCard.propTypes = {
   supplierBriefResponseCountSubmitted: PropTypes.number,
   supplierBriefResponseCountDraft: PropTypes.number,
   canRespond: PropTypes.bool,
-  isAssessedForCategory: PropTypes.bool,
   isOpenToAll: PropTypes.bool,
   location: PropTypes.object,
   loggedIn: PropTypes.bool,
