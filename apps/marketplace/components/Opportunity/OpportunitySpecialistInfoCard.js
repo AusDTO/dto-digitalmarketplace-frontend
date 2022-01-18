@@ -21,6 +21,7 @@ const OpportunitySpecialistInfoCard = props => {
     isAwaitingApplicationAssessment,
     isBriefOwner,
     isBuyer,
+    isConsultant,
     isInvited,
     isOpen,
     isOpenToAll,
@@ -200,6 +201,21 @@ const OpportunitySpecialistInfoCard = props => {
               )}
             </span>
           )}
+          {isOpen && isOpenToAll && loggedIn && isConsultant && (
+            <span>
+              <p className={styles.invitedStatus}>
+                You must update your profile to indicate you are both a consultancy and a recruiter to be able to apply
+                for this opportunity.
+              </p>
+              {!isAwaitingApplicationAssessment && (
+                <p>
+                  <a href="/sellers/edit" className="au-btn au-btn--block">
+                    Update profile
+                  </a>
+                </p>
+              )}
+            </span>
+          )}
           {isOpen && loggedIn && isApprovedSeller && !hasSignedCurrentAgreement && !hasResponded && (
             <span>
               <p className={styles.invitedStatus}>
@@ -279,6 +295,7 @@ OpportunitySpecialistInfoCard.defaultProps = {
   hasResponded: false,
   isOpen: false,
   isBuyer: false,
+  isConsultant: false,
   isApprovedSeller: false,
   isApplicant: false,
   isRecruiterOnly: false,
@@ -307,6 +324,7 @@ OpportunitySpecialistInfoCard.propTypes = {
   hasResponded: PropTypes.bool,
   isOpen: PropTypes.bool,
   isBuyer: PropTypes.bool,
+  isConsultant: PropTypes.bool,
   isApprovedSeller: PropTypes.bool,
   isApplicant: PropTypes.bool,
   isAwaitingApplicationAssessment: PropTypes.bool,

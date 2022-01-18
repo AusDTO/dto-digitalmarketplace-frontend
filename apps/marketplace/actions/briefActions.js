@@ -124,6 +124,7 @@ export const handlePublicBriefInfoSuccess = response => ({
   isOpenToAll: response.data.open_to_all,
   isBriefOwner: response.data.is_brief_owner,
   isBuyer: response.data.is_buyer,
+  isConsultant: response.data.is_consultant,
   isApprovedSeller: response.data.is_approved_seller,
   isApplicant: response.data.is_applicant,
   isRecruiterOnly: response.data.is_recruiter_only,
