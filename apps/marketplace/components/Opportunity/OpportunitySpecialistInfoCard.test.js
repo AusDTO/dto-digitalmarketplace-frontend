@@ -67,7 +67,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      '1seller invited0candidates submittedSellers can submit up to 6 candidates for this role.You must be signed in and invited to respondLogin'
+      '1seller invited0candidates submittedSellers can submit up to 6 candidates for this role.You must be signed in, invited to respond and have indicated that you provide ICT Labour Hire services.Login'
     )
   })
 
@@ -90,7 +90,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      '10sellers invited1candidate submittedSellers can submit up to 6 candidates for this role.You must be signed in and invited to respondLogin'
+      '10sellers invited1candidate submittedSellers can submit up to 6 candidates for this role.You must be signed in, invited to respond and have indicated that you provide ICT Labour Hire services.Login'
     )
   })
 
@@ -112,7 +112,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates submittedSellers can submit up to 5 candidates for this role.You must be signed in and approved in software to respondHow to respondLogin'
+      'candidates submittedSellers can submit up to 5 candidates for this role.You must be signed in and have indicated that you provide ICT Labour Hire services.How to respondLogin'
     )
   })
 
@@ -223,7 +223,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates submittedSellers can submit up to 6 candidates for this role.You must be signed in and approved in software to respondHow to respondLogin'
+      'candidates submittedSellers can submit up to 6 candidates for this role.You must be signed in and have indicated that you provide ICT Labour Hire services.How to respondLogin'
     )
   })
 

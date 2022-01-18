@@ -139,7 +139,7 @@ const OpportunitySpecialistInfoCard = props => {
             <span>
               {isOpenToAll ? (
                 <span>
-                  <p>You must be signed in and approved in {category} to respond</p>
+                  <p>You must be signed in and have indicated that you provide ICT Labour Hire services.</p>
                   <p>
                     <a
                       href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000634456-Responding-to-an-opportunity"
@@ -159,7 +159,10 @@ const OpportunitySpecialistInfoCard = props => {
                 </span>
               ) : (
                 <span>
-                  <p>You must be signed in and invited to respond</p>
+                  <p>
+                    You must be signed in, invited to respond and have indicated that you provide ICT Labour Hire
+                    services.
+                  </p>
                   <p>
                     <a
                       href={`/login?next=${encodeURIComponent(
