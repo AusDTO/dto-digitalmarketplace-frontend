@@ -339,65 +339,6 @@ describe('OpportunitySpecialistInfoCard', () => {
     )
   })
 
-  test('not able to apply because seller does not have approved domain', () => {
-    expect(
-      mount(
-        OpportunitySpecialistInfoCard({
-          closingDate: '',
-          briefId: '1',
-          briefLot: 'specialist',
-          briefStatus: 'not draft',
-          loggedIn: true,
-          isOpen: true,
-          category: 'software',
-          sellerCategory: 'software',
-          isApprovedSeller: true,
-          canRespond: true,
-          isInvited: true,
-          hasResponded: false,
-          isAssessedForCategory: false,
-          hasChosenBriefCategory: true,
-          isOpenToAll: true,
-          numberOfSuppliers: 6,
-          sellerResponses: 0,
-          hasSignedCurrentAgreement: true
-        })
-      ).text()
-    ).toEqual(
-      'candidates submittedSellers can submit up to 6 candidates for this role.Only sellers assessed and approved by the Marketplace in "software" can apply.Request assessment'
-    )
-  })
-
-  test('not able to apply because seller does not have approved domain and waiting for assessment', () => {
-    expect(
-      mount(
-        OpportunitySpecialistInfoCard({
-          closingDate: '',
-          briefId: '1',
-          briefLot: 'specialist',
-          briefStatus: 'not draft',
-          loggedIn: true,
-          isOpen: true,
-          category: 'software',
-          sellerCategory: 'software',
-          isApprovedSeller: true,
-          canRespond: true,
-          isInvited: true,
-          hasResponded: false,
-          isAssessedForCategory: false,
-          hasChosenBriefCategory: true,
-          isAwaitingDomainAssessment: true,
-          isOpenToAll: true,
-          numberOfSuppliers: 6,
-          sellerResponses: 0,
-          hasSignedCurrentAgreement: true
-        })
-      ).text()
-    ).toEqual(
-      'candidates submittedSellers can submit up to 6 candidates for this role.Only sellers assessed and approved by the Marketplace in "software" can apply. Your application for this category is currently being assessed.'
-    )
-  })
-
   test('not able to apply because seller has errors in their profile', () => {
     expect(
       mount(

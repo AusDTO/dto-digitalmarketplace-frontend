@@ -12,11 +12,7 @@ const OpportunitySpecialistInfoCard = props => {
     briefStatus,
     buyerEmail,
     canRespond,
-    category,
     closingDate,
-    draftEvidenceId,
-    hasEvidenceInDraftForCategory,
-    hasLatestEvidenceRejectedForCategory,
     hasResponded,
     hasSignedCurrentAgreement,
     hasSupplierErrors,
@@ -24,19 +20,15 @@ const OpportunitySpecialistInfoCard = props => {
     isApprovedSeller,
     isAssessedForCategory,
     isAwaitingApplicationAssessment,
-    isAwaitingDomainAssessment,
     isBriefOwner,
     isBuyer,
     isInvited,
     isOpen,
     isOpenToAll,
-    isRecruiterOnly,
     location,
     loggedIn,
     numberOfSuppliers,
     originalClosedAt,
-    rejectedEvidenceId,
-    sellerCategory,
     sellerResponses,
     sellersApplied,
     sellersInvited,
@@ -226,59 +218,6 @@ const OpportunitySpecialistInfoCard = props => {
               <p>Only invited sellers that have indicated that they provide ICT Labour Hire services can apply.</p>
             </div>
           )}
-          {isOpen && loggedIn && isApprovedSeller && hasSignedCurrentAgreement && isInvited && !isAssessedForCategory && (
-            <span>
-              <p className={styles.invitedStatus}>
-                Only sellers assessed and approved by the Marketplace in &quot;{category}&quot; can apply.
-                {isRecruiterOnly && !isAwaitingDomainAssessment && (
-                  <span>
-                    {' '}
-                    You must <a href="/sellers/edit">edit your profile</a> to add this category before you can apply.
-                  </span>
-                )}
-                {isRecruiterOnly && isAwaitingApplicationAssessment && (
-                  <span> Your application is currently being assessed.</span>
-                )}
-                {isAwaitingDomainAssessment && (
-                  <span> Your application for this category is currently being assessed.</span>
-                )}
-                {!isAwaitingDomainAssessment && hasEvidenceInDraftForCategory && !isRecruiterOnly && draftEvidenceId && (
-                  <span>
-                    {' '}
-                    You currently have a{' '}
-                    <a href={`${rootPath}/seller-assessment/${draftEvidenceId}/introduction`}>draft submission</a> for
-                    assessment in this category.
-                  </span>
-                )}
-                {!isAwaitingDomainAssessment && hasLatestEvidenceRejectedForCategory && rejectedEvidenceId && (
-                  <span> Your submitted assessment has been reviewed by the Marketplace and was not successful.</span>
-                )}
-              </p>
-              {!isAwaitingDomainAssessment &&
-                !hasEvidenceInDraftForCategory &&
-                !hasLatestEvidenceRejectedForCategory &&
-                !isRecruiterOnly && (
-                  <p>
-                    <a
-                      href={`${rootPath}/seller-assessment/create/${sellerCategory}/${briefId}`}
-                      className={`au-btn au-btn--block ${styles.redBtn}`}
-                    >
-                      Request assessment
-                    </a>
-                  </p>
-                )}
-              {!isAwaitingDomainAssessment && hasLatestEvidenceRejectedForCategory && rejectedEvidenceId && (
-                <p>
-                  <a
-                    href={`${rootPath}/seller-assessment/${rejectedEvidenceId}/feedback`}
-                    className={`au-btn au-btn--block ${styles.redBtn}`}
-                  >
-                    View assessment feedback
-                  </a>
-                </p>
-              )}
-            </span>
-          )}
           {isOpen &&
             isApprovedSeller &&
             isAssessedForCategory &&
@@ -366,10 +305,6 @@ OpportunitySpecialistInfoCard.propTypes = {
   supplierBriefResponseCountDraft: PropTypes.number,
   canRespond: PropTypes.bool,
   isAssessedForCategory: PropTypes.bool,
-  hasEvidenceInDraftForCategory: PropTypes.bool,
-  hasLatestEvidenceRejectedForCategory: PropTypes.bool,
-  draftEvidenceId: PropTypes.number,
-  rejectedEvidenceId: PropTypes.number,
   isOpenToAll: PropTypes.bool,
   location: PropTypes.object,
   loggedIn: PropTypes.bool,
@@ -378,15 +313,11 @@ OpportunitySpecialistInfoCard.propTypes = {
   isBuyer: PropTypes.bool,
   isApprovedSeller: PropTypes.bool,
   isApplicant: PropTypes.bool,
-  isRecruiterOnly: PropTypes.bool,
   isAwaitingApplicationAssessment: PropTypes.bool,
-  isAwaitingDomainAssessment: PropTypes.bool,
   isBriefOwner: PropTypes.bool,
   closingDate: PropTypes.string.isRequired,
   briefId: PropTypes.number.isRequired,
   briefStatus: PropTypes.string.isRequired,
-  category: PropTypes.string,
-  sellerCategory: PropTypes.string.isRequired,
   numberOfSuppliers: PropTypes.string,
   hasSupplierErrors: PropTypes.bool,
   isInvited: PropTypes.bool,
