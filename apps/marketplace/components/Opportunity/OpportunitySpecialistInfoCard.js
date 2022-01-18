@@ -196,7 +196,8 @@ const OpportunitySpecialistInfoCard = props => {
           {isOpen && loggedIn && isApplicant && (
             <span>
               <p className={styles.invitedStatus}>
-                You must complete your profile and be approved in {category} to respond.
+                You must complete your profile and indicate you are both a consultancy and a recruiter to be able to
+                apply for this opportunity.
                 {isAwaitingApplicationAssessment && <span> Your application is currently being assessed.</span>}
               </p>
               {!isAwaitingApplicationAssessment && (
