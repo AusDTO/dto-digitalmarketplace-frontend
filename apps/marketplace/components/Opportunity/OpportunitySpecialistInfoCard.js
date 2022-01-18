@@ -223,7 +223,7 @@ const OpportunitySpecialistInfoCard = props => {
           )}
           {isOpen && loggedIn && isApprovedSeller && hasSignedCurrentAgreement && !isOpenToAll && !isInvited && (
             <div className={styles.invitedStatus}>
-              <p>Only invited sellers can apply.</p>
+              <p>Only invited sellers that have indicated that they provide ICT Labour Hire services can apply.</p>
             </div>
           )}
           {isOpen && loggedIn && isApprovedSeller && hasSignedCurrentAgreement && isInvited && !isAssessedForCategory && (
