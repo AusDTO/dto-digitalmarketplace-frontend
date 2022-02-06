@@ -58,8 +58,6 @@ export class BuyerSpecialistSelectStage extends Component {
   handleSellerCategorySelect(category) {
     if (category !== this.props[this.props.model].sellerCategory) {
       this.props.updateSelectedSellerCategory(category)
-      //this.props.resetOpenTo()
-      //this.props.resetSelectedSellers()
     }
   }
 
@@ -127,7 +125,6 @@ export class BuyerSpecialistSelectStage extends Component {
                 }
               ]}
               messages={{}}
-              onChange={() => this.props.resetSelectedSellers()}
             />
           </div>
           {this.props[this.props.model].openTo === 'all' && (
@@ -211,9 +208,7 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = (dispatch, props) => ({
   countSellers: () => dispatch(countLabourHireSellers()),
-  resetSelectedSellers: () => dispatch(actions.change(`${props.model}.sellers`, {})),
   updateSelectedSellers: sellers => dispatch(actions.change(`${props.model}.sellers`, sellers)),
-  resetOpenTo: () => dispatch(actions.change(`${props.model}.openTo`, '')),
   updateSelectedSellerCategory: category => dispatch(actions.change(`${props.model}.sellerCategory`, category))
 })
 
