@@ -14,7 +14,7 @@ const PanelCategorySelectView = props => (
       rel="noopener noreferrer"
       target="_blank"
     >
-      {props.helpLabel ? props.helpLabel : 'What you can buy in each category'}
+      {props.helpLabel}
     </a>
     {props.description &&
       <span>{props.description}</span>
@@ -46,7 +46,9 @@ export const PanelCategorySelect = props => (
 PanelCategorySelect.defaultProps = {
   onChange: () => {},
   selectedCategory: '',
-  label: 'Panel category'
+  label: 'Panel category',
+  helpLabel: 'What you can buy in each category',
+  description: ''
 }
 
 PanelCategorySelect.propTypes = {
