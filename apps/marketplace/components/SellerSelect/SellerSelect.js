@@ -16,9 +16,7 @@ const PanelCategorySelectView = props => (
     >
       {props.helpLabel}
     </a>
-    {props.description &&
-      <span>{props.description}</span>
-    }
+    {props.description && <span>{props.description}</span>}
     <AUselect
       block
       id={`${props.id}-category-select`}
