@@ -236,6 +236,22 @@ const OpportunitySpecialistInfoCard = props => {
           {isOpen &&
             isApprovedSeller &&
             (hasSignedCurrentAgreement || (!hasSignedCurrentAgreement && hasResponded)) &&
+            !canRespond &&
+            hasSupplierErrors && (
+              <div>
+                <div>
+                  <p className={styles.invitedStatus}>There is at least one error in your profile.</p>
+                  <p>
+                    <a href="/sellers/edit" className="au-btn au-btn--block">
+                      Update profile
+                    </a>
+                  </p>
+                </div>
+              </div>
+            )}
+          {isOpen &&
+            isApprovedSeller &&
+            (hasSignedCurrentAgreement || (!hasSignedCurrentAgreement && hasResponded)) &&
             canRespond && (
               <div>
                 {hasSupplierErrors ? (
