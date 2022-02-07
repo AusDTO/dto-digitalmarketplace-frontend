@@ -135,12 +135,12 @@ export class BuyerSpecialistSelectStage extends Component {
             </AUheading>
             <div className={mainStyles.marginTop1}>
               <p>
-                You will need to reply to all seller questions, evaluate all quotes and debrief all unsuccessful
-                sellers (where requested).
+                You will need to reply to all seller questions, evaluate all quotes and debrief all unsuccessful sellers
+                (where requested).
               </p>
               <p>
-                You should only invite all sellers if there is a business need for this approach. If you have
-                questions, please{' '}
+                You should only invite all sellers if there is a business need for this approach. If you have questions,
+                please{' '}
                 <a href="/contact-us" rel="noopener noreferrer" target="_blank">
                   contact us
                 </a>
