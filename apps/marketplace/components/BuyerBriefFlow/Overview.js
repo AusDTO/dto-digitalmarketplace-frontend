@@ -132,7 +132,7 @@ class Overview extends Component {
           : 0
 
       const briefResponseCount = briefResponses && briefResponses.length > 0 ? briefResponses.length : 0
-      const flowName = mapLot(flow).toLowerCase()
+      const flowName = flow === 'specialist' ? mapLot(flow) : mapLot(flow).toLowerCase()
 
       return (
         <div>
