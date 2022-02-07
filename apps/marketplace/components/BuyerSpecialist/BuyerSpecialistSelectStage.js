@@ -108,81 +108,79 @@ export class BuyerSpecialistSelectStage extends Component {
           }}
         />
         <div>
-          <div>
-            <RadioList
-              id="openTo"
-              label="Accept responses from:"
-              name="openTo"
-              model={`${this.props.model}.openTo`}
-              options={[
-                {
-                  label: 'Any seller that provides ICT Labour Hire',
-                  value: 'all'
-                },
-                {
-                  label: 'Specific ICT Labour Hire sellers',
-                  value: 'selected'
-                }
-              ]}
-              messages={{}}
-            />
-          </div>
-          {this.props[this.props.model].openTo === 'all' && (
-            <AUpageAlert as="warning" className={mainStyles.marginBottom3}>
-              <AUheading level="2" size="lg">
-                You are about to invite{' '}
-                {this.state.totalLabourHireSellers >= 1 ? this.state.totalLabourHireSellers : 'all'} seller
-                {this.state.totalLabourHireSellers === 1 ? '' : 's'}.
-              </AUheading>
-              <div className={mainStyles.marginTop1}>
-                <p>
-                  You will need to reply to all seller questions, evaluate all quotes and debrief all unsuccessful
-                  sellers (where requested).
-                </p>
-                <p>
-                  You should only invite all sellers if there is a business need for this approach. If you have
-                  questions, please{' '}
-                  <a href="/contact-us" rel="noopener noreferrer" target="_blank">
-                    contact us
-                  </a>
-                  .
-                </p>
-              </div>
-            </AUpageAlert>
-          )}
-          {this.props[this.props.model].openTo === 'selected' && (
-            <React.Fragment>
-              <SellerSelect
-                briefId={this.props[this.props.model].id}
-                label="Seller name"
-                showSelected={false}
-                showSearchButton={false}
-                categories={categories}
-                onSellerSelect={this.handleSellerSelect}
-                onSellerCategorySelect={this.handleSellerCategorySelect}
-                showCategorySelect={false}
-                notFoundMessage="Seller is not on the Digital Marketplace"
-                selectedCategory="labourHire"
-                showSellerCatalogueLink
-              />
-              <br />
-              <SelectedSellersControl
-                id="selected-sellers"
-                model={`${this.props.model}.sellers`}
-                onRemoveClick={sellerCode => this.removeSeller(sellerCode)}
-              />
-            </React.Fragment>
-          )}
-          <PanelCategorySelect
-            id="select-seller"
-            categories={categories}
-            onChange={e => this.handleSellerCategorySelect(e.target.value)}
-            selectedCategory={this.props[this.props.model].sellerCategory}
-            label="Category"
-            description="Please select the category that best suits your opportunity. This is for reporting purposes only and will not limit who can respond."
-            helpLabel="View category descriptions"
+          <RadioList
+            id="openTo"
+            label="Accept responses from:"
+            name="openTo"
+            model={`${this.props.model}.openTo`}
+            options={[
+              {
+                label: 'Any seller that provides ICT Labour Hire',
+                value: 'all'
+              },
+              {
+                label: 'Specific ICT Labour Hire sellers',
+                value: 'selected'
+              }
+            ]}
+            messages={{}}
           />
         </div>
+        {this.props[this.props.model].openTo === 'all' && (
+          <AUpageAlert as="warning" className={mainStyles.marginBottom3}>
+            <AUheading level="2" size="lg">
+              You are about to invite{' '}
+              {this.state.totalLabourHireSellers >= 1 ? this.state.totalLabourHireSellers : 'all'} seller
+              {this.state.totalLabourHireSellers === 1 ? '' : 's'}.
+            </AUheading>
+            <div className={mainStyles.marginTop1}>
+              <p>
+                You will need to reply to all seller questions, evaluate all quotes and debrief all unsuccessful
+                sellers (where requested).
+              </p>
+              <p>
+                You should only invite all sellers if there is a business need for this approach. If you have
+                questions, please{' '}
+                <a href="/contact-us" rel="noopener noreferrer" target="_blank">
+                  contact us
+                </a>
+                .
+              </p>
+            </div>
+          </AUpageAlert>
+        )}
+        {this.props[this.props.model].openTo === 'selected' && (
+          <React.Fragment>
+            <SellerSelect
+              briefId={this.props[this.props.model].id}
+              label="Seller name"
+              showSelected={false}
+              showSearchButton={false}
+              categories={categories}
+              onSellerSelect={this.handleSellerSelect}
+              onSellerCategorySelect={this.handleSellerCategorySelect}
+              showCategorySelect={false}
+              notFoundMessage="Seller is not on the Digital Marketplace"
+              selectedCategory="labourHire"
+              showSellerCatalogueLink
+            />
+            <br />
+            <SelectedSellersControl
+              id="selected-sellers"
+              model={`${this.props.model}.sellers`}
+              onRemoveClick={sellerCode => this.removeSeller(sellerCode)}
+            />
+          </React.Fragment>
+        )}
+        <PanelCategorySelect
+          id="select-seller"
+          categories={categories}
+          onChange={e => this.handleSellerCategorySelect(e.target.value)}
+          selectedCategory={this.props[this.props.model].sellerCategory}
+          label="Category"
+          description="Please select the category that best suits your opportunity. This is for reporting purposes only and will not limit who can respond."
+          helpLabel="View category descriptions"
+        />
         {this.props.formButtons}
       </Form>
     )
