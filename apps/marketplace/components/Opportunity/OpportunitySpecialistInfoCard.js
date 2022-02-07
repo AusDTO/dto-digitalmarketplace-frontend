@@ -201,7 +201,7 @@ const OpportunitySpecialistInfoCard = props => {
               )}
             </span>
           )}
-          {isOpen && isOpenToAll && loggedIn && isConsultant && (
+          {isOpen && loggedIn && isConsultant && (
             <span>
               <p className={styles.invitedStatus}>
                 You must update your profile to indicate you are both a consultancy and a recruiter to be able to apply
