@@ -47,7 +47,7 @@ class BuyerDashboardHeader extends Component {
                       <a href={`${rootPath}/buyer-specialist/create`}>ICT Labour Hire</a>
                     </li>
                     <li>
-                      <a href={`${rootPath}/outcome-choice`}>Outcome</a>
+                      <a href={`${rootPath}/outcome-choice`}>Professional Services and Consulting</a>
                     </li>
                     <li>
                       <a href="/2/buyer-training2/create">Training</a>
@@ -59,7 +59,7 @@ class BuyerDashboardHeader extends Component {
                       <a href={`${rootPath}/request-access/create_drafts`}>ICT Labour Hire</a>
                     </li>
                     <li>
-                      <a href={`${rootPath}/request-access/create_drafts`}>Outcome</a>
+                      <a href={`${rootPath}/request-access/create_drafts`}>Professional Services and Consulting</a>
                     </li>
                     <li>
                       <a href={`${rootPath}/request-access/create_drafts`}>Training</a>
