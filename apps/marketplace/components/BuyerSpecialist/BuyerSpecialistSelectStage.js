@@ -128,7 +128,7 @@ export class BuyerSpecialistSelectStage extends Component {
             />
           </div>
           {this.props[this.props.model].openTo === 'all' && (
-            <AUpageAlert as="warning">
+            <AUpageAlert as="warning" className={mainStyles.marginBottom3}>
               <AUheading level="2" size="lg">
                 You are about to invite{' '}
                 {this.state.totalLabourHireSellers >= 1 ? this.state.totalLabourHireSellers : 'all'} seller
