@@ -1,3 +1,7 @@
+.bold {
+    font-weight: bold;
+}
+
 .pageAlert {
     margin-bottom: 1rem;
 }
@@ -13,4 +17,8 @@
 
 .expiryDate:last-child {
     margin-bottom: 1rem;
+}
+
+.noBackgroundImage::before {
+    background-image: none !important;
 }
