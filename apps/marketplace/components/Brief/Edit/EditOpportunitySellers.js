@@ -102,6 +102,7 @@ class EditOpportunitySellers extends Component {
 
   handleSellerSearchChange = e => {
     const { brief } = this.props
+    const category = brief.lot === 'specialist' ? 'labourHire' : brief.sellerCategory
 
     this.setState({
       sellerName: e.target.value
@@ -114,7 +115,7 @@ class EditOpportunitySellers extends Component {
     this.setState({
       timeoutId: setTimeout(() => {
         if (this.state.sellerName && this.state.sellerName.length >= 2) {
-          findSuppliers(this.state.sellerName, brief.sellerCategory, false, brief.id, Object.keys(brief.sellers))
+          findSuppliers(this.state.sellerName, category, false, brief.id, Object.keys(brief.sellers))
             .then(data => {
               this.setState({
                 searchResults: data.sellers
