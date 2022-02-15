@@ -101,13 +101,7 @@ exports[`ApplicationPreview renders with props 1`] = `
               </div>
               <div
                 className="col-sm-8 col-sm-push-1 col-xs-12"
-              >
-                <p
-                  styleName="nocategories"
-                >
-                  This seller has not yet been approved in any categories.
-                </p>
-              </div>
+              />
             </div>
             <div
               className="row"

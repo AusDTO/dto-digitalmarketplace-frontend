@@ -33,6 +33,7 @@ const Body = (props) => {
     products = {},
     digital_marketplace_panel,
     dsp_panel,
+    recruiter,
     signed_agreements,
     CaseStudyLink = () => null,
   } = props;
@@ -49,14 +50,30 @@ const Body = (props) => {
     <article className="seller-profile" styleName={public_profile ? 'full-profile' : ''}>
       <div styleName="seller-profile-content">
         <Row title="Categories" show>
-
-          {isEmpty(assessed) && (
+          {recruiter === 'yes' && (
             <p styleName="nocategories">
-              This seller has not yet been approved in any categories.
+              This seller can only respond to ICT Labour Hire opportunities.
             </p>
           )}
 
-          {!isEmpty(assessed) && (
+          {recruiter === 'both' && isEmpty(assessed) && (
+            <React.Fragment>
+              <p styleName="nocategories">
+                This seller has not yet been approved in any Professional Services and Consulting categories.
+              </p>
+              <p styleName="nocategories">
+                This seller can respond to ICT Labour Hire opportunities.
+              </p>
+            </React.Fragment>
+          )}
+
+          {recruiter === 'no' && isEmpty(assessed) && (
+            <p styleName="nocategories">
+              This seller has not yet been approved in any Professional Services and Consulting categories.
+            </p>
+          )}
+
+          {(recruiter === 'both' || recruiter === 'no') && !isEmpty(assessed) && (
             <span><div className="seller-profile__evaluated-badges" styleName="badges evaluated-badges">
               {assessed.map((service, i) => (
                 <span key={i}>{service}</span>
@@ -78,6 +95,12 @@ const Body = (props) => {
 
                       </span>
 
+          )}
+
+          {recruiter === 'both' && !isEmpty(assessed) && (
+            <p styleName="nocategories">
+              This seller can respond to ICT Labour Hire opportunities.
+            </p>
           )}
 
         </Row>
@@ -351,6 +374,7 @@ Body.propTypes = {
     documentsUrl: PropTypes.string,
     case_studies: PropTypes.object,
     signed_agreements: PropTypes.array,
+    recruiter: PropTypes.string,
     representative: PropTypes.string,
     labourHire: PropTypes.object,
     email: PropTypes.string,
