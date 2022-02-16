@@ -32,8 +32,7 @@ class BuyerDashboardHeader extends Component {
     return (
       <React.Fragment>
         <AUpageAlert as="warning">
-          Updates to the Digital Marketplace
-          <br />
+          <h3>Updates to the Digital Marketplace</h3>
           We will soon make some updates to the Digital Marketplace including the creation of the new ICT Labour Hire
           category, and the renaming of &quot;Specialist&quot; and &quot;Outcome&quot; opportunities. For more
           information on how this affects you,{' '}
@@ -41,6 +40,7 @@ class BuyerDashboardHeader extends Component {
             click here.
           </a>
         </AUpageAlert>
+        <br />
         <PageHeader
           organisation={organisation}
           title="Dashboard"
