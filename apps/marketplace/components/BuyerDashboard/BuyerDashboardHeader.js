@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import AUaccordion from '@gov.au/accordion/lib/js/react.js'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
 import { hasPermission } from 'marketplace/components/helpers'
 import PageHeader from 'marketplace/components/PageHeader/PageHeader'
@@ -30,6 +31,16 @@ class BuyerDashboardHeader extends Component {
     const { briefCounts, isPartOfTeam, isTeamLead, organisation, teams } = this.props
     return (
       <React.Fragment>
+        <AUpageAlert as="warning">
+          Updates to the Digital Marketplace
+          <br />
+          We will soon make some updates to the Digital Marketplace including the creation of the new ICT Labour Hire
+          category, and the renaming of &quot;Specialist&quot; and &quot;Outcome&quot; opportunities. For more
+          information on how this affects you,{' '}
+          <a href="https://mailchi.mp/ae94e5dd228d/new-digital-marketplace-category-platforms-integration-988037">
+            click here.
+          </a>
+        </AUpageAlert>
         <PageHeader
           organisation={organisation}
           title="Dashboard"
