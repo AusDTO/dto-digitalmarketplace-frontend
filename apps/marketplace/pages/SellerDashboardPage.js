@@ -81,6 +81,16 @@ class SellerDashboardPage extends Component {
     return (
       <BrowserRouter basename={`${rootPath}/seller-dashboard`}>
         <div>
+          <AUpageAlert as="warning">
+            <h3>Updates to the Digital Marketplace</h3>
+            We will soon make some updates to the Digital Marketplace including the creation of the new ICT Labour Hire
+            category, and the renaming of &quot;Specialist&quot; and &quot;Outcome&quot; opportunities. For more
+            information on how this affects you,{' '}
+            <a href="https://mailchi.mp/3d8298eb0100/new-digital-marketplace-category-platforms-integration-988033?e=[UNIQID]">
+              click here.
+            </a>
+          </AUpageAlert>
+          <br />
           <div className="row">
             <div className="col-xs-12">{supplier.name}</div>
           </div>
