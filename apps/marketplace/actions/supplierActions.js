@@ -1,5 +1,6 @@
 import {
   CASE_STUDIES_LOAD_SUCCESS,
+  COUNT_LABOUR_HIRE_SELLERS_SUCCESS,
   DOMAIN_LOAD_SUCCESS,
   DOMAIN_EVIDENCE_LOAD_SUCCESS,
   EVIDENCE_CREATE_SUCCESS,
@@ -236,3 +237,17 @@ export const saveEvidence = (evidenceId, data) => (dispatch, getState) => {
     return response
   })
 }
+
+export const handleCountLabourHireSellersSuccess = () => ({
+  type: COUNT_LABOUR_HIRE_SELLERS_SUCCESS
+})
+
+export const countLabourHireSellers = () => dispatch =>
+  dmapi({ url: `/suppliers/count/labour-hire` }).then(response => {
+    if (!response || response.error) {
+      throw response.errorMessage
+    }
+
+    dispatch(handleCountLabourHireSellersSuccess(response))
+    return response
+  })

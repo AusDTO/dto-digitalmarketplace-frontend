@@ -107,7 +107,7 @@ export class DownloadReports extends Component {
             },
             {
               value: 'specialist',
-              label: 'Digital specialist opportunities'
+              label: 'ICT Labour Hire opportunities'
             },
             {
               value: 'atm',

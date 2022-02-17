@@ -14,8 +14,9 @@ const PanelCategorySelectView = props => (
       rel="noopener noreferrer"
       target="_blank"
     >
-      What you can buy in each category
+      {props.helpLabel}
     </a>
+    {props.description && <span>{props.description}</span>}
     <AUselect
       block
       id={`${props.id}-category-select`}
@@ -34,6 +35,8 @@ export const PanelCategorySelect = props => (
       onChange={props.onChange}
       selectedCategory={props.selectedCategory}
       label={props.label}
+      description={props.description}
+      helpLabel={props.helpLabel}
     />
   </div>
 )
@@ -41,7 +44,9 @@ export const PanelCategorySelect = props => (
 PanelCategorySelect.defaultProps = {
   onChange: () => {},
   selectedCategory: '',
-  label: 'Panel category'
+  label: 'Panel category',
+  helpLabel: 'What you can buy in each category',
+  description: ''
 }
 
 PanelCategorySelect.propTypes = {
@@ -49,7 +54,9 @@ PanelCategorySelect.propTypes = {
   categories: PropTypes.array.isRequired,
   onChange: PropTypes.func,
   selectedCategory: PropTypes.string,
-  label: PropTypes.string
+  label: PropTypes.string,
+  description: PropTypes.string,
+  helpLabel: PropTypes.string
 }
 
 const SellerSelectView = props => (

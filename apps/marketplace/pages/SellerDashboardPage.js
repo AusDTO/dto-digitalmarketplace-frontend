@@ -12,6 +12,7 @@ import { loadSellerDashboard, removeUser } from 'marketplace/actions/sellerDashb
 import LoadingIndicatorFullPage from 'shared/LoadingIndicatorFullPage/LoadingIndicatorFullPage'
 import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import { rootPath } from 'marketplace/routes'
+import mainStyles from 'marketplace/main.scss'
 import styles from '../main.scss'
 
 class SellerDashboardPage extends Component {
@@ -81,16 +82,20 @@ class SellerDashboardPage extends Component {
     return (
       <BrowserRouter basename={`${rootPath}/seller-dashboard`}>
         <div>
-          <AUpageAlert as="warning">
+          <AUpageAlert as="warning" className={`${mainStyles.marginBottom3}`}>
             <h3>Updates to the Digital Marketplace</h3>
-            We will soon make some updates to the Digital Marketplace including the creation of the new ICT Labour Hire
-            category, and the renaming of &quot;Specialist&quot; and &quot;Outcome&quot; opportunities. For more
+            <br />
+            We have recently made a few changes to the Digital Marketplace including the creation of the new ICT Labour
+            Hire category, and the renaming of &quot;Specialist&quot; and &quot;Outcome&quot; opportunities. For more
             information on how this affects you,{' '}
-            <a href="https://mailchi.mp/3d8298eb0100/new-digital-marketplace-category-platforms-integration-988033?e=[UNIQID]">
+            <a
+              href="https://mailchi.mp/3d8298eb0100/new-digital-marketplace-category-platforms-integration-988033?e=[UNIQID]"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               click here.
             </a>
           </AUpageAlert>
-          <br />
           <div className="row">
             <div className="col-xs-12">{supplier.name}</div>
           </div>

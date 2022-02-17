@@ -157,7 +157,7 @@ export const mapLot = lot => {
       return 'Seek proposals and quotes'
     case 'digital-professionals':
     case 'specialist':
-      return 'Specialist'
+      return 'ICT Labour Hire'
     case 'training':
     case 'training2':
       return 'Training'

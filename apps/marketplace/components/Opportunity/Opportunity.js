@@ -122,6 +122,7 @@ const Opportunity = props => {
     isBuyer,
     isApprovedSeller,
     isApplicant,
+    isConsultant,
     isRecruiterOnly,
     isAwaitingApplicationAssessment,
     isAwaitingDomainAssessment,
@@ -641,12 +642,6 @@ const Opportunity = props => {
               canRespond={canRespond}
               isInvited={isInvited}
               isOpenToAll={isOpenToAll}
-              isAssessedForCategory={isAssessedForCategory}
-              hasEvidenceInDraftForCategory={hasEvidenceInDraftForCategory}
-              hasLatestEvidenceRejectedForCategory={hasLatestEvidenceRejectedForCategory}
-              draftEvidenceId={draftEvidenceId}
-              rejectedEvidenceId={rejectedEvidenceId}
-              isOpenToCategory={isOpenToCategory}
               hasResponded={hasResponded}
               briefId={brief.id}
               briefLot={brief.lotSlug}
@@ -655,15 +650,12 @@ const Opportunity = props => {
               isBuyer={isBuyer}
               isApprovedSeller={isApprovedSeller}
               isApplicant={isApplicant}
-              isRecruiterOnly={isRecruiterOnly}
+              isConsultant={isConsultant}
               isAwaitingApplicationAssessment={isAwaitingApplicationAssessment}
-              isAwaitingDomainAssessment={isAwaitingDomainAssessment}
-              hasBeenAssessedForBrief={hasBeenAssessedForBrief}
               isBriefOwner={isBriefOwner}
               buyerEmail={brief.contactEmail}
               category={category}
               sellerCategory={brief.sellerCategory}
-              evaluationType={brief.evaluationType}
               numberOfSuppliers={brief.numberOfSuppliers}
               hasSupplierErrors={hasSupplierErrors}
               hasSignedCurrentAgreement={hasSignedCurrentAgreement}
@@ -741,6 +733,7 @@ Opportunity.defaultProps = {
   isBuyer: false,
   isApprovedSeller: false,
   isApplicant: false,
+  isConsultant: false,
   isRecruiterOnly: false,
   isAwaitingApplicationAssessment: false,
   isAwaitingDomainAssessment: false,
@@ -822,6 +815,7 @@ Opportunity.propTypes = {
   isBuyer: PropTypes.bool,
   isApprovedSeller: PropTypes.bool,
   isApplicant: PropTypes.bool,
+  isConsultant: PropTypes.bool,
   isRecruiterOnly: PropTypes.bool,
   isAwaitingApplicationAssessment: PropTypes.bool,
   isAwaitingDomainAssessment: PropTypes.bool,
