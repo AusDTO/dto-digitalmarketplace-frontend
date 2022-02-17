@@ -7,6 +7,7 @@ import { rootPath } from 'marketplace/routes'
 import { hasPermission } from 'marketplace/components/helpers'
 import PageHeader from 'marketplace/components/PageHeader/PageHeader'
 import PageNavigation from 'marketplace/components/PageNavigation/PageNavigation'
+import mainStyles from 'marketplace/main.scss'
 import styles from './BuyerDashboard.scss'
 
 class BuyerDashboardHeader extends Component {
@@ -31,16 +32,20 @@ class BuyerDashboardHeader extends Component {
     const { briefCounts, isPartOfTeam, isTeamLead, organisation, teams } = this.props
     return (
       <React.Fragment>
-        <AUpageAlert as="warning">
+        <AUpageAlert as="warning" className={`${mainStyles.marginBottom3}`}>
           <h3>Updates to the Digital Marketplace</h3>
-          We will soon make some updates to the Digital Marketplace including the creation of the new ICT Labour Hire
-          category, and the renaming of &quot;Specialist&quot; and &quot;Outcome&quot; opportunities. For more
+          <br />
+          We have recently made a few changes to the Digital Marketplace including the creation of the new ICT Labour
+          Hire Hire category, and the renaming of &quot;Specialist&quot; and &quot;Outcome&quot; opportunities. For more
           information on how this affects you,{' '}
-          <a href="https://mailchi.mp/ae94e5dd228d/new-digital-marketplace-category-platforms-integration-988037">
+          <a
+            href="https://mailchi.mp/ae94e5dd228d/new-digital-marketplace-category-platforms-integration-988037"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             click here.
           </a>
         </AUpageAlert>
-        <br />
         <PageHeader
           organisation={organisation}
           title="Dashboard"
