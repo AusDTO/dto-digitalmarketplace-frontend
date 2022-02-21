@@ -54,7 +54,7 @@ export class SpecialistPercent extends Component {
         </div>
         <div className="col-xs-12 col-md-6">
           {numeral(this.props.insightData.briefData.specialistBriefPercentage).format('(0%)')} of all opportunities are
-          for digital specialists since 29 August 2016
+          for ICT Labour Hire since 29 August 2016
         </div>
       </div>
     )
