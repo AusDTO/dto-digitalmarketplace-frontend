@@ -42,12 +42,12 @@ export class BriefDownloadWorkOrder extends Component {
         {brief.lotSlug === 'specialist' && (
           <React.Fragment>
             <p>
-              We recommend you use the <b>specialist work order template</b> for this opportunity. This work order is
-              suitable for hiring specialists.
+              We recommend you use the <b>ICT Labour Hire work order template</b> for this opportunity. This work order
+              is suitable for hiring specialists.
             </p>
             <p>
               <AUbutton link="/api/2/r/specialist-work-order.docx" rel="noopener noreferrer" target="_blank">
-                Download specialist work order
+                Download ICT Labour Hire work order
               </AUbutton>
             </p>
           </React.Fragment>
