@@ -13,7 +13,7 @@ references:
         cf -v
   deploy_docker: &deploy_docker
     docker:
-      - image: circleci/node:10-stretch
+      - image: cimg/node:10.24
         environment:
           TZ: "/usr/share/zoneinfo/Australia/Sydney"
   required_for_deploy: &required_for_deploy
