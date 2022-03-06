@@ -109,49 +109,49 @@ describe('padStart', () => {
 })
 
 describe('getBriefType', () => {
-  test('When lot is null', () => {
+  test('When lot is null, type is empty', () => {
     const lot = null
     const briefType = getBriefType(lot)
     expect(briefType).toEqual('')
   })
 
-  test('When lot is atm', () => {
+  test('When lot is atm, type is Professional Services and Consulting (Ask the market)', () => {
     const lot = 'atm'
     const briefType = getBriefType(lot)
     expect(briefType).toEqual('Professional Services and Consulting (Ask the market)')
   })
 
-  test('When lot is digital-outcome', () => {
+  test('When lot is digital-outcome, type is Professional Services and Consulting (Ask the market)', () => {
     const lot = 'digital-outcome'
     const briefType = getBriefType(lot)
     expect(briefType).toEqual('Professional Services and Consulting (Ask the market)')
   })
 
-  test('When lot is rfx', () => {
+  test('When lot is rfx, type is Professional Services and Consulting (Seek proposals and quotes)', () => {
     const lot = 'rfx'
     const briefType = getBriefType(lot)
     expect(briefType).toEqual('Professional Services and Consulting (Seek proposals and quotes)')
   })
 
-  test('When lot is digital-professionals', () => {
+  test('When lot is digital-professionals, type is ICT Labour Hire', () => {
     const lot = 'digital-professionals'
     const briefType = getBriefType(lot)
     expect(briefType).toEqual('ICT Labour Hire')
   })
 
-  test('When lot is specialist', () => {
+  test('When lot is specialist, type is ICT Labour Hire', () => {
     const lot = 'specialist'
     const briefType = getBriefType(lot)
     expect(briefType).toEqual('ICT Labour Hire')
   })
 
-  test('When lot is training', () => {
+  test('When lot is training, type is Training', () => {
     const lot = 'training'
     const briefType = getBriefType(lot)
     expect(briefType).toEqual('Training')
   })
 
-  test('When lot is training2', () => {
+  test('When lot is training2, type is Training', () => {
     const lot = 'training2'
     const briefType = getBriefType(lot)
     expect(briefType).toEqual('Training')
