@@ -166,6 +166,22 @@ export const mapLot = lot => {
   }
 }
 
+export const getBriefType = lot => {
+  if (lot === null) {
+    return ''
+  }
+  const name = mapLot(lot)
+
+  switch (lot) {
+    case 'atm':
+    case 'digital-outcome':
+    case 'rfx':
+      return `Professional Services and Consulting (${name})`
+    default:
+      return name
+  }
+}
+
 export const getClosingTime = brief => {
   if (brief.dates.closing_time) {
     return brief.dates.closing_time
