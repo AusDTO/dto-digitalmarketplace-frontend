@@ -1,5 +1,5 @@
 import format from 'date-fns/format'
-import { getBriefLastQuestionDate, padStart } from './helpers'
+import { getBriefLastQuestionDate, getBriefType, padStart } from './helpers'
 
 describe('getBriefLastQuestionDate', () => {
   test('When closing date is over a week away', () => {
@@ -106,4 +106,54 @@ describe('padStart', () => {
   test('When length is not the same', () => expect(padStart('V', 2, '0')).toEqual('0V'))
   test('When string is longer', () => expect(padStart('VVVVV', 2, '0')).toEqual('VVVVV'))
   test('When string is shorter', () => expect(padStart('VVVVV', 10, '0')).toEqual('00000VVVVV'))
+})
+
+describe('getBriefType', () => {
+  test('When lot is null, type is empty', () => {
+    const lot = null
+    const briefType = getBriefType(lot)
+    expect(briefType).toEqual('')
+  })
+
+  test('When lot is atm, type is Professional Services and Consulting (Ask the market)', () => {
+    const lot = 'atm'
+    const briefType = getBriefType(lot)
+    expect(briefType).toEqual('Professional Services and Consulting (Ask the market)')
+  })
+
+  test('When lot is digital-outcome, type is Professional Services and Consulting (Ask the market)', () => {
+    const lot = 'digital-outcome'
+    const briefType = getBriefType(lot)
+    expect(briefType).toEqual('Professional Services and Consulting (Ask the market)')
+  })
+
+  test('When lot is rfx, type is Professional Services and Consulting (Seek proposals and quotes)', () => {
+    const lot = 'rfx'
+    const briefType = getBriefType(lot)
+    expect(briefType).toEqual('Professional Services and Consulting (Seek proposals and quotes)')
+  })
+
+  test('When lot is digital-professionals, type is ICT Labour Hire', () => {
+    const lot = 'digital-professionals'
+    const briefType = getBriefType(lot)
+    expect(briefType).toEqual('ICT Labour Hire')
+  })
+
+  test('When lot is specialist, type is ICT Labour Hire', () => {
+    const lot = 'specialist'
+    const briefType = getBriefType(lot)
+    expect(briefType).toEqual('ICT Labour Hire')
+  })
+
+  test('When lot is training, type is Training', () => {
+    const lot = 'training'
+    const briefType = getBriefType(lot)
+    expect(briefType).toEqual('Training')
+  })
+
+  test('When lot is training2, type is Training', () => {
+    const lot = 'training2'
+    const briefType = getBriefType(lot)
+    expect(briefType).toEqual('Training')
+  })
 })

@@ -10,6 +10,7 @@ import NotVisible from 'marketplace/components/Icons/NotVisible/NotVisible'
 import {
   getBriefCategory,
   getBriefLastQuestionDate,
+  getBriefType,
   getClosingTime,
   hasPermission
 } from 'marketplace/components/helpers'
@@ -222,6 +223,12 @@ const Opportunity = props => {
               </div>
             )}
           <div className={styles.details}>
+            <div className="row">
+              <div className="col-xs-12 col-sm-4">
+                <strong>Opportunity Type</strong>
+              </div>
+              <div className="col-xs-12 col-sm-8">{getBriefType(brief.lotSlug)}</div>
+            </div>
             <div className="row">
               <div className="col-xs-12 col-sm-4">
                 <strong>Opportunity ID</strong>
