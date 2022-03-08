@@ -34,10 +34,10 @@ export class Header extends Component {
           <div className="maintenance-banner">
             <div className="wrapper">
               <div className="row">
-                  <span className="maintenance-warning">Important</span>
                   <span className="maintenance-message">
-                    The Digital Marketplace will be undergoing maintenance at 9pm on 13 December 2021.{` `}
-                    <a href="/contact-us">Contact</a> our support team for any questions.
+                    Digital Marketplace will be moving to <a href="https://www.buyict.gov.au">BuyICT</a> soon.
+                    {` `}
+                    <a href="/">Find out more</a>.
                   </span>
                 </div>
             </div>
