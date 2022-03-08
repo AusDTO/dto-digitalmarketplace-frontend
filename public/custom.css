@@ -981,7 +981,7 @@ a[rel~='external']::after {
   background-color: #61daff;
   color: #135e70;
   padding: 0.5rem;
-  font-weight: 600
+  font-weight: 600;
 }
 
 @media screen and (max-width: 767px) {
