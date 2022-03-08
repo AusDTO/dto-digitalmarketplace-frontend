@@ -976,3 +976,16 @@ a[rel~='external']::after {
   border-bottom: 0px solid transparent;
   box-sizing: inherit;
 }
+
+.maintenance-banner {
+  background-color: #61daff;
+  color: #135e70;
+  padding: 0.5rem;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 767px) {
+  .maintenance-message {
+    display: inline-block;
+  }
+}
