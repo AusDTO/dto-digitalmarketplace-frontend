@@ -39,7 +39,7 @@ export class Header extends Component {
                     {` `}
                     <a href="/">Find out more</a>.
                   </span>
-                </div>
+              </div>
             </div>
           </div>
         </section>
