@@ -1,18 +1,9 @@
-.container {
-  display: flex;
-  flex-wrap: wrap-reverse;
-  justify-content: space-between;
-}
-
-.container div {
-  align-self: flex-start;
-}
-
-.container div:first-child {
-  flex: 1 1 0;
-  align-self: center;
+.container div:last-child {
+  margin-top: 1em;
 }
 
 .container p {
   max-width: none;
+  text-align: justify;
+  text-justify: inter-word;
 }
