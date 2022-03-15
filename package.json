@@ -100,7 +100,7 @@
     "fast-json-patch": "^2.0.6",
     "history": "^4.7.2",
     "json-loader": "^0.5.7",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.21",
     "morgan": "^1.9.1",
     "newrelic": "^5.0.0",
     "node-sass": "^4.11.0",
