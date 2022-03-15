@@ -46,7 +46,7 @@ const getMaximumMessage = (criteriaAllowed, essentialCriteria) => {
     )
   }
 
-  return <span>You cannot submit evidence for more than ${criteriaAllowed} criteria.</span>
+  return <span>You cannot submit evidence for more than {criteriaAllowed} criteria.</span>
 }
 
 const minimumCriteriaMet = (v, d) =>
