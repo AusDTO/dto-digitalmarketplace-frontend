@@ -67,7 +67,11 @@ const defaultBriefState = {
   domains: [],
   hasSupplierErrors: false,
   isInvited: false,
-  hasSignedCurrentAgreement: false
+  hasSignedCurrentAgreement: false,
+  blackoutPeriod: {
+    startDate: null,
+    endDate: null
+  }
 }
 
 const briefReducer = (state = defaultBriefState, action) => {
@@ -132,7 +136,8 @@ const briefReducer = (state = defaultBriefState, action) => {
         isInvited: action.isInvited,
         hasSignedCurrentAgreement: action.hasSignedCurrentAgreement,
         lastEditedAt: action.lastEditedAt,
-        onlySellersEdited: action.onlySellersEdited
+        onlySellersEdited: action.onlySellersEdited,
+        blackoutPeriod: action.blackoutPeriod
       }
 
     case BRIEF_SAVE_SUCCESS:
@@ -226,7 +231,8 @@ const briefReducer = (state = defaultBriefState, action) => {
         ...state,
         brief: action.brief,
         domains: action.domains,
-        isOpenToAll: action.isOpenToAll
+        isOpenToAll: action.isOpenToAll,
+        blackoutPeriod: action.blackoutPeriod
       }
 
     default:

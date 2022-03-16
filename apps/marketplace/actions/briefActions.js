@@ -137,7 +137,8 @@ export const handlePublicBriefInfoSuccess = response => ({
   isInvited: response.data.is_invited,
   hasSignedCurrentAgreement: response.data.has_signed_current_agreement,
   lastEditedAt: response.data.last_edited_at,
-  onlySellersEdited: response.data.only_sellers_edited
+  onlySellersEdited: response.data.only_sellers_edited,
+  blackoutPeriod: response.data.blackout_period
 })
 
 export const handleErrorFailure = response => dispatch => {
@@ -354,7 +355,8 @@ export const handleLoadOpportunityToEditSuccess = response => ({
   type: LOAD_OPPORTUNITY_TO_EDIT_SUCCESS,
   brief: response.data.brief,
   domains: response.data.domains,
-  isOpenToAll: response.data.isOpenToAll
+  isOpenToAll: response.data.isOpenToAll,
+  blackoutPeriod: response.data.blackout_period
 })
 
 export const loadOpportunityToEdit = briefId => dispatch => {
