@@ -83,6 +83,19 @@ export const dateIsBefore = (val, before) => {
   return false
 }
 
+export const dateIsOutsideBlackout = (val, start, end) => {
+  if (!validDate(val)) {
+    return false
+  }
+  if (start === null || end === null) {
+    return true
+  }
+  if (!isBefore(parse_date(val), parse_date(start)) && !isAfter(parse_date(val), parse_date(end))) {
+    return false
+  }
+  return true
+}
+
 export const validEmail = val => {
   if (!val) {
     return true
