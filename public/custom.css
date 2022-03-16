@@ -979,9 +979,13 @@ a[rel~='external']::after {
 
 .maintenance-banner {
   background-color: #61daff;
-  color: #135e70;
+  color: #0d3f4b;
   padding: 0.5rem;
   font-weight: 600;
+}
+
+.maintenance-banner a {
+  color: #0d3f4b;
 }
 
 @media screen and (max-width: 767px) {
