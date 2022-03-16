@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import format from 'date-fns/format'
+import isAfter from 'date-fns/is_after'
 
 import AUheading from '@gov.au/headings/lib/js/react.js'
 
@@ -57,9 +59,25 @@ class EditOpportunityTable extends Component {
   }
 
   render = () => {
-    const { brief, edits } = this.props
+    const { brief, edits, blackoutPeriod } = this.props
     const showInvited = this.showInvitedSellers()
     const sellersToInvite = getSellersToInvite(brief, edits)
+    let closingTime = '6pm'
+    let closingDateString = null
+
+    if (blackoutPeriod.startDate && blackoutPeriod.endDate) {
+      if (isAfter(edits.closingDate, blackoutPeriod.startDate)) {
+        closingTime = '11.59pm'
+        closingDateString = itemWasEdited(format(new Date(brief.dates.closing_time), 'YYYY-MM-DD'), edits.closingDate)
+          ? format(edits.closingDate, `dddd DD MMMM YYYY [at ${closingTime} (in Canberra)]`)
+          : format(getClosingTime(brief), `dddd DD MMMM YYYY [at ${closingTime}(in Canberra)]`)
+      }
+    }
+    if (closingDateString === null) {
+      closingDateString = itemWasEdited(format(new Date(brief.dates.closing_time), 'YYYY-MM-DD'), edits.closingDate)
+        ? format(edits.closingDate, 'dddd DD MMMM YYYY [at 6pm (in Canberra)]')
+        : format(getClosingTime(brief), 'dddd DD MMMM YYYY [at] ha [(in Canberra)]')
+    }
 
     return (
       <React.Fragment>
@@ -138,11 +156,7 @@ class EditOpportunityTable extends Component {
             </tr>
             <tr className={`${styles.verticalAlignTop} ${localStyles.editSection}`}>
               <th scope="row">Closing date</th>
-              <td>
-                {itemWasEdited(format(new Date(brief.dates.closing_time), 'YYYY-MM-DD'), edits.closingDate)
-                  ? format(edits.closingDate, 'dddd DD MMMM YYYY [at 6pm (in Canberra)]')
-                  : format(getClosingTime(brief), 'dddd DD MMMM YYYY [at] ha [(in Canberra)]')}
-              </td>
+              <td>{closingDateString}</td>
               <td>
                 <Link to="/closing-date" className={`au-btn au-btn--tertiary ${localStyles.editAction}`}>
                   Extend closing date
@@ -243,11 +257,7 @@ class EditOpportunityTable extends Component {
               </Link>
             </div>
             <div>
-              <p>
-                {itemWasEdited(format(new Date(brief.dates.closing_time), 'YYYY-MM-DD'), edits.closingDate)
-                  ? format(edits.closingDate, 'dddd DD MMMM YYYY [at 6pm (in Canberra)]')
-                  : format(getClosingTime(brief), 'dddd DD MMMM YYYY [at 6pm (in Canberra)]')}
-              </p>
+              <p>{closingDateString}</p>
             </div>
           </div>
         </div>
@@ -269,7 +279,11 @@ EditOpportunityTable.defaultProps = {
     sellers: {},
     title: ''
   },
-  isOpenToAll: false
+  isOpenToAll: false,
+  blackoutPeriod: {
+    startDate: null,
+    endDate: null
+  }
 }
 
 EditOpportunityTable.propTypes = {
@@ -285,7 +299,12 @@ EditOpportunityTable.propTypes = {
     sellers: PropTypes.object.isRequired,
     title: PropTypes.string.isRequired
   }),
-  isOpenToAll: PropTypes.bool.isRequired
+  isOpenToAll: PropTypes.bool.isRequired,
+  blackoutPeriod: PropTypes.object
 }
 
-export default EditOpportunityTable
+const mapStateToProps = state => ({
+  blackoutPeriod: state.brief.blackoutPeriod
+})
+
+export default connect(mapStateToProps)(EditOpportunityTable)

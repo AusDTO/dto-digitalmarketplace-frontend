@@ -5,29 +5,66 @@ import { actions, Form } from 'react-redux-form'
 import { Redirect } from 'react-router-dom'
 import format from 'date-fns/format'
 import isAfter from 'date-fns/is_after'
+import isBefore from 'date-fns/is_before'
+import isSameDay from 'date-fns/is_same_day'
 
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react'
 
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
 import { getBriefLastQuestionDate, getClosingTime } from 'marketplace/components/helpers'
-import { required, validDate } from 'marketplace/components/validators'
+import { required, validDate, dateIsOutsideBlackout } from 'marketplace/components/validators'
 import formProps from 'shared/form/formPropsSelector'
 
 import styles from '../../../main.scss'
 
 const ClosingDateIsNotValidMessage = props => {
-  const { closingDate } = props
+  const { closingDate, blackoutPeriod } = props
+  const isBlackoutPeriod = blackoutPeriod.startDate && blackoutPeriod.endDate
+  let minValidDate = closingDate
+  let showBlackoutPeriod = false
+
+  if (isBlackoutPeriod) {
+    if (isSameDay(closingDate, blackoutPeriod.startDate)) {
+      minValidDate = blackoutPeriod.endDate
+    } else if (isAfter(closingDate, blackoutPeriod.startDate) && isBefore(closingDate, blackoutPeriod.endDate)) {
+      minValidDate = blackoutPeriod.endDate
+      showBlackoutPeriod = true
+    } else if (isBefore(closingDate, blackoutPeriod.startDate)) {
+      showBlackoutPeriod = true
+    }
+  }
 
   return (
-    <AUbutton
-      as="tertiary"
-      className={`${styles.border0} ${styles.padding0}`}
-      onClick={() => document.getElementById('day').focus()}
-    >
-      {`The closing date must be a valid date after ${format(closingDate, 'DD MMMM YYYY')}.`}
-    </AUbutton>
+    <div>
+      {(!isBlackoutPeriod || (isBlackoutPeriod && !showBlackoutPeriod)) && (
+        <AUbutton
+          as="tertiary"
+          className={`${styles.border0} ${styles.padding0}`}
+          onClick={() => document.getElementById('day').focus()}
+        >
+          {`The closing date must be a valid date after ${format(minValidDate, 'DD MMMM YYYY')}`}
+        </AUbutton>
+      )}
+
+      {isBlackoutPeriod && showBlackoutPeriod && (
+        <AUbutton
+          as="tertiary"
+          className={`${styles.border0} ${styles.padding0}`}
+          onClick={() => document.getElementById('day').focus()}
+        >
+          {`The closing date must be a valid date after ${format(
+            minValidDate,
+            'DD MMMM YYYY'
+          )}, and not between ${format(blackoutPeriod.startDate, 'DD MMMM')} and ${format(
+            blackoutPeriod.endDate,
+            'DD MMMM YYYY'
+          )}`}
+        </AUbutton>
+      )}
+    </div>
   )
 }
 
@@ -110,12 +147,13 @@ class EditOpportunityClosingDate extends Component {
   }
 
   isClosingDateValid = formValues => {
-    const { brief } = this.props
+    const { brief, blackoutPeriod } = this.props
     const currentClosingDate = new Date(getClosingTime(brief))
     const dateIsValid =
       formValues.closingDate &&
       validDate(formValues.closingDate) &&
-      isAfter(new Date(formValues.closingDate), currentClosingDate)
+      isAfter(new Date(formValues.closingDate), currentClosingDate) &&
+      dateIsOutsideBlackout(formValues.closingDate, blackoutPeriod.startDate, blackoutPeriod.endDate)
 
     if (!dateIsValid) {
       this.setState({
@@ -127,9 +165,34 @@ class EditOpportunityClosingDate extends Component {
   }
 
   render = () => {
-    const { brief, model } = this.props
+    const { brief, model, blackoutPeriod } = this.props
     const { hasErrors, redirectToEditsTable } = this.state
-    const invalidClosingDateMessage = <ClosingDateIsNotValidMessage closingDate={getClosingTime(brief)} />
+    const invalidClosingDateMessage = (
+      <ClosingDateIsNotValidMessage closingDate={getClosingTime(brief)} blackoutPeriod={blackoutPeriod} />
+    )
+    const isBlackoutPeriod = blackoutPeriod.startDate && blackoutPeriod.endDate
+    const closingDate = getClosingTime(brief)
+    let isAfterBlackoutPeriod = true
+    let closingTime = '6pm'
+    let minValidDate = getClosingTime(brief)
+    let showBlackoutPeriod = false
+
+    if (isBlackoutPeriod) {
+      if (isAfter(new Date(this.props[model].closingDate), blackoutPeriod.startDate)) {
+        closingTime = '11:59pm'
+      }
+      if (isSameDay(closingDate, blackoutPeriod.startDate)) {
+        minValidDate = blackoutPeriod.endDate
+        isAfterBlackoutPeriod = false
+      } else if (isAfter(closingDate, blackoutPeriod.startDate) && isBefore(closingDate, blackoutPeriod.endDate)) {
+        minValidDate = blackoutPeriod.endDate
+        showBlackoutPeriod = true
+        isAfterBlackoutPeriod = false
+      } else if (isBefore(closingDate, blackoutPeriod.startDate)) {
+        showBlackoutPeriod = true
+        isAfterBlackoutPeriod = false
+      }
+    }
 
     if (redirectToEditsTable) {
       return <Redirect to="/" />
@@ -152,6 +215,28 @@ class EditOpportunityClosingDate extends Component {
             Extend the closing date
           </AUheading>
         </div>
+        {isBlackoutPeriod && !isAfterBlackoutPeriod && (
+          <div className="row">
+            <AUpageAlert as="warning" className={`${styles.pageAlert} ${styles.marginBottom1}`}>
+              <AUheading level="2" size="md">
+                Important
+              </AUheading>
+              {!showBlackoutPeriod && (
+                <p className={styles.noMaxWidth}>
+                  The closing date must be <b>after {format(minValidDate, 'D MMMM YYYY')}</b> due to the{' '}
+                  <a href="/api/2/r/buyict">move to BuyICT</a>.
+                </p>
+              )}
+              {showBlackoutPeriod && (
+                <p className={styles.noMaxWidth}>
+                  The closing date must be <b>before {format(blackoutPeriod.startDate, 'D MMMM YYYY')}</b> or{' '}
+                  <b>after {format(blackoutPeriod.endDate, 'D MMMM YYYY')}</b> due to the{' '}
+                  <a href="/api/2/r/buyict">move to BuyICT</a>.
+                </p>
+              )}
+            </AUpageAlert>
+          </div>
+        )}
         <div className="row">
           {hasErrors && (
             <ErrorAlert
@@ -180,7 +265,7 @@ class EditOpportunityClosingDate extends Component {
           <span>
             {format(
               getBriefLastQuestionDate(new Date(this.props[model].closingDate)),
-              'dddd DD MMMM YYYY [at 6pm (in Canberra)]'
+              `dddd DD MMMM YYYY [at ${closingTime} (in Canberra)]`
             )}
           </span>
         </div>
@@ -201,7 +286,11 @@ EditOpportunityClosingDate.defaultProps = {
       closing_time: ''
     }
   },
-  model: ''
+  model: '',
+  blackoutPeriod: {
+    startDate: null,
+    endDate: null
+  }
 }
 
 EditOpportunityClosingDate.propTypes = {
@@ -210,11 +299,13 @@ EditOpportunityClosingDate.propTypes = {
       closing_time: PropTypes.string.isRequired
     }).isRequired
   }),
-  model: PropTypes.string.isRequired
+  model: PropTypes.string.isRequired,
+  blackoutPeriod: PropTypes.object
 }
 
 const mapStateToProps = (state, props) => ({
-  ...formProps(state, props.model)
+  ...formProps(state, props.model),
+  blackoutPeriod: state.brief.blackoutPeriod
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
