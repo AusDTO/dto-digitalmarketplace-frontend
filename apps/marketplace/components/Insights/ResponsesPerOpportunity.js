@@ -27,7 +27,7 @@ export class ResponsesPerOpportunity extends Component {
             backgroundColor: '#0985D1'
           },
           {
-            label: 'Specialist',
+            label: 'ICT Labour Hire',
             data: counts.filter(c => c.briefType === 'Specialist').map(a => a.count),
             backgroundColor: '#660033'
           }

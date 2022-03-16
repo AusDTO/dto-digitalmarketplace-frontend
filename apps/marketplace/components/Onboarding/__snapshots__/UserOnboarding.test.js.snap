@@ -56,19 +56,19 @@ exports[`Test suite for UserOnboarding container component Because snaphots 2`] 
     <h2
       className="au-display-lg"
     >
-      Create a new opportunity for a digital specialist or outcome
+      Create a new ICT Labour Hire or Professional Services and Consulting opportunity
     </h2>
     <span>
       <a
         href="/2/buyer-dashboard"
       >
-        Start a new brief
+        Start a new opportunity
       </a>
     </span>
     <h2
       className="au-display-lg"
     >
-      Need help writing a brief?
+      Need help writing a opportunity?
     </h2>
     <span>
       All you need to do is 

@@ -22,7 +22,7 @@ const BuyerRFXIntroductionStage = props => (
       <li>
         Read the{' '}
         <a
-          href="https://www.dta.gov.au/help-and-advice/ict-procurement/digital-sourcing-framework-ict-procurement/digital-sourcing-policies"
+          href="https://www.buyict.gov.au/sp?id=resources_and_policies&kb=KB0010683"
           rel="external noopener noreferrer"
           target="_blank"
         >
@@ -32,7 +32,7 @@ const BuyerRFXIntroductionStage = props => (
         <ul>
           <li>
             <a
-              href="https://ictprocurement.service-now.com/policy?id=consider_first"
+              href="https://www.buyict.gov.au/sp?id=resources_and_policies&kb=KB0010637"
               rel="external noopener noreferrer"
               target="_blank"
             >
@@ -41,7 +41,7 @@ const BuyerRFXIntroductionStage = props => (
           </li>
           <li>
             <a
-              href="https://ictprocurement.service-now.com/policy?id=fair_criteria"
+              href="https://www.buyict.gov.au/sp?id=resources_and_policies&kb=KB0010639&kb_parent=KB0010683#fair-criteria-checklist"
               rel="external noopener noreferrer"
               target="_blank"
             >
@@ -49,6 +49,11 @@ const BuyerRFXIntroductionStage = props => (
             </a>
           </li>
         </ul>
+      </li>
+      <li>You should consider approaching multiple sellers wherever possible.</li>
+      <li>
+        Remember to request that sellers provide an offer of discount(s) and to seek better rates for longer-term
+        contracts.
       </li>
     </ul>
     <AUheading level="2" size="lg">

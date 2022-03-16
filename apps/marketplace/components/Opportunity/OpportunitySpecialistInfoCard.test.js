@@ -67,11 +67,11 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      '1seller invited0candidates submittedSellers can submit up to 6 candidates for this role.You must be signed in and invited to respondLogin'
+      '1seller invited0candidates submittedSellers can submit up to 6 candidates for this role.You must be signed in, invited to respond and have indicated that you provide ICT Labour Hire services.Login'
     )
   })
 
-  test('brief is not open to all', () => {
+  test('opportunity is not open to all', () => {
     expect(
       mount(
         OpportunitySpecialistInfoCard({
@@ -90,7 +90,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      '10sellers invited1candidate submittedSellers can submit up to 6 candidates for this role.You must be signed in and invited to respondLogin'
+      '10sellers invited1candidate submittedSellers can submit up to 6 candidates for this role.You must be signed in, invited to respond and have indicated that you provide ICT Labour Hire services.Login'
     )
   })
 
@@ -112,7 +112,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates submittedSellers can submit up to 5 candidates for this role.You must be signed in and approved in software to respondHow to respondLogin'
+      'candidates submittedSellers can submit up to 5 candidates for this role.You must be signed in and have indicated that you provide ICT Labour Hire services.How to respondLogin'
     )
   })
 
@@ -223,7 +223,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates submittedSellers can submit up to 6 candidates for this role.You must be signed in and approved in software to respondHow to respondLogin'
+      'candidates submittedSellers can submit up to 6 candidates for this role.You must be signed in and have indicated that you provide ICT Labour Hire services.How to respondLogin'
     )
   })
 
@@ -280,7 +280,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates submittedSellers can submit up to 6 candidates for this role.You must complete your profile and be approved in software to respond.Continue application'
+      'candidates submittedSellers can submit up to 6 candidates for this role.You must complete your profile and indicate you are both a consultancy and a recruiter to be able to apply for this opportunity.Continue application'
     )
   })
 
@@ -310,7 +310,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates submittedSellers can submit up to 6 candidates for this role.You must complete your profile and be approved in software to respond. Your application is currently being assessed.'
+      'candidates submittedSellers can submit up to 6 candidates for this role.You must complete your profile and indicate you are both a consultancy and a recruiter to be able to apply for this opportunity. Your application is currently being assessed.'
     )
   })
 
@@ -335,66 +335,7 @@ describe('OpportunitySpecialistInfoCard', () => {
         })
       ).text()
     ).toEqual(
-      'candidates submittedSellers can submit up to 6 candidates for this role.You must complete your profile and be approved in software to respond.Continue application'
-    )
-  })
-
-  test('not able to apply because seller does not have approved domain', () => {
-    expect(
-      mount(
-        OpportunitySpecialistInfoCard({
-          closingDate: '',
-          briefId: '1',
-          briefLot: 'specialist',
-          briefStatus: 'not draft',
-          loggedIn: true,
-          isOpen: true,
-          category: 'software',
-          sellerCategory: 'software',
-          isApprovedSeller: true,
-          canRespond: true,
-          isInvited: true,
-          hasResponded: false,
-          isAssessedForCategory: false,
-          hasChosenBriefCategory: true,
-          isOpenToAll: true,
-          numberOfSuppliers: 6,
-          sellerResponses: 0,
-          hasSignedCurrentAgreement: true
-        })
-      ).text()
-    ).toEqual(
-      'candidates submittedSellers can submit up to 6 candidates for this role.Only sellers assessed and approved by the Marketplace in "software" can apply.Request assessment'
-    )
-  })
-
-  test('not able to apply because seller does not have approved domain and waiting for assessment', () => {
-    expect(
-      mount(
-        OpportunitySpecialistInfoCard({
-          closingDate: '',
-          briefId: '1',
-          briefLot: 'specialist',
-          briefStatus: 'not draft',
-          loggedIn: true,
-          isOpen: true,
-          category: 'software',
-          sellerCategory: 'software',
-          isApprovedSeller: true,
-          canRespond: true,
-          isInvited: true,
-          hasResponded: false,
-          isAssessedForCategory: false,
-          hasChosenBriefCategory: true,
-          isAwaitingDomainAssessment: true,
-          isOpenToAll: true,
-          numberOfSuppliers: 6,
-          sellerResponses: 0,
-          hasSignedCurrentAgreement: true
-        })
-      ).text()
-    ).toEqual(
-      'candidates submittedSellers can submit up to 6 candidates for this role.Only sellers assessed and approved by the Marketplace in "software" can apply. Your application for this category is currently being assessed.'
+      'candidates submittedSellers can submit up to 6 candidates for this role.You must complete your profile and indicate you are both a consultancy and a recruiter to be able to apply for this opportunity.Continue application'
     )
   })
 

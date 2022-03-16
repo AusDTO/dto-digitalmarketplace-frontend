@@ -22,7 +22,6 @@ import Start                from '../Start';
 import YourInfoForm         from '../YourInfoForm';
 import BusinessDetailsForm  from '../BusinessDetailsForm';
 import BusinessInfoForm     from '../BusinessInfoForm';
-import DomainSelector       from '../DomainSelector';
 import DisclosuresForm      from '../DisclosuresForm';
 import AwardsForm           from '../AwardsForm';
 import ToolsForm            from '../ToolsForm';
@@ -70,7 +69,6 @@ class Signup extends React.Component {
     { id: 'tools', label: 'Methods', component: ToolsForm, pattern: '/tools', formKey: 'toolsForm' },
     { id: 'awards', label: 'Recognition', component: AwardsForm, pattern: '/awards', formKey: 'awardsForm' },
     { id: 'recruiter', label: 'Recruiter', component: RecruiterForm, pattern: '/recruiter', formKey: 'recruiterForm' },
-    { id: 'domains', label: 'Services', component: DomainSelector, pattern: '/domains', formKey: 'domainSelectorForm' },
     { id: 'candidates', label: 'Candidates', component: CandidatesForm, pattern: '/candidates', formKey: 'candidatesForm' },
     { id: 'products', label: 'Products', component: ProductsForm, pattern: '/products', formKey: 'productForm' },
     { id: 'review', label: 'Preview profile', component: Review, pattern: '/review' },
@@ -151,7 +149,7 @@ class Signup extends React.Component {
     let { recruiter = 'no'} = forms.recruiterForm;
     let filter = null
     if (recruiter === 'no') {
-      filter = /\/candidates|\/domains/
+      filter = /\/candidates/
     }
     this.filteredSteps = this.steps.filter(s => !s.pattern.match(filter));
 
@@ -164,17 +162,8 @@ class Signup extends React.Component {
 
     const applicationValid = stepsRemainingSet.size === 0;
 
-    let { services = {} } = forms.domainSelectorForm;
     let { name = '', abn = '' } = forms.businessDetailsForm;
     let { representative = '', email = '' } = forms.yourInfoForm;
-
-    services = Object
-      .keys(services)
-      .filter(s => services[s])
-      .reduce((newServices, key) => {
-        newServices[key] = services[key];
-        return newServices;
-      }, {});
 
     const applicationErrors = this.props.applicationErrors ? this.props.applicationErrors : [];
 
@@ -236,7 +225,6 @@ class Signup extends React.Component {
                   type: this.props.application.type,
                   confirmDiscard: this.props.application.confirmDiscard,
                   stepsRemaining,
-                  services,
                   nextRoute: this.nextStep && this.nextStep.pattern,
                   title: label,
                   buttonText: 'Save and continue',

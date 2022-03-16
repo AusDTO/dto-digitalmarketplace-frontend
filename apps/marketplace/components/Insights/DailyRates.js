@@ -88,7 +88,7 @@ export class DailyRates extends Component {
         <div className={`row ${styles.marginBottom1}`}>
           <div className="col-xs-12 col-md-12">
             <AUheading size="lg" level="2">
-              Range of daily rates submitted for specialist roles (includes GST)
+              Range of daily rates submitted for ICT Labour Hire roles (includes GST)
             </AUheading>
           </div>
         </div>

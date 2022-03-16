@@ -1,14 +1,20 @@
-import { RESET_PASSWORD_EMAIL_SUCCESS, RESET_PASSWORD_SUCCESS } from '../constants/constants'
+import {
+  RESET_PASSWORD_EMAIL_INITIAL,
+  RESET_PASSWORD_EMAIL_SUCCESS,
+  RESET_PASSWORD_SUCCESS
+} from '../constants/constants'
 
-import { UNABLE_TO_RESET, UNABLE_TO_SEND } from '../constants/messageConstants'
+import { INVALID_CSRF, UNABLE_TO_RESET, UNABLE_TO_SEND } from '../constants/messageConstants'
 
 import dmapi from '../services/apiClient'
-import { sendingRequest, setErrorMessage } from './appActions'
+import { logout, sendingRequest, setAuthState, setErrorMessage } from './appActions'
 
 export const handleResetPasswordSuccess = () => ({ type: RESET_PASSWORD_EMAIL_SUCCESS })
+const initialiseResetPasswordEmail = () => ({ type: RESET_PASSWORD_EMAIL_INITIAL })
 
 export const sendResetPasswordEmail = values => (dispatch, getState) => {
   dispatch(sendingRequest(true))
+  dispatch(initialiseResetPasswordEmail())
   dmapi({
     method: 'post',
     url: `/reset-password`,
@@ -19,9 +25,15 @@ export const sendResetPasswordEmail = values => (dispatch, getState) => {
     data: JSON.stringify(values)
   }).then(response => {
     if (response.error) {
-      dispatch(setErrorMessage(UNABLE_TO_SEND))
+      if (response.data && response.data.message && response.data.message.toLowerCase().includes('invalid csrf')) {
+        dispatch(setAuthState({ isAuthenticated: false, userType: '', csrfToken: '' }))
+        dispatch(setErrorMessage(INVALID_CSRF))
+      } else {
+        dispatch(setErrorMessage(UNABLE_TO_SEND))
+      }
     } else {
       dispatch(handleResetPasswordSuccess())
+      dispatch(logout())
     }
     dispatch(sendingRequest(false))
   })

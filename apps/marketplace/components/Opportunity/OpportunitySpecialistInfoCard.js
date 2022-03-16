@@ -12,31 +12,23 @@ const OpportunitySpecialistInfoCard = props => {
     briefStatus,
     buyerEmail,
     canRespond,
-    category,
     closingDate,
-    draftEvidenceId,
-    hasEvidenceInDraftForCategory,
-    hasLatestEvidenceRejectedForCategory,
     hasResponded,
     hasSignedCurrentAgreement,
     hasSupplierErrors,
     isApplicant,
     isApprovedSeller,
-    isAssessedForCategory,
     isAwaitingApplicationAssessment,
-    isAwaitingDomainAssessment,
     isBriefOwner,
     isBuyer,
+    isConsultant,
     isInvited,
     isOpen,
     isOpenToAll,
-    isRecruiterOnly,
     location,
     loggedIn,
     numberOfSuppliers,
     originalClosedAt,
-    rejectedEvidenceId,
-    sellerCategory,
     sellerResponses,
     sellersApplied,
     sellersInvited,
@@ -80,7 +72,7 @@ const OpportunitySpecialistInfoCard = props => {
       {isOpen && (
         <div className="row">
           <div className="col-xs-12">
-            {isApprovedSeller && isInvited && isAssessedForCategory ? (
+            {isApprovedSeller && isInvited && canRespond ? (
               <p>
                 You can submit up to {numberOfSuppliers} candidate{numberOfSuppliers > 1 && 's'} before the opportunity
                 closes.
@@ -139,7 +131,7 @@ const OpportunitySpecialistInfoCard = props => {
             <span>
               {isOpenToAll ? (
                 <span>
-                  <p>You must be signed in and approved in {category} to respond</p>
+                  <p>You must be signed in and have indicated that you provide ICT Labour Hire services.</p>
                   <p>
                     <a
                       href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000634456-Responding-to-an-opportunity"
@@ -159,7 +151,10 @@ const OpportunitySpecialistInfoCard = props => {
                 </span>
               ) : (
                 <span>
-                  <p>You must be signed in and invited to respond</p>
+                  <p>
+                    You must be signed in, invited to respond and have indicated that you provide ICT Labour Hire
+                    services.
+                  </p>
                   <p>
                     <a
                       href={`/login?next=${encodeURIComponent(
@@ -193,13 +188,29 @@ const OpportunitySpecialistInfoCard = props => {
           {isOpen && loggedIn && isApplicant && (
             <span>
               <p className={styles.invitedStatus}>
-                You must complete your profile and be approved in {category} to respond.
+                You must complete your profile and indicate you are both a consultancy and a recruiter to be able to
+                apply for this opportunity.
                 {isAwaitingApplicationAssessment && <span> Your application is currently being assessed.</span>}
               </p>
               {!isAwaitingApplicationAssessment && (
                 <p>
                   <a href="/sellers/application" className="au-btn au-btn--block">
                     Continue application
+                  </a>
+                </p>
+              )}
+            </span>
+          )}
+          {isOpen && (isOpenToAll || isInvited) && loggedIn && isConsultant && (
+            <span>
+              <p className={styles.invitedStatus}>
+                You must update your profile to indicate you are both a consultancy and a recruiter to be able to apply
+                for this opportunity.
+              </p>
+              {!isAwaitingApplicationAssessment && (
+                <p>
+                  <a href="/sellers/edit" className="au-btn au-btn--block">
+                    Update profile
                   </a>
                 </p>
               )}
@@ -219,65 +230,27 @@ const OpportunitySpecialistInfoCard = props => {
           )}
           {isOpen && loggedIn && isApprovedSeller && hasSignedCurrentAgreement && !isOpenToAll && !isInvited && (
             <div className={styles.invitedStatus}>
-              <p>Only invited sellers can apply.</p>
+              <p>Only invited sellers that have indicated that they provide ICT Labour Hire services can apply.</p>
             </div>
-          )}
-          {isOpen && loggedIn && isApprovedSeller && hasSignedCurrentAgreement && isInvited && !isAssessedForCategory && (
-            <span>
-              <p className={styles.invitedStatus}>
-                Only sellers assessed and approved by the Marketplace in &quot;{category}&quot; can apply.
-                {isRecruiterOnly && !isAwaitingDomainAssessment && (
-                  <span>
-                    {' '}
-                    You must <a href="/sellers/edit">edit your profile</a> to add this category before you can apply.
-                  </span>
-                )}
-                {isRecruiterOnly && isAwaitingApplicationAssessment && (
-                  <span> Your application is currently being assessed.</span>
-                )}
-                {isAwaitingDomainAssessment && (
-                  <span> Your application for this category is currently being assessed.</span>
-                )}
-                {!isAwaitingDomainAssessment && hasEvidenceInDraftForCategory && !isRecruiterOnly && draftEvidenceId && (
-                  <span>
-                    {' '}
-                    You currently have a{' '}
-                    <a href={`${rootPath}/seller-assessment/${draftEvidenceId}/introduction`}>draft submission</a> for
-                    assessment in this category.
-                  </span>
-                )}
-                {!isAwaitingDomainAssessment && hasLatestEvidenceRejectedForCategory && rejectedEvidenceId && (
-                  <span> Your submitted assessment has been reviewed by the Marketplace and was not successful.</span>
-                )}
-              </p>
-              {!isAwaitingDomainAssessment &&
-                !hasEvidenceInDraftForCategory &&
-                !hasLatestEvidenceRejectedForCategory &&
-                !isRecruiterOnly && (
-                  <p>
-                    <a
-                      href={`${rootPath}/seller-assessment/create/${sellerCategory}/${briefId}`}
-                      className={`au-btn au-btn--block ${styles.redBtn}`}
-                    >
-                      Request assessment
-                    </a>
-                  </p>
-                )}
-              {!isAwaitingDomainAssessment && hasLatestEvidenceRejectedForCategory && rejectedEvidenceId && (
-                <p>
-                  <a
-                    href={`${rootPath}/seller-assessment/${rejectedEvidenceId}/feedback`}
-                    className={`au-btn au-btn--block ${styles.redBtn}`}
-                  >
-                    View assessment feedback
-                  </a>
-                </p>
-              )}
-            </span>
           )}
           {isOpen &&
             isApprovedSeller &&
-            isAssessedForCategory &&
+            (hasSignedCurrentAgreement || (!hasSignedCurrentAgreement && hasResponded)) &&
+            !canRespond &&
+            hasSupplierErrors && (
+              <div>
+                <div>
+                  <p className={styles.invitedStatus}>There is at least one error in your profile.</p>
+                  <p>
+                    <a href="/sellers/edit" className="au-btn au-btn--block">
+                      Update profile
+                    </a>
+                  </p>
+                </div>
+              </div>
+            )}
+          {isOpen &&
+            isApprovedSeller &&
             (hasSignedCurrentAgreement || (!hasSignedCurrentAgreement && hasResponded)) &&
             canRespond && (
               <div>
@@ -321,29 +294,22 @@ const OpportunitySpecialistInfoCard = props => {
 
 OpportunitySpecialistInfoCard.defaultProps = {
   buyerEmail: '',
-  category: '',
   sellersInvited: 0,
   sellersApplied: 0,
   sellerResponses: 0,
   supplierBriefResponseCountSubmitted: 0,
   supplierBriefResponseCountDraft: 0,
   canRespond: false,
-  isAssessedForCategory: false,
-  hasEvidenceInDraftForCategory: false,
-  hasLatestEvidenceRejectedForCategory: false,
-  draftEvidenceId: undefined,
-  rejectedEvidenceId: undefined,
   isOpenToAll: false,
   location: {},
   loggedIn: false,
   hasResponded: false,
   isOpen: false,
   isBuyer: false,
+  isConsultant: false,
   isApprovedSeller: false,
   isApplicant: false,
-  isRecruiterOnly: false,
   isAwaitingApplicationAssessment: false,
-  isAwaitingDomainAssessment: false,
   isBriefOwner: false,
   numberOfSuppliers: '6',
   hasSupplierErrors: false,
@@ -361,28 +327,20 @@ OpportunitySpecialistInfoCard.propTypes = {
   supplierBriefResponseCountSubmitted: PropTypes.number,
   supplierBriefResponseCountDraft: PropTypes.number,
   canRespond: PropTypes.bool,
-  isAssessedForCategory: PropTypes.bool,
-  hasEvidenceInDraftForCategory: PropTypes.bool,
-  hasLatestEvidenceRejectedForCategory: PropTypes.bool,
-  draftEvidenceId: PropTypes.number,
-  rejectedEvidenceId: PropTypes.number,
   isOpenToAll: PropTypes.bool,
   location: PropTypes.object,
   loggedIn: PropTypes.bool,
   hasResponded: PropTypes.bool,
   isOpen: PropTypes.bool,
   isBuyer: PropTypes.bool,
+  isConsultant: PropTypes.bool,
   isApprovedSeller: PropTypes.bool,
   isApplicant: PropTypes.bool,
-  isRecruiterOnly: PropTypes.bool,
   isAwaitingApplicationAssessment: PropTypes.bool,
-  isAwaitingDomainAssessment: PropTypes.bool,
   isBriefOwner: PropTypes.bool,
   closingDate: PropTypes.string.isRequired,
   briefId: PropTypes.number.isRequired,
   briefStatus: PropTypes.string.isRequired,
-  category: PropTypes.string,
-  sellerCategory: PropTypes.string.isRequired,
   numberOfSuppliers: PropTypes.string,
   hasSupplierErrors: PropTypes.bool,
   isInvited: PropTypes.bool,

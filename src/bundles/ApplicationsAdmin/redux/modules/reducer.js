@@ -7,6 +7,7 @@ import assessments from './assessments';
 import brief from './brief';
 import users from './users';
 import evidence from './evidence'
+import report from './report'
 
 export default combineReducers({
   agency,
@@ -14,6 +15,7 @@ export default combineReducers({
   applications,
   assessments,
   evidence,
+  report,
   brief,
   users,
   form_options: (state = {}) => state,

@@ -68,7 +68,7 @@ const BuyerRFXTimeframesAndBudgetStage = props => (
     <Textarea
       model={`${props.model}.budgetRange`}
       label="Budget range (optional)"
-      description="Please specify if your budget includes GST and if it covers travel and accommodation related expenses."
+      description="Please specify if your budget includes GST and if it covers travel and accommodation related expenses. Remember to negotiate discounts and seek better rates for longer-term contracts. "
       name="budget_range"
       id="budget_range"
       htmlFor="budget_range"

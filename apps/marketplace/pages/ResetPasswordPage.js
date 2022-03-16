@@ -8,7 +8,7 @@ import NotFound from '../components/NotFound'
 import RequestResetEmailForm from '../components/ResetPassword/RequestResetEmailForm'
 import ResetPasswordForm from '../components/ResetPassword/ResetPasswordForm'
 import { sendResetPasswordEmail, submitResetPassword } from '../actions/resetPasswordActions'
-import { setErrorMessage, logout } from '../actions/appActions'
+import { setErrorMessage } from '../actions/appActions'
 
 export class ResetPasswordPageComponent extends Component {
   constructor(props) {
@@ -16,10 +16,6 @@ export class ResetPasswordPageComponent extends Component {
     this.state = {
       submitClicked: null
     }
-  }
-
-  componentWillMount() {
-    this.props.logoutForPasswordReset()
   }
 
   componentWillReceiveProps(nextProps) {
@@ -111,8 +107,7 @@ const mapResetStateToProps = state => ({
 const mapResetDispatchToProps = dispatch => ({
   handleSendEmailSubmit: payload => dispatch(sendResetPasswordEmail(payload)),
   handleResetPasswordSubmit: (token, email, payload) => dispatch(submitResetPassword(token, email, payload)),
-  passwordsMatchMessage: message => dispatch(setErrorMessage(message)),
-  logoutForPasswordReset: () => dispatch(logout())
+  passwordsMatchMessage: message => dispatch(setErrorMessage(message))
 })
 
 const ResetPasswordPage = withRouter(

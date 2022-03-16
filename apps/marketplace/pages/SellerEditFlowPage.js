@@ -95,7 +95,7 @@ export class SellerEditFlowPage extends Component {
       }
       return (
         <ErrorBoxComponent
-          title="A problem occurred when loading the brief details"
+          title="A problem occurred when loading the opportunity details"
           errorMessage={this.props.errorMessage}
           setFocus={setFocus}
           form={{}}

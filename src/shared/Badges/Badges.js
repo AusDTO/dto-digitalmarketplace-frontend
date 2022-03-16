@@ -5,16 +5,15 @@ import get from 'lodash/get';
 import styles from './Badges.css'; // eslint-disable-line no-unused-vars
 
 export const titleMap = {
-  recruiter_only: 'Recruiter',
-  recruitment: 'Recruiter',
   consultant_only: 'Consultant',
-  recruiter_both: 'Consultant and Recruiter',
+  recruiter_both: 'Consultant',
   indigenous: 'Indigenous business',
   disability: 'Australian disability enterprise',
   nfp_social_enterprise: 'Not-for-profit',
   start_up: 'Start-up',
-  sme: 'SME',
-  product: 'Products'
+  sme: 'SME (self-reported)',
+  product: 'Products',
+  labourHire: 'ICT Labour Hire'
 };
 
 const Badges = ({ badges = {} }) => (

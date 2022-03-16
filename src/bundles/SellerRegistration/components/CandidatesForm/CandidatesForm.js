@@ -41,7 +41,7 @@ class CandidatesForm extends BaseForm {
                 <header styleName="content">
                     <ValidationSummary form={form} applicationErrors={applicationErrors} filterFunc={(ae) => ae.step === 'candidates' && type === 'edit'} />
                     <h1 className="au-display-xl" styleName="content-heading" tabIndex="-1">Tell us more about your candidates</h1>
-                    <p>Share database and candidate details for each service you selected.</p>
+                    <p>Share database and candidate details.</p>
                 </header>
                 <article role="main">
                     <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
@@ -57,85 +57,77 @@ class CandidatesForm extends BaseForm {
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
                         )}
 
-                        {domains.filter(d => services[d.label]).map((domain, i) => {
-                            return (
-                                <div key={domain.label}>
-                                    <h2 className="au-display-lg">{domain.label}</h2>
-                                    <Textfield
-                                        model={`${model}.recruiter_info.${domain.label}.database_size`}
-                                        name={`${domain.label}-database_size`}
-                                        id={`${domain.label}-database_size`}
-                                        htmlFor={`${domain.label}-database_size`}
-                                        label="What is the size of your candidate database?"
-                                        messages={{
-                                            required: 'You must supply the candidate database size',
-                                            onlyWholeNumbers: 'Candidate database size must be a whole number'
-                                        }}
-                                        validators={{
-                                            required,
-                                            onlyWholeNumbers
-                                        }}
-                                    />
-                                    <Textfield
-                                        model={`${model}.recruiter_info.${domain.label}.active_candidates`}
-                                        name={`${domain.label}-active_candidates`}
-                                        id={`${domain.label}-active_candidates`}
-                                        htmlFor={`${domain.label}-active_candidates`}
-                                        label="How many candidates are actively looking now?"
-                                        messages={{
-                                            required: 'You must supply the number of candidates looking',
-                                            onlyWholeNumbers: 'Candidates looking must be a whole number'
-                                        }}
-                                        validators={{
-                                            required,
-                                            onlyWholeNumbers
-                                        }}
-                                    />
-                                    <Textfield
-                                        model={`${model}.recruiter_info.${domain.label}.placed_candidates`}
-                                        name={`${domain.label}-placed_candidates`}
-                                        id={`${domain.label}-placed_candidates`}
-                                        htmlFor={`${domain.label}-placed_candidates`}
-                                        label="How many candidates have you successfully placed in the last 12 months?"
-                                        messages={{
-                                            required: 'You must supply the number of candidates successfully placed',
-                                            onlyWholeNumbers: 'Candidates successfully placed must be a whole number'
-                                        }}
-                                        validators={{
-                                            required,
-                                            onlyWholeNumbers
-                                        }}
-                                    />
-                                    <Textfield
-                                        model={`${model}.recruiter_info.${domain.label}.markup`}
-                                        name={`${domain.label}-markup`}
-                                        id={`${domain.label}-markup`}
-                                        htmlFor={`${domain.label}-markup`}
-                                        label="What is your mark-up?"
-                                        description="Definition of mark up is the total of oncosts to the day rate (including workers compensation, payroll tax, etc)."
-                                        messages={{
-                                            required: 'You must supply your mark-up',
-                                            validPercentage: 'You must supply your mark-up as a percentage'
-                                        }}
-                                        validators={{required, validPercentage}}
-                                    />
-                                    <Textfield
-                                        model={`${model}.recruiter_info.${domain.label}.margin`}
-                                        name={`${domain.label}-margin`}
-                                        id={`${domain.label}-margin`}
-                                        htmlFor={`${domain.label}-margin`}
-                                        label="What is your margin?"
-                                        description="Definition of margin is the percentage charged on top of oncosts by agency for providing the candidate and service."
-                                        messages={{
-                                            required: 'You must supply your margin',
-                                            validPercentage: 'You must supply your margin as percentage'
-                                        }}
-                                        validators={{required, validPercentage}}
-                                    />
-                                </div>
-                            )
-                        })}
-
+                        <Textfield
+                            model={`${model}.candidates.database_size`}
+                            name="candidate-database-size"
+                            id="database-size"
+                            htmlFor="database-size"
+                            label="What is the size of your candidate database?"
+                            messages={{
+                                required: 'You must supply the candidate database size',
+                                onlyWholeNumbers: 'Candidate database size must be a whole number'
+                            }}
+                            validators={{
+                                required,
+                                onlyWholeNumbers
+                            }}
+                        />
+                        <Textfield
+                            model={`${model}.candidates.active_candidates`}
+                            name="active-candidates-total"
+                            id="active-candidates"
+                            htmlFor="active-candidates"
+                            label="How many candidates are actively looking now?"
+                            messages={{
+                                required: 'You must supply the number of candidates looking',
+                                onlyWholeNumbers: 'Candidates looking must be a whole number'
+                            }}
+                            validators={{
+                                required,
+                                onlyWholeNumbers
+                            }}
+                        />
+                        <Textfield
+                            model={`${model}.candidates.placed_candidates`}
+                            name="placed-candidates-total"
+                            id="placed-candidates"
+                            htmlFor="placed-candidates"
+                            label="How many candidates have you successfully placed in the last 12 months?"
+                            messages={{
+                                required: 'You must supply the number of candidates successfully placed',
+                                onlyWholeNumbers: 'Candidates successfully placed must be a whole number'
+                            }}
+                            validators={{
+                                required,
+                                onlyWholeNumbers
+                            }}
+                        />
+                        <Textfield
+                            model={`${model}.candidates.markup`}
+                            name="markup"
+                            id="markup"
+                            htmlFor="markup"
+                            label="What is your mark-up?"
+                            description="Definition of mark up is the total of oncosts to the day rate (including workers compensation, payroll tax, etc)."
+                            messages={{
+                                required: 'You must supply your mark-up',
+                                validPercentage: 'You must supply your mark-up as a percentage'
+                            }}
+                            validators={{ required, validPercentage }}
+                        />
+                        <Textfield
+                            model={`${model}.candidates.margin`}
+                            name="margin"
+                            id="margin"
+                            htmlFor="margin"
+                            label="What is your margin?"
+                            description="Definition of margin is the percentage charged on top of oncosts by agency for providing the candidate and service."
+                            messages={{
+                                required: 'You must supply your margin',
+                                validPercentage: 'You must supply your margin as percentage'
+                            }}
+                            validators={{ required, validPercentage }}
+                        />
 
                         {children}
 

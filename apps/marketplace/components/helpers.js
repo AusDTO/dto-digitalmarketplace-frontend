@@ -157,12 +157,28 @@ export const mapLot = lot => {
       return 'Seek proposals and quotes'
     case 'digital-professionals':
     case 'specialist':
-      return 'Specialist'
+      return 'ICT Labour Hire'
     case 'training':
     case 'training2':
       return 'Training'
     default:
       return lot
+  }
+}
+
+export const getBriefType = lot => {
+  if (lot === null) {
+    return ''
+  }
+  const name = mapLot(lot)
+
+  switch (lot) {
+    case 'atm':
+    case 'digital-outcome':
+    case 'rfx':
+      return `Professional Services and Consulting (${name})`
+    default:
+      return name
   }
 }
 

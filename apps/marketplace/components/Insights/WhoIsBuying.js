@@ -24,10 +24,23 @@ export class WhoIsBuying extends Component {
         datasets: [
           {
             data: counts.map(a => a.count),
-            backgroundColor: ['#8537BF', '#FF89C4', '#37AFF7', '#F2A16A', '#6EA846']
+            backgroundColor: [
+              '#8537BF',
+              '#FF89C4',
+              '#37AFF7',
+              '#F2A16A',
+              '#6EA846',
+              '#BF4137',
+              '#BF8537',
+              '#88BE63',
+              '#EE833B',
+              '#0A9AF1',
+              '#FF56AB',
+              '#9D5ACF'
+            ]
           }
         ],
-        labels: counts.map(a => a.name)
+        labels: counts.map(a => `${a.name} (${a.count})`)
       },
       options: {
         plugins: {
@@ -57,7 +70,7 @@ export class WhoIsBuying extends Component {
         </div>
         <div className="row">
           <div className={`col-xs-12 col-md-7 ${styles.marginBottom1}`}>
-            <div className={insightStyles['chart-md-height-2x']}>
+            <div className={insightStyles['chart-md-height-10x']}>
               {/* eslint-disable-next-line jsx-a11y/no-interactive-element-to-noninteractive-role */}
               <canvas ref={this.chartRef} aria-label="Who is buying?" role="img" />
             </div>
