@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import format from 'date-fns/format'
+import isAfter from 'date-fns/is_after'
 import { rootPath } from 'marketplace/routes'
 import NotVisible from 'marketplace/components/Icons/NotVisible/NotVisible'
 import {
@@ -139,12 +140,21 @@ const Opportunity = props => {
     onlySellersEdited,
     teams,
     mustJoinTeam,
-    userType
+    userType,
+    blackoutPeriod
   } = props
 
   const brief = { ...defaultBriefProps, ...props.brief }
   const category = getBriefCategory(domains, brief.sellerCategory)
   const originalClosedAt = brief.originalClosedAt ? brief.originalClosedAt : null
+  let isAfterBlackoutStart = false
+  let closingTime = '6pm'
+  if (blackoutPeriod.startDate && blackoutPeriod.endDate) {
+    if (isAfter(getClosingTime(brief), blackoutPeriod.startDate)) {
+      closingTime = '11.59pm'
+      isAfterBlackoutStart = true
+    }
+  }
 
   if (brief.status === 'draft') {
     if (!isPartOfTeam && mustJoinTeam) {
@@ -241,7 +251,7 @@ const Opportunity = props => {
               </div>
               {getQuestionsCloseDate(brief) && (
                 <div className="col-xs-12 col-sm-8">
-                  {`${format(getQuestionsCloseDate(brief), 'dddd D MMMM YYYY')} at 6pm (in Canberra)`}
+                  {`${format(getQuestionsCloseDate(brief), 'dddd D MMMM YYYY')} at ${closingTime} (in Canberra)`}
                 </div>
               )}
             </div>
@@ -251,7 +261,7 @@ const Opportunity = props => {
               </div>
               {getClosingTime(brief) && (
                 <div className="col-xs-12 col-sm-8">
-                  {`${format(getClosingTime(brief), 'dddd D MMMM YYYY')} at 6pm (in Canberra)`}
+                  {`${format(getClosingTime(brief), 'dddd D MMMM YYYY')} at ${closingTime} (in Canberra)`}
                 </div>
               )}
             </div>
@@ -669,6 +679,7 @@ const Opportunity = props => {
               supplierCode={supplierCode}
               originalClosedAt={originalClosedAt}
               location={location}
+              isNewClosingTime={isAfterBlackoutStart}
             />
           )}
           {brief.status !== 'withdrawn' && brief.lotSlug !== 'specialist' && (
@@ -708,6 +719,7 @@ const Opportunity = props => {
               supplierCode={supplierCode}
               originalClosedAt={originalClosedAt}
               location={location}
+              isNewClosingTime={isAfterBlackoutStart}
             />
           )}
         </div>
@@ -751,7 +763,11 @@ Opportunity.defaultProps = {
   hasSupplierErrors: false,
   hasSignedCurrentAgreement: false,
   supplierCode: null,
-  userType: null
+  userType: null,
+  blackoutPeriod: {
+    startDate: null,
+    endDate: null
+  }
 }
 
 Opportunity.propTypes = {
@@ -833,14 +849,16 @@ Opportunity.propTypes = {
   hasSupplierErrors: PropTypes.bool,
   hasSignedCurrentAgreement: PropTypes.bool,
   supplierCode: PropTypes.number,
-  userType: PropTypes.string
+  userType: PropTypes.string,
+  blackoutPeriod: PropTypes.object
 }
 
 const mapStateToProps = state => ({
   teams: state.app.teams,
   isTeamLead: state.app.isTeamLead,
   isPartOfTeam: state.app.isPartOfTeam,
-  mustJoinTeam: state.app.mustJoinTeam
+  mustJoinTeam: state.app.mustJoinTeam,
+  blackoutPeriod: state.brief.blackoutPeriod
 })
 
 export default connect(mapStateToProps)(Opportunity)

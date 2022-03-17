@@ -8,7 +8,7 @@ const ClosedDate = props => {
   let final = 'Closed'
 
   if (props.date) {
-    const parsed = parse(props.date)
+    const parsed = props.isNewClosingTime ? parse(props.date).setHours(23, 59) : parse(props.date)
     const today = new Date()
 
     if (isBefore(today, parsed)) {
