@@ -218,20 +218,23 @@ class EditOpportunityClosingDate extends Component {
         {isBlackoutPeriod && !isAfterBlackoutPeriod && (
           <div className="row">
             <AUpageAlert as="warning" className={`${styles.pageAlert} ${styles.marginBottom1}`}>
-              <AUheading level="2" size="md">
-                Important
-              </AUheading>
               {!showBlackoutPeriod && (
                 <p className={styles.noMaxWidth}>
-                  The closing date must be <b>after {format(minValidDate, 'D MMMM YYYY')}</b> due to the{' '}
-                  <a href="/api/2/r/buyict">move to BuyICT</a>.
+                  The closing date must be <b>after {format(minValidDate, 'D MMMM YYYY')}</b> due to{' '}
+                  <a href="/api/2/r/buyict" target="_blank">
+                    Digital Marketplace moving to BuyICT
+                  </a>
+                  .
                 </p>
               )}
               {showBlackoutPeriod && (
                 <p className={styles.noMaxWidth}>
                   The closing date must be <b>before {format(blackoutPeriod.startDate, 'D MMMM YYYY')}</b> or{' '}
-                  <b>after {format(blackoutPeriod.endDate, 'D MMMM YYYY')}</b> due to the{' '}
-                  <a href="/api/2/r/buyict">move to BuyICT</a>.
+                  <b>after {format(blackoutPeriod.endDate, 'D MMMM YYYY')}</b> due to{' '}
+                  <a href="/api/2/r/buyict" target="_blank">
+                    Digital Marketplace moving to BuyICT
+                  </a>
+                  .
                 </p>
               )}
             </AUpageAlert>
