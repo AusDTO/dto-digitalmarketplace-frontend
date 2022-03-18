@@ -7,6 +7,7 @@ import format from 'date-fns/format'
 import isAfter from 'date-fns/is_after'
 import isBefore from 'date-fns/is_before'
 import isSameDay from 'date-fns/is_same_day'
+import addDays from 'date-fns/add_days'
 
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
@@ -27,8 +28,12 @@ const ClosingDateIsNotValidMessage = props => {
   let showBlackoutPeriod = false
 
   if (isBlackoutPeriod) {
-    if (isSameDay(closingDate, blackoutPeriod.startDate)) {
+    if (
+      isSameDay(closingDate, blackoutPeriod.startDate) ||
+      isSameDay(addDays(closingDate, 1), blackoutPeriod.startDate)
+    ) {
       minValidDate = blackoutPeriod.endDate
+      showBlackoutPeriod = false
     } else if (isAfter(closingDate, blackoutPeriod.startDate) && isBefore(closingDate, blackoutPeriod.endDate)) {
       minValidDate = blackoutPeriod.endDate
       showBlackoutPeriod = true
@@ -181,7 +186,10 @@ class EditOpportunityClosingDate extends Component {
       if (isAfter(new Date(this.props[model].closingDate), blackoutPeriod.startDate)) {
         closingTime = '11:59pm'
       }
-      if (isSameDay(closingDate, blackoutPeriod.startDate)) {
+      if (
+        isSameDay(closingDate, blackoutPeriod.startDate) ||
+        isSameDay(addDays(closingDate, 1), blackoutPeriod.startDate)
+      ) {
         minValidDate = blackoutPeriod.endDate
         isAfterBlackoutPeriod = false
       } else if (isAfter(closingDate, blackoutPeriod.startDate) && isBefore(closingDate, blackoutPeriod.endDate)) {
@@ -220,20 +228,24 @@ class EditOpportunityClosingDate extends Component {
             <AUpageAlert as="warning" className={`${styles.pageAlert} ${styles.marginBottom1}`}>
               {!showBlackoutPeriod && (
                 <p className={styles.noMaxWidth}>
-                  The closing date must be <b>after {format(minValidDate, 'D MMMM YYYY')}</b> due to{' '}
+                  Digital Marketplace is{' '}
                   <a href="/api/2/r/buyict" target="_blank">
-                    Digital Marketplace moving to BuyICT
-                  </a>
-                  .
+                    moving to BuyICT
+                  </a>{' '}
+                  soon. The closing date must be <b>after {format(minValidDate, 'D MMMM YYYY')}</b>.
                 </p>
               )}
               {showBlackoutPeriod && (
                 <p className={styles.noMaxWidth}>
-                  The closing date must be <b>before {format(blackoutPeriod.startDate, 'D MMMM YYYY')}</b> or{' '}
-                  <b>after {format(blackoutPeriod.endDate, 'D MMMM YYYY')}</b> due to{' '}
+                  Digital Marketplace is{' '}
                   <a href="/api/2/r/buyict" target="_blank">
-                    Digital Marketplace moving to BuyICT
-                  </a>
+                    moving to BuyICT
+                  </a>{' '}
+                  soon. The closing date must be{' '}
+                  <b>
+                    before {format(blackoutPeriod.startDate, 'D MMMM')} or after{' '}
+                    {format(blackoutPeriod.endDate, 'D MMMM YYYY')}
+                  </b>
                   .
                 </p>
               )}
