@@ -164,9 +164,7 @@ class Header extends React.Component {
             <div className="wrapper">
               <div className="row">
                 <span className="maintenance-message">
-                  Digital Marketplace will be moving to <a href="https://www.buyict.gov.au">BuyICT</a> soon.
-                  {` `}
-                  <a href="/">Find out more</a>.
+                  Digital Marketplace is moving to BuyICT soon. <a href="/api/2/r/buyict">Find out more</a>.
                 </span>
               </div>
             </div>
