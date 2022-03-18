@@ -99,9 +99,9 @@ class BuyerTrainingAdditionalInformationStage extends Component {
             closedAtIs2DaysInFuture: 'You must enter a closing date at least 2 days from now',
             requiredClosedAt: 'You must enter the closing date for this opportunity',
             closedAtIsBefore: 'You must enter a closing date no more than one year from now',
-            closedAtIsOutsideBlackout: `You cannot set a closing date between
-            ${format(blackoutPeriod.startDate, 'D MMMM YYYY')} and
-            ${format(blackoutPeriod.endDate, 'D MMMM YYYY')}`
+            closedAtIsOutsideBlackout: `You can't set a closing date between
+            ${format(blackoutPeriod.startDate, 'D MMMM')} and
+            ${format(blackoutPeriod.endDate, 'D MMMM YYYY')}, as Digital Marketplace is moving to BuyICT.`
           }}
         />
         <AUheading level="2" size="sm">
@@ -154,11 +154,15 @@ class BuyerTrainingAdditionalInformationStage extends Component {
         {isBlackoutPeriod && (
           <AUpageAlert as="warning" className={`${mainStyles.marginTop3} ${mainStyles.marginBottom1}`}>
             <p>
-              The closing date must be <b>before {format(blackoutPeriod.startDate, 'D MMMM YYYY')}</b> or{' '}
-              <b>after {format(blackoutPeriod.endDate, 'D MMMM YYYY')}</b> due to{' '}
+              Digital Marketplace is{' '}
               <a href="/api/2/r/buyict" target="_blank">
-                Digital Marketplace moving to BuyICT
-              </a>
+                moving to BuyICT
+              </a>{' '}
+              soon. The closing date must be{' '}
+              <b>
+                before {format(blackoutPeriod.startDate, 'D MMMM')} or after{' '}
+                {format(blackoutPeriod.endDate, 'D MMMM YYYY')}
+              </b>
               .
             </p>
           </AUpageAlert>
