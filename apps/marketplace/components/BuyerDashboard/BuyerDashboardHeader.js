@@ -2,12 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import AUaccordion from '@gov.au/accordion/lib/js/react.js'
-import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
 import { hasPermission } from 'marketplace/components/helpers'
 import PageHeader from 'marketplace/components/PageHeader/PageHeader'
 import PageNavigation from 'marketplace/components/PageNavigation/PageNavigation'
-import mainStyles from 'marketplace/main.scss'
 import styles from './BuyerDashboard.scss'
 
 class BuyerDashboardHeader extends Component {
