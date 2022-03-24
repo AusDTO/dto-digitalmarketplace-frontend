@@ -62,7 +62,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
     }
 
     this.handleDateChange = this.handleDateChange.bind(this)
-    lockoutStartDate = this.props.lockouteriod.startDate
+    lockoutStartDate = this.props.lockoutPeriod.startDate
     lockoutEndDate = this.props.lockoutPeriod.endDate
   }
 

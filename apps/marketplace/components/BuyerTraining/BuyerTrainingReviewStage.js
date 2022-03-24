@@ -19,7 +19,7 @@ export class BuyerTrainingReviewStage extends Component {
 
   render() {
     const { lockoutPeriod } = this.props
-    const isLockoutPeriod = lockouteriod.startDate && lockoutPeriod.endDate
+    const isLockoutPeriod = lockoutPeriod.startDate && lockoutPeriod.endDate
     let closingTime = '6pm'
     if (isLockoutPeriod && isAfter(new Date(this.props[this.props.model].closedAt), lockoutPeriod.startDate)) {
       closingTime = '11:55pm'
