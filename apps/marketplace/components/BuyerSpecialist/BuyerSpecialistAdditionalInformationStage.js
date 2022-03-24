@@ -99,7 +99,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
     const isBlackoutPeriod = blackoutPeriod.startDate && blackoutPeriod.endDate
     let closingTime = '6pm'
     if (isBlackoutPeriod && isAfter(new Date(this.props[this.props.model].closedAt), blackoutPeriod.startDate)) {
-      closingTime = '11:59pm'
+      closingTime = '11:55pm'
     }
     return (
       <Form

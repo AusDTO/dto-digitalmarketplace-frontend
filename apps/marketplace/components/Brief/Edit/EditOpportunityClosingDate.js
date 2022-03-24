@@ -184,7 +184,7 @@ class EditOpportunityClosingDate extends Component {
 
     if (isBlackoutPeriod) {
       if (isAfter(new Date(this.props[model].closingDate), blackoutPeriod.startDate)) {
-        closingTime = '11:59pm'
+        closingTime = '11:55pm'
       }
       if (
         isSameDay(closingDate, blackoutPeriod.startDate) ||

@@ -67,7 +67,7 @@ class EditOpportunityTable extends Component {
 
     if (blackoutPeriod.startDate && blackoutPeriod.endDate) {
       if (isAfter(edits.closingDate, blackoutPeriod.startDate)) {
-        closingTime = '11.59pm'
+        closingTime = '11.55pm'
         closingDateString = itemWasEdited(format(new Date(brief.dates.closing_time), 'YYYY-MM-DD'), edits.closingDate)
           ? format(edits.closingDate, `dddd DD MMMM YYYY [at ${closingTime} (in Canberra)]`)
           : format(getClosingTime(brief), `dddd DD MMMM YYYY [at ${closingTime}(in Canberra)]`)

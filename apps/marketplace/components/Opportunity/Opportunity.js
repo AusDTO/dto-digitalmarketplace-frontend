@@ -151,7 +151,7 @@ const Opportunity = props => {
   let closingTime = '6pm'
   if (blackoutPeriod.startDate && blackoutPeriod.endDate) {
     if (isAfter(getClosingTime(brief), blackoutPeriod.startDate)) {
-      closingTime = '11.59pm'
+      closingTime = '11:55pm'
       isAfterBlackoutStart = true
     }
   }
