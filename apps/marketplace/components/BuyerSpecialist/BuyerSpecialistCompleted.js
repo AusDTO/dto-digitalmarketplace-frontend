@@ -16,10 +16,10 @@ export class BuyerSpecialistCompleted extends Component {
   }
 
   render() {
-    const { blackoutPeriod } = this.props
-    const isBlackoutPeriod = blackoutPeriod.startDate && blackoutPeriod.endDate
+    const { lockoutPeriod } = this.props
+    const isLockoutPeriod = lockoutPeriod.startDate && lockoutPeriod.endDate
     let closingTime = '6pm'
-    if (isBlackoutPeriod && isAfter(new Date(this.props.closingDate), blackoutPeriod.startDate)) {
+    if (isLockoutPeriod && isAfter(new Date(this.props.closingDate), lockoutPeriod.startDate)) {
       closingTime = '11:55pm'
     }
 
@@ -79,7 +79,7 @@ export class BuyerSpecialistCompleted extends Component {
 }
 
 BuyerSpecialistCompleted.defaultProps = {
-  blackoutPeriod: {
+  lockoutPeriod: {
     startDate: null,
     endDate: null
   }
@@ -91,11 +91,11 @@ BuyerSpecialistCompleted.propTypes = {
   contactEmail: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   app: PropTypes.object.isRequired,
-  blackoutPeriod: PropTypes.object
+  lockoutPeriod: PropTypes.object
 }
 
 const mapStateToProps = state => ({
-  blackoutPeriod: state.brief.blackoutPeriod
+  lockoutPeriod: state.brief.lockoutPeriod
 })
 
 export default connect(mapStateToProps)(BuyerSpecialistCompleted)

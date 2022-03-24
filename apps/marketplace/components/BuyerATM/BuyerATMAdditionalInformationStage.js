@@ -15,15 +15,15 @@ import {
   validDate,
   dateIs2DaysInFuture,
   dateIsBefore,
-  dateIsOutsideBlackout
+  dateIsOutsideLockout
 } from 'marketplace/components/validators'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
 import mainStyles from 'marketplace/main.scss'
 import styles from '../BuyerSpecialist/BuyerSpecialistAdditionalInformationStage.scss'
 
-let blackoutStartDate = null
-let blackoutEndDate = null
+let lockoutStartDate = null
+let lockoutEndDate = null
 
 const requiredContactNumber = v => required(v.contactNumber)
 const contactNumberFormat = v => validPhoneNumber(v.contactNumber)
@@ -31,8 +31,8 @@ const requiredClosedAt = v => required(v.closedAt)
 const closedAtIsValid = v => validDate(v.closedAt)
 const closedAtIs2DaysInFuture = v => !closedAtIsValid(v) || dateIs2DaysInFuture(v.closedAt)
 const closedAtIsBefore = v => !closedAtIsValid(v) || dateIsBefore(v.closedAt, addDays(new Date(), 366))
-const closedAtIsOutsideBlackout = v =>
-  !closedAtIsValid(v) || dateIsOutsideBlackout(v.closedAt, blackoutStartDate, blackoutEndDate)
+const closedAtIsOutsideLockout = v =>
+  !closedAtIsValid(v) || dateIsOutsideLockout(v.closedAt, lockoutStartDate, lockoutEndDate)
 
 export const done = v =>
   requiredContactNumber(v) &&
@@ -41,7 +41,7 @@ export const done = v =>
   closedAtIsValid(v) &&
   closedAtIs2DaysInFuture(v) &&
   closedAtIsBefore(v) &&
-  closedAtIsOutsideBlackout(v)
+  closedAtIsOutsideLockout(v)
 
 export class BuyerATMAdditionalInformationStage extends Component {
   constructor(props) {
@@ -51,8 +51,8 @@ export class BuyerATMAdditionalInformationStage extends Component {
       const date = addDays(new Date(), 14)
       this.props.setDate(format(date, 'YYYY-MM-DD'))
     }
-    blackoutStartDate = this.props.blackoutPeriod.startDate
-    blackoutEndDate = this.props.blackoutPeriod.endDate
+    lockoutStartDate = this.props.lockoutPeriod.startDate
+    lockoutEndDate = this.props.lockoutPeriod.endDate
   }
 
   handleDateChange(date) {
@@ -60,10 +60,10 @@ export class BuyerATMAdditionalInformationStage extends Component {
   }
 
   render() {
-    const { model, blackoutPeriod } = this.props
-    const isBlackoutPeriod = blackoutPeriod.startDate && blackoutPeriod.endDate
+    const { model, lockoutPeriod } = this.props
+    const isLockoutPeriod = lockoutPeriod.startDate && lockoutPeriod.endDate
     let closingTime = '6pm'
-    if (isBlackoutPeriod && isAfter(new Date(this.props[this.props.model].closedAt), blackoutPeriod.startDate)) {
+    if (isLockoutPeriod && isAfter(new Date(this.props[this.props.model].closedAt), lockoutPeriod.startDate)) {
       closingTime = '11:55pm'
     }
 
@@ -79,7 +79,7 @@ export class BuyerATMAdditionalInformationStage extends Component {
             closedAtIsValid,
             closedAtIs2DaysInFuture,
             closedAtIsBefore,
-            closedAtIsOutsideBlackout
+            closedAtIsOutsideLockout
           }
         }}
         onSubmit={this.props.onSubmit}
@@ -98,9 +98,9 @@ export class BuyerATMAdditionalInformationStage extends Component {
             closedAtIs2DaysInFuture: 'You must enter a closing date at least 2 days from now',
             requiredClosedAt: 'You must enter the closing date for this opportunity',
             closedAtIsBefore: 'You must enter a closing date no more than one year from now',
-            closedAtIsOutsideBlackout: `You can't set a closing date between
-            ${format(blackoutPeriod.startDate, 'D MMMM')} and
-            ${format(blackoutPeriod.endDate, 'D MMMM YYYY')}, as Digital Marketplace is moving to BuyICT.`
+            closedAtIsOutsideLockout: `You can't set a closing date between
+            ${format(lockoutPeriod.startDate, 'D MMMM')} and
+            ${format(lockoutPeriod.endDate, 'D MMMM YYYY')}, as Digital Marketplace is moving to BuyICT.`
           }}
         />
 
@@ -129,7 +129,7 @@ export class BuyerATMAdditionalInformationStage extends Component {
           maxLength={100}
           validators={{}}
         />
-        {isBlackoutPeriod && (
+        {isLockoutPeriod && (
           <AUpageAlert as="warning" className={`${mainStyles.marginTop3} ${mainStyles.marginBottom1}`}>
             <p>
               Digital Marketplace is{' '}
@@ -138,8 +138,8 @@ export class BuyerATMAdditionalInformationStage extends Component {
               </a>{' '}
               soon. The closing date must be{' '}
               <b>
-                before {format(blackoutPeriod.startDate, 'D MMMM')} or after{' '}
-                {format(blackoutPeriod.endDate, 'D MMMM YYYY')}
+                before {format(lockoutPeriod.startDate, 'D MMMM')} or after{' '}
+                {format(lockoutPeriod.endDate, 'D MMMM YYYY')}
               </b>
               .
             </p>
@@ -162,7 +162,7 @@ export class BuyerATMAdditionalInformationStage extends Component {
 BuyerATMAdditionalInformationStage.defaultProps = {
   onSubmit: () => {},
   onSubmitFailed: () => {},
-  blackoutPeriod: {
+  lockoutPeriod: {
     startDate: null,
     endDate: null
   }
@@ -173,12 +173,12 @@ BuyerATMAdditionalInformationStage.propTypes = {
   formButtons: PropTypes.node.isRequired,
   onSubmit: PropTypes.func,
   onSubmitFailed: PropTypes.func,
-  blackoutPeriod: PropTypes.object
+  lockoutPeriod: PropTypes.object
 }
 
 const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model),
-  blackoutPeriod: state.brief.blackoutPeriod
+  lockoutPeriod: state.brief.lockoutPeriod
 })
 
 const mapDispatchToProps = (dispatch, props) => ({

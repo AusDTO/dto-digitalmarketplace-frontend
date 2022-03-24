@@ -18,10 +18,10 @@ export class BuyerATMReviewStage extends Component {
   }
 
   render() {
-    const { blackoutPeriod } = this.props
-    const isBlackoutPeriod = blackoutPeriod.startDate && blackoutPeriod.endDate
+    const { lockoutPeriod } = this.props
+    const isLockoutPeriod = lockoutPeriod.startDate && lockoutPeriod.endDate
     let closingTime = '6pm'
-    if (isBlackoutPeriod && isAfter(new Date(this.props[this.props.model].closedAt), blackoutPeriod.startDate)) {
+    if (isLockoutPeriod && isAfter(new Date(this.props[this.props.model].closedAt), lockoutPeriod.startDate)) {
       closingTime = '11:55pm'
     }
 
@@ -94,7 +94,7 @@ export class BuyerATMReviewStage extends Component {
 BuyerATMReviewStage.defaultProps = {
   onSubmit: () => {},
   stagesTodo: [],
-  blackoutPeriod: {
+  lockoutPeriod: {
     startDate: null,
     endDate: null
   }
@@ -105,12 +105,12 @@ BuyerATMReviewStage.propTypes = {
   formButtons: PropTypes.node.isRequired,
   stagesTodo: PropTypes.array,
   onSubmit: PropTypes.func,
-  blackoutPeriod: PropTypes.object
+  lockoutPeriod: PropTypes.object
 }
 
 const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model),
-  blackoutPeriod: state.brief.blackoutPeriod
+  lockoutPeriod: state.brief.lockoutPeriod
 })
 
 export default connect(mapStateToProps)(BuyerATMReviewStage)

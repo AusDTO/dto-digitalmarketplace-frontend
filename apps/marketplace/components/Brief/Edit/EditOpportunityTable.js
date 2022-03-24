@@ -59,14 +59,14 @@ class EditOpportunityTable extends Component {
   }
 
   render = () => {
-    const { brief, edits, blackoutPeriod } = this.props
+    const { brief, edits, lockoutPeriod } = this.props
     const showInvited = this.showInvitedSellers()
     const sellersToInvite = getSellersToInvite(brief, edits)
     let closingTime = '6pm'
     let closingDateString = null
 
-    if (blackoutPeriod.startDate && blackoutPeriod.endDate) {
-      if (isAfter(edits.closingDate, blackoutPeriod.startDate)) {
+    if (lockoutPeriod.startDate && lockoutPeriod.endDate) {
+      if (isAfter(edits.closingDate, lockoutPeriod.startDate)) {
         closingTime = '11.55pm'
         closingDateString = itemWasEdited(format(new Date(brief.dates.closing_time), 'YYYY-MM-DD'), edits.closingDate)
           ? format(edits.closingDate, `dddd DD MMMM YYYY [at ${closingTime} (in Canberra)]`)
@@ -280,7 +280,7 @@ EditOpportunityTable.defaultProps = {
     title: ''
   },
   isOpenToAll: false,
-  blackoutPeriod: {
+  lockoutPeriod: {
     startDate: null,
     endDate: null
   }
@@ -300,11 +300,11 @@ EditOpportunityTable.propTypes = {
     title: PropTypes.string.isRequired
   }),
   isOpenToAll: PropTypes.bool.isRequired,
-  blackoutPeriod: PropTypes.object
+  lockoutPeriod: PropTypes.object
 }
 
 const mapStateToProps = state => ({
-  blackoutPeriod: state.brief.blackoutPeriod
+  lockoutPeriod: state.brief.lockoutPeriod
 })
 
 export default connect(mapStateToProps)(EditOpportunityTable)

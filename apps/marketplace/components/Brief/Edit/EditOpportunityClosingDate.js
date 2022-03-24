@@ -16,35 +16,35 @@ import AUpageAlert from '@gov.au/page-alerts/lib/js/react'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
 import { getBriefLastQuestionDate, getClosingTime } from 'marketplace/components/helpers'
-import { required, validDate, dateIsOutsideBlackout } from 'marketplace/components/validators'
+import { required, validDate, dateIsOutsideLockout } from 'marketplace/components/validators'
 import formProps from 'shared/form/formPropsSelector'
 
 import styles from '../../../main.scss'
 
 const ClosingDateIsNotValidMessage = props => {
-  const { closingDate, blackoutPeriod } = props
-  const isBlackoutPeriod = blackoutPeriod.startDate && blackoutPeriod.endDate
+  const { closingDate, lockoutPeriod } = props
+  const isLockoutPeriod = lockoutPeriod.startDate && lockoutPeriod.endDate
   let minValidDate = closingDate
-  let showBlackoutPeriod = false
+  let showLockoutPeriod = false
 
-  if (isBlackoutPeriod) {
+  if (isLockoutPeriod) {
     if (
-      isSameDay(closingDate, blackoutPeriod.startDate) ||
-      isSameDay(addDays(closingDate, 1), blackoutPeriod.startDate)
+      isSameDay(closingDate, lockoutPeriod.startDate) ||
+      isSameDay(addDays(closingDate, 1), lockoutPeriod.startDate)
     ) {
-      minValidDate = blackoutPeriod.endDate
-      showBlackoutPeriod = false
-    } else if (isAfter(closingDate, blackoutPeriod.startDate) && isBefore(closingDate, blackoutPeriod.endDate)) {
-      minValidDate = blackoutPeriod.endDate
-      showBlackoutPeriod = true
-    } else if (isBefore(closingDate, blackoutPeriod.startDate)) {
-      showBlackoutPeriod = true
+      minValidDate = lockoutPeriod.endDate
+      showLockoutPeriod = false
+    } else if (isAfter(closingDate, lockoutPeriod.startDate) && isBefore(closingDate, lockoutPeriod.endDate)) {
+      minValidDate = lockoutPeriod.endDate
+      showLockoutPeriod = true
+    } else if (isBefore(closingDate, lockoutPeriod.startDate)) {
+      showLockoutPeriod = true
     }
   }
 
   return (
     <div>
-      {(!isBlackoutPeriod || (isBlackoutPeriod && !showBlackoutPeriod)) && (
+      {(!isLockoutPeriod || (isLockoutPeriod && !showLockoutPeriod)) && (
         <AUbutton
           as="tertiary"
           className={`${styles.border0} ${styles.padding0}`}
@@ -54,7 +54,7 @@ const ClosingDateIsNotValidMessage = props => {
         </AUbutton>
       )}
 
-      {isBlackoutPeriod && showBlackoutPeriod && (
+      {isLockoutPeriod && showLockoutPeriod && (
         <AUbutton
           as="tertiary"
           className={`${styles.border0} ${styles.padding0}`}
@@ -63,8 +63,8 @@ const ClosingDateIsNotValidMessage = props => {
           {`The closing date must be a valid date after ${format(
             minValidDate,
             'DD MMMM YYYY'
-          )}, and not between ${format(blackoutPeriod.startDate, 'DD MMMM')} and ${format(
-            blackoutPeriod.endDate,
+          )}, and not between ${format(lockoutPeriod.startDate, 'DD MMMM')} and ${format(
+            lockoutPeriod.endDate,
             'DD MMMM YYYY'
           )}`}
         </AUbutton>
@@ -152,13 +152,13 @@ class EditOpportunityClosingDate extends Component {
   }
 
   isClosingDateValid = formValues => {
-    const { brief, blackoutPeriod } = this.props
+    const { brief, lockoutPeriod } = this.props
     const currentClosingDate = new Date(getClosingTime(brief))
     const dateIsValid =
       formValues.closingDate &&
       validDate(formValues.closingDate) &&
       isAfter(new Date(formValues.closingDate), currentClosingDate) &&
-      dateIsOutsideBlackout(formValues.closingDate, blackoutPeriod.startDate, blackoutPeriod.endDate)
+      dateIsOutsideLockout(formValues.closingDate, lockoutPeriod.startDate, lockoutPeriod.endDate)
 
     if (!dateIsValid) {
       this.setState({
@@ -170,35 +170,35 @@ class EditOpportunityClosingDate extends Component {
   }
 
   render = () => {
-    const { brief, model, blackoutPeriod } = this.props
+    const { brief, model, lockoutPeriod } = this.props
     const { hasErrors, redirectToEditsTable } = this.state
     const invalidClosingDateMessage = (
-      <ClosingDateIsNotValidMessage closingDate={getClosingTime(brief)} blackoutPeriod={blackoutPeriod} />
+      <ClosingDateIsNotValidMessage closingDate={getClosingTime(brief)} lockoutPeriod={lockoutPeriod} />
     )
-    const isBlackoutPeriod = blackoutPeriod.startDate && blackoutPeriod.endDate
+    const isLockoutPeriod = lockoutPeriod.startDate && lockoutPeriod.endDate
     const closingDate = getClosingTime(brief)
-    let isAfterBlackoutPeriod = true
+    let isAfterLockoutPeriod = true
     let closingTime = '6pm'
     let minValidDate = getClosingTime(brief)
-    let showBlackoutPeriod = false
+    let showLockoutPeriod = false
 
-    if (isBlackoutPeriod) {
-      if (isAfter(new Date(this.props[model].closingDate), blackoutPeriod.startDate)) {
+    if (isLockoutPeriod) {
+      if (isAfter(new Date(this.props[model].closingDate), lockoutPeriod.startDate)) {
         closingTime = '11:55pm'
       }
       if (
-        isSameDay(closingDate, blackoutPeriod.startDate) ||
-        isSameDay(addDays(closingDate, 1), blackoutPeriod.startDate)
+        isSameDay(closingDate, lockoutPeriod.startDate) ||
+        isSameDay(addDays(closingDate, 1), lockoutPeriod.startDate)
       ) {
-        minValidDate = blackoutPeriod.endDate
-        isAfterBlackoutPeriod = false
-      } else if (isAfter(closingDate, blackoutPeriod.startDate) && isBefore(closingDate, blackoutPeriod.endDate)) {
-        minValidDate = blackoutPeriod.endDate
-        showBlackoutPeriod = true
-        isAfterBlackoutPeriod = false
-      } else if (isBefore(closingDate, blackoutPeriod.startDate)) {
-        showBlackoutPeriod = true
-        isAfterBlackoutPeriod = false
+        minValidDate = lockoutPeriod.endDate
+        isAfterLockoutPeriod = false
+      } else if (isAfter(closingDate, lockoutPeriod.startDate) && isBefore(closingDate, lockoutPeriod.endDate)) {
+        minValidDate = lockoutPeriod.endDate
+        showLockoutPeriod = true
+        isAfterLockoutPeriod = false
+      } else if (isBefore(closingDate, lockoutPeriod.startDate)) {
+        showLockoutPeriod = true
+        isAfterLockoutPeriod = false
       }
     }
 
@@ -223,10 +223,10 @@ class EditOpportunityClosingDate extends Component {
             Extend the closing date
           </AUheading>
         </div>
-        {isBlackoutPeriod && !isAfterBlackoutPeriod && (
+        {isLockoutPeriod && !isAfterLockoutPeriod && (
           <div className="row">
             <AUpageAlert as="warning" className={`${styles.pageAlert} ${styles.marginBottom1}`}>
-              {!showBlackoutPeriod && (
+              {!showLockoutPeriod && (
                 <p className={styles.noMaxWidth}>
                   Digital Marketplace is{' '}
                   <a href="/api/2/r/buyict" target="_blank">
@@ -235,7 +235,7 @@ class EditOpportunityClosingDate extends Component {
                   soon. The closing date must be <b>after {format(minValidDate, 'D MMMM YYYY')}</b>.
                 </p>
               )}
-              {showBlackoutPeriod && (
+              {showLockoutPeriod && (
                 <p className={styles.noMaxWidth}>
                   Digital Marketplace is{' '}
                   <a href="/api/2/r/buyict" target="_blank">
@@ -243,8 +243,8 @@ class EditOpportunityClosingDate extends Component {
                   </a>{' '}
                   soon. The closing date must be{' '}
                   <b>
-                    before {format(blackoutPeriod.startDate, 'D MMMM')} or after{' '}
-                    {format(blackoutPeriod.endDate, 'D MMMM YYYY')}
+                    before {format(lockoutPeriod.startDate, 'D MMMM')} or after{' '}
+                    {format(lockoutPeriod.endDate, 'D MMMM YYYY')}
                   </b>
                   .
                 </p>
@@ -302,7 +302,7 @@ EditOpportunityClosingDate.defaultProps = {
     }
   },
   model: '',
-  blackoutPeriod: {
+  lockoutPeriod: {
     startDate: null,
     endDate: null
   }
@@ -315,12 +315,12 @@ EditOpportunityClosingDate.propTypes = {
     }).isRequired
   }),
   model: PropTypes.string.isRequired,
-  blackoutPeriod: PropTypes.object
+  lockoutPeriod: PropTypes.object
 }
 
 const mapStateToProps = (state, props) => ({
   ...formProps(state, props.model),
-  blackoutPeriod: state.brief.blackoutPeriod
+  lockoutPeriod: state.brief.lockoutPeriod
 })
 
 const mapDispatchToProps = (dispatch, props) => ({

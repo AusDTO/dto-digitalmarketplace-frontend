@@ -141,18 +141,18 @@ const Opportunity = props => {
     teams,
     mustJoinTeam,
     userType,
-    blackoutPeriod
+    lockoutPeriod
   } = props
 
   const brief = { ...defaultBriefProps, ...props.brief }
   const category = getBriefCategory(domains, brief.sellerCategory)
   const originalClosedAt = brief.originalClosedAt ? brief.originalClosedAt : null
-  let isAfterBlackoutStart = false
+  let isAfterLockoutStart = false
   let closingTime = '6pm'
-  if (blackoutPeriod.startDate && blackoutPeriod.endDate) {
-    if (isAfter(getClosingTime(brief), blackoutPeriod.startDate)) {
+  if (lockoutPeriod.startDate && lockoutPeriod.endDate) {
+    if (isAfter(getClosingTime(brief), lockoutPeriod.startDate)) {
       closingTime = '11:55pm'
-      isAfterBlackoutStart = true
+      isAfterLockoutStart = true
     }
   }
 
@@ -679,7 +679,7 @@ const Opportunity = props => {
               supplierCode={supplierCode}
               originalClosedAt={originalClosedAt}
               location={location}
-              isNewClosingTime={isAfterBlackoutStart}
+              isNewClosingTime={isAfterLockoutStart}
             />
           )}
           {brief.status !== 'withdrawn' && brief.lotSlug !== 'specialist' && (
@@ -719,7 +719,7 @@ const Opportunity = props => {
               supplierCode={supplierCode}
               originalClosedAt={originalClosedAt}
               location={location}
-              isNewClosingTime={isAfterBlackoutStart}
+              isNewClosingTime={isAfterLockoutStart}
             />
           )}
         </div>
@@ -764,7 +764,7 @@ Opportunity.defaultProps = {
   hasSignedCurrentAgreement: false,
   supplierCode: null,
   userType: null,
-  blackoutPeriod: {
+  lockoutPeriod: {
     startDate: null,
     endDate: null
   }
@@ -850,7 +850,7 @@ Opportunity.propTypes = {
   hasSignedCurrentAgreement: PropTypes.bool,
   supplierCode: PropTypes.number,
   userType: PropTypes.string,
-  blackoutPeriod: PropTypes.object
+  lockoutPeriod: PropTypes.object
 }
 
 const mapStateToProps = state => ({
@@ -858,7 +858,7 @@ const mapStateToProps = state => ({
   isTeamLead: state.app.isTeamLead,
   isPartOfTeam: state.app.isPartOfTeam,
   mustJoinTeam: state.app.mustJoinTeam,
-  blackoutPeriod: state.brief.blackoutPeriod
+  lockoutPeriod: state.brief.lockoutPeriod
 })
 
 export default connect(mapStateToProps)(Opportunity)
