@@ -83,7 +83,7 @@ export const dateIsBefore = (val, before) => {
   return false
 }
 
-export const dateIsOutsidelockout = (val, start, end) => {
+export const dateIsOutsideLockout = (val, start, end) => {
   if (!validDate(val)) {
     return false
   }
