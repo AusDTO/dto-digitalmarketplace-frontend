@@ -5,9 +5,6 @@ import { actions, Form } from 'react-redux-form'
 import { Redirect } from 'react-router-dom'
 import format from 'date-fns/format'
 import isAfter from 'date-fns/is_after'
-import isBefore from 'date-fns/is_before'
-import isSameDay from 'date-fns/is_same_day'
-import addDays from 'date-fns/add_days'
 
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
@@ -15,7 +12,7 @@ import AUpageAlert from '@gov.au/page-alerts/lib/js/react'
 
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
-import { getBriefLastQuestionDate, getClosingTime } from 'marketplace/components/helpers'
+import { getBriefLastQuestionDate, getClosingTime, getLockoutStatus } from 'marketplace/components/helpers'
 import { required, validDate, dateIsOutsideLockout } from 'marketplace/components/validators'
 import formProps from 'shared/form/formPropsSelector'
 
@@ -23,28 +20,11 @@ import styles from '../../../main.scss'
 
 const ClosingDateIsNotValidMessage = props => {
   const { closingDate, lockoutPeriod } = props
-  const isLockoutPeriod = lockoutPeriod.startDate && lockoutPeriod.endDate
-  let minValidDate = closingDate
-  let showLockoutPeriod = false
-
-  if (isLockoutPeriod) {
-    if (
-      isSameDay(closingDate, lockoutPeriod.startDate) ||
-      isSameDay(addDays(closingDate, 1), lockoutPeriod.startDate)
-    ) {
-      minValidDate = lockoutPeriod.endDate
-      showLockoutPeriod = false
-    } else if (isAfter(closingDate, lockoutPeriod.startDate) && isBefore(closingDate, lockoutPeriod.endDate)) {
-      minValidDate = lockoutPeriod.endDate
-      showLockoutPeriod = true
-    } else if (isBefore(closingDate, lockoutPeriod.startDate)) {
-      showLockoutPeriod = true
-    }
-  }
+  const { lockoutDatesProvided, showLockoutDates, minValidDate } = getLockoutStatus(lockoutPeriod, closingDate)
 
   return (
     <div>
-      {(!isLockoutPeriod || (isLockoutPeriod && !showLockoutPeriod)) && (
+      {(!lockoutDatesProvided || (lockoutDatesProvided && !showLockoutDates)) && (
         <AUbutton
           as="tertiary"
           className={`${styles.border0} ${styles.padding0}`}
@@ -54,7 +34,7 @@ const ClosingDateIsNotValidMessage = props => {
         </AUbutton>
       )}
 
-      {isLockoutPeriod && showLockoutPeriod && (
+      {lockoutDatesProvided && showLockoutDates && (
         <AUbutton
           as="tertiary"
           className={`${styles.border0} ${styles.padding0}`}
@@ -175,32 +155,11 @@ class EditOpportunityClosingDate extends Component {
     const invalidClosingDateMessage = (
       <ClosingDateIsNotValidMessage closingDate={getClosingTime(brief)} lockoutPeriod={lockoutPeriod} />
     )
-    const isLockoutPeriod = lockoutPeriod.startDate && lockoutPeriod.endDate
-    const closingDate = getClosingTime(brief)
-    let isAfterLockoutPeriod = true
-    let closingTime = '6pm'
-    let minValidDate = getClosingTime(brief)
-    let showLockoutPeriod = false
-
-    if (isLockoutPeriod) {
-      if (isAfter(new Date(this.props[model].closingDate), lockoutPeriod.startDate)) {
-        closingTime = '11:55pm'
-      }
-      if (
-        isSameDay(closingDate, lockoutPeriod.startDate) ||
-        isSameDay(addDays(closingDate, 1), lockoutPeriod.startDate)
-      ) {
-        minValidDate = lockoutPeriod.endDate
-        isAfterLockoutPeriod = false
-      } else if (isAfter(closingDate, lockoutPeriod.startDate) && isBefore(closingDate, lockoutPeriod.endDate)) {
-        minValidDate = lockoutPeriod.endDate
-        showLockoutPeriod = true
-        isAfterLockoutPeriod = false
-      } else if (isBefore(closingDate, lockoutPeriod.startDate)) {
-        showLockoutPeriod = true
-        isAfterLockoutPeriod = false
-      }
-    }
+    const { lockoutDatesProvided, minValidDate, closingTime, showLockoutDates, isAfterLockoutEnds } = getLockoutStatus(
+      lockoutPeriod,
+      getClosingTime(brief),
+      this.props[model].closingDate
+    )
 
     if (redirectToEditsTable) {
       return <Redirect to="/" />
@@ -223,10 +182,10 @@ class EditOpportunityClosingDate extends Component {
             Extend the closing date
           </AUheading>
         </div>
-        {isLockoutPeriod && !isAfterLockoutPeriod && (
+        {lockoutDatesProvided && !isAfterLockoutEnds && (
           <div className="row">
             <AUpageAlert as="warning" className={`${styles.pageAlert} ${styles.marginBottom1}`}>
-              {!showLockoutPeriod && (
+              {!showLockoutDates && (
                 <p className={styles.noMaxWidth}>
                   Digital Marketplace is{' '}
                   <a href="/api/2/r/buyict" target="_blank">
@@ -235,7 +194,7 @@ class EditOpportunityClosingDate extends Component {
                   soon. The closing date must be <b>after {format(minValidDate, 'D MMMM YYYY')}</b>.
                 </p>
               )}
-              {showLockoutPeriod && (
+              {showLockoutDates && (
                 <p className={styles.noMaxWidth}>
                   Digital Marketplace is{' '}
                   <a href="/api/2/r/buyict" target="_blank">
