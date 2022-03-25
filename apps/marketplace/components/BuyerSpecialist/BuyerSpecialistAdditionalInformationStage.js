@@ -11,7 +11,7 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import format from 'date-fns/format'
 import addDays from 'date-fns/add_days'
-import isAfter from 'date-fns/is_after'
+import { getLockoutStatus } from 'marketplace/components/helpers'
 import range from 'lodash/range'
 import {
   required,
@@ -96,11 +96,8 @@ export class BuyerSpecialistRequirementsStage extends Component {
 
   render() {
     const { model, lockoutPeriod } = this.props
-    const isLockoutPeriod = lockoutPeriod.startDate && lockoutPeriod.endDate
-    let closingTime = '6pm'
-    if (isLockoutPeriod && isAfter(new Date(this.props[this.props.model].closedAt), lockoutPeriod.startDate)) {
-      closingTime = '11:55pm'
-    }
+    const { lockoutDatesProvided, closingTime } = getLockoutStatus(lockoutPeriod, this.props[model].closedAt)
+
     return (
       <Form
         className={styles.additionalInformationContainer}
@@ -221,7 +218,7 @@ export class BuyerSpecialistRequirementsStage extends Component {
           maxLength={100}
           validators={{}}
         />
-        {isLockoutPeriod && (
+        {lockoutDatesProvided && (
           <AUpageAlert as="warning" className={`${mainStyles.marginTop3} ${mainStyles.marginBottom1}`}>
             <p>
               Digital Marketplace is{' '}
