@@ -3,11 +3,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import format from 'date-fns/format'
-import isAfter from 'date-fns/is_after'
 
 import AUheading from '@gov.au/headings/lib/js/react.js'
 
-import { getClosingTime } from 'marketplace/components/helpers'
+import { getClosingTime, getLockoutStatus } from 'marketplace/components/helpers'
 import SummaryPreview from './SummaryPreview'
 import { getSellersToInvite, itemWasEdited, getAllDocuments } from './helpers'
 
@@ -62,16 +61,16 @@ class EditOpportunityTable extends Component {
     const { brief, edits, lockoutPeriod } = this.props
     const showInvited = this.showInvitedSellers()
     const sellersToInvite = getSellersToInvite(brief, edits)
-    let closingTime = '6pm'
+    const { lockoutDatesProvided, closingTime, isAfterLockoutStarts } = getLockoutStatus(
+      lockoutPeriod,
+      edits.closingDate || getClosingTime(brief)
+    )
     let closingDateString = null
 
-    if (lockoutPeriod.startDate && lockoutPeriod.endDate) {
-      if (isAfter(edits.closingDate, lockoutPeriod.startDate)) {
-        closingTime = '11.55pm'
-        closingDateString = itemWasEdited(format(new Date(brief.dates.closing_time), 'YYYY-MM-DD'), edits.closingDate)
-          ? format(edits.closingDate, `dddd DD MMMM YYYY [at ${closingTime} (in Canberra)]`)
-          : format(getClosingTime(brief), `dddd DD MMMM YYYY [at ${closingTime}(in Canberra)]`)
-      }
+    if (lockoutDatesProvided && isAfterLockoutStarts) {
+      closingDateString = itemWasEdited(format(new Date(brief.dates.closing_time), 'YYYY-MM-DD'), edits.closingDate)
+        ? format(edits.closingDate, `dddd DD MMMM YYYY [at ${closingTime} (in Canberra)]`)
+        : format(getClosingTime(brief), `dddd DD MMMM YYYY [at ${closingTime} (in Canberra)]`)
     }
     if (closingDateString === null) {
       closingDateString = itemWasEdited(format(new Date(brief.dates.closing_time), 'YYYY-MM-DD'), edits.closingDate)
