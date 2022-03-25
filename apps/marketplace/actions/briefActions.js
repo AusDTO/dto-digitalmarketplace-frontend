@@ -100,7 +100,8 @@ export const handleBriefInfoSuccess = response => ({
   oldWorkOrderCreator: response.data.oldWorkOrderCreator,
   questionsAsked: response.data.questionsAsked,
   briefResponseDownloaded: response.data.briefResponseDownloaded,
-  supplierContact: response.data.supplierContact
+  supplierContact: response.data.supplierContact,
+  lockoutPeriod: response.data.lockoutPeriod
 })
 
 export const handlePublicBriefInfoSuccess = response => ({

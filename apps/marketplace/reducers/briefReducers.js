@@ -96,7 +96,8 @@ const briefReducer = (state = defaultBriefState, action) => {
         oldWorkOrderCreator: action.oldWorkOrderCreator,
         questionsAsked: action.questionsAsked,
         briefResponseDownloaded: action.briefResponseDownloaded,
-        supplierContact: action.supplierContact
+        supplierContact: action.supplierContact,
+        lockoutPeriod: action.lockoutPeriod
       }
 
     case BRIEF_PUBLIC_INFO_FETCH_DATA_SUCCESS:
