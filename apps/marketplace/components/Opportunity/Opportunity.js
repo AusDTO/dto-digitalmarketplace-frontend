@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import format from 'date-fns/format'
-import isAfter from 'date-fns/is_after'
 import { rootPath } from 'marketplace/routes'
 import NotVisible from 'marketplace/components/Icons/NotVisible/NotVisible'
 import {
@@ -13,7 +12,8 @@ import {
   getBriefLastQuestionDate,
   getBriefType,
   getClosingTime,
-  hasPermission
+  hasPermission,
+  getLockoutStatus
 } from 'marketplace/components/helpers'
 import { AUcallout } from '@gov.au/callout/lib/js/react.js'
 import EvaluationCriteria from './EvaluationCriteria'
@@ -147,14 +147,7 @@ const Opportunity = props => {
   const brief = { ...defaultBriefProps, ...props.brief }
   const category = getBriefCategory(domains, brief.sellerCategory)
   const originalClosedAt = brief.originalClosedAt ? brief.originalClosedAt : null
-  let isAfterLockoutStart = false
-  let closingTime = '6pm'
-  if (lockoutPeriod.startDate && lockoutPeriod.endDate) {
-    if (isAfter(getClosingTime(brief), lockoutPeriod.startDate)) {
-      closingTime = '11:55pm'
-      isAfterLockoutStart = true
-    }
-  }
+  const { isAfterLockoutStarts, closingTime } = getLockoutStatus(lockoutPeriod, getClosingTime(brief))
 
   if (brief.status === 'draft') {
     if (!isPartOfTeam && mustJoinTeam) {
@@ -679,7 +672,7 @@ const Opportunity = props => {
               supplierCode={supplierCode}
               originalClosedAt={originalClosedAt}
               location={location}
-              isNewClosingTime={isAfterLockoutStart}
+              isNewClosingTime={isAfterLockoutStarts}
             />
           )}
           {brief.status !== 'withdrawn' && brief.lotSlug !== 'specialist' && (
@@ -719,7 +712,7 @@ const Opportunity = props => {
               supplierCode={supplierCode}
               originalClosedAt={originalClosedAt}
               location={location}
-              isNewClosingTime={isAfterLockoutStart}
+              isNewClosingTime={isAfterLockoutStarts}
             />
           )}
         </div>
