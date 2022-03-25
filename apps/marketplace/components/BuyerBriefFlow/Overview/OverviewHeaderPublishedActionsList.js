@@ -9,7 +9,7 @@ import mainStyles from '../../../main.scss'
 import styles from '../Overview.scss'
 
 const OverviewHeaderPublishedActionsList = props => {
-  const { brief, canCloseOpportunity, isPartOfTeam, isTeamLead, teams } = props
+  const { brief, canCloseOpportunity, isPartOfTeam, isTeamLead, teams, isNewClosingTime } = props
 
   const closeHref = hasPermission(isPartOfTeam, isTeamLead, teams, 'publish_opportunities')
     ? `${rootPath}/brief/${brief.id}/close`
@@ -26,7 +26,7 @@ const OverviewHeaderPublishedActionsList = props => {
           <div className={styles.headerMenuClosingTime}>
             Closing{' '}
             <strong>
-              <ClosedDate countdown date={brief.dates.closing_time} />
+              <ClosedDate countdown date={brief.dates.closing_time} isNewClosingTime={isNewClosingTime} />
             </strong>
           </div>
         </li>
@@ -62,7 +62,8 @@ OverviewHeaderPublishedActionsList.defaultProps = {
   canCloseOpportunity: false,
   isPartOfTeam: null,
   isTeamLead: null,
-  teams: []
+  teams: [],
+  isNewClosingTime: false
 }
 
 OverviewHeaderPublishedActionsList.propTypes = {
@@ -75,7 +76,8 @@ OverviewHeaderPublishedActionsList.propTypes = {
   canCloseOpportunity: PropTypes.bool.isRequired,
   isPartOfTeam: PropTypes.bool.isRequired,
   isTeamLead: PropTypes.bool.isRequired,
-  teams: PropTypes.array.isRequired
+  teams: PropTypes.array.isRequired,
+  isNewClosingTime: PropTypes.bool
 }
 
 export default OverviewHeaderPublishedActionsList
