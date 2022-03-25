@@ -5,9 +5,8 @@ import { Link } from 'react-router-dom'
 import { Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
-import { getBriefLastQuestionDate } from 'marketplace/components/helpers'
+import { getBriefLastQuestionDate, getLockoutStatus } from 'marketplace/components/helpers'
 import format from 'date-fns/format'
-import isAfter from 'date-fns/is_after'
 import BuyerATMStages from './BuyerATMStages'
 import styles from './BuyerATMReviewStage.scss'
 
@@ -18,12 +17,8 @@ export class BuyerATMReviewStage extends Component {
   }
 
   render() {
-    const { lockoutPeriod } = this.props
-    const isLockoutPeriod = lockoutPeriod.startDate && lockoutPeriod.endDate
-    let closingTime = '6pm'
-    if (isLockoutPeriod && isAfter(new Date(this.props[this.props.model].closedAt), lockoutPeriod.startDate)) {
-      closingTime = '11:55pm'
-    }
+    const { lockoutPeriod, model } = this.props
+    const { closingTime } = getLockoutStatus(lockoutPeriod, this.props[model].closedAt)
 
     return (
       <Form model={this.props.model} onSubmit={this.props.onSubmit}>
