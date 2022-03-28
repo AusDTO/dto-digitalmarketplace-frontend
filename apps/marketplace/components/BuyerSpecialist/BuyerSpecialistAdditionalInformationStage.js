@@ -21,7 +21,6 @@ import {
   dateIsBefore,
   dateIsOutsideLockout
 } from 'marketplace/components/validators'
-import { loadPublicBrief } from 'marketplace/actions/briefActions'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
 import mainStyles from 'marketplace/main.scss'
@@ -272,8 +271,7 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = (dispatch, props) => ({
-  setDate: date => dispatch(actions.change(`${props.model}.closedAt`, date)),
-  loadInitialData: briefId => dispatch(loadPublicBrief(briefId))
+  setDate: date => dispatch(actions.change(`${props.model}.closedAt`, date))
 })
 
 export default connect(
