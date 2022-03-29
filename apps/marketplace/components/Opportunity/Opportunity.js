@@ -292,6 +292,14 @@ const Opportunity = props => {
               </div>
               {getStartDate(brief) && <div className="col-xs-12 col-sm-8">{getStartDate(brief)}</div>}
             </div>
+            {loggedIn && (isBuyer || canRespond) && brief.timeframeConstraints && (
+              <div className="row">
+                <div className="col-xs-12 col-sm-4">
+                  <strong>Key dates/project milestones</strong>
+                </div>
+                <div className={`col-xs-12 col-sm-8 ${styles.newLines}`}>{brief.timeframeConstraints}</div>
+              </div>
+            )}
             {brief.lotSlug === 'specialist' && brief.maxRate && (
               <div className="row">
                 <div className="col-xs-12 col-sm-4">
@@ -340,14 +348,6 @@ const Opportunity = props => {
                 ))}
               </div>
             </div>
-            {showATMObjectives(brief.lotSlug, isBuyer, canRespond) && brief.timeframeConstraints && (
-              <div className="row">
-                <div className="col-xs-12 col-sm-4">
-                  <strong>Key dates/project milestones</strong>
-                </div>
-                <div className={`col-xs-12 col-sm-8 ${styles.newLines}`}>{brief.timeframeConstraints}</div>
-              </div>
-            )}
             {['rfx', 'training2'].includes(brief.lotSlug) && (
               <div className="row">
                 <div className="col-xs-12 col-sm-4">
