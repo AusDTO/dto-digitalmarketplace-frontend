@@ -16,6 +16,9 @@ import RadioList from 'shared/form/RadioList'
 import RadioListBox from 'shared/form/RadioListBox/RadioListBox'
 import LoadingButton from 'shared/LoadingButton/LoadingButton'
 
+import style from 'shared/main.scss'
+import { DMP_LOCKOUT } from 'marketplace/constants/constants'
+
 const getErrorMessageFromServerCode = (code, abn) => {
   let message = ''
 
@@ -90,6 +93,24 @@ class SignupForm extends Component {
         hasFocused = true
         e.focus()
       }
+    }
+
+    if (DMP_LOCKOUT) {
+      return (
+        <DocumentTitle title="Signup - Digital Marketplace">
+          <div className="col-sm-push-2 col-sm-8 col-xs-12">
+            <header>
+              <h1 className="au-display-xl">Sign Up</h1>
+            </header>
+            <AUpageAlert as="warning" className={`${style.marginTop2} ${style.marginBottom2}`}>
+              <p>
+                Signing up to Digital Marketplace is temporarily unavailable, as Digital Marketplace is{' '}
+                <a href="/2/api/r/buyict">moving to BuyICT</a>.
+              </p>
+            </AUpageAlert>
+          </div>
+        </DocumentTitle>
+      )
     }
 
     return (
