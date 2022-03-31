@@ -147,7 +147,7 @@ const Opportunity = props => {
   const brief = { ...defaultBriefProps, ...props.brief }
   const category = getBriefCategory(domains, brief.sellerCategory)
   const originalClosedAt = brief.originalClosedAt ? brief.originalClosedAt : null
-  const { isAfterLockoutStarts, closingTime } = getLockoutStatus(lockoutPeriod, getClosingTime(brief))
+  const { isAfterLockoutStarts, closingTime, lastQuestions } = getLockoutStatus(lockoutPeriod, getClosingTime(brief))
 
   if (brief.status === 'draft') {
     if (!isPartOfTeam && mustJoinTeam) {
@@ -244,7 +244,9 @@ const Opportunity = props => {
               </div>
               {getQuestionsCloseDate(brief) && (
                 <div className="col-xs-12 col-sm-8">
-                  {`${format(getQuestionsCloseDate(brief), 'dddd D MMMM YYYY')} at ${closingTime} (in Canberra)`}
+                  {`${format(getQuestionsCloseDate(brief), 'dddd D MMMM YYYY')} at ${
+                    lastQuestions.closingTime
+                  } (in Canberra)`}
                 </div>
               )}
             </div>
