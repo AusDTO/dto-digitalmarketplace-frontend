@@ -6,13 +6,17 @@ import { Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import { getBriefLastQuestionDate, getLockoutStatus } from 'marketplace/components/helpers'
+import LockoutReviewNotice from 'marketplace/components/BuyerBriefFlow/LockoutReviewNotice'
 import format from 'date-fns/format'
 import BuyerATMStages from './BuyerATMStages'
 import styles from './BuyerATMReviewStage.scss'
 
 const BuyerATMReviewStage = props => {
   const { lockoutPeriod, model } = props
-  const { closingTime } = getLockoutStatus(lockoutPeriod, props[model].closedAt)
+  const { closingTime, isAfterLockoutStarts, lastQuestions, hardLockout } = getLockoutStatus(
+    lockoutPeriod,
+    props[model].closedAt
+  )
 
   return (
     <Form model={model} onSubmit={props.onSubmit}>
@@ -43,12 +47,21 @@ const BuyerATMReviewStage = props => {
                 Invited sellers can ask questions about your requirements and apply for the opportunity.
               </div>
             </div>
+            {isAfterLockoutStarts && lastQuestions.afterLockout && (
+              <LockoutReviewNotice startDate={hardLockout.startDate} endDate={hardLockout.endDate} />
+            )}
             <div className="row">
               <div className="col-xs-12 col-sm-4">
-                {format(getBriefLastQuestionDate(new Date(props[model].closedAt)), 'dddd D MMMM YYYY')}
+                {format(
+                  getBriefLastQuestionDate(new Date(props[model].closedAt), new Date(), lastQuestions.date),
+                  'dddd D MMMM YYYY'
+                )}
               </div>
               <div className="col-xs-12 col-sm-8">The last day sellers can ask questions.</div>
             </div>
+            {isAfterLockoutStarts && !lastQuestions.afterLockout && (
+              <LockoutReviewNotice startDate={hardLockout.startDate} endDate={hardLockout.endDate} />
+            )}
             <div className="row">
               <div className="col-xs-12 col-sm-4">{format(props[model].closedAt, 'dddd D MMMM YYYY')}</div>
               <div className="col-xs-12 col-sm-8">
