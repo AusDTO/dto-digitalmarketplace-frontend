@@ -6,6 +6,7 @@ import isWeekend from 'date-fns/is_weekend'
 import isAfter from 'date-fns/is_after'
 import isBefore from 'date-fns/is_before'
 import isSameDay from 'date-fns/is_same_day'
+import isWithinRange from 'date-fns/is_within_range'
 import { parse } from 'qs'
 
 export const uniqueID = () =>
@@ -96,8 +97,13 @@ const getPreviousWeekDay = date => {
   return newDate
 }
 
-export const getBriefLastQuestionDate = (closingDate, today = new Date()) => {
+export const getBriefLastQuestionDate = (closingDate, today = new Date(), specifiedDate = null) => {
   let lastQuestionDate = getPreviousWeekDay(subDays(closingDate, 1))
+
+  if (specifiedDate !== null) {
+    return specifiedDate
+  }
+
   if (closingDate <= addDays(today, 3)) {
     if (today > lastQuestionDate) {
       lastQuestionDate = today
@@ -106,7 +112,7 @@ export const getBriefLastQuestionDate = (closingDate, today = new Date()) => {
     lastQuestionDate = getPreviousWeekDay(subDays(lastQuestionDate, 1))
   }
   if (lastQuestionDate > closingDate) {
-    lastQuestionDate = closingDate
+    lastQuestionDate = parse(closingDate)
   }
   return lastQuestionDate
 }
@@ -216,10 +222,20 @@ export const getLockoutStatus = (lockoutPeriod, closingDate, newClosingDate = nu
     closingTime: '6pm',
     showLockoutDates: false,
     isAfterLockoutStarts: false,
-    isAfterLockoutEnds: false
+    isAfterLockoutEnds: false,
+    lastQuestions: {
+      date: null,
+      afterLockout: false
+    },
+    hardLockout: {
+      startDate: null,
+      endDate: null
+    }
   }
   if (lockoutPeriod.startDate && lockoutPeriod.endDate) {
     data.lockoutDatesProvided = true
+    data.hardLockout.startDate = addDays(lockoutPeriod.startDate, 2)
+    data.hardLockout.endDate = addDays(lockoutPeriod.endDate, 0)
   } else {
     return data
   }
@@ -241,5 +257,12 @@ export const getLockoutStatus = (lockoutPeriod, closingDate, newClosingDate = nu
     data.showLockoutDates = true
     data.isAfterLockoutEnds = false
   }
+  if (isWithinRange(closingDate, lockoutPeriod.endDate, addDays(lockoutPeriod.endDate, 2))) {
+    data.lastQuestions.date = getPreviousWeekDay(subDays(lockoutPeriod.startDate, 1))
+  } else {
+    data.lastQuestions.date = getBriefLastQuestionDate(closingDate)
+  }
+  data.lastQuestions.afterLockout =
+    data.lastQuestions.date !== null ? isAfter(data.lastQuestions.date, lockoutPeriod.endDate) : false
   return data
 }
