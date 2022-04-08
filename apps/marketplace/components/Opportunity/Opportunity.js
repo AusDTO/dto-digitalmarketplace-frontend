@@ -80,13 +80,13 @@ const getStartDate = brief => {
   return brief.startDate ? brief.startDate : null
 }
 
-const getQuestionsCloseDate = brief => {
+const getQuestionsCloseDate = (brief, lockoutPeriod) => {
   if (brief.dates.questions_close) {
     return new Date(brief.dates.questions_close)
   }
 
   if (getClosingTime(brief)) {
-    return getBriefLastQuestionDate(new Date(getClosingTime(brief)))
+    return getBriefLastQuestionDate(new Date(getClosingTime(brief)), new Date(), lockoutPeriod)
   }
 
   return null
@@ -242,9 +242,9 @@ const Opportunity = props => {
               <div className="col-xs-12 col-sm-4">
                 <strong>Deadline for asking questions</strong>
               </div>
-              {getQuestionsCloseDate(brief) && (
+              {getQuestionsCloseDate(brief, lockoutPeriod) && (
                 <div className="col-xs-12 col-sm-8">
-                  {`${format(getQuestionsCloseDate(brief), 'dddd D MMMM YYYY')} at ${
+                  {`${format(getQuestionsCloseDate(brief, lockoutPeriod), 'dddd D MMMM YYYY')} at ${
                     lastQuestions.closingTime
                   } (in Canberra)`}
                 </div>
