@@ -63,7 +63,8 @@ class EditOpportunityClosingDate extends Component {
       initialClosingDate: props[props.model].closingDate
         ? props[props.model].closingDate
         : format(new Date(props.brief.dates.closing_time), 'YYYY[-]MM[-]DD'),
-      redirectToEditsTable: false
+      redirectToEditsTable: false,
+      closingTime: '6pm'
     }
 
     // This reset clears any invalid state from the parent form which prevents submit events from this component.
@@ -98,7 +99,7 @@ class EditOpportunityClosingDate extends Component {
   handleDateInput = e => {
     let { value } = e.target
     const { id } = e.target
-    const { model } = this.props
+    const { model, lockoutPeriod } = this.props
     const { closingDate } = this.props[model]
 
     if (value.length === 1) {
@@ -123,8 +124,11 @@ class EditOpportunityClosingDate extends Component {
       default:
         break
     }
+    const newClosingDate = `${year}-${month}-${day}`
+    const { lastQuestions } = getLockoutStatus(lockoutPeriod, newClosingDate)
+    this.setState({ closingTime: lastQuestions.closingTime })
 
-    this.props.setClosingDate(`${year}-${month}-${day}`)
+    this.props.setClosingDate(newClosingDate)
     this.props.resetValidity(`${model}.closingDate`)
     this.setState({
       hasErrors: false
@@ -155,13 +159,11 @@ class EditOpportunityClosingDate extends Component {
     const invalidClosingDateMessage = (
       <ClosingDateIsNotValidMessage closingDate={getClosingTime(brief)} lockoutPeriod={lockoutPeriod} />
     )
-    const {
-      lockoutDatesProvided,
-      minValidDate,
-      lastQuestions,
-      showLockoutDates,
-      isAfterLockoutEnds
-    } = getLockoutStatus(lockoutPeriod, getClosingTime(brief), this.props[model].closingDate)
+    const { lockoutDatesProvided, minValidDate, showLockoutDates, isAfterLockoutEnds } = getLockoutStatus(
+      lockoutPeriod,
+      getClosingTime(brief),
+      this.props[model].closingDate
+    )
 
     if (redirectToEditsTable) {
       return <Redirect to="/" />
@@ -241,7 +243,7 @@ class EditOpportunityClosingDate extends Component {
           <span>
             {format(
               getBriefLastQuestionDate(new Date(this.props[model].closingDate), new Date(), lockoutPeriod),
-              `dddd DD MMMM YYYY [at ${lastQuestions.closingTime} (in Canberra)]`
+              `dddd DD MMMM YYYY [at ${this.state.closingTime} (in Canberra)]`
             )}
           </span>
         </div>
