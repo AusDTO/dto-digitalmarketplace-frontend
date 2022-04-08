@@ -53,7 +53,7 @@ const BuyerRFXReviewStage = props => {
             <div className="row">
               <div className="col-xs-12 col-sm-4">
                 {format(
-                  getBriefLastQuestionDate(new Date(props[model].closedAt), new Date(), lastQuestions.date),
+                  getBriefLastQuestionDate(new Date(props[model].closedAt), new Date(), lockoutPeriod),
                   'dddd D MMMM YYYY'
                 )}
               </div>
