@@ -60,181 +60,315 @@ import WithdrawOpportunitySuccessPage from './pages/WithdrawOpportunitySuccessPa
 import JoinATeamPage from './pages/JoinATeamPage'
 import JoinATeamCreatePage from './pages/JoinATeamCreatePage'
 import JoinATeamDeclineRequestPage from './pages/JoinATeamDeclineRequestPage'
+import LockoutPage from './pages/LockoutPage'
+import { DMP_LOCKOUT } from './constants/constants'
 
 export const rootPath = '/2'
 
-export const Routes = () => (
-  <Switch>
-    <Route exact path={rootPath} component={SignupPage} />
-    <Route path={`${rootPath}/signup`} component={SignupPage} />
-    <Route path={`${rootPath}/create-user`} component={CreateUserPage} />
-    <PrivateRoute restrictedTo="admin" path={`${rootPath}/send-invite/:token`} component={SendInvitePage} />
-    <PrivateRoute
-      restrictedTo="buyer"
-      path={`${rootPath}/brief/:briefId/overview/:flow`}
-      component={BuyerBriefOverviewPage}
-    />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/close`} component={CloseOpportunityPage} />
-    <PrivateRoute
-      restrictedTo="buyer"
-      path={`${rootPath}/brief/:briefId/closed`}
-      component={CloseOpportunitySuccessPage}
-    />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/overview`} component={BriefOverviewPage} />
-    <PrivateRoute
-      restrictedTo="buyer"
-      path={`${rootPath}/brief/:briefId/edit/:item?`}
-      component={EditOpportunityPage}
-    />
-    <PrivateRoute
-      restrictedTo="buyer"
-      path={`${rootPath}/brief/:briefId/edited`}
-      component={EditOpportunitySuccessPage}
-    />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/assessors`} component={BriefAssessorsPage} />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/questions`} component={QuestionPage} />
-    <PrivateRoute
-      restrictedTo="buyer"
-      path={`${rootPath}/brief/:briefId/publish-answer/:questionId?`}
-      component={PublishAnswerPage}
-    />
-    <PrivateRoute
-      restrictedTo="buyer"
-      path={`${rootPath}/brief/:briefId/withdraw`}
-      component={WithdrawOpportunityPage}
-    />
-    <PrivateRoute
-      restrictedTo="buyer"
-      path={`${rootPath}/brief/:briefId/withdrawn`}
-      component={WithdrawOpportunitySuccessPage}
-    />
-    <PrivateRoute
-      restrictedTo="supplier"
-      path={`${rootPath}/brief/:briefId/ask-a-question`}
-      component={AskQuestionPage}
-    />
-    <PrivateRoute
-      restrictedTo="supplier"
-      path={`${rootPath}/brief/:briefId/responses`}
-      component={BriefResponsesPage}
-    />
-    <PrivateRoute
-      restrictedTo="supplier"
-      path={`${rootPath}/brief/:briefId/:briefResponseType/respond/:briefResponseId`}
-      component={BriefResponsePage}
-    />
-    <PrivateRoute
-      restrictedTo="supplier"
-      path={`${rootPath}/brief/:briefId/:briefResponseType/respond`}
-      component={BriefResponseCreatePage}
-    />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/invited`} component={InvitedSellersPage} />
-    <PrivateRoute path={`${rootPath}/brief/:briefId`} component={BriefPage} />
-    <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
-    <Route path={`${rootPath}/login`} component={LoginPage} />
-    <Route path={`${rootPath}/insights`} component={InsightPage} />
-    <Route path={`${rootPath}/seller-dashboard`} component={SellerDashboardPage} />
-    <PrivateRoute
-      restrictedTo="supplier"
-      path={`${rootPath}/seller-edit/:supplierCode`}
-      component={SellerEditFlowPage}
-    />
-    <Route path={`${rootPath}/:framework/opportunities/:briefId/history`} component={OpportunityHistoryPage} />
-    <Route path={`${rootPath}/:framework/opportunities/:briefId`} component={OpportunityPage} />
-    <Route path={`${rootPath}/opportunities`} component={OpportunitiesPage} />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-dashboard`} component={BuyerDashboardPage} />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/create`} component={BuyerRFXCreatePage} />
-    <PrivateRoute
-      restrictedTo="buyer"
-      path={`${rootPath}/buyer-training2/create`}
-      component={BuyerTrainingCreatePage}
-    />
-    <PrivateRoute
-      restrictedTo="buyer"
-      path={`${rootPath}/buyer-rfx/:briefId/completed`}
-      component={BuyerRFXCompletedPage}
-    />
-    <PrivateRoute
-      restrictedTo="buyer"
-      path={`${rootPath}/buyer-training2/:briefId/completed`}
-      component={BuyerTrainingCompletedPage}
-    />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-award/:briefId`} component={BuyerAwardSellerPage} />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/:briefId/:stage?`} component={BuyerRFXFlowPage} />
-    <PrivateRoute
-      restrictedTo="buyer"
-      path={`${rootPath}/buyer-training2/:briefId/:stage?`}
-      component={BuyerTrainingFlowPage}
-    />
-    <PrivateRoute
-      restrictedTo="buyer"
-      path={`${rootPath}/buyer-atm/:briefId/completed`}
-      component={BuyerATMCompletedPage}
-    />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/create`} component={BuyerATMCreatePage} />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/:briefId/:stage?`} component={BuyerATMFlowPage} />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/create-new`} component={JoinATeamCreatePage} />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/join`} component={JoinATeamPage} />
-    <PrivateRoute
-      restrictedTo="buyer"
-      path={`${rootPath}/team/:teamId/decline-join/:token`}
-      component={JoinATeamDeclineRequestPage}
-    />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/(teams|people)`} component={TeamsPage} />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/create`} component={CreateTeamPage} />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/edit/:teamId/:stage?`} component={EditTeamFlowPage} />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/:teamId/:stage?`} component={CreateTeamFlowPage} />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/download-reports`} component={DownloadReports} />
-    <PrivateRoute
-      restrictedTo="buyer"
-      path={`${rootPath}/buyer-specialist/create`}
-      component={BuyerSpecialistCreatePage}
-    />
-    <PrivateRoute
-      restrictedTo="buyer"
-      path={`${rootPath}/buyer-specialist/:briefId/completed`}
-      component={BuyerSpecialistCompletedPage}
-    />
-    <PrivateRoute
-      restrictedTo="buyer"
-      path={`${rootPath}/buyer-specialist/:briefId/:stage?`}
-      component={BuyerSpecialistFlowPage}
-    />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/outcome-choice`} component={BriefOutcomeChoicePage} />
-    <PrivateRoute restrictedTo="buyer" path={`${rootPath}/request-access/:permission`} component={RequestAccessPage} />
-    <PrivateRoute
-      restrictedTo="supplier"
-      path={`${rootPath}/seller-assessment/:evidenceId/completed`}
-      component={SellerAssessmentCompletedPage}
-    />
-    <PrivateRoute
-      restrictedTo="supplier"
-      path={`${rootPath}/seller-assessment/:evidenceId/feedback`}
-      component={SellerAssessmentFeedbackPage}
-    />
-    <PrivateRoute
-      restrictedTo="supplier"
-      path={`${rootPath}/seller-assessment/:evidenceId/view`}
-      component={SellerAssessmentViewPage}
-    />
-    <PrivateRoute
-      restrictedTo="supplier"
-      path={`${rootPath}/case-studies/:domainId/view`}
-      component={SellerAssessmentCaseStudiesPage}
-    />
-    <PrivateRoute
-      restrictedTo="supplier"
-      path={`${rootPath}/seller-assessment/create/:domainId/:briefId?`}
-      component={SellerAssessmentCreatePage}
-    />
-    <PrivateRoute
-      restrictedTo="supplier"
-      path={`${rootPath}/seller-assessment/:evidenceId/:stage?`}
-      component={SellerAssessmentFlowPage}
-    />
-    <Route component={NotFound} />
-  </Switch>
-)
+export const Routes = () => {
+  if (DMP_LOCKOUT) {
+    return (
+      <Switch>
+        <Route exact path={rootPath} component={LockoutPage} />
+        <Route path={`${rootPath}/signup`} component={LockoutPage} />
+        <Route path={`${rootPath}/create-user`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="admin" path={`${rootPath}/send-invite/:token`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/overview/:flow`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/close`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/closed`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/overview`} component={BriefOverviewPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/edit/:item?`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/edited`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/assessors`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/questions`} component={LockoutPage} />
+        <PrivateRoute
+          restrictedTo="buyer"
+          path={`${rootPath}/brief/:briefId/publish-answer/:questionId?`}
+          component={LockoutPage}
+        />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/withdraw`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/withdrawn`} component={LockoutPage} />
+        <PrivateRoute
+          restrictedTo="supplier"
+          path={`${rootPath}/brief/:briefId/ask-a-question`}
+          component={LockoutPage}
+        />
+        <PrivateRoute restrictedTo="supplier" path={`${rootPath}/brief/:briefId/responses`} component={LockoutPage} />
+        <PrivateRoute
+          restrictedTo="supplier"
+          path={`${rootPath}/brief/:briefId/:briefResponseType/respond/:briefResponseId`}
+          component={LockoutPage}
+        />
+        <PrivateRoute
+          restrictedTo="supplier"
+          path={`${rootPath}/brief/:briefId/:briefResponseType/respond`}
+          component={LockoutPage}
+        />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/invited`} component={LockoutPage} />
+        <PrivateRoute path={`${rootPath}/brief/:briefId`} component={BriefPage} />
+        <Route path={`${rootPath}/reset-password`} component={LockoutPage} />
+        <Route path={`${rootPath}/login`} component={LoginPage} />
+        <Route path={`${rootPath}/insights`} component={InsightPage} />
+        <PrivateRoute restrictedTo="supplier" path={`${rootPath}/seller-dashboard`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="supplier" path={`${rootPath}/seller-edit/:supplierCode`} component={LockoutPage} />
+        <Route path={`${rootPath}/:framework/opportunities/:briefId/history`} component={OpportunityHistoryPage} />
+        <Route path={`${rootPath}/:framework/opportunities/:briefId`} component={OpportunityPage} />
+        <Route path={`${rootPath}/opportunities`} component={OpportunitiesPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-dashboard`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/create`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-training2/create`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/:briefId/completed`} component={LockoutPage} />
+        <PrivateRoute
+          restrictedTo="buyer"
+          path={`${rootPath}/buyer-training2/:briefId/completed`}
+          component={LockoutPage}
+        />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-award/:briefId`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/:briefId/:stage?`} component={LockoutPage} />
+        <PrivateRoute
+          restrictedTo="buyer"
+          path={`${rootPath}/buyer-training2/:briefId/:stage?`}
+          component={LockoutPage}
+        />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/:briefId/completed`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/create`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/:briefId/:stage?`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/create-new`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/join`} component={LockoutPage} />
+        <PrivateRoute
+          restrictedTo="buyer"
+          path={`${rootPath}/team/:teamId/decline-join/:token`}
+          component={LockoutPage}
+        />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/(teams|people)`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/create`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/edit/:teamId/:stage?`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/:teamId/:stage?`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/download-reports`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-specialist/create`} component={LockoutPage} />
+        <PrivateRoute
+          restrictedTo="buyer"
+          path={`${rootPath}/buyer-specialist/:briefId/completed`}
+          component={LockoutPage}
+        />
+        <PrivateRoute
+          restrictedTo="buyer"
+          path={`${rootPath}/buyer-specialist/:briefId/:stage?`}
+          component={LockoutPage}
+        />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/outcome-choice`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/request-access/:permission`} component={LockoutPage} />
+        <PrivateRoute
+          restrictedTo="supplier"
+          path={`${rootPath}/seller-assessment/:evidenceId/completed`}
+          component={LockoutPage}
+        />
+        <PrivateRoute
+          restrictedTo="supplier"
+          path={`${rootPath}/seller-assessment/:evidenceId/feedback`}
+          component={LockoutPage}
+        />
+        <PrivateRoute
+          restrictedTo="supplier"
+          path={`${rootPath}/seller-assessment/:evidenceId/view`}
+          component={LockoutPage}
+        />
+        <PrivateRoute
+          restrictedTo="supplier"
+          path={`${rootPath}/case-studies/:domainId/view`}
+          component={LockoutPage}
+        />
+        <PrivateRoute
+          restrictedTo="supplier"
+          path={`${rootPath}/seller-assessment/create/:domainId/:briefId?`}
+          component={LockoutPage}
+        />
+        <PrivateRoute
+          restrictedTo="supplier"
+          path={`${rootPath}/seller-assessment/:evidenceId/:stage?`}
+          component={LockoutPage}
+        />
+        <Route component={NotFound} />
+      </Switch>
+    )
+  }
+  return (
+    <Switch>
+      <Route exact path={rootPath} component={SignupPage} />
+      <Route path={`${rootPath}/signup`} component={SignupPage} />
+      <Route path={`${rootPath}/create-user`} component={CreateUserPage} />
+      <PrivateRoute restrictedTo="admin" path={`${rootPath}/send-invite/:token`} component={SendInvitePage} />
+      <PrivateRoute
+        restrictedTo="buyer"
+        path={`${rootPath}/brief/:briefId/overview/:flow`}
+        component={BuyerBriefOverviewPage}
+      />
+      <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/close`} component={CloseOpportunityPage} />
+      <PrivateRoute
+        restrictedTo="buyer"
+        path={`${rootPath}/brief/:briefId/closed`}
+        component={CloseOpportunitySuccessPage}
+      />
+      <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/overview`} component={BriefOverviewPage} />
+      <PrivateRoute
+        restrictedTo="buyer"
+        path={`${rootPath}/brief/:briefId/edit/:item?`}
+        component={EditOpportunityPage}
+      />
+      <PrivateRoute
+        restrictedTo="buyer"
+        path={`${rootPath}/brief/:briefId/edited`}
+        component={EditOpportunitySuccessPage}
+      />
+      <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/assessors`} component={BriefAssessorsPage} />
+      <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/questions`} component={QuestionPage} />
+      <PrivateRoute
+        restrictedTo="buyer"
+        path={`${rootPath}/brief/:briefId/publish-answer/:questionId?`}
+        component={PublishAnswerPage}
+      />
+      <PrivateRoute
+        restrictedTo="buyer"
+        path={`${rootPath}/brief/:briefId/withdraw`}
+        component={WithdrawOpportunityPage}
+      />
+      <PrivateRoute
+        restrictedTo="buyer"
+        path={`${rootPath}/brief/:briefId/withdrawn`}
+        component={WithdrawOpportunitySuccessPage}
+      />
+      <PrivateRoute
+        restrictedTo="supplier"
+        path={`${rootPath}/brief/:briefId/ask-a-question`}
+        component={AskQuestionPage}
+      />
+      <PrivateRoute
+        restrictedTo="supplier"
+        path={`${rootPath}/brief/:briefId/responses`}
+        component={BriefResponsesPage}
+      />
+      <PrivateRoute
+        restrictedTo="supplier"
+        path={`${rootPath}/brief/:briefId/:briefResponseType/respond/:briefResponseId`}
+        component={BriefResponsePage}
+      />
+      <PrivateRoute
+        restrictedTo="supplier"
+        path={`${rootPath}/brief/:briefId/:briefResponseType/respond`}
+        component={BriefResponseCreatePage}
+      />
+      <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/invited`} component={InvitedSellersPage} />
+      <PrivateRoute path={`${rootPath}/brief/:briefId`} component={BriefPage} />
+      <Route path={`${rootPath}/reset-password`} component={ResetPasswordPage} />
+      <Route path={`${rootPath}/login`} component={LoginPage} />
+      <Route path={`${rootPath}/insights`} component={InsightPage} />
+      <Route path={`${rootPath}/seller-dashboard`} component={SellerDashboardPage} />
+      <PrivateRoute
+        restrictedTo="supplier"
+        path={`${rootPath}/seller-edit/:supplierCode`}
+        component={SellerEditFlowPage}
+      />
+      <Route path={`${rootPath}/:framework/opportunities/:briefId/history`} component={OpportunityHistoryPage} />
+      <Route path={`${rootPath}/:framework/opportunities/:briefId`} component={OpportunityPage} />
+      <Route path={`${rootPath}/opportunities`} component={OpportunitiesPage} />
+      <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-dashboard`} component={BuyerDashboardPage} />
+      <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/create`} component={BuyerRFXCreatePage} />
+      <PrivateRoute
+        restrictedTo="buyer"
+        path={`${rootPath}/buyer-training2/create`}
+        component={BuyerTrainingCreatePage}
+      />
+      <PrivateRoute
+        restrictedTo="buyer"
+        path={`${rootPath}/buyer-rfx/:briefId/completed`}
+        component={BuyerRFXCompletedPage}
+      />
+      <PrivateRoute
+        restrictedTo="buyer"
+        path={`${rootPath}/buyer-training2/:briefId/completed`}
+        component={BuyerTrainingCompletedPage}
+      />
+      <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-award/:briefId`} component={BuyerAwardSellerPage} />
+      <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/:briefId/:stage?`} component={BuyerRFXFlowPage} />
+      <PrivateRoute
+        restrictedTo="buyer"
+        path={`${rootPath}/buyer-training2/:briefId/:stage?`}
+        component={BuyerTrainingFlowPage}
+      />
+      <PrivateRoute
+        restrictedTo="buyer"
+        path={`${rootPath}/buyer-atm/:briefId/completed`}
+        component={BuyerATMCompletedPage}
+      />
+      <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/create`} component={BuyerATMCreatePage} />
+      <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/:briefId/:stage?`} component={BuyerATMFlowPage} />
+      <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/create-new`} component={JoinATeamCreatePage} />
+      <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/join`} component={JoinATeamPage} />
+      <PrivateRoute
+        restrictedTo="buyer"
+        path={`${rootPath}/team/:teamId/decline-join/:token`}
+        component={JoinATeamDeclineRequestPage}
+      />
+      <PrivateRoute restrictedTo="buyer" path={`${rootPath}/(teams|people)`} component={TeamsPage} />
+      <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/create`} component={CreateTeamPage} />
+      <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/edit/:teamId/:stage?`} component={EditTeamFlowPage} />
+      <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/:teamId/:stage?`} component={CreateTeamFlowPage} />
+      <PrivateRoute restrictedTo="buyer" path={`${rootPath}/download-reports`} component={DownloadReports} />
+      <PrivateRoute
+        restrictedTo="buyer"
+        path={`${rootPath}/buyer-specialist/create`}
+        component={BuyerSpecialistCreatePage}
+      />
+      <PrivateRoute
+        restrictedTo="buyer"
+        path={`${rootPath}/buyer-specialist/:briefId/completed`}
+        component={BuyerSpecialistCompletedPage}
+      />
+      <PrivateRoute
+        restrictedTo="buyer"
+        path={`${rootPath}/buyer-specialist/:briefId/:stage?`}
+        component={BuyerSpecialistFlowPage}
+      />
+      <PrivateRoute restrictedTo="buyer" path={`${rootPath}/outcome-choice`} component={BriefOutcomeChoicePage} />
+      <PrivateRoute
+        restrictedTo="buyer"
+        path={`${rootPath}/request-access/:permission`}
+        component={RequestAccessPage}
+      />
+      <PrivateRoute
+        restrictedTo="supplier"
+        path={`${rootPath}/seller-assessment/:evidenceId/completed`}
+        component={SellerAssessmentCompletedPage}
+      />
+      <PrivateRoute
+        restrictedTo="supplier"
+        path={`${rootPath}/seller-assessment/:evidenceId/feedback`}
+        component={SellerAssessmentFeedbackPage}
+      />
+      <PrivateRoute
+        restrictedTo="supplier"
+        path={`${rootPath}/seller-assessment/:evidenceId/view`}
+        component={SellerAssessmentViewPage}
+      />
+      <PrivateRoute
+        restrictedTo="supplier"
+        path={`${rootPath}/case-studies/:domainId/view`}
+        component={SellerAssessmentCaseStudiesPage}
+      />
+      <PrivateRoute
+        restrictedTo="supplier"
+        path={`${rootPath}/seller-assessment/create/:domainId/:briefId?`}
+        component={SellerAssessmentCreatePage}
+      />
+      <PrivateRoute
+        restrictedTo="supplier"
+        path={`${rootPath}/seller-assessment/:evidenceId/:stage?`}
+        component={SellerAssessmentFlowPage}
+      />
+      <Route component={NotFound} />
+    </Switch>
+  )
+}
 
 const RootContainer = withRouter(Routes)
 
