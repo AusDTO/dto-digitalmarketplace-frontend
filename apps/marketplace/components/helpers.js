@@ -99,9 +99,13 @@ const getPreviousWeekDay = date => {
 
 export const getBriefLastQuestionDate = (closingDate, today = new Date(), lockoutPeriod = null) => {
   let lastQuestionDate = getPreviousWeekDay(subDays(closingDate, 1))
-
-  if (lockoutPeriod !== null && isWithinRange(closingDate, lockoutPeriod.endDate, addDays(lockoutPeriod.endDate, 2))) {
-    return getPreviousWeekDay(subDays(lockoutPeriod.startDate, 1))
+  if (lockoutPeriod !== null) {
+    if (isSameDay(closingDate, addDays(lockoutPeriod.endDate, 1))) {
+      return getPreviousWeekDay(lockoutPeriod.startDate)
+    }
+    if (isWithinRange(closingDate, lockoutPeriod.endDate, addDays(lockoutPeriod.endDate, 3))) {
+      return addDays(lockoutPeriod.endDate, 1)
+    }
   }
 
   if (closingDate <= addDays(today, 3)) {
@@ -260,7 +264,10 @@ export const getLockoutStatus = (lockoutPeriod, closingDate, newClosingDate = nu
   }
   data.lastQuestions.date = getBriefLastQuestionDate(closingDate, new Date(), lockoutPeriod)
   data.lastQuestions.afterLockout =
-    data.lastQuestions.date !== null ? isAfter(data.lastQuestions.date, lockoutPeriod.endDate) : false
+    data.lastQuestions.date !== null
+      ? isAfter(data.lastQuestions.date, lockoutPeriod.endDate) ||
+        isSameDay(data.lastQuestions.date, lockoutPeriod.endDate)
+      : false
   data.lastQuestions.closingTime = isBefore(data.lastQuestions.date, lockoutPeriod.startDate) ? '6pm' : '11:55pm'
   return data
 }
