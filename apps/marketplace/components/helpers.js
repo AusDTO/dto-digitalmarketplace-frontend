@@ -245,7 +245,6 @@ export const getLockoutStatus = (lockoutPeriod, closingDate, newClosingDate = nu
     return data
   }
   if (isAfter(new Date(newClosingDate || closingDate), lockoutPeriod.startDate)) {
-    data.closingTime = '11:55pm'
     data.isAfterLockoutStarts = true
   }
   if (isAfter(new Date(closingDate), lockoutPeriod.endDate)) {
@@ -268,6 +267,7 @@ export const getLockoutStatus = (lockoutPeriod, closingDate, newClosingDate = nu
       ? isAfter(data.lastQuestions.date, lockoutPeriod.endDate) ||
         isSameDay(data.lastQuestions.date, lockoutPeriod.endDate)
       : false
-  data.lastQuestions.closingTime = isBefore(data.lastQuestions.date, lockoutPeriod.startDate) ? '6pm' : '11:55pm'
+  data.closingTime = isBefore(new Date(closingDate || newClosingDate), lockoutPeriod.endDate) ? '6pm' : '11:55pm'
+  data.lastQuestions.closingTime = isBefore(data.lastQuestions.date, lockoutPeriod.endDate) ? '6pm' : '11:55pm'
   return data
 }
