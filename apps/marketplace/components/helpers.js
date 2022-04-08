@@ -239,7 +239,7 @@ export const getLockoutStatus = (lockoutPeriod, closingDate, newClosingDate = nu
   }
   if (lockoutPeriod.startDate && lockoutPeriod.endDate) {
     data.lockoutDatesProvided = true
-    data.hardLockout.startDate = addDays(lockoutPeriod.startDate, 2)
+    data.hardLockout.startDate = addDays(lockoutPeriod.startDate, 1)
     data.hardLockout.endDate = addDays(lockoutPeriod.endDate, 0)
   } else {
     return data
