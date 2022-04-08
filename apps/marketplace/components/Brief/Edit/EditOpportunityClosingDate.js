@@ -155,11 +155,13 @@ class EditOpportunityClosingDate extends Component {
     const invalidClosingDateMessage = (
       <ClosingDateIsNotValidMessage closingDate={getClosingTime(brief)} lockoutPeriod={lockoutPeriod} />
     )
-    const { lockoutDatesProvided, minValidDate, closingTime, showLockoutDates, isAfterLockoutEnds } = getLockoutStatus(
-      lockoutPeriod,
-      getClosingTime(brief),
-      this.props[model].closingDate
-    )
+    const {
+      lockoutDatesProvided,
+      minValidDate,
+      lastQuestions,
+      showLockoutDates,
+      isAfterLockoutEnds
+    } = getLockoutStatus(lockoutPeriod, getClosingTime(brief), this.props[model].closingDate)
 
     if (redirectToEditsTable) {
       return <Redirect to="/" />
@@ -238,8 +240,8 @@ class EditOpportunityClosingDate extends Component {
           <p className={styles.bold}>Last day sellers can ask questions:</p>
           <span>
             {format(
-              getBriefLastQuestionDate(new Date(this.props[model].closingDate)),
-              `dddd DD MMMM YYYY [at ${closingTime} (in Canberra)]`
+              getBriefLastQuestionDate(new Date(this.props[model].closingDate), new Date(), lockoutPeriod),
+              `dddd DD MMMM YYYY [at ${lastQuestions.closingTime} (in Canberra)]`
             )}
           </span>
         </div>
