@@ -101,7 +101,7 @@ export const getBriefLastQuestionDate = (closingDate, today = new Date(), lockou
   let lastQuestionDate = getPreviousWeekDay(subDays(closingDate, 1))
   if (lockoutPeriod !== null) {
     if (isSameDay(closingDate, addDays(lockoutPeriod.endDate, 1))) {
-      return getPreviousWeekDay(lockoutPeriod.startDate)
+      return subDays(lockoutPeriod.startDate, 1)
     }
     if (isWithinRange(closingDate, lockoutPeriod.endDate, addDays(lockoutPeriod.endDate, 3))) {
       return addDays(lockoutPeriod.endDate, 1)
