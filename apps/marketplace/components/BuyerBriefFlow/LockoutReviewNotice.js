@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import format from 'date-fns/format'
+import addDays from 'date-fns/add_days'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
 import styles from './LockoutReviewNotice.scss'
 
@@ -12,7 +13,7 @@ const LockoutReviewNotice = props => {
         <div className="col-xs-12 col-sm-4">
           <strong>
             {format(startDate, 'dddd D MMMM YYYY')} – <br />
-            {format(endDate, 'dddd D MMMM YYYY')}
+            {format(addDays(endDate, -1), 'dddd D MMMM YYYY')}
           </strong>
         </div>
         <div className="col-xs-12 col-sm-8">
