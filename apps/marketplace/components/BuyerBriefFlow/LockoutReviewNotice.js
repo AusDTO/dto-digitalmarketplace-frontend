@@ -19,7 +19,7 @@ const LockoutReviewNotice = props => {
         <div className="col-xs-12 col-sm-8">
           <AUheadings level="2" size="sm">
             Digital Marketplace is unavailable during its move to{' '}
-            <a href="/api/2/r/dmpbuyict" target="_blank" rel="noopener noreferrer">
+            <a href="/api/2/r/buyict" target="_blank" rel="noopener noreferrer">
               BuyICT
             </a>
           </AUheadings>
