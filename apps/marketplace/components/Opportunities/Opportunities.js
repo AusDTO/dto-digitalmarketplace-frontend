@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ClosedDate from 'shared/ClosedDate'
 import { rootPath } from 'marketplace/routes'
+import { getLockoutStatus } from 'marketplace/components/helpers'
 
 import mainStyles from 'marketplace/main.scss'
 import styles from './Opportunities.scss'
@@ -129,7 +130,11 @@ const Opportunities = props => (
                     {item.status === 'withdrawn' ? (
                       <span className={mainStyles.darkGrayText}>Withdrawn</span>
                     ) : (
-                      <ClosedDate countdown date={item.closed_at} />
+                      <ClosedDate
+                        countdown
+                        date={item.closed_at}
+                        isNewClosingTime={getLockoutStatus(props.lockoutPeriod, item.closed_at).isAfterLockoutStarts}
+                      />
                     )}
                   </div>
                   <div
@@ -197,11 +202,16 @@ const Opportunities = props => (
 )
 
 Opportunities.defaultProps = {
-  opportunities: []
+  opportunities: [],
+  lockoutPeriod: {
+    startDate: null,
+    endDate: null
+  }
 }
 
 Opportunities.propTypes = {
-  opportunities: PropTypes.array.isRequired
+  opportunities: PropTypes.array.isRequired,
+  lockoutPeriod: PropTypes.object
 }
 
 export default Opportunities
