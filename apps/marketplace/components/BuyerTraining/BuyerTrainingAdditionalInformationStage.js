@@ -95,8 +95,8 @@ class BuyerTrainingAdditionalInformationStage extends Component {
             closedAtIs2DaysInFuture: 'You must enter a closing date at least 2 days from now',
             requiredClosedAt: 'You must enter the closing date for this opportunity',
             closedAtIsBefore: 'You must enter a closing date no more than one year from now',
-            closedAtIsOutsideLockout: `You can't set a closing date between
-            ${format(lockoutPeriod.startDate, 'D MMMM')} and
+            closedAtIsOutsideLockout: `You can't set a closing date from
+            ${format(lockoutPeriod.startDate, 'D MMMM')} to
             ${format(lockoutPeriod.endDate, 'D MMMM YYYY')}, as Digital Marketplace is moving to BuyICT.`
           }}
         />
