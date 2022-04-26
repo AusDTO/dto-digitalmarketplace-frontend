@@ -30,6 +30,7 @@ import BuyerATMFlowPage from './pages/BuyerATMFlowPage'
 import BuyerSpecialistCreatePage from './pages/BuyerSpecialistCreatePage'
 import BuyerSpecialistCompletedPage from './pages/BuyerSpecialistCompletedPage'
 import BuyerSpecialistFlowPage from './pages/BuyerSpecialistFlowPage'
+import BuyICTPage from './pages/BuyICTPage'
 import BriefOutcomeChoicePage from './pages/BriefOutcomeChoicePage'
 import CloseOpportunityPage from './pages/CloseOpportunityPage'
 import CloseOpportunitySuccessPage from './pages/CloseOpportunitySuccessPage'
@@ -232,6 +233,7 @@ export const Routes = () => (
       path={`${rootPath}/seller-assessment/:evidenceId/:stage?`}
       component={SellerAssessmentFlowPage}
     />
+    <Route path={`${rootPath}/buyict`} component={BuyICTPage} />
     <Route component={NotFound} />
   </Switch>
 )

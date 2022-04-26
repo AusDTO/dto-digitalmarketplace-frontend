@@ -34,7 +34,7 @@ export class LoginPageComponent extends BaseForm {
 
   render() {
     const { model, loggedIn, handleSubmit, currentlySending, isPartOfTeam, mustJoinTeam } = this.props
-    const { from } = this.props.location.state || { from: { pathname: `${rootPath}/opportunities` } }
+    const { from } = this.props.location.state || { from: { pathname: `${rootPath}/buyict` } }
 
     if (loggedIn && !isPartOfTeam && mustJoinTeam) {
       return <Redirect to={`${rootPath}/team/join`} />
