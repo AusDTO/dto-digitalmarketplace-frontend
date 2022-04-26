@@ -65,14 +65,18 @@ class OpportunitiesPage extends Component {
   }
 
   render() {
-    const { currentlySending } = this.props
+    const { currentlySending, lockoutPeriod } = this.props
     const offset = (this.props.currentPage - 1) * this.props.pageLimit
     const opportunities = this.props.opportunities.slice(offset, offset + this.props.pageLimit)
 
     return (
       <div>
         <OpportunitiesHeader initialFilterValues={this.queryStringValues} updateQueryString={this.updateQueryString} />
-        {currentlySending ? <LoadingIndicatorFullPage /> : <Opportunities opportunities={opportunities} />}
+        {currentlySending ? (
+          <LoadingIndicatorFullPage />
+        ) : (
+          <Opportunities opportunities={opportunities} lockoutPeriod={lockoutPeriod} />
+        )}
         {this.getPageCount() > 1 && !currentlySending && (
           <OpportunitiesPagination
             lastPage={this.getPageCount()}
@@ -88,18 +92,24 @@ class OpportunitiesPage extends Component {
 OpportunitiesPage.defaultProps = {
   currentlySending: false,
   pageLimit: 25,
-  currentPage: 1
+  currentPage: 1,
+  lockoutPeriod: {
+    startDate: null,
+    endDate: null
+  }
 }
 
 OpportunitiesPage.propTypes = {
   currentlySending: PropTypes.bool,
   pageLimit: PropTypes.number,
-  currentPage: PropTypes.number
+  currentPage: PropTypes.number,
+  lockoutPeriod: PropTypes.object
 }
 
 const mapStateToProps = state => ({
   currentlySending: state.opportunities.currentlySending,
   opportunities: state.opportunities.opportunities,
+  lockoutPeriod: state.opportunities.lockoutPeriod,
   currentPage: state.opportunities.currentPage
 })
 

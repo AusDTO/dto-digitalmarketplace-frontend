@@ -3,6 +3,10 @@
 import subDays from 'date-fns/sub_days'
 import addDays from 'date-fns/add_days'
 import isWeekend from 'date-fns/is_weekend'
+import isAfter from 'date-fns/is_after'
+import isBefore from 'date-fns/is_before'
+import isSameDay from 'date-fns/is_same_day'
+import isWithinRange from 'date-fns/is_within_range'
 import { parse } from 'qs'
 
 export const uniqueID = () =>
@@ -93,8 +97,17 @@ const getPreviousWeekDay = date => {
   return newDate
 }
 
-export const getBriefLastQuestionDate = (closingDate, today = new Date()) => {
+export const getBriefLastQuestionDate = (closingDate, today = new Date(), lockoutPeriod = null) => {
   let lastQuestionDate = getPreviousWeekDay(subDays(closingDate, 1))
+  if (lockoutPeriod !== null) {
+    if (isSameDay(closingDate, addDays(lockoutPeriod.endDate, 1))) {
+      return subDays(lockoutPeriod.startDate, 1)
+    }
+    if (isWithinRange(closingDate, lockoutPeriod.endDate, addDays(lockoutPeriod.endDate, 3))) {
+      return addDays(lockoutPeriod.endDate, 1)
+    }
+  }
+
   if (closingDate <= addDays(today, 3)) {
     if (today > lastQuestionDate) {
       lastQuestionDate = today
@@ -103,7 +116,7 @@ export const getBriefLastQuestionDate = (closingDate, today = new Date()) => {
     lastQuestionDate = getPreviousWeekDay(subDays(lastQuestionDate, 1))
   }
   if (lastQuestionDate > closingDate) {
-    lastQuestionDate = closingDate
+    lastQuestionDate = parse(closingDate)
   }
   return lastQuestionDate
 }
@@ -204,4 +217,57 @@ export const getSingleInvitedSellerName = brief => {
 export const getBriefCategory = (domains, briefCategory) => {
   const category = domains.find(domain => domain.id === briefCategory)
   return category ? category.name : null
+}
+
+export const getLockoutStatus = (lockoutPeriod, closingDate, newClosingDate = null) => {
+  const data = {
+    lockoutDatesProvided: false,
+    minValidDate: closingDate,
+    closingTime: '6pm',
+    showLockoutDates: false,
+    isAfterLockoutStarts: false,
+    isAfterLockoutEnds: false,
+    lastQuestions: {
+      date: null,
+      afterLockout: false,
+      closingTime: '6pm'
+    },
+    hardLockout: {
+      startDate: null,
+      endDate: null
+    }
+  }
+  if (lockoutPeriod.startDate && lockoutPeriod.endDate) {
+    data.lockoutDatesProvided = true
+    data.hardLockout.startDate = addDays(lockoutPeriod.startDate, 1)
+    data.hardLockout.endDate = addDays(lockoutPeriod.endDate, 0)
+  } else {
+    return data
+  }
+  if (isAfter(new Date(newClosingDate || closingDate), lockoutPeriod.startDate)) {
+    data.isAfterLockoutStarts = true
+  }
+  if (isAfter(new Date(closingDate), lockoutPeriod.endDate)) {
+    data.isAfterLockoutEnds = true
+  }
+  if (isSameDay(closingDate, lockoutPeriod.startDate) || isSameDay(addDays(closingDate, 1), lockoutPeriod.startDate)) {
+    data.minValidDate = lockoutPeriod.endDate
+    data.isAfterLockoutEnds = false
+  } else if (isAfter(closingDate, lockoutPeriod.startDate) && isBefore(closingDate, lockoutPeriod.endDate)) {
+    data.minValidDate = lockoutPeriod.endDate
+    data.showLockoutDates = true
+    data.isAfterLockoutEnds = false
+  } else if (isBefore(closingDate, lockoutPeriod.startDate)) {
+    data.showLockoutDates = true
+    data.isAfterLockoutEnds = false
+  }
+  data.lastQuestions.date = getBriefLastQuestionDate(closingDate, new Date(), lockoutPeriod)
+  data.lastQuestions.afterLockout =
+    data.lastQuestions.date !== null
+      ? isAfter(data.lastQuestions.date, lockoutPeriod.endDate) ||
+        isSameDay(data.lastQuestions.date, lockoutPeriod.endDate)
+      : false
+  data.closingTime = isBefore(new Date(closingDate || newClosingDate), lockoutPeriod.endDate) ? '6pm' : '11:59pm'
+  data.lastQuestions.closingTime = isBefore(data.lastQuestions.date, lockoutPeriod.endDate) ? '6pm' : '11:59pm'
+  return data
 }

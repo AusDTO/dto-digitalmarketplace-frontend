@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { deleteBrief } from 'marketplace/actions/briefActions'
 import isValid from 'date-fns/is_valid'
 import { rootPath } from 'marketplace/routes'
-import { hasPermission } from 'marketplace/components/helpers'
+import { hasPermission, getLockoutStatus } from 'marketplace/components/helpers'
 import Tick from 'marketplace/components/Icons/Tick/Tick'
 import OverviewHeader from './Overview/OverviewHeader'
 import ConfirmActionAlert from '../Alerts/ConfirmActionAlert'
@@ -115,7 +115,8 @@ class Overview extends Component {
       questionsAsked,
       isPartOfTeam,
       isTeamLead,
-      teams
+      teams,
+      lockoutPeriod
     } = this.props
 
     if (brief && brief.id && brief.dates) {
@@ -133,6 +134,7 @@ class Overview extends Component {
 
       const briefResponseCount = briefResponses && briefResponses.length > 0 ? briefResponses.length : 0
       const flowName = flow === 'specialist' ? mapLot(flow) : mapLot(flow).toLowerCase()
+      const { isAfterLockoutStarts } = getLockoutStatus(lockoutPeriod, brief.dates.closing_time)
 
       return (
         <div>
@@ -146,6 +148,7 @@ class Overview extends Component {
             isPartOfTeam={isPartOfTeam}
             isTeamLead={isTeamLead}
             teams={teams}
+            isNewClosingTime={isAfterLockoutStarts}
           />
           {this.state.showDeleteAlert && (
             <div className={styles.deleteAlert}>
@@ -256,7 +259,11 @@ class Overview extends Component {
 Overview.defaultProps = {
   location: {},
   oldWorkOrderCreator: true,
-  questionsAsked: 0
+  questionsAsked: 0,
+  lockoutPeriod: {
+    startDate: null,
+    endDate: null
+  }
 }
 
 Overview.propTypes = {
@@ -264,7 +271,8 @@ Overview.propTypes = {
   flow: PropTypes.string.isRequired,
   location: PropTypes.object,
   oldWorkOrderCreator: PropTypes.bool,
-  questionsAsked: PropTypes.number
+  questionsAsked: PropTypes.number,
+  lockoutPeriod: PropTypes.object
 }
 
 const mapStateToProps = state => ({
@@ -272,7 +280,8 @@ const mapStateToProps = state => ({
   deleteBriefSuccess: state.brief.deleteBriefSuccess,
   teams: state.app.teams,
   isTeamLead: state.app.isTeamLead,
-  isPartOfTeam: state.app.isPartOfTeam
+  isPartOfTeam: state.app.isPartOfTeam,
+  lockoutPeriod: state.brief.lockoutPeriod
 })
 
 const mapDispatchToProps = dispatch => ({

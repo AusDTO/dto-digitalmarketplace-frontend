@@ -67,7 +67,11 @@ const defaultBriefState = {
   domains: [],
   hasSupplierErrors: false,
   isInvited: false,
-  hasSignedCurrentAgreement: false
+  hasSignedCurrentAgreement: false,
+  lockoutPeriod: {
+    startDate: null,
+    endDate: null
+  }
 }
 
 const briefReducer = (state = defaultBriefState, action) => {
@@ -92,7 +96,8 @@ const briefReducer = (state = defaultBriefState, action) => {
         oldWorkOrderCreator: action.oldWorkOrderCreator,
         questionsAsked: action.questionsAsked,
         briefResponseDownloaded: action.briefResponseDownloaded,
-        supplierContact: action.supplierContact
+        supplierContact: action.supplierContact,
+        lockoutPeriod: action.lockoutPeriod
       }
 
     case BRIEF_PUBLIC_INFO_FETCH_DATA_SUCCESS:
@@ -132,7 +137,8 @@ const briefReducer = (state = defaultBriefState, action) => {
         isInvited: action.isInvited,
         hasSignedCurrentAgreement: action.hasSignedCurrentAgreement,
         lastEditedAt: action.lastEditedAt,
-        onlySellersEdited: action.onlySellersEdited
+        onlySellersEdited: action.onlySellersEdited,
+        lockoutPeriod: action.lockoutPeriod
       }
 
     case BRIEF_SAVE_SUCCESS:
@@ -226,7 +232,8 @@ const briefReducer = (state = defaultBriefState, action) => {
         ...state,
         brief: action.brief,
         domains: action.domains,
-        isOpenToAll: action.isOpenToAll
+        isOpenToAll: action.isOpenToAll,
+        lockoutPeriod: action.lockoutPeriod
       }
 
     default:

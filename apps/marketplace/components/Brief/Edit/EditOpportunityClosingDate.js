@@ -8,26 +8,48 @@ import isAfter from 'date-fns/is_after'
 
 import AUbutton from '@gov.au/buttons/lib/js/react.js'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react'
 
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
-import { getBriefLastQuestionDate, getClosingTime } from 'marketplace/components/helpers'
-import { required, validDate } from 'marketplace/components/validators'
+import { getBriefLastQuestionDate, getClosingTime, getLockoutStatus } from 'marketplace/components/helpers'
+import { required, validDate, dateIsOutsideLockout } from 'marketplace/components/validators'
 import formProps from 'shared/form/formPropsSelector'
 
 import styles from '../../../main.scss'
 
 const ClosingDateIsNotValidMessage = props => {
-  const { closingDate } = props
+  const { closingDate, lockoutPeriod } = props
+  const { lockoutDatesProvided, showLockoutDates, minValidDate } = getLockoutStatus(lockoutPeriod, closingDate)
 
   return (
-    <AUbutton
-      as="tertiary"
-      className={`${styles.border0} ${styles.padding0}`}
-      onClick={() => document.getElementById('day').focus()}
-    >
-      {`The closing date must be a valid date after ${format(closingDate, 'DD MMMM YYYY')}.`}
-    </AUbutton>
+    <div>
+      {(!lockoutDatesProvided || (lockoutDatesProvided && !showLockoutDates)) && (
+        <AUbutton
+          as="tertiary"
+          className={`${styles.border0} ${styles.padding0}`}
+          onClick={() => document.getElementById('day').focus()}
+        >
+          {`The closing date must be a valid date after ${format(minValidDate, 'DD MMMM YYYY')}`}
+        </AUbutton>
+      )}
+
+      {lockoutDatesProvided && showLockoutDates && (
+        <AUbutton
+          as="tertiary"
+          className={`${styles.border0} ${styles.padding0}`}
+          onClick={() => document.getElementById('day').focus()}
+        >
+          {`The closing date must be a valid date after ${format(
+            minValidDate,
+            'DD MMMM YYYY'
+          )}, and not between ${format(lockoutPeriod.startDate, 'DD MMMM')} and ${format(
+            lockoutPeriod.endDate,
+            'DD MMMM YYYY'
+          )}`}
+        </AUbutton>
+      )}
+    </div>
   )
 }
 
@@ -41,7 +63,8 @@ class EditOpportunityClosingDate extends Component {
       initialClosingDate: props[props.model].closingDate
         ? props[props.model].closingDate
         : format(new Date(props.brief.dates.closing_time), 'YYYY[-]MM[-]DD'),
-      redirectToEditsTable: false
+      redirectToEditsTable: false,
+      closingTime: '6pm'
     }
 
     // This reset clears any invalid state from the parent form which prevents submit events from this component.
@@ -76,7 +99,7 @@ class EditOpportunityClosingDate extends Component {
   handleDateInput = e => {
     let { value } = e.target
     const { id } = e.target
-    const { model } = this.props
+    const { model, lockoutPeriod } = this.props
     const { closingDate } = this.props[model]
 
     if (value.length === 1) {
@@ -101,8 +124,11 @@ class EditOpportunityClosingDate extends Component {
       default:
         break
     }
+    const newClosingDate = `${year}-${month}-${day}`
+    const { lastQuestions } = getLockoutStatus(lockoutPeriod, newClosingDate)
+    this.setState({ closingTime: lastQuestions.closingTime })
 
-    this.props.setClosingDate(`${year}-${month}-${day}`)
+    this.props.setClosingDate(newClosingDate)
     this.props.resetValidity(`${model}.closingDate`)
     this.setState({
       hasErrors: false
@@ -110,12 +136,13 @@ class EditOpportunityClosingDate extends Component {
   }
 
   isClosingDateValid = formValues => {
-    const { brief } = this.props
+    const { brief, lockoutPeriod } = this.props
     const currentClosingDate = new Date(getClosingTime(brief))
     const dateIsValid =
       formValues.closingDate &&
       validDate(formValues.closingDate) &&
-      isAfter(new Date(formValues.closingDate), currentClosingDate)
+      isAfter(new Date(formValues.closingDate), currentClosingDate) &&
+      dateIsOutsideLockout(formValues.closingDate, lockoutPeriod.startDate, lockoutPeriod.endDate)
 
     if (!dateIsValid) {
       this.setState({
@@ -127,9 +154,16 @@ class EditOpportunityClosingDate extends Component {
   }
 
   render = () => {
-    const { brief, model } = this.props
+    const { brief, model, lockoutPeriod } = this.props
     const { hasErrors, redirectToEditsTable } = this.state
-    const invalidClosingDateMessage = <ClosingDateIsNotValidMessage closingDate={getClosingTime(brief)} />
+    const invalidClosingDateMessage = (
+      <ClosingDateIsNotValidMessage closingDate={getClosingTime(brief)} lockoutPeriod={lockoutPeriod} />
+    )
+    const { lockoutDatesProvided, minValidDate, showLockoutDates, isAfterLockoutEnds } = getLockoutStatus(
+      lockoutPeriod,
+      getClosingTime(brief),
+      this.props[model].closingDate
+    )
 
     if (redirectToEditsTable) {
       return <Redirect to="/" />
@@ -152,6 +186,35 @@ class EditOpportunityClosingDate extends Component {
             Extend the closing date
           </AUheading>
         </div>
+        {lockoutDatesProvided && !isAfterLockoutEnds && (
+          <div className="row">
+            <AUpageAlert as="warning" className={`${styles.pageAlert} ${styles.marginBottom1}`}>
+              {!showLockoutDates && (
+                <p className={styles.noMaxWidth}>
+                  Digital Marketplace is{' '}
+                  <a href="/api/2/r/buyict" target="_blank">
+                    moving to BuyICT
+                  </a>{' '}
+                  soon. The closing date must be <b>after {format(minValidDate, 'D MMMM YYYY')}</b>.
+                </p>
+              )}
+              {showLockoutDates && (
+                <p className={styles.noMaxWidth}>
+                  Digital Marketplace is{' '}
+                  <a href="/api/2/r/buyict" target="_blank">
+                    moving to BuyICT
+                  </a>{' '}
+                  soon. The closing date must be{' '}
+                  <b>
+                    before {format(lockoutPeriod.startDate, 'D MMMM')} or after{' '}
+                    {format(lockoutPeriod.endDate, 'D MMMM YYYY')}
+                  </b>
+                  .
+                </p>
+              )}
+            </AUpageAlert>
+          </div>
+        )}
         <div className="row">
           {hasErrors && (
             <ErrorAlert
@@ -179,8 +242,8 @@ class EditOpportunityClosingDate extends Component {
           <p className={styles.bold}>Last day sellers can ask questions:</p>
           <span>
             {format(
-              getBriefLastQuestionDate(new Date(this.props[model].closingDate)),
-              'dddd DD MMMM YYYY [at 6pm (in Canberra)]'
+              getBriefLastQuestionDate(new Date(this.props[model].closingDate), new Date(), lockoutPeriod),
+              `dddd DD MMMM YYYY [at ${this.state.closingTime} (in Canberra)]`
             )}
           </span>
         </div>
@@ -201,7 +264,11 @@ EditOpportunityClosingDate.defaultProps = {
       closing_time: ''
     }
   },
-  model: ''
+  model: '',
+  lockoutPeriod: {
+    startDate: null,
+    endDate: null
+  }
 }
 
 EditOpportunityClosingDate.propTypes = {
@@ -210,11 +277,13 @@ EditOpportunityClosingDate.propTypes = {
       closing_time: PropTypes.string.isRequired
     }).isRequired
   }),
-  model: PropTypes.string.isRequired
+  model: PropTypes.string.isRequired,
+  lockoutPeriod: PropTypes.object
 }
 
 const mapStateToProps = (state, props) => ({
-  ...formProps(state, props.model)
+  ...formProps(state, props.model),
+  lockoutPeriod: state.brief.lockoutPeriod
 })
 
 const mapDispatchToProps = (dispatch, props) => ({

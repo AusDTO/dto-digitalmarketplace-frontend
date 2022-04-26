@@ -2,6 +2,10 @@ import { OPPORTUNITIES_SUCCESS, OPPORTUNITIES_SENDING, OPPORTUNITIES_SET_PAGE } 
 
 const defaultState = {
   opportunities: [],
+  lockoutPeriod: {
+    startDate: null,
+    endDate: null
+  },
   currentPage: 1,
   currentlySending: false
 }
@@ -11,7 +15,8 @@ const opportunitiesReducers = (state = defaultState, action) => {
     case OPPORTUNITIES_SUCCESS:
       return {
         ...state,
-        opportunities: action.opportunities
+        opportunities: action.opportunities,
+        lockoutPeriod: action.lockoutPeriod
       }
 
     case OPPORTUNITIES_SET_PAGE:

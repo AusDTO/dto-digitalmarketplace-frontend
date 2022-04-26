@@ -10,7 +10,16 @@ import OverviewHeaderDefaultActionsList from './OverviewHeaderDefaultActionsList
 import styles from '../Overview.scss'
 
 const OverviewHeader = props => {
-  const { brief, canCloseOpportunity, flowName, handleDeleteClick, isPartOfTeam, isTeamLead, teams } = props
+  const {
+    brief,
+    canCloseOpportunity,
+    flowName,
+    handleDeleteClick,
+    isPartOfTeam,
+    isTeamLead,
+    teams,
+    isNewClosingTime
+  } = props
 
   return (
     <div className={styles.header}>
@@ -38,6 +47,7 @@ const OverviewHeader = props => {
             isPartOfTeam={isPartOfTeam}
             isTeamLead={isTeamLead}
             teams={teams}
+            isNewClosingTime={isNewClosingTime}
           />
         )}
         {['closed', 'withdrawn'].includes(brief.status) && <OverviewHeaderDefaultActionsList brief={brief} />}
@@ -53,7 +63,8 @@ OverviewHeader.defaultProps = {
   handleDeleteClick: () => {},
   isPartOfTeam: null,
   isTeamLead: null,
-  teams: []
+  teams: [],
+  isNewClosingTime: false
 }
 
 OverviewHeader.propTypes = {
@@ -66,7 +77,8 @@ OverviewHeader.propTypes = {
   handleDeleteClick: PropTypes.func.isRequired,
   isPartOfTeam: PropTypes.bool.isRequired,
   isTeamLead: PropTypes.bool.isRequired,
-  teams: PropTypes.array.isRequired
+  teams: PropTypes.array.isRequired,
+  isNewClosingTime: PropTypes.bool
 }
 
 export default OverviewHeader
