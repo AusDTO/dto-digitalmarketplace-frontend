@@ -35,11 +35,7 @@ export class Header extends Component {
             <div className="wrapper">
               <div className="row">
                 <span className="maintenance-message">
-                  Digital Marketplace is moving to BuyICT soon.{' '}
-                  <a href="/api/2/r/buyict" target="_blank">
-                    Find out more
-                  </a>
-                  .
+                  Digital Marketplace is moving to BuyICT soon. <a href="/api/2/r/buyict">Find out more</a>.
                 </span>
               </div>
             </div>
