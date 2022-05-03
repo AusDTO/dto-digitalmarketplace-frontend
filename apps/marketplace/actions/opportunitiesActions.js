@@ -30,7 +30,8 @@ export const sendingRequest = currentlySending => ({
 
 export const handleOpportunitiesSuccess = response => ({
   type: OPPORTUNITIES_SUCCESS,
-  opportunities: response.data.opportunities
+  opportunities: response.data.opportunities,
+  lockoutPeriod: response.data.lockoutPeriod
 })
 
 export const setCurrentPage = page => dispatch => {

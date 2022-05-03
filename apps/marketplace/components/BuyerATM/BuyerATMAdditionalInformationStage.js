@@ -4,19 +4,26 @@ import { connect } from 'react-redux'
 import { actions, Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import Textfield from 'shared/form/Textfield'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react'
 import AUheading from '@gov.au/headings/lib/js/react.js'
 import format from 'date-fns/format'
 import addDays from 'date-fns/add_days'
+import { getLockoutStatus } from 'marketplace/components/helpers'
 import {
   required,
   validPhoneNumber,
   validDate,
   dateIs2DaysInFuture,
-  dateIsBefore
+  dateIsBefore,
+  dateIsOutsideLockout
 } from 'marketplace/components/validators'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import DateControl from 'marketplace/components/BuyerBriefFlow/DateControl'
+import mainStyles from 'marketplace/main.scss'
 import styles from '../BuyerSpecialist/BuyerSpecialistAdditionalInformationStage.scss'
+
+let lockoutStartDate = null
+let lockoutEndDate = null
 
 const requiredContactNumber = v => required(v.contactNumber)
 const contactNumberFormat = v => validPhoneNumber(v.contactNumber)
@@ -24,6 +31,8 @@ const requiredClosedAt = v => required(v.closedAt)
 const closedAtIsValid = v => validDate(v.closedAt)
 const closedAtIs2DaysInFuture = v => !closedAtIsValid(v) || dateIs2DaysInFuture(v.closedAt)
 const closedAtIsBefore = v => !closedAtIsValid(v) || dateIsBefore(v.closedAt, addDays(new Date(), 366))
+const closedAtIsOutsideLockout = v =>
+  !closedAtIsValid(v) || dateIsOutsideLockout(v.closedAt, lockoutStartDate, lockoutEndDate)
 
 export const done = v =>
   requiredContactNumber(v) &&
@@ -31,7 +40,8 @@ export const done = v =>
   requiredClosedAt(v) &&
   closedAtIsValid(v) &&
   closedAtIs2DaysInFuture(v) &&
-  closedAtIsBefore(v)
+  closedAtIsBefore(v) &&
+  closedAtIsOutsideLockout(v)
 
 export class BuyerATMAdditionalInformationStage extends Component {
   constructor(props) {
@@ -41,6 +51,8 @@ export class BuyerATMAdditionalInformationStage extends Component {
       const date = addDays(new Date(), 14)
       this.props.setDate(format(date, 'YYYY-MM-DD'))
     }
+    lockoutStartDate = this.props.lockoutPeriod.startDate
+    lockoutEndDate = this.props.lockoutPeriod.endDate
   }
 
   handleDateChange(date) {
@@ -48,7 +60,9 @@ export class BuyerATMAdditionalInformationStage extends Component {
   }
 
   render() {
-    const { model } = this.props
+    const { model, lockoutPeriod } = this.props
+    const { lockoutDatesProvided, closingTime } = getLockoutStatus(lockoutPeriod, this.props[model].closedAt)
+
     return (
       <Form
         className={styles.additionalInformationContainer}
@@ -60,7 +74,8 @@ export class BuyerATMAdditionalInformationStage extends Component {
             requiredClosedAt,
             closedAtIsValid,
             closedAtIs2DaysInFuture,
-            closedAtIsBefore
+            closedAtIsBefore,
+            closedAtIsOutsideLockout
           }
         }}
         onSubmit={this.props.onSubmit}
@@ -78,7 +93,10 @@ export class BuyerATMAdditionalInformationStage extends Component {
             closedAtIsValid: 'You must enter a valid closing date',
             closedAtIs2DaysInFuture: 'You must enter a closing date at least 2 days from now',
             requiredClosedAt: 'You must enter the closing date for this opportunity',
-            closedAtIsBefore: 'You must enter a closing date no more than one year from now'
+            closedAtIsBefore: 'You must enter a closing date no more than one year from now',
+            closedAtIsOutsideLockout: `You can't set a closing date from
+            ${format(lockoutPeriod.startDate, 'D MMMM')} to
+            ${format(lockoutPeriod.endDate, 'D MMMM YYYY')}, as Digital Marketplace is moving to BuyICT.`
           }}
         />
 
@@ -107,13 +125,29 @@ export class BuyerATMAdditionalInformationStage extends Component {
           maxLength={100}
           validators={{}}
         />
+        {lockoutDatesProvided && (
+          <AUpageAlert as="warning" className={`${mainStyles.marginTop3} ${mainStyles.marginBottom1}`}>
+            <p>
+              Digital Marketplace is{' '}
+              <a href="/api/2/r/buyict" target="_blank">
+                moving to BuyICT
+              </a>{' '}
+              soon. The closing date must be{' '}
+              <b>
+                before {format(lockoutPeriod.startDate, 'D MMMM')} or after{' '}
+                {format(lockoutPeriod.endDate, 'D MMMM YYYY')}
+              </b>
+              .
+            </p>
+          </AUpageAlert>
+        )}
         <DateControl
           id="closedAt"
           model={`${model}.closedAt`}
           onDateChange={this.handleDateChange}
           defaultValue={this.props[model].closedAt}
           label="Closing date for opportunity"
-          description="We recommend publishing for at least 2 weeks to allow interested sellers to respond. Responses will be available after 6pm Canberra time on this date."
+          description={`This date must be at least 2 days after you publish this request. Responses will be available after ${closingTime} Canberra time.`}
         />
         {this.props.formButtons}
       </Form>
@@ -123,18 +157,24 @@ export class BuyerATMAdditionalInformationStage extends Component {
 
 BuyerATMAdditionalInformationStage.defaultProps = {
   onSubmit: () => {},
-  onSubmitFailed: () => {}
+  onSubmitFailed: () => {},
+  lockoutPeriod: {
+    startDate: null,
+    endDate: null
+  }
 }
 
 BuyerATMAdditionalInformationStage.propTypes = {
   model: PropTypes.string.isRequired,
   formButtons: PropTypes.node.isRequired,
   onSubmit: PropTypes.func,
-  onSubmitFailed: PropTypes.func
+  onSubmitFailed: PropTypes.func,
+  lockoutPeriod: PropTypes.object
 }
 
 const mapStateToProps = (state, props) => ({
-  ...formProps(state, props.model)
+  ...formProps(state, props.model),
+  lockoutPeriod: state.brief.lockoutPeriod
 })
 
 const mapDispatchToProps = (dispatch, props) => ({

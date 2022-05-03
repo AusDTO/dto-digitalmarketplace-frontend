@@ -100,7 +100,8 @@ export const handleBriefInfoSuccess = response => ({
   oldWorkOrderCreator: response.data.oldWorkOrderCreator,
   questionsAsked: response.data.questionsAsked,
   briefResponseDownloaded: response.data.briefResponseDownloaded,
-  supplierContact: response.data.supplierContact
+  supplierContact: response.data.supplierContact,
+  lockoutPeriod: response.data.lockoutPeriod
 })
 
 export const handlePublicBriefInfoSuccess = response => ({
@@ -137,7 +138,8 @@ export const handlePublicBriefInfoSuccess = response => ({
   isInvited: response.data.is_invited,
   hasSignedCurrentAgreement: response.data.has_signed_current_agreement,
   lastEditedAt: response.data.last_edited_at,
-  onlySellersEdited: response.data.only_sellers_edited
+  onlySellersEdited: response.data.only_sellers_edited,
+  lockoutPeriod: response.data.lockout_period
 })
 
 export const handleErrorFailure = response => dispatch => {
@@ -354,7 +356,8 @@ export const handleLoadOpportunityToEditSuccess = response => ({
   type: LOAD_OPPORTUNITY_TO_EDIT_SUCCESS,
   brief: response.data.brief,
   domains: response.data.domains,
-  isOpenToAll: response.data.isOpenToAll
+  isOpenToAll: response.data.isOpenToAll,
+  lockoutPeriod: response.data.lockout_period
 })
 
 export const loadOpportunityToEdit = briefId => dispatch => {

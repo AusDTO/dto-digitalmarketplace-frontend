@@ -34,7 +34,8 @@ const OpportunitySpecialistInfoCard = props => {
     sellersInvited,
     supplierBriefResponseCountDraft,
     supplierBriefResponseCountSubmitted,
-    supplierCode
+    supplierCode,
+    isNewClosingTime
   } = props
 
   const closedEarly = isBefore(parse(closingDate), parse(originalClosedAt))
@@ -63,7 +64,7 @@ const OpportunitySpecialistInfoCard = props => {
               <span>Closes in</span>
               <br />
               <strong className={styles.stat}>
-                <ClosedDate countdown date={closingDate} />
+                <ClosedDate countdown date={closingDate} isNewClosingTime={isNewClosingTime} />
               </strong>
             </div>
           </div>
@@ -316,7 +317,8 @@ OpportunitySpecialistInfoCard.defaultProps = {
   isInvited: false,
   hasSignedCurrentAgreement: false,
   supplierCode: null,
-  originalClosedAt: ''
+  originalClosedAt: '',
+  isNewClosingTime: false
 }
 
 OpportunitySpecialistInfoCard.propTypes = {
@@ -346,7 +348,8 @@ OpportunitySpecialistInfoCard.propTypes = {
   isInvited: PropTypes.bool,
   hasSignedCurrentAgreement: PropTypes.bool,
   supplierCode: PropTypes.number,
-  originalClosedAt: PropTypes.string
+  originalClosedAt: PropTypes.string,
+  isNewClosingTime: PropTypes.bool
 }
 
 export default OpportunitySpecialistInfoCard

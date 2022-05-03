@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import format from 'date-fns/format'
 
 import AUheading from '@gov.au/headings/lib/js/react.js'
 
-import { getClosingTime } from 'marketplace/components/helpers'
+import { getClosingTime, getLockoutStatus } from 'marketplace/components/helpers'
 import SummaryPreview from './SummaryPreview'
 import { getSellersToInvite, itemWasEdited, getAllDocuments } from './helpers'
 
@@ -57,9 +58,25 @@ class EditOpportunityTable extends Component {
   }
 
   render = () => {
-    const { brief, edits } = this.props
+    const { brief, edits, lockoutPeriod } = this.props
     const showInvited = this.showInvitedSellers()
     const sellersToInvite = getSellersToInvite(brief, edits)
+    const { lockoutDatesProvided, closingTime, isAfterLockoutStarts } = getLockoutStatus(
+      lockoutPeriod,
+      edits.closingDate || getClosingTime(brief)
+    )
+    let closingDateString = null
+
+    if (lockoutDatesProvided && isAfterLockoutStarts) {
+      closingDateString = itemWasEdited(format(new Date(brief.dates.closing_time), 'YYYY-MM-DD'), edits.closingDate)
+        ? format(edits.closingDate, `dddd DD MMMM YYYY [at ${closingTime} (in Canberra)]`)
+        : format(getClosingTime(brief), `dddd DD MMMM YYYY [at ${closingTime} (in Canberra)]`)
+    }
+    if (closingDateString === null) {
+      closingDateString = itemWasEdited(format(new Date(brief.dates.closing_time), 'YYYY-MM-DD'), edits.closingDate)
+        ? format(edits.closingDate, 'dddd DD MMMM YYYY [at 6pm (in Canberra)]')
+        : format(getClosingTime(brief), 'dddd DD MMMM YYYY [at] ha [(in Canberra)]')
+    }
 
     return (
       <React.Fragment>
@@ -138,11 +155,7 @@ class EditOpportunityTable extends Component {
             </tr>
             <tr className={`${styles.verticalAlignTop} ${localStyles.editSection}`}>
               <th scope="row">Closing date</th>
-              <td>
-                {itemWasEdited(format(new Date(brief.dates.closing_time), 'YYYY-MM-DD'), edits.closingDate)
-                  ? format(edits.closingDate, 'dddd DD MMMM YYYY [at 6pm (in Canberra)]')
-                  : format(getClosingTime(brief), 'dddd DD MMMM YYYY [at] ha [(in Canberra)]')}
-              </td>
+              <td>{closingDateString}</td>
               <td>
                 <Link to="/closing-date" className={`au-btn au-btn--tertiary ${localStyles.editAction}`}>
                   Extend closing date
@@ -243,11 +256,7 @@ class EditOpportunityTable extends Component {
               </Link>
             </div>
             <div>
-              <p>
-                {itemWasEdited(format(new Date(brief.dates.closing_time), 'YYYY-MM-DD'), edits.closingDate)
-                  ? format(edits.closingDate, 'dddd DD MMMM YYYY [at 6pm (in Canberra)]')
-                  : format(getClosingTime(brief), 'dddd DD MMMM YYYY [at 6pm (in Canberra)]')}
-              </p>
+              <p>{closingDateString}</p>
             </div>
           </div>
         </div>
@@ -269,7 +278,11 @@ EditOpportunityTable.defaultProps = {
     sellers: {},
     title: ''
   },
-  isOpenToAll: false
+  isOpenToAll: false,
+  lockoutPeriod: {
+    startDate: null,
+    endDate: null
+  }
 }
 
 EditOpportunityTable.propTypes = {
@@ -285,7 +298,12 @@ EditOpportunityTable.propTypes = {
     sellers: PropTypes.object.isRequired,
     title: PropTypes.string.isRequired
   }),
-  isOpenToAll: PropTypes.bool.isRequired
+  isOpenToAll: PropTypes.bool.isRequired,
+  lockoutPeriod: PropTypes.object
 }
 
-export default EditOpportunityTable
+const mapStateToProps = state => ({
+  lockoutPeriod: state.brief.lockoutPeriod
+})
+
+export default connect(mapStateToProps)(EditOpportunityTable)
