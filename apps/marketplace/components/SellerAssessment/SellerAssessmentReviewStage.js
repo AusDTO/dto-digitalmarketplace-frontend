@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { Form } from 'react-redux-form'
 import formProps from 'shared/form/formPropsSelector'
 import AUheading from '@gov.au/headings/lib/js/react.js'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import SellerAssessmentStages from './SellerAssessmentStages'
 import styles from './SellerAssessmentReviewStage.scss'
 import { getCriteriaName } from './SellerAssessmentEvidenceStage'
@@ -30,6 +31,19 @@ const SellerAssessmentReviewStage = props => {
         </div>
       ) : (
         <div>
+          <AUpageAlert as="warning">
+            <p>
+              You must submit your application <strong>by 9am on 20 May</strong>.
+            </p>
+            <p>
+              Unsubmitted applications after 20 May will not be reviewed or transferred to the BuyICT platform. You can
+              reapply on{' '}
+              <a href="https://www.buyict.gov.au" rel="external">
+                BuyICT
+              </a>{' '}
+              <strong>after 30 May</strong>.
+            </p>
+          </AUpageAlert>
           <AUheading level="1" size="xl">
             {meta.domain.name} assessment
           </AUheading>
