@@ -438,6 +438,36 @@ exports[`Signup renders empty Your Info form 1`] = `
     id="content"
   >
     <div
+      className="au-body au-page-alerts   au-page-alerts--warning"
+      style={
+        Object {
+          "marginBottom": "1.5em",
+        }
+      }
+    >
+      <p>
+        Applications to join the Digital Marketplace will be closed
+         
+        <strong>
+          between 9 and 30 May
+        </strong>
+         while we move Digital Marketplace to BuyICT. You can reapply on
+         
+        <a
+          href="https://www.buyict.gov.au"
+          rel="external"
+          target="_blank"
+        >
+          BuyICT
+        </a>
+         
+        <strong>
+          after 30 May
+        </strong>
+        .
+      </p>
+    </div>
+    <div
       className="layout"
     >
       <header>
@@ -876,6 +906,36 @@ exports[`Signup renders populated Your Info form 1`] = `
     className="col-xs-12 col-sm-8 col-sm-push-1"
     id="content"
   >
+    <div
+      className="au-body au-page-alerts   au-page-alerts--warning"
+      style={
+        Object {
+          "marginBottom": "1.5em",
+        }
+      }
+    >
+      <p>
+        Applications to join the Digital Marketplace will be closed
+         
+        <strong>
+          between 9 and 30 May
+        </strong>
+         while we move Digital Marketplace to BuyICT. You can reapply on
+         
+        <a
+          href="https://www.buyict.gov.au"
+          rel="external"
+          target="_blank"
+        >
+          BuyICT
+        </a>
+         
+        <strong>
+          after 30 May
+        </strong>
+        .
+      </p>
+    </div>
     <div
       className="layout"
     >
