@@ -251,7 +251,7 @@ class Signup extends React.Component {
                           <p>
                             You cannot update your profile <strong>between 20 and 30 May</strong> while we move 
                             Marketplace to BuyICT. You can update your profile on{' '}
-                            <a href="https://www.buyict.gov.au" rel="external"target="_blank">
+                            <a href="https://www.buyict.gov.au" rel="external" target="_blank">
                               BuyICT
                             </a>{' '}
                             <strong>after 30 May</strong>.
