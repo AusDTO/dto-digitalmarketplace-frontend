@@ -45,6 +45,19 @@ const Start = ({supplierCode, signup, onClick, saved, type, applicationErrors })
                 </div>
             ) : (type === 'edit' ? (
                     <div>
+                        <AUpageAlert as="warning">
+                        <p>
+                            You must submit your application <strong>by 9am on 20 May</strong>.
+                        </p>
+                        <p>
+                            Unsubmitted applications after 20 May will not be reviewed or transferred to BuyICT. You can
+                            reapply on{' '}
+                            <a href="https://www.buyict.gov.au" rel="external" target="_blank">
+                            BuyICT
+                            </a>{' '}
+                            <strong>after 30 May</strong>.
+                        </p>
+                        </AUpageAlert>
                         <ValidationSummary applicationErrors={applicationErrors} title={'Application Errors'} />
                         <h1 className="au-display-xl">Update your profile</h1>
                         <p>You must submit all your updates to be reviewed by the Marketplace. To submit updates:</p>
