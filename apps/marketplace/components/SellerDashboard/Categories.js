@@ -5,6 +5,7 @@ import { ErrorBoxComponent } from 'shared/form/ErrorBox'
 import { loadCategories } from 'marketplace/actions/sellerDashboardActions'
 import { rootPath } from 'marketplace/routes'
 import { categoryIdToHash } from 'marketplace/components/helpers'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import styles from '../../main.scss'
 
 export class Categories extends Component {
@@ -148,6 +149,20 @@ export class Categories extends Component {
 
     return (
       <div>
+        <div className={`row`}>
+          <div className="col-xs-12 col-md-12">
+            <AUpageAlert as="warning" className={(styles.marginTop3, styles.pageAlert)}>
+              <p className={styles.noMaxWidth}>
+                Requests for category assessments will be closed <strong>between 20 and 30 May</strong> while we move to
+                BuyICT. You can apply on {/* eslint-disable-next-line react/jsx-no-target-blank */}
+                <a href="https://www.buyict.gov.au" rel="external" target="_blank">
+                  BuyICT
+                </a>{' '}
+                <strong>from 30 May</strong>.
+              </p>
+            </AUpageAlert>
+          </div>
+        </div>
         <div className={`${styles.marginTop2} row`}>
           <div className="col-xs-12">
             {categories && categories.length > 0 ? (

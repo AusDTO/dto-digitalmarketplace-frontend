@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter, Link } from 'react-router-dom';
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import findIndex from 'lodash/findIndex';
 import classNames from 'classnames';
 import keys from 'lodash/keys';
@@ -245,7 +246,32 @@ class Signup extends React.Component {
               return (
                 <DocumentTitle title={`${label || 'Application'} - Digital Marketplace`}>
                   <article id="content" className={articleClassNames}>
-                    {element}
+                      {application.type === 'edit' && (
+                        <AUpageAlert as="warning" style={{ marginBottom: '1.5em' }}>
+                          <p>
+                            You cannot update your profile <strong>between 20 and 30 May</strong> while we move 
+                            Marketplace to BuyICT. You can update your profile on{' '}
+                            <a href="https://www.buyict.gov.au" rel="external" target="_blank">
+                              BuyICT
+                            </a>{' '}
+                            <strong>after 30 May</strong>.
+                          </p>
+                        </AUpageAlert>
+                      )}
+                      {application.type === 'new' && (
+                        <AUpageAlert as="warning" style={{ marginBottom: '1.5em' }}>
+                          <p>
+                            Applications to join the Digital Marketplace will be closed{' '}
+                            <strong>between 9 and 30 May</strong> while we move Digital Marketplace to BuyICT. You can 
+                            reapply on{' '}
+                            <a href="https://www.buyict.gov.au" rel="external" target="_blank">
+                              BuyICT
+                            </a>{' '}
+                            <strong>after 30 May</strong>.
+                          </p>
+                        </AUpageAlert>
+                      )}
+                      {element}
                   </article>
                 </DocumentTitle>
               )

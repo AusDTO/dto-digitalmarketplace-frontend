@@ -7,6 +7,7 @@ import formProps from 'shared/form/formPropsSelector'
 import ErrorAlert from 'marketplace/components/Alerts/ErrorAlert'
 import { SellerAssessmentEvidenceReducer } from 'marketplace/reducers'
 import AUheadings from '@gov.au/headings/lib/js/react.js'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import styles from './SellerAssessmentCriteriaStage.scss'
 
 const getCriteriaNeeded = (criteriaNeeded, priceMaximum, maxDailyRate) => {
@@ -133,6 +134,19 @@ class SellerAssessmentCriteriaStage extends Component {
         onSubmitFailed={this.props.onSubmitFailed}
         validateOn="submit"
       >
+        <AUpageAlert as="warning">
+          <p>
+            You must submit your application <strong>by 9am on 20 May</strong>.
+          </p>
+          <p>
+            Unsubmitted applications after 20 May will not be reviewed or transferred to BuyICT. You can reapply on{' '}
+            {/* eslint-disable-next-line react/jsx-no-target-blank */}
+            <a href="https://www.buyict.gov.au" rel="external" target="_blank">
+              BuyICT
+            </a>{' '}
+            <strong>after 30 May</strong>.
+          </p>
+        </AUpageAlert>
         <AUheadings level="1" size="xl">
           Assessment criteria
         </AUheadings>
