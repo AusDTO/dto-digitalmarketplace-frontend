@@ -218,7 +218,20 @@ class SignupForm extends Component {
                             <React.Fragment>Now enter your name and your work email address.</React.Fragment>
                           )}
                           {userType === 'seller' && (
-                            <React.Fragment>Now enter your name, your work email address, and your ABN.</React.Fragment>
+                            <React.Fragment>
+                              <AUpageAlert as="warning">
+                                <p>
+                                  Applications to join the Digital Marketplace will be closed{' '}
+                                  <strong>between 9 and 30 May</strong> while we move Digital Marketplace to BuyICT. You
+                                  can apply on {/* eslint-disable-next-line react/jsx-no-target-blank */}
+                                  <a href="https://www.buyict.gov.au" rel="external" target="_blank">
+                                    BuyICT
+                                  </a>{' '}
+                                  <strong>from 30 May</strong>.
+                                </p>
+                              </AUpageAlert>
+                              <p>Now enter your name, your work email address, and your ABN.</p>
+                            </React.Fragment>
                           )}
                           <Textfield
                             model={`${model}.name`}
