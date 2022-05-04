@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
 import {connect} from 'react-redux';
 import Icon     from '../../../shared/Icon';
 import SaveError from '../../../shared/SaveError';
