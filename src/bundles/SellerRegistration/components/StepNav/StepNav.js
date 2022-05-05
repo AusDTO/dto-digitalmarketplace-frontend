@@ -33,14 +33,28 @@ class StepNav extends React.Component {
   }
 
   render() {
-    const { buttonText, to, type, id } = this.props;
+   const { buttonText, to, type, id } = this.props;
 
     return (
       <div className="row">
         <SaveError />
         <div className="col-xs-12 col-sm-12 col-md-9">
-            <button type="submit" className="button-width button-width-left">{buttonText || 'Save and continue'}</button>
-            <button className="save-button button-width button-width-right" onClick={this.onSave.bind(this)}>Save and finish later</button>
+          {type === 'new' && (
+            <React.Fragment>
+              <button disabled="disabled" className="button-width button-width-left">
+                {buttonText || 'Save and continue'}
+              </button>
+              <button disabled="disabled" className="save-button button-width button-width-right">
+                Save and finish later
+              </button>
+            </React.Fragment>
+          )}
+          {type === 'edit' && (
+            <React.Fragment>
+              <button className="button-width button-width-left">{buttonText || 'Save and continue'}</button>
+              <button className="save-button button-width button-width-right">Save and finish later</button>
+            </React.Fragment>
+          )}
         </div>
         <div className="col-xs-12 col-sm-12 col-md-3">
               {type !== 'edit' ?

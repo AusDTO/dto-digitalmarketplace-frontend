@@ -132,10 +132,7 @@ class SubmitStepForm extends BaseForm {
                     <ErrorBox submitClicked={submitClicked} model={model} setFocus={setFocus}/>
                     <input type="hidden" name="csrf_token" id="csrf_token" value={csrfToken}/>
                     { message }
-                    {applicationErrors.length == 0
-                        ? <button type="submit">{buttonText}</button>
-                        : <button disabled="disabled">{buttonText}</button>
-                    }
+                    <button disabled="disabled">{buttonText}</button>
                 </Form>
             </div>
         )
