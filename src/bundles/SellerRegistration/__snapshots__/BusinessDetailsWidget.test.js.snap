@@ -326,20 +326,7 @@ exports[`BusinessDetailsWidget renders correctly 1`] = `
             <div />
             <div
               className="col-xs-12 col-sm-12 col-md-9"
-            >
-              <button
-                className="button-width button-width-left"
-                type="submit"
-              >
-                Update profile
-              </button>
-              <button
-                className="save-button button-width button-width-right"
-                onClick={[Function]}
-              >
-                Save and finish later
-              </button>
-            </div>
+            />
             <div
               className="col-xs-12 col-sm-12 col-md-3"
             >
