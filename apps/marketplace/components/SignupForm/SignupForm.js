@@ -4,10 +4,9 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Form } from 'react-redux-form'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
-import AUselect from '@gov.au/select/lib/js/react.js'
 import DocumentTitle from 'react-document-title'
 
-import { required, validEmail, validABN } from 'shared/validators'
+import { required, validEmail } from 'shared/validators'
 import { EMAIL_NOT_WHITELISTED, GENERAL_ERROR } from 'marketplace/constants/messageConstants'
 import Layout from 'shared/Layout'
 import ErrorBox from 'shared/form/ErrorBox'
@@ -219,6 +218,7 @@ class SignupForm extends Component {
                           )}
                           {userType === 'seller' && (
                             <React.Fragment>
+                              {/* eslint-disable-next-line react-native/no-inline-styles */}
                               <AUpageAlert as="error" style={{ marginBottom: '1.5em' }}>
                                 <p>
                                   Digital Marketplace applications are closed. You can apply on{' '}
