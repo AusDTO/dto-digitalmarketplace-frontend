@@ -4,10 +4,9 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Form } from 'react-redux-form'
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react.js'
-import AUselect from '@gov.au/select/lib/js/react.js'
 import DocumentTitle from 'react-document-title'
 
-import { required, validEmail, validABN } from 'shared/validators'
+import { required, validEmail } from 'shared/validators'
 import { EMAIL_NOT_WHITELISTED, GENERAL_ERROR } from 'marketplace/constants/messageConstants'
 import Layout from 'shared/Layout'
 import ErrorBox from 'shared/form/ErrorBox'
@@ -219,130 +218,74 @@ class SignupForm extends Component {
                           )}
                           {userType === 'seller' && (
                             <React.Fragment>
-                              <AUpageAlert as="warning">
+                              {/* eslint-disable-next-line react-native/no-inline-styles */}
+                              <AUpageAlert as="error" style={{ marginBottom: '1.5em' }}>
                                 <p>
-                                  Applications to join the Digital Marketplace will be closed{' '}
-                                  <strong>between 9 and 30 May</strong> while we move Digital Marketplace to BuyICT. You
-                                  can apply on {/* eslint-disable-next-line react/jsx-no-target-blank */}
+                                  Digital Marketplace applications are closed. You can apply on{' '}
+                                  {/* eslint-disable-next-line react/jsx-no-target-blank */}
                                   <a href="https://www.buyict.gov.au" rel="external" target="_blank">
                                     BuyICT
                                   </a>{' '}
                                   <strong>from 30 May</strong>.
                                 </p>
                               </AUpageAlert>
-                              <p>Now enter your name, your work email address, and your ABN.</p>
                             </React.Fragment>
-                          )}
-                          <Textfield
-                            model={`${model}.name`}
-                            name="name"
-                            id="name"
-                            htmlFor="name"
-                            label="Full name"
-                            validators={{
-                              required
-                            }}
-                            messages={{
-                              required: 'Your name is required'
-                            }}
-                          />
-                          <Textfield
-                            model={`${model}.email_address`}
-                            name="email_address"
-                            id="email_address"
-                            type="email"
-                            htmlFor="email_address"
-                            label="Email address"
-                            validators={emailValidators}
-                            messages={emailErrorMessages}
-                          />
-                        </React.Fragment>
-                      )}
-                      {userType === 'seller' && (
-                        <React.Fragment>
-                          <label className="question-heading au-text-input__label" htmlFor="international">
-                            Australian business status
-                          </label>
-                          <AUselect
-                            required
-                            block
-                            id="international"
-                            onChange={this.handleInternationalChange}
-                            value={this.state.isInternational ? 'yes' : 'no'}
-                            options={[
-                              {
-                                value: 'no',
-                                text: 'My business is located inside Australia'
-                              },
-                              {
-                                value: 'yes',
-                                text: 'My business is located outside Australia'
-                              }
-                            ]}
-                          />
-                          {!this.state.isInternational && (
-                            <Textfield
-                              model={`${model}.abn`}
-                              name="abn"
-                              id="abn"
-                              type="text"
-                              htmlFor="abn"
-                              label="ABN"
-                              validators={{
-                                required: v => required(v),
-                                validABN: v => !v || validABN(v)
-                              }}
-                              messages={{
-                                required: 'You must supply an ABN',
-                                validABN: 'The ABN supplied is not valid'
-                              }}
-                            />
-                          )}
-                          {this.state.isInternational && (
-                            <Textfield
-                              model={`${model}.abn`}
-                              name="abn"
-                              id="abn"
-                              type="text"
-                              htmlFor="abn"
-                              label="International business identifier number"
-                              description="This should be a number that is the equivalent of an ABN for your country of operation"
-                              validators={{
-                                required: v => required(v)
-                              }}
-                              messages={{
-                                required: 'You must supply an International business identifier number'
-                              }}
-                            />
                           )}
                         </React.Fragment>
                       )}
                       {isBuyer && (
-                        <div className="employment-status">
-                          <RadioList
-                            model={`${model}.employment_status`}
-                            name="employment_status"
-                            id="employment_status"
-                            label="To create a buyer account you need to be a government employee or be authorised by a government employee. Choose the option below that matches your situation."
-                            options={[
-                              {
-                                value: 'employee',
-                                label:
-                                  'I am an employee under the Commonwealth Public Service Act (1999) or under equivalent state or territory legislation and need access to the Digital Marketplace to perform my role.'
-                              },
-                              {
-                                value: 'contractor',
-                                label: 'I am a contractor working in local, state or federal government.'
-                              }
-                            ]}
-                            validators={{
-                              required
-                            }}
-                            messages={{
-                              required: 'You must specify your employment status.'
-                            }}
-                          />
-                        </div>
+                        <React.Fragment>
+                          <div>
+                            <Textfield
+                              model={`${model}.name`}
+                              name="name"
+                              id="name"
+                              htmlFor="name"
+                              label="Full name"
+                              validators={{
+                                required
+                              }}
+                              messages={{
+                                required: 'Your name is required'
+                              }}
+                            />
+                            <Textfield
+                              model={`${model}.email_address`}
+                              name="email_address"
+                              id="email_address"
+                              type="email"
+                              htmlFor="email_address"
+                              label="Email address"
+                              validators={emailValidators}
+                              messages={emailErrorMessages}
+                            />
+                          </div>
+                          <div className="employment-status">
+                            <RadioList
+                              model={`${model}.employment_status`}
+                              name="employment_status"
+                              id="employment_status"
+                              label="To create a buyer account you need to be a government employee or be authorised by a government employee. Choose the option below that matches your situation."
+                              options={[
+                                {
+                                  value: 'employee',
+                                  label:
+                                    'I am an employee under the Commonwealth Public Service Act (1999) or under equivalent state or territory legislation and need access to the Digital Marketplace to perform my role.'
+                                },
+                                {
+                                  value: 'contractor',
+                                  label: 'I am a contractor working in local, state or federal government.'
+                                }
+                              ]}
+                              validators={{
+                                required
+                              }}
+                              messages={{
+                                required: 'You must specify your employment status.'
+                              }}
+                            />
+                          </div>
+                        </React.Fragment>
                       )}
                       {employmentStatus && employmentStatus === 'contractor' && isBuyer && (
                         <div>
@@ -391,7 +334,7 @@ class SignupForm extends Component {
                         </div>
                       )}
                       {children}
-                      {userType && (
+                      {userType && userType === 'buyer' && (
                         <React.Fragment>
                           <p>
                             <small>

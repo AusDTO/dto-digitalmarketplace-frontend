@@ -438,7 +438,7 @@ exports[`Signup renders empty Your Info form 1`] = `
     id="content"
   >
     <div
-      className="au-body au-page-alerts   au-page-alerts--warning"
+      className="au-body au-page-alerts   au-page-alerts--error"
       style={
         Object {
           "marginBottom": "1.5em",
@@ -446,12 +446,7 @@ exports[`Signup renders empty Your Info form 1`] = `
       }
     >
       <p>
-        Applications to join the Digital Marketplace will be closed
-         
-        <strong>
-          between 9 and 30 May
-        </strong>
-         while we move Digital Marketplace to BuyICT. You can reapply on
+        Digital Marketplace applications are closed. You can apply on
          
         <a
           href="https://www.buyict.gov.au"
@@ -462,7 +457,7 @@ exports[`Signup renders empty Your Info form 1`] = `
         </a>
          
         <strong>
-          after 30 May
+          from 30 May
         </strong>
         .
       </p>
@@ -688,13 +683,13 @@ exports[`Signup renders empty Your Info form 1`] = `
             >
               <button
                 className="button-width button-width-left"
-                type="submit"
+                disabled="disabled"
               >
                 Save and continue
               </button>
               <button
                 className="save-button button-width button-width-right"
-                onClick={[Function]}
+                disabled="disabled"
               >
                 Save and finish later
               </button>
@@ -907,7 +902,7 @@ exports[`Signup renders populated Your Info form 1`] = `
     id="content"
   >
     <div
-      className="au-body au-page-alerts   au-page-alerts--warning"
+      className="au-body au-page-alerts   au-page-alerts--error"
       style={
         Object {
           "marginBottom": "1.5em",
@@ -915,12 +910,7 @@ exports[`Signup renders populated Your Info form 1`] = `
       }
     >
       <p>
-        Applications to join the Digital Marketplace will be closed
-         
-        <strong>
-          between 9 and 30 May
-        </strong>
-         while we move Digital Marketplace to BuyICT. You can reapply on
+        Digital Marketplace applications are closed. You can apply on
          
         <a
           href="https://www.buyict.gov.au"
@@ -931,7 +921,7 @@ exports[`Signup renders populated Your Info form 1`] = `
         </a>
          
         <strong>
-          after 30 May
+          from 30 May
         </strong>
         .
       </p>
@@ -1161,13 +1151,13 @@ exports[`Signup renders populated Your Info form 1`] = `
             >
               <button
                 className="button-width button-width-left"
-                type="submit"
+                disabled="disabled"
               >
                 Save and continue
               </button>
               <button
                 className="save-button button-width button-width-right"
-                onClick={[Function]}
+                disabled="disabled"
               >
                 Save and finish later
               </button>

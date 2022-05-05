@@ -244,9 +244,9 @@ class Signup extends React.Component {
 
               const element = React.createElement(component, props, children);
               return (
-                <DocumentTitle title={`${label || 'Application'} - Digital Marketplace`}>
+                  <DocumentTitle title={`${label || 'Application'} - Digital Marketplace`}>
                   <article id="content" className={articleClassNames}>
-                      {application.type === 'edit' && (
+                  {application.type === 'edit' && (
                         <AUpageAlert as="warning" style={{ marginBottom: '1.5em' }}>
                           <p>
                             You cannot update your profile <strong>between 20 and 30 May</strong> while we move 
@@ -259,15 +259,14 @@ class Signup extends React.Component {
                         </AUpageAlert>
                       )}
                       {application.type === 'new' && (
-                        <AUpageAlert as="warning" style={{ marginBottom: '1.5em' }}>
+                        <AUpageAlert as="error" style={{ marginBottom: '1.5em' }}>
                           <p>
-                            Applications to join the Digital Marketplace will be closed{' '}
-                            <strong>between 9 and 30 May</strong> while we move Digital Marketplace to BuyICT. You can 
-                            reapply on{' '}
+                            Digital Marketplace applications are closed. You can apply on{' '}
+                            {/* eslint-disable-next-line react/jsx-no-target-blank */}
                             <a href="https://www.buyict.gov.au" rel="external" target="_blank">
                               BuyICT
                             </a>{' '}
-                            <strong>after 30 May</strong>.
+                            <strong>from 30 May</strong>.
                           </p>
                         </AUpageAlert>
                       )}

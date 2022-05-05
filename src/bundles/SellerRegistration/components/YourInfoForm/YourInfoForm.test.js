@@ -33,19 +33,6 @@ test('mapStateToProps', () => {
   expect(props).toEqual({ form: { valid: false }, formErrors: void 0, model: 'yourInfoForm' });
 });
 
-test('handleClick with formValid=false', () => {
-  let store = createStore(Object.assign({}, { _serverContext: {} }))
-  const wrapper = mount(
-    <Provider store={store}>
-      <YourInfoForm />
-    </Provider>
-  )
-
-  wrapper.find('button[type="submit"]').simulate('click')
-  expect(store.getState().forms.yourInfoForm.$form.valid).toBeFalsy()
-  expect(wrapper.find('h1').text()).toBe('Contact details');
-});
-
 test('render existing supplier copy', () => {
   let store = createStore({application: {supplier_code: 999}});
   const wrapper = mount(
