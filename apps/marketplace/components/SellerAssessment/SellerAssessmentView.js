@@ -4,7 +4,6 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUdirectionLink from '@gov.au/direction-links/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
 import styles from './SellerAssessmentReviewStage.scss'
-import main from '../../main.scss'
 
 const SellerAssessmentView = props => (
   <div>
@@ -13,17 +12,7 @@ const SellerAssessmentView = props => (
       {props.evidence.categoryName}
     </AUheading>
     <div className={styles.spacer} />
-    <p>
-      You cannot edit your request for approved categories. If you want to change your rate, please{' '}
-      <a
-        href="https://marketplace1.zendesk.com/hc/en-gb/requests/new"
-        rel="noopener noreferrer"
-        target="_blank"
-        className={main.marginRight1}
-      >
-        contact us.
-      </a>
-    </p>
+    <p>You cannot edit your request for approved categories.</p>
     <AUheading level="2" size="lg">
       Maximum daily rate
     </AUheading>

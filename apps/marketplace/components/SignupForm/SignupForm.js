@@ -221,7 +221,7 @@ class SignupForm extends Component {
                               {/* eslint-disable-next-line react-native/no-inline-styles */}
                               <AUpageAlert as="error" style={{ marginBottom: '1.5em' }}>
                                 <p>
-                                  Digital Marketplace applications are closed. You can apply on{' '}
+                                  Digital Marketplace is now closed for seller sign up. You can apply on{' '}
                                   {/* eslint-disable-next-line react/jsx-no-target-blank */}
                                   <a href="https://www.buyict.gov.au" rel="external" target="_blank">
                                     BuyICT

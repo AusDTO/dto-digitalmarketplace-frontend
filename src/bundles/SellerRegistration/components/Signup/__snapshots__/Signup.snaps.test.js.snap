@@ -438,7 +438,7 @@ exports[`Signup renders empty Your Info form 1`] = `
     id="content"
   >
     <div
-      className="au-body au-page-alerts   au-page-alerts--error"
+      className="au-body au-page-alerts   au-page-alerts--warning"
       style={
         Object {
           "marginBottom": "1.5em",
@@ -446,8 +446,14 @@ exports[`Signup renders empty Your Info form 1`] = `
       }
     >
       <p>
-        Digital Marketplace applications are closed. You can apply on
-         
+        You must submit your application 
+        <strong>
+          by 9am on 20 May
+        </strong>
+        .
+      </p>
+      <p>
+        Unsubmitted applications after 20 May will not be reviewed or transferred to BuyICT. You can reapply on 
         <a
           href="https://www.buyict.gov.au"
           rel="external"
@@ -457,7 +463,7 @@ exports[`Signup renders empty Your Info form 1`] = `
         </a>
          
         <strong>
-          from 30 May
+          after 30 May
         </strong>
         .
       </p>
@@ -683,13 +689,13 @@ exports[`Signup renders empty Your Info form 1`] = `
             >
               <button
                 className="button-width button-width-left"
-                disabled="disabled"
+                type="submit"
               >
                 Save and continue
               </button>
               <button
                 className="save-button button-width button-width-right"
-                disabled="disabled"
+                onClick={[Function]}
               >
                 Save and finish later
               </button>
@@ -902,7 +908,7 @@ exports[`Signup renders populated Your Info form 1`] = `
     id="content"
   >
     <div
-      className="au-body au-page-alerts   au-page-alerts--error"
+      className="au-body au-page-alerts   au-page-alerts--warning"
       style={
         Object {
           "marginBottom": "1.5em",
@@ -910,8 +916,14 @@ exports[`Signup renders populated Your Info form 1`] = `
       }
     >
       <p>
-        Digital Marketplace applications are closed. You can apply on
-         
+        You must submit your application 
+        <strong>
+          by 9am on 20 May
+        </strong>
+        .
+      </p>
+      <p>
+        Unsubmitted applications after 20 May will not be reviewed or transferred to BuyICT. You can reapply on 
         <a
           href="https://www.buyict.gov.au"
           rel="external"
@@ -921,7 +933,7 @@ exports[`Signup renders populated Your Info form 1`] = `
         </a>
          
         <strong>
-          from 30 May
+          after 30 May
         </strong>
         .
       </p>
@@ -1151,13 +1163,13 @@ exports[`Signup renders populated Your Info form 1`] = `
             >
               <button
                 className="button-width button-width-left"
-                disabled="disabled"
+                type="submit"
               >
                 Save and continue
               </button>
               <button
                 className="save-button button-width button-width-right"
-                disabled="disabled"
+                onClick={[Function]}
               >
                 Save and finish later
               </button>
