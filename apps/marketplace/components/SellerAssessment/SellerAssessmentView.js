@@ -4,7 +4,6 @@ import AUheading from '@gov.au/headings/lib/js/react.js'
 import AUdirectionLink from '@gov.au/direction-links/lib/js/react.js'
 import { rootPath } from 'marketplace/routes'
 import styles from './SellerAssessmentReviewStage.scss'
-import main from '../../main.scss'
 
 const SellerAssessmentView = props => (
   <div>
