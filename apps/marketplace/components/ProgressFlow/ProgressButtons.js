@@ -16,6 +16,7 @@ const ProgressButtons = props => (
               props.onConfirmationClick(e.target.checked)
             }}
             label={props.confirmationText}
+            disabled={props.disabled}
           />
         </span>
       </p>
@@ -39,7 +40,7 @@ const ProgressButtons = props => (
           {props.hasPermissionToPublish ? (
             <AUbutton
               type="submit"
-              disabled={!props.publishEnabled}
+              disabled={!props.publishEnabled || props.disabled}
               onClick={e => {
                 e.preventDefault()
                 props.onPublish()
@@ -58,7 +59,7 @@ const ProgressButtons = props => (
           )}
         </span>
       )}
-      {!props.isFirstStage && !props.isLastStage && (
+      {!props.isFirstStage && !props.isLastStage && !props.disabled && (
         <AUbutton onClick={props.onSaveAndContinue} type="submit">
           {props.continueText}
         </AUbutton>
@@ -94,7 +95,8 @@ ProgressButtons.defaultProps = {
   showReturnButton: true,
   showReviewButton: true,
   showConfirmationCheckbox: true,
-  hasPermissionToPublish: true
+  hasPermissionToPublish: true,
+  disabled: false
 }
 
 ProgressButtons.propTypes = {
@@ -113,7 +115,8 @@ ProgressButtons.propTypes = {
   showReturnButton: PropTypes.bool,
   showReviewButton: PropTypes.bool,
   showConfirmationCheckbox: PropTypes.bool,
-  hasPermissionToPublish: PropTypes.bool
+  hasPermissionToPublish: PropTypes.bool,
+  disabled: PropTypes.bool
 }
 
 export default ProgressButtons
