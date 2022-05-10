@@ -230,18 +230,6 @@ const OpportunityInfoCard = props => {
                     <span> Your submitted assessment has been reviewed by the Marketplace and was not successful.</span>
                   )}
                 </p>
-                {!isAwaitingDomainAssessment &&
-                  !hasEvidenceInDraftForCategory &&
-                  !hasLatestEvidenceRejectedForCategory && (
-                    <p>
-                      <a
-                        href={`${rootPath}/seller-assessment/create/${sellerCategory}/${briefId}`}
-                        className={`au-btn au-btn--block ${styles.redBtn}`}
-                      >
-                        Request assessment
-                      </a>
-                    </p>
-                  )}
                 {!isAwaitingDomainAssessment && hasLatestEvidenceRejectedForCategory && rejectedEvidenceId && (
                   <p>
                     <a
@@ -266,13 +254,6 @@ const OpportunityInfoCard = props => {
                 <p className={styles.invitedStatus}>
                   Only sellers with an assessed category can apply.
                   {isAwaitingDomainAssessment && <span> Your application is currently being assessed.</span>}
-                  {!isAwaitingDomainAssessment && (
-                    <span>
-                      {' '}
-                      You can request assessment for a category of your choosing{' '}
-                      <a href={`${rootPath}/seller-dashboard`}>from your dashboard</a>.
-                    </span>
-                  )}
                 </p>
               </span>
             )}
