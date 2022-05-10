@@ -46,17 +46,11 @@ const SellerAssessmentReviewStage = props => {
           </AUheading>
           <AUheading level="2" size="lg">
             Maximum daily rate
-            <Link to="rate" className={styles.change}>
-              Change
-            </Link>
           </AUheading>
           <p>${props[model].maxDailyRate} (including GST)</p>
           <div className={styles.spacer} />
           <AUheading level="2" size="lg">
             Evidence
-            <Link to="evidence" className={styles.change}>
-              Change
-            </Link>
           </AUheading>
           {props[model].criteria.map(criteriaId => (
             <React.Fragment key={criteriaId}>
