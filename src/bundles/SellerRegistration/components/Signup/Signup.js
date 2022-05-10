@@ -260,7 +260,7 @@ class Signup extends React.Component {
                       )}
                       {application.type === 'new' && (
                         // eslint-disable-next-line react-native/no-inline-styles
-                        <AUpageAlert as="error" style={{ marginBottom: '1.5em' }}>
+                        <AUpageAlert as="error" style={{ marginBottom: '3em' }}>
                           <p>
                             Digital Marketplace applications are closed. You can apply on{' '}
                             {/* eslint-disable-next-line react/jsx-no-target-blank */}
