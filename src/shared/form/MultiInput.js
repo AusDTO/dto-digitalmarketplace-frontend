@@ -16,7 +16,8 @@ const MultiInput = (props) => {
     messages,
     controlProps,
     mapProps,
-    validators
+    validators,
+    disabled
   } = props;
 
   return (
@@ -44,6 +45,7 @@ const MultiInput = (props) => {
         }}
         validators={validators}
         component={MultiInputComponent}
+        disabled={disabled}
       />
       </div>
     </div>
@@ -52,6 +54,7 @@ const MultiInput = (props) => {
 
 MultiInput.defaultProps = {
   mapProps: {},
+  disabled: false
 };
 
 MultiInput.propTypes = {
@@ -63,7 +66,7 @@ MultiInput.propTypes = {
     PropTypes.func,
     PropTypes.string,
   ]).isRequired,
-
+  disabled: PropTypes.bool,
   messages: PropTypes.object,
   validators: PropTypes.object,
   description: PropTypes.string,

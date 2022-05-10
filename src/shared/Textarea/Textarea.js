@@ -51,7 +51,7 @@ class Textarea extends Component {
   }
 
   render() {
-    let { value, limit, name, id, onBlur, onFocus, className = '', describedby, hint } = this.props
+    let { value, limit, name, id, onBlur, onFocus, className = '', describedby, hint, disabled, readOnly } = this.props
     let { wordsLeft } = this.state
 
     let counter = wordsLeft
@@ -79,6 +79,8 @@ class Textarea extends Component {
           onFocus={onFocus}
           aria-describedby={describedby}
           onChange={this.onChange.bind(this)}
+          disabled={disabled}
+          readOnly={readOnly}
         ></textarea>
         {limit ? (
           <span className="word-count-counter" aria-live="polite">{this.limitText(counter, wordsLeft)}</span>
@@ -95,6 +97,8 @@ Textarea.propTypes = {
     PropTypes.string,
     PropTypes.number
   ]),
+  disabled: PropTypes.bool,
+  readOnly: PropTypes.bool,
   value: PropTypes.string
 }
 

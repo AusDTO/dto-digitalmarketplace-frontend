@@ -17,6 +17,8 @@ const Textarea = (props) => {
     messages,
     description,
     showMessagesDuringFocus = false,
+    disabled,
+    readOnly,
     controlProps = {},
     mapProps
   } = props;
@@ -50,6 +52,8 @@ const Textarea = (props) => {
         model={model}
         controlProps={{ name, id, describedby: description ? `${id}-hint` : `${id}-label`, hint: description, ...controlProps}}
         validators={validators}
+        disabled={disabled}
+        readOnly={readOnly}
         component={TextareaComponent}
         mapProps={{
           className: ({ fieldValue }) => !fieldValue.valid && fieldValue.touched ? 'invalid' : '',
@@ -63,13 +67,17 @@ const Textarea = (props) => {
 };
 
 Textarea.defaultProps = {
-  mapProps: {}
+  mapProps: {},
+  disabled: false,
+  readOnly: false
 }
 
 Textarea.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  disabled: PropTypes.bool,
+  readOnly: PropTypes.bool,
   model: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.string,

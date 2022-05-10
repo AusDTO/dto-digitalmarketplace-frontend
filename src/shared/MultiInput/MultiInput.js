@@ -6,13 +6,15 @@ class MultiInput extends React.Component {
     rows: PropTypes.array,
     defaultRows: PropTypes.number,
     onChange: PropTypes.func,
-    name: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
+    disabled: PropTypes.bool
   }
 
   static defaultProps = {
     onChange: () => {},
     onBlur: () => {},
     onFocus: () => {},
+    disabled: false
   }
 
   constructor(props) {
@@ -92,7 +94,7 @@ class MultiInput extends React.Component {
 
   render() {
     const { inputs } = this.state;
-    const { name, onBlur, onFocus, className = '', describedby, hint } = this.props;
+    const { name, onBlur, onFocus, className = '', describedby, hint, disabled } = this.props;
     return (
       <div>
         {inputs.map(({ id, value }, i) => {
@@ -111,9 +113,11 @@ class MultiInput extends React.Component {
                   onFocus={onFocus}
                   className={`text-box ${className}`}
                   aria-describedby={hint && describedby}
-                  defaultValue={value} />
+                  defaultValue={value}
+                  disabled={disabled}
+                />
               </div>
-              {i > 0 && (
+              {i > 0 && !disabled && (
                 <button type="button" className="button-secondary col-xs-12 col-sm-3" onClick={this.removeRow.bind(this, id)}>
                   remove <span className="visuallyhidden">number {i + 1}</span>
                 </button>
@@ -121,9 +125,11 @@ class MultiInput extends React.Component {
             </div>
           )
         })}
-        <button type="button" className="button-secondary" onClick={this.addRow.bind(this)}>
-          Add another row
-        </button>
+        {!disabled && (
+          <button type="button" className="button-secondary" onClick={this.addRow.bind(this)}>
+            Add another row
+          </button>
+        )}
       </div>
     )
   }
