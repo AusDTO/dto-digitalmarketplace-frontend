@@ -28,7 +28,7 @@ const ApplicationPreview = ({header, body, privateInfo, onClick, model, form, on
               >
             <p>Once you submit these updates we will review the changes before updating your profile on the Digital Marketplace.</p>
             <input type="hidden" name="csrf_token" id="csrf_token" value={csrfToken}/>
-            <button type="submit">Submit updates</button>
+            <button disabled="disabled">Submit updates</button>
             <Link to="/update">Go back and edit</Link>
           </Form>
         </div>

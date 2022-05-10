@@ -39,16 +39,10 @@ class StepNav extends React.Component {
       <div className="row">
         <SaveError />
         <div className="col-xs-12 col-sm-12 col-md-9">
-            <button type="submit" className="button-width button-width-left">{buttonText || 'Save and continue'}</button>
-            <button className="save-button button-width button-width-right" onClick={this.onSave.bind(this)}>Save and finish later</button>
+            <button className="button-width button-width-left" disabled="disabled">{buttonText || 'Save and continue'}</button>
+            <button className="save-button button-width button-width-right" disabled="disabled">Save and finish later</button>
         </div>
-        <div className="col-xs-12 col-sm-12 col-md-3">
-              {type !== 'edit' ?
-                <div styleName="skip">
-                  <button className="button-secondary" styleName="skip-link" onClick={this.onSkip.bind(this, to)}>Skip for now</button>
-                </div> : ''
-              }
-        </div>
+        <div className="col-xs-12 col-sm-12 col-md-3" />
     </div>
     )
   }

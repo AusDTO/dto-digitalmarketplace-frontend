@@ -68,6 +68,7 @@ class DisclosuresForm extends BaseForm {
                               messages={{
                                   required: 'Please provide an answer to the Structual Changes question',
                               }}
+                              disabled
                             />
                             <YesNoDetails
                               name="investigations"
@@ -78,6 +79,7 @@ class DisclosuresForm extends BaseForm {
                               messages={{
                                   required: 'Please provide an answer to the Investigations question',
                               }}
+                              disabled
                             />
                             <YesNoDetails
                               name="legal_proceedings"
@@ -88,6 +90,7 @@ class DisclosuresForm extends BaseForm {
                               messages={{
                                   required: 'Please provide an answer to the Legal Proceedings question',
                               }}
+                              disabled
                             />
                             <YesNoDetails
                               name="insurance_claims"
@@ -98,6 +101,7 @@ class DisclosuresForm extends BaseForm {
                               messages={{
                                   required: 'Please provide an answer to the Insurance Claims question',
                               }}
+                              disabled
                             />
                             <YesNoDetails
                               name="conflicts_of_interest"
@@ -108,6 +112,7 @@ class DisclosuresForm extends BaseForm {
                               messages={{
                                   required: 'Please provide an answer to the Conflicts of interest question',
                               }}
+                              disabled
                             />
                             <YesNoDetails
                               name="other_circumstances"
@@ -118,6 +123,7 @@ class DisclosuresForm extends BaseForm {
                               messages={{
                                   required: 'Please provide an answer to the Other circumstances question',
                               }}
+                              disabled
                             />
 
                         {children}

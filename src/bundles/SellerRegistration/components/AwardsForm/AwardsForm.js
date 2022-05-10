@@ -72,6 +72,7 @@ class AwardsForm extends BaseForm {
                             label="Accreditations (optional)"
                             controlProps={{defaultRows: 2}}
                             description="Does your business have any formal accreditations you want to share? "
+                            disabled
                         />
 
                         <MultiInput
@@ -82,6 +83,7 @@ class AwardsForm extends BaseForm {
                             label="Industry engagement (optional)"
                             controlProps={{defaultRows: 2}}
                             description="Are you involved in any boards, committees or groups for your industry?"
+                            disabled
                         />
 
                         <MultiInput
@@ -92,7 +94,7 @@ class AwardsForm extends BaseForm {
                             label="Awards (optional)"
                             controlProps={{defaultRows: 2}}
                             description="Has your work been recognised and awarded within your industry or by others?"
-
+                            disabled
                         />
 
                         {children}

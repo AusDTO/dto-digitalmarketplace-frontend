@@ -76,6 +76,7 @@ class ToolsForm extends BaseForm {
                             messages={{
                                 required: `Tools is required`,
                             }}
+                            disabled
                         />
 
                         <Textarea
@@ -90,6 +91,7 @@ class ToolsForm extends BaseForm {
                             messages={{
                                 required: `Methodologies is required`,
                             }}
+                            disabled
                         />
 
                         <Textarea
@@ -100,6 +102,7 @@ class ToolsForm extends BaseForm {
                             label="Technologies (optional)"
                             description="What technologies or programming languages do you use?"
                             showMessagesDuringFocus={true}
+                            disabled
                         />
                         {children}
 
