@@ -134,17 +134,14 @@ class SellerAssessmentCriteriaStage extends Component {
         onSubmitFailed={this.props.onSubmitFailed}
         validateOn="submit"
       >
-        <AUpageAlert as="warning">
+        <AUpageAlert as="error">
           <p>
-            You must submit your application <strong>by 9am on 20 May</strong>.
-          </p>
-          <p>
-            Unsubmitted applications after 20 May will not be reviewed or transferred to BuyICT. You can reapply on{' '}
+            Requests for category assessments are closed. You can apply on{' '}
             {/* eslint-disable-next-line react/jsx-no-target-blank */}
             <a href="https://www.buyict.gov.au" rel="external" target="_blank">
               BuyICT
             </a>{' '}
-            <strong>after 30 May</strong>.
+            <strong>from 30 May</strong>.
           </p>
         </AUpageAlert>
         <AUheadings level="1" size="xl">
@@ -227,6 +224,7 @@ class SellerAssessmentCriteriaStage extends Component {
               onClick={this.handleClick}
               validators={{}}
               messages={{}}
+              disabled
             />
           ))}
         </div>
