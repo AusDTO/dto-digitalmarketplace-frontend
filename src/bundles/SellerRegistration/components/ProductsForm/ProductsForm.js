@@ -189,13 +189,6 @@ class ProductsForm extends BaseForm {
             })}
 
             {children}
-
-            {hasProducts &&
-              <div>
-                <div className="row"/>
-                <StepNav buttonText={buttonText} to={nextRoute}/>
-              </div>
-            }
           </Form>
         </article>
       </Layout>
