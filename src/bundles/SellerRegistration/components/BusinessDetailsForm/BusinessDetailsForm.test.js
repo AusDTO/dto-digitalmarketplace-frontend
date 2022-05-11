@@ -33,18 +33,6 @@ test('mapStateToProps', () => {
     expect(props).toEqual({ form: { valid: false },"formErrors": undefined, "mode": "add", "model": "businessDetailsForm", "returnLink": undefined});
 });
 
-test('handleClick with formValid=false', () => {
-    let store = createStore(Object.assign({}, { _serverContext: {} }))
-    const wrapper = mount(
-        <Provider store={store}>
-          <BusinessDetailsForm />
-        </Provider>
-    )
-
-    wrapper.find('button[type="submit"]').first().simulate('click')
-    expect(store.getState().forms.businessDetailsForm.$form.valid).toBeFalsy()
-    expect(wrapper.find('h1').text()).toBe('Tell us about your business');
-});
 
 test('render existing supplier copy', () => {
   let store = createStore({application: {supplier_code: 0, abn: "123456"}});
