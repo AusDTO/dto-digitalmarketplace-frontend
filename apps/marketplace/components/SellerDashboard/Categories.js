@@ -135,7 +135,7 @@ export class Categories extends Component {
           <div className="col-xs-12 col-md-12">
             <AUpageAlert as="error" className={`${styles.marginTop2} ${styles.pageAlert}`}>
               <p className={styles.noMaxWidth}>
-                Requests for category assessments are currently closed. You can apply on{' '}
+                Requests for category assessments are closed. You can apply on{' '}
                 {/* eslint-disable-next-line react/jsx-no-target-blank */}
                 <a href="https://www.buyict.gov.au" rel="external" target="_blank">
                   BuyICT
