@@ -147,28 +147,6 @@ exports[`Signup renders 1`] = `
         <li>
           <a
             className=""
-            href="/review"
-            onClick={[Function]}
-          >
-            <span>
-              Preview profile
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/update"
-            onClick={[Function]}
-          >
-            <span>
-              Preview and submit
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
             href="/submit"
             onClick={[Function]}
           >
@@ -239,13 +217,11 @@ exports[`Signup renders 1`] = `
         </p>
         <div />
         <p>
-          <a
-            className="button"
-            href="#"
-            onClick={[Function]}
+          <button
+            disabled="disabled"
           >
-            Start now 
-          </a>
+            Start now
+          </button>
         </p>
       </div>
     </div>
@@ -400,28 +376,6 @@ exports[`Signup renders empty Your Info form 1`] = `
         <li>
           <a
             className=""
-            href="/review"
-            onClick={[Function]}
-          >
-            <span>
-              Preview profile
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/update"
-            onClick={[Function]}
-          >
-            <span>
-              Preview and submit
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
             href="/submit"
             onClick={[Function]}
           >
@@ -438,22 +392,16 @@ exports[`Signup renders empty Your Info form 1`] = `
     id="content"
   >
     <div
-      className="au-body au-page-alerts   au-page-alerts--warning"
+      className="au-body au-page-alerts   au-page-alerts--error"
       style={
         Object {
-          "marginBottom": "1.5em",
+          "marginBottom": "3em",
         }
       }
     >
       <p>
-        You must submit your application 
-        <strong>
-          by 9am on 20 May
-        </strong>
-        .
-      </p>
-      <p>
-        Unsubmitted applications after 20 May will not be reviewed or transferred to BuyICT. You can reapply on 
+        Digital Marketplace applications are closed. You can apply on
+         
         <a
           href="https://www.buyict.gov.au"
           rel="external"
@@ -463,7 +411,7 @@ exports[`Signup renders empty Your Info form 1`] = `
         </a>
          
         <strong>
-          after 30 May
+          from 30 May
         </strong>
         .
       </p>
@@ -533,7 +481,7 @@ exports[`Signup renders empty Your Info form 1`] = `
             </p>
             <input
               className=""
-              disabled={false}
+              disabled={true}
               id="representative"
               name="representative"
               onBlur={[Function]}
@@ -555,7 +503,7 @@ exports[`Signup renders empty Your Info form 1`] = `
             </label>
             <input
               className=""
-              disabled={false}
+              disabled={true}
               id="email"
               name="email"
               onBlur={[Function]}
@@ -583,7 +531,7 @@ exports[`Signup renders empty Your Info form 1`] = `
             </p>
             <input
               className=""
-              disabled={false}
+              disabled={true}
               id="phone"
               name="phone"
               onBlur={[Function]}
@@ -614,7 +562,7 @@ exports[`Signup renders empty Your Info form 1`] = `
             </p>
             <input
               className=""
-              disabled={false}
+              disabled={true}
               id="contact_name"
               name="contact_name"
               onBlur={[Function]}
@@ -636,7 +584,7 @@ exports[`Signup renders empty Your Info form 1`] = `
             </label>
             <input
               className=""
-              disabled={false}
+              disabled={true}
               id="contact_email"
               name="contact_email"
               onBlur={[Function]}
@@ -664,7 +612,7 @@ exports[`Signup renders empty Your Info form 1`] = `
             </p>
             <input
               className=""
-              disabled={false}
+              disabled={true}
               id="contact_phone"
               name="contact_phone"
               onBlur={[Function]}
@@ -689,32 +637,20 @@ exports[`Signup renders empty Your Info form 1`] = `
             >
               <button
                 className="button-width button-width-left"
-                type="submit"
+                disabled="disabled"
               >
                 Save and continue
               </button>
               <button
                 className="save-button button-width button-width-right"
-                onClick={[Function]}
+                disabled="disabled"
               >
                 Save and finish later
               </button>
             </div>
             <div
               className="col-xs-12 col-sm-12 col-md-3"
-            >
-              <div
-                styleName="skip"
-              >
-                <button
-                  className="button-secondary"
-                  onClick={[Function]}
-                  styleName="skip-link"
-                >
-                  Skip for now
-                </button>
-              </div>
-            </div>
+            />
           </div>
         </form>
       </article>
@@ -870,28 +806,6 @@ exports[`Signup renders populated Your Info form 1`] = `
         <li>
           <a
             className=""
-            href="/review"
-            onClick={[Function]}
-          >
-            <span>
-              Preview profile
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
-            href="/update"
-            onClick={[Function]}
-          >
-            <span>
-              Preview and submit
-            </span>
-          </a>
-        </li>
-        <li>
-          <a
-            className=""
             href="/submit"
             onClick={[Function]}
           >
@@ -908,22 +822,16 @@ exports[`Signup renders populated Your Info form 1`] = `
     id="content"
   >
     <div
-      className="au-body au-page-alerts   au-page-alerts--warning"
+      className="au-body au-page-alerts   au-page-alerts--error"
       style={
         Object {
-          "marginBottom": "1.5em",
+          "marginBottom": "3em",
         }
       }
     >
       <p>
-        You must submit your application 
-        <strong>
-          by 9am on 20 May
-        </strong>
-        .
-      </p>
-      <p>
-        Unsubmitted applications after 20 May will not be reviewed or transferred to BuyICT. You can reapply on 
+        Digital Marketplace applications are closed. You can apply on
+         
         <a
           href="https://www.buyict.gov.au"
           rel="external"
@@ -933,7 +841,7 @@ exports[`Signup renders populated Your Info form 1`] = `
         </a>
          
         <strong>
-          after 30 May
+          from 30 May
         </strong>
         .
       </p>
@@ -1010,7 +918,7 @@ exports[`Signup renders populated Your Info form 1`] = `
             </p>
             <input
               className=""
-              disabled={false}
+              disabled={true}
               id="representative"
               name="representative"
               onBlur={[Function]}
@@ -1032,7 +940,7 @@ exports[`Signup renders populated Your Info form 1`] = `
             </label>
             <input
               className=""
-              disabled={false}
+              disabled={true}
               id="email"
               name="email"
               onBlur={[Function]}
@@ -1060,7 +968,7 @@ exports[`Signup renders populated Your Info form 1`] = `
             </p>
             <input
               className=""
-              disabled={false}
+              disabled={true}
               id="phone"
               name="phone"
               onBlur={[Function]}
@@ -1091,7 +999,7 @@ exports[`Signup renders populated Your Info form 1`] = `
             </p>
             <input
               className=""
-              disabled={false}
+              disabled={true}
               id="contact_name"
               name="contact_name"
               onBlur={[Function]}
@@ -1112,7 +1020,7 @@ exports[`Signup renders populated Your Info form 1`] = `
             </label>
             <input
               className=""
-              disabled={false}
+              disabled={true}
               id="contact_email"
               name="contact_email"
               onBlur={[Function]}
@@ -1139,7 +1047,7 @@ exports[`Signup renders populated Your Info form 1`] = `
             </p>
             <input
               className=""
-              disabled={false}
+              disabled={true}
               id="contact_phone"
               name="contact_phone"
               onBlur={[Function]}
@@ -1163,32 +1071,20 @@ exports[`Signup renders populated Your Info form 1`] = `
             >
               <button
                 className="button-width button-width-left"
-                type="submit"
+                disabled="disabled"
               >
                 Save and continue
               </button>
               <button
                 className="save-button button-width button-width-right"
-                onClick={[Function]}
+                disabled="disabled"
               >
                 Save and finish later
               </button>
             </div>
             <div
               className="col-xs-12 col-sm-12 col-md-3"
-            >
-              <div
-                styleName="skip"
-              >
-                <button
-                  className="button-secondary"
-                  onClick={[Function]}
-                  styleName="skip-link"
-                >
-                  Skip for now
-                </button>
-              </div>
-            </div>
+            />
           </div>
         </form>
       </article>

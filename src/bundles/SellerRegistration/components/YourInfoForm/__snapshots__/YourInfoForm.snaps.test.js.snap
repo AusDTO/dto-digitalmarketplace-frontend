@@ -66,7 +66,7 @@ exports[`YourInfoForm renders 1`] = `
         </p>
         <input
           className=""
-          disabled={false}
+          disabled={true}
           id="contact_name"
           name="contact_name"
           onBlur={[Function]}
@@ -87,7 +87,7 @@ exports[`YourInfoForm renders 1`] = `
         </label>
         <input
           className=""
-          disabled={false}
+          disabled={true}
           id="contact_email"
           name="contact_email"
           onBlur={[Function]}
@@ -114,7 +114,7 @@ exports[`YourInfoForm renders 1`] = `
         </p>
         <input
           className=""
-          disabled={false}
+          disabled={true}
           id="contact_phone"
           name="contact_phone"
           onBlur={[Function]}
@@ -133,32 +133,20 @@ exports[`YourInfoForm renders 1`] = `
         >
           <button
             className="button-width button-width-left"
-            type="submit"
+            disabled="disabled"
           >
             Save and continue
           </button>
           <button
             className="save-button button-width button-width-right"
-            onClick={[Function]}
+            disabled="disabled"
           >
             Save and finish later
           </button>
         </div>
         <div
           className="col-xs-12 col-sm-12 col-md-3"
-        >
-          <div
-            styleName="skip"
-          >
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              styleName="skip-link"
-            >
-              Skip for now
-            </button>
-          </div>
-        </div>
+        />
       </div>
     </form>
   </article>
@@ -238,7 +226,7 @@ exports[`YourInfoForm renders with edit mode 1`] = `
         </p>
         <input
           className=""
-          disabled={false}
+          disabled={true}
           id="contact_name"
           name="contact_name"
           onBlur={[Function]}
@@ -259,7 +247,7 @@ exports[`YourInfoForm renders with edit mode 1`] = `
         </label>
         <input
           className=""
-          disabled={false}
+          disabled={true}
           id="contact_email"
           name="contact_email"
           onBlur={[Function]}
@@ -286,7 +274,7 @@ exports[`YourInfoForm renders with edit mode 1`] = `
         </p>
         <input
           className=""
-          disabled={false}
+          disabled={true}
           id="contact_phone"
           name="contact_phone"
           onBlur={[Function]}
@@ -305,32 +293,20 @@ exports[`YourInfoForm renders with edit mode 1`] = `
         >
           <button
             className="button-width button-width-left"
-            type="submit"
+            disabled="disabled"
           >
             Save and continue
           </button>
           <button
             className="save-button button-width button-width-right"
-            onClick={[Function]}
+            disabled="disabled"
           >
             Save and finish later
           </button>
         </div>
         <div
           className="col-xs-12 col-sm-12 col-md-3"
-        >
-          <div
-            styleName="skip"
-          >
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              styleName="skip-link"
-            >
-              Skip for now
-            </button>
-          </div>
-        </div>
+        />
       </div>
     </form>
   </article>
@@ -410,7 +386,7 @@ exports[`YourInfoForm renders with form_options 1`] = `
         </p>
         <input
           className=""
-          disabled={false}
+          disabled={true}
           id="contact_name"
           name="contact_name"
           onBlur={[Function]}
@@ -431,7 +407,7 @@ exports[`YourInfoForm renders with form_options 1`] = `
         </label>
         <input
           className=""
-          disabled={false}
+          disabled={true}
           id="contact_email"
           name="contact_email"
           onBlur={[Function]}
@@ -458,7 +434,7 @@ exports[`YourInfoForm renders with form_options 1`] = `
         </p>
         <input
           className=""
-          disabled={false}
+          disabled={true}
           id="contact_phone"
           name="contact_phone"
           onBlur={[Function]}
@@ -477,32 +453,20 @@ exports[`YourInfoForm renders with form_options 1`] = `
         >
           <button
             className="button-width button-width-left"
-            type="submit"
+            disabled="disabled"
           >
             Save and continue
           </button>
           <button
             className="save-button button-width button-width-right"
-            onClick={[Function]}
+            disabled="disabled"
           >
             Save and finish later
           </button>
         </div>
         <div
           className="col-xs-12 col-sm-12 col-md-3"
-        >
-          <div
-            styleName="skip"
-          >
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              styleName="skip-link"
-            >
-              Skip for now
-            </button>
-          </div>
-        </div>
+        />
       </div>
     </form>
   </article>
