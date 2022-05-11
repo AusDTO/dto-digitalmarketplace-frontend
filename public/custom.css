@@ -988,6 +988,10 @@ a[rel~='external']::after {
   color: #212121;
 }
 
+.maintenace-banner a:hover {
+  color: #212121;
+}
+
 @media screen and (max-width: 767px) {
   .maintenance-message {
     display: inline-block;
