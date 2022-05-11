@@ -381,7 +381,6 @@ OpportunityInfoCard.propTypes = {
   briefLot: PropTypes.string.isRequired,
   briefStatus: PropTypes.string.isRequired,
   category: PropTypes.string,
-  sellerCategory: PropTypes.string.isRequired,
   hasSignedCurrentAgreement: PropTypes.bool,
   supplierCode: PropTypes.number,
   originalClosedAt: PropTypes.string,
