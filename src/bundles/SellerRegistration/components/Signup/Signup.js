@@ -72,8 +72,6 @@ class Signup extends React.Component {
     { id: 'recruiter', label: 'Recruiter', component: RecruiterForm, pattern: '/recruiter', formKey: 'recruiterForm' },
     { id: 'candidates', label: 'Candidates', component: CandidatesForm, pattern: '/candidates', formKey: 'candidatesForm' },
     { id: 'products', label: 'Products', component: ProductsForm, pattern: '/products', formKey: 'productForm' },
-    { id: 'review', label: 'Preview profile', component: Review, pattern: '/review' },
-    { id: 'update', label: 'Preview and submit', component: Review, pattern: '/update' },
     { id: 'finish-profile', label: 'Finish', component: FinishProfile, pattern: '/profile-finish' },
   ]
 
