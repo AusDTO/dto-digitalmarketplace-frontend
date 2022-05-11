@@ -36,7 +36,6 @@ const OpportunityInfoCard = props => {
     loggedIn,
     originalClosedAt,
     rejectedEvidenceId,
-    sellerCategory,
     sellersApplied,
     sellersInvited,
     supplierBriefResponseId,
