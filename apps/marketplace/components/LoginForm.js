@@ -5,7 +5,6 @@ import { rootPath } from 'marketplace/routes'
 import DocumentTitle from 'react-document-title'
 
 import AUpageAlert from '@gov.au/page-alerts/lib/js/react'
-import AUheading from '@gov.au/headings/lib/js/react'
 import ErrorBox from 'shared/form/ErrorBox'
 import Textfield from 'shared/form/Textfield'
 import { required, validEmail, passwordLength } from '../components/validators'
@@ -55,14 +54,11 @@ const LoginForm = props => {
               )}
             </header>
             {DMP_LOCKOUT && (
-              <AUpageAlert as="warning" className={`${style.marginTop2} ${style.marginBottom2}`}>
+              <AUpageAlert as="error" className={`${style.marginTop2} ${style.marginBottom2}`}>
                 <div>
-                  <AUheading size="lg" level="1">
-                    Important
-                  </AUheading>
                   <p>
-                    Logging into your account account is unavailable while Digital Marketplace is{' '}
-                    <a href="/2/api/r/buyict">moving to BuyICT</a>.
+                    Digital Marketplace is closed while it is moving to{` `}
+                    <a href="/2/api/r/buyict">BuyICT</a>.
                   </p>
                 </div>
               </AUpageAlert>

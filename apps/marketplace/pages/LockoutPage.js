@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { logout } from 'marketplace/actions/appActions'
+import AUpageAlert from '@gov.au/page-alerts/lib/js/react'
+import style from '../../marketplace/main.scss'
 
 const LockoutPageComponent = props => {
   const { loggedIn } = props
@@ -12,7 +14,15 @@ const LockoutPageComponent = props => {
     <div className="row">
       <div className="col-sm-push-2 col-sm-8 col-xs-12">
         <article role="main">
-          <p>We are closed.</p>
+          <h1>Sign up</h1>
+          <AUpageAlert as="error" className={`${style.marginTop2} ${style.marginBottom2}`}>
+            <div>
+              <p>
+                Digital Marketplace is closed while it is moving to{` `}
+                <a href="/2/api/r/buyict">BuyICT</a>.
+              </p>
+            </div>
+          </AUpageAlert>
         </article>
       </div>
     </div>
