@@ -36,7 +36,7 @@ const LoginForm = props => {
           <article role="main">
             {isForcedLogout && (
               <AUpageAlert as="info" className={`${style.marginBottom2}`}>
-                <span>You have been automatically logged out.</span>
+                <span>You have been logged out.</span>
               </AUpageAlert>
             )}
             <ErrorBox
@@ -58,7 +58,7 @@ const LoginForm = props => {
                 <div>
                   <p>
                     Digital Marketplace is closed while it is moving to{` `}
-                    <a href="/2/api/r/buyict">BuyICT</a>.
+                    <a href="/api/2/r/buyict">BuyICT</a>.
                   </p>
                 </div>
               </AUpageAlert>

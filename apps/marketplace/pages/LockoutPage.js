@@ -19,7 +19,7 @@ const LockoutPageComponent = props => {
             <div>
               <p>
                 Digital Marketplace is closed while it is moving to{` `}
-                <a href="/2/api/r/buyict">BuyICT</a>.
+                <a href="/api/2/r/buyict">BuyICT</a>.
               </p>
             </div>
           </AUpageAlert>
