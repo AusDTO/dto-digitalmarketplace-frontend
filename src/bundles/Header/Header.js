@@ -163,7 +163,10 @@ class Header extends React.Component {
           <div className="maintenance-banner">
             <div className="wrapper">
               <div className="row">
-                <span className="maintenance-message">Digital Marketplace is closed while it is moving to BuyICT.</span>
+                <span className="maintenance-message">
+                  Digital Marketplace is closed while it is moving to BuyICT.{' '}
+                  <a href="/api/2/r/buyict">Find out more</a>.
+                </span>
               </div>
             </div>
           </div>
