@@ -95,7 +95,7 @@
     "date-fns": "^1.29.0",
     "diff-match-patch": "^1.0.4",
     "dotenv": "^4.0.0",
-    "ejs": "^2.5.7",
+    "ejs": "^3.1.7",
     "express": "^4.16.2",
     "fast-json-patch": "^2.0.6",
     "history": "^4.7.2",
