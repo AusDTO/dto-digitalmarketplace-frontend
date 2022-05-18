@@ -73,18 +73,7 @@ class Header extends React.Component {
       </ul>
 
     const UnauthenticatedHeaderActions = () =>
-      <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
-        <li>
-          <a href="/2/signup" className="au-btn au-btn--secondary au-btn--dark">
-            Sign up
-          </a>
-        </li>
-        <li>
-          <a href="/2/login" className="au-btn au-btn--dark">
-            Log in
-          </a>
-        </li>
-      </ul>
+      <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links" />
 
     const CommonMobileLinks = () =>
       <React.Fragment>
@@ -148,12 +137,6 @@ class Header extends React.Component {
 
     const UnauthenticatedMobileLinks = () =>
       <React.Fragment>
-        <div className="au-marketplace-header_mobile-link">
-          <a href="/2/login">Sign in</a>
-        </div>
-        <div className="au-marketplace-header_mobile-link">
-          <a href="/2/signup">Sign up</a>
-        </div>
         <CommonMobileLinks />
       </React.Fragment>
 
