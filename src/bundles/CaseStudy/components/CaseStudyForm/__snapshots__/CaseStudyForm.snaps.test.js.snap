@@ -174,11 +174,13 @@ exports[`CaseStudyForm renders 1`] = `
           <textarea
             aria-describedby="roles-hint"
             className="under-100"
+            disabled={false}
             id="roles"
             name="roles"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -208,11 +210,13 @@ exports[`CaseStudyForm renders 1`] = `
           <textarea
             aria-describedby="opportunity-hint"
             className="under-200"
+            disabled={false}
             id="opportunity"
             name="opportunity"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -252,11 +256,13 @@ exports[`CaseStudyForm renders 1`] = `
           <textarea
             aria-describedby="approach-hint"
             className="under-200"
+            disabled={false}
             id="approach"
             name="approach"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -301,6 +307,7 @@ exports[`CaseStudyForm renders 1`] = `
                   aria-describedby="outcome-hint"
                   className="text-box "
                   defaultValue=""
+                  disabled={false}
                   id="outcome-0"
                   name="outcome[]"
                   onBlur={[Function]}
@@ -327,6 +334,7 @@ exports[`CaseStudyForm renders 1`] = `
                   aria-describedby="outcome-hint"
                   className="text-box "
                   defaultValue=""
+                  disabled={false}
                   id="outcome-1"
                   name="outcome[]"
                   onBlur={[Function]}
@@ -394,6 +402,7 @@ exports[`CaseStudyForm renders 1`] = `
                   aria-describedby="project_links-hint"
                   className="text-box "
                   defaultValue=""
+                  disabled={false}
                   id="project_links-0"
                   name="project_links[]"
                   onBlur={[Function]}
@@ -420,6 +429,7 @@ exports[`CaseStudyForm renders 1`] = `
                   aria-describedby="project_links-hint"
                   className="text-box "
                   defaultValue=""
+                  disabled={false}
                   id="project_links-1"
                   name="project_links[]"
                   onBlur={[Function]}
@@ -764,11 +774,13 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           <textarea
             aria-describedby="roles-hint"
             className="under-100"
+            disabled={false}
             id="roles"
             name="roles"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -798,11 +810,13 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           <textarea
             aria-describedby="opportunity-hint"
             className="under-200"
+            disabled={false}
             id="opportunity"
             name="opportunity"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -842,11 +856,13 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
           <textarea
             aria-describedby="approach-hint"
             className="under-200"
+            disabled={false}
             id="approach"
             name="approach"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -891,6 +907,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
                   aria-describedby="outcome-hint"
                   className="text-box "
                   defaultValue=""
+                  disabled={false}
                   id="outcome-0"
                   name="outcome[]"
                   onBlur={[Function]}
@@ -917,6 +934,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
                   aria-describedby="outcome-hint"
                   className="text-box "
                   defaultValue=""
+                  disabled={false}
                   id="outcome-1"
                   name="outcome[]"
                   onBlur={[Function]}
@@ -984,6 +1002,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
                   aria-describedby="project_links-hint"
                   className="text-box "
                   defaultValue=""
+                  disabled={false}
                   id="project_links-0"
                   name="project_links[]"
                   onBlur={[Function]}
@@ -1010,6 +1029,7 @@ exports[`CaseStudyForm renders empty in edit mode 1`] = `
                   aria-describedby="project_links-hint"
                   className="text-box "
                   defaultValue=""
+                  disabled={false}
                   id="project_links-1"
                   name="project_links[]"
                   onBlur={[Function]}
@@ -1527,11 +1547,13 @@ exports[`CaseStudyForm renders with errors 1`] = `
           <textarea
             aria-describedby="roles-hint"
             className="invalid under-100"
+            disabled={false}
             id="roles"
             name="roles"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -1579,11 +1601,13 @@ exports[`CaseStudyForm renders with errors 1`] = `
           <textarea
             aria-describedby="opportunity-hint"
             className="invalid under-200"
+            disabled={false}
             id="opportunity"
             name="opportunity"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -1641,11 +1665,13 @@ exports[`CaseStudyForm renders with errors 1`] = `
           <textarea
             aria-describedby="approach-hint"
             className="invalid under-200"
+            disabled={false}
             id="approach"
             name="approach"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -1708,6 +1734,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
                   aria-describedby="outcome-hint"
                   className="text-box invalid"
                   defaultValue=""
+                  disabled={false}
                   id="outcome-0"
                   name="outcome[]"
                   onBlur={[Function]}
@@ -1734,6 +1761,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
                   aria-describedby="outcome-hint"
                   className="text-box invalid"
                   defaultValue=""
+                  disabled={false}
                   id="outcome-1"
                   name="outcome[]"
                   onBlur={[Function]}
@@ -1801,6 +1829,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
                   aria-describedby="project_links-hint"
                   className="text-box "
                   defaultValue=""
+                  disabled={false}
                   id="project_links-0"
                   name="project_links[]"
                   onBlur={[Function]}
@@ -1827,6 +1856,7 @@ exports[`CaseStudyForm renders with errors 1`] = `
                   aria-describedby="project_links-hint"
                   className="text-box "
                   defaultValue=""
+                  disabled={false}
                   id="project_links-1"
                   name="project_links[]"
                   onBlur={[Function]}
@@ -2250,11 +2280,13 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           <textarea
             aria-describedby="roles-hint"
             className="under-100"
+            disabled={false}
             id="roles"
             name="roles"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -2284,11 +2316,13 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           <textarea
             aria-describedby="opportunity-hint"
             className="under-200"
+            disabled={false}
             id="opportunity"
             name="opportunity"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -2328,11 +2362,13 @@ exports[`CaseStudyForm renders with form_options 1`] = `
           <textarea
             aria-describedby="approach-hint"
             className="under-200"
+            disabled={false}
             id="approach"
             name="approach"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -2377,6 +2413,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
                   aria-describedby="outcome-hint"
                   className="text-box "
                   defaultValue=""
+                  disabled={false}
                   id="outcome-0"
                   name="outcome[]"
                   onBlur={[Function]}
@@ -2403,6 +2440,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
                   aria-describedby="outcome-hint"
                   className="text-box "
                   defaultValue=""
+                  disabled={false}
                   id="outcome-1"
                   name="outcome[]"
                   onBlur={[Function]}
@@ -2470,6 +2508,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
                   aria-describedby="project_links-hint"
                   className="text-box "
                   defaultValue=""
+                  disabled={false}
                   id="project_links-0"
                   name="project_links[]"
                   onBlur={[Function]}
@@ -2496,6 +2535,7 @@ exports[`CaseStudyForm renders with form_options 1`] = `
                   aria-describedby="project_links-hint"
                   className="text-box "
                   defaultValue=""
+                  disabled={false}
                   id="project_links-1"
                   name="project_links[]"
                   onBlur={[Function]}
@@ -2843,11 +2883,13 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
           <textarea
             aria-describedby="roles-hint"
             className="under-100"
+            disabled={false}
             id="roles"
             name="roles"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -2878,11 +2920,13 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
             aria-describedby="opportunity-hint"
             className="under-200"
             defaultValue="The opportunity"
+            disabled={false}
             id="opportunity"
             name="opportunity"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -2923,11 +2967,13 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
             aria-describedby="approach-hint"
             className="under-200"
             defaultValue="The approach"
+            disabled={false}
             id="approach"
             name="approach"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -2972,6 +3018,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
                   aria-describedby="outcome-hint"
                   className="text-box "
                   defaultValue="Outcome 1"
+                  disabled={false}
                   id="outcome-0"
                   name="outcome[]"
                   onBlur={[Function]}
@@ -2998,6 +3045,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
                   aria-describedby="outcome-hint"
                   className="text-box "
                   defaultValue="Outcome 2"
+                  disabled={false}
                   id="outcome-1"
                   name="outcome[]"
                   onBlur={[Function]}
@@ -3065,6 +3113,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
                   aria-describedby="project_links-hint"
                   className="text-box "
                   defaultValue=""
+                  disabled={false}
                   id="project_links-0"
                   name="project_links[]"
                   onBlur={[Function]}
@@ -3091,6 +3140,7 @@ exports[`CaseStudyForm renders with populated fields 1`] = `
                   aria-describedby="project_links-hint"
                   className="text-box "
                   defaultValue=""
+                  disabled={false}
                   id="project_links-1"
                   name="project_links[]"
                   onBlur={[Function]}

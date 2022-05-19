@@ -456,32 +456,20 @@ exports[`DomainSelector renders 1`] = `
         >
           <button
             className="button-width button-width-left"
-            type="submit"
+            disabled="disabled"
           >
             Save and continue
           </button>
           <button
             className="save-button button-width button-width-right"
-            onClick={[Function]}
+            disabled="disabled"
           >
             Save and finish later
           </button>
         </div>
         <div
           className="col-xs-12 col-sm-12 col-md-3"
-        >
-          <div
-            styleName="skip"
-          >
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              styleName="skip-link"
-            >
-              Skip for now
-            </button>
-          </div>
-        </div>
+        />
       </div>
     </form>
   </article>
@@ -944,32 +932,20 @@ exports[`DomainSelector renders with populated fields 1`] = `
         >
           <button
             className="button-width button-width-left"
-            type="submit"
+            disabled="disabled"
           >
             Save and continue
           </button>
           <button
             className="save-button button-width button-width-right"
-            onClick={[Function]}
+            disabled="disabled"
           >
             Save and finish later
           </button>
         </div>
         <div
           className="col-xs-12 col-sm-12 col-md-3"
-        >
-          <div
-            styleName="skip"
-          >
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              styleName="skip-link"
-            >
-              Skip for now
-            </button>
-          </div>
-        </div>
+        />
       </div>
     </form>
   </article>

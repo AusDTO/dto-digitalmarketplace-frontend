@@ -99,6 +99,7 @@ class YourInfoForm extends BaseForm {
                       messages={{
                           required: 'Authorised representative is required',
                       }}
+                      disabled
                   />
 
                   <Textfield
@@ -112,6 +113,7 @@ class YourInfoForm extends BaseForm {
                           required: 'Authorised representative\'s email is required',
                           validEmail: 'Authorised representative\'s email must be a valid email address',
                       }}
+                      disabled
                   />
 
                   <Textfield
@@ -126,6 +128,7 @@ class YourInfoForm extends BaseForm {
                           required: 'Authorised representative\'s phone number is required',
                           validPhoneNumber: 'Authorised representative\'s phone number must be a valid phone number',
                       }}
+                      disabled
                   />
                 </React.Fragment>
               )}
@@ -143,6 +146,7 @@ class YourInfoForm extends BaseForm {
                       required: 'Business contact is required',
                   }}
                   default={userName}
+                  disabled
               />
 
               <Textfield
@@ -157,6 +161,7 @@ class YourInfoForm extends BaseForm {
                       validEmail: 'Business contact email must be a valid email address',
                   }}
                   default={userEmail}
+                  disabled
               />
 
               <Textfield
@@ -171,6 +176,7 @@ class YourInfoForm extends BaseForm {
                       required: 'Business contact phone is required',
                       validPhoneNumber: 'Business contact phone number must be a valid phone number',
                   }}
+                  disabled
               />
 
             {children}

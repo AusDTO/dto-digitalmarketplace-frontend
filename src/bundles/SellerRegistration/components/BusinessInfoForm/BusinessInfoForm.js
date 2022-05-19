@@ -58,6 +58,7 @@ class BusinessInfoForm extends BaseForm {
                                     !formValues.seller_type.sme || formValues.number_of_employees !== '200+'
                             }
                           }}
+                          disabled
                     >
                         {csrf_token && (
                             <input type="hidden" name="csrf_token" id="csrf_token" value={csrf_token}/>
@@ -78,6 +79,7 @@ class BusinessInfoForm extends BaseForm {
                                 name="number_of_employees"
                                 id="sole"
                                 value="Sole trader"
+                                disabled
                                 validators={{
                                     required
                                 }}/>
@@ -90,6 +92,7 @@ class BusinessInfoForm extends BaseForm {
                                 name="number_of_employees"
                                 id="2to19"
                                 value="2-19"
+                                disabled
                                 validators={{
                                     required
                                 }}/>
@@ -102,6 +105,7 @@ class BusinessInfoForm extends BaseForm {
                                 name="number_of_employees"
                                 id="20to49"
                                 value="20-49"
+                                disabled
                                 validators={{
                                     required
                                 }}/>
@@ -114,6 +118,7 @@ class BusinessInfoForm extends BaseForm {
                                 name="number_of_employees"
                                 id="50to99"
                                 value="50-99"
+                                disabled
                                 validators={{
                                     required
                                 }}/>
@@ -126,6 +131,7 @@ class BusinessInfoForm extends BaseForm {
                                 name="number_of_employees"
                                 id="100to199"
                                 value="100-199"
+                                disabled
                                 validators={{
                                     required
                                 }}/>
@@ -138,6 +144,7 @@ class BusinessInfoForm extends BaseForm {
                                 name="number_of_employees"
                                 id="200plus"
                                 value="200+"
+                                disabled
                                 validators={{
                                     required
                                 }}/>
@@ -168,6 +175,7 @@ class BusinessInfoForm extends BaseForm {
                                 id="start-up"
                                 name="start-up"
                                 value="Start Up"
+                                disabled
                             />
                             <label htmlFor="start-up">Start-up
                                 <p>Your business aims to disrupt an established market using technology. It is not listed
@@ -185,6 +193,7 @@ class BusinessInfoForm extends BaseForm {
                                 id="sme"
                                 name="sme"
                                 value="SME"
+                                disabled
                             />
                             <label htmlFor="sme">Small to medium-sized enterprise (SME (self-reported))
                                 <p>You have less than 200 employees and are independent of any parent organisation for
@@ -196,6 +205,7 @@ class BusinessInfoForm extends BaseForm {
                                 id="nfp-social-enterprise"
                                 name="nfp-social-enterprise"
                                 value="Not-for-profit / social enterprise"
+                                disabled
                             />
                             <label htmlFor="nfp-social-enterprise">Not for profit / social enterprise
                                 <p>An organisation that applies commercial strategies to maximize improvements in human
@@ -211,6 +221,7 @@ class BusinessInfoForm extends BaseForm {
                                 id="regional"
                                 name="regional"
                                 value="Regional"
+                                disabled
                             />
                             <label htmlFor="regional">
                                 Regional or non-metropolitan business
@@ -219,6 +230,7 @@ class BusinessInfoForm extends BaseForm {
                                 model={`${model}.travel`}
                                 id="travel"
                                 name="travel"
+                                disabled
                             />
                             <label htmlFor="travel">
                                 Happy to travel for regional or interstate opportunities
@@ -248,6 +260,7 @@ class BusinessInfoForm extends BaseForm {
                                 id="disability"
                                 name="disability"
                                 value="Disability"
+                                disabled
                             />
                             <label htmlFor="disability">Australian disability enterprise
                                 <p>Your business is listed on the <a href="http://www.ade.org.au/ades-directory"
@@ -261,6 +274,7 @@ class BusinessInfoForm extends BaseForm {
                                 id="female-owned"
                                 name="female-owned"
                                 value="Female owned"
+                                disabled
                             />
                             <label htmlFor="female-owned">Female owned
                                 <p>Your business has at least 50% female ownership. </p>
@@ -271,6 +285,7 @@ class BusinessInfoForm extends BaseForm {
                                 id="indigenous"
                                 name="indigenous"
                                 value="Indigenous"
+                                disabled
                             />
                             <label htmlFor="indigenous">Indigenous
                                 <p>Your business is at least 50% Indigenous owned and listed on <a
@@ -286,7 +301,9 @@ class BusinessInfoForm extends BaseForm {
                                 model={`${model}.government_experience.no_experience`}
                                 name="no_experience"
                                 id="no_experience"
-                                value="no_experience"/>
+                                value="no_experience"
+                                disabled 
+                            />
                             <label htmlFor="no_experience">No, we're looking forward to working with government for the
                                 first time</label>
 
@@ -294,28 +311,36 @@ class BusinessInfoForm extends BaseForm {
                                 model={`${model}.government_experience.local`}
                                 name="local_government_experience"
                                 id="local"
-                                value="Local"/>
+                                value="Local"
+                                disabled
+                            />
                             <label htmlFor="local">Yes, with local government</label>
 
                             <Control.checkbox
                                 model={`${model}.government_experience.state`}
                                 name="state_government_experience"
                                 id="state"
-                                value="state"/>
+                                value="state"
+                                disabled
+                            />
                             <label htmlFor="state">Yes, with state or territory government</label>
 
                             <Control.checkbox
                                 model={`${model}.government_experience.federal`}
                                 name="federal_government_experience"
                                 id="federal"
-                                value="federal"/>
+                                value="federal"
+                                disabled
+                            />
                             <label htmlFor="federal">Yes, with federal government</label>
 
                             <Control.checkbox
                                 model={`${model}.government_experience.international`}
                                 name="international_government_experience"
                                 id="international"
-                                value="international"/>
+                                value="international"
+                                disabled
+                            />
                             <label htmlFor="international">Yes, with government outside Australia</label>
 
                         </div>

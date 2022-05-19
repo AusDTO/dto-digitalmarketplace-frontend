@@ -71,6 +71,7 @@ class CandidatesForm extends BaseForm {
                                 required,
                                 onlyWholeNumbers
                             }}
+                            disabled
                         />
                         <Textfield
                             model={`${model}.candidates.active_candidates`}
@@ -86,6 +87,7 @@ class CandidatesForm extends BaseForm {
                                 required,
                                 onlyWholeNumbers
                             }}
+                            disabled
                         />
                         <Textfield
                             model={`${model}.candidates.placed_candidates`}
@@ -101,6 +103,7 @@ class CandidatesForm extends BaseForm {
                                 required,
                                 onlyWholeNumbers
                             }}
+                            disabled
                         />
                         <Textfield
                             model={`${model}.candidates.markup`}
@@ -114,6 +117,7 @@ class CandidatesForm extends BaseForm {
                                 validPercentage: 'You must supply your mark-up as a percentage'
                             }}
                             validators={{ required, validPercentage }}
+                            disabled
                         />
                         <Textfield
                             model={`${model}.candidates.margin`}
@@ -127,6 +131,7 @@ class CandidatesForm extends BaseForm {
                                 validPercentage: 'You must supply your margin as percentage'
                             }}
                             validators={{ required, validPercentage }}
+                            disabled
                         />
 
                         {children}

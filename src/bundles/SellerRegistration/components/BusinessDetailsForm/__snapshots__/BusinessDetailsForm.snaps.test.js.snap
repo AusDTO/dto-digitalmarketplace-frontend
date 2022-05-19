@@ -90,7 +90,7 @@ exports[`BusinessDetailsForm renders 1`] = `
         </p>
         <input
           className=""
-          disabled={false}
+          disabled={true}
           id="name"
           name="name"
           onBlur={[Function]}
@@ -141,11 +141,13 @@ exports[`BusinessDetailsForm renders 1`] = `
           <textarea
             aria-describedby="summary-hint"
             className="under-50"
+            disabled={true}
             id="summary"
             name="summary"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -172,7 +174,7 @@ exports[`BusinessDetailsForm renders 1`] = `
         </p>
         <input
           className=""
-          disabled={false}
+          disabled={true}
           id="website"
           name="website"
           onBlur={[Function]}
@@ -199,7 +201,7 @@ exports[`BusinessDetailsForm renders 1`] = `
         </p>
         <input
           className=""
-          disabled={false}
+          disabled={true}
           id="linkedin"
           name="linkedin"
           onBlur={[Function]}
@@ -226,7 +228,7 @@ exports[`BusinessDetailsForm renders 1`] = `
         </p>
         <input
           className=""
-          disabled={false}
+          disabled={true}
           id="address_line"
           name="address.address_line"
           onBlur={[Function]}
@@ -247,7 +249,7 @@ exports[`BusinessDetailsForm renders 1`] = `
         </label>
         <input
           className=""
-          disabled={false}
+          disabled={true}
           id="suburb"
           name="address.suburb"
           onBlur={[Function]}
@@ -268,7 +270,7 @@ exports[`BusinessDetailsForm renders 1`] = `
         </label>
         <input
           className=""
-          disabled={false}
+          disabled={true}
           id="state"
           name="address.state"
           onBlur={[Function]}
@@ -289,7 +291,7 @@ exports[`BusinessDetailsForm renders 1`] = `
         </label>
         <input
           className=""
-          disabled={false}
+          disabled={true}
           id="postal_code"
           maxLength="4"
           name="address.postal_code"
@@ -300,20 +302,7 @@ exports[`BusinessDetailsForm renders 1`] = `
           type="text"
         />
       </div>
-      <div>
-        <p
-          className="footer"
-        >
-          More offices?
-        </p>
-        <button
-          className="button-secondary"
-          onClick={[Function]}
-          type="submit"
-        >
-          Add another address
-        </button>
-      </div>
+      <div />
       <div
         className="row"
       >
@@ -323,32 +312,20 @@ exports[`BusinessDetailsForm renders 1`] = `
         >
           <button
             className="button-width button-width-left"
-            type="submit"
+            disabled="disabled"
           >
             Update profile
           </button>
           <button
             className="save-button button-width button-width-right"
-            onClick={[Function]}
+            disabled="disabled"
           >
             Save and finish later
           </button>
         </div>
         <div
           className="col-xs-12 col-sm-12 col-md-3"
-        >
-          <div
-            styleName="skip"
-          >
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              styleName="skip-link"
-            >
-              Skip for now
-            </button>
-          </div>
-        </div>
+        />
       </div>
     </form>
   </article>
@@ -452,7 +429,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
         </p>
         <input
           className=""
-          disabled={false}
+          disabled={true}
           id="name"
           name="name"
           onBlur={[Function]}
@@ -503,11 +480,13 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           <textarea
             aria-describedby="summary-hint"
             className="under-50"
+            disabled={true}
             id="summary"
             name="summary"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -534,7 +513,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
         </p>
         <input
           className=""
-          disabled={false}
+          disabled={true}
           id="website"
           name="website"
           onBlur={[Function]}
@@ -561,7 +540,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
         </p>
         <input
           className=""
-          disabled={false}
+          disabled={true}
           id="linkedin"
           name="linkedin"
           onBlur={[Function]}
@@ -588,7 +567,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
         </p>
         <input
           className=""
-          disabled={false}
+          disabled={true}
           id="address_line"
           name="address.address_line"
           onBlur={[Function]}
@@ -609,7 +588,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
         </label>
         <input
           className=""
-          disabled={false}
+          disabled={true}
           id="suburb"
           name="address.suburb"
           onBlur={[Function]}
@@ -630,7 +609,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
         </label>
         <input
           className=""
-          disabled={false}
+          disabled={true}
           id="state"
           name="address.state"
           onBlur={[Function]}
@@ -651,7 +630,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
         </label>
         <input
           className=""
-          disabled={false}
+          disabled={true}
           id="postal_code"
           maxLength="4"
           name="address.postal_code"
@@ -662,20 +641,7 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
           type="text"
         />
       </div>
-      <div>
-        <p
-          className="footer"
-        >
-          More offices?
-        </p>
-        <button
-          className="button-secondary"
-          onClick={[Function]}
-          type="submit"
-        >
-          Add another address
-        </button>
-      </div>
+      <div />
       <div
         className="row"
       >
@@ -685,32 +651,20 @@ exports[`BusinessDetailsForm renders with form_options 1`] = `
         >
           <button
             className="button-width button-width-left"
-            type="submit"
+            disabled="disabled"
           >
             Update profile
           </button>
           <button
             className="save-button button-width button-width-right"
-            onClick={[Function]}
+            disabled="disabled"
           >
             Save and finish later
           </button>
         </div>
         <div
           className="col-xs-12 col-sm-12 col-md-3"
-        >
-          <div
-            styleName="skip"
-          >
-            <button
-              className="button-secondary"
-              onClick={[Function]}
-              styleName="skip-link"
-            >
-              Skip for now
-            </button>
-          </div>
-        </div>
+        />
       </div>
     </form>
   </article>

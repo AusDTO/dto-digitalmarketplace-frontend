@@ -67,11 +67,13 @@ exports[`ProjectForm renders 1`] = `
           <textarea
             aria-describedby="summary-hint"
             className="under-50"
+            disabled={false}
             id="summary"
             name="summary"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -259,11 +261,13 @@ exports[`ProjectForm renders 1`] = `
           <textarea
             aria-describedby="aim-hint"
             className="under-200"
+            disabled={false}
             id="aim"
             name="aim"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -289,11 +293,13 @@ exports[`ProjectForm renders 1`] = `
             <textarea
               aria-describedby="about-label"
               className="under-200"
+              disabled={false}
               id="about"
               name="about"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
+              readOnly={false}
             />
             <span
               aria-live="polite"
@@ -338,6 +344,7 @@ exports[`ProjectForm renders 1`] = `
                     aria-describedby="lessons-hint"
                     className="text-box "
                     defaultValue=""
+                    disabled={false}
                     id="lessons-0"
                     name="lessons[]"
                     onBlur={[Function]}
@@ -364,6 +371,7 @@ exports[`ProjectForm renders 1`] = `
                     aria-describedby="lessons-hint"
                     className="text-box "
                     defaultValue=""
+                    disabled={false}
                     id="lessons-1"
                     name="lessons[]"
                     onBlur={[Function]}
@@ -431,6 +439,7 @@ exports[`ProjectForm renders 1`] = `
                     aria-describedby="outcome-hint"
                     className="text-box "
                     defaultValue=""
+                    disabled={false}
                     id="outcome-0"
                     name="outcome[]"
                     onBlur={[Function]}
@@ -457,6 +466,7 @@ exports[`ProjectForm renders 1`] = `
                     aria-describedby="outcome-hint"
                     className="text-box "
                     defaultValue=""
+                    disabled={false}
                     id="outcome-1"
                     name="outcome[]"
                     onBlur={[Function]}
@@ -807,11 +817,13 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           <textarea
             aria-describedby="summary-hint"
             className="under-50"
+            disabled={false}
             id="summary"
             name="summary"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -999,11 +1011,13 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
           <textarea
             aria-describedby="aim-hint"
             className="under-200"
+            disabled={false}
             id="aim"
             name="aim"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -1029,11 +1043,13 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
             <textarea
               aria-describedby="about-label"
               className="under-200"
+              disabled={false}
               id="about"
               name="about"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
+              readOnly={false}
             />
             <span
               aria-live="polite"
@@ -1078,6 +1094,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
                     aria-describedby="lessons-hint"
                     className="text-box "
                     defaultValue=""
+                    disabled={false}
                     id="lessons-0"
                     name="lessons[]"
                     onBlur={[Function]}
@@ -1104,6 +1121,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
                     aria-describedby="lessons-hint"
                     className="text-box "
                     defaultValue=""
+                    disabled={false}
                     id="lessons-1"
                     name="lessons[]"
                     onBlur={[Function]}
@@ -1171,6 +1189,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
                     aria-describedby="outcome-hint"
                     className="text-box "
                     defaultValue=""
+                    disabled={false}
                     id="outcome-0"
                     name="outcome[]"
                     onBlur={[Function]}
@@ -1197,6 +1216,7 @@ exports[`ProjectForm renders empty in edit mode 1`] = `
                     aria-describedby="outcome-hint"
                     className="text-box "
                     defaultValue=""
+                    disabled={false}
                     id="outcome-1"
                     name="outcome[]"
                     onBlur={[Function]}
@@ -1679,11 +1699,13 @@ exports[`ProjectForm renders with errors 1`] = `
           <textarea
             aria-describedby="summary-hint"
             className="invalid under-50"
+            disabled={false}
             id="summary"
             name="summary"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -1943,11 +1965,13 @@ exports[`ProjectForm renders with errors 1`] = `
           <textarea
             aria-describedby="aim-hint"
             className="invalid under-200"
+            disabled={false}
             id="aim"
             name="aim"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -1991,11 +2015,13 @@ exports[`ProjectForm renders with errors 1`] = `
             <textarea
               aria-describedby="about-label"
               className="invalid under-200"
+              disabled={false}
               id="about"
               name="about"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
+              readOnly={false}
             />
             <span
               aria-live="polite"
@@ -2040,6 +2066,7 @@ exports[`ProjectForm renders with errors 1`] = `
                     aria-describedby="lessons-hint"
                     className="text-box "
                     defaultValue=""
+                    disabled={false}
                     id="lessons-0"
                     name="lessons[]"
                     onBlur={[Function]}
@@ -2066,6 +2093,7 @@ exports[`ProjectForm renders with errors 1`] = `
                     aria-describedby="lessons-hint"
                     className="text-box "
                     defaultValue=""
+                    disabled={false}
                     id="lessons-1"
                     name="lessons[]"
                     onBlur={[Function]}
@@ -2151,6 +2179,7 @@ exports[`ProjectForm renders with errors 1`] = `
                     aria-describedby="outcome-hint"
                     className="text-box invalid"
                     defaultValue=""
+                    disabled={false}
                     id="outcome-0"
                     name="outcome[]"
                     onBlur={[Function]}
@@ -2177,6 +2206,7 @@ exports[`ProjectForm renders with errors 1`] = `
                     aria-describedby="outcome-hint"
                     className="text-box invalid"
                     defaultValue=""
+                    disabled={false}
                     id="outcome-1"
                     name="outcome[]"
                     onBlur={[Function]}
@@ -2588,11 +2618,13 @@ exports[`ProjectForm renders with form_options 1`] = `
           <textarea
             aria-describedby="summary-hint"
             className="under-50"
+            disabled={false}
             id="summary"
             name="summary"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -2780,11 +2812,13 @@ exports[`ProjectForm renders with form_options 1`] = `
           <textarea
             aria-describedby="aim-hint"
             className="under-200"
+            disabled={false}
             id="aim"
             name="aim"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -2810,11 +2844,13 @@ exports[`ProjectForm renders with form_options 1`] = `
             <textarea
               aria-describedby="about-label"
               className="under-200"
+              disabled={false}
               id="about"
               name="about"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
+              readOnly={false}
             />
             <span
               aria-live="polite"
@@ -2859,6 +2895,7 @@ exports[`ProjectForm renders with form_options 1`] = `
                     aria-describedby="lessons-hint"
                     className="text-box "
                     defaultValue=""
+                    disabled={false}
                     id="lessons-0"
                     name="lessons[]"
                     onBlur={[Function]}
@@ -2885,6 +2922,7 @@ exports[`ProjectForm renders with form_options 1`] = `
                     aria-describedby="lessons-hint"
                     className="text-box "
                     defaultValue=""
+                    disabled={false}
                     id="lessons-1"
                     name="lessons[]"
                     onBlur={[Function]}
@@ -2952,6 +2990,7 @@ exports[`ProjectForm renders with form_options 1`] = `
                     aria-describedby="outcome-hint"
                     className="text-box "
                     defaultValue=""
+                    disabled={false}
                     id="outcome-0"
                     name="outcome[]"
                     onBlur={[Function]}
@@ -2978,6 +3017,7 @@ exports[`ProjectForm renders with form_options 1`] = `
                     aria-describedby="outcome-hint"
                     className="text-box "
                     defaultValue=""
+                    disabled={false}
                     id="outcome-1"
                     name="outcome[]"
                     onBlur={[Function]}
@@ -3329,11 +3369,13 @@ exports[`ProjectForm renders with populated fields 1`] = `
           <textarea
             aria-describedby="summary-hint"
             className="under-50"
+            disabled={false}
             id="summary"
             name="summary"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -3522,11 +3564,13 @@ exports[`ProjectForm renders with populated fields 1`] = `
           <textarea
             aria-describedby="aim-hint"
             className="under-200"
+            disabled={false}
             id="aim"
             name="aim"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            readOnly={false}
           />
           <span
             aria-live="polite"
@@ -3552,11 +3596,13 @@ exports[`ProjectForm renders with populated fields 1`] = `
             <textarea
               aria-describedby="about-label"
               className="under-200"
+              disabled={false}
               id="about"
               name="about"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
+              readOnly={false}
             />
             <span
               aria-live="polite"
@@ -3601,6 +3647,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
                     aria-describedby="lessons-hint"
                     className="text-box "
                     defaultValue=""
+                    disabled={false}
                     id="lessons-0"
                     name="lessons[]"
                     onBlur={[Function]}
@@ -3627,6 +3674,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
                     aria-describedby="lessons-hint"
                     className="text-box "
                     defaultValue=""
+                    disabled={false}
                     id="lessons-1"
                     name="lessons[]"
                     onBlur={[Function]}
@@ -3694,6 +3742,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
                     aria-describedby="outcome-hint"
                     className="text-box "
                     defaultValue="Outcome 1"
+                    disabled={false}
                     id="outcome-0"
                     name="outcome[]"
                     onBlur={[Function]}
@@ -3720,6 +3769,7 @@ exports[`ProjectForm renders with populated fields 1`] = `
                     aria-describedby="outcome-hint"
                     className="text-box "
                     defaultValue="Outcome 2"
+                    disabled={false}
                     id="outcome-1"
                     name="outcome[]"
                     onBlur={[Function]}

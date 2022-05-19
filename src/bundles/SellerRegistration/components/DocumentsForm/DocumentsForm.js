@@ -262,6 +262,7 @@ class DocumentsForm extends BaseForm {
                                                 id={`${key}-checkbox`}
                                                 label={insuranceCheckboxLabel}
                                                 name={`${key}-checkbox`}
+                                                disabled
                                                 onClick={() => {
                                                     let documentToCopy = {}
                                                     if (key === 'indemnity') {
@@ -298,9 +299,7 @@ class DocumentsForm extends BaseForm {
                                                         <div className="col-xs-9" styleName="overflow-hidden">
                                                             <a href={url} target="_blank" rel="noopener noreferrer">{doc.filename}</a>
                                                         </div>
-                                                        <div className="col-xs-3" styleName="text-right">
-                                                            <a href="3" onClick={this.onReset.bind(this, key)}>Delete</a>
-                                                        </div>
+                                                        <div className="col-xs-3" styleName="text-right" />
                                                     </li>
                                                 </ul>
                                             </div>
@@ -361,6 +360,7 @@ class DocumentsForm extends BaseForm {
                             label="I am not required to hold Workers Compensation Insurance"
                             model={`${model}.documents.workers.noWorkersCompensation`}
                             detailsModel={model}
+                            disabled
                           />
                         }
                         <StepNav buttonText={buttonText} to={nextRoute} />

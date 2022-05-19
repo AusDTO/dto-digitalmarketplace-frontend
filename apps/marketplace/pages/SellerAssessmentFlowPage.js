@@ -169,6 +169,7 @@ export class SellerAssessmentFlowPage extends Component {
         showReviewButton={false}
         publishText="Request assessment"
         showConfirmationCheckbox={false}
+        disabled
       />
     )
   }

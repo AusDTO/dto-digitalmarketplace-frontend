@@ -32,7 +32,7 @@ class YesNoDetailsField extends React.Component {
   }
 
   render() {
-    const { name, id, label, model, validators, messages } = this.props;
+    const { name, id, label, model, validators, messages, disabled } = this.props;
     return (
       <fieldset className="field">
         <legend><strong>{label}</strong></legend>
@@ -44,6 +44,7 @@ class YesNoDetailsField extends React.Component {
           value="yes"
           model={model}
           validators={validators}
+          disabled={disabled}
         />
         <label htmlFor={`${id}-yes`}>Yes</label>
 
@@ -55,6 +56,7 @@ class YesNoDetailsField extends React.Component {
           value="no"
           model={model}
           validators={validators}
+          disabled={disabled}
         />
         <label htmlFor={`${id}-no`}>No</label>
 
@@ -68,6 +70,7 @@ class YesNoDetailsField extends React.Component {
             messages={{
                 required: 'Please provide details for ' + upperFirst(id).replace('_', ' '),
             }}
+            disabled={disabled}
           />
         )}
       </fieldset>
@@ -76,7 +79,8 @@ class YesNoDetailsField extends React.Component {
 }
 
 YesNoDetailsField.defaultProps = {
-  mapProps: {}
+  mapProps: {},
+  disabled: false
 }
 
 YesNoDetailsField.propTypes = {
@@ -96,6 +100,7 @@ YesNoDetailsField.propTypes = {
     PropTypes.func,
     PropTypes.object,
   ]),
+  disabled: PropTypes.bool
 };
 
 export const mapStateToProps = (state, ownProps) => {

@@ -241,17 +241,14 @@ class SellerAssessmentEvidenceStage extends Component {
         onSubmitFailed={this.props.onSubmitFailed}
         validateOn="submit"
       >
-        <AUpageAlert as="warning">
+        <AUpageAlert as="error">
           <p>
-            You must submit your application <strong>by 9am on 20 May</strong>.
-          </p>
-          <p>
-            Unsubmitted applications after 20 May will not be reviewed or transferred to BuyICT. You can reapply on{' '}
+            Requests for category assessments are closed. You can apply on{' '}
             {/* eslint-disable-next-line react/jsx-no-target-blank */}
             <a href="https://www.buyict.gov.au" rel="external" target="_blank">
               BuyICT
             </a>{' '}
-            <strong>after 30 May</strong>.
+            <strong>from 30 May</strong>.
           </p>
         </AUpageAlert>
         <AUheadings level="1" size="xl">
@@ -318,13 +315,14 @@ class SellerAssessmentEvidenceStage extends Component {
                       detailsModel={this.props.model}
                       validators={{}}
                       messages={{}}
+                      disabled
                     />
                   </p>
                 )}
                 <Textfield
                   model={`${this.props.model}.evidence[${criteriaId}].client`}
                   defaultValue={this.props[this.props.model].evidence[criteriaId].client}
-                  disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                  disabled
                   label="Client"
                   name={`client_${criteriaId}`}
                   id={`client_${criteriaId}`}
@@ -343,7 +341,7 @@ class SellerAssessmentEvidenceStage extends Component {
                 <Textfield
                   model={`${this.props.model}.evidence[${criteriaId}].refereeName`}
                   defaultValue={this.props[this.props.model].evidence[criteriaId].refereeName}
-                  disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                  disabled
                   label="Client referee's full name"
                   description="The referee must be an employee of the client who can verify your involvement in the project."
                   name={`referee_name_${criteriaId}`}
@@ -362,7 +360,7 @@ class SellerAssessmentEvidenceStage extends Component {
                 />
                 <Textfield
                   model={`${this.props.model}.evidence[${criteriaId}].refereeNumber`}
-                  disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                  disabled
                   defaultValue={this.props[this.props.model].evidence[criteriaId].refereeNumber}
                   label="Referee's phone number"
                   description="Please include the area code for landlines."
@@ -386,7 +384,7 @@ class SellerAssessmentEvidenceStage extends Component {
                     <strong>Start of project</strong>
                     <Control.select
                       model={`${this.props.model}.evidence[${criteriaId}].startDate`}
-                      disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                      disabled
                       id={`startDate_${criteriaId}`}
                       name={`startDate_${criteriaId}`}
                       mapProps={{
@@ -413,7 +411,7 @@ class SellerAssessmentEvidenceStage extends Component {
                     <strong>End of project</strong>
                     <Control.select
                       model={`${this.props.model}.evidence[${criteriaId}].endDate`}
-                      disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                      disabled
                       id={`endDate_${criteriaId}`}
                       name={`endDate_${criteriaId}`}
                       mapProps={{
@@ -442,7 +440,7 @@ class SellerAssessmentEvidenceStage extends Component {
                 </div>
                 <Textarea
                   model={`${this.props.model}.evidence[${criteriaId}].background`}
-                  disabled={index !== 0 && this.isCriteriaDetailsDisabled(criteriaId)}
+                  disabled
                   label="Background"
                   description="Describe the background of the project you worked on."
                   name={`background_${criteriaId}`}
@@ -478,6 +476,7 @@ class SellerAssessmentEvidenceStage extends Component {
                   messages={{
                     minimumWords: `Your criteria response has not yet reached the ${minimumWordRequirement} word minimum requirement`
                   }}
+                  disabled
                 />
               </div>
             ))}

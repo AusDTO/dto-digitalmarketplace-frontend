@@ -119,6 +119,7 @@ class BusinessDetailsForm extends BaseForm {
                           messages={{
                               required: 'Business name is required',
                           }}
+                          disabled
                         />
 
                         {!abn && <Textfield
@@ -141,6 +142,7 @@ class BusinessDetailsForm extends BaseForm {
                                 required: 'You must provide a seller summary'
                             }}
                             validators={{required}}
+                            disabled
                         />
 
                         <Textfield
@@ -155,6 +157,7 @@ class BusinessDetailsForm extends BaseForm {
                                 validLinks: 'Links provided must begin with http'
                             }}
                             validators={{required, validLinks}}
+                            disabled
                         />
 
                         <Textfield
@@ -169,6 +172,7 @@ class BusinessDetailsForm extends BaseForm {
                                 notPrivateLinkedIn: 'Please enter a URL you can open when not logged in to LinkedIn.'
                             }}
                             validators={{validLinks, notPrivateLinkedIn}}
+                            disabled
                         />
 
                         <Textfield
@@ -182,6 +186,7 @@ class BusinessDetailsForm extends BaseForm {
                                 required: 'You must provide an address'
                             }}
                             validators={{required}}
+                            disabled
                         />
 
                         <Textfield
@@ -194,6 +199,7 @@ class BusinessDetailsForm extends BaseForm {
                                 required: 'You must provide a suburb'
                             }}
                             validators={{required}}
+                            disabled
                         />
                         <Textfield
                             model={`${model}.addresses.0.state`}
@@ -205,6 +211,7 @@ class BusinessDetailsForm extends BaseForm {
                                 required: 'You must provide a state'
                             }}
                             validators={{required}}
+                            disabled
                         />
                         <Textfield
                             model={`${model}.addresses.0.postal_code`}
@@ -218,6 +225,7 @@ class BusinessDetailsForm extends BaseForm {
                                 limitNumbers: 'Postal codes must be four digits long and only numbers.'
                             }}
                             validators={{required, limitNumbers: limitNumbers(4)}}
+                            disabled
                         />
                         <div>
                             {businessDetailsForm.addresses &&
@@ -231,9 +239,7 @@ class BusinessDetailsForm extends BaseForm {
                                         <div className="col-xs-8 col-sm-10">
                                           <h3 className="au-display-md">Additional address</h3>
                                         </div>
-                                        <div className="col-xs-4 col-sm-2">
-                                            <button type="submit" className={`button-secondary ${businessDetails['remove-button']}`} onClick={this.onRemove.bind(this, key)}>Remove</button>
-                                        </div>
+                                        <div className="col-xs-4 col-sm-2" />
                                     </div>
                                     <div className="row">
                                         <div className="col-xs-12 col-sm-10">
@@ -247,6 +253,7 @@ class BusinessDetailsForm extends BaseForm {
                                                     required: 'You must provide address'
                                                 }}
                                                 validators={{required}}
+                                                disabled
                                             />
                                             <Textfield
                                                 model={`${model}.addresses.${key}.suburb`}
@@ -258,6 +265,7 @@ class BusinessDetailsForm extends BaseForm {
                                                     required: 'You must provide a suburb'
                                                 }}
                                                 validators={{required}}
+                                                disabled
                                             />
                                             <Textfield
                                                 model={`${model}.addresses.${key}.state`}
@@ -269,6 +277,7 @@ class BusinessDetailsForm extends BaseForm {
                                                     required: 'You must provide a state'
                                                 }}
                                                 validators={{required}}
+                                                disabled
                                             />
                                             <Textfield
                                                 model={`${model}.addresses.${key}.postal_code`}
@@ -282,16 +291,13 @@ class BusinessDetailsForm extends BaseForm {
                                                     limitNumbers: 'Postal codes must be four digits long and only numbers.'
                                                 }}
                                                 validators={{required, limitNumbers: limitNumbers(4)}}
+                                                disabled
                                             />
                                         </div>
                                     </div>
                                 </div>
                               )
                             })}
-                            {(isEmpty(businessDetailsForm.addresses) || Object.keys(businessDetailsForm.addresses).length <= 1) &&
-                                <p className={businessDetails.footer}>More offices?</p>
-                            }
-                            <button type="submit" className="button-secondary" onClick={this.onAdd.bind(this)}>Add another address</button>
                         </div>
 
                         {children}

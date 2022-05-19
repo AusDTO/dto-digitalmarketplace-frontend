@@ -310,7 +310,9 @@ class RecruiterForm extends BaseForm {
                                     onClick={this.onChangeState.bind(this)}
                                     name="recruiter"
                                     id="yes"
-                                    value="yes"/>
+                                    value="yes"
+                                    disabled
+                                />
                                 <label htmlFor="yes">Yes, my business solely places candidates in temporary and contract recruitment</label>
 
                                 <Control.radio
@@ -318,7 +320,9 @@ class RecruiterForm extends BaseForm {
                                     onClick={this.onChangeState.bind(this)}
                                     name="recruiter"
                                     id="no"
-                                    value="no"/>
+                                    value="no"
+                                    disabled
+                                />
                                 <label htmlFor="no">No, my business provides services on a consultancy basis</label>
 
                                 <Control.radio
@@ -326,7 +330,9 @@ class RecruiterForm extends BaseForm {
                                     onClick={this.onChangeState.bind(this)}
                                     name="recruiter"
                                     id="both"
-                                    value="both"/>
+                                    value="both"
+                                    disabled
+                                />
                                 <label htmlFor="both">My business does both recruitment and consultancy</label>
                             </fieldset>
                             {this.props[model].recruiter && this.props[model].recruiter !== 'no' && (
@@ -351,6 +357,7 @@ class RecruiterForm extends BaseForm {
                                             onChange={this.handleCheckboxChangeACT.bind(this)}
                                             onClick={this.handleCheckboxClickACT.bind(this)}
                                             type="checkbox"
+                                            disabled="disabled"
                                         />
                                         <label
                                             className="au-control-input__text"
@@ -367,6 +374,7 @@ class RecruiterForm extends BaseForm {
                                             onChange={this.handleCheckboxChangeQLD.bind(this)}
                                             onClick={this.handleCheckboxClickQLD.bind(this)}
                                             type="checkbox"
+                                            disabled="disabled"
                                         />
                                         <label
                                             className="au-control-input__text"
@@ -383,6 +391,7 @@ class RecruiterForm extends BaseForm {
                                             onChange={this.handleCheckboxChangeVIC.bind(this)}
                                             onClick={this.handleCheckboxClickVIC.bind(this)}
                                             type="checkbox"
+                                            disabled="disabled"
                                         />
                                         <label
                                             className="au-control-input__text"
@@ -408,6 +417,7 @@ class RecruiterForm extends BaseForm {
                                                 htmlFor="actLicenceNumber"
                                                 label="Licence number"
                                                 description=""
+                                                disabled
                                             />
                                             <div styleName="recruiterStyles.expiryDate">
                                                 <Control
@@ -423,6 +433,7 @@ class RecruiterForm extends BaseForm {
                                                         htmlFor: "actExpiry",
                                                         label: `Enter the expiry date for ${ mapAustraliaState("act") }`
                                                     }}
+                                                    disabled
                                                 />
                                             </div>
                                         </React.Fragment>
@@ -444,6 +455,7 @@ class RecruiterForm extends BaseForm {
                                                 htmlFor="qldLicenceNumber"
                                                 label="Licence number"
                                                 description=""
+                                                disabled
                                             />
                                             <div styleName="recruiterStyles.expiryDate">
                                                 <Control
@@ -459,6 +471,7 @@ class RecruiterForm extends BaseForm {
                                                         htmlFor: "qldExpiry",
                                                         label: `Enter the expiry date for ${ mapAustraliaState("qld") }`
                                                     }}
+                                                    disabled
                                                 />
                                             </div>
                                         </React.Fragment>
@@ -480,6 +493,7 @@ class RecruiterForm extends BaseForm {
                                                 htmlFor="vicLicenceNumber"
                                                 label="Licence number"
                                                 description=""
+                                                disabled
                                             />
                                             <div styleName="recruiterStyles.expiryDate">
                                                 <Control
@@ -495,6 +509,7 @@ class RecruiterForm extends BaseForm {
                                                         htmlFor: "vicExpiry",
                                                         label: `Enter the expiry date for ${ mapAustraliaState("vic") }`
                                                     }}
+                                                    disabled
                                                 />
                                             </div>
                                         </React.Fragment>

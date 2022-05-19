@@ -36,7 +36,6 @@ const OpportunityInfoCard = props => {
     loggedIn,
     originalClosedAt,
     rejectedEvidenceId,
-    sellerCategory,
     sellersApplied,
     sellersInvited,
     supplierBriefResponseId,
@@ -233,13 +232,8 @@ const OpportunityInfoCard = props => {
                 {!isAwaitingDomainAssessment &&
                   !hasEvidenceInDraftForCategory &&
                   !hasLatestEvidenceRejectedForCategory && (
-                    <p>
-                      <a
-                        href={`${rootPath}/seller-assessment/create/${sellerCategory}/${briefId}`}
-                        className={`au-btn au-btn--block ${styles.redBtn}`}
-                      >
-                        Request assessment
-                      </a>
+                    <p className={styles.invitedStatus}>
+                      Requesting a category assessment is currently unavailable due to the move to BuyICT.
                     </p>
                   )}
                 {!isAwaitingDomainAssessment && hasLatestEvidenceRejectedForCategory && rejectedEvidenceId && (
@@ -266,13 +260,6 @@ const OpportunityInfoCard = props => {
                 <p className={styles.invitedStatus}>
                   Only sellers with an assessed category can apply.
                   {isAwaitingDomainAssessment && <span> Your application is currently being assessed.</span>}
-                  {!isAwaitingDomainAssessment && (
-                    <span>
-                      {' '}
-                      You can request assessment for a category of your choosing{' '}
-                      <a href={`${rootPath}/seller-dashboard`}>from your dashboard</a>.
-                    </span>
-                  )}
                 </p>
               </span>
             )}
@@ -401,7 +388,6 @@ OpportunityInfoCard.propTypes = {
   briefLot: PropTypes.string.isRequired,
   briefStatus: PropTypes.string.isRequired,
   category: PropTypes.string,
-  sellerCategory: PropTypes.string.isRequired,
   hasSignedCurrentAgreement: PropTypes.bool,
   supplierCode: PropTypes.number,
   originalClosedAt: PropTypes.string,

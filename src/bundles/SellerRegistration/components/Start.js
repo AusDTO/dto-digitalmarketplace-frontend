@@ -40,7 +40,7 @@ const Start = ({supplierCode, signup, onClick, saved, type, applicationErrors })
                     </p>
                     <SaveError/>
                     <p>
-                        <a className="button" href={signup} onClick={onClick}>Start now </a>
+                        <button disabled="disabled">Start now</button>
                     </p>
                 </div>
             ) : (type === 'edit' ? (
@@ -58,7 +58,7 @@ const Start = ({supplierCode, signup, onClick, saved, type, applicationErrors })
                            Please note you cannot edit your profile while it is being reviewed.</p>
                         <SaveError/>
                         <p>
-                            <a className="button" href={signup} onClick={onClick}>Start Now </a>
+                            <button disabled="disabled">Start now</button>
                         </p>
                     </div>
 

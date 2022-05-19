@@ -289,6 +289,7 @@ export class ProgressFlow extends Component {
                               continueText={this.props.continueText}
                               startText={this.props.startText}
                               hasPermissionToPublish={this.props.hasPermissionToPublish}
+                              disabled={this.props.disabled}
                             />
                           )
                         }
@@ -318,7 +319,8 @@ ProgressFlow.defaultProps = {
   showConfirmationCheckbox: true,
   meta: {},
   continueText: 'Save and continue',
-  hasPermissionToPublish: true
+  hasPermissionToPublish: true,
+  disabled: false
 }
 
 ProgressFlow.propTypes = {
@@ -337,7 +339,8 @@ ProgressFlow.propTypes = {
   meta: PropTypes.object,
   continueText: PropTypes.string,
   startText: PropTypes.string,
-  hasPermissionToPublish: PropTypes.bool
+  hasPermissionToPublish: PropTypes.bool,
+  disabled: PropTypes.bool
 }
 
 const mapStateToProps = (state, props) => ({

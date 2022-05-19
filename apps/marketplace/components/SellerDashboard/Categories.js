@@ -58,13 +58,6 @@ export class Categories extends Component {
 
   getActionsLinks = category => {
     switch (category.status) {
-      case 'unassessed':
-        return (
-          <React.Fragment>
-            {this.getCriteriaLinks(category.id)}
-            <a href={`${rootPath}/seller-assessment/create/${category.id}`}>Request assessment</a>
-          </React.Fragment>
-        )
       case 'draft':
         return (
           <React.Fragment>
@@ -72,7 +65,7 @@ export class Categories extends Component {
               href={`${rootPath}/seller-assessment/${category.evidence_id}/introduction`}
               className={styles.marginRight1}
             >
-              Continue editing
+              View draft
             </a>
             {category.previous_evidence_id && (
               <a href={`${rootPath}/seller-assessment/${category.previous_evidence_id}/feedback`}>View feedback</a>
@@ -105,9 +98,6 @@ export class Categories extends Component {
                 View feedback
               </a>
             )}
-            <a href={`${rootPath}/seller-assessment/create/${category.id}`} className={styles.marginRight1}>
-              Resubmit{' '}
-            </a>
           </React.Fragment>
         )
       case 'submitted':
@@ -143,10 +133,10 @@ export class Categories extends Component {
       <div>
         <div className={`row`}>
           <div className="col-xs-12 col-md-12">
-            <AUpageAlert as="warning" className={(styles.marginTop3, styles.pageAlert)}>
+            <AUpageAlert as="error" className={`${styles.marginTop2} ${styles.pageAlert}`}>
               <p className={styles.noMaxWidth}>
-                Requests for category assessments will be closed <strong>between 20 and 30 May</strong> while we move to
-                BuyICT. You can apply on {/* eslint-disable-next-line react/jsx-no-target-blank */}
+                Requests for category assessments are closed. You can apply on{' '}
+                {/* eslint-disable-next-line react/jsx-no-target-blank */}
                 <a href="https://www.buyict.gov.au" rel="external" target="_blank">
                   BuyICT
                 </a>{' '}

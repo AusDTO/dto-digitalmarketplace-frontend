@@ -110,9 +110,7 @@ class ProductsForm extends BaseForm {
                     <div className="col-xs-12 col-sm-10">
                       <h2 className="au-display-lg">{`Product ${index}`}</h2>
                     </div>
-                    <div className="col-xs-12 col-sm-2">
-                      <button type="submit" styleName="products.remove-button" className="button-secondary" onClick={this.onRemove.bind(this, key)}>Remove</button>
-                    </div>
+                    <div className="col-xs-12 col-sm-2" />
                   </div>
                   <div className="row">
                     <div className="col-xs-12 col-sm-10">
@@ -126,6 +124,7 @@ class ProductsForm extends BaseForm {
                           messages={{
                               required: `Product ${index} name is required`,
                           }}
+                          disabled
                       />
                       <Textarea
                           model={`${model}.products.${key}.summary`}
@@ -139,6 +138,7 @@ class ProductsForm extends BaseForm {
                               required: `Please provide a product summary`
                           }}
                           validators={{required}}
+                          disabled
                       />
                       <Textfield
                           model={`${model}.products.${key}.website`}
@@ -152,6 +152,7 @@ class ProductsForm extends BaseForm {
                               required: `Please add the product website starting with http`,
                               validLinks: `Please add the product website starting with http`,
                           }}
+                          disabled
                       />
                       <Textfield
                           model={`${model}.products.${key}.pricing`}
@@ -165,6 +166,7 @@ class ProductsForm extends BaseForm {
                               required: `Please add the product pricing webpage link starting with http`,
                               validLinks: `Please add the product pricing webpage link starting with http`,
                           }}
+                          disabled
                       />
                       <Textfield
                           model={`${model}.products.${key}.support`}
@@ -178,6 +180,7 @@ class ProductsForm extends BaseForm {
                               required: `Please add the product support webpage link starting with http`,
                               validLinks: `Please add the product support webpage link starting with http`,
                           }}
+                          disabled
                       />
                     </div>
                   </div>
@@ -186,18 +189,6 @@ class ProductsForm extends BaseForm {
             })}
 
             {children}
-
-            {!hasProducts && <SaveError/>}
-            <button type="submit" className={addClass} onClick={this.onAdd.bind(this)}>{isEmpty(productsForm.products) ? 'Add a product' : 'Add another product'}</button>
-            {hasProducts &&
-              <div>
-                <div className="row"/>
-                <StepNav buttonText={buttonText} to={nextRoute}/>
-              </div>
-            }
-            {!hasProducts &&
-              <button type="button" className={submitClass} onClick={() => this.onClearProducts()}>I don't have any products</button>
-            }
           </Form>
         </article>
       </Layout>
