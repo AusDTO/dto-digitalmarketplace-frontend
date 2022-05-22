@@ -60,7 +60,7 @@ import WithdrawOpportunitySuccessPage from './pages/WithdrawOpportunitySuccessPa
 import JoinATeamPage from './pages/JoinATeamPage'
 import JoinATeamCreatePage from './pages/JoinATeamCreatePage'
 import JoinATeamDeclineRequestPage from './pages/JoinATeamDeclineRequestPage'
-import LockoutPage from './pages/LockoutPage'
+import BuyICTPage from './pages/BuyICTPage'
 import { DMP_LOCKOUT } from './constants/constants'
 
 export const rootPath = '/2'
@@ -69,124 +69,120 @@ export const Routes = () => {
   if (DMP_LOCKOUT) {
     return (
       <Switch>
-        <Route exact path={rootPath} component={LockoutPage} />
-        <Route path={`${rootPath}/signup`} component={LockoutPage} />
-        <Route path={`${rootPath}/create-user`} component={LockoutPage} />
-        <PrivateRoute restrictedTo="admin" path={`${rootPath}/send-invite/:token`} component={LockoutPage} />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/overview/:flow`} component={LockoutPage} />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/close`} component={LockoutPage} />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/closed`} component={LockoutPage} />
+        <Route exact path={rootPath} component={BuyICTPage} />
+        <Route path={`${rootPath}/signup`} component={BuyICTPage} />
+        <Route path={`${rootPath}/create-user`} component={BuyICTPage} />
+        <PrivateRoute restrictedTo="admin" path={`${rootPath}/send-invite/:token`} component={BuyICTPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/overview/:flow`} component={BuyICTPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/close`} component={BuyICTPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/closed`} component={BuyICTPage} />
         <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/overview`} component={BriefOverviewPage} />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/edit/:item?`} component={LockoutPage} />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/edited`} component={LockoutPage} />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/assessors`} component={LockoutPage} />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/questions`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/edit/:item?`} component={BuyICTPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/edited`} component={BuyICTPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/assessors`} component={BuyICTPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/questions`} component={BuyICTPage} />
         <PrivateRoute
           restrictedTo="buyer"
           path={`${rootPath}/brief/:briefId/publish-answer/:questionId?`}
-          component={LockoutPage}
+          component={BuyICTPage}
         />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/withdraw`} component={LockoutPage} />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/withdrawn`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/withdraw`} component={BuyICTPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/withdrawn`} component={BuyICTPage} />
         <PrivateRoute
           restrictedTo="supplier"
           path={`${rootPath}/brief/:briefId/ask-a-question`}
-          component={LockoutPage}
+          component={BuyICTPage}
         />
-        <PrivateRoute restrictedTo="supplier" path={`${rootPath}/brief/:briefId/responses`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="supplier" path={`${rootPath}/brief/:briefId/responses`} component={BuyICTPage} />
         <PrivateRoute
           restrictedTo="supplier"
           path={`${rootPath}/brief/:briefId/:briefResponseType/respond/:briefResponseId`}
-          component={LockoutPage}
+          component={BuyICTPage}
         />
         <PrivateRoute
           restrictedTo="supplier"
           path={`${rootPath}/brief/:briefId/:briefResponseType/respond`}
-          component={LockoutPage}
+          component={BuyICTPage}
         />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/invited`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/brief/:briefId/invited`} component={BuyICTPage} />
         <PrivateRoute path={`${rootPath}/brief/:briefId`} component={BriefPage} />
-        <Route path={`${rootPath}/reset-password`} component={LockoutPage} />
+        <Route path={`${rootPath}/reset-password`} component={BuyICTPage} />
         <Route path={`${rootPath}/login`} component={LoginPage} />
         <Route path={`${rootPath}/insights`} component={InsightPage} />
-        <PrivateRoute restrictedTo="supplier" path={`${rootPath}/seller-dashboard`} component={LockoutPage} />
-        <PrivateRoute restrictedTo="supplier" path={`${rootPath}/seller-edit/:supplierCode`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="supplier" path={`${rootPath}/seller-dashboard`} component={BuyICTPage} />
+        <PrivateRoute restrictedTo="supplier" path={`${rootPath}/seller-edit/:supplierCode`} component={BuyICTPage} />
         <Route path={`${rootPath}/:framework/opportunities/:briefId/history`} component={OpportunityHistoryPage} />
         <Route path={`${rootPath}/:framework/opportunities/:briefId`} component={OpportunityPage} />
         <Route path={`${rootPath}/opportunities`} component={OpportunitiesPage} />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-dashboard`} component={LockoutPage} />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/create`} component={LockoutPage} />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-training2/create`} component={LockoutPage} />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/:briefId/completed`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-dashboard`} component={BuyICTPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/create`} component={BuyICTPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-training2/create`} component={BuyICTPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/:briefId/completed`} component={BuyICTPage} />
         <PrivateRoute
           restrictedTo="buyer"
           path={`${rootPath}/buyer-training2/:briefId/completed`}
-          component={LockoutPage}
+          component={BuyICTPage}
         />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-award/:briefId`} component={LockoutPage} />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/:briefId/:stage?`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-award/:briefId`} component={BuyICTPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-rfx/:briefId/:stage?`} component={BuyICTPage} />
         <PrivateRoute
           restrictedTo="buyer"
           path={`${rootPath}/buyer-training2/:briefId/:stage?`}
-          component={LockoutPage}
+          component={BuyICTPage}
         />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/:briefId/completed`} component={LockoutPage} />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/create`} component={LockoutPage} />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/:briefId/:stage?`} component={LockoutPage} />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/create-new`} component={LockoutPage} />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/join`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/:briefId/completed`} component={BuyICTPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/create`} component={BuyICTPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-atm/:briefId/:stage?`} component={BuyICTPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/create-new`} component={BuyICTPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/join`} component={BuyICTPage} />
         <PrivateRoute
           restrictedTo="buyer"
           path={`${rootPath}/team/:teamId/decline-join/:token`}
-          component={LockoutPage}
+          component={BuyICTPage}
         />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/(teams|people)`} component={LockoutPage} />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/create`} component={LockoutPage} />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/edit/:teamId/:stage?`} component={LockoutPage} />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/:teamId/:stage?`} component={LockoutPage} />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/download-reports`} component={LockoutPage} />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-specialist/create`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/(teams|people)`} component={BuyICTPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/create`} component={BuyICTPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/edit/:teamId/:stage?`} component={BuyICTPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/team/:teamId/:stage?`} component={BuyICTPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/download-reports`} component={BuyICTPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/buyer-specialist/create`} component={BuyICTPage} />
         <PrivateRoute
           restrictedTo="buyer"
           path={`${rootPath}/buyer-specialist/:briefId/completed`}
-          component={LockoutPage}
+          component={BuyICTPage}
         />
         <PrivateRoute
           restrictedTo="buyer"
           path={`${rootPath}/buyer-specialist/:briefId/:stage?`}
-          component={LockoutPage}
+          component={BuyICTPage}
         />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/outcome-choice`} component={LockoutPage} />
-        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/request-access/:permission`} component={LockoutPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/outcome-choice`} component={BuyICTPage} />
+        <PrivateRoute restrictedTo="buyer" path={`${rootPath}/request-access/:permission`} component={BuyICTPage} />
         <PrivateRoute
           restrictedTo="supplier"
           path={`${rootPath}/seller-assessment/:evidenceId/completed`}
-          component={LockoutPage}
+          component={BuyICTPage}
         />
         <PrivateRoute
           restrictedTo="supplier"
           path={`${rootPath}/seller-assessment/:evidenceId/feedback`}
-          component={LockoutPage}
+          component={BuyICTPage}
         />
         <PrivateRoute
           restrictedTo="supplier"
           path={`${rootPath}/seller-assessment/:evidenceId/view`}
-          component={LockoutPage}
+          component={BuyICTPage}
         />
-        <PrivateRoute
-          restrictedTo="supplier"
-          path={`${rootPath}/case-studies/:domainId/view`}
-          component={LockoutPage}
-        />
+        <PrivateRoute restrictedTo="supplier" path={`${rootPath}/case-studies/:domainId/view`} component={BuyICTPage} />
         <PrivateRoute
           restrictedTo="supplier"
           path={`${rootPath}/seller-assessment/create/:domainId/:briefId?`}
-          component={LockoutPage}
+          component={BuyICTPage}
         />
         <PrivateRoute
           restrictedTo="supplier"
           path={`${rootPath}/seller-assessment/:evidenceId/:stage?`}
-          component={LockoutPage}
+          component={BuyICTPage}
         />
         <Route component={NotFound} />
       </Switch>
