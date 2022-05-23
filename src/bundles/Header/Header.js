@@ -73,18 +73,7 @@ class Header extends React.Component {
       </ul>
 
     const UnauthenticatedHeaderActions = () =>
-      <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links">
-        <li>
-          <a href="/2/signup" className="au-btn au-btn--secondary au-btn--dark">
-            Sign up
-          </a>
-        </li>
-        <li>
-          <a href="/2/login" className="au-btn au-btn--dark">
-            Log in
-          </a>
-        </li>
-      </ul>
+      <ul data-reactroot="" id="main-navigation" className="au-marketplace-header-inline-links" />
 
     const CommonMobileLinks = () =>
       <React.Fragment>
@@ -148,12 +137,6 @@ class Header extends React.Component {
 
     const UnauthenticatedMobileLinks = () =>
       <React.Fragment>
-        <div className="au-marketplace-header_mobile-link">
-          <a href="/2/login">Sign in</a>
-        </div>
-        <div className="au-marketplace-header_mobile-link">
-          <a href="/2/signup">Sign up</a>
-        </div>
         <CommonMobileLinks />
       </React.Fragment>
 
@@ -163,9 +146,8 @@ class Header extends React.Component {
           <div className="maintenance-banner">
             <div className="wrapper">
               <div className="row">
-                <span className="maintenance-message">
-                  Digital Marketplace is moving to BuyICT soon. <a href="/api/2/r/buyict">Find out more</a>.
-                </span>
+                {/* eslint-disable-next-line prettier/prettier */}
+                <span className="maintenance-message">Digital Marketplace is closed while it&apos;s moving to BuyICT. <a href="/api/2/r/buyict">Find out more</a>.</span>
               </div>
             </div>
           </div>

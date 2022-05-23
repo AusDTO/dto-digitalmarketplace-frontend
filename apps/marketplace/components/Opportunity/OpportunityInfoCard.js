@@ -87,45 +87,6 @@ const OpportunityInfoCard = props => {
           {!isOpen && briefStatus !== 'draft' && !closedEarly && (
             <p className={styles.invitedStatus}>This opportunity has closed.</p>
           )}
-          {isOpen && !loggedIn && (
-            <span>
-              {isOpenToAll ? (
-                <span>
-                  <p>Any assessed seller can respond.</p>
-                  <p>
-                    <a
-                      href="https://marketplace1.zendesk.com/hc/en-gb/articles/360000634456-Responding-to-an-opportunity"
-                      className="au-btn au-btn--block"
-                    >
-                      How to respond
-                    </a>
-                    <a
-                      href={`/login?next=${encodeURIComponent(
-                        `${rootPath}/digital-marketplace/opportunities/${briefId}`
-                      )}`}
-                      className="au-btn au-btn--secondary au-btn--block"
-                    >
-                      Login
-                    </a>
-                  </p>
-                </span>
-              ) : (
-                <span>
-                  <p>Only signed in {!isOpenToCategory && 'invited'} sellers can apply.</p>
-                  <p>
-                    <a
-                      href={`/login?next=${encodeURIComponent(
-                        `${rootPath}/digital-marketplace/opportunities/${briefId}`
-                      )}`}
-                      className="au-btn au-btn--block"
-                    >
-                      Login
-                    </a>
-                  </p>
-                </span>
-              )}
-            </span>
-          )}
           {isBuyer && !isBriefOwner && (
             <a href={`mailto:${buyerEmail}`} className="au-btn au-btn--secondary au-btn--block">
               Contact the buyer

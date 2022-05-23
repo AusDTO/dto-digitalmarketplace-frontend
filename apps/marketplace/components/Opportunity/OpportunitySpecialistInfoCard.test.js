@@ -66,9 +66,7 @@ describe('OpportunitySpecialistInfoCard', () => {
           sellersApplied: 0
         })
       ).text()
-    ).toEqual(
-      '1seller invited0candidates submittedSellers can submit up to 6 candidates for this role.You must be signed in, invited to respond and have indicated that you provide ICT Labour Hire services.Login'
-    )
+    ).toEqual('1seller invited0candidates submittedSellers can submit up to 6 candidates for this role.')
   })
 
   test('opportunity is not open to all', () => {
@@ -89,9 +87,7 @@ describe('OpportunitySpecialistInfoCard', () => {
           sellersApplied: 1
         })
       ).text()
-    ).toEqual(
-      '10sellers invited1candidate submittedSellers can submit up to 6 candidates for this role.You must be signed in, invited to respond and have indicated that you provide ICT Labour Hire services.Login'
-    )
+    ).toEqual('10sellers invited1candidate submittedSellers can submit up to 6 candidates for this role.')
   })
 
   test('brief is open to all', () => {
@@ -111,9 +107,7 @@ describe('OpportunitySpecialistInfoCard', () => {
           sellersInvited: 10
         })
       ).text()
-    ).toEqual(
-      'candidates submittedSellers can submit up to 5 candidates for this role.You must be signed in and have indicated that you provide ICT Labour Hire services.How to respondLogin'
-    )
+    ).toEqual('candidates submittedSellers can submit up to 5 candidates for this role.')
   })
 
   test('able to apply with no responses', () => {
@@ -222,9 +216,7 @@ describe('OpportunitySpecialistInfoCard', () => {
           hasSignedCurrentAgreement: true
         })
       ).text()
-    ).toEqual(
-      'candidates submittedSellers can submit up to 6 candidates for this role.You must be signed in and have indicated that you provide ICT Labour Hire services.How to respondLogin'
-    )
+    ).toEqual('candidates submittedSellers can submit up to 6 candidates for this role.')
   })
 
   test('not able to apply because max responses', () => {
