@@ -978,18 +978,18 @@ a[rel~='external']::after {
 }
 
 .maintenance-banner {
-  background-color: #f69900;
-  color: #212121;
+  background-color: #b60000;
+  color: #ffffff;
   padding: 0.5rem;
   font-weight: 600;
 }
 
 .maintenance-banner a {
-  color: #212121;
+  color: #ffffff;
 }
 
 .maintenance-banner a:hover {
-  color: #212121;
+  color: #ffffff;
 }
 
 @media screen and (max-width: 767px) {
