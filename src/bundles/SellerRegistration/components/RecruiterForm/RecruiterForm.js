@@ -36,7 +36,6 @@ class RecruiterForm extends BaseForm {
     }
     
     state = {
-        checkboxLabel: '',
         recruiter: this.props[this.props.model].recruiter,
         hasLabourHireLicenceACT: false,
         hasLabourHireLicenceQLD: false,
@@ -45,24 +44,8 @@ class RecruiterForm extends BaseForm {
         checked: false
     }
 
-    checkboxLabelWhenRecruiterConsultant = 'I understand that once my business is updated to both recruitment and consultancy in the Digital Marketplace, I will lose my current category approvals. I must request assessment from my dashboard and be approved in the relevant categories before I can respond to opportunities.'
-    checkboxLabelWhenConsultant = 'I understand that once my business is updated to a consultancy in the Digital Marketplace, I will lose my current category approvals. I must request assessment from my dashboard and be approved in the relevant categories before I can respond to opportunities.'
-
     componentDidMount() {
-        const { labourHire } = this.props[this.props.model]
-        const { recruiter } = this.state
-
-        if (recruiter === 'both') {
-            this.setState({
-                checkboxLabel: this.checkboxLabelWhenRecruiterConsultant
-            })
-        }
-
-        if (recruiter === 'no') {
-            this.setState({
-                checkboxLabel: this.checkboxLabelWhenConsultant
-            })
-        }
+        const { labourHire } = this.props[this.props.model]       
 
         if (labourHire
             && labourHire.act
@@ -110,20 +93,10 @@ class RecruiterForm extends BaseForm {
             recruiter: e.target.value
         })
 
-        if (e.target.value === 'both') {
-            this.setState({
-                checkboxLabel: this.checkboxLabelWhenRecruiterConsultant,
-            })
-        }
-
         if (e.target.value === 'no') {
             states.forEach(s => {
                 updateProperty(`${model}.labourHire.${s}.expiry`, null)
                 updateProperty(`${model}.labourHire.${s}.licenceNumber`, null)
-            })
-
-            this.setState({
-                checkboxLabel: this.checkboxLabelWhenConsultant,
             })
         }
     }
@@ -234,25 +207,6 @@ class RecruiterForm extends BaseForm {
     showAssessmentWarning = () => {
         const { supplier, type } = this.props
         return type === 'edit' && supplier.recruiter === 'yes'
-    }
-
-    UnderstandsProcessCheckbox = props => {
-        const { checked } = props
-        const { model, updateProperty } = this.props
-        const { checkboxLabel } = this.state
-  
-        return (
-          <AUcheckbox
-            checked={checked}
-            id="understandsAssessmentProcess"
-            label={checkboxLabel}
-            name="understandsAssessmentProcess"
-            onChange={() => {}}
-            onClick={e => {
-              updateProperty(`${model}.understandsAssessmentProcess`, e.target.checked)
-            }}
-          />
-        )
     }
 
     handleCheckboxClickACT = () => {
@@ -563,27 +517,6 @@ class RecruiterForm extends BaseForm {
                                 </fieldset>
                             )}
                             {children}
-                            {this.showAssessmentWarning() && (recruiter === 'both' || recruiter === 'no') && (
-                                <React.Fragment>
-                                    <StatefulError
-                                        id="understandsAssessmentProcess"
-                                        model={`${model}.understandsAssessmentProcess`}
-                                        messages={{
-                                            required: 'Confirm you understand that once you submit these updates, you cannot respond to opportunities until you request an assessment and are approved for the relevant categories.'
-                                        }}
-                                    />
-                                    <Control.checkbox
-                                        component={this.UnderstandsProcessCheckbox}
-                                        id="understandsAssessmentProcessControl"
-                                        mapProps={{
-                                            checked: prps => prps.modelValue
-                                        }}
-                                        model={`${model}.understandsAssessmentProcess`}
-                                        validators={{ required }}
-                                        disabled
-                                    />
-                                </React.Fragment>
-                            )}
                         </div>
                         <StepNav buttonText="Save and continue" to={nextRoute}/>
                     </Form>

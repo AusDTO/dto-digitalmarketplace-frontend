@@ -190,6 +190,13 @@ const OpportunityInfoCard = props => {
                     <span> Your submitted assessment has been reviewed by the Marketplace and was not successful.</span>
                   )}
                 </p>
+                {!isAwaitingDomainAssessment &&
+                  !hasEvidenceInDraftForCategory &&
+                  !hasLatestEvidenceRejectedForCategory && (
+                    <p className={styles.invitedStatus}>
+                      Requesting a category assessment is currently unavailable due to the move to BuyICT.
+                    </p>
+                  )}
                 {!isAwaitingDomainAssessment && hasLatestEvidenceRejectedForCategory && rejectedEvidenceId && (
                   <p>
                     <a
