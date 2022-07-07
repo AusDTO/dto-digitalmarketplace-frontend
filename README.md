@@ -1,3 +1,7 @@
+**Features from the Digital Marketplace platform were migrated to [BuyICT.gov.au](https://www.buyict.gov.au) in May 2022. The DTA no longer maintains a separate Digital Marketplace platform.**
+
+---
+
 # Marketplace React Frontend
 
 **This documentation is now outdated and applies to legacy server-rendered react.  Current documentation can be found [here](/CONTRIBUTING.md)**.
